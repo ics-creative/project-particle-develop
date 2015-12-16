@@ -5,12 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"build-ts" : "tsc --project ./" 
+		"install" : "dtsm install",
+    "build-ts": "tsc --project ./"
   },
   "keywords": [
     "electron",
     "createjs"
   ],
   "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "dtsm": "^0.13.0"
+  }
 }
