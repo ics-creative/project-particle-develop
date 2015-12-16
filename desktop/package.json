@@ -1,0 +1,16 @@
+{
+  "name": "desktop",
+  "version": "0.1.0",
+  "description": "createjs illustrator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+		"build-ts" : "tsc --project ./" 
+  },
+  "keywords": [
+    "electron",
+    "createjs"
+  ],
+  "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
+  "license": "MIT"
+}
