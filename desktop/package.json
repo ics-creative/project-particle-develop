@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "dtsm install",
-    "build-ts": "tsc --project ./"
+    "build-ts": "tsc --project ./",
+		"start" : "electron ."
   },
   "keywords": [
     "electron",

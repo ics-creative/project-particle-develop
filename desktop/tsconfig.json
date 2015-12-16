@@ -8,7 +8,7 @@
         "sourceMap": true
     },
     "files": [
-        "ts/MyClass.ts",
+        "ts/AppMain.ts",
         "../common/ts/common.d.ts"
     ]
 }
