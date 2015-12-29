@@ -1,6 +1,7 @@
 const electron = require("electron");
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
+const client = require('electron-connect').client;
 
 // Report crashes to our server.
 electron.crashReporter.start();
@@ -28,6 +29,10 @@ app.on("ready", function() {
 
 	// Open the DevTools.
 	mainWindow.webContents.openDevTools();
+
+  // Connect to server process
+  client.create(mainWindow);
+
 	// Emitted when the window is closed.
 	mainWindow.on("closed", function() {
 		// Dereference the window object, usually you would store windows
