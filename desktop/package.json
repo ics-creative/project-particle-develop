@@ -8,7 +8,7 @@
     "install": "dtsm install",
     "build-ts": "tsc --project ./;gulp ts-compile-browser",
     "start": "electron .",
-    "watch": "gulp serve"
+    "watch": "NODE_ENV=production gulp serve"
   },
   "keywords": [
     "electron",

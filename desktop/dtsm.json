@@ -21,6 +21,9 @@
     },
     "github-electron/electron-prebuilt.d.ts": {
       "ref": "dc9dabe74a5be62613b17a3605309783a12ff28a"
+    },
+    "github-electron/github-electron.d.ts": {
+      "ref": "fe563dff3428bac1260d1794e2c2ecf8f097535a"
     }
   }
 }
