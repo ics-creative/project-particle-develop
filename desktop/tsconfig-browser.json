@@ -5,10 +5,10 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "out" : "./src/renderer/index.js"
+    "out" : "./src/browser/index.js"
   },
   "files": [
-    "./ts/renderer/index.ts"
+    "./ts/browser/Index.ts"
   ],
   "exclude": "node_modules"
 }

@@ -2,11 +2,11 @@
   "name": "desktop",
   "version": "0.1.0",
   "description": "createjs illustrator",
-  "main": "index.js",
+  "main": "src/browser/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "dtsm install",
-    "build-ts": "tsc --project ./",
+    "build-ts": "tsc --project ./;gulp ts-compile-browser",
     "start": "electron .",
     "watch": "gulp serve"
   },
@@ -22,6 +22,7 @@
   "dependencies": {
     "electron-connect": "^0.3.3",
     "electron-prebuilt": "0.35.0",
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-typescript": "^2.10.0"
   }
 }
