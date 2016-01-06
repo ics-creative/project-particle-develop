@@ -3,20 +3,24 @@
 
 /**
  * Created by nyamogera on 16/01/06.
+ * ブラウザーのJavaScriptのルートファイル
  */
 
 var app:App;
 window.onload = function () {
   app = new App();
 
+  //  Export SVG
   var exportButton = document.getElementById("btn_export");
   exportButton.addEventListener("click",runExport);
 }
 
-
+/**
+ * Export SVG
+ */
 var exporter:SVGExporter;
 
-function runExport (e) {
+function runExport (e:any) {
     exporter = new SVGExporter(app.stage, false, false, false);
     var t = new Date().getTime();
     exporter.run();
