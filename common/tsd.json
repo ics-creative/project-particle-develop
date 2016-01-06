@@ -4,5 +4,24 @@
   "ref": "master",
   "path": "typings",
   "bundle": "typings/tsd.d.ts",
-  "installed": {}
+  "installed": {
+    "createjs-lib/createjs-lib.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    },
+    "createjs/createjs.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    },
+    "tweenjs/tweenjs.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    },
+    "easeljs/easeljs.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    },
+    "soundjs/soundjs.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    },
+    "preloadjs/preloadjs.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    }
+  }
 }

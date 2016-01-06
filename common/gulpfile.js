@@ -4,17 +4,36 @@ var gulp = require('gulp');
 
 // browser-syncのプラグインの読み込み
 var browserSync = require("browser-sync");
+//  sassプラグインの読み込み
+var sass = require('gulp-sass');
 
 gulp.task("watch", function () {
 
-  // ブラウザープロセスのtsファイルのビルド
-  gulp.watch(["index.html"], ["copy"]);
+  gulp.watch(["index.html"], ["copy-index"]);
+  gulp.watch(["libs/**/*.*"], ["copy-lib"]);
+  gulp.watch(["styles/**/*.*"], ["build-scss"]);
 });
 
-/** コピーするだけのタスク */
-gulp.task("copy",function (){
+/** index.htmlをコピーするだけのタスク */
+gulp.task("copy-index",function (){
   gulp.src("index.html")
     .pipe(gulp.dest("dist"));
+});
+
+/** lib以下ををコピーするだけのタスク */
+gulp.task("copy-lib",function (){
+  gulp.src("libs/**/*.*")
+    .pipe(gulp.dest("dist/libs/"));
+});
+
+/** sass */
+gulp.task('build-scss', function () {
+  // scssファイルの配置ディレクトリ及びマッチパターン
+  gulp.src('styles/**/*.scss')
+      // scssファイルの変換処理と、エラーが起こった場合のログ書き出し
+      .pipe(sass().on('error', sass.logError))
+      // cssを書き出すディレクトリの指定
+      .pipe(gulp.dest('dist/css'));
 });
 
 

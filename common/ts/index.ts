@@ -4,5 +4,6 @@
  * Created by nyamogera on 16/01/06.
  */
 
-//あああ
-
+window.onload = function () {
+    var app = new App();
+}
