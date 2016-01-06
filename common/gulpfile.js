@@ -41,8 +41,9 @@ gulp.task('build-scss', function () {
 gulp.task("sync-browser", function () {
   browserSync({
     server: {
-      baseDir: "dist" // browser-syncのルートとなるディレクトリ
-    }
+      baseDir: "./",
+    },
+    startPath:"dist/index.html"
   });
 
   // distフォルダ以下のファイルを監視
