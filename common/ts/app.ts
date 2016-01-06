@@ -3,7 +3,7 @@
  */
 
 class App{
-  private stage:createjs.Stage;
+  public stage:createjs.Stage;
   private drawingLayer:DrawingLayer;
 
   constructor(){

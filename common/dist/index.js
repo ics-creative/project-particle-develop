@@ -83,7 +83,22 @@ var App = (function () {
     }
     return App;
 })();
+var app;
 window.onload = function () {
-    var app = new App();
+    app = new App();
+    var exportButton = document.getElementById("btn_export");
+    exportButton.addEventListener("click", runExport);
 };
+var exporter;
+function runExport(e) {
+    exporter = new SVGExporter(app.stage, false, false, false);
+    var t = new Date().getTime();
+    exporter.run();
+    setTimeout(downloadFile, 1);
+}
+function downloadFile() {
+    var serializer = new XMLSerializer();
+    var svgStr = serializer.serializeToString(exporter.svg);
+    window.open("data:image/svg+xml,\n" + encodeURIComponent(svgStr));
+}
 //# sourceMappingURL=index.js.map
