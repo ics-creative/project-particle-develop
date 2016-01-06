@@ -1,6 +1,9 @@
 var DrawingLayer = (function () {
-    function DrawingLayer(stage, container, width, height) {
+    function DrawingLayer(stage, container, width, height, color) {
         var _this = this;
+        this.changeColor = function (color) {
+            _this.color = color;
+        };
         this.handleMouseDown = function () {
             if (_this.mousedown) {
                 return;
@@ -36,6 +39,7 @@ var DrawingLayer = (function () {
                 _this.lastMidPoint.setValues(midPoint.x, midPoint.y);
             }
         };
+        this.color = color;
         this.stage = stage;
         this.container = container;
         this.lastMidPoint = new createjs.Point();
@@ -47,7 +51,7 @@ var DrawingLayer = (function () {
     }
     DrawingLayer.prototype.drawCurve = function (graphics, oldPoint, newPoint, controlPoint) {
         this.setLineThickness(oldPoint, newPoint);
-        graphics.beginStroke("black")
+        graphics.beginStroke(this.color)
             .setStrokeStyle(this.currentLineThickness, "round", "round")
             .moveTo(oldPoint.x, oldPoint.y)
             .quadraticCurveTo(controlPoint.x, controlPoint.y, newPoint.x, newPoint.y);
@@ -68,6 +72,9 @@ var App = (function () {
             _this.drawingLayer.draw();
             _this.stage.update();
         };
+        this.changeColor = function (color) {
+            _this.drawingLayer.changeColor(color);
+        };
         var canvas = document.getElementById("canvas_drawing");
         canvas.width = 1024;
         canvas.height = 512;
@@ -78,7 +85,7 @@ var App = (function () {
         this.stage.addChild(shape);
         var container = new createjs.Container();
         this.stage.addChild(container);
-        this.drawingLayer = new DrawingLayer(this.stage, container, canvas.width, canvas.height);
+        this.drawingLayer = new DrawingLayer(this.stage, container, canvas.width, canvas.height, "#000");
         createjs.Ticker.addEventListener("tick", this.update);
     }
     return App;
@@ -88,6 +95,13 @@ window.onload = function () {
     app = new App();
     var exportButton = document.getElementById("btn_export");
     exportButton.addEventListener("click", runExport);
+    $("#colorpicker").spectrum({
+        showPalette: true,
+        color: "#000",
+        change: function (color) {
+            app.changeColor(color.toHexString());
+        }
+    });
 };
 var exporter;
 function runExport(e) {

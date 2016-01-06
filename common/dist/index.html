@@ -7,10 +7,28 @@
     <script src="./libs/easeljs-NEXT.combined.js"></script>
     <script src="./libs/SVGExporter.js"></script>
     <script src="./index.js"></script>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+
   </head>
   <body>
     <button id="btn_export">export</button>
+
+    <input id='colorpicker' />
+
+    <script>
+      $("#colorpicker").spectrum({
+        showPalette: true,
+        color: "#f00",
+        change: function(color) {
+          app.changeColor(color.toHexString());
+        }
+      });
+    </script>
+
     <div id="layer_canvas">
       <canvas id="canvas_drawing"></canvas>
     </div>

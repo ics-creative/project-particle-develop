@@ -26,7 +26,7 @@ class App{
     var container = new createjs.Container();
     this.stage.addChild(container);
 
-    this.drawingLayer = new DrawingLayer(this.stage,container,canvas.width,canvas.height);
+    this.drawingLayer = new DrawingLayer(this.stage,container,canvas.width,canvas.height,"#000");
 
     createjs.Ticker.addEventListener("tick", this.update);
   }
@@ -36,5 +36,9 @@ class App{
 
     // Stageの描画を更新します
     this.stage.update();
+  }
+
+  changeColor = (color:string) =>{
+    this.drawingLayer.changeColor(color);
   }
 }

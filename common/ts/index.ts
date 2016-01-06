@@ -6,6 +6,10 @@
  * ブラウザーのJavaScriptのルートファイル
  */
 
+interface JQuery {
+  spectrum(value:any):void;
+}
+
 var app:App;
 window.onload = function () {
   app = new App();
@@ -13,6 +17,15 @@ window.onload = function () {
   //  Export SVG
   var exportButton = document.getElementById("btn_export");
   exportButton.addEventListener("click",runExport);
+
+  //  カラーピッカー
+  $("#colorpicker").spectrum({
+    showPalette: true,
+    color: "#000",
+    change: function(color:any) {
+      app.changeColor(color.toHexString());
+    }
+  });
 }
 
 /**

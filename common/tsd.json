@@ -22,6 +22,9 @@
     },
     "preloadjs/preloadjs.d.ts": {
       "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
+    },
+    "jquery/jquery.d.ts": {
+      "commit": "dab0fb7cb7dc9bd46a4282508f77241fbd42cbbb"
     }
   }
 }

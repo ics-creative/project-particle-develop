@@ -14,8 +14,10 @@ class DrawingLayer{
   private mousedown:boolean;
   private width:number;
   private height:number;
+  private color:string;
 
-  constructor(stage:createjs.Stage,container:createjs.Container,width:number,height:number) {
+  constructor(stage:createjs.Stage,container:createjs.Container,width:number,height:number,color:string) {
+    this.color = color;
     this.stage = stage;
     this.container = container;
 
@@ -27,6 +29,11 @@ class DrawingLayer{
     stage.addEventListener("pressmove", this.handleMouseDown);
     stage.addEventListener("pressup", this.handleMouseUp);
   }
+
+  changeColor = (color:string) =>{
+    this.color = color;
+  }
+
   handleMouseDown = () =>{
     if(this.mousedown){
       return ;
@@ -81,7 +88,7 @@ class DrawingLayer{
   }
   drawCurve(graphics:createjs.Graphics, oldPoint:createjs.Point, newPoint:createjs.Point, controlPoint:createjs.Point) {
     this.setLineThickness(oldPoint, newPoint);
-    graphics.beginStroke("black")
+    graphics.beginStroke(this.color)
       .setStrokeStyle(this.currentLineThickness, "round", "round")
       .moveTo(oldPoint.x, oldPoint.y)
       .quadraticCurveTo(controlPoint.x, controlPoint.y, newPoint.x, newPoint.y);
