@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sync": "gulp sync",
     "watch": "gulp watch",
-    "install": "tsd install"
+    "install": "tsd install",
+    "start" : "open dist/index.html"
   },
   "repository": {
     "type": "git",
