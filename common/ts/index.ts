@@ -18,14 +18,6 @@ window.onload = function () {
   var exportButton = document.getElementById("btn_export");
   exportButton.addEventListener("click",runExport);
 
-  //  カラーピッカー
-  $("#colorpicker").spectrum({
-    showPalette: true,
-    color: "#000",
-    change: function(color:any) {
-      app.changeColor(color.toHexString());
-    }
-  });
 }
 
 /**

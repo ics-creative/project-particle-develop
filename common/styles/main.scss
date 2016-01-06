@@ -16,3 +16,27 @@ body{
 .canvas_drawing{
 
 }
+
+div.toolbar {
+  margin: 0px;
+  padding: 0px;
+}
+
+p.tools {
+  margin: 0px;
+  padding: 0px;
+}
+
+p.tools a {
+  display: block;
+  width: 5em;
+  float: left;
+  margin: 0px 1px 0px 0px;
+  padding: 3px;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #aaaa00;
+  color:white;
+}
+
+p.toolbar a.tools { background-color: blue;  color: white; }

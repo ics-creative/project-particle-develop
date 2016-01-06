@@ -1,7 +1,7 @@
 /**
  * Created by nyamogera on 2016/01/06.
  */
-class DrawingLayer{
+class DrawingLayer implements ILayer{
 
   private stage:createjs.Stage;
   private container:createjs.Container;
@@ -25,9 +25,6 @@ class DrawingLayer{
     this.currentLineThickness = 1;
     this.width = width;
     this.height = height;
-
-    stage.addEventListener("pressmove", this.handleMouseDown);
-    stage.addEventListener("pressup", this.handleMouseUp);
   }
 
   changeColor = (color:string) =>{

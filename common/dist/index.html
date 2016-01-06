@@ -16,18 +16,20 @@
   </head>
   <body>
     <button id="btn_export">export</button>
+    <div class="toolbar">
+      <p class="tools">
+        <a href="#" id="tool-pen">ペン</a>
+        <a href="#" id="tool-stamp">スタンプ</a>
+      </p>
+    </div>
 
-    <input id='colorpicker' />
+    <div id="tool-pen-parameters">
+      <input id="colorpicker" />
+    </div>
 
-    <script>
-      $("#colorpicker").spectrum({
-        showPalette: true,
-        color: "#f00",
-        change: function(color) {
-          app.changeColor(color.toHexString());
-        }
-      });
-    </script>
+    <div id="tool-stamp-parameters">
+      <input id="colorpicker" />
+    </div>
 
     <div id="layer_canvas">
       <canvas id="canvas_drawing"></canvas>
