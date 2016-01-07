@@ -292,6 +292,12 @@ var App = (function () {
         };
         this.changeTab = function () {
             console.log("tabChanged");
+            if (_this.toolbar.toolId == tool.TOOL_SELECT) {
+                _this.stage.mouseChildren = true;
+            }
+            else {
+                _this.stage.mouseChildren = false;
+            }
         };
         this.changeTool = function () {
         };

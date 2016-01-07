@@ -96,9 +96,16 @@ class App {
 
   changeTab = () => {
     console.log("tabChanged");
+
+    if( this.toolbar.toolId == tool.TOOL_SELECT) {
+      this.stage.mouseChildren = true;
+    } else {
+      this.stage.mouseChildren = false;
+    }
   }
 
   changeTool = () => {
+
     /*
     if( this.layer.length == 0 )
     {
