@@ -266,7 +266,7 @@ var App = (function () {
                     break;
                 case tool.TOOL_PEN:
                     var container = new createjs.Container();
-                    _this.stage.addChild(container);
+                    _this.drawLayerContainer.addChild(container);
                     _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, "#000");
                     _this.drawingLayer.updateSetting(_this.toolbar.drawingSetting);
                     _this.layer.push(_this.drawingLayer);
@@ -276,7 +276,7 @@ var App = (function () {
                     var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
-                    _this.stage.addChild(_this.stampLayer.stamp.shape);
+                    _this.drawLayerContainer.addChild(_this.stampLayer.stamp.shape);
                     _this.layer.push(_this.stampLayer);
                     _this.stampLayer.start();
                     break;
@@ -284,7 +284,7 @@ var App = (function () {
                     var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
-                    _this.stage.addChild(_this.stampLayer.stamp.shape);
+                    _this.drawLayerContainer.addChild(_this.stampLayer.stamp.shape);
                     _this.layer.push(_this.stampLayer);
                     _this.stampLayer.start();
                     break;
@@ -319,10 +319,12 @@ var App = (function () {
         this.canvas.width = 1024;
         this.canvas.height = 512;
         this.stage = new createjs.Stage(this.canvas);
-        var shape = new createjs.Shape();
-        shape.graphics.beginFill("white");
-        shape.graphics.drawRect(0, 0, 1024, 512);
-        this.stage.addChild(shape);
+        this.background = new createjs.Shape();
+        this.background.graphics.beginFill("white");
+        this.background.graphics.drawRect(0, 0, 1024, 512);
+        this.stage.addChild(this.background);
+        this.drawLayerContainer = new createjs.Container();
+        this.stage.addChild(this.drawLayerContainer);
         createjs.Ticker.addEventListener("tick", this.update);
         this.toolbar.addEventListener('change_tab', this.changeTab);
         this.toolbar.addEventListener('change_tool', this.changeTool);

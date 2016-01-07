@@ -11,6 +11,8 @@ class App {
   private layer:ILayer[];
   private canvas:HTMLCanvasElement;
 
+  private background:createjs.Shape;
+  private drawLayerContainer:createjs.Container;
   constructor() {
 
     this.layer = [];
@@ -20,16 +22,21 @@ class App {
     this.canvas = <HTMLCanvasElement>document.getElementById("canvas_drawing");
 
     this.canvas.width = 1024;
-    this. canvas.height = 512;
+    this.canvas.height = 512;
 
     this.stage = new createjs.Stage(this.canvas);
 
-    // 円を作成します
-    var shape = new createjs.Shape();
-    shape.graphics.beginFill("white"); // 赤色で描画するように設定
-    shape.graphics.drawRect(0, 0, 1024, 512); //半径 100px の円を描画
+    // 背景カラーの設定
+    this.background = new createjs.Shape();
+    this.background.graphics.beginFill("white");
+    this.background.graphics.drawRect(0, 0, 1024, 512);
 
-    this.stage.addChild(shape); // 表示リストに追加
+    this.stage.addChild(this.background); // 表示リストに追加
+
+
+    this.drawLayerContainer = new createjs.Container();
+    this.stage.addChild( this.drawLayerContainer )
+
 
     createjs.Ticker.addEventListener("tick", this.update);
 
@@ -54,7 +61,7 @@ class App {
       case  tool.TOOL_PEN  :
 
         var container = new createjs.Container();
-        this.stage.addChild(container);
+        this.drawLayerContainer.addChild(container);
 
         this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, "#000");
         this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
@@ -70,7 +77,7 @@ class App {
         this.stampLayer = new StampLayer(this.stage,stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
 
-        this.stage.addChild(this.stampLayer.stamp.shape);
+        this.drawLayerContainer.addChild(this.stampLayer.stamp.shape);
 
         this.layer.push( this.stampLayer );
 
@@ -84,7 +91,7 @@ class App {
         this.stampLayer = new StampLayer(this.stage,stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
 
-        this.stage.addChild(this.stampLayer.stamp.shape);
+        this.drawLayerContainer.addChild(this.stampLayer.stamp.shape);
 
         this.layer.push( this.stampLayer );
 
