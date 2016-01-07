@@ -48,6 +48,9 @@ class App {
     }
 
     switch (this.toolbar.toolId) {
+      case tool.TOOL_SELECT:
+        break;
+
       case  tool.TOOL_PEN  :
 
         var container = new createjs.Container();

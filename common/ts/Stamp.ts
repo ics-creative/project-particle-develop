@@ -31,9 +31,43 @@ class StampLayer implements ILayer{
   setting:ShapeSetting;
   isStart:boolean;
 
+  isPress:boolean;
+  dragPointX:number;
+  dragPointY:number;
+
   constructor(stage:createjs.Stage,stamp:Stamp) {
     this.stage = stage;
     this.stamp = stamp;
+
+    this.stamp.shape.addEventListener("mousedown",this.pressDown );
+    this.stamp.shape.addEventListener("pressup", this.pressUp);
+  }
+
+  pressDown = () => {
+    console.log("mousedown..?");
+    if( this.isStart ) {
+      return ;
+    }
+    console.log("mousedown");
+    this.dragPointX = this.stage.mouseX - this.stamp.shape.x;
+    this.dragPointY = this.stage.mouseY - this.stamp.shape.y;
+    this.isPress = true;
+    this.stamp.shape.addEventListener("pressmove",this.pressMove );
+  }
+
+  pressMove = () =>{
+    if( !this.isPress ) {
+      return ;
+    }
+
+    this.stamp.shape.x = this.stage.mouseX - this.dragPointX;
+    this.stamp.shape.y = this.stage.mouseY - this.dragPointY;
+  }
+
+  pressUp = () => {
+
+    this.stamp.shape.removeEventListener("pressmove",this.pressMove );
+    this.isPress = false;
   }
 
 

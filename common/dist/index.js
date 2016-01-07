@@ -11,6 +11,28 @@ var Stamp = (function () {
 var StampLayer = (function () {
     function StampLayer(stage, stamp) {
         var _this = this;
+        this.pressDown = function () {
+            console.log("mousedown..?");
+            if (_this.isStart) {
+                return;
+            }
+            console.log("mousedown");
+            _this.dragPointX = _this.stage.mouseX - _this.stamp.shape.x;
+            _this.dragPointY = _this.stage.mouseY - _this.stamp.shape.y;
+            _this.isPress = true;
+            _this.stamp.shape.addEventListener("pressmove", _this.pressMove);
+        };
+        this.pressMove = function () {
+            if (!_this.isPress) {
+                return;
+            }
+            _this.stamp.shape.x = _this.stage.mouseX - _this.dragPointX;
+            _this.stamp.shape.y = _this.stage.mouseY - _this.dragPointY;
+        };
+        this.pressUp = function () {
+            _this.stamp.shape.removeEventListener("pressmove", _this.pressMove);
+            _this.isPress = false;
+        };
         this.start = function () {
             _this.isStart = true;
             _this.stage.addEventListener("pressup", _this.handlePressUp);
@@ -44,6 +66,8 @@ var StampLayer = (function () {
         };
         this.stage = stage;
         this.stamp = stamp;
+        this.stamp.shape.addEventListener("mousedown", this.pressDown);
+        this.stamp.shape.addEventListener("pressup", this.pressUp);
     }
     StampLayer.prototype.isExit = function () {
         return !this.isStart;
@@ -140,6 +164,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var tool;
 (function (tool) {
+    tool.TOOL_SELECT = "tool-select";
     tool.TOOL_PEN = "tool-pen";
     tool.TOOL_STAMP = "tool-stamp";
     tool.TOOL_TEXT = "tool-text";
@@ -155,6 +180,9 @@ var Toolbar = (function (_super) {
             _this.colorPickerBaseElement.style.display = 'none';
             _this.textInputWrapElement.style.display = 'none';
             switch (tabName) {
+                case tool.TOOL_SELECT:
+                    _this.colorPickerLineElement.style.display = 'block';
+                    break;
                 case tool.TOOL_PEN:
                     _this.colorPickerLineElement.style.display = 'block';
                     break;
@@ -177,9 +205,13 @@ var Toolbar = (function (_super) {
         this.drawingSetting = new DrawingSetting();
         this.textSetting = new TextSetting();
         createjs.EventDispatcher.initialize(Toolbar.prototype);
+        this.toolSelectElement = document.getElementById(tool.TOOL_SELECT);
         this.toolPenElement = document.getElementById(tool.TOOL_PEN);
         this.toolStampElement = document.getElementById(tool.TOOL_STAMP);
         this.toolTextElement = document.getElementById(tool.TOOL_TEXT);
+        this.toolSelectElement.addEventListener("click", function (e) {
+            _this.changeTab(tool.TOOL_SELECT);
+        });
         this.toolPenElement.addEventListener("click", function (e) {
             _this.changeTab(tool.TOOL_PEN);
         });
@@ -230,6 +262,8 @@ var App = (function () {
                 return;
             }
             switch (_this.toolbar.toolId) {
+                case tool.TOOL_SELECT:
+                    break;
                 case tool.TOOL_PEN:
                     var container = new createjs.Container();
                     _this.stage.addChild(container);
