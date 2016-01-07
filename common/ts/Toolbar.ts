@@ -4,16 +4,19 @@
 module tool {
   export const TOOL_PEN = "tool-pen";
   export const TOOL_STAMP = "tool-stamp";
+  export const TOOL_TEXT = "tool-text";
 }
 class Toolbar extends createjs.EventDispatcher {
 
   toolPenElement:HTMLLinkElement;
   toolStampElement:HTMLLinkElement;
+  toolTextElement:HTMLLinkElement;
 
   toolId:string;
 
   shapeSetting:ShapeSetting;
   drawingSetting:DrawingSetting;
+  textSetting:TextSetting;
 
   colorPickerLine:JQuery;
   colorPickerBase:JQuery;
@@ -29,13 +32,14 @@ class Toolbar extends createjs.EventDispatcher {
 
     this.shapeSetting = new ShapeSetting();
     this.drawingSetting = new DrawingSetting();
-
+    this.textSetting = new TextSetting();
 
     createjs.EventDispatcher.initialize(Toolbar.prototype);
 
     //  メインツール切り替え
     this.toolPenElement = <HTMLLinkElement>document.getElementById(tool.TOOL_PEN);
     this.toolStampElement = <HTMLLinkElement>document.getElementById(tool.TOOL_STAMP);
+    this.toolTextElement = <HTMLLinkElement>document.getElementById(tool.TOOL_TEXT);
 
     this.toolPenElement.addEventListener("click", (e:any) => {
       this.changeTab(tool.TOOL_PEN );
@@ -44,6 +48,10 @@ class Toolbar extends createjs.EventDispatcher {
     this.toolStampElement.addEventListener("click", (e:any) => {
       this.changeTab(tool.TOOL_STAMP );
     });
+    this.toolTextElement.addEventListener("click", (e:any) => {
+      this.changeTab(tool.TOOL_TEXT );
+    });
+
 
     //  サブツール
     this.colorPickerLineElement = <HTMLDivElement>document.getElementById("colorpicker-line-wrap");
@@ -78,6 +86,9 @@ class Toolbar extends createjs.EventDispatcher {
     //  テキスト入力
     this.textInputElement = <HTMLInputElement>document.getElementById("textinput");
     this.textInputElement.addEventListener("change", (e:any ) => {
+      this.textSetting.text =  this.textInputElement.value;
+      console.log(this.textSetting.text);
+
       this.dispatchEvent("change_tool");
     });
 
@@ -97,6 +108,11 @@ class Toolbar extends createjs.EventDispatcher {
       case tool.TOOL_STAMP:
         this.colorPickerLineElement.style.display = 'block';
         this.colorPickerBaseElement.style.display = 'block';
+        break;
+      case tool.TOOL_TEXT:
+        this.colorPickerLineElement.style.display = 'block';
+        this.colorPickerBaseElement.style.display = 'block';
+        this.textInputWrapElement.style.display = 'block';
         break;
 
     }

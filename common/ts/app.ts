@@ -73,6 +73,20 @@ class App {
 
         this.stampLayer.start();
         break;
+
+
+      case  tool.TOOL_TEXT  :
+
+        var stamp = new Star();
+        this.stampLayer = new StampLayer(this.stage,stamp);
+        this.stampLayer.updateSetting(this.toolbar.shapeSetting);
+
+        this.stage.addChild(this.stampLayer.stamp.shape);
+
+        this.layer.push( this.stampLayer );
+
+        this.stampLayer.start();
+        break;
     }
   }
 

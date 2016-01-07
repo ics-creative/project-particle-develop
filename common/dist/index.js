@@ -142,6 +142,7 @@ var tool;
 (function (tool) {
     tool.TOOL_PEN = "tool-pen";
     tool.TOOL_STAMP = "tool-stamp";
+    tool.TOOL_TEXT = "tool-text";
 })(tool || (tool = {}));
 var Toolbar = (function (_super) {
     __extends(Toolbar, _super);
@@ -161,6 +162,11 @@ var Toolbar = (function (_super) {
                     _this.colorPickerLineElement.style.display = 'block';
                     _this.colorPickerBaseElement.style.display = 'block';
                     break;
+                case tool.TOOL_TEXT:
+                    _this.colorPickerLineElement.style.display = 'block';
+                    _this.colorPickerBaseElement.style.display = 'block';
+                    _this.textInputWrapElement.style.display = 'block';
+                    break;
             }
             _this.toolId = tabName;
             if (dispatch) {
@@ -169,14 +175,19 @@ var Toolbar = (function (_super) {
         };
         this.shapeSetting = new ShapeSetting();
         this.drawingSetting = new DrawingSetting();
+        this.textSetting = new TextSetting();
         createjs.EventDispatcher.initialize(Toolbar.prototype);
         this.toolPenElement = document.getElementById(tool.TOOL_PEN);
         this.toolStampElement = document.getElementById(tool.TOOL_STAMP);
+        this.toolTextElement = document.getElementById(tool.TOOL_TEXT);
         this.toolPenElement.addEventListener("click", function (e) {
             _this.changeTab(tool.TOOL_PEN);
         });
         this.toolStampElement.addEventListener("click", function (e) {
             _this.changeTab(tool.TOOL_STAMP);
+        });
+        this.toolTextElement.addEventListener("click", function (e) {
+            _this.changeTab(tool.TOOL_TEXT);
         });
         this.colorPickerLineElement = document.getElementById("colorpicker-line-wrap");
         this.colorPickerBaseElement = document.getElementById("colorpicker-base-wrap");
@@ -202,6 +213,8 @@ var Toolbar = (function (_super) {
         });
         this.textInputElement = document.getElementById("textinput");
         this.textInputElement.addEventListener("change", function (e) {
+            _this.textSetting.text = _this.textInputElement.value;
+            console.log(_this.textSetting.text);
             _this.dispatchEvent("change_tool");
         });
         this.changeTab(tool.TOOL_PEN, false);
@@ -226,6 +239,14 @@ var App = (function () {
                     _this.drawingLayer.start();
                     break;
                 case tool.TOOL_STAMP:
+                    var stamp = new Star();
+                    _this.stampLayer = new StampLayer(_this.stage, stamp);
+                    _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
+                    _this.stage.addChild(_this.stampLayer.stamp.shape);
+                    _this.layer.push(_this.stampLayer);
+                    _this.stampLayer.start();
+                    break;
+                case tool.TOOL_TEXT:
                     var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
@@ -354,6 +375,24 @@ var Star = (function (_super) {
     };
     return Star;
 })(Stamp);
+var TextStamp = (function (_super) {
+    __extends(TextStamp, _super);
+    function TextStamp() {
+        _super.call(this);
+    }
+    return TextStamp;
+})(Stamp);
+var TextStampLayer = (function (_super) {
+    __extends(TextStampLayer, _super);
+    function TextStampLayer(stage, stamp) {
+        _super.call(this, stage, stamp);
+    }
+    TextStampLayer.prototype.updateSetting = function (setting) {
+        this.stamp.setting.baseColor = setting.baseColor;
+        this.stamp.setting.lineColor = setting.lineColor;
+    };
+    return TextStampLayer;
+})(StampLayer);
 var app;
 window.onload = function () {
     app = new App();

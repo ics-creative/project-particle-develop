@@ -6,14 +6,20 @@
 class TextStamp extends Stamp{
   constructor() {
     super();
+
+
   }
 }
 
 
 class TextStampLayer extends StampLayer{
-  constructor() {
-    super();
+  constructor(stage:createjs.Stage,stamp:Stamp) {
+    super(stage,stamp);
+  }
 
 
+  updateSetting(setting:ShapeSetting) {
+    this.stamp.setting.baseColor = setting.baseColor;
+    this.stamp.setting.lineColor = setting.lineColor;
   }
 }
