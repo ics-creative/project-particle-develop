@@ -3,7 +3,7 @@ class DrawingSetting{
   constructor() {
 
   }
-  public lineColor:string;
+  public lineColor:string = "#000";
 }
 
 
@@ -11,6 +11,6 @@ class ShapeSetting{
   constructor() {
 
   }
-  public lineColor:string;
-  public baseColor:string;
+  public lineColor:string = "#000";
+  public baseColor:string = "#000";
 }

@@ -34,6 +34,7 @@ class App {
     createjs.Ticker.addEventListener("tick", this.update);
 
     this.toolbar.addEventListener('change_tab', this.changeTab);
+    this.toolbar.addEventListener('change_tool', this.changeTool);
 
     this.stage.addEventListener("pressmove", this.handleMouseDown);
   }
@@ -53,6 +54,8 @@ class App {
         this.stage.addChild(container);
 
         this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, "#000");
+        this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
+
         this.layer.push( this.drawingLayer );
 
         this.drawingLayer.start();
@@ -62,11 +65,12 @@ class App {
 
         var stamp = new Star();
         this.stampLayer = new StampLayer(this.stage,stamp);
+        this.stampLayer.updateSetting(this.toolbar.shapeSetting);
 
         this.stage.addChild(this.stampLayer.stamp.shape);
 
         this.layer.push( this.stampLayer );
-        
+
         this.stampLayer.start();
         break;
     }
@@ -77,6 +81,22 @@ class App {
     console.log("tabChanged");
   }
 
+  changeTool = () => {
+    /*
+    if( this.layer.length == 0 )
+    {
+      return ;
+    }
+    var currentLayer:ILayer = this.layer[this.layer.length-1];
+    if ( currentLayer === this.drawingLayer ) {
+      this.updateDrawSetting();
+    }
+
+    if ( currentLayer === this.stampLayer ) {
+      this.updateShapeSetting();
+    }*/
+  }
+
   update = () => {
     if( this.layer.length >= 1 && !this.layer[this.layer.length-1].isExit() ) {
       this.layer[this.layer.length-1].update();
@@ -85,10 +105,10 @@ class App {
     this.stage.update();
   }
 
-  updateDrawSetting = (setting:DrawingSetting) => {
-    this.drawingLayer.updateSetting(setting);
+  updateDrawSetting = () => {
+    this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
   }
-  updateShapeSetting = (setting:ShapeSetting) => {
-    this.stampLayer.updateSetting(setting);
+  updateShapeSetting = () => {
+    this.stampLayer.updateSetting(this.toolbar.shapeSetting);
   }
 }

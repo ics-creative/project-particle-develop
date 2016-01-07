@@ -43,8 +43,8 @@ var Star = (function (_super) {
             var Graphics = createjs.Graphics;
             _this.graphics.clear();
             _this.graphics.setStrokeStyle(4.0);
-            _this.graphics.beginStroke(Graphics.getRGB(0, 0, 0));
-            _this.graphics.beginFill(Graphics.getRGB(255, 0, 0));
+            _this.graphics.beginStroke(_this.setting.lineColor);
+            _this.graphics.beginFill(_this.setting.baseColor);
             _this.graphics.moveTo(_this.vertex[0].x, _this.vertex[0].y);
             var vertexLentgh = _this.vertex.length;
             for (var i = 1; i < vertexLentgh; i++) {
@@ -117,7 +117,8 @@ var StampLayer = (function () {
         return !this.isStart;
     };
     StampLayer.prototype.updateSetting = function (setting) {
-        this.stamp.setting = setting;
+        this.stamp.setting.baseColor = setting.baseColor;
+        this.stamp.setting.lineColor = setting.lineColor;
     };
     return StampLayer;
 })();
@@ -210,46 +211,57 @@ var Toolbar = (function (_super) {
     function Toolbar() {
         var _this = this;
         _super.call(this);
-        this.changeTab = function (tabName) {
-            _this.toolPenParametersElement.style.display = 'none';
-            _this.toolStampParametersElement.style.display = 'none';
-            document.getElementById(tabName + '-parameters').style.display = 'block';
+        this.changeTab = function (tabName, dispatch) {
+            if (dispatch === void 0) { dispatch = true; }
+            _this.colorPickerLineElement.style.display = 'none';
+            _this.colorPickerBaseElement.style.display = 'none';
+            switch (tabName) {
+                case tool.TOOL_PEN:
+                    _this.colorPickerLineElement.style.display = 'block';
+                    break;
+                case tool.TOOL_STAMP:
+                    _this.colorPickerLineElement.style.display = 'block';
+                    _this.colorPickerBaseElement.style.display = 'block';
+                    break;
+            }
             _this.toolId = tabName;
-            _this.dispatchEvent("change_tab");
+            if (dispatch) {
+                _this.dispatchEvent("change_tab");
+            }
         };
-        this.toolId = tool.TOOL_PEN;
+        this.shapeSetting = new ShapeSetting();
+        this.drawingSetting = new DrawingSetting();
         createjs.EventDispatcher.initialize(Toolbar.prototype);
+        this.colorPickerLineElement = document.getElementById("colorpicker-line-wrap");
+        this.colorPickerBaseElement = document.getElementById("colorpicker-base-wrap");
         this.toolPenElement = document.getElementById(tool.TOOL_PEN);
         this.toolStampElement = document.getElementById(tool.TOOL_STAMP);
-        this.toolPenParametersElement = document.getElementById('tool-pen-parameters');
-        this.toolStampParametersElement = document.getElementById('tool-stamp-parameters');
         this.toolPenElement.addEventListener("click", function (e) {
             _this.changeTab(tool.TOOL_PEN);
         });
         this.toolStampElement.addEventListener("click", function (e) {
             _this.changeTab(tool.TOOL_STAMP);
         });
-        $("#tool-pen-parameters #colorpicker").spectrum({
+        this.colorPickerLine = $("#colorpicker-line");
+        this.colorPickerLine.spectrum({
             showPalette: true,
             color: "#000",
             change: function (color) {
-                app.updateDrawSetting(color.toHexString());
+                _this.drawingSetting.lineColor = color.toHexString();
+                _this.shapeSetting.lineColor = color.toHexString();
+                _this.dispatchEvent("change_tool");
             }
         });
-        $("#tool-stamp-parameters #colorpicker-line").spectrum({
+        this.colorPickerBase = $("#colorpicker-base");
+        this.colorPickerBase.spectrum({
             showPalette: true,
             color: "#000",
             change: function (color) {
-                this.dispatchEvent("change_tool");
+                _this.shapeSetting.baseColor = color.toHexString();
+                _this.dispatchEvent("change_tool");
             }
         });
-        $("#tool-stamp-parameters #colorpicker-base").spectrum({
-            showPalette: true,
-            color: "#000",
-            change: function (color) {
-                this.dispatchEvent("change_tool");
-            }
-        });
+        this.changeTab(tool.TOOL_PEN, false);
     }
     return Toolbar;
 })(createjs.EventDispatcher);
@@ -266,12 +278,14 @@ var App = (function () {
                     var container = new createjs.Container();
                     _this.stage.addChild(container);
                     _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, "#000");
+                    _this.drawingLayer.updateSetting(_this.toolbar.drawingSetting);
                     _this.layer.push(_this.drawingLayer);
                     _this.drawingLayer.start();
                     break;
                 case tool.TOOL_STAMP:
                     var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
+                    _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
                     _this.stage.addChild(_this.stampLayer.stamp.shape);
                     _this.layer.push(_this.stampLayer);
                     _this.stampLayer.start();
@@ -281,17 +295,19 @@ var App = (function () {
         this.changeTab = function () {
             console.log("tabChanged");
         };
+        this.changeTool = function () {
+        };
         this.update = function () {
             if (_this.layer.length >= 1 && !_this.layer[_this.layer.length - 1].isExit()) {
                 _this.layer[_this.layer.length - 1].update();
             }
             _this.stage.update();
         };
-        this.updateDrawSetting = function (setting) {
-            _this.drawingLayer.updateSetting(setting);
+        this.updateDrawSetting = function () {
+            _this.drawingLayer.updateSetting(_this.toolbar.drawingSetting);
         };
-        this.updateShapeSetting = function (setting) {
-            _this.stampLayer.updateSetting(setting);
+        this.updateShapeSetting = function () {
+            _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
         };
         this.layer = [];
         this.toolbar = new Toolbar();
@@ -305,17 +321,21 @@ var App = (function () {
         this.stage.addChild(shape);
         createjs.Ticker.addEventListener("tick", this.update);
         this.toolbar.addEventListener('change_tab', this.changeTab);
+        this.toolbar.addEventListener('change_tool', this.changeTool);
         this.stage.addEventListener("pressmove", this.handleMouseDown);
     }
     return App;
 })();
 var DrawingSetting = (function () {
     function DrawingSetting() {
+        this.lineColor = "#000";
     }
     return DrawingSetting;
 })();
 var ShapeSetting = (function () {
     function ShapeSetting() {
+        this.lineColor = "#000";
+        this.baseColor = "#000";
     }
     return ShapeSetting;
 })();

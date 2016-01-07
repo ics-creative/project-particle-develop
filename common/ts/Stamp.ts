@@ -94,8 +94,8 @@ class Star extends Stamp{
     let Graphics = createjs.Graphics;
     this.graphics.clear();
     this.graphics.setStrokeStyle(4.0);
-    this.graphics.beginStroke(Graphics.getRGB(0, 0, 0));
-    this.graphics.beginFill(Graphics.getRGB(255, 0, 0));
+    this.graphics.beginStroke(this.setting.lineColor);
+    this.graphics.beginFill(this.setting.baseColor);
 
     this.graphics.moveTo(this.vertex[0].x, this.vertex[0].y);
 
@@ -172,6 +172,7 @@ class StampLayer implements ILayer{
   }
 
   updateSetting(setting:ShapeSetting) {
-    this.stamp.setting = setting;
+    this.stamp.setting.baseColor = setting.baseColor;
+    this.stamp.setting.lineColor = setting.lineColor;
   }
 }
