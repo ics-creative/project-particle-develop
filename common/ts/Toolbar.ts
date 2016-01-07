@@ -41,7 +41,24 @@ class Toolbar extends createjs.EventDispatcher {
       showPalette: true,
       color: "#000",
       change: function (color:any) {
-        app.changeColor(color.toHexString());
+        app.updateDrawSetting(color.toHexString());
+      }
+    });
+
+    //  カラーピッカー
+    $("#tool-stamp-parameters #colorpicker-line").spectrum({
+      showPalette: true,
+      color: "#000",
+      change: function (color:any) {
+        this.dispatchEvent("change_tool");
+      }
+    });
+
+    $("#tool-stamp-parameters #colorpicker-base").spectrum({
+      showPalette: true,
+      color: "#000",
+      change: function (color:any) {
+        this.dispatchEvent("change_tool");
       }
     });
   }

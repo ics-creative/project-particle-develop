@@ -7,6 +7,7 @@ var Stamp = (function () {
     function Stamp() {
         this.draw = function () {
         };
+        this.setting = new ShapeSetting();
     }
     Stamp.prototype.setMatrix = function (matrix) {
     };
@@ -78,6 +79,15 @@ var Star = (function (_super) {
 var StampLayer = (function () {
     function StampLayer(stage, stamp) {
         var _this = this;
+        this.start = function () {
+            _this.isStart = true;
+            _this.stage.addEventListener("pressup", _this.handlePressUp);
+            _this.handleMouseDown();
+        };
+        this.handlePressUp = function () {
+            _this.isStart = false;
+            _this.stage.removeEventListener("pressup", _this.handlePressUp);
+        };
         this.handleMouseDown = function () {
             if (_this.mousedown) {
                 return;
@@ -87,7 +97,7 @@ var StampLayer = (function () {
             _this.stamp.shape.y = _this.stage.mouseY;
             _this.stamp.draw();
         };
-        this.scaleUpdate = function () {
+        this.update = function () {
             var diffX = Math.abs(_this.stamp.shape.x - _this.stage.mouseX);
             var diffY = Math.abs(_this.stamp.shape.y - _this.stage.mouseY);
             var scale = Math.max(diffX, diffY) / 100;
@@ -102,17 +112,32 @@ var StampLayer = (function () {
         };
         this.stage = stage;
         this.stamp = stamp;
-        this.locked = false;
     }
+    StampLayer.prototype.isExit = function () {
+        return !this.isStart;
+    };
+    StampLayer.prototype.updateSetting = function (setting) {
+        this.stamp.setting = setting;
+    };
     return StampLayer;
 })();
 var DrawingLayer = (function () {
     function DrawingLayer(stage, container, width, height, color) {
         var _this = this;
-        this.changeColor = function (color) {
-            _this.color = color;
+        this.start = function () {
+            _this.isStart = true;
+            _this.stage.addEventListener("pressup", _this.handlePressUp);
+            _this.generateNewLine();
         };
-        this.handleMouseDown = function () {
+        this.handlePressUp = function () {
+            _this.stage.removeEventListener("pressup", _this.handlePressUp);
+            _this.isStart = false;
+            _this.mousedown = false;
+        };
+        this.updateSetting = function (setting) {
+            _this.setting.lineColor = setting.lineColor;
+        };
+        this.generateNewLine = function () {
             if (_this.mousedown) {
                 return;
             }
@@ -133,7 +158,7 @@ var DrawingLayer = (function () {
         this.handleMouseUp = function () {
             _this.mousedown = false;
         };
-        this.draw = function () {
+        this.update = function () {
             if (!_this.mousedown)
                 return;
             var moveX = (_this.stage.mouseX - _this.currentPoint.x);
@@ -147,7 +172,8 @@ var DrawingLayer = (function () {
                 _this.lastMidPoint.setValues(midPoint.x, midPoint.y);
             }
         };
-        this.color = color;
+        this.setting = new DrawingSetting();
+        this.setting.lineColor = color;
         this.stage = stage;
         this.container = container;
         this.lastMidPoint = new createjs.Point();
@@ -155,9 +181,12 @@ var DrawingLayer = (function () {
         this.width = width;
         this.height = height;
     }
+    DrawingLayer.prototype.isExit = function () {
+        return !this.isStart;
+    };
     DrawingLayer.prototype.drawCurve = function (graphics, oldPoint, newPoint, controlPoint) {
         this.setLineThickness(oldPoint, newPoint);
-        graphics.beginStroke(this.color)
+        graphics.beginStroke(this.setting.lineColor)
             .setStrokeStyle(this.currentLineThickness, "round", "round")
             .moveTo(oldPoint.x, oldPoint.y)
             .quadraticCurveTo(controlPoint.x, controlPoint.y, newPoint.x, newPoint.y);
@@ -204,7 +233,21 @@ var Toolbar = (function (_super) {
             showPalette: true,
             color: "#000",
             change: function (color) {
-                app.changeColor(color.toHexString());
+                app.updateDrawSetting(color.toHexString());
+            }
+        });
+        $("#tool-stamp-parameters #colorpicker-line").spectrum({
+            showPalette: true,
+            color: "#000",
+            change: function (color) {
+                this.dispatchEvent("change_tool");
+            }
+        });
+        $("#tool-stamp-parameters #colorpicker-base").spectrum({
+            showPalette: true,
+            color: "#000",
+            change: function (color) {
+                this.dispatchEvent("change_tool");
             }
         });
     }
@@ -215,45 +258,23 @@ var App = (function () {
         var _this = this;
         this.handleMouseDown = function () {
             console.log("handleMouseDown" + _this.toolbar.toolId);
-            switch (_this.toolbar.toolId) {
-                case tool.TOOL_PEN:
-                    if (_this.layer.length == 0 || _this.layer[_this.layer.length - 1] != _this.drawingLayer) {
-                        var container = new createjs.Container();
-                        _this.stage.addChild(container);
-                        _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, "#000");
-                        _this.layer.push(_this.drawingLayer);
-                    }
-                    _this.drawingLayer.handleMouseDown();
-                    break;
-                case tool.TOOL_STAMP:
-                    if (_this.layer.length == 0 || _this.stampLayer == null || !_this.stampLayer.locked) {
-                        var stamp = new Star();
-                        _this.stampLayer = new StampLayer(_this.stage, stamp);
-                        _this.stampLayer.locked = true;
-                        _this.stage.addChild(_this.stampLayer.stamp.shape);
-                        _this.layer.push(_this.stampLayer);
-                        _this.stampLayer.handleMouseDown();
-                    }
-                    else {
-                        if (_this.stampLayer.locked) {
-                            _this.stampLayer.scaleUpdate();
-                        }
-                    }
-                    break;
+            if (!(_this.layer.length == 0 || _this.layer[_this.layer.length - 1].isExit())) {
+                return;
             }
-        };
-        this.handleMouseUp = function () {
-            console.log("handleMouseUp");
             switch (_this.toolbar.toolId) {
                 case tool.TOOL_PEN:
-                    if (_this.drawingLayer) {
-                        _this.drawingLayer.handleMouseUp();
-                    }
+                    var container = new createjs.Container();
+                    _this.stage.addChild(container);
+                    _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, "#000");
+                    _this.layer.push(_this.drawingLayer);
+                    _this.drawingLayer.start();
                     break;
                 case tool.TOOL_STAMP:
-                    if (_this.stampLayer) {
-                        _this.stampLayer.locked = false;
-                    }
+                    var stamp = new Star();
+                    _this.stampLayer = new StampLayer(_this.stage, stamp);
+                    _this.stage.addChild(_this.stampLayer.stamp.shape);
+                    _this.layer.push(_this.stampLayer);
+                    _this.stampLayer.start();
                     break;
             }
         };
@@ -261,13 +282,16 @@ var App = (function () {
             console.log("tabChanged");
         };
         this.update = function () {
-            if (_this.drawingLayer) {
-                _this.drawingLayer.draw();
+            if (_this.layer.length >= 1 && !_this.layer[_this.layer.length - 1].isExit()) {
+                _this.layer[_this.layer.length - 1].update();
             }
             _this.stage.update();
         };
-        this.changeColor = function (color) {
-            _this.drawingLayer.changeColor(color);
+        this.updateDrawSetting = function (setting) {
+            _this.drawingLayer.updateSetting(setting);
+        };
+        this.updateShapeSetting = function (setting) {
+            _this.stampLayer.updateSetting(setting);
         };
         this.layer = [];
         this.toolbar = new Toolbar();
@@ -282,9 +306,18 @@ var App = (function () {
         createjs.Ticker.addEventListener("tick", this.update);
         this.toolbar.addEventListener('change_tab', this.changeTab);
         this.stage.addEventListener("pressmove", this.handleMouseDown);
-        this.stage.addEventListener("pressup", this.handleMouseUp);
     }
     return App;
+})();
+var DrawingSetting = (function () {
+    function DrawingSetting() {
+    }
+    return DrawingSetting;
+})();
+var ShapeSetting = (function () {
+    function ShapeSetting() {
+    }
+    return ShapeSetting;
 })();
 var app;
 window.onload = function () {

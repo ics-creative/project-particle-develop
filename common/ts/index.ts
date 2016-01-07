@@ -1,5 +1,5 @@
 /// <reference path="common.d.ts" />
-/// <reference path="svg_exporter.d.ts" />
+/// <reference path="svg-exporter.d.ts" />
 
 /**
  * Created by nyamogera on 16/01/06.

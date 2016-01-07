@@ -14,10 +14,12 @@ class DrawingLayer implements ILayer{
   private mousedown:boolean;
   private width:number;
   private height:number;
-  private color:string;
+  private setting:DrawingSetting;
+  private isStart:boolean;
 
   constructor(stage:createjs.Stage,container:createjs.Container,width:number,height:number,color:string) {
-    this.color = color;
+    this.setting = new DrawingSetting();
+    this.setting.lineColor = color;
     this.stage = stage;
     this.container = container;
 
@@ -27,11 +29,28 @@ class DrawingLayer implements ILayer{
     this.height = height;
   }
 
-  changeColor = (color:string) =>{
-    this.color = color;
+  isExit() : boolean{
+    return !this.isStart;
   }
 
-  handleMouseDown = () =>{
+  start = () =>{
+    this.isStart  = true;
+
+    this.stage.addEventListener("pressup", this.handlePressUp);
+
+    this.generateNewLine();
+  }
+  handlePressUp = () =>{
+    this.stage.removeEventListener("pressup", this.handlePressUp);
+    this.isStart  =false;
+    this.mousedown = false;
+  }
+
+  updateSetting = (setting:DrawingSetting) =>{
+    this.setting.lineColor = setting.lineColor;
+  }
+
+  generateNewLine = () =>{
     if(this.mousedown){
       return ;
     }
@@ -62,11 +81,12 @@ class DrawingLayer implements ILayer{
     console.log("mouseDown");
 
   }
+
   handleMouseUp = () =>{
     this.mousedown = false;
   }
 
-  draw = () => {
+  update = () => {
     if( !this.mousedown )
       return ;
 
@@ -85,7 +105,7 @@ class DrawingLayer implements ILayer{
   }
   drawCurve(graphics:createjs.Graphics, oldPoint:createjs.Point, newPoint:createjs.Point, controlPoint:createjs.Point) {
     this.setLineThickness(oldPoint, newPoint);
-    graphics.beginStroke(this.color)
+    graphics.beginStroke(this.setting.lineColor)
       .setStrokeStyle(this.currentLineThickness, "round", "round")
       .moveTo(oldPoint.x, oldPoint.y)
       .quadraticCurveTo(controlPoint.x, controlPoint.y, newPoint.x, newPoint.y);

@@ -35,81 +35,60 @@ class App {
 
     this.toolbar.addEventListener('change_tab', this.changeTab);
 
-
     this.stage.addEventListener("pressmove", this.handleMouseDown);
-    this.stage.addEventListener("pressup", this.handleMouseUp);
   }
 
   handleMouseDown = () => {
 
     console.log("handleMouseDown" + this.toolbar.toolId);
+
+    if( !(this.layer.length == 0 || this.layer[this.layer.length-1].isExit() )) {
+      return ;
+    }
+
     switch (this.toolbar.toolId) {
       case  tool.TOOL_PEN  :
 
-        if( this.layer.length == 0 || this.layer[this.layer.length-1] != this.drawingLayer) {
-          var container = new createjs.Container();
-          this.stage.addChild(container);
+        var container = new createjs.Container();
+        this.stage.addChild(container);
 
-          this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, "#000");
-          this.layer.push( this.drawingLayer );
-        }
+        this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, "#000");
+        this.layer.push( this.drawingLayer );
 
-        this.drawingLayer.handleMouseDown();
+        this.drawingLayer.start();
         break;
 
       case  tool.TOOL_STAMP  :
 
-        if( this.layer.length == 0 || this.stampLayer == null || !this.stampLayer.locked ) {
-          var stamp = new Star();
-          this.stampLayer = new StampLayer(this.stage,stamp);
-          this.stampLayer.locked = true;
+        var stamp = new Star();
+        this.stampLayer = new StampLayer(this.stage,stamp);
 
-          this.stage.addChild(this.stampLayer.stamp.shape);
+        this.stage.addChild(this.stampLayer.stamp.shape);
 
-          this.layer.push( this.stampLayer );
-          this.stampLayer.handleMouseDown();
-        } else {
-          if( this.stampLayer.locked ){
-            this.stampLayer.scaleUpdate();
-          }
-        }
-
-
+        this.layer.push( this.stampLayer );
+        
+        this.stampLayer.start();
         break;
     }
   }
 
-  handleMouseUp = () => {
-    console.log("handleMouseUp");
-    switch (this.toolbar.toolId) {
-      case tool.TOOL_PEN  :
-        if( this.drawingLayer ) {
-          this.drawingLayer.handleMouseUp();
-        }
-        break;
-      case tool.TOOL_STAMP :
-
-        if( this.stampLayer ) {
-          this.stampLayer.locked = false;
-        }
-
-        break;
-    }
-  }
 
   changeTab = () => {
     console.log("tabChanged");
   }
 
   update = () => {
-    if( this.drawingLayer ) {
-      this.drawingLayer.draw();
+    if( this.layer.length >= 1 && !this.layer[this.layer.length-1].isExit() ) {
+      this.layer[this.layer.length-1].update();
     }
     // Stageの描画を更新します
     this.stage.update();
   }
 
-  changeColor = (color:string) => {
-    this.drawingLayer.changeColor(color);
+  updateDrawSetting = (setting:DrawingSetting) => {
+    this.drawingLayer.updateSetting(setting);
+  }
+  updateShapeSetting = (setting:ShapeSetting) => {
+    this.stampLayer.updateSetting(setting);
   }
 }

@@ -3,5 +3,6 @@
  */
 
 interface ILayer{
-
+  isExit(): boolean ;
+  update() : void;
 }
