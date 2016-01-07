@@ -1,8 +1,3 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var Stamp = (function () {
     function Stamp() {
         this.draw = function () {
@@ -13,69 +8,6 @@ var Stamp = (function () {
     };
     return Stamp;
 })();
-var Star = (function (_super) {
-    __extends(Star, _super);
-    function Star() {
-        var _this = this;
-        _super.call(this);
-        this.vertex = [];
-        this.vertexOriginal = [];
-        this.setVertex = function () {
-            var x = _this.centerX + _this.radius * Math.cos(_this.angle);
-            var y = _this.centerY + _this.radius * Math.sin(_this.angle);
-            for (var i = 0; i < _this.sides + 1; i++) {
-                if (_this.pointSize != 0) {
-                    var radiusHarf = _this.radius * (1 - _this.pointSize);
-                    var rotate_1 = -(Math.PI / _this.sides) + (Math.PI * 2 / _this.sides * i + _this.angle);
-                    var x_1 = _this.centerX + radiusHarf * Math.cos(rotate_1);
-                    var y_1 = _this.centerY + radiusHarf * Math.sin(rotate_1);
-                    _this.vertex.push(new createjs.Point(x_1, y_1));
-                    _this.vertexOriginal.push(new createjs.Point(x_1, y_1));
-                }
-                var rotate = Math.PI * 2 / _this.sides * i + _this.angle;
-                var x_2 = _this.centerX + _this.radius * Math.cos(rotate);
-                var y_2 = _this.centerY + _this.radius * Math.sin(rotate);
-                _this.vertex.push(new createjs.Point(x_2, y_2));
-                _this.vertexOriginal.push(new createjs.Point(x_2, y_2));
-            }
-        };
-        this.draw = function () {
-            var Graphics = createjs.Graphics;
-            _this.graphics.clear();
-            _this.graphics.setStrokeStyle(4.0);
-            _this.graphics.beginStroke(_this.setting.lineColor);
-            _this.graphics.beginFill(_this.setting.baseColor);
-            _this.graphics.moveTo(_this.vertex[0].x, _this.vertex[0].y);
-            var vertexLentgh = _this.vertex.length;
-            for (var i = 1; i < vertexLentgh; i++) {
-                _this.graphics.lineTo(_this.vertex[i].x, _this.vertex[i].y);
-            }
-            _this.graphics.endFill();
-            _this.graphics.endStroke();
-        };
-        this.centerX = 0;
-        this.centerY = 0;
-        this.radius = 100;
-        this.sides = 5;
-        this.angle = 0;
-        this.newMatrix = new createjs.Matrix2D();
-        this.pointSize = 0.3;
-        var Graphics = createjs.Graphics;
-        this.graphics = new Graphics();
-        this.shape = new createjs.Shape(this.graphics);
-        this.setVertex();
-        this.setMatrix(this.newMatrix);
-        this.draw();
-    }
-    Star.prototype.setMatrix = function (matrix) {
-        console.log("setmatrix", matrix);
-        var vertexLentgh = this.vertex.length;
-        for (var i = 0; i < vertexLentgh; i++) {
-            this.vertex[i] = matrix.transformPoint(this.vertexOriginal[i].x, this.vertexOriginal[i].y);
-        }
-    };
-    return Star;
-})(Stamp);
 var StampLayer = (function () {
     function StampLayer(stage, stamp) {
         var _this = this;
@@ -201,6 +133,11 @@ var DrawingLayer = (function () {
     };
     return DrawingLayer;
 })();
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
 var tool;
 (function (tool) {
     tool.TOOL_PEN = "tool-pen";
@@ -215,6 +152,7 @@ var Toolbar = (function (_super) {
             if (dispatch === void 0) { dispatch = true; }
             _this.colorPickerLineElement.style.display = 'none';
             _this.colorPickerBaseElement.style.display = 'none';
+            _this.textInputWrapElement.style.display = 'none';
             switch (tabName) {
                 case tool.TOOL_PEN:
                     _this.colorPickerLineElement.style.display = 'block';
@@ -232,8 +170,6 @@ var Toolbar = (function (_super) {
         this.shapeSetting = new ShapeSetting();
         this.drawingSetting = new DrawingSetting();
         createjs.EventDispatcher.initialize(Toolbar.prototype);
-        this.colorPickerLineElement = document.getElementById("colorpicker-line-wrap");
-        this.colorPickerBaseElement = document.getElementById("colorpicker-base-wrap");
         this.toolPenElement = document.getElementById(tool.TOOL_PEN);
         this.toolStampElement = document.getElementById(tool.TOOL_STAMP);
         this.toolPenElement.addEventListener("click", function (e) {
@@ -242,6 +178,9 @@ var Toolbar = (function (_super) {
         this.toolStampElement.addEventListener("click", function (e) {
             _this.changeTab(tool.TOOL_STAMP);
         });
+        this.colorPickerLineElement = document.getElementById("colorpicker-line-wrap");
+        this.colorPickerBaseElement = document.getElementById("colorpicker-base-wrap");
+        this.textInputWrapElement = document.getElementById("textinput-wrap");
         this.colorPickerLine = $("#colorpicker-line");
         this.colorPickerLine.spectrum({
             showPalette: true,
@@ -260,6 +199,10 @@ var Toolbar = (function (_super) {
                 _this.shapeSetting.baseColor = color.toHexString();
                 _this.dispatchEvent("change_tool");
             }
+        });
+        this.textInputElement = document.getElementById("textinput");
+        this.textInputElement.addEventListener("change", function (e) {
+            _this.dispatchEvent("change_tool");
         });
         this.changeTab(tool.TOOL_PEN, false);
     }
@@ -332,13 +275,85 @@ var DrawingSetting = (function () {
     }
     return DrawingSetting;
 })();
-var ShapeSetting = (function () {
+var ShapeSetting = (function (_super) {
+    __extends(ShapeSetting, _super);
     function ShapeSetting() {
-        this.lineColor = "#000";
+        _super.call(this);
         this.baseColor = "#000";
     }
     return ShapeSetting;
-})();
+})(DrawingSetting);
+var TextSetting = (function (_super) {
+    __extends(TextSetting, _super);
+    function TextSetting() {
+        _super.call(this);
+        this.text = "文字列";
+    }
+    return TextSetting;
+})(ShapeSetting);
+var Star = (function (_super) {
+    __extends(Star, _super);
+    function Star() {
+        var _this = this;
+        _super.call(this);
+        this.vertex = [];
+        this.vertexOriginal = [];
+        this.setVertex = function () {
+            var x = _this.centerX + _this.radius * Math.cos(_this.angle);
+            var y = _this.centerY + _this.radius * Math.sin(_this.angle);
+            for (var i = 0; i < _this.sides + 1; i++) {
+                if (_this.pointSize != 0) {
+                    var radiusHarf = _this.radius * (1 - _this.pointSize);
+                    var rotate_1 = -(Math.PI / _this.sides) + (Math.PI * 2 / _this.sides * i + _this.angle);
+                    var x_1 = _this.centerX + radiusHarf * Math.cos(rotate_1);
+                    var y_1 = _this.centerY + radiusHarf * Math.sin(rotate_1);
+                    _this.vertex.push(new createjs.Point(x_1, y_1));
+                    _this.vertexOriginal.push(new createjs.Point(x_1, y_1));
+                }
+                var rotate = Math.PI * 2 / _this.sides * i + _this.angle;
+                var x_2 = _this.centerX + _this.radius * Math.cos(rotate);
+                var y_2 = _this.centerY + _this.radius * Math.sin(rotate);
+                _this.vertex.push(new createjs.Point(x_2, y_2));
+                _this.vertexOriginal.push(new createjs.Point(x_2, y_2));
+            }
+        };
+        this.draw = function () {
+            var Graphics = createjs.Graphics;
+            _this.graphics.clear();
+            _this.graphics.setStrokeStyle(4.0);
+            _this.graphics.beginStroke(_this.setting.lineColor);
+            _this.graphics.beginFill(_this.setting.baseColor);
+            _this.graphics.moveTo(_this.vertex[0].x, _this.vertex[0].y);
+            var vertexLentgh = _this.vertex.length;
+            for (var i = 1; i < vertexLentgh; i++) {
+                _this.graphics.lineTo(_this.vertex[i].x, _this.vertex[i].y);
+            }
+            _this.graphics.endFill();
+            _this.graphics.endStroke();
+        };
+        this.centerX = 0;
+        this.centerY = 0;
+        this.radius = 100;
+        this.sides = 5;
+        this.angle = 0;
+        this.newMatrix = new createjs.Matrix2D();
+        this.pointSize = 0.3;
+        var Graphics = createjs.Graphics;
+        this.graphics = new Graphics();
+        this.shape = new createjs.Shape(this.graphics);
+        this.setVertex();
+        this.setMatrix(this.newMatrix);
+        this.draw();
+    }
+    Star.prototype.setMatrix = function (matrix) {
+        console.log("setmatrix", matrix);
+        var vertexLentgh = this.vertex.length;
+        for (var i = 0; i < vertexLentgh; i++) {
+            this.vertex[i] = matrix.transformPoint(this.vertexOriginal[i].x, this.vertexOriginal[i].y);
+        }
+    };
+    return Star;
+})(Stamp);
 var app;
 window.onload = function () {
     app = new App();

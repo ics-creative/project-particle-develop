@@ -20,6 +20,9 @@ class Toolbar extends createjs.EventDispatcher {
 
   colorPickerLineElement:HTMLDivElement;
   colorPickerBaseElement:HTMLDivElement;
+  textInputWrapElement:HTMLDivElement;
+
+  textInputElement:HTMLInputElement;
 
   constructor() {
     super();
@@ -30,9 +33,7 @@ class Toolbar extends createjs.EventDispatcher {
 
     createjs.EventDispatcher.initialize(Toolbar.prototype);
 
-    this.colorPickerLineElement = <HTMLDivElement>document.getElementById("colorpicker-line-wrap");
-    this.colorPickerBaseElement = <HTMLDivElement>document.getElementById("colorpicker-base-wrap");
-
+    //  メインツール切り替え
     this.toolPenElement = <HTMLLinkElement>document.getElementById(tool.TOOL_PEN);
     this.toolStampElement = <HTMLLinkElement>document.getElementById(tool.TOOL_STAMP);
 
@@ -44,7 +45,13 @@ class Toolbar extends createjs.EventDispatcher {
       this.changeTab(tool.TOOL_STAMP );
     });
 
-    //  カラーピッカー
+    //  サブツール
+    this.colorPickerLineElement = <HTMLDivElement>document.getElementById("colorpicker-line-wrap");
+    this.colorPickerBaseElement = <HTMLDivElement>document.getElementById("colorpicker-base-wrap");
+    this.textInputWrapElement = <HTMLDivElement>document.getElementById("textinput-wrap");
+
+
+    //  カラーピッカー(ライン)
     this.colorPickerLine = $("#colorpicker-line");
     this.colorPickerLine.spectrum({
       showPalette: true,
@@ -56,6 +63,7 @@ class Toolbar extends createjs.EventDispatcher {
       }
     });
 
+    //  カラーピッカー(ベース)
     this.colorPickerBase = $("#colorpicker-base");
     this.colorPickerBase.spectrum({
       showPalette: true,
@@ -66,6 +74,13 @@ class Toolbar extends createjs.EventDispatcher {
       }
     });
 
+
+    //  テキスト入力
+    this.textInputElement = <HTMLInputElement>document.getElementById("textinput");
+    this.textInputElement.addEventListener("change", (e:any ) => {
+      this.dispatchEvent("change_tool");
+    });
+
     this.changeTab( tool.TOOL_PEN ,false );
 
   }
@@ -73,6 +88,7 @@ class Toolbar extends createjs.EventDispatcher {
 
     this.colorPickerLineElement.style.display = 'none';
     this.colorPickerBaseElement.style.display = 'none';
+    this.textInputWrapElement.style.display = 'none';
 
     switch( tabName ) {
       case tool.TOOL_PEN:

@@ -4,4 +4,5 @@
 /// <reference path="toolbar.ts" />
 /// <reference path="app.ts" />
 /// <reference path="tool-settings.ts" />
+/// <reference path="star-stamp.ts" />
 /// <reference path="../typings/tsd.d.ts" />

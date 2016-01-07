@@ -7,10 +7,17 @@ class DrawingSetting{
 }
 
 
-class ShapeSetting{
+class ShapeSetting extends DrawingSetting{
   constructor() {
-
+    super();
   }
-  public lineColor:string = "#000";
   public baseColor:string = "#000";
+}
+
+
+class TextSetting extends ShapeSetting{
+  constructor() {
+    super();
+  }
+  public text:string = "文字列";
 }
