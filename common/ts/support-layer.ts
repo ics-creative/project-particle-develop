@@ -163,7 +163,9 @@ class ShapeSupport {
     var rotationPointStart:createjs.Point = this.matrix.transformPoint(0,-harf_h);
     var rotationPoint:createjs.Point = this.matrix.transformPoint(0,-harf_h-30);
 
-    graphics.clear().beginFill(createjs.Graphics.getRGB(0xFFFFFF, 0.01)).beginStroke(this.lineColor).
+    var color = createjs.Graphics.getRGB(1,1,1, 0.01);
+
+    graphics.clear().beginFill(color).beginStroke(this.lineColor).
       moveTo(leftTop.x,leftTop.y).
       lineTo(leftTop.x,leftTop.y).
       lineTo(rightTop.x,rightTop.y).

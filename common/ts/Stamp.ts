@@ -1,3 +1,4 @@
+import EventDispatcher = createjs.EventDispatcher;
 /**
  * Created by nyamogera on 2016/01/06.
  */
@@ -8,10 +9,11 @@ class Stamp {
   centerY:number;
   shape:createjs.Shape;
   setting:ShapeSetting;
+  size:createjs.Point;
 
   constructor() {
     this.setting = new ShapeSetting();
-
+    this.size = new createjs.Point();
   }
 
   draw = () => {
@@ -22,7 +24,7 @@ class Stamp {
   }
 }
 
-class StampLayer implements ILayer{
+class StampLayer extends createjs.EventDispatcher implements ILayer{
 
   mousedown:boolean;
   stage:createjs.Stage;
@@ -35,40 +37,33 @@ class StampLayer implements ILayer{
   dragPointY:number;
 
   constructor(stage:createjs.Stage,stamp:Stamp) {
+
+    super();
+
+    createjs.EventDispatcher.initialize(StampLayer.prototype);
+
     this.stage = stage;
     this.stamp = stamp;
 
     this.stamp.shape.addEventListener("mousedown",this.pressDown );
-    this.stamp.shape.addEventListener("pressup", this.pressUp);
+
   }
 
   pressDown = () => {
-    console.log("mousedown..?");
-    if( this.isStart ) {
-      return ;
-    }
-    console.log("mousedown");
-    this.dragPointX = this.stage.mouseX - this.stamp.shape.x;
-    this.dragPointY = this.stage.mouseY - this.stamp.shape.y;
-    this.isPress = true;
-    this.stamp.shape.addEventListener("pressmove",this.pressMove );
+    this.dispatchEvent("show_support");
   }
 
-  pressMove = () =>{
-    if( !this.isPress ) {
-      return ;
-    }
+  updateTransformation(shapeSupport:ShapeSupport) {
+    this.stamp.newMatrix.identity();
+    this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
+    this.stamp.newMatrix.rotate(shapeSupport.rotation);
+    this.stamp.shape.x = shapeSupport.container.x;
+    this.stamp.shape.y = shapeSupport.container.y;
 
-    this.stamp.shape.x = this.stage.mouseX - this.dragPointX;
-    this.stamp.shape.y = this.stage.mouseY - this.dragPointY;
+    this.stamp.setMatrix(this.stamp.newMatrix);
+
+    this.stamp.draw();
   }
-
-  pressUp = () => {
-
-    this.stamp.shape.removeEventListener("pressmove",this.pressMove );
-    this.isPress = false;
-  }
-
 
   isExit() : boolean{
     return !this.isStart;
@@ -104,7 +99,14 @@ class StampLayer implements ILayer{
     var diffX = Math.abs( this.stamp.shape.x - this.stage.mouseX );
     var diffY = Math.abs( this.stamp.shape.y - this.stage.mouseY ) ;
 
+
     var scale = Math.max(diffX,diffY) / 100;
+
+
+    this.stamp.size.x = scale * 100;
+    this.stamp.size.y = scale * 100;
+
+
     this.stamp.newMatrix = new createjs.Matrix2D;
     this.stamp.newMatrix.scale(scale,scale);
 

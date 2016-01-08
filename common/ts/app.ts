@@ -90,7 +90,7 @@ class App {
         var stamp = new Star();
         this.stampLayer = new StampLayer(this.stage,stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
-
+        this.stampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)
         this.drawLayerContainer.addChild(this.stampLayer.stamp.shape);
 
         this.layer.push( this.stampLayer );
@@ -112,6 +112,14 @@ class App {
         this.stampLayer.start();
         break;
     }
+  }
+
+  supportTarget:StampLayer;
+  stampLayer_showSupportHandler = (e:any) => {
+    this.supportTarget = <StampLayer>e.currentTarget;
+    this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
+    this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
+
   }
 
 
@@ -149,8 +157,13 @@ class App {
     // Stageの描画を更新します
     this.stage.update();
 
+    if( this.supportTarget ) {
+      this.supportTarget.updateTransformation(this.shapeSupport);
+    }
+
     this.shapeSupport.update();
     this.shapeSupport.draw();
+
 
   }
 

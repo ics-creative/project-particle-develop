@@ -1,37 +1,27 @@
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+var EventDispatcher = createjs.EventDispatcher;
 var Stamp = (function () {
     function Stamp() {
         this.draw = function () {
         };
         this.setting = new ShapeSetting();
+        this.size = new createjs.Point();
     }
     Stamp.prototype.setMatrix = function (matrix) {
     };
     return Stamp;
 })();
-var StampLayer = (function () {
+var StampLayer = (function (_super) {
+    __extends(StampLayer, _super);
     function StampLayer(stage, stamp) {
         var _this = this;
+        _super.call(this);
         this.pressDown = function () {
-            console.log("mousedown..?");
-            if (_this.isStart) {
-                return;
-            }
-            console.log("mousedown");
-            _this.dragPointX = _this.stage.mouseX - _this.stamp.shape.x;
-            _this.dragPointY = _this.stage.mouseY - _this.stamp.shape.y;
-            _this.isPress = true;
-            _this.stamp.shape.addEventListener("pressmove", _this.pressMove);
-        };
-        this.pressMove = function () {
-            if (!_this.isPress) {
-                return;
-            }
-            _this.stamp.shape.x = _this.stage.mouseX - _this.dragPointX;
-            _this.stamp.shape.y = _this.stage.mouseY - _this.dragPointY;
-        };
-        this.pressUp = function () {
-            _this.stamp.shape.removeEventListener("pressmove", _this.pressMove);
-            _this.isPress = false;
+            _this.dispatchEvent("show_support");
         };
         this.start = function () {
             _this.isStart = true;
@@ -55,6 +45,8 @@ var StampLayer = (function () {
             var diffX = Math.abs(_this.stamp.shape.x - _this.stage.mouseX);
             var diffY = Math.abs(_this.stamp.shape.y - _this.stage.mouseY);
             var scale = Math.max(diffX, diffY) / 100;
+            _this.stamp.size.x = scale * 100;
+            _this.stamp.size.y = scale * 100;
             _this.stamp.newMatrix = new createjs.Matrix2D;
             _this.stamp.newMatrix.scale(scale, scale);
             _this.stamp.setMatrix(_this.stamp.newMatrix);
@@ -64,11 +56,20 @@ var StampLayer = (function () {
         this.handleMouseUp = function () {
             _this.mousedown = false;
         };
+        createjs.EventDispatcher.initialize(StampLayer.prototype);
         this.stage = stage;
         this.stamp = stamp;
         this.stamp.shape.addEventListener("mousedown", this.pressDown);
-        this.stamp.shape.addEventListener("pressup", this.pressUp);
     }
+    StampLayer.prototype.updateTransformation = function (shapeSupport) {
+        this.stamp.newMatrix.identity();
+        this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
+        this.stamp.newMatrix.rotate(shapeSupport.rotation);
+        this.stamp.shape.x = shapeSupport.container.x;
+        this.stamp.shape.y = shapeSupport.container.y;
+        this.stamp.setMatrix(this.stamp.newMatrix);
+        this.stamp.draw();
+    };
     StampLayer.prototype.isExit = function () {
         return !this.isStart;
     };
@@ -77,7 +78,7 @@ var StampLayer = (function () {
         this.stamp.setting.lineColor = setting.lineColor;
     };
     return StampLayer;
-})();
+})(createjs.EventDispatcher);
 var DrawingLayer = (function () {
     function DrawingLayer(stage, container, width, height, color) {
         var _this = this;
@@ -142,11 +143,6 @@ var DrawingLayer = (function () {
     };
     return DrawingLayer;
 })();
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var tool;
 (function (tool) {
     tool.TOOL_SELECT = "tool-select";
@@ -261,6 +257,7 @@ var App = (function () {
                     var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
+                    _this.stampLayer.addEventListener("show_support", _this.stampLayer_showSupportHandler);
                     _this.drawLayerContainer.addChild(_this.stampLayer.stamp.shape);
                     _this.layer.push(_this.stampLayer);
                     _this.stampLayer.start();
@@ -274,6 +271,11 @@ var App = (function () {
                     _this.stampLayer.start();
                     break;
             }
+        };
+        this.stampLayer_showSupportHandler = function (e) {
+            _this.supportTarget = e.currentTarget;
+            _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
+            _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
         };
         this.changeTab = function () {
             console.log("tabChanged");
@@ -291,6 +293,9 @@ var App = (function () {
                 _this.layer[_this.layer.length - 1].update();
             }
             _this.stage.update();
+            if (_this.supportTarget) {
+                _this.supportTarget.updateTransformation(_this.shapeSupport);
+            }
             _this.shapeSupport.update();
             _this.shapeSupport.draw();
         };
@@ -504,7 +509,8 @@ var ShapeSupport = (function () {
             var rightBottom = _this.matrix.transformPoint(harf_w, harf_h);
             var rotationPointStart = _this.matrix.transformPoint(0, -harf_h);
             var rotationPoint = _this.matrix.transformPoint(0, -harf_h - 30);
-            graphics.clear().beginFill(createjs.Graphics.getRGB(0xFFFFFF, 0.01)).beginStroke(_this.lineColor).
+            var color = createjs.Graphics.getRGB(1, 1, 1, 0.01);
+            graphics.clear().beginFill(color).beginStroke(_this.lineColor).
                 moveTo(leftTop.x, leftTop.y).
                 lineTo(leftTop.x, leftTop.y).
                 lineTo(rightTop.x, rightTop.y).
