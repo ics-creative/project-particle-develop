@@ -10,10 +10,12 @@ class Stamp {
   shape:createjs.Shape;
   setting:ShapeSetting;
   size:createjs.Point;
+  rotation:number;
 
   constructor() {
     this.setting = new ShapeSetting();
     this.size = new createjs.Point();
+    this.rotation = 0;
   }
 
   draw = () => {
@@ -31,10 +33,6 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   stamp:Stamp;
   setting:ShapeSetting;
   isStart:boolean;
-
-  isPress:boolean;
-  dragPointX:number;
-  dragPointY:number;
 
   constructor(stage:createjs.Stage,stamp:Stamp) {
 
@@ -54,6 +52,12 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   }
 
   updateTransformation(shapeSupport:ShapeSupport) {
+    //console.log(shapeSupport);
+    //console.log("updateTransformation:" + shapeSupport.size.x );
+    this.stamp.size.x = shapeSupport.size.x / 2;
+    this.stamp.size.y = shapeSupport.size.y / 2;
+    this.stamp.rotation = shapeSupport.rotation;
+
     this.stamp.newMatrix.identity();
     this.stamp.newMatrix.rotate(shapeSupport.rotation);
     this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
@@ -63,6 +67,7 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
     this.stamp.setMatrix(this.stamp.newMatrix);
 
     this.stamp.draw();
+
   }
 
   isExit() : boolean{
@@ -70,11 +75,13 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   }
 
   start = () =>{
+    this.stamp.shape.x = this.stage.mouseX;
+    this.stamp.shape.y = this.stage.mouseY;
     this.isStart  = true;
+
 
     this.stage.addEventListener("pressup", this.handlePressUp);
 
-    this.handleMouseDown();
   }
 
   handlePressUp = () =>{
@@ -84,40 +91,10 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
     this.stage.removeEventListener("pressup", this.handlePressUp);
   }
 
-  handleMouseDown = () => {
-
-    if (this.mousedown) {
-      return;
-    }
-    this.mousedown = true;
-    this.stamp.shape.x = this.stage.mouseX;
-    this.stamp.shape.y = this.stage.mouseY;
-    this.stamp.draw();
-  }
-
   update = () =>{
-    var diffX = Math.abs( this.stamp.shape.x - this.stage.mouseX );
-    var diffY = Math.abs( this.stamp.shape.y - this.stage.mouseY ) ;
-
-
-    var scale = Math.max(diffX,diffY) / 100;
-
-
-    this.stamp.size.x = scale * 100;
-    this.stamp.size.y = scale * 100;
-
-
-    this.stamp.newMatrix = new createjs.Matrix2D;
-    this.stamp.newMatrix.scale(scale,scale);
-
-    this.stamp.setMatrix(this.stamp.newMatrix);
-
-    this.stamp.draw();
-    console.log(scale);
   }
 
   handleMouseUp = () => {
-    this.mousedown = false;
   }
 
   updateSetting(setting:ShapeSetting) {

@@ -86,30 +86,41 @@ class ShapeSupport {
 
   }
 
-  handleMouseDown = (e:any) => {
+  startSupport = () => {
+    this.startDrag(this.controllerRightBottom);
+  }
+
+  startDrag = (dragTarget:createjs.Shape) => {
+
     if(this.dragTarget) {
-      this.dragTarget.removeEventListener("pressmove", this.handlePressMove);
-      this.dragTarget.removeEventListener("pressup", this.handlePressUp );
+      this.stage.removeEventListener("pressup", this.handlePressUp );
     }
 
-    this.dragTarget = e.target;
-    this.dragTarget.addEventListener("pressmove", this.handlePressMove);
-    this.dragTarget.addEventListener("pressup", this.handlePressUp );
+    this.dragTarget = dragTarget;
+    this.stage.addEventListener("pressup", this.handlePressUp );
 
     this.dragPoint.x = this.stage.mouseX - (this.dragTarget.x + this.container.x ) ;
     this.dragPoint.y = this.stage.mouseY - (this.dragTarget.y + this.container.y ) ;
   }
-  handlePressMove  = (e:any) => {
+
+  handleMouseDown = (e:any) => {
+    console.log("handleMouseDown:" + e.currentTarget);
+    this.startDrag(e.currentTarget);
+  }
+
+  update  = () => {
+
+
+    this.matrix.identity();
+    this.matrix.rotate(this.rotation);
 
     console.log(this.dragTarget + ":dragging");
 
     var diffX = (this.stage.mouseX - this.container.x  - this.dragPoint.x ) * 2;
     var diffY = (this.stage.mouseY - this.container.y - this.dragPoint.y ) * 2 ;
 
-    console.log(diffX,diffY);
     var diff = this.matrix.clone().invert().transformPoint(diffX,diffY);
 
-    console.log(diff.x,diff.y);
     console.log(this.matrix.transformPoint(diff.x,diff.y).x,this.matrix.transformPoint(diff.x,diff.y).y);
 
     switch(this.dragTarget) {
@@ -159,18 +170,12 @@ class ShapeSupport {
   }
 
   handlePressUp = (e:any) => {
-    this.dragTarget.removeEventListener("pressmove", this.handlePressMove);
-    this.dragTarget.removeEventListener("pressup", this.handlePressUp );
-
+    if( this.stage ) {
+      this.stage.removeEventListener("pressup", this.handlePressUp );
+    }
     this.dragTarget = null;
 
   }
-
-  update = () => {
-    this.matrix.identity();
-    this.matrix.rotate(this.rotation);
-  }
-
   draw = () => {
     var graphics = this.baseShape.graphics;
 

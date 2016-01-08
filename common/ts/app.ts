@@ -62,7 +62,7 @@ class App {
 
   handleMouseDown = () => {
 
-    console.log("handleMouseDown" + this.toolbar.toolId);
+    //console.log("handleMouseDown" + this.toolbar.toolId);
 
     if( !(this.layer.length == 0 || this.layer[this.layer.length-1].isExit() )) {
       return ;
@@ -94,8 +94,9 @@ class App {
         this.drawLayerContainer.addChild(this.stampLayer.stamp.shape);
 
         this.layer.push( this.stampLayer );
-
         this.stampLayer.start();
+
+        this.startSupport(this.stampLayer);
         break;
 
 
@@ -114,9 +115,26 @@ class App {
     }
   }
 
+  startSupport = (stampLayer:StampLayer) => {
+
+    this.supportTarget = stampLayer;
+    this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
+    this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
+    this.shapeSupport.rotation = 0;
+    this.shapeSupport.size.x = 50;
+    this.shapeSupport.size.y = 50;
+
+    this.shapeSupport.update();
+    this.shapeSupport.draw();
+
+    this.shapeSupport.startSupport();
+
+  }
+
   supportTarget:StampLayer;
   stampLayer_showSupportHandler = (e:any) => {
     this.supportTarget = <StampLayer>e.currentTarget;
+    this.shapeSupport.rotation = this.supportTarget.stamp.rotation;
     this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
     this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
     this.shapeSupport.size.x = this.supportTarget.stamp.size.x * 2;
@@ -140,20 +158,6 @@ class App {
   }
 
   changeTool = () => {
-
-    /*
-    if( this.layer.length == 0 )
-    {
-      return ;
-    }
-    var currentLayer:ILayer = this.layer[this.layer.length-1];
-    if ( currentLayer === this.drawingLayer ) {
-      this.updateDrawSetting();
-    }
-
-    if ( currentLayer === this.stampLayer ) {
-      this.updateShapeSetting();
-    }*/
   }
 
   update = () => {

@@ -10,6 +10,7 @@ var Stamp = (function () {
         };
         this.setting = new ShapeSetting();
         this.size = new createjs.Point();
+        this.rotation = 0;
     }
     Stamp.prototype.setMatrix = function (matrix) {
     };
@@ -24,37 +25,18 @@ var StampLayer = (function (_super) {
             _this.dispatchEvent("show_support");
         };
         this.start = function () {
+            _this.stamp.shape.x = _this.stage.mouseX;
+            _this.stamp.shape.y = _this.stage.mouseY;
             _this.isStart = true;
             _this.stage.addEventListener("pressup", _this.handlePressUp);
-            _this.handleMouseDown();
         };
         this.handlePressUp = function () {
             _this.isStart = false;
             _this.stage.removeEventListener("pressup", _this.handlePressUp);
         };
-        this.handleMouseDown = function () {
-            if (_this.mousedown) {
-                return;
-            }
-            _this.mousedown = true;
-            _this.stamp.shape.x = _this.stage.mouseX;
-            _this.stamp.shape.y = _this.stage.mouseY;
-            _this.stamp.draw();
-        };
         this.update = function () {
-            var diffX = Math.abs(_this.stamp.shape.x - _this.stage.mouseX);
-            var diffY = Math.abs(_this.stamp.shape.y - _this.stage.mouseY);
-            var scale = Math.max(diffX, diffY) / 100;
-            _this.stamp.size.x = scale * 100;
-            _this.stamp.size.y = scale * 100;
-            _this.stamp.newMatrix = new createjs.Matrix2D;
-            _this.stamp.newMatrix.scale(scale, scale);
-            _this.stamp.setMatrix(_this.stamp.newMatrix);
-            _this.stamp.draw();
-            console.log(scale);
         };
         this.handleMouseUp = function () {
-            _this.mousedown = false;
         };
         createjs.EventDispatcher.initialize(StampLayer.prototype);
         this.stage = stage;
@@ -62,6 +44,9 @@ var StampLayer = (function (_super) {
         this.stamp.shape.addEventListener("mousedown", this.pressDown);
     }
     StampLayer.prototype.updateTransformation = function (shapeSupport) {
+        this.stamp.size.x = shapeSupport.size.x / 2;
+        this.stamp.size.y = shapeSupport.size.y / 2;
+        this.stamp.rotation = shapeSupport.rotation;
         this.stamp.newMatrix.identity();
         this.stamp.newMatrix.rotate(shapeSupport.rotation);
         this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
@@ -238,7 +223,6 @@ var App = (function () {
     function App() {
         var _this = this;
         this.handleMouseDown = function () {
-            console.log("handleMouseDown" + _this.toolbar.toolId);
             if (!(_this.layer.length == 0 || _this.layer[_this.layer.length - 1].isExit())) {
                 return;
             }
@@ -261,6 +245,7 @@ var App = (function () {
                     _this.drawLayerContainer.addChild(_this.stampLayer.stamp.shape);
                     _this.layer.push(_this.stampLayer);
                     _this.stampLayer.start();
+                    _this.startSupport(_this.stampLayer);
                     break;
                 case tool.TOOL_TEXT:
                     var stamp = new Star();
@@ -272,8 +257,20 @@ var App = (function () {
                     break;
             }
         };
+        this.startSupport = function (stampLayer) {
+            _this.supportTarget = stampLayer;
+            _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
+            _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
+            _this.shapeSupport.rotation = 0;
+            _this.shapeSupport.size.x = 50;
+            _this.shapeSupport.size.y = 50;
+            _this.shapeSupport.update();
+            _this.shapeSupport.draw();
+            _this.shapeSupport.startSupport();
+        };
         this.stampLayer_showSupportHandler = function (e) {
             _this.supportTarget = e.currentTarget;
+            _this.shapeSupport.rotation = _this.supportTarget.stamp.rotation;
             _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
             _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
             _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x * 2;
@@ -413,7 +410,6 @@ var Star = (function (_super) {
         this.draw();
     }
     Star.prototype.setMatrix = function (matrix) {
-        console.log("setmatrix", matrix);
         var vertexLentgh = this.vertex.length;
         for (var i = 0; i < vertexLentgh; i++) {
             this.vertex[i] = matrix.transformPoint(this.vertexOriginal[i].x, this.vertexOriginal[i].y);
@@ -442,24 +438,29 @@ var TextStampLayer = (function (_super) {
 var ShapeSupport = (function () {
     function ShapeSupport(stage) {
         var _this = this;
-        this.handleMouseDown = function (e) {
+        this.startSupport = function () {
+            _this.startDrag(_this.controllerRightBottom);
+        };
+        this.startDrag = function (dragTarget) {
             if (_this.dragTarget) {
-                _this.dragTarget.removeEventListener("pressmove", _this.handlePressMove);
-                _this.dragTarget.removeEventListener("pressup", _this.handlePressUp);
+                _this.stage.removeEventListener("pressup", _this.handlePressUp);
             }
-            _this.dragTarget = e.target;
-            _this.dragTarget.addEventListener("pressmove", _this.handlePressMove);
-            _this.dragTarget.addEventListener("pressup", _this.handlePressUp);
+            _this.dragTarget = dragTarget;
+            _this.stage.addEventListener("pressup", _this.handlePressUp);
             _this.dragPoint.x = _this.stage.mouseX - (_this.dragTarget.x + _this.container.x);
             _this.dragPoint.y = _this.stage.mouseY - (_this.dragTarget.y + _this.container.y);
         };
-        this.handlePressMove = function (e) {
+        this.handleMouseDown = function (e) {
+            console.log("handleMouseDown:" + e.currentTarget);
+            _this.startDrag(e.currentTarget);
+        };
+        this.update = function () {
+            _this.matrix.identity();
+            _this.matrix.rotate(_this.rotation);
             console.log(_this.dragTarget + ":dragging");
             var diffX = (_this.stage.mouseX - _this.container.x - _this.dragPoint.x) * 2;
             var diffY = (_this.stage.mouseY - _this.container.y - _this.dragPoint.y) * 2;
-            console.log(diffX, diffY);
             var diff = _this.matrix.clone().invert().transformPoint(diffX, diffY);
-            console.log(diff.x, diff.y);
             console.log(_this.matrix.transformPoint(diff.x, diff.y).x, _this.matrix.transformPoint(diff.x, diff.y).y);
             switch (_this.dragTarget) {
                 case _this.baseShape:
@@ -495,13 +496,10 @@ var ShapeSupport = (function () {
             }
         };
         this.handlePressUp = function (e) {
-            _this.dragTarget.removeEventListener("pressmove", _this.handlePressMove);
-            _this.dragTarget.removeEventListener("pressup", _this.handlePressUp);
+            if (_this.stage) {
+                _this.stage.removeEventListener("pressup", _this.handlePressUp);
+            }
             _this.dragTarget = null;
-        };
-        this.update = function () {
-            _this.matrix.identity();
-            _this.matrix.rotate(_this.rotation);
         };
         this.draw = function () {
             var graphics = _this.baseShape.graphics;

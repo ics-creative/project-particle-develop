@@ -57,12 +57,9 @@ class Star extends Stamp{
       this.vertex.push(new createjs.Point(x, y));
       this.vertexOriginal.push(new createjs.Point(x, y));
     }
-
   }
 
   setMatrix(matrix:createjs.Matrix2D) {
-
-    console.log("setmatrix",matrix);
     let vertexLentgh = this.vertex.length;
     for (var i = 0; i < vertexLentgh; i++) {
       this.vertex[i] = matrix.transformPoint(this.vertexOriginal[i].x, this.vertexOriginal[i].y);
