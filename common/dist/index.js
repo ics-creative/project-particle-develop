@@ -262,8 +262,10 @@ var App = (function () {
             _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
             _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
             _this.shapeSupport.rotation = 0;
-            _this.shapeSupport.size.x = 50;
-            _this.shapeSupport.size.y = 50;
+            _this.shapeSupport.size.x = 5;
+            _this.shapeSupport.size.y = 5;
+            _this.supportTarget.updateTransformation(_this.shapeSupport);
+            _this.supportTarget.stamp.draw();
             _this.shapeSupport.update();
             _this.shapeSupport.draw();
             _this.shapeSupport.startSupport();
@@ -275,6 +277,8 @@ var App = (function () {
             _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
             _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x * 2;
             _this.shapeSupport.size.y = _this.supportTarget.stamp.size.y * 2;
+            _this.supportTarget.updateTransformation(_this.shapeSupport);
+            _this.supportTarget.stamp.draw();
             _this.shapeSupport.update();
             _this.shapeSupport.draw();
         };
@@ -457,7 +461,9 @@ var ShapeSupport = (function () {
         this.update = function () {
             _this.matrix.identity();
             _this.matrix.rotate(_this.rotation);
-            console.log(_this.dragTarget + ":dragging");
+            if (!_this.dragTarget) {
+                return;
+            }
             var diffX = (_this.stage.mouseX - _this.container.x - _this.dragPoint.x) * 2;
             var diffY = (_this.stage.mouseY - _this.container.y - _this.dragPoint.y) * 2;
             var diff = _this.matrix.clone().invert().transformPoint(diffX, diffY);
@@ -502,6 +508,9 @@ var ShapeSupport = (function () {
             _this.dragTarget = null;
         };
         this.draw = function () {
+            if (!_this.dragTarget) {
+                return;
+            }
             var graphics = _this.baseShape.graphics;
             var harf_w = _this.size.x / 2;
             var harf_h = _this.size.y / 2;

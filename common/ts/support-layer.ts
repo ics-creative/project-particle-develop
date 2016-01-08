@@ -114,7 +114,11 @@ class ShapeSupport {
     this.matrix.identity();
     this.matrix.rotate(this.rotation);
 
-    console.log(this.dragTarget + ":dragging");
+    if(!this.dragTarget) {
+      return;
+    }
+
+    //console.log(this.dragTarget + ":dragging");
 
     var diffX = (this.stage.mouseX - this.container.x  - this.dragPoint.x ) * 2;
     var diffY = (this.stage.mouseY - this.container.y - this.dragPoint.y ) * 2 ;
@@ -177,6 +181,10 @@ class ShapeSupport {
 
   }
   draw = () => {
+    if(!this.dragTarget) {
+      return;
+    }
+
     var graphics = this.baseShape.graphics;
 
     var harf_w:number = this.size.x / 2;

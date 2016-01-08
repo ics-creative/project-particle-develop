@@ -121,8 +121,11 @@ class App {
     this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
     this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
     this.shapeSupport.rotation = 0;
-    this.shapeSupport.size.x = 50;
-    this.shapeSupport.size.y = 50;
+    this.shapeSupport.size.x = 5;
+    this.shapeSupport.size.y = 5;
+
+    this.supportTarget.updateTransformation(this.shapeSupport);
+    this.supportTarget.stamp.draw();
 
     this.shapeSupport.update();
     this.shapeSupport.draw();
@@ -140,6 +143,8 @@ class App {
     this.shapeSupport.size.x = this.supportTarget.stamp.size.x * 2;
     this.shapeSupport.size.y = this.supportTarget.stamp.size.y * 2;
 
+    this.supportTarget.updateTransformation(this.shapeSupport);
+    this.supportTarget.stamp.draw();
     this.shapeSupport.update();
     this.shapeSupport.draw();
 
