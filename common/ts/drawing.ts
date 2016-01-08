@@ -11,7 +11,6 @@ class DrawingLayer implements ILayer{
   private lastMidPoint:createjs.Point;
   private currentLineThickness:number;
   private lastPoint:createjs.Point;
-  private mousedown:boolean;
   private width:number;
   private height:number;
   private setting:DrawingSetting;
@@ -36,14 +35,15 @@ class DrawingLayer implements ILayer{
   start = () =>{
     this.isStart  = true;
 
-    this.stage.addEventListener("pressup", this.handlePressUp);
+    this.stage.addEventListener("stagemouseup", this.handlePressUp);
+    this.isStart = true;
 
     this.generateNewLine();
   }
   handlePressUp = () =>{
-    this.stage.removeEventListener("pressup", this.handlePressUp);
-    this.isStart  =false;
-    this.mousedown = false;
+    this.stage.removeEventListener("stagemouseup", this.handlePressUp);
+    this.isStart  = false;
+
   }
 
   updateSetting = (setting:DrawingSetting) =>{
@@ -51,10 +51,7 @@ class DrawingLayer implements ILayer{
   }
 
   generateNewLine = () =>{
-    if(this.mousedown){
-      return ;
-    }
-    this.mousedown = true;
+
 
     //
     this.lastPoint = new createjs.Point();
@@ -77,18 +74,12 @@ class DrawingLayer implements ILayer{
 
     this.shape = new createjs.Shape();
     this.container.addChild(this.shape);
-
-    console.log("mouseDown");
-
-  }
-
-  handleMouseUp = () =>{
-    this.mousedown = false;
   }
 
   update = () => {
-    if( !this.mousedown )
+    if( !this.isStart )
       return ;
+    console.log("update");
 
     var moveX = (this.stage.mouseX - this.currentPoint.x);
     var moveY = (this.stage.mouseY - this.currentPoint.y);

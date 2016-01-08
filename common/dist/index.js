@@ -83,22 +83,18 @@ var DrawingLayer = (function () {
         var _this = this;
         this.start = function () {
             _this.isStart = true;
-            _this.stage.addEventListener("pressup", _this.handlePressUp);
+            _this.stage.addEventListener("stagemouseup", _this.handlePressUp);
+            _this.isStart = true;
             _this.generateNewLine();
         };
         this.handlePressUp = function () {
-            _this.stage.removeEventListener("pressup", _this.handlePressUp);
+            _this.stage.removeEventListener("stagemouseup", _this.handlePressUp);
             _this.isStart = false;
-            _this.mousedown = false;
         };
         this.updateSetting = function (setting) {
             _this.setting.lineColor = setting.lineColor;
         };
         this.generateNewLine = function () {
-            if (_this.mousedown) {
-                return;
-            }
-            _this.mousedown = true;
             _this.lastPoint = new createjs.Point();
             _this.lastPoint.x = _this.stage.mouseX;
             _this.lastPoint.y = _this.stage.mouseY;
@@ -110,14 +106,11 @@ var DrawingLayer = (function () {
             _this.lastMidPoint.y = _this.stage.mouseY;
             _this.shape = new createjs.Shape();
             _this.container.addChild(_this.shape);
-            console.log("mouseDown");
-        };
-        this.handleMouseUp = function () {
-            _this.mousedown = false;
         };
         this.update = function () {
-            if (!_this.mousedown)
+            if (!_this.isStart)
                 return;
+            console.log("update");
             var moveX = (_this.stage.mouseX - _this.currentPoint.x);
             var moveY = (_this.stage.mouseY - _this.currentPoint.y);
             if (moveX * moveX + moveY * moveY > 0.1) {
