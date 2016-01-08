@@ -18,7 +18,7 @@ class Star extends Stamp{
     this.centerX = 0;
     this.centerY = 0;
     this.radius = 100;
-    this.sides = 5;
+    this.sides = 6;
     this.angle = 0;
     this.newMatrix = new createjs.Matrix2D();
     this.pointSize = 0.3;

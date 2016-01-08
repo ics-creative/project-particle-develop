@@ -55,8 +55,8 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
 
   updateTransformation(shapeSupport:ShapeSupport) {
     this.stamp.newMatrix.identity();
-    this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
     this.stamp.newMatrix.rotate(shapeSupport.rotation);
+    this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
     this.stamp.shape.x = shapeSupport.container.x;
     this.stamp.shape.y = shapeSupport.container.y;
 

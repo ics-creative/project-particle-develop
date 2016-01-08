@@ -119,6 +119,12 @@ class App {
     this.supportTarget = <StampLayer>e.currentTarget;
     this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
     this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
+    this.shapeSupport.size.x = this.supportTarget.stamp.size.x * 2;
+    this.shapeSupport.size.y = this.supportTarget.stamp.size.y * 2;
+
+    this.shapeSupport.update();
+    this.shapeSupport.draw();
+
 
   }
 

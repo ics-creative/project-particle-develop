@@ -63,8 +63,8 @@ var StampLayer = (function (_super) {
     }
     StampLayer.prototype.updateTransformation = function (shapeSupport) {
         this.stamp.newMatrix.identity();
-        this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
         this.stamp.newMatrix.rotate(shapeSupport.rotation);
+        this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
         this.stamp.shape.x = shapeSupport.container.x;
         this.stamp.shape.y = shapeSupport.container.y;
         this.stamp.setMatrix(this.stamp.newMatrix);
@@ -276,6 +276,10 @@ var App = (function () {
             _this.supportTarget = e.currentTarget;
             _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
             _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
+            _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x * 2;
+            _this.shapeSupport.size.y = _this.supportTarget.stamp.size.y * 2;
+            _this.shapeSupport.update();
+            _this.shapeSupport.draw();
         };
         this.changeTab = function () {
             console.log("tabChanged");
@@ -397,7 +401,7 @@ var Star = (function (_super) {
         this.centerX = 0;
         this.centerY = 0;
         this.radius = 100;
-        this.sides = 5;
+        this.sides = 6;
         this.angle = 0;
         this.newMatrix = new createjs.Matrix2D();
         this.pointSize = 0.3;
