@@ -43,14 +43,7 @@ class App {
     this.shapeSupport = new ShapeSupport(this.stage);
     this.stage.addChild( this.shapeSupport.container);
 
-    this.shapeSupport.container.x = 500;
-    this.shapeSupport.container.y = 300;
-
-    this.shapeSupport.size.x = 100;
-    this.shapeSupport.size.y = 100;
-
-    this.shapeSupport.update();
-    this.shapeSupport.draw();
+    this.shapeSupport.container.visible = false;
 
     createjs.Ticker.addEventListener("tick", this.update);
 
@@ -118,6 +111,7 @@ class App {
   startSupport = (stampLayer:StampLayer) => {
 
     this.supportTarget = stampLayer;
+    this.shapeSupport.container.visible = true;
     this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
     this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
     this.shapeSupport.rotation = 0;
@@ -128,7 +122,7 @@ class App {
     this.supportTarget.stamp.draw();
 
     this.shapeSupport.update();
-    this.shapeSupport.draw();
+    this.shapeSupport.draw(true);
 
     this.shapeSupport.startSupport();
 
@@ -136,6 +130,7 @@ class App {
 
   supportTarget:StampLayer;
   stampLayer_showSupportHandler = (e:any) => {
+    this.shapeSupport.container.visible = true;
     this.supportTarget = <StampLayer>e.currentTarget;
     this.shapeSupport.rotation = this.supportTarget.stamp.rotation;
     this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
@@ -145,8 +140,9 @@ class App {
 
     this.supportTarget.updateTransformation(this.shapeSupport);
     this.supportTarget.stamp.draw();
+
     this.shapeSupport.update();
-    this.shapeSupport.draw();
+    this.shapeSupport.draw(true);
 
 
   }

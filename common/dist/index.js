@@ -259,6 +259,7 @@ var App = (function () {
         };
         this.startSupport = function (stampLayer) {
             _this.supportTarget = stampLayer;
+            _this.shapeSupport.container.visible = true;
             _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
             _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
             _this.shapeSupport.rotation = 0;
@@ -267,10 +268,11 @@ var App = (function () {
             _this.supportTarget.updateTransformation(_this.shapeSupport);
             _this.supportTarget.stamp.draw();
             _this.shapeSupport.update();
-            _this.shapeSupport.draw();
+            _this.shapeSupport.draw(true);
             _this.shapeSupport.startSupport();
         };
         this.stampLayer_showSupportHandler = function (e) {
+            _this.shapeSupport.container.visible = true;
             _this.supportTarget = e.currentTarget;
             _this.shapeSupport.rotation = _this.supportTarget.stamp.rotation;
             _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
@@ -280,7 +282,7 @@ var App = (function () {
             _this.supportTarget.updateTransformation(_this.shapeSupport);
             _this.supportTarget.stamp.draw();
             _this.shapeSupport.update();
-            _this.shapeSupport.draw();
+            _this.shapeSupport.draw(true);
         };
         this.changeTab = function () {
             console.log("tabChanged");
@@ -324,12 +326,7 @@ var App = (function () {
         this.stage.addChild(this.drawLayerContainer);
         this.shapeSupport = new ShapeSupport(this.stage);
         this.stage.addChild(this.shapeSupport.container);
-        this.shapeSupport.container.x = 500;
-        this.shapeSupport.container.y = 300;
-        this.shapeSupport.size.x = 100;
-        this.shapeSupport.size.y = 100;
-        this.shapeSupport.update();
-        this.shapeSupport.draw();
+        this.shapeSupport.container.visible = false;
         createjs.Ticker.addEventListener("tick", this.update);
         this.toolbar.addEventListener('change_tab', this.changeTab);
         this.toolbar.addEventListener('change_tool', this.changeTool);
@@ -507,8 +504,9 @@ var ShapeSupport = (function () {
             }
             _this.dragTarget = null;
         };
-        this.draw = function () {
-            if (!_this.dragTarget) {
+        this.draw = function (drawForce) {
+            if (drawForce === void 0) { drawForce = false; }
+            if (!drawForce && !_this.dragTarget) {
                 return;
             }
             var graphics = _this.baseShape.graphics;

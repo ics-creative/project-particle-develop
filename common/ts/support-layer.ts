@@ -180,8 +180,8 @@ class ShapeSupport {
     this.dragTarget = null;
 
   }
-  draw = () => {
-    if(!this.dragTarget) {
+  draw = (drawForce:boolean = false) => {
+    if( !drawForce && !this.dragTarget) {
       return;
     }
 
