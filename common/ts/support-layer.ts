@@ -11,7 +11,10 @@ class ShapeSupport {
   private baseShape:createjs.Shape;
 
   private controllerLeftTop:createjs.Shape;
+
   private controllerRightTop:createjs.Shape;
+  private contorllerRightTopLineCommand:createjs.Graphics;
+
   private controllerLeftBottom:createjs.Shape;
   private controllerRightBottom:createjs.Shape;
 
@@ -62,6 +65,25 @@ class ShapeSupport {
     this.controllerRotation = new createjs.Shape();
     this.container.addChild(this.controllerRotation);
     this.controllerRotation.addEventListener("mousedown", this.handleMouseDown );
+
+
+    var controlSize:number = 10;
+
+    this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+
+    this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(this.lineColor);
+    this.controllerRightTop.graphics.drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+
+    this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+
+    this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+
+    this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+
   }
 
   handleMouseDown = (e:any) => {
@@ -129,7 +151,7 @@ class ShapeSupport {
       case this.controllerRotation:
         console.log("rotation - dragging");
 
-        this.rotation = Math.atan2(diffY,diffX) * 180 / Math.PI + 90;
+        this.rotation = Math.atan2(diffY,diffX) * 180 / Math.PI + 90  + (this.size.y >= 0 ? 0 : 180) ;
         console.log(this.rotation);
 
         break;
@@ -161,7 +183,7 @@ class ShapeSupport {
     var rightBottom:createjs.Point = this.matrix.transformPoint(harf_w,harf_h);
 
     var rotationPointStart:createjs.Point = this.matrix.transformPoint(0,-harf_h);
-    var rotationPoint:createjs.Point = this.matrix.transformPoint(0,-harf_h-30);
+    var rotationPoint:createjs.Point = this.matrix.transformPoint(0,-harf_h - (this.size.y>=0?50:-50));
 
     var color = createjs.Graphics.getRGB(1,1,1, 0.01);
 
@@ -175,26 +197,10 @@ class ShapeSupport {
 
     graphics.moveTo(rotationPointStart.x,rotationPointStart.y).lineTo(rotationPoint.x,rotationPoint.y);
 
-    var controlSize:number = 10;
-
-    this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
     this.controllerLeftTop.setTransform(leftTop.x,leftTop.y,1,1,this.rotation);
-
-    this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
     this.controllerRightTop.setTransform(rightTop.x,rightTop.y,1,1,this.rotation);
-
-    this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
     this.controllerRightBottom.setTransform(rightBottom.x,rightBottom.y,1,1,this.rotation);
-
-    this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
     this.controllerLeftBottom.setTransform(leftBottom.x,leftBottom.y,1,1,this.rotation);
-
-    this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
     this.controllerRotation.setTransform(rotationPoint.x,rotationPoint.y,1,1,this.rotation);
   }
 }

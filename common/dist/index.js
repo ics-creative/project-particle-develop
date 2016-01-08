@@ -485,7 +485,7 @@ var ShapeSupport = (function () {
                     break;
                 case _this.controllerRotation:
                     console.log("rotation - dragging");
-                    _this.rotation = Math.atan2(diffY, diffX) * 180 / Math.PI + 90;
+                    _this.rotation = Math.atan2(diffY, diffX) * 180 / Math.PI + 90 + (_this.size.y >= 0 ? 0 : 180);
                     console.log(_this.rotation);
                     break;
             }
@@ -508,7 +508,7 @@ var ShapeSupport = (function () {
             var leftBottom = _this.matrix.transformPoint(-harf_w, harf_h);
             var rightBottom = _this.matrix.transformPoint(harf_w, harf_h);
             var rotationPointStart = _this.matrix.transformPoint(0, -harf_h);
-            var rotationPoint = _this.matrix.transformPoint(0, -harf_h - 30);
+            var rotationPoint = _this.matrix.transformPoint(0, -harf_h - (_this.size.y >= 0 ? 50 : -50));
             var color = createjs.Graphics.getRGB(1, 1, 1, 0.01);
             graphics.clear().beginFill(color).beginStroke(_this.lineColor).
                 moveTo(leftTop.x, leftTop.y).
@@ -518,21 +518,10 @@ var ShapeSupport = (function () {
                 lineTo(leftBottom.x, leftBottom.y).
                 lineTo(leftTop.x, leftTop.y);
             graphics.moveTo(rotationPointStart.x, rotationPointStart.y).lineTo(rotationPoint.x, rotationPoint.y);
-            var controlSize = 10;
-            _this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
-                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
             _this.controllerLeftTop.setTransform(leftTop.x, leftTop.y, 1, 1, _this.rotation);
-            _this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
-                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
             _this.controllerRightTop.setTransform(rightTop.x, rightTop.y, 1, 1, _this.rotation);
-            _this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
-                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
             _this.controllerRightBottom.setTransform(rightBottom.x, rightBottom.y, 1, 1, _this.rotation);
-            _this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
-                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
             _this.controllerLeftBottom.setTransform(leftBottom.x, leftBottom.y, 1, 1, _this.rotation);
-            _this.controllerRotation.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
-                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
             _this.controllerRotation.setTransform(rotationPoint.x, rotationPoint.y, 1, 1, _this.rotation);
         };
         this.stage = stage;
@@ -562,6 +551,17 @@ var ShapeSupport = (function () {
         this.controllerRotation = new createjs.Shape();
         this.container.addChild(this.controllerRotation);
         this.controllerRotation.addEventListener("mousedown", this.handleMouseDown);
+        var controlSize = 10;
+        this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(this.lineColor);
+        this.controllerRightTop.graphics.drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
+            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
     }
     return ShapeSupport;
 })();
