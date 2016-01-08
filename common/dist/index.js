@@ -135,18 +135,10 @@ var DrawingLayer = (function () {
         return !this.isStart;
     };
     DrawingLayer.prototype.drawCurve = function (graphics, oldPoint, newPoint, controlPoint) {
-        this.setLineThickness(oldPoint, newPoint);
         graphics.beginStroke(this.setting.lineColor)
             .setStrokeStyle(this.currentLineThickness, "round", "round")
             .moveTo(oldPoint.x, oldPoint.y)
             .quadraticCurveTo(controlPoint.x, controlPoint.y, newPoint.x, newPoint.y);
-    };
-    DrawingLayer.prototype.setLineThickness = function (oldPoint, newPoint) {
-        var distanceX = newPoint.x - oldPoint.x;
-        var distanceY = newPoint.y - oldPoint.y;
-        var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-        var lineThickness = distance * 0.2;
-        this.currentLineThickness = 1;
     };
     return DrawingLayer;
 })();
@@ -299,6 +291,8 @@ var App = (function () {
                 _this.layer[_this.layer.length - 1].update();
             }
             _this.stage.update();
+            _this.shapeSupport.update();
+            _this.shapeSupport.draw();
         };
         this.updateDrawSetting = function () {
             _this.drawingLayer.updateSetting(_this.toolbar.drawingSetting);
@@ -318,6 +312,14 @@ var App = (function () {
         this.stage.addChild(this.background);
         this.drawLayerContainer = new createjs.Container();
         this.stage.addChild(this.drawLayerContainer);
+        this.shapeSupport = new ShapeSupport(this.stage);
+        this.stage.addChild(this.shapeSupport.container);
+        this.shapeSupport.container.x = 500;
+        this.shapeSupport.container.y = 300;
+        this.shapeSupport.size.x = 100;
+        this.shapeSupport.size.y = 100;
+        this.shapeSupport.update();
+        this.shapeSupport.draw();
         createjs.Ticker.addEventListener("tick", this.update);
         this.toolbar.addEventListener('change_tab', this.changeTab);
         this.toolbar.addEventListener('change_tool', this.changeTool);
@@ -428,6 +430,135 @@ var TextStampLayer = (function (_super) {
     };
     return TextStampLayer;
 })(StampLayer);
+var ShapeSupport = (function () {
+    function ShapeSupport(stage) {
+        var _this = this;
+        this.handleMouseDown = function (e) {
+            if (_this.dragTarget) {
+                _this.dragTarget.removeEventListener("pressmove", _this.handlePressMove);
+                _this.dragTarget.removeEventListener("pressup", _this.handlePressUp);
+            }
+            _this.dragTarget = e.target;
+            _this.dragTarget.addEventListener("pressmove", _this.handlePressMove);
+            _this.dragTarget.addEventListener("pressup", _this.handlePressUp);
+            _this.dragPoint.x = _this.stage.mouseX - (_this.dragTarget.x + _this.container.x);
+            _this.dragPoint.y = _this.stage.mouseY - (_this.dragTarget.y + _this.container.y);
+        };
+        this.handlePressMove = function (e) {
+            console.log(_this.dragTarget + ":dragging");
+            var diffX = (_this.stage.mouseX - _this.container.x - _this.dragPoint.x) * 2;
+            var diffY = (_this.stage.mouseY - _this.container.y - _this.dragPoint.y) * 2;
+            console.log(diffX, diffY);
+            var diff = _this.matrix.clone().invert().transformPoint(diffX, diffY);
+            console.log(diff.x, diff.y);
+            console.log(_this.matrix.transformPoint(diff.x, diff.y).x, _this.matrix.transformPoint(diff.x, diff.y).y);
+            switch (_this.dragTarget) {
+                case _this.baseShape:
+                    console.log("baseShape - dragging");
+                    _this.container.x = _this.stage.mouseX - _this.dragPoint.x;
+                    _this.container.y = _this.stage.mouseY - _this.dragPoint.y;
+                    break;
+                case _this.controllerLeftTop:
+                    console.log("leftTop - dragging");
+                    _this.size.x = -diff.x;
+                    _this.size.y = -diff.y;
+                    break;
+                case _this.controllerRightTop:
+                    console.log("rightTop - dragging");
+                    _this.size.x = diff.x;
+                    _this.size.y = -diff.y;
+                    break;
+                case _this.controllerRightBottom:
+                    console.log("rightBottom - dragging");
+                    _this.size.x = diff.x;
+                    _this.size.y = diff.y;
+                    break;
+                case _this.controllerLeftBottom:
+                    console.log("leftBottom - dragging");
+                    _this.size.x = -diff.x;
+                    _this.size.y = diff.y;
+                    break;
+                case _this.controllerRotation:
+                    console.log("rotation - dragging");
+                    _this.rotation = Math.atan2(diffY, diffX) * 180 / Math.PI + 90;
+                    console.log(_this.rotation);
+                    break;
+            }
+        };
+        this.handlePressUp = function (e) {
+            _this.dragTarget.removeEventListener("pressmove", _this.handlePressMove);
+            _this.dragTarget.removeEventListener("pressup", _this.handlePressUp);
+            _this.dragTarget = null;
+        };
+        this.update = function () {
+            _this.matrix.identity();
+            _this.matrix.rotate(_this.rotation);
+        };
+        this.draw = function () {
+            var graphics = _this.baseShape.graphics;
+            var harf_w = _this.size.x / 2;
+            var harf_h = _this.size.y / 2;
+            var leftTop = _this.matrix.transformPoint(-harf_w, -harf_h);
+            var rightTop = _this.matrix.transformPoint(harf_w, -harf_h);
+            var leftBottom = _this.matrix.transformPoint(-harf_w, harf_h);
+            var rightBottom = _this.matrix.transformPoint(harf_w, harf_h);
+            var rotationPointStart = _this.matrix.transformPoint(0, -harf_h);
+            var rotationPoint = _this.matrix.transformPoint(0, -harf_h - 30);
+            graphics.clear().beginFill(createjs.Graphics.getRGB(0xFFFFFF, 0.01)).beginStroke(_this.lineColor).
+                moveTo(leftTop.x, leftTop.y).
+                lineTo(leftTop.x, leftTop.y).
+                lineTo(rightTop.x, rightTop.y).
+                lineTo(rightBottom.x, rightBottom.y).
+                lineTo(leftBottom.x, leftBottom.y).
+                lineTo(leftTop.x, leftTop.y);
+            graphics.moveTo(rotationPointStart.x, rotationPointStart.y).lineTo(rotationPoint.x, rotationPoint.y);
+            var controlSize = 10;
+            _this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
+                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+            _this.controllerLeftTop.setTransform(leftTop.x, leftTop.y, 1, 1, _this.rotation);
+            _this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
+                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+            _this.controllerRightTop.setTransform(rightTop.x, rightTop.y, 1, 1, _this.rotation);
+            _this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
+                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+            _this.controllerRightBottom.setTransform(rightBottom.x, rightBottom.y, 1, 1, _this.rotation);
+            _this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
+                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+            _this.controllerLeftBottom.setTransform(leftBottom.x, leftBottom.y, 1, 1, _this.rotation);
+            _this.controllerRotation.graphics.clear().beginFill("white").beginStroke(_this.lineColor).
+                drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+            _this.controllerRotation.setTransform(rotationPoint.x, rotationPoint.y, 1, 1, _this.rotation);
+        };
+        this.stage = stage;
+        this.lineColor = "blue";
+        this.center = new createjs.Point();
+        this.rotation = 0;
+        this.size = new createjs.Point();
+        this.baseShape = new createjs.Shape();
+        this.matrix = new createjs.Matrix2D();
+        this.dragPoint = new createjs.Point();
+        this.container = new createjs.Container();
+        this.baseShape = new createjs.Shape();
+        this.container.addChild(this.baseShape);
+        this.baseShape.addEventListener("mousedown", this.handleMouseDown);
+        this.controllerLeftTop = new createjs.Shape();
+        this.container.addChild(this.controllerLeftTop);
+        this.controllerLeftTop.addEventListener("mousedown", this.handleMouseDown);
+        this.controllerRightTop = new createjs.Shape();
+        this.container.addChild(this.controllerRightTop);
+        this.controllerRightTop.addEventListener("mousedown", this.handleMouseDown);
+        this.controllerLeftBottom = new createjs.Shape();
+        this.container.addChild(this.controllerLeftBottom);
+        this.controllerLeftBottom.addEventListener("mousedown", this.handleMouseDown);
+        this.controllerRightBottom = new createjs.Shape();
+        this.container.addChild(this.controllerRightBottom);
+        this.controllerRightBottom.addEventListener("mousedown", this.handleMouseDown);
+        this.controllerRotation = new createjs.Shape();
+        this.container.addChild(this.controllerRotation);
+        this.controllerRotation.addEventListener("mousedown", this.handleMouseDown);
+    }
+    return ShapeSupport;
+})();
 var app;
 window.onload = function () {
     app = new App();

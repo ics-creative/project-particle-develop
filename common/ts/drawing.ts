@@ -71,7 +71,6 @@ class DrawingLayer implements ILayer{
     this.lastMidPoint.x = this.stage.mouseX;
     this.lastMidPoint.y = this.stage.mouseY;
 
-
     this.shape = new createjs.Shape();
     this.container.addChild(this.shape);
   }
@@ -95,19 +94,10 @@ class DrawingLayer implements ILayer{
     }
   }
   drawCurve(graphics:createjs.Graphics, oldPoint:createjs.Point, newPoint:createjs.Point, controlPoint:createjs.Point) {
-    this.setLineThickness(oldPoint, newPoint);
     graphics.beginStroke(this.setting.lineColor)
       .setStrokeStyle(this.currentLineThickness, "round", "round")
       .moveTo(oldPoint.x, oldPoint.y)
       .quadraticCurveTo(controlPoint.x, controlPoint.y, newPoint.x, newPoint.y);
   }
-  setLineThickness(oldPoint:createjs.Point, newPoint:createjs.Point) {
-    var distanceX = newPoint.x - oldPoint.x;
-    var distanceY = newPoint.y - oldPoint.y;
-    var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-    var lineThickness = distance * 0.2;
-    this.currentLineThickness = 1;
-  }
-
 
 }

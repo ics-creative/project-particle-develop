@@ -13,6 +13,9 @@ class App {
 
   private background:createjs.Shape;
   private drawLayerContainer:createjs.Container;
+
+  private shapeSupport:ShapeSupport;
+
   constructor() {
 
     this.layer = [];
@@ -37,6 +40,17 @@ class App {
     this.drawLayerContainer = new createjs.Container();
     this.stage.addChild( this.drawLayerContainer )
 
+    this.shapeSupport = new ShapeSupport(this.stage);
+    this.stage.addChild( this.shapeSupport.container);
+
+    this.shapeSupport.container.x = 500;
+    this.shapeSupport.container.y = 300;
+
+    this.shapeSupport.size.x = 100;
+    this.shapeSupport.size.y = 100;
+
+    this.shapeSupport.update();
+    this.shapeSupport.draw();
 
     createjs.Ticker.addEventListener("tick", this.update);
 
@@ -134,6 +148,10 @@ class App {
     }
     // Stageの描画を更新します
     this.stage.update();
+
+    this.shapeSupport.update();
+    this.shapeSupport.draw();
+
   }
 
   updateDrawSetting = () => {

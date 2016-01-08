@@ -20,7 +20,6 @@ class Stamp {
   setMatrix(matrix:createjs.Matrix2D) {
 
   }
-
 }
 
 class StampLayer implements ILayer{
