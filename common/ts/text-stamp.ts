@@ -15,6 +15,15 @@ class TextStamp extends Stamp{
     var color = createjs.Graphics.getRGB(1,1,1, 0.01);
     this.shape.graphics.beginFill(color).drawRect(0,0,this.text.getMeasuredWidth(),this.text.getMeasuredHeight());
 
+    this.resize();
+
+    this.addChild(this.shape);
+    this.addChild(this.text);
+  }
+
+  resize = () => {
+
+
     this.text.x = -this.text.getMeasuredWidth() / 2;
     this.text.y = -this.text.getMeasuredHeight() / 2;
 
@@ -24,8 +33,6 @@ class TextStamp extends Stamp{
     this.size.x = this.text.getMeasuredWidth();
     this.size.y = this.text.getMeasuredHeight();
 
-    this.addChild(this.shape);
-    this.addChild(this.text);
   }
 
   updateGraphics () {
@@ -70,9 +77,13 @@ class TextStampLayer extends StampLayer{
   }
 
   updateSetting(setting:ShapeSetting) {
-  //var textSetting:TextSetting = <TextSetting>setting;
+    var textSetting:TextSetting = <TextSetting>setting;
 
-    this.stamp.setting.baseColor = setting.baseColor;
     this.stamp.setting.lineColor = setting.lineColor;
+    this.textStamp.text.color = setting.lineColor;
+
+    this.textStamp.text.text = textSetting.text;
+
+    this.textStamp.resize();
   }
 }

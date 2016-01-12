@@ -74,6 +74,7 @@ class Toolbar extends createjs.EventDispatcher {
       change: (color:any) => {
         this.drawingSetting.lineColor = color.toHexString();
         this.shapeSetting.lineColor = color.toHexString();
+        this.textSetting.lineColor = color.toHexString();
         this.dispatchEvent("change_tool");
       }
     });
@@ -92,7 +93,7 @@ class Toolbar extends createjs.EventDispatcher {
 
     //  テキスト入力
     this.textInputElement = <HTMLInputElement>document.getElementById("textinput");
-    this.textInputElement.addEventListener("change", (e:any ) => {
+    this.textInputElement.addEventListener("keyup", (e:any ) => {
       this.textSetting.text =  this.textInputElement.value;
       console.log(this.textSetting.text);
 
@@ -133,7 +134,6 @@ class Toolbar extends createjs.EventDispatcher {
         break;
       case tool.TOOL_TEXT:
         this.colorPickerLineElement.style.display = 'block';
-        this.colorPickerBaseElement.style.display = 'block';
         this.textInputWrapElement.style.display = 'block';
         break;
 

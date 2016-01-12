@@ -121,7 +121,7 @@ class App {
         console.log("start-text-tool");
 
         this.textStampLayer = new TextStampLayer(this.stage);
-        this.textStampLayer.updateSetting(this.toolbar.shapeSetting);
+        this.textStampLayer.updateSetting(this.toolbar.textSetting);
 
         this.drawLayerContainer.addChild(this.textStampLayer.stamp);
         this.textStampLayer.addEventListener("show_support", this.stampLayer_showSupportHandler)
@@ -206,10 +206,20 @@ class App {
         this.supportTarget.updateSetting(this.toolbar.shapeSetting);
         break;
       case  tool.TOOL_TEXT  :
-        this.shapeSupport.updateLineColor(this.toolbar.shapeSetting.lineColor);
+        this.shapeSupport.updateLineColor(this.toolbar.textSetting.lineColor);
         this.shapeSupport.updateGraphics(true);
 
         this.supportTarget.updateSetting(this.toolbar.textSetting);
+
+        this.shapeSupport.rotation = this.supportTarget.stamp.rotation;
+        this.shapeSupport.container.x = this.supportTarget.stamp.x;
+        this.shapeSupport.container.y = this.supportTarget.stamp.y;
+        this.shapeSupport.size.x = this.supportTarget.stamp.size.x;
+        this.shapeSupport.size.y = this.supportTarget.stamp.size.y;
+
+        this.shapeSupport.update();
+        this.shapeSupport.updateGraphics(true);
+
         break;
     }
   }

@@ -163,7 +163,6 @@ var Toolbar = (function (_super) {
                     break;
                 case tool.TOOL_TEXT:
                     _this.colorPickerLineElement.style.display = 'block';
-                    _this.colorPickerBaseElement.style.display = 'block';
                     _this.textInputWrapElement.style.display = 'block';
                     break;
             }
@@ -198,6 +197,7 @@ var Toolbar = (function (_super) {
             change: function (color) {
                 _this.drawingSetting.lineColor = color.toHexString();
                 _this.shapeSetting.lineColor = color.toHexString();
+                _this.textSetting.lineColor = color.toHexString();
                 _this.dispatchEvent("change_tool");
             }
         });
@@ -211,7 +211,7 @@ var Toolbar = (function (_super) {
             }
         });
         this.textInputElement = document.getElementById("textinput");
-        this.textInputElement.addEventListener("change", function (e) {
+        this.textInputElement.addEventListener("keyup", function (e) {
             _this.textSetting.text = _this.textInputElement.value;
             console.log(_this.textSetting.text);
             _this.dispatchEvent("change_tool");
@@ -254,7 +254,7 @@ var App = (function () {
                 case tool.TOOL_TEXT:
                     console.log("start-text-tool");
                     _this.textStampLayer = new TextStampLayer(_this.stage);
-                    _this.textStampLayer.updateSetting(_this.toolbar.shapeSetting);
+                    _this.textStampLayer.updateSetting(_this.toolbar.textSetting);
                     _this.drawLayerContainer.addChild(_this.textStampLayer.stamp);
                     _this.textStampLayer.addEventListener("show_support", _this.stampLayer_showSupportHandler);
                     _this.layer.push(_this.textStampLayer);
@@ -316,9 +316,16 @@ var App = (function () {
                     _this.supportTarget.updateSetting(_this.toolbar.shapeSetting);
                     break;
                 case tool.TOOL_TEXT:
-                    _this.shapeSupport.updateLineColor(_this.toolbar.shapeSetting.lineColor);
+                    _this.shapeSupport.updateLineColor(_this.toolbar.textSetting.lineColor);
                     _this.shapeSupport.updateGraphics(true);
                     _this.supportTarget.updateSetting(_this.toolbar.textSetting);
+                    _this.shapeSupport.rotation = _this.supportTarget.stamp.rotation;
+                    _this.shapeSupport.container.x = _this.supportTarget.stamp.x;
+                    _this.shapeSupport.container.y = _this.supportTarget.stamp.y;
+                    _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x;
+                    _this.shapeSupport.size.y = _this.supportTarget.stamp.size.y;
+                    _this.shapeSupport.update();
+                    _this.shapeSupport.updateGraphics(true);
                     break;
             }
         };
@@ -478,17 +485,21 @@ var Circle = (function (_super) {
 var TextStamp = (function (_super) {
     __extends(TextStamp, _super);
     function TextStamp() {
+        var _this = this;
         _super.call(this);
+        this.resize = function () {
+            _this.text.x = -_this.text.getMeasuredWidth() / 2;
+            _this.text.y = -_this.text.getMeasuredHeight() / 2;
+            _this.shape.x = -_this.text.getMeasuredWidth() / 2;
+            _this.shape.y = -_this.text.getMeasuredHeight() / 2;
+            _this.size.x = _this.text.getMeasuredWidth();
+            _this.size.y = _this.text.getMeasuredHeight();
+        };
         this.text = new createjs.Text("Hello World", "20px Arial", "#ff7700");
         this.shape = new createjs.Shape();
         var color = createjs.Graphics.getRGB(1, 1, 1, 0.01);
         this.shape.graphics.beginFill(color).drawRect(0, 0, this.text.getMeasuredWidth(), this.text.getMeasuredHeight());
-        this.text.x = -this.text.getMeasuredWidth() / 2;
-        this.text.y = -this.text.getMeasuredHeight() / 2;
-        this.shape.x = -this.text.getMeasuredWidth() / 2;
-        this.shape.y = -this.text.getMeasuredHeight() / 2;
-        this.size.x = this.text.getMeasuredWidth();
-        this.size.y = this.text.getMeasuredHeight();
+        this.resize();
         this.addChild(this.shape);
         this.addChild(this.text);
     }
@@ -522,8 +533,11 @@ var TextStampLayer = (function (_super) {
         this.textStamp.text.rotation = shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD;
     };
     TextStampLayer.prototype.updateSetting = function (setting) {
-        this.stamp.setting.baseColor = setting.baseColor;
+        var textSetting = setting;
         this.stamp.setting.lineColor = setting.lineColor;
+        this.textStamp.text.color = setting.lineColor;
+        this.textStamp.text.text = textSetting.text;
+        this.textStamp.resize();
     };
     return TextStampLayer;
 })(StampLayer);
