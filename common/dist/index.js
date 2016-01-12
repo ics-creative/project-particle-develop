@@ -8,6 +8,7 @@ var Stamp = (function (_super) {
     __extends(Stamp, _super);
     function Stamp() {
         _super.call(this);
+        this.newMatrix = new createjs.Matrix2D();
         this.setting = new ShapeSetting();
         this.size = new createjs.Point();
         this.rotation = 0;
@@ -393,13 +394,12 @@ var Star = (function (_super) {
                 _this.vertexOriginal.push(new createjs.Point(x_2, y_2));
             }
         };
-        this.centerX = 0;
-        this.centerY = 0;
         this.radius = 100;
         this.sides = 6;
         this.angle = 0;
-        this.newMatrix = new createjs.Matrix2D();
         this.pointSize = 0.3;
+        this.centerX = 0;
+        this.centerY = 0;
         var Graphics = createjs.Graphics;
         this.graphics = new Graphics();
         this.shape = new createjs.Shape(this.graphics);
@@ -435,12 +435,22 @@ var TextStamp = (function (_super) {
     function TextStamp() {
         _super.call(this);
         this.text = new createjs.Text("Hello World", "20px Arial", "#ff7700");
+        this.shape = new createjs.Shape();
+        var color = createjs.Graphics.getRGB(1, 1, 1, 0.01);
+        this.shape.graphics.beginFill(color).drawRect(0, 0, this.text.getMeasuredWidth(), this.text.getMeasuredHeight());
+        this.text.x = -this.text.getMeasuredWidth() / 2;
+        this.text.y = -this.text.getMeasuredHeight() / 2;
+        this.shape.x = -this.text.getMeasuredWidth() / 2;
+        this.shape.y = -this.text.getMeasuredHeight() / 2;
+        this.size.x = this.text.getMeasuredWidth();
+        this.size.y = this.text.getMeasuredHeight();
+        this.addChild(this.shape);
         this.addChild(this.text);
     }
     TextStamp.prototype.updateGraphics = function () {
     };
     TextStamp.prototype.setMatrix = function (matrix) {
-        matrix.decompose(this.text);
+        matrix.decompose(this);
     };
     return TextStamp;
 })(Stamp);
@@ -450,8 +460,9 @@ var TextStampLayer = (function (_super) {
         var _this = this;
         _super.call(this, stage, new TextStamp());
         this.start = function () {
-            _this.textStamp.text.x = _this.stage.mouseX;
-            _this.textStamp.text.y = _this.stage.mouseY;
+            var mousePt = _this.textStamp.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
+            _this.textStamp.x = mousePt.x;
+            _this.textStamp.y = mousePt.y;
             _this.isStart = true;
             _this.stage.addEventListener("pressup", _this.handlePressUp);
             _this.textStamp.text.addEventListener("mousedown", _this.pressDown);
@@ -459,9 +470,10 @@ var TextStampLayer = (function (_super) {
         this.textStamp = this.stamp;
     }
     TextStampLayer.prototype.updateTransformation = function (shapeSupport) {
-        _super.prototype.updateTransformation.call(this, shapeSupport);
-        this.textStamp.text.x = shapeSupport.container.x;
-        this.textStamp.text.y = shapeSupport.container.y;
+        this.textStamp.x = shapeSupport.container.x;
+        this.textStamp.y = shapeSupport.container.y;
+        this.textStamp.rotation = shapeSupport.rotation;
+        this.textStamp.text.rotation = shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD;
     };
     TextStampLayer.prototype.updateSetting = function (setting) {
         this.stamp.setting.baseColor = setting.baseColor;

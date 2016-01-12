@@ -5,8 +5,6 @@ import EventDispatcher = createjs.EventDispatcher;
 
 class Stamp extends createjs.Container{
   newMatrix:createjs.Matrix2D;
-  centerX:number;
-  centerY:number;
   setting:ShapeSetting;
   size:createjs.Point;
   rotation:number;
@@ -14,6 +12,7 @@ class Stamp extends createjs.Container{
   constructor() {
     super();
 
+    this.newMatrix = new createjs.Matrix2D();
     this.setting = new ShapeSetting();
     this.size = new createjs.Point();
     this.rotation = 0;

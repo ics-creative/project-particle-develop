@@ -163,8 +163,6 @@ class App {
 
     this.shapeSupport.update();
     this.shapeSupport.updateGraphics(true);
-
-
   }
 
 
