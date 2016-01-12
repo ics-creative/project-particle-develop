@@ -15,7 +15,7 @@ class App {
 
   private drawingContainer:createjs.Container;
   private canvasBackground:createjs.Shape;
-  private drawLayerContainer:createjs.Container;
+  public drawLayerContainer:createjs.Container;
 
   private shapeSupport:ShapeSupport;
   private background:createjs.Shape;

@@ -615,7 +615,7 @@ window.onload = function () {
 };
 var exporter;
 function runExport(e) {
-    exporter = new SVGExporter(app.stage, false, false, false);
+    exporter = new SVGExporter(app.drawLayerContainer, false, false, false);
     var t = new Date().getTime();
     exporter.run();
     setTimeout(downloadFile, 1);

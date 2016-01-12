@@ -26,7 +26,7 @@ window.onload = function () {
 var exporter:SVGExporter;
 
 function runExport (e:any) {
-    exporter = new SVGExporter(app.stage, false, false, false);
+    exporter = new SVGExporter(app.drawLayerContainer, false, false, false);
     var t = new Date().getTime();
     exporter.run();
     setTimeout(downloadFile, 1); // for some reason, it takes a tick for the browser to init the SVG

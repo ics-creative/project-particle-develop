@@ -1,5 +1,5 @@
 declare class SVGExporter {
-  constructor(stage:createjs.Stage,value1:boolean,value2:boolean,value3:boolean);
+  constructor(stage:createjs.Container,value1:boolean,value2:boolean,value3:boolean);
   svg:Node;
   run():void;
 }
