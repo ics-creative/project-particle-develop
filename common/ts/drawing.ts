@@ -54,22 +54,15 @@ class DrawingLayer implements ILayer{
 
 
     //
-    this.lastPoint = new createjs.Point();
+    this.lastPoint = this.container.globalToLocal(  this.stage.mouseX,this.stage.mouseY);
 
-    this.lastPoint.x = this.stage.mouseX;
-    this.lastPoint.y = this.stage.mouseY;
 
     //
     this.currentPoint = new createjs.Point();
-
-    this.currentPoint.x = this.stage.mouseX;
-    this.currentPoint.y = this.stage.mouseY;
+    this.currentPoint = this.container.globalToLocal(  this.stage.mouseX,this.stage.mouseY);
 
     //
-    this.lastMidPoint = new createjs.Point();
-
-    this.lastMidPoint.x = this.stage.mouseX;
-    this.lastMidPoint.y = this.stage.mouseY;
+    this.lastMidPoint = this.container.globalToLocal(  this.stage.mouseX,this.stage.mouseY);
 
     this.shape = new createjs.Shape();
     this.container.addChild(this.shape);
@@ -80,8 +73,11 @@ class DrawingLayer implements ILayer{
       return ;
     console.log("update");
 
-    var moveX = (this.stage.mouseX - this.currentPoint.x);
-    var moveY = (this.stage.mouseY - this.currentPoint.y);
+    var mousePt = this.container.globalToLocal(  this.stage.mouseX,this.stage.mouseY);
+
+
+    var moveX = (mousePt.x - this.currentPoint.x);
+    var moveY = (mousePt.y - this.currentPoint.y);
     if (moveX * moveX + moveY * moveY > 0.1) {
 
       this.currentPoint.x += moveX;

@@ -7,14 +7,18 @@ class App {
   public stage:createjs.Stage;
   private drawingLayer:DrawingLayer;
   private stampLayer:StampLayer;
+  private textStampLayer:TextStampLayer;
+
   private toolbar:Toolbar;
   private layer:ILayer[];
   private canvas:HTMLCanvasElement;
 
-  private background:createjs.Shape;
+  private drawingContainer:createjs.Container;
+  private canvasBackground:createjs.Shape;
   private drawLayerContainer:createjs.Container;
 
   private shapeSupport:ShapeSupport;
+  private background:createjs.Shape;
 
   constructor() {
 
@@ -29,21 +33,33 @@ class App {
 
     this.stage = new createjs.Stage(this.canvas);
 
-    // 背景カラーの設定
+    //  キャンバスより後ろ
     this.background = new createjs.Shape();
-    this.background.graphics.beginFill("white");
-    this.background.graphics.drawRect(0, 0, 1024, 512);
+    this.background.graphics.beginFill("gray");
+    this.background.graphics.drawRect(0, 0, 2000, 200);
+    this.stage.addChild(this.background);
 
-    this.stage.addChild(this.background); // 表示リストに追加
+    //  描画コンテナ
+    this.drawingContainer = new createjs.Container;
 
+    this.stage.addChild(this.drawingContainer); // 表示リストに追加
+
+    // 背景カラーの設定
+    this.canvasBackground = new createjs.Shape();
+    this.canvasBackground.graphics.beginFill("white");
+    this.canvasBackground.graphics.drawRect(0, 0, 1024, 512);
+    this.drawingContainer.addChild(this.canvasBackground);
 
     this.drawLayerContainer = new createjs.Container();
-    this.stage.addChild( this.drawLayerContainer )
+    this.drawingContainer.addChild( this.drawLayerContainer )
 
     this.shapeSupport = new ShapeSupport(this.stage);
-    this.stage.addChild( this.shapeSupport.container);
+    this.drawingContainer.addChild( this.shapeSupport.container);
 
     this.shapeSupport.container.visible = false;
+
+    this.drawingContainer.x = 100;
+    this.drawingContainer.y = 100;
 
     createjs.Ticker.addEventListener("tick", this.update);
 
@@ -55,17 +71,18 @@ class App {
 
   handleMouseDown = () => {
 
-    //console.log("handleMouseDown" + this.toolbar.toolId);
 
     if( !(this.layer.length == 0 || this.layer[this.layer.length-1].isExit() )) {
       return ;
     }
+    console.log("handleMouseDown" + this.toolbar.toolId);
 
     switch (this.toolbar.toolId) {
       case tool.TOOL_SELECT:
         break;
 
       case  tool.TOOL_PEN  :
+        console.log("start-pen-tool");
 
         var container = new createjs.Container();
         this.drawLayerContainer.addChild(container);
@@ -80,11 +97,13 @@ class App {
 
       case  tool.TOOL_STAMP  :
 
+        console.log("start-star-tool");
+
         var stamp = new Star();
         this.stampLayer = new StampLayer(this.stage,stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
         this.stampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)
-        this.drawLayerContainer.addChild(this.stampLayer.stamp.shape);
+        this.drawLayerContainer.addChild(this.stampLayer.stamp);
 
         this.layer.push( this.stampLayer );
         this.stampLayer.start();
@@ -95,15 +114,17 @@ class App {
 
       case  tool.TOOL_TEXT  :
 
-        var stamp = new Star();
-        this.stampLayer = new StampLayer(this.stage,stamp);
-        this.stampLayer.updateSetting(this.toolbar.shapeSetting);
+        console.log("start-text-tool");
 
-        this.drawLayerContainer.addChild(this.stampLayer.stamp.shape);
+        this.textStampLayer = new TextStampLayer(this.stage);
+        this.textStampLayer.updateSetting(this.toolbar.shapeSetting);
 
-        this.layer.push( this.stampLayer );
+        this.drawLayerContainer.addChild(this.textStampLayer.stamp);
+        this.textStampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)
 
-        this.stampLayer.start();
+        this.layer.push( this.textStampLayer );
+
+        this.textStampLayer.start();
         break;
     }
   }
@@ -112,17 +133,16 @@ class App {
 
     this.supportTarget = stampLayer;
     this.shapeSupport.container.visible = true;
-    this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
-    this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
+    this.shapeSupport.container.x = this.supportTarget.stamp.x;
+    this.shapeSupport.container.y = this.supportTarget.stamp.y;
     this.shapeSupport.rotation = 0;
     this.shapeSupport.size.x = 5;
     this.shapeSupport.size.y = 5;
 
     this.supportTarget.updateTransformation(this.shapeSupport);
-    this.supportTarget.stamp.draw();
 
     this.shapeSupport.update();
-    this.shapeSupport.draw(true);
+    this.shapeSupport.updateGraphics(true);
 
     this.shapeSupport.startSupport();
 
@@ -133,16 +153,16 @@ class App {
     this.shapeSupport.container.visible = true;
     this.supportTarget = <StampLayer>e.currentTarget;
     this.shapeSupport.rotation = this.supportTarget.stamp.rotation;
-    this.shapeSupport.container.x = this.supportTarget.stamp.shape.x;
-    this.shapeSupport.container.y = this.supportTarget.stamp.shape.y;
+    this.shapeSupport.container.x = this.supportTarget.stamp.x;
+    this.shapeSupport.container.y = this.supportTarget.stamp.y;
     this.shapeSupport.size.x = this.supportTarget.stamp.size.x * 2;
     this.shapeSupport.size.y = this.supportTarget.stamp.size.y * 2;
 
     this.supportTarget.updateTransformation(this.shapeSupport);
-    this.supportTarget.stamp.draw();
+    this.supportTarget.stamp.updateGraphics();
 
     this.shapeSupport.update();
-    this.shapeSupport.draw(true);
+    this.shapeSupport.updateGraphics(true);
 
 
   }
@@ -173,7 +193,7 @@ class App {
     }
 
     this.shapeSupport.update();
-    this.shapeSupport.draw();
+    this.shapeSupport.updateGraphics();
 
 
   }

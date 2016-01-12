@@ -4,18 +4,20 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var EventDispatcher = createjs.EventDispatcher;
-var Stamp = (function () {
+var Stamp = (function (_super) {
+    __extends(Stamp, _super);
     function Stamp() {
-        this.draw = function () {
-        };
+        _super.call(this);
         this.setting = new ShapeSetting();
         this.size = new createjs.Point();
         this.rotation = 0;
     }
+    Stamp.prototype.updateGraphics = function () {
+    };
     Stamp.prototype.setMatrix = function (matrix) {
     };
     return Stamp;
-})();
+})(createjs.Container);
 var StampLayer = (function (_super) {
     __extends(StampLayer, _super);
     function StampLayer(stage, stamp) {
@@ -25,8 +27,9 @@ var StampLayer = (function (_super) {
             _this.dispatchEvent("show_support");
         };
         this.start = function () {
-            _this.stamp.shape.x = _this.stage.mouseX;
-            _this.stamp.shape.y = _this.stage.mouseY;
+            var mousePt = _this.stamp.parent.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
+            _this.stamp.x = mousePt.x;
+            _this.stamp.y = mousePt.y;
             _this.isStart = true;
             _this.stage.addEventListener("pressup", _this.handlePressUp);
         };
@@ -36,24 +39,23 @@ var StampLayer = (function (_super) {
         };
         this.update = function () {
         };
-        this.handleMouseUp = function () {
-        };
         createjs.EventDispatcher.initialize(StampLayer.prototype);
         this.stage = stage;
         this.stamp = stamp;
-        this.stamp.shape.addEventListener("mousedown", this.pressDown);
+        this.stamp.addEventListener("mousedown", this.pressDown);
+        this.toolId = tool.TOOL_STAMP;
     }
     StampLayer.prototype.updateTransformation = function (shapeSupport) {
         this.stamp.size.x = shapeSupport.size.x / 2;
         this.stamp.size.y = shapeSupport.size.y / 2;
         this.stamp.rotation = shapeSupport.rotation;
         this.stamp.newMatrix.identity();
-        this.stamp.newMatrix.rotate(shapeSupport.rotation);
+        this.stamp.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
         this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
-        this.stamp.shape.x = shapeSupport.container.x;
-        this.stamp.shape.y = shapeSupport.container.y;
+        this.stamp.x = shapeSupport.container.x;
+        this.stamp.y = shapeSupport.container.y;
         this.stamp.setMatrix(this.stamp.newMatrix);
-        this.stamp.draw();
+        this.stamp.updateGraphics();
     };
     StampLayer.prototype.isExit = function () {
         return !this.isStart;
@@ -81,15 +83,10 @@ var DrawingLayer = (function () {
             _this.setting.lineColor = setting.lineColor;
         };
         this.generateNewLine = function () {
-            _this.lastPoint = new createjs.Point();
-            _this.lastPoint.x = _this.stage.mouseX;
-            _this.lastPoint.y = _this.stage.mouseY;
+            _this.lastPoint = _this.container.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
             _this.currentPoint = new createjs.Point();
-            _this.currentPoint.x = _this.stage.mouseX;
-            _this.currentPoint.y = _this.stage.mouseY;
-            _this.lastMidPoint = new createjs.Point();
-            _this.lastMidPoint.x = _this.stage.mouseX;
-            _this.lastMidPoint.y = _this.stage.mouseY;
+            _this.currentPoint = _this.container.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
+            _this.lastMidPoint = _this.container.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
             _this.shape = new createjs.Shape();
             _this.container.addChild(_this.shape);
         };
@@ -97,8 +94,9 @@ var DrawingLayer = (function () {
             if (!_this.isStart)
                 return;
             console.log("update");
-            var moveX = (_this.stage.mouseX - _this.currentPoint.x);
-            var moveY = (_this.stage.mouseY - _this.currentPoint.y);
+            var mousePt = _this.container.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
+            var moveX = (mousePt.x - _this.currentPoint.x);
+            var moveY = (mousePt.y - _this.currentPoint.y);
             if (moveX * moveX + moveY * moveY > 0.1) {
                 _this.currentPoint.x += moveX;
                 _this.currentPoint.y += moveY;
@@ -226,10 +224,12 @@ var App = (function () {
             if (!(_this.layer.length == 0 || _this.layer[_this.layer.length - 1].isExit())) {
                 return;
             }
+            console.log("handleMouseDown" + _this.toolbar.toolId);
             switch (_this.toolbar.toolId) {
                 case tool.TOOL_SELECT:
                     break;
                 case tool.TOOL_PEN:
+                    console.log("start-pen-tool");
                     var container = new createjs.Container();
                     _this.drawLayerContainer.addChild(container);
                     _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, "#000");
@@ -238,51 +238,52 @@ var App = (function () {
                     _this.drawingLayer.start();
                     break;
                 case tool.TOOL_STAMP:
+                    console.log("start-star-tool");
                     var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
                     _this.stampLayer.addEventListener("show_support", _this.stampLayer_showSupportHandler);
-                    _this.drawLayerContainer.addChild(_this.stampLayer.stamp.shape);
+                    _this.drawLayerContainer.addChild(_this.stampLayer.stamp);
                     _this.layer.push(_this.stampLayer);
                     _this.stampLayer.start();
                     _this.startSupport(_this.stampLayer);
                     break;
                 case tool.TOOL_TEXT:
-                    var stamp = new Star();
-                    _this.stampLayer = new StampLayer(_this.stage, stamp);
-                    _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
-                    _this.drawLayerContainer.addChild(_this.stampLayer.stamp.shape);
-                    _this.layer.push(_this.stampLayer);
-                    _this.stampLayer.start();
+                    console.log("start-text-tool");
+                    _this.textStampLayer = new TextStampLayer(_this.stage);
+                    _this.textStampLayer.updateSetting(_this.toolbar.shapeSetting);
+                    _this.drawLayerContainer.addChild(_this.textStampLayer.stamp);
+                    _this.textStampLayer.addEventListener("show_support", _this.stampLayer_showSupportHandler);
+                    _this.layer.push(_this.textStampLayer);
+                    _this.textStampLayer.start();
                     break;
             }
         };
         this.startSupport = function (stampLayer) {
             _this.supportTarget = stampLayer;
             _this.shapeSupport.container.visible = true;
-            _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
-            _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
+            _this.shapeSupport.container.x = _this.supportTarget.stamp.x;
+            _this.shapeSupport.container.y = _this.supportTarget.stamp.y;
             _this.shapeSupport.rotation = 0;
             _this.shapeSupport.size.x = 5;
             _this.shapeSupport.size.y = 5;
             _this.supportTarget.updateTransformation(_this.shapeSupport);
-            _this.supportTarget.stamp.draw();
             _this.shapeSupport.update();
-            _this.shapeSupport.draw(true);
+            _this.shapeSupport.updateGraphics(true);
             _this.shapeSupport.startSupport();
         };
         this.stampLayer_showSupportHandler = function (e) {
             _this.shapeSupport.container.visible = true;
             _this.supportTarget = e.currentTarget;
             _this.shapeSupport.rotation = _this.supportTarget.stamp.rotation;
-            _this.shapeSupport.container.x = _this.supportTarget.stamp.shape.x;
-            _this.shapeSupport.container.y = _this.supportTarget.stamp.shape.y;
+            _this.shapeSupport.container.x = _this.supportTarget.stamp.x;
+            _this.shapeSupport.container.y = _this.supportTarget.stamp.y;
             _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x * 2;
             _this.shapeSupport.size.y = _this.supportTarget.stamp.size.y * 2;
             _this.supportTarget.updateTransformation(_this.shapeSupport);
-            _this.supportTarget.stamp.draw();
+            _this.supportTarget.stamp.updateGraphics();
             _this.shapeSupport.update();
-            _this.shapeSupport.draw(true);
+            _this.shapeSupport.updateGraphics(true);
         };
         this.changeTab = function () {
             console.log("tabChanged");
@@ -304,7 +305,7 @@ var App = (function () {
                 _this.supportTarget.updateTransformation(_this.shapeSupport);
             }
             _this.shapeSupport.update();
-            _this.shapeSupport.draw();
+            _this.shapeSupport.updateGraphics();
         };
         this.updateDrawSetting = function () {
             _this.drawingLayer.updateSetting(_this.toolbar.drawingSetting);
@@ -319,14 +320,22 @@ var App = (function () {
         this.canvas.height = 512;
         this.stage = new createjs.Stage(this.canvas);
         this.background = new createjs.Shape();
-        this.background.graphics.beginFill("white");
-        this.background.graphics.drawRect(0, 0, 1024, 512);
+        this.background.graphics.beginFill("gray");
+        this.background.graphics.drawRect(0, 0, 2000, 200);
         this.stage.addChild(this.background);
+        this.drawingContainer = new createjs.Container;
+        this.stage.addChild(this.drawingContainer);
+        this.canvasBackground = new createjs.Shape();
+        this.canvasBackground.graphics.beginFill("white");
+        this.canvasBackground.graphics.drawRect(0, 0, 1024, 512);
+        this.drawingContainer.addChild(this.canvasBackground);
         this.drawLayerContainer = new createjs.Container();
-        this.stage.addChild(this.drawLayerContainer);
+        this.drawingContainer.addChild(this.drawLayerContainer);
         this.shapeSupport = new ShapeSupport(this.stage);
-        this.stage.addChild(this.shapeSupport.container);
+        this.drawingContainer.addChild(this.shapeSupport.container);
         this.shapeSupport.container.visible = false;
+        this.drawingContainer.x = 100;
+        this.drawingContainer.y = 100;
         createjs.Ticker.addEventListener("tick", this.update);
         this.toolbar.addEventListener('change_tab', this.changeTab);
         this.toolbar.addEventListener('change_tool', this.changeTool);
@@ -382,20 +391,6 @@ var Star = (function (_super) {
                 _this.vertexOriginal.push(new createjs.Point(x_2, y_2));
             }
         };
-        this.draw = function () {
-            var Graphics = createjs.Graphics;
-            _this.graphics.clear();
-            _this.graphics.setStrokeStyle(4.0);
-            _this.graphics.beginStroke(_this.setting.lineColor);
-            _this.graphics.beginFill(_this.setting.baseColor);
-            _this.graphics.moveTo(_this.vertex[0].x, _this.vertex[0].y);
-            var vertexLentgh = _this.vertex.length;
-            for (var i = 1; i < vertexLentgh; i++) {
-                _this.graphics.lineTo(_this.vertex[i].x, _this.vertex[i].y);
-            }
-            _this.graphics.endFill();
-            _this.graphics.endStroke();
-        };
         this.centerX = 0;
         this.centerY = 0;
         this.radius = 100;
@@ -406,9 +401,10 @@ var Star = (function (_super) {
         var Graphics = createjs.Graphics;
         this.graphics = new Graphics();
         this.shape = new createjs.Shape(this.graphics);
+        this.addChild(this.shape);
         this.setVertex();
         this.setMatrix(this.newMatrix);
-        this.draw();
+        this.updateGraphics();
     }
     Star.prototype.setMatrix = function (matrix) {
         var vertexLentgh = this.vertex.length;
@@ -416,20 +412,55 @@ var Star = (function (_super) {
             this.vertex[i] = matrix.transformPoint(this.vertexOriginal[i].x, this.vertexOriginal[i].y);
         }
     };
+    Star.prototype.updateGraphics = function () {
+        var Graphics = createjs.Graphics;
+        this.graphics.clear();
+        this.graphics.setStrokeStyle(4.0);
+        this.graphics.beginStroke(this.setting.lineColor);
+        this.graphics.beginFill(this.setting.baseColor);
+        this.graphics.moveTo(this.vertex[0].x, this.vertex[0].y);
+        var vertexLentgh = this.vertex.length;
+        for (var i = 1; i < vertexLentgh; i++) {
+            this.graphics.lineTo(this.vertex[i].x, this.vertex[i].y);
+        }
+        this.graphics.endFill();
+        this.graphics.endStroke();
+    };
     return Star;
 })(Stamp);
 var TextStamp = (function (_super) {
     __extends(TextStamp, _super);
     function TextStamp() {
         _super.call(this);
+        this.text = new createjs.Text("Hello World", "20px Arial", "#ff7700");
+        this.addChild(this.text);
     }
+    TextStamp.prototype.updateGraphics = function () {
+    };
+    TextStamp.prototype.setMatrix = function (matrix) {
+        matrix.decompose(this.text);
+    };
     return TextStamp;
 })(Stamp);
 var TextStampLayer = (function (_super) {
     __extends(TextStampLayer, _super);
-    function TextStampLayer(stage, stamp) {
-        _super.call(this, stage, stamp);
+    function TextStampLayer(stage) {
+        var _this = this;
+        _super.call(this, stage, new TextStamp());
+        this.start = function () {
+            _this.textStamp.text.x = _this.stage.mouseX;
+            _this.textStamp.text.y = _this.stage.mouseY;
+            _this.isStart = true;
+            _this.stage.addEventListener("pressup", _this.handlePressUp);
+            _this.textStamp.text.addEventListener("mousedown", _this.pressDown);
+        };
+        this.textStamp = this.stamp;
     }
+    TextStampLayer.prototype.updateTransformation = function (shapeSupport) {
+        _super.prototype.updateTransformation.call(this, shapeSupport);
+        this.textStamp.text.x = shapeSupport.container.x;
+        this.textStamp.text.y = shapeSupport.container.y;
+    };
     TextStampLayer.prototype.updateSetting = function (setting) {
         this.stamp.setting.baseColor = setting.baseColor;
         this.stamp.setting.lineColor = setting.lineColor;
@@ -448,8 +479,9 @@ var ShapeSupport = (function () {
             }
             _this.dragTarget = dragTarget;
             _this.stage.addEventListener("pressup", _this.handlePressUp);
-            _this.dragPoint.x = _this.stage.mouseX - (_this.dragTarget.x + _this.container.x);
-            _this.dragPoint.y = _this.stage.mouseY - (_this.dragTarget.y + _this.container.y);
+            var mousePt = _this.container.parent.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
+            _this.dragPoint.x = mousePt.x - (_this.dragTarget.x + _this.container.x);
+            _this.dragPoint.y = mousePt.y - (_this.dragTarget.y + _this.container.y);
         };
         this.handleMouseDown = function (e) {
             console.log("handleMouseDown:" + e.currentTarget);
@@ -461,15 +493,16 @@ var ShapeSupport = (function () {
             if (!_this.dragTarget) {
                 return;
             }
-            var diffX = (_this.stage.mouseX - _this.container.x - _this.dragPoint.x) * 2;
-            var diffY = (_this.stage.mouseY - _this.container.y - _this.dragPoint.y) * 2;
+            var mousePt = _this.container.parent.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
+            var diffX = (mousePt.x - _this.container.x - _this.dragPoint.x) * 2;
+            var diffY = (mousePt.y - _this.container.y - _this.dragPoint.y) * 2;
             var diff = _this.matrix.clone().invert().transformPoint(diffX, diffY);
             console.log(_this.matrix.transformPoint(diff.x, diff.y).x, _this.matrix.transformPoint(diff.x, diff.y).y);
             switch (_this.dragTarget) {
                 case _this.baseShape:
                     console.log("baseShape - dragging");
-                    _this.container.x = _this.stage.mouseX - _this.dragPoint.x;
-                    _this.container.y = _this.stage.mouseY - _this.dragPoint.y;
+                    _this.container.x = mousePt.x - _this.dragPoint.x;
+                    _this.container.y = mousePt.y - _this.dragPoint.y;
                     break;
                 case _this.controllerLeftTop:
                     console.log("leftTop - dragging");
@@ -493,7 +526,7 @@ var ShapeSupport = (function () {
                     break;
                 case _this.controllerRotation:
                     console.log("rotation - dragging");
-                    _this.rotation = Math.atan2(diffY, diffX) * 180 / Math.PI + 90 + (_this.size.y >= 0 ? 0 : 180);
+                    _this.rotation = (Math.atan2(diffY, diffX) * 180 / Math.PI + 90) + (_this.size.y >= 0 ? 0 : 180);
                     console.log(_this.rotation);
                     break;
             }
@@ -504,7 +537,7 @@ var ShapeSupport = (function () {
             }
             _this.dragTarget = null;
         };
-        this.draw = function (drawForce) {
+        this.updateGraphics = function (drawForce) {
             if (drawForce === void 0) { drawForce = false; }
             if (!drawForce && !_this.dragTarget) {
                 return;

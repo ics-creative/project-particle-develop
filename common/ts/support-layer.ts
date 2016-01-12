@@ -99,8 +99,10 @@ class ShapeSupport {
     this.dragTarget = dragTarget;
     this.stage.addEventListener("pressup", this.handlePressUp );
 
-    this.dragPoint.x = this.stage.mouseX - (this.dragTarget.x + this.container.x ) ;
-    this.dragPoint.y = this.stage.mouseY - (this.dragTarget.y + this.container.y ) ;
+    var mousePt = this.container.parent.globalToLocal(this.stage.mouseX,this.stage.mouseY);
+
+    this.dragPoint.x = mousePt.x - (this.dragTarget.x + this.container.x ) ;
+    this.dragPoint.y = mousePt.y - (this.dragTarget.y + this.container.y ) ;
   }
 
   handleMouseDown = (e:any) => {
@@ -118,10 +120,12 @@ class ShapeSupport {
       return;
     }
 
+    var mousePt = this.container.parent.globalToLocal(this.stage.mouseX,this.stage.mouseY);
+
     //console.log(this.dragTarget + ":dragging");
 
-    var diffX = (this.stage.mouseX - this.container.x  - this.dragPoint.x ) * 2;
-    var diffY = (this.stage.mouseY - this.container.y - this.dragPoint.y ) * 2 ;
+    var diffX = (mousePt.x- this.container.x  - this.dragPoint.x ) * 2;
+    var diffY = (mousePt.y - this.container.y - this.dragPoint.y ) * 2 ;
 
     var diff = this.matrix.clone().invert().transformPoint(diffX,diffY);
 
@@ -132,8 +136,8 @@ class ShapeSupport {
       case this.baseShape:
         console.log("baseShape - dragging");
 
-        this.container.x = this.stage.mouseX - this.dragPoint.x;
-        this.container.y = this.stage.mouseY - this.dragPoint.y;
+        this.container.x = mousePt.x - this.dragPoint.x;
+        this.container.y = mousePt.y - this.dragPoint.y;
 
         break;
 
@@ -154,7 +158,6 @@ class ShapeSupport {
         console.log("rightBottom - dragging");
         this.size.x = diff.x ;
         this.size.y = diff.y ;
-
         break;
 
       case this.controllerLeftBottom:
@@ -166,7 +169,7 @@ class ShapeSupport {
       case this.controllerRotation:
         console.log("rotation - dragging");
 
-        this.rotation = Math.atan2(diffY,diffX) * 180 / Math.PI + 90  + (this.size.y >= 0 ? 0 : 180) ;
+        this.rotation = (Math.atan2(diffY,diffX) * 180 / Math.PI+ 90 )  + (this.size.y >= 0 ? 0 : 180) ;
         console.log(this.rotation);
 
         break;
@@ -180,7 +183,7 @@ class ShapeSupport {
     this.dragTarget = null;
 
   }
-  draw = (drawForce:boolean = false) => {
+  updateGraphics = (drawForce:boolean = false) => {
     if( !drawForce && !this.dragTarget) {
       return;
     }

@@ -12,6 +12,7 @@ class Star extends Stamp{
   public vertex:any = [];
   public vertexOriginal:any = [];
 
+  shape:createjs.Shape;
   constructor() {
     super();
 
@@ -28,9 +29,11 @@ class Star extends Stamp{
 
     this.shape = new createjs.Shape(this.graphics);
 
+    this.addChild(this.shape);
+
     this.setVertex();
     this.setMatrix(this.newMatrix);
-    this.draw();
+    this.updateGraphics();
   }
 
   setVertex = () => {
@@ -66,7 +69,7 @@ class Star extends Stamp{
     }
   }
 
-  draw = () => {
+  updateGraphics () {
 
     let Graphics = createjs.Graphics;
     this.graphics.clear();

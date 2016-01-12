@@ -3,30 +3,35 @@ import EventDispatcher = createjs.EventDispatcher;
  * Created by nyamogera on 2016/01/06.
  */
 
-class Stamp {
+class Stamp extends createjs.Container{
   newMatrix:createjs.Matrix2D;
   centerX:number;
   centerY:number;
-  shape:createjs.Shape;
   setting:ShapeSetting;
   size:createjs.Point;
   rotation:number;
 
   constructor() {
+    super();
+
     this.setting = new ShapeSetting();
     this.size = new createjs.Point();
     this.rotation = 0;
-  }
-
-  draw = () => {
 
   }
+
+  updateGraphics() {
+
+  }
+
   setMatrix(matrix:createjs.Matrix2D) {
 
   }
 }
 
 class StampLayer extends createjs.EventDispatcher implements ILayer{
+
+  toolId:string;
 
   mousedown:boolean;
   stage:createjs.Stage;
@@ -43,8 +48,9 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
     this.stage = stage;
     this.stamp = stamp;
 
-    this.stamp.shape.addEventListener("mousedown",this.pressDown );
+    this.stamp.addEventListener("mousedown",this.pressDown );
 
+    this.toolId = tool.TOOL_STAMP;
   }
 
   pressDown = () => {
@@ -52,21 +58,20 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   }
 
   updateTransformation(shapeSupport:ShapeSupport) {
-    //console.log(shapeSupport);
-    //console.log("updateTransformation:" + shapeSupport.size.x );
+
     this.stamp.size.x = shapeSupport.size.x / 2;
     this.stamp.size.y = shapeSupport.size.y / 2;
-    this.stamp.rotation = shapeSupport.rotation;
+    this.stamp.rotation = shapeSupport.rotation ;
 
     this.stamp.newMatrix.identity();
-    this.stamp.newMatrix.rotate(shapeSupport.rotation);
+    this.stamp.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
     this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
-    this.stamp.shape.x = shapeSupport.container.x;
-    this.stamp.shape.y = shapeSupport.container.y;
+    this.stamp.x = shapeSupport.container.x;
+    this.stamp.y = shapeSupport.container.y;
 
     this.stamp.setMatrix(this.stamp.newMatrix);
 
-    this.stamp.draw();
+    this.stamp.updateGraphics();
 
   }
 
@@ -75,8 +80,9 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   }
 
   start = () =>{
-    this.stamp.shape.x = this.stage.mouseX;
-    this.stamp.shape.y = this.stage.mouseY;
+    var mousePt = this.stamp.parent.globalToLocal(this.stage.mouseX,this.stage.mouseY);
+    this.stamp.x = mousePt.x;
+    this.stamp.y = mousePt.y;
     this.isStart  = true;
 
 
@@ -92,9 +98,6 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   }
 
   update = () =>{
-  }
-
-  handleMouseUp = () => {
   }
 
   updateSetting(setting:ShapeSetting) {
