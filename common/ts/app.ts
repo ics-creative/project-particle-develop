@@ -172,7 +172,13 @@ class App {
     this.shapeSupport.update();
     this.shapeSupport.updateGraphics(true);
 
-    this.toolbar.selectTool(this.supportTarget.toolId);
+
+    var targetText = <TextStampLayer>this.supportTarget;
+    if( this.supportTarget.toolId == tool.TOOL_TEXT ) {
+      this.toolbar.textInputElement.value = targetText.textStamp.text.text;
+    }
+
+      this.toolbar.selectTool(this.supportTarget.toolId);
   }
 
 
@@ -194,7 +200,6 @@ class App {
 
     switch (this.supportTarget.toolId) {
       case tool.TOOL_SELECT:
-
         break;
       case  tool.TOOL_PEN  :
         this.drawingLayer.updateSetting(this.toolbar.drawingSetting);

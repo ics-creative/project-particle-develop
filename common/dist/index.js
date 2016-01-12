@@ -289,6 +289,10 @@ var App = (function () {
             _this.supportTarget.stamp.updateGraphics();
             _this.shapeSupport.update();
             _this.shapeSupport.updateGraphics(true);
+            var targetText = _this.supportTarget;
+            if (_this.supportTarget.toolId == tool.TOOL_TEXT) {
+                _this.toolbar.textInputElement.value = targetText.textStamp.text.text;
+            }
             _this.toolbar.selectTool(_this.supportTarget.toolId);
         };
         this.changeTab = function () {
