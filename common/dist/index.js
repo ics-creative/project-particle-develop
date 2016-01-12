@@ -62,13 +62,14 @@ var StampLayer = (function (_super) {
         return !this.isStart;
     };
     StampLayer.prototype.updateSetting = function (setting) {
+        this.stamp.setting.lineWidth = setting.lineWidth;
         this.stamp.setting.baseColor = setting.baseColor;
         this.stamp.setting.lineColor = setting.lineColor;
     };
     return StampLayer;
 })(createjs.EventDispatcher);
 var DrawingLayer = (function () {
-    function DrawingLayer(stage, container, width, height, color) {
+    function DrawingLayer(stage, container, width, height, setting) {
         var _this = this;
         this.start = function () {
             _this.isStart = true;
@@ -108,11 +109,12 @@ var DrawingLayer = (function () {
             }
         };
         this.setting = new DrawingSetting();
-        this.setting.lineColor = color;
+        this.setting.lineColor = setting.lineColor;
+        this.setting.lineWidth = setting.lineWidth;
         this.stage = stage;
         this.container = container;
         this.lastMidPoint = new createjs.Point();
-        this.currentLineThickness = 1;
+        this.currentLineThickness = this.setting.lineWidth;
         this.width = width;
         this.height = height;
     }
@@ -151,19 +153,24 @@ var Toolbar = (function (_super) {
             _this.colorPickerLineElement.style.display = 'none';
             _this.colorPickerBaseElement.style.display = 'none';
             _this.textInputWrapElement.style.display = 'none';
+            _this.textSizeWrapElement.style.display = 'none';
+            _this.lineWidthWrapElement.style.display = 'none';
             switch (toolId) {
                 case tool.TOOL_SELECT:
                     break;
                 case tool.TOOL_PEN:
                     _this.colorPickerLineElement.style.display = 'block';
+                    _this.lineWidthWrapElement.style.display = 'block';
                     break;
                 case tool.TOOL_STAMP:
                     _this.colorPickerLineElement.style.display = 'block';
                     _this.colorPickerBaseElement.style.display = 'block';
+                    _this.lineWidthWrapElement.style.display = 'block';
                     break;
                 case tool.TOOL_TEXT:
                     _this.colorPickerLineElement.style.display = 'block';
                     _this.textInputWrapElement.style.display = 'block';
+                    _this.textSizeWrapElement.style.display = 'block';
                     break;
             }
         };
@@ -190,6 +197,13 @@ var Toolbar = (function (_super) {
         this.colorPickerLineElement = document.getElementById("colorpicker-line-wrap");
         this.colorPickerBaseElement = document.getElementById("colorpicker-base-wrap");
         this.textInputWrapElement = document.getElementById("textinput-wrap");
+        this.textSizeWrapElement = document.getElementById("textsize-wrap");
+        this.lineWidthWrapElement = document.getElementById("linewidth-wrap");
+        this.drawingSetting.lineColor = "#000";
+        this.shapeSetting.lineColor = "#000";
+        this.textSetting.lineColor = "#000";
+        this.shapeSetting.baseColor = "#000";
+        this.textSetting.text = "hello";
         this.colorPickerLine = $("#colorpicker-line");
         this.colorPickerLine.spectrum({
             showPalette: true,
@@ -216,6 +230,17 @@ var Toolbar = (function (_super) {
             console.log(_this.textSetting.text);
             _this.dispatchEvent("change_tool");
         });
+        this.lineWidthElement = document.getElementById("linewidth");
+        this.lineWidthElement.addEventListener("change", function (e) {
+            _this.shapeSetting.lineWidth = parseInt(_this.lineWidthElement.value);
+            _this.drawingSetting.lineWidth = parseInt(_this.lineWidthElement.value);
+            _this.dispatchEvent("change_tool");
+        });
+        this.textSizeElement = document.getElementById("textsize");
+        this.textSizeElement.addEventListener("change", function (e) {
+            _this.textSetting.textSize = parseInt(_this.textSizeElement.value);
+            _this.dispatchEvent("change_tool");
+        });
         this.changeTab(tool.TOOL_PEN, false);
     }
     return Toolbar;
@@ -235,7 +260,7 @@ var App = (function () {
                     console.log("start-pen-tool");
                     var container = new createjs.Container();
                     _this.drawLayerContainer.addChild(container);
-                    _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, "#000");
+                    _this.drawingLayer = new DrawingLayer(_this.stage, container, _this.canvas.width, _this.canvas.height, _this.toolbar.drawingSetting);
                     _this.drawingLayer.updateSetting(_this.toolbar.drawingSetting);
                     _this.layer.push(_this.drawingLayer);
                     _this.drawingLayer.start();
@@ -379,6 +404,7 @@ var App = (function () {
 var DrawingSetting = (function () {
     function DrawingSetting() {
         this.lineColor = "#000";
+        this.lineWidth = 3;
     }
     return DrawingSetting;
 })();
@@ -394,6 +420,7 @@ var TextSetting = (function (_super) {
     __extends(TextSetting, _super);
     function TextSetting() {
         _super.call(this);
+        this.textSize = 20;
         this.text = "文字列";
     }
     return TextSetting;
@@ -447,7 +474,7 @@ var Star = (function (_super) {
     Star.prototype.updateGraphics = function () {
         var Graphics = createjs.Graphics;
         this.graphics.clear();
-        this.graphics.setStrokeStyle(4.0);
+        this.graphics.setStrokeStyle(this.setting.lineWidth);
         this.graphics.beginStroke(this.setting.lineColor);
         this.graphics.beginFill(this.setting.baseColor);
         this.graphics.moveTo(this.vertex[0].x, this.vertex[0].y);
@@ -541,6 +568,7 @@ var TextStampLayer = (function (_super) {
         this.stamp.setting.lineColor = setting.lineColor;
         this.textStamp.text.color = setting.lineColor;
         this.textStamp.text.text = textSetting.text;
+        this.textStamp.text.font = textSetting.textSize + "px Arial";
         this.textStamp.resize();
     };
     return TextStampLayer;

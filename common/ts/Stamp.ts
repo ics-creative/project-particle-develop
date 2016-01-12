@@ -98,6 +98,7 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
   }
 
   updateSetting(setting:ShapeSetting) {
+    this.stamp.setting.lineWidth = setting.lineWidth;
     this.stamp.setting.baseColor = setting.baseColor;
     this.stamp.setting.lineColor = setting.lineColor;
   }

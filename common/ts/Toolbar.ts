@@ -26,8 +26,12 @@ class Toolbar extends createjs.EventDispatcher {
   colorPickerLineElement:HTMLDivElement;
   colorPickerBaseElement:HTMLDivElement;
   textInputWrapElement:HTMLDivElement;
+  textSizeWrapElement:HTMLDivElement;
+  lineWidthWrapElement:HTMLDivElement;
 
   textInputElement:HTMLInputElement;
+  lineWidthElement:HTMLInputElement;
+  textSizeElement:HTMLInputElement;
 
   constructor() {
     super();
@@ -47,11 +51,9 @@ class Toolbar extends createjs.EventDispatcher {
     this.toolSelectElement.addEventListener("click", (e:any) => {
       this.changeTab(tool.TOOL_SELECT );
     })
-
     this.toolPenElement.addEventListener("click", (e:any) => {
       this.changeTab(tool.TOOL_PEN );
     });
-
     this.toolStampElement.addEventListener("click", (e:any) => {
       this.changeTab(tool.TOOL_STAMP );
     });
@@ -64,7 +66,15 @@ class Toolbar extends createjs.EventDispatcher {
     this.colorPickerLineElement = <HTMLDivElement>document.getElementById("colorpicker-line-wrap");
     this.colorPickerBaseElement = <HTMLDivElement>document.getElementById("colorpicker-base-wrap");
     this.textInputWrapElement = <HTMLDivElement>document.getElementById("textinput-wrap");
+    this.textSizeWrapElement = <HTMLDivElement>document.getElementById("textsize-wrap");
+    this.lineWidthWrapElement = <HTMLDivElement>document.getElementById("linewidth-wrap");
 
+    //  初期カラー設定
+    this.drawingSetting.lineColor = "#000";
+    this.shapeSetting.lineColor = "#000";
+    this.textSetting.lineColor = "#000";
+    this.shapeSetting.baseColor = "#000";
+    this.textSetting.text = "hello"
 
     //  カラーピッカー(ライン)
     this.colorPickerLine = $("#colorpicker-line");
@@ -100,8 +110,25 @@ class Toolbar extends createjs.EventDispatcher {
       this.dispatchEvent("change_tool");
     });
 
-    this.changeTab( tool.TOOL_PEN ,false );
+    //  線幅
+    this.lineWidthElement = <HTMLInputElement>document.getElementById("linewidth");
+    this.lineWidthElement.addEventListener("change", (e:any ) => {
 
+      this.shapeSetting.lineWidth =  parseInt(this.lineWidthElement.value);
+      this.drawingSetting.lineWidth =  parseInt(this.lineWidthElement.value);
+
+      this.dispatchEvent("change_tool");
+    });
+
+    //  テキストサイズ
+    this.textSizeElement = <HTMLInputElement>document.getElementById("textsize");
+    this.textSizeElement.addEventListener("change", (e:any ) => {
+      this.textSetting.textSize =  parseInt(this.textSizeElement.value);
+
+      this.dispatchEvent("change_tool");
+    });
+
+    this.changeTab( tool.TOOL_PEN ,false );
   }
 
   changeTab = (tabName:string,dispatch:boolean = true) => {
@@ -121,20 +148,25 @@ class Toolbar extends createjs.EventDispatcher {
     this.colorPickerLineElement.style.display = 'none';
     this.colorPickerBaseElement.style.display = 'none';
     this.textInputWrapElement.style.display = 'none';
+    this.textSizeWrapElement.style.display = 'none';
+    this.lineWidthWrapElement.style.display = 'none';
 
     switch( toolId ) {
       case tool.TOOL_SELECT:
         break;
       case tool.TOOL_PEN:
         this.colorPickerLineElement.style.display = 'block';
+        this.lineWidthWrapElement.style.display = 'block';
         break;
       case tool.TOOL_STAMP:
         this.colorPickerLineElement.style.display = 'block';
         this.colorPickerBaseElement.style.display = 'block';
+        this.lineWidthWrapElement.style.display = 'block';
         break;
       case tool.TOOL_TEXT:
         this.colorPickerLineElement.style.display = 'block';
         this.textInputWrapElement.style.display = 'block';
+        this.textSizeWrapElement.style.display = 'block';
         break;
 
     }

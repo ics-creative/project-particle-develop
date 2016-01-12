@@ -16,14 +16,15 @@ class DrawingLayer implements ILayer{
   private setting:DrawingSetting;
   private isStart:boolean;
 
-  constructor(stage:createjs.Stage,container:createjs.Container,width:number,height:number,color:string) {
+  constructor(stage:createjs.Stage,container:createjs.Container,width:number,height:number,setting:DrawingSetting) {
     this.setting = new DrawingSetting();
-    this.setting.lineColor = color;
+    this.setting.lineColor = setting.lineColor;
+    this.setting.lineWidth = setting.lineWidth;
     this.stage = stage;
     this.container = container;
 
     this.lastMidPoint  = new createjs.Point();
-    this.currentLineThickness = 1;
+    this.currentLineThickness = this.setting.lineWidth;
     this.width = width;
     this.height = height;
   }

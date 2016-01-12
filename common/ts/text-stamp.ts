@@ -23,7 +23,6 @@ class TextStamp extends Stamp{
 
   resize = () => {
 
-
     this.text.x = -this.text.getMeasuredWidth() / 2;
     this.text.y = -this.text.getMeasuredHeight() / 2;
 
@@ -83,7 +82,7 @@ class TextStampLayer extends StampLayer{
     this.textStamp.text.color = setting.lineColor;
 
     this.textStamp.text.text = textSetting.text;
-
+    this.textStamp.text.font = textSetting.textSize + "px Arial"
     this.textStamp.resize();
   }
 }

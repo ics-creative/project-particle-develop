@@ -91,7 +91,7 @@ class App {
         var container = new createjs.Container();
         this.drawLayerContainer.addChild(container);
 
-        this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, "#000");
+        this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, this.toolbar.drawingSetting);
         this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
 
         this.layer.push(this.drawingLayer);

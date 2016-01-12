@@ -75,7 +75,7 @@ class Star extends Stamp{
 
     let Graphics = createjs.Graphics;
     this.graphics.clear();
-    this.graphics.setStrokeStyle(4.0);
+    this.graphics.setStrokeStyle(this.setting.lineWidth);
     this.graphics.beginStroke(this.setting.lineColor);
     this.graphics.beginFill(this.setting.baseColor);
 
