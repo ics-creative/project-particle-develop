@@ -18,7 +18,7 @@ class Star extends Stamp{
   constructor() {
     super();
 
-    this.radius = 100;
+    this.radius = 50;
     this.sides = 6;
     this.angle = 0;
     this.pointSize = 0.3;

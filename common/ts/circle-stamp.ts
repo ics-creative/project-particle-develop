@@ -37,7 +37,7 @@ class Circle extends Stamp{
     this.graphics.setStrokeStyle(4.0);
     this.graphics.beginStroke(this.setting.lineColor);
     this.graphics.beginFill(this.setting.baseColor);
-    this.graphics.drawEllipse(-this.size.x,-this.size.y,this.size.x * 2,this.size.y * 2)
+    this.graphics.drawEllipse(-this.size.x/2,-this.size.y/2,this.size.x,this.size.y)
     this.graphics.endFill();
     this.graphics.endStroke();
   }

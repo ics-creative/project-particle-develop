@@ -44,45 +44,41 @@ class ShapeSupport {
     this.container = new createjs.Container();
     this.baseShape = new createjs.Shape();
     this.container.addChild(this.baseShape);
-    this.baseShape.addEventListener("mousedown", this.handleMouseDown );
+    this.baseShape.addEventListener("mousedown", this.handleMouseDown);
 
     this.controllerLeftTop = new createjs.Shape();
     this.container.addChild(this.controllerLeftTop);
-    this.controllerLeftTop.addEventListener("mousedown", this.handleMouseDown );
+    this.controllerLeftTop.addEventListener("mousedown", this.handleMouseDown);
 
     this.controllerRightTop = new createjs.Shape();
     this.container.addChild(this.controllerRightTop);
-    this.controllerRightTop.addEventListener("mousedown", this.handleMouseDown );
+    this.controllerRightTop.addEventListener("mousedown", this.handleMouseDown);
 
     this.controllerLeftBottom = new createjs.Shape();
     this.container.addChild(this.controllerLeftBottom);
-    this.controllerLeftBottom.addEventListener("mousedown", this.handleMouseDown );
+    this.controllerLeftBottom.addEventListener("mousedown", this.handleMouseDown);
 
     this.controllerRightBottom = new createjs.Shape();
     this.container.addChild(this.controllerRightBottom);
-    this.controllerRightBottom.addEventListener("mousedown", this.handleMouseDown );
+    this.controllerRightBottom.addEventListener("mousedown", this.handleMouseDown);
 
     this.controllerRotation = new createjs.Shape();
     this.container.addChild(this.controllerRotation);
-    this.controllerRotation.addEventListener("mousedown", this.handleMouseDown );
+    this.controllerRotation.addEventListener("mousedown", this.handleMouseDown);
 
 
     var controlSize:number = 10;
 
-    this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+    this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
 
     this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(this.lineColor);
-    this.controllerRightTop.graphics.drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+    this.controllerRightTop.graphics.drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
 
-    this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+    this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
 
-    this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+    this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
 
-    this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-    drawRect(-controlSize/2,-controlSize/2,controlSize,controlSize).closePath();
+    this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
 
   }
 
@@ -92,17 +88,17 @@ class ShapeSupport {
 
   startDrag = (dragTarget:createjs.Shape) => {
 
-    if(this.dragTarget) {
-      this.stage.removeEventListener("pressup", this.handlePressUp );
+    if (this.dragTarget) {
+      this.stage.removeEventListener("pressup", this.handlePressUp);
     }
 
     this.dragTarget = dragTarget;
-    this.stage.addEventListener("pressup", this.handlePressUp );
+    this.stage.addEventListener("pressup", this.handlePressUp);
 
-    var mousePt = this.container.parent.globalToLocal(this.stage.mouseX,this.stage.mouseY);
+    var mousePt = this.container.parent.globalToLocal(this.stage.mouseX, this.stage.mouseY);
 
-    this.dragPoint.x = mousePt.x - (this.dragTarget.x + this.container.x ) ;
-    this.dragPoint.y = mousePt.y - (this.dragTarget.y + this.container.y ) ;
+    this.dragPoint.x = mousePt.x - (this.dragTarget.x + this.container.x );
+    this.dragPoint.y = mousePt.y - (this.dragTarget.y + this.container.y );
   }
 
   handleMouseDown = (e:any) => {
@@ -110,28 +106,28 @@ class ShapeSupport {
     this.startDrag(e.currentTarget);
   }
 
-  update  = () => {
+  update = () => {
 
 
     this.matrix.identity();
     this.matrix.rotate(this.rotation);
 
-    if(!this.dragTarget) {
+    if (!this.dragTarget) {
       return;
     }
 
-    var mousePt = this.container.parent.globalToLocal(this.stage.mouseX,this.stage.mouseY);
+    var mousePt = this.container.parent.globalToLocal(this.stage.mouseX, this.stage.mouseY);
 
     //console.log(this.dragTarget + ":dragging");
 
-    var diffX = (mousePt.x- this.container.x  - this.dragPoint.x ) * 2;
-    var diffY = (mousePt.y - this.container.y - this.dragPoint.y ) * 2 ;
+    var diffX = (mousePt.x - this.container.x - this.dragPoint.x );
+    var diffY = (mousePt.y - this.container.y - this.dragPoint.y );
 
-    var diff = this.matrix.clone().invert().transformPoint(diffX,diffY);
+    var diff = this.matrix.clone().invert().transformPoint(diffX, diffY);
 
-    console.log(this.matrix.transformPoint(diff.x,diff.y).x,this.matrix.transformPoint(diff.x,diff.y).y);
+    console.log(this.matrix.transformPoint(diff.x, diff.y).x, this.matrix.transformPoint(diff.x, diff.y).y);
 
-    switch(this.dragTarget) {
+    switch (this.dragTarget) {
 
       case this.baseShape:
         console.log("baseShape - dragging");
@@ -144,32 +140,32 @@ class ShapeSupport {
       case this.controllerLeftTop:
         console.log("leftTop - dragging");
 
-        this.size.x = -diff.x ;
-        this.size.y = -diff.y ;
+        this.size.x = -diff.x * 2;
+        this.size.y = -diff.y * 2;
         break;
 
       case this.controllerRightTop:
         console.log("rightTop - dragging");
-        this.size.x = diff.x ;
-        this.size.y = -diff.y ;
+        this.size.x = diff.x * 2;
+        this.size.y = -diff.y * 2;
         break;
 
       case this.controllerRightBottom:
         console.log("rightBottom - dragging");
-        this.size.x = diff.x ;
-        this.size.y = diff.y ;
+        this.size.x = diff.x * 2;
+        this.size.y = diff.y * 2;
         break;
 
       case this.controllerLeftBottom:
         console.log("leftBottom - dragging");
-        this.size.x = -diff.x ;
-        this.size.y = diff.y ;
+        this.size.x = -diff.x * 2;
+        this.size.y = diff.y * 2;
         break;
 
       case this.controllerRotation:
         console.log("rotation - dragging");
 
-        this.rotation = (Math.atan2(diffY,diffX) * 180 / Math.PI+ 90 )  + (this.size.y >= 0 ? 0 : 180) ;
+        this.rotation = (Math.atan2(diffY, diffX) * 180 / Math.PI + 90 ) + (this.size.y >= 0 ? 0 : 180);
         console.log(this.rotation);
 
         break;
@@ -177,14 +173,14 @@ class ShapeSupport {
   }
 
   handlePressUp = (e:any) => {
-    if( this.stage ) {
-      this.stage.removeEventListener("pressup", this.handlePressUp );
+    if (this.stage) {
+      this.stage.removeEventListener("pressup", this.handlePressUp);
     }
     this.dragTarget = null;
 
   }
   updateGraphics = (drawForce:boolean = false) => {
-    if( !drawForce && !this.dragTarget) {
+    if (!drawForce && !this.dragTarget) {
       return;
     }
 
@@ -193,31 +189,25 @@ class ShapeSupport {
     var harf_w:number = this.size.x / 2;
     var harf_h:number = this.size.y / 2;
 
-    var leftTop:createjs.Point = this.matrix.transformPoint(-harf_w,-harf_h);
-    var rightTop:createjs.Point = this.matrix.transformPoint(harf_w,-harf_h);
-    var leftBottom:createjs.Point = this.matrix.transformPoint(-harf_w,harf_h);
-    var rightBottom:createjs.Point = this.matrix.transformPoint(harf_w,harf_h);
+    var leftTop:createjs.Point = this.matrix.transformPoint(-harf_w, -harf_h);
+    var rightTop:createjs.Point = this.matrix.transformPoint(harf_w, -harf_h);
+    var leftBottom:createjs.Point = this.matrix.transformPoint(-harf_w, harf_h);
+    var rightBottom:createjs.Point = this.matrix.transformPoint(harf_w, harf_h);
 
-    var rotationPointStart:createjs.Point = this.matrix.transformPoint(0,-harf_h);
-    var rotationPoint:createjs.Point = this.matrix.transformPoint(0,-harf_h - (this.size.y>=0?50:-50));
+    var rotationPointStart:createjs.Point = this.matrix.transformPoint(0, -harf_h);
+    var rotationPoint:createjs.Point = this.matrix.transformPoint(0, -harf_h - (this.size.y >= 0 ? 50 : -50));
 
-    var color = createjs.Graphics.getRGB(1,1,1, 0.01);
+    var color = createjs.Graphics.getRGB(1, 1, 1, 0.01);
 
-    graphics.clear().beginFill(color).beginStroke(this.lineColor).
-      moveTo(leftTop.x,leftTop.y).
-      lineTo(leftTop.x,leftTop.y).
-      lineTo(rightTop.x,rightTop.y).
-      lineTo(rightBottom.x,rightBottom.y).
-      lineTo(leftBottom.x,leftBottom.y).
-      lineTo(leftTop.x,leftTop.y);
+    graphics.clear().beginFill(color).beginStroke(this.lineColor).moveTo(leftTop.x, leftTop.y).lineTo(leftTop.x, leftTop.y).lineTo(rightTop.x, rightTop.y).lineTo(rightBottom.x, rightBottom.y).lineTo(leftBottom.x, leftBottom.y).lineTo(leftTop.x, leftTop.y);
 
-    graphics.moveTo(rotationPointStart.x,rotationPointStart.y).lineTo(rotationPoint.x,rotationPoint.y);
+    graphics.moveTo(rotationPointStart.x, rotationPointStart.y).lineTo(rotationPoint.x, rotationPoint.y);
 
-    this.controllerLeftTop.setTransform(leftTop.x,leftTop.y,1,1,this.rotation);
-    this.controllerRightTop.setTransform(rightTop.x,rightTop.y,1,1,this.rotation);
-    this.controllerRightBottom.setTransform(rightBottom.x,rightBottom.y,1,1,this.rotation);
-    this.controllerLeftBottom.setTransform(leftBottom.x,leftBottom.y,1,1,this.rotation);
-    this.controllerRotation.setTransform(rotationPoint.x,rotationPoint.y,1,1,this.rotation);
+    this.controllerLeftTop.setTransform(leftTop.x, leftTop.y, 1, 1, this.rotation);
+    this.controllerRightTop.setTransform(rightTop.x, rightTop.y, 1, 1, this.rotation);
+    this.controllerRightBottom.setTransform(rightBottom.x, rightBottom.y, 1, 1, this.rotation);
+    this.controllerLeftBottom.setTransform(leftBottom.x, leftBottom.y, 1, 1, this.rotation);
+    this.controllerRotation.setTransform(rotationPoint.x, rotationPoint.y, 1, 1, this.rotation);
   }
 }
 

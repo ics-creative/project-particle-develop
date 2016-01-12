@@ -99,7 +99,7 @@ class App {
 
         console.log("start-star-tool");
 
-        var stamp = new Circle();
+        var stamp = new Star();
         this.stampLayer = new StampLayer(this.stage,stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
         this.stampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)
@@ -155,8 +155,8 @@ class App {
     this.shapeSupport.rotation = this.supportTarget.stamp.rotation;
     this.shapeSupport.container.x = this.supportTarget.stamp.x;
     this.shapeSupport.container.y = this.supportTarget.stamp.y;
-    this.shapeSupport.size.x = this.supportTarget.stamp.size.x * 2;
-    this.shapeSupport.size.y = this.supportTarget.stamp.size.y * 2;
+    this.shapeSupport.size.x = this.supportTarget.stamp.size.x;
+    this.shapeSupport.size.y = this.supportTarget.stamp.size.y;
 
     this.supportTarget.updateTransformation(this.shapeSupport);
     this.supportTarget.stamp.updateGraphics();

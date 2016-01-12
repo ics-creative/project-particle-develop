@@ -47,12 +47,12 @@ var StampLayer = (function (_super) {
         this.toolId = tool.TOOL_STAMP;
     }
     StampLayer.prototype.updateTransformation = function (shapeSupport) {
-        this.stamp.size.x = shapeSupport.size.x / 2;
-        this.stamp.size.y = shapeSupport.size.y / 2;
+        this.stamp.size.x = shapeSupport.size.x;
+        this.stamp.size.y = shapeSupport.size.y;
         this.stamp.rotation = shapeSupport.rotation;
         this.stamp.newMatrix.identity();
         this.stamp.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
-        this.stamp.newMatrix.scale(shapeSupport.size.x / 200, shapeSupport.size.y / 200);
+        this.stamp.newMatrix.scale(shapeSupport.size.x / 100, shapeSupport.size.y / 100);
         this.stamp.x = shapeSupport.container.x;
         this.stamp.y = shapeSupport.container.y;
         this.stamp.setMatrix(this.stamp.newMatrix);
@@ -242,7 +242,7 @@ var App = (function () {
                     break;
                 case tool.TOOL_STAMP:
                     console.log("start-star-tool");
-                    var stamp = new Circle();
+                    var stamp = new Star();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
                     _this.stampLayer.addEventListener("show_support", _this.stampLayer_showSupportHandler);
@@ -281,8 +281,8 @@ var App = (function () {
             _this.shapeSupport.rotation = _this.supportTarget.stamp.rotation;
             _this.shapeSupport.container.x = _this.supportTarget.stamp.x;
             _this.shapeSupport.container.y = _this.supportTarget.stamp.y;
-            _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x * 2;
-            _this.shapeSupport.size.y = _this.supportTarget.stamp.size.y * 2;
+            _this.shapeSupport.size.x = _this.supportTarget.stamp.size.x;
+            _this.shapeSupport.size.y = _this.supportTarget.stamp.size.y;
             _this.supportTarget.updateTransformation(_this.shapeSupport);
             _this.supportTarget.stamp.updateGraphics();
             _this.shapeSupport.update();
@@ -394,7 +394,7 @@ var Star = (function (_super) {
                 _this.vertexOriginal.push(new createjs.Point(x_2, y_2));
             }
         };
-        this.radius = 100;
+        this.radius = 50;
         this.sides = 6;
         this.angle = 0;
         this.pointSize = 0.3;
@@ -450,7 +450,7 @@ var Circle = (function (_super) {
         this.graphics.setStrokeStyle(4.0);
         this.graphics.beginStroke(this.setting.lineColor);
         this.graphics.beginFill(this.setting.baseColor);
-        this.graphics.drawEllipse(-this.size.x, -this.size.y, this.size.x * 2, this.size.y * 2);
+        this.graphics.drawEllipse(-this.size.x / 2, -this.size.y / 2, this.size.x, this.size.y);
         this.graphics.endFill();
         this.graphics.endStroke();
     };
@@ -534,8 +534,8 @@ var ShapeSupport = (function () {
                 return;
             }
             var mousePt = _this.container.parent.globalToLocal(_this.stage.mouseX, _this.stage.mouseY);
-            var diffX = (mousePt.x - _this.container.x - _this.dragPoint.x) * 2;
-            var diffY = (mousePt.y - _this.container.y - _this.dragPoint.y) * 2;
+            var diffX = (mousePt.x - _this.container.x - _this.dragPoint.x);
+            var diffY = (mousePt.y - _this.container.y - _this.dragPoint.y);
             var diff = _this.matrix.clone().invert().transformPoint(diffX, diffY);
             console.log(_this.matrix.transformPoint(diff.x, diff.y).x, _this.matrix.transformPoint(diff.x, diff.y).y);
             switch (_this.dragTarget) {
@@ -546,23 +546,23 @@ var ShapeSupport = (function () {
                     break;
                 case _this.controllerLeftTop:
                     console.log("leftTop - dragging");
-                    _this.size.x = -diff.x;
-                    _this.size.y = -diff.y;
+                    _this.size.x = -diff.x * 2;
+                    _this.size.y = -diff.y * 2;
                     break;
                 case _this.controllerRightTop:
                     console.log("rightTop - dragging");
-                    _this.size.x = diff.x;
-                    _this.size.y = -diff.y;
+                    _this.size.x = diff.x * 2;
+                    _this.size.y = -diff.y * 2;
                     break;
                 case _this.controllerRightBottom:
                     console.log("rightBottom - dragging");
-                    _this.size.x = diff.x;
-                    _this.size.y = diff.y;
+                    _this.size.x = diff.x * 2;
+                    _this.size.y = diff.y * 2;
                     break;
                 case _this.controllerLeftBottom:
                     console.log("leftBottom - dragging");
-                    _this.size.x = -diff.x;
-                    _this.size.y = diff.y;
+                    _this.size.x = -diff.x * 2;
+                    _this.size.y = diff.y * 2;
                     break;
                 case _this.controllerRotation:
                     console.log("rotation - dragging");
@@ -592,13 +592,7 @@ var ShapeSupport = (function () {
             var rotationPointStart = _this.matrix.transformPoint(0, -harf_h);
             var rotationPoint = _this.matrix.transformPoint(0, -harf_h - (_this.size.y >= 0 ? 50 : -50));
             var color = createjs.Graphics.getRGB(1, 1, 1, 0.01);
-            graphics.clear().beginFill(color).beginStroke(_this.lineColor).
-                moveTo(leftTop.x, leftTop.y).
-                lineTo(leftTop.x, leftTop.y).
-                lineTo(rightTop.x, rightTop.y).
-                lineTo(rightBottom.x, rightBottom.y).
-                lineTo(leftBottom.x, leftBottom.y).
-                lineTo(leftTop.x, leftTop.y);
+            graphics.clear().beginFill(color).beginStroke(_this.lineColor).moveTo(leftTop.x, leftTop.y).lineTo(leftTop.x, leftTop.y).lineTo(rightTop.x, rightTop.y).lineTo(rightBottom.x, rightBottom.y).lineTo(leftBottom.x, leftBottom.y).lineTo(leftTop.x, leftTop.y);
             graphics.moveTo(rotationPointStart.x, rotationPointStart.y).lineTo(rotationPoint.x, rotationPoint.y);
             _this.controllerLeftTop.setTransform(leftTop.x, leftTop.y, 1, 1, _this.rotation);
             _this.controllerRightTop.setTransform(rightTop.x, rightTop.y, 1, 1, _this.rotation);
@@ -634,16 +628,12 @@ var ShapeSupport = (function () {
         this.container.addChild(this.controllerRotation);
         this.controllerRotation.addEventListener("mousedown", this.handleMouseDown);
         var controlSize = 10;
-        this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
         this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(this.lineColor);
         this.controllerRightTop.graphics.drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
-        this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
-        this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
-        this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).
-            drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+        this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
     }
     return ShapeSupport;
 })();
