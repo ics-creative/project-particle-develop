@@ -99,7 +99,7 @@ class App {
 
         console.log("start-star-tool");
 
-        var stamp = new Star();
+        var stamp = new Circle();
         this.stampLayer = new StampLayer(this.stage,stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
         this.stampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)

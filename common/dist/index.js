@@ -242,7 +242,7 @@ var App = (function () {
                     break;
                 case tool.TOOL_STAMP:
                     console.log("start-star-tool");
-                    var stamp = new Star();
+                    var stamp = new Circle();
                     _this.stampLayer = new StampLayer(_this.stage, stamp);
                     _this.stampLayer.updateSetting(_this.toolbar.shapeSetting);
                     _this.stampLayer.addEventListener("show_support", _this.stampLayer_showSupportHandler);
@@ -429,6 +429,32 @@ var Star = (function (_super) {
         this.graphics.endStroke();
     };
     return Star;
+})(Stamp);
+var Circle = (function (_super) {
+    __extends(Circle, _super);
+    function Circle() {
+        _super.call(this);
+        this.setVertex = function () {
+        };
+        this.centerX = 0;
+        this.centerY = 0;
+        this.shape = new createjs.Shape(this.graphics);
+        this.graphics = this.shape.graphics;
+        this.addChild(this.shape);
+        this.updateGraphics();
+    }
+    Circle.prototype.setMatrix = function (matrix) {
+    };
+    Circle.prototype.updateGraphics = function () {
+        this.graphics.clear();
+        this.graphics.setStrokeStyle(4.0);
+        this.graphics.beginStroke(this.setting.lineColor);
+        this.graphics.beginFill(this.setting.baseColor);
+        this.graphics.drawEllipse(-this.size.x, -this.size.y, this.size.x * 2, this.size.y * 2);
+        this.graphics.endFill();
+        this.graphics.endStroke();
+    };
+    return Circle;
 })(Stamp);
 var TextStamp = (function (_super) {
     __extends(TextStamp, _super);
