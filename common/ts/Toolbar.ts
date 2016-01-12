@@ -6,6 +6,7 @@ module tool {
   export const TOOL_PEN = "tool-pen";
   export const TOOL_STAMP = "tool-stamp";
   export const TOOL_TEXT = "tool-text";
+  export const TOOL_IMAGE = "tool-image";
 }
 class Toolbar extends createjs.EventDispatcher {
 

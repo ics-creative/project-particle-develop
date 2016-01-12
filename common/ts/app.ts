@@ -73,6 +73,27 @@ class App {
     this.stage.addEventListener("pressmove", this.handleMouseDown);
   }
 
+  addImage(image:any){
+    //空の.Bitmap()が存在する
+    var bitmap = new createjs.Bitmap(image);
+
+    var stamp = new BitmapStamp(bitmap);
+    this.stampLayer = new StampLayer(this.stage, stamp);
+    this.stampLayer.updateSetting(this.toolbar.shapeSetting);
+    this.stampLayer.addEventListener("show_support", this.stampLayer_showSupportHandler)
+    this.drawLayerContainer.addChild(this.stampLayer.stamp);
+
+
+    stamp.x = 300;
+    stamp.y = 300;
+
+    this.layer.push(this.stampLayer);
+    //this.stampLayer.start();
+
+    //this.startSupport(this.stampLayer);
+
+  }
+
   handleMouseDown = () => {
 
 
@@ -130,6 +151,7 @@ class App {
 
         this.textStampLayer.start();
         break;
+
     }
   }
 

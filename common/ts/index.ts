@@ -18,6 +18,28 @@ window.onload = function () {
   var exportButton = document.getElementById("btn_export");
   exportButton.addEventListener("click",runExport);
 
+  load();
+
+}
+
+var queue:createjs.LoadQueue;
+
+// 読み込み完了
+function handleComplete() {
+  // 読み込んだアイテムを配置
+  var image = queue.getResult("myImage");
+
+  app.addImage(image);
+}
+
+// 読み込み開始
+function load() {
+  console.log("load");
+  queue = new createjs.LoadQueue(false);
+  queue.addEventListener("complete", handleComplete);
+  queue.loadManifest([
+    {id: "myImage", src:"https://ics.media/wp-content/uploads/2015/12/1512_js_indent.jpg"}
+  ]);
 }
 
 /**

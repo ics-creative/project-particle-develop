@@ -13,6 +13,18 @@ var Stamp = (function (_super) {
         this.size = new createjs.Point();
         this.rotation = 0;
     }
+    Stamp.prototype.updateTransformation = function (shapeSupport) {
+        this.size.x = shapeSupport.size.x;
+        this.size.y = shapeSupport.size.y;
+        this.rotation = shapeSupport.rotation;
+        this.newMatrix.identity();
+        this.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
+        this.newMatrix.scale(shapeSupport.size.x / 100, shapeSupport.size.y / 100);
+        this.x = shapeSupport.container.x;
+        this.y = shapeSupport.container.y;
+        this.setMatrix(this.newMatrix);
+        this.updateGraphics();
+    };
     Stamp.prototype.updateGraphics = function () {
     };
     Stamp.prototype.setMatrix = function (matrix) {
@@ -47,16 +59,7 @@ var StampLayer = (function (_super) {
         this.toolId = tool.TOOL_STAMP;
     }
     StampLayer.prototype.updateTransformation = function (shapeSupport) {
-        this.stamp.size.x = shapeSupport.size.x;
-        this.stamp.size.y = shapeSupport.size.y;
-        this.stamp.rotation = shapeSupport.rotation;
-        this.stamp.newMatrix.identity();
-        this.stamp.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
-        this.stamp.newMatrix.scale(shapeSupport.size.x / 100, shapeSupport.size.y / 100);
-        this.stamp.x = shapeSupport.container.x;
-        this.stamp.y = shapeSupport.container.y;
-        this.stamp.setMatrix(this.stamp.newMatrix);
-        this.stamp.updateGraphics();
+        this.stamp.updateTransformation(shapeSupport);
     };
     StampLayer.prototype.isExit = function () {
         return !this.isStart;
@@ -135,6 +138,7 @@ var tool;
     tool.TOOL_PEN = "tool-pen";
     tool.TOOL_STAMP = "tool-stamp";
     tool.TOOL_TEXT = "tool-text";
+    tool.TOOL_IMAGE = "tool-image";
 })(tool || (tool = {}));
 var Toolbar = (function (_super) {
     __extends(Toolbar, _super);
@@ -399,6 +403,17 @@ var App = (function () {
         this.toolbar.addEventListener('change_tool', this.changeTool);
         this.stage.addEventListener("pressmove", this.handleMouseDown);
     }
+    App.prototype.addImage = function (image) {
+        var bitmap = new createjs.Bitmap(image);
+        var stamp = new BitmapStamp(bitmap);
+        this.stampLayer = new StampLayer(this.stage, stamp);
+        this.stampLayer.updateSetting(this.toolbar.shapeSetting);
+        this.stampLayer.addEventListener("show_support", this.stampLayer_showSupportHandler);
+        this.drawLayerContainer.addChild(this.stampLayer.stamp);
+        stamp.x = 300;
+        stamp.y = 300;
+        this.layer.push(this.stampLayer);
+    };
     return App;
 })();
 var DrawingSetting = (function () {
@@ -512,6 +527,46 @@ var Circle = (function (_super) {
         this.graphics.endStroke();
     };
     return Circle;
+})(Stamp);
+var BitmapStamp = (function (_super) {
+    __extends(BitmapStamp, _super);
+    function BitmapStamp(bitmap) {
+        _super.call(this);
+        this.bitmap = bitmap;
+        this.shape = new createjs.Shape();
+        var color = createjs.Graphics.getRGB(1, 1, 1, 0.9);
+        this.shape.graphics.beginFill(color).drawRect(0, 0, this.bitmap.image.width, this.bitmap.image.height);
+        this.size.x = this.bitmap.image.width;
+        this.size.y = this.bitmap.image.height;
+        this.addChild(this.shape);
+        this.addChild(this.bitmap);
+        this.bitmap.mouseEnabled = false;
+        this.setMatrix(this.newMatrix);
+        this.updateGraphics();
+    }
+    BitmapStamp.prototype.setMatrix = function (matrix) {
+        matrix.decompose(this.shape);
+        matrix.decompose(this.bitmap);
+    };
+    BitmapStamp.prototype.updateTransformation = function (shapeSupport) {
+        var scale = new createjs.Point(shapeSupport.size.x / this.bitmap.image.width, shapeSupport.size.y / this.bitmap.image.height);
+        this.size.x = shapeSupport.size.x;
+        this.size.y = shapeSupport.size.y;
+        this.rotation = shapeSupport.rotation;
+        this.newMatrix.identity();
+        this.newMatrix.translate(-this.bitmap.image.width / 2, -this.bitmap.image.height / 2);
+        this.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
+        this.newMatrix.scale(scale.x, scale.y);
+        this.x = shapeSupport.container.x;
+        this.y = shapeSupport.container.y;
+        this.newMatrix.decompose(this.shape);
+        this.newMatrix.decompose(this.bitmap);
+        this.setMatrix(this.newMatrix);
+        this.updateGraphics();
+    };
+    BitmapStamp.prototype.updateGraphics = function () {
+    };
+    return BitmapStamp;
 })(Stamp);
 var TextStamp = (function (_super) {
     __extends(TextStamp, _super);
@@ -721,7 +776,21 @@ window.onload = function () {
     app = new App();
     var exportButton = document.getElementById("btn_export");
     exportButton.addEventListener("click", runExport);
+    load();
 };
+var queue;
+function handleComplete() {
+    var image = queue.getResult("myImage");
+    app.addImage(image);
+}
+function load() {
+    console.log("load");
+    queue = new createjs.LoadQueue(false);
+    queue.addEventListener("complete", handleComplete);
+    queue.loadManifest([
+        { id: "myImage", src: "https://ics.media/wp-content/uploads/2015/12/1512_js_indent.jpg" }
+    ]);
+}
 var exporter;
 function runExport(e) {
     exporter = new SVGExporter(app.drawLayerContainer, false, false, false);

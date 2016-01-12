@@ -33,7 +33,6 @@ class TextStamp extends Stamp{
     this.size.y = this.text.getMeasuredHeight();
 
   }
-
   updateGraphics () {
 
   }

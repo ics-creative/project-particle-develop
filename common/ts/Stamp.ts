@@ -19,6 +19,25 @@ class Stamp extends createjs.Container{
 
   }
 
+
+  updateTransformation(shapeSupport:ShapeSupport) {
+
+    this.size.x = shapeSupport.size.x;
+    this.size.y = shapeSupport.size.y;
+    this.rotation = shapeSupport.rotation ;
+
+    this.newMatrix.identity();
+    this.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
+    this.newMatrix.scale(shapeSupport.size.x / 100, shapeSupport.size.y / 100);
+    this.x = shapeSupport.container.x;
+    this.y = shapeSupport.container.y;
+
+    this.setMatrix(this.newMatrix);
+
+    this.updateGraphics();
+
+  }
+
   updateGraphics() {
 
   }
@@ -56,19 +75,7 @@ class StampLayer extends createjs.EventDispatcher implements ILayer{
 
   updateTransformation(shapeSupport:ShapeSupport) {
 
-    this.stamp.size.x = shapeSupport.size.x;
-    this.stamp.size.y = shapeSupport.size.y;
-    this.stamp.rotation = shapeSupport.rotation ;
-
-    this.stamp.newMatrix.identity();
-    this.stamp.newMatrix.rotate(shapeSupport.rotation * createjs.Matrix2D.DEG_TO_RAD);
-    this.stamp.newMatrix.scale(shapeSupport.size.x / 100, shapeSupport.size.y / 100);
-    this.stamp.x = shapeSupport.container.x;
-    this.stamp.y = shapeSupport.container.y;
-
-    this.stamp.setMatrix(this.stamp.newMatrix);
-
-    this.stamp.updateGraphics();
+    this.stamp.updateTransformation(shapeSupport);
 
   }
 
