@@ -26,17 +26,21 @@ class App {
 
     this.toolbar = new Toolbar();
 
+    var stageWidth = (window.innerWidth);
+    var stageHeight = (window.innerHeight);
+
     this.canvas = <HTMLCanvasElement>document.getElementById("canvas_drawing");
 
-    this.canvas.width = 1024;
-    this.canvas.height = 512;
+    this.canvas.width = stageWidth;
+    this.canvas.height = stageHeight;
 
     this.stage = new createjs.Stage(this.canvas);
+
 
     //  キャンバスより後ろ
     this.background = new createjs.Shape();
     this.background.graphics.beginFill("gray");
-    this.background.graphics.drawRect(0, 0, 2000, 200);
+    this.background.graphics.drawRect(0, 0,  stageWidth ,  stageHeight );
     this.stage.addChild(this.background);
 
     //  描画コンテナ
@@ -58,8 +62,8 @@ class App {
 
     this.shapeSupport.container.visible = false;
 
-    this.drawingContainer.x = 100;
-    this.drawingContainer.y = 100;
+    this.drawingContainer.x = (stageWidth - 1024 ) / 2;
+    this.drawingContainer.y = (stageHeight - 512 ) / 2;
 
     createjs.Ticker.addEventListener("tick", this.update);
 
@@ -80,7 +84,7 @@ class App {
     switch (this.toolbar.toolId) {
       case tool.TOOL_SELECT:
         break;
-
+      
       case  tool.TOOL_PEN  :
         console.log("start-pen-tool");
 
