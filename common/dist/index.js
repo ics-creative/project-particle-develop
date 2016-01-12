@@ -140,12 +140,18 @@ var Toolbar = (function (_super) {
         _super.call(this);
         this.changeTab = function (tabName, dispatch) {
             if (dispatch === void 0) { dispatch = true; }
+            _this.selectTool(tabName);
+            _this.toolId = tabName;
+            if (dispatch) {
+                _this.dispatchEvent("change_tab");
+            }
+        };
+        this.selectTool = function (toolId) {
             _this.colorPickerLineElement.style.display = 'none';
             _this.colorPickerBaseElement.style.display = 'none';
             _this.textInputWrapElement.style.display = 'none';
-            switch (tabName) {
+            switch (toolId) {
                 case tool.TOOL_SELECT:
-                    _this.colorPickerLineElement.style.display = 'block';
                     break;
                 case tool.TOOL_PEN:
                     _this.colorPickerLineElement.style.display = 'block';
@@ -159,10 +165,6 @@ var Toolbar = (function (_super) {
                     _this.colorPickerBaseElement.style.display = 'block';
                     _this.textInputWrapElement.style.display = 'block';
                     break;
-            }
-            _this.toolId = tabName;
-            if (dispatch) {
-                _this.dispatchEvent("change_tab");
             }
         };
         this.shapeSetting = new ShapeSetting();

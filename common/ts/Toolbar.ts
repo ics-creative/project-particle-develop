@@ -102,17 +102,27 @@ class Toolbar extends createjs.EventDispatcher {
     this.changeTab( tool.TOOL_PEN ,false );
 
   }
+
   changeTab = (tabName:string,dispatch:boolean = true) => {
+
+    this.selectTool(tabName);
+
+    this.toolId = tabName;
+
+    if (dispatch) {
+      this.dispatchEvent("change_tab");
+    }
+  }
+
+
+  selectTool = (toolId:string) => {
 
     this.colorPickerLineElement.style.display = 'none';
     this.colorPickerBaseElement.style.display = 'none';
     this.textInputWrapElement.style.display = 'none';
 
-    switch( tabName ) {
+    switch( toolId ) {
       case tool.TOOL_SELECT:
-        //  選択ツール、何も表示しないとタブごと消えてしまうので、困る。
-        this.colorPickerLineElement.style.display = 'block';
-
         break;
       case tool.TOOL_PEN:
         this.colorPickerLineElement.style.display = 'block';
@@ -129,11 +139,5 @@ class Toolbar extends createjs.EventDispatcher {
 
     }
 
-
-    this.toolId = tabName;
-
-    if( dispatch ) {
-      this.dispatchEvent("change_tab");
-    }
   }
 }
