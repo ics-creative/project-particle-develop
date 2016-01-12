@@ -40,7 +40,7 @@ class App {
     //  キャンバスより後ろ
     this.background = new createjs.Shape();
     this.background.graphics.beginFill("gray");
-    this.background.graphics.drawRect(0, 0,  stageWidth ,  stageHeight );
+    this.background.graphics.drawRect(0, 0, stageWidth, stageHeight);
     this.stage.addChild(this.background);
 
     //  描画コンテナ
@@ -55,10 +55,10 @@ class App {
     this.drawingContainer.addChild(this.canvasBackground);
 
     this.drawLayerContainer = new createjs.Container();
-    this.drawingContainer.addChild( this.drawLayerContainer )
+    this.drawingContainer.addChild(this.drawLayerContainer)
 
     this.shapeSupport = new ShapeSupport(this.stage);
-    this.drawingContainer.addChild( this.shapeSupport.container);
+    this.drawingContainer.addChild(this.shapeSupport.container);
 
     this.shapeSupport.container.visible = false;
 
@@ -76,15 +76,15 @@ class App {
   handleMouseDown = () => {
 
 
-    if( !(this.layer.length == 0 || this.layer[this.layer.length-1].isExit() )) {
-      return ;
+    if (!(this.layer.length == 0 || this.layer[this.layer.length - 1].isExit() )) {
+      return;
     }
     console.log("handleMouseDown" + this.toolbar.toolId);
 
     switch (this.toolbar.toolId) {
       case tool.TOOL_SELECT:
         break;
-      
+
       case  tool.TOOL_PEN  :
         console.log("start-pen-tool");
 
@@ -94,7 +94,7 @@ class App {
         this.drawingLayer = new DrawingLayer(this.stage, container, this.canvas.width, this.canvas.height, "#000");
         this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
 
-        this.layer.push( this.drawingLayer );
+        this.layer.push(this.drawingLayer);
 
         this.drawingLayer.start();
         break;
@@ -104,12 +104,12 @@ class App {
         console.log("start-star-tool");
 
         var stamp = new Star();
-        this.stampLayer = new StampLayer(this.stage,stamp);
+        this.stampLayer = new StampLayer(this.stage, stamp);
         this.stampLayer.updateSetting(this.toolbar.shapeSetting);
-        this.stampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)
+        this.stampLayer.addEventListener("show_support", this.stampLayer_showSupportHandler)
         this.drawLayerContainer.addChild(this.stampLayer.stamp);
 
-        this.layer.push( this.stampLayer );
+        this.layer.push(this.stampLayer);
         this.stampLayer.start();
 
         this.startSupport(this.stampLayer);
@@ -124,9 +124,9 @@ class App {
         this.textStampLayer.updateSetting(this.toolbar.shapeSetting);
 
         this.drawLayerContainer.addChild(this.textStampLayer.stamp);
-        this.textStampLayer.addEventListener("show_support",this.stampLayer_showSupportHandler)
+        this.textStampLayer.addEventListener("show_support", this.stampLayer_showSupportHandler)
 
-        this.layer.push( this.textStampLayer );
+        this.layer.push(this.textStampLayer);
 
         this.textStampLayer.start();
         break;
@@ -149,6 +149,8 @@ class App {
     this.shapeSupport.updateGraphics(true);
 
     this.shapeSupport.startSupport();
+    this.shapeSupport.updateLineColor(this.supportTarget.stamp.setting.lineColor);
+
 
   }
 
@@ -162,18 +164,22 @@ class App {
     this.shapeSupport.size.x = this.supportTarget.stamp.size.x;
     this.shapeSupport.size.y = this.supportTarget.stamp.size.y;
 
+    this.shapeSupport.updateLineColor(this.supportTarget.stamp.setting.lineColor);
+
     this.supportTarget.updateTransformation(this.shapeSupport);
     this.supportTarget.stamp.updateGraphics();
 
     this.shapeSupport.update();
     this.shapeSupport.updateGraphics(true);
+
+    this.toolbar.selectTool(this.supportTarget.toolId);
   }
 
 
   changeTab = () => {
     console.log("tabChanged");
 
-    if( this.toolbar.toolId == tool.TOOL_SELECT) {
+    if (this.toolbar.toolId == tool.TOOL_SELECT) {
       this.stage.mouseChildren = true;
     } else {
       this.stage.mouseChildren = false;
@@ -181,29 +187,45 @@ class App {
   }
 
   changeTool = () => {
+
+    if (!this.supportTarget) {
+      return;
+    }
+
+    switch (this.supportTarget.toolId) {
+      case tool.TOOL_SELECT:
+
+        break;
+      case  tool.TOOL_PEN  :
+        this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
+        break;
+      case  tool.TOOL_STAMP  :
+        this.shapeSupport.updateLineColor(this.toolbar.shapeSetting.lineColor);
+        this.shapeSupport.updateGraphics(true);
+
+        this.supportTarget.updateSetting(this.toolbar.shapeSetting);
+        break;
+      case  tool.TOOL_TEXT  :
+        this.shapeSupport.updateLineColor(this.toolbar.shapeSetting.lineColor);
+        this.shapeSupport.updateGraphics(true);
+
+        this.supportTarget.updateSetting(this.toolbar.textSetting);
+        break;
+    }
   }
 
   update = () => {
-    if( this.layer.length >= 1 && !this.layer[this.layer.length-1].isExit() ) {
-      this.layer[this.layer.length-1].update();
+    if (this.layer.length >= 1 && !this.layer[this.layer.length - 1].isExit()) {
+      this.layer[this.layer.length - 1].update();
     }
     // Stageの描画を更新します
     this.stage.update();
 
-    if( this.supportTarget ) {
+    if (this.supportTarget) {
       this.supportTarget.updateTransformation(this.shapeSupport);
     }
 
     this.shapeSupport.update();
     this.shapeSupport.updateGraphics();
-
-
-  }
-
-  updateDrawSetting = () => {
-    this.drawingLayer.updateSetting(this.toolbar.drawingSetting);
-  }
-  updateShapeSetting = () => {
-    this.stampLayer.updateSetting(this.toolbar.shapeSetting);
   }
 }

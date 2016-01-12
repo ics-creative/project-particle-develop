@@ -1,25 +1,20 @@
+import Graphics = createjs.Graphics;
 /**
  * Created by nyamogera on 2016/01/08.
  */
 
 class ShapeSupport {
-
-  public center:createjs.Point;
   public rotation:number;
   public size:createjs.Point;
 
   private baseShape:createjs.Shape;
-
   private controllerLeftTop:createjs.Shape;
-
   private controllerRightTop:createjs.Shape;
-  private contorllerRightTopLineCommand:createjs.Graphics;
-
   private controllerLeftBottom:createjs.Shape;
   private controllerRightBottom:createjs.Shape;
-
   private controllerRotation:createjs.Shape;
 
+  private strokeCommands:any[];
 
   public container:createjs.Container;
 
@@ -34,7 +29,6 @@ class ShapeSupport {
     this.stage = stage;
     this.lineColor = "blue";
 
-    this.center = new createjs.Point();
     this.rotation = 0;
     this.size = new createjs.Point();
     this.baseShape = new createjs.Shape();
@@ -42,44 +36,68 @@ class ShapeSupport {
     this.dragPoint = new createjs.Point();
 
     this.container = new createjs.Container();
+
+    //  選択ツール
     this.baseShape = new createjs.Shape();
     this.container.addChild(this.baseShape);
     this.baseShape.addEventListener("mousedown", this.handleMouseDown);
 
-    this.controllerLeftTop = new createjs.Shape();
-    this.container.addChild(this.controllerLeftTop);
-    this.controllerLeftTop.addEventListener("mousedown", this.handleMouseDown);
-
-    this.controllerRightTop = new createjs.Shape();
-    this.container.addChild(this.controllerRightTop);
-    this.controllerRightTop.addEventListener("mousedown", this.handleMouseDown);
-
-    this.controllerLeftBottom = new createjs.Shape();
-    this.container.addChild(this.controllerLeftBottom);
-    this.controllerLeftBottom.addEventListener("mousedown", this.handleMouseDown);
-
-    this.controllerRightBottom = new createjs.Shape();
-    this.container.addChild(this.controllerRightBottom);
-    this.controllerRightBottom.addEventListener("mousedown", this.handleMouseDown);
-
+    // 回転ツール
     this.controllerRotation = new createjs.Shape();
     this.container.addChild(this.controllerRotation);
     this.controllerRotation.addEventListener("mousedown", this.handleMouseDown);
 
+    // 拡縮ツール
+    this.controllerLeftTop = new createjs.Shape();
+    this.controllerRightTop = new createjs.Shape();
+    this.controllerLeftBottom = new createjs.Shape();
+    this.controllerRightBottom = new createjs.Shape();
 
-    var controlSize:number = 10;
+    let controlSize:number = 10;
+    let controllerList:createjs.Shape[] = [
+      this.controllerLeftTop,     //  left-top
+      this.controllerRightTop,    //  right-top
+      this.controllerRightBottom, //  right-bottom
+      this.controllerLeftBottom]; //  left-bottom
 
-    this.controllerLeftTop.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+    this.strokeCommands  = [];
 
-    this.controllerRightTop.graphics.clear().beginFill("white").beginStroke(this.lineColor);
-    this.controllerRightTop.graphics.drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+    let controllerListLength = controllerList.length;
 
-    this.controllerRightBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+    for (var i = 0; i < controllerListLength; i++) {
 
-    this.controllerRotation.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+      this.container.addChild(controllerList[i]);
+      var graphics:createjs.Graphics = controllerList[i].graphics;
+      graphics.beginFill("white");
 
-    this.controllerLeftBottom.graphics.clear().beginFill("white").beginStroke(this.lineColor).drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
+      //  strokeのコマンドだけ保持する
+      var strokeCommand = graphics.beginStroke(this.lineColor).command;
+      graphics.drawRect(-controlSize / 2, -controlSize / 2, controlSize, controlSize).closePath();
 
+      this.strokeCommands.push(strokeCommand);
+
+      controllerList[i].addEventListener("mousedown", this.handleMouseDown);
+    }
+
+    //  丸
+    var graphics:createjs.Graphics = this.controllerRotation.graphics;
+    graphics.beginFill("white");
+
+    //  strokeのコマンドだけ保持する
+    var strokeCommand = graphics.beginStroke(this.lineColor).command;
+    graphics.drawCircle(0, 0, controlSize / 2).closePath();
+
+    this.strokeCommands.push(strokeCommand);
+
+  }
+
+  updateLineColor = (lineColor:string) =>{
+    this.lineColor = lineColor;
+    var strokeCommandLength = this.strokeCommands.length;
+
+    for (var i = 0; i < strokeCommandLength; i++) {
+      this.strokeCommands[i].style = this.lineColor;
+    }
   }
 
   startSupport = () => {
@@ -125,21 +143,18 @@ class ShapeSupport {
 
     var diff = this.matrix.clone().invert().transformPoint(diffX, diffY);
 
-    console.log(this.matrix.transformPoint(diff.x, diff.y).x, this.matrix.transformPoint(diff.x, diff.y).y);
+    //console.log(this.matrix.transformPoint(diff.x, diff.y).x, this.matrix.transformPoint(diff.x, diff.y).y);
 
     switch (this.dragTarget) {
 
       case this.baseShape:
         console.log("baseShape - dragging");
-
         this.container.x = mousePt.x - this.dragPoint.x;
         this.container.y = mousePt.y - this.dragPoint.y;
-
         break;
 
       case this.controllerLeftTop:
         console.log("leftTop - dragging");
-
         this.size.x = -diff.x * 2;
         this.size.y = -diff.y * 2;
         break;
@@ -149,7 +164,6 @@ class ShapeSupport {
         this.size.x = diff.x * 2;
         this.size.y = -diff.y * 2;
         break;
-
       case this.controllerRightBottom:
         console.log("rightBottom - dragging");
         this.size.x = diff.x * 2;

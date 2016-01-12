@@ -31,8 +31,6 @@ class Stamp extends createjs.Container{
 class StampLayer extends createjs.EventDispatcher implements ILayer{
 
   toolId:string;
-
-  mousedown:boolean;
   stage:createjs.Stage;
   stamp:Stamp;
   setting:ShapeSetting;

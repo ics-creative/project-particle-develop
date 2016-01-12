@@ -44,6 +44,8 @@ class TextStampLayer extends StampLayer{
   constructor(stage:createjs.Stage) {
     super(stage, new TextStamp());
     this.textStamp = <TextStamp> this.stamp;
+
+    this.toolId = tool.TOOL_TEXT;
   }
 
   start = () =>{
