@@ -10,7 +10,16 @@ body{
   height:100%;
   margin:0px;
   padding:0px;
+  top:0px;
+  left:0px;
   background-color:gray;
+}
+
+#layer_tool{
+  position:absolute;
+
+  top:0px;
+  left:0px;
 }
 
 .canvas_drawing{

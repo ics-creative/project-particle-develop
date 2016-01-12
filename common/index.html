@@ -15,22 +15,26 @@
 
   </head>
   <body>
-    <button id="btn_export">export</button>
-    <div class="toolbar">
-      <p class="tools">
-        <a href="#" id="tool-select">選択ツール</a>
-        <a href="#" id="tool-pen">ペン</a>
-        <a href="#" id="tool-stamp">スタンプ</a>
-        <a href="#" id="tool-text">テキスト</a>
-      </p>
-    </div>
-
-    <div id="colorpicker-line-wrap"><input id="colorpicker-line" /></div>
-    <div id="colorpicker-base-wrap"><input id="colorpicker-base" /></div>
-    <div id="textinput-wrap"><input id="textinput" /></div>
-
     <div id="layer_canvas">
       <canvas id="canvas_drawing"></canvas>
     </div>
+    <div id="layer_tool">
+
+      <button id="btn_export">export</button>
+      <div class="toolbar">
+        <p class="tools">
+          <a href="#" id="tool-select">選択ツール</a>
+          <a href="#" id="tool-pen">ペン</a>
+          <a href="#" id="tool-stamp">スタンプ</a>
+          <a href="#" id="tool-text">テキスト</a>
+        </p>
+      </div>
+
+      <div id="colorpicker-line-wrap"><input id="colorpicker-line" /></div>
+      <div id="colorpicker-base-wrap"><input id="colorpicker-base" /></div>
+      <div id="textinput-wrap"><input id="textinput" /></div>
+
+    </div>
+
   </body>
 </html>
