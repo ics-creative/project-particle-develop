@@ -2,13 +2,41 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>ICS Draw</title>
+    <script src="./libs/preloadjs-NEXT.combined.js"></script>
+    <script src="./libs/easeljs-NEXT.combined.js"></script>
+    <script src="./libs/SVGExporter.js"></script>
+    <script src="./index.js"></script>
+    <script src="./libs/jquery-2.1.1.min.js"></script>
+    <script src="./libs/spectrum.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/main.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+
   </head>
   <body>
-  <script src="./index.js"></script>
-  <h1>Hello World!</h1>
-    We are using node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
+    <div id="layer_canvas">
+      <canvas id="canvas_drawing"></canvas>
+    </div>
+    <div id="layer_tool">
+
+      <button id="btn_export">export</button>
+      <div class="toolbar">
+        <p class="tools">
+          <a href="#" id="tool-select">選択ツール</a>
+          <a href="#" id="tool-pen">ペン</a>
+          <a href="#" id="tool-stamp">スタンプ</a>
+          <a href="#" id="tool-text">テキスト</a>
+        </p>
+      </div>
+
+      <div id="colorpicker-line-wrap"><input id="colorpicker-line" /></div>
+      <div id="colorpicker-base-wrap"><input id="colorpicker-base" /></div>
+      <div id="textinput-wrap"><input id="textinput" /></div>
+      <div id="linewidth-wrap"><input id="linewidth" type="range" name="slider" value="3" min="3" max="72"></div>
+      <div id="textsize-wrap"><input id="textsize" type="range" name="slider" value="3" min="3" max="72"></div>
+
+    </div>
+
   </body>
 </html>

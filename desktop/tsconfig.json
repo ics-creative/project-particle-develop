@@ -4,6 +4,7 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
+    "target":"ES6",
     "sourceMap": true,
     "out" : "./src/renderer/index.js"
   },
