@@ -6,12 +6,25 @@ var gulp = require('gulp');
 var browserSync = require("browser-sync");
 //  sassプラグインの読み込み
 var sass = require('gulp-sass');
+//  typescriptプラグインの読み込み
+var ts = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task("watch", function () {
 
   gulp.watch(["index.html"], ["copy-index"]);
   gulp.watch(["libs/**/*.*"], ["copy-lib"]);
   gulp.watch(["styles/**/*.*"], ["build-scss"]);
+});
+
+/** tsファイルのビルド */
+gulp.task('build-ts', function() {
+  var tsProject = ts.createProject("./tsconfig.json", { sortOutput: true });
+  var tsResult = tsProject.src()
+      .pipe(sourcemaps.init())
+      .pipe(ts(tsProject));
+
+  return tsResult.js.pipe(sourcemaps.write('.',{includeContent: false,sourceRoot:"/ts"})).pipe(gulp.dest('.'));
 });
 
 /** index.htmlをコピーするだけのタスク */
