@@ -10,11 +10,33 @@
     <script src="./libs/spectrum.min.js"></script>
     <script src="./index.js"></script>
 
+    <!-- 1. Load libraries -->
+    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script src="node_modules/rxjs/bundles/Rx.js"></script>
+    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+      System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/boot')
+              .then(null, console.error.bind(console));
+    </script>
+
+
     <link rel="stylesheet" type="text/css" href="./libs/spectrum.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
 
   </head>
   <body>
+
     <div id="layer_canvas">
       <canvas id="canvas_drawing"></canvas>
     </div>
