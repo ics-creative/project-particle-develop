@@ -19,6 +19,7 @@ class App {
 
   private shapeSupport:ShapeSupport;
   private background:createjs.Shape;
+  private canvas:HTMLCanvasElement;
 
   constructor() {
 

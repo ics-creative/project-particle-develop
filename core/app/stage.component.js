@@ -1,4 +1,4 @@
-System.register(["angular2/core"], function(exports_1) {
+System.register(["angular2/core", "./particle-canvas/particle-canvas"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,15 @@ System.register(["angular2/core"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, particle_canvas_1;
     var StageComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (particle_canvas_1_1) {
+                particle_canvas_1 = particle_canvas_1_1;
             }],
         execute: function() {
             StageComponent = (function () {
@@ -21,7 +24,7 @@ System.register(["angular2/core"], function(exports_1) {
                 }
                 StageComponent.prototype.ngAfterViewInit = function () {
                     var canvas = this.myCanvas.nativeElement;
-                    this.context = canvas.getContext("2d");
+                    this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
                     this.tick();
                 };
                 StageComponent.prototype.tick = function () {
@@ -29,13 +32,7 @@ System.register(["angular2/core"], function(exports_1) {
                     requestAnimationFrame(function () {
                         _this.tick();
                     });
-                    var ctx = this.context;
-                    ctx.clearRect(0, 0, 100, 100);
-                    ctx.beginPath();
-                    ctx.fillStyle = this.drawingData.color;
-                    ctx.fillRect(0, 0, this.drawingData.width, this.drawingData.height);
-                    ctx.closePath();
-                    ctx.stroke();
+                    this.particleCanvas.update(this.drawingData);
                 };
                 __decorate([
                     core_1.ViewChild("myCanvas"), 

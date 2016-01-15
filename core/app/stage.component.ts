@@ -1,5 +1,6 @@
 import {Component, ViewChild, AfterViewInit} from "angular2/core";
 import {DrawingData} from "./drawing-data";
+import {ParticleCanvas} from "./particle-canvas/particle-canvas";
 
 @Component({
   selector: "stage",
@@ -13,14 +14,14 @@ export class StageComponent implements AfterViewInit {
 
   private drawingData:DrawingData;
   private context:CanvasRenderingContext2D;
+	private particleCanvas:ParticleCanvas;
 
   constructor() {
   }
 
   ngAfterViewInit() {
     let canvas = this.myCanvas.nativeElement;
-    this.context = canvas.getContext("2d");
-
+		this.particleCanvas = new ParticleCanvas(canvas,this.drawingData);
     this.tick();
   }
 
@@ -29,13 +30,6 @@ export class StageComponent implements AfterViewInit {
       this.tick()
     });
 
-    var ctx = this.context;
-
-    ctx.clearRect(0, 0, 100, 100);
-    ctx.beginPath();
-    ctx.fillStyle = this.drawingData.color;
-    ctx.fillRect(0, 0, this.drawingData.width, this.drawingData.height);
-    ctx.closePath();
-    ctx.stroke();
+		this.particleCanvas.update(this.drawingData);
   }
 }

@@ -30,8 +30,18 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                 function AppComponent() {
                     this.drawingData = new drawing_data_1.DrawingData();
                     this.drawingData.color = "0xFF0000";
-                    this.drawingData.width = 100;
-                    this.drawingData.height = 100;
+                    this.drawingData.width = 500;
+                    this.drawingData.height = 500;
+                    this.drawingData.startX = 250;
+                    this.drawingData.startXVariance = 50;
+                    this.drawingData.startY = 250;
+                    this.drawingData.startYVariance = 50;
+                    this.drawingData.lifeSpan = 500;
+                    this.drawingData.lifeSpanVariance = 30;
+                    this.drawingData.angle = 0;
+                    this.drawingData.angleVariance = 360;
+                    this.drawingData.speed = 0.5;
+                    this.drawingData.speedVariance = 0.5;
                 }
                 AppComponent = __decorate([
                     core_1.Component({
