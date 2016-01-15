@@ -9,8 +9,8 @@ export class ParticleCanvas {
 	private canvas:HTMLCanvasElement;
 	private stage:createjs.Stage;
 
-	public backgroundColorCommand:Object;
-	public backgroundSize:Object;
+	public backgroundColorCommand:any;
+	public backgroundSize:any;
 
   private particleEmitter:ParticleEmitter;
 

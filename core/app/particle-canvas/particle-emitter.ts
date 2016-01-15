@@ -1,3 +1,5 @@
+"use strict";
+
 import {Particle} from "./particle";
 import {DrawingData} from "../drawing-data";
 /**
@@ -134,7 +136,7 @@ export class ParticleEmitter {
 
 
   getParam = (value:number, variance:number, isInteger:boolean) : number => {
-    let result = value + (  Math.random() * variance ) - variance / 2;
+    let result = parseInt(value) + (  Math.random() * parseInt( variance )  ) - parseInt( variance )  / 2;
 
     if( isInteger ) {
       return Math.floor(result);
