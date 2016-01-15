@@ -6,16 +6,54 @@ import {PropertyPanel} from "./property.component";
 import {StageComponent} from "./stage.component";
 
 const template = `
-<div>
-  <stage [drawingData]="drawingData"></stage>
-  <property-panel [drawingData]="drawingData"></property-panel>
+<div class="container">
+    <div class="col-sm-7 col-xs-12">
+        <stage [drawingData]="drawingData"></stage>
+    </div>
+    <div class="col-sm-5 col-xs-12">
+        <property-panel [drawingData]="drawingData"></property-panel>
+    </div>
+</div>
+`;
+
+const modal = `
+<div class="modal fade" id="ShapeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+          aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Shapes</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="col-sm-3">
+          ☆
+        </div>
+        <div class="col-sm-3">
+          ♡
+        </div>
+        <div class="col-sm-3">
+          〠
+        </div>
+        <div class="col-sm-3">
+          〒
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
 `;
 
 
 @Component({
   selector: `my-app`,
-  template: template,
+  template: template + modal,
   directives: [StageComponent, PropertyPanel]
 })
 
