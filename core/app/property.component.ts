@@ -52,8 +52,7 @@ const template = `
 
         <hr>
         start-alpha
-        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlpha"
-               placeholder="startAlpha"/>
+        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlpha" placeholder="startAlpha"/>
         {{drawingData.startAlpha}}
         <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlphaVariance"
                placeholder="startAlphaVariance"/>
@@ -68,6 +67,13 @@ const template = `
                placeholder="finishAlphaVariance"/>
         {{drawingData.finishAlphaVariance}}
 
+        <hr>
+        life span
+        <input type="range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan" placeholder="lifeSpan"/>
+        {{drawingData.lifeSpan}}
+        <input type="range" min="0" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpanVariance"
+               placeholder="lifeSpanVariance"/>
+        {{drawingData.lifeSpanVariance}}
         <div>
           <a href="#" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#ShapeModal">Shapes</a>
         </div>

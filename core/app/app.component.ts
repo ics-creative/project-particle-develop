@@ -81,5 +81,10 @@ export class AppComponent {
     this.drawingData.speed = 0.5;
     this.drawingData.speedVariance = 0.5;
 
+    this.drawingData.startAlpha = 0;
+    this.drawingData.startAlphaVariance = 1;
+
+    this.drawingData.finishAlpha = 1;
+    this.drawingData.finishAlphaVariance = 0.5;
   }
 }
