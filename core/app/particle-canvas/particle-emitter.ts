@@ -53,6 +53,10 @@ export class ParticleEmitter {
 
       var lifeParcent = particle.currentLife / particle.totalLife;
 
+      var alpha = particle.startAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent ;
+
+      particle.particleShape.alpha = alpha;
+
       //  パーティクルが死んでいたら、オブジェクトプールに移動
       if (particle.currentLife < 0) {
         particle.isAlive = false;
@@ -132,11 +136,18 @@ export class ParticleEmitter {
     particle.vy = Math.sin(angle) + speed;
 
 
+    //  アルファ
+    particle.startAlpha =  this.range( 0, 1, this.getParam(this.drawingData.startAlpha,this.drawingData.startAlphaVariance, false));
+    particle.finishAlpha = this.range( 0, 1,this.getParam(this.drawingData.finishAlpha,this.drawingData.finishAlphaVariance, false));
+  }
+
+  range = (minValue,maxValue,value) : number =>{
+    return Math.min( maxValue, Math.max( minValue, value ));
   }
 
 
   getParam = (value:number, variance:number, isInteger:boolean) : number => {
-    let result = parseInt(value) + (  Math.random() * parseInt( variance )  ) - parseInt( variance )  / 2;
+    let result = parseFloat(value) + (  Math.random() * parseFloat( variance )  ) - parseFloat( variance )  / 2;
 
     if( isInteger ) {
       return Math.floor(result);

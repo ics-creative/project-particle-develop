@@ -42,6 +42,10 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.angleVariance = 360;
                     this.drawingData.speed = 0.5;
                     this.drawingData.speedVariance = 0.5;
+                    this.drawingData.startAlpha = 0;
+                    this.drawingData.startAlphaVariance = 1;
+                    this.drawingData.finishAlpha = 1;
+                    this.drawingData.finishAlphaVariance = 0.5;
                 }
                 AppComponent = __decorate([
                     core_1.Component({

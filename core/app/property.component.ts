@@ -59,6 +59,12 @@ const template = `
       <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishAlphaVariance" placeholder="finishAlphaVariance" />
       {{drawingData.finishAlphaVariance}}
 
+      <hr>
+      life span
+      <input type="range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan" placeholder="lifeSpan" />
+      {{drawingData.lifeSpan}}
+      <input type="range" min="0" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpanVariance" placeholder="lifeSpanVariance" />
+      {{drawingData.lifeSpanVariance}}
 
       <hr>
       <button class="btn btn-primary">保存</button>
