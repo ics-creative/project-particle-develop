@@ -27,23 +27,23 @@ const modal = `
       </div>
       <div class="modal-body">
 
-        <div class="col-sm-3">
+        <div class="col-sm-3" (click)="selectShape('star')">
           ☆
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" (click)="selectShape('heart')">
           ♡
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3"(click)="selectShape('mail-face')">
           〠
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" (click)="selectShape('mail-mark')">
           〒
         </div>
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" (click)="saveChanges()" data-dismiss="modal">Save changes</button>
       </div>
     </div>
   </div>
@@ -59,6 +59,15 @@ const modal = `
 
 export class AppComponent {
   private drawingData:DrawingData;
+  private temporarySelect:string;
+  selectShape = (shapeId) => {
+    console.log(`selectapp:${shapeId}`);
+    //  ラジオボタンとかにすればテンポラリ選択不要そう
+    this.temporarySelect = shapeId;
+  }
+  saveChanges = () => {
+    this.drawingData.shapeId = this.temporarySelect;
+  }
 
   constructor() {
     this.drawingData = new DrawingData();
@@ -81,8 +90,8 @@ export class AppComponent {
     this.drawingData.speed = 0.5;
     this.drawingData.speedVariance = 0.5;
 
-    this.drawingData.startAlpha = 0;
-    this.drawingData.startAlphaVariance = 1;
+    this.drawingData.startAlpha = 1;
+    this.drawingData.startAlphaVariance = 0;
 
     this.drawingData.finishAlpha = 1;
     this.drawingData.finishAlphaVariance = 0.5;

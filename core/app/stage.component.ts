@@ -13,7 +13,6 @@ export class StageComponent implements AfterViewInit {
   @ViewChild("myCanvas") myCanvas;
 
   private drawingData:DrawingData;
-  private context:CanvasRenderingContext2D;
 	private particleCanvas:ParticleCanvas;
 
   constructor() {

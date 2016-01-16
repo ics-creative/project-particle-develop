@@ -79,7 +79,7 @@ const template = `
         </div>
       </div>
     </div>
-    <button class="btn btn-primary btn-lg btn-block">保存</button>
+    <button class="btn btn-primary btn-lg btn-block" (click)="exportSVG()">保存</button>
   </div>
 </div>
 `;

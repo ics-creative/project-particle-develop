@@ -1,3 +1,4 @@
+import {ParticleShapeTypes} from "./particle-shape-types";
 "use strict";
 
 import {Particle} from "./particle";
@@ -119,11 +120,8 @@ export class ParticleEmitter {
     particle.x = this.getParam(this.drawingData.startX, this.drawingData.startXVariance,false);
     particle.y = this.getParam(this.drawingData.startY, this.drawingData.startYVariance,false);
 
-    var shape:createjs.Shape = new createjs.Shape();
-    shape.graphics.beginFill("red");
-    shape.graphics.drawCircle(0,0,10);
 
-    particle.particleShape.addChild(shape);
+    this.generateShape(particle,this.drawingData.shapeId);
 
     //  生存期間
     particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance,true));
@@ -139,6 +137,45 @@ export class ParticleEmitter {
     //  アルファ
     particle.startAlpha =  this.range( 0, 1, this.getParam(this.drawingData.startAlpha,this.drawingData.startAlphaVariance, false));
     particle.finishAlpha = this.range( 0, 1,this.getParam(this.drawingData.finishAlpha,this.drawingData.finishAlphaVariance, false));
+  }
+
+  generateShape = (particle:Particle,shapeId:string) =>{
+
+    particle.particleShape.removeAllChildren();
+
+    switch(shapeId) {
+      case ParticleShapeTypes.Star:
+        var shape:createjs.Shape = new createjs.Shape();
+
+        shape.graphics.beginFill("white");
+        shape.graphics.drawPolyStar(0,0,10,5,0.5);
+        particle.particleShape.addChild(shape);
+        break;
+      case ParticleShapeTypes.MailMark:
+
+        var text:createjs.Text = new createjs.Text("♥","20px Arial","white");
+        particle.particleShape.addChild(text);
+        break;
+      case ParticleShapeTypes.MailFace:
+
+        var text:createjs.Text = new createjs.Text("〠","20px Arial","white");
+        particle.particleShape.addChild(text);
+        break;
+      case ParticleShapeTypes.MailMark:
+        var text:createjs.Text = new createjs.Text("〒","20px Arial","white");
+        particle.particleShape.addChild(text);
+        break;
+
+
+      default:
+        var shape:createjs.Shape = new createjs.Shape();
+
+        shape.graphics.beginFill("white");
+        shape.graphics.drawCircle(0,0,10);
+        particle.particleShape.addChild(shape);
+        break;
+    }
+
   }
 
   range = (minValue,maxValue,value) : number =>{

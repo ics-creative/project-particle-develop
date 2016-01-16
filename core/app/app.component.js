@@ -26,9 +26,18 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
             }],
         execute: function() {
             template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\"></property-panel>\n    </div>\n</div>\n";
-            modal = "\n<div class=\"modal fade\" id=\"ShapeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span\n          aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Shapes</h4>\n      </div>\n      <div class=\"modal-body\">\n\n        <div class=\"col-sm-3\">\n          \u2606\n        </div>\n        <div class=\"col-sm-3\">\n          \u2661\n        </div>\n        <div class=\"col-sm-3\">\n          \u3020\n        </div>\n        <div class=\"col-sm-3\">\n          \u3012\n        </div>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n";
+            modal = "\n<div class=\"modal fade\" id=\"ShapeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span\n          aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Shapes</h4>\n      </div>\n      <div class=\"modal-body\">\n\n        <div class=\"col-sm-3\" (click)=\"selectShape('star')\">\n          \u2606\n        </div>\n        <div class=\"col-sm-3\" (click)=\"selectShape('heart')\">\n          \u2661\n        </div>\n        <div class=\"col-sm-3\"(click)=\"selectShape('mail-face')\">\n          \u3020\n        </div>\n        <div class=\"col-sm-3\" (click)=\"selectShape('mail-mark')\">\n          \u3012\n        </div>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"saveChanges()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n";
             AppComponent = (function () {
                 function AppComponent() {
+                    var _this = this;
+                    this.selectShape = function (shapeId) {
+                        console.log("selectapp:" + shapeId);
+                        //  ラジオボタンとかにすればテンポラリ選択不要そう
+                        _this.temporarySelect = shapeId;
+                    };
+                    this.saveChanges = function () {
+                        _this.drawingData.shapeId = _this.temporarySelect;
+                    };
                     this.drawingData = new drawing_data_1.DrawingData();
                     this.drawingData.color = "0xFF0000";
                     this.drawingData.width = 500;
@@ -43,8 +52,8 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.angleVariance = 360;
                     this.drawingData.speed = 0.5;
                     this.drawingData.speedVariance = 0.5;
-                    this.drawingData.startAlpha = 0;
-                    this.drawingData.startAlphaVariance = 1;
+                    this.drawingData.startAlpha = 1;
+                    this.drawingData.startAlphaVariance = 0;
                     this.drawingData.finishAlpha = 1;
                     this.drawingData.finishAlphaVariance = 0.5;
                 }
