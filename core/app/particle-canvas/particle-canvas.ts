@@ -41,7 +41,7 @@ export class ParticleCanvas {
   getSVGString() : string {
     return this.particleExporter.getSVGString();
   }
-  runExport = () : Promise =>{
+  runExport = () : Promise<any> =>{
     return this.particleExporter.runExport();
   }
 
