@@ -134,9 +134,9 @@ export class ParticleEmitter {
 
     //  スピード
     var speed:number = this.range( 0, 1,this.getParam(this.drawingData.speed,this.drawingData.speedVariance,false));
-    var angle = createjs.Matrix2D.DEG_TO_RAD * this.getParam(this.drawingData.angle,this.drawingData.angleVariance,false)
-    particle.vx = Math.cos(angle) + speed;
-    particle.vy = Math.sin(angle) + speed;
+    var angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this.drawingData.angle,this.drawingData.angleVariance,false));
+    particle.vx = Math.cos(angle) * speed;
+    particle.vy = Math.sin(angle) * speed;
 
 
     //  アルファ
