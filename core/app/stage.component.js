@@ -23,7 +23,8 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
                 function StageComponent() {
                     var _this = this;
                     this.exportSVG = function () {
-                        // TODO:ここは本来canvasの担当にすべきではない
+                        // TODO:ここは本来canvasの担当にすべきではない。
+                        console.log("stageComponent!!!");
                         _this.particleCanvas.exportSVG();
                     };
                 }

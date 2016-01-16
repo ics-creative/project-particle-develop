@@ -35,7 +35,7 @@ export class ParticleCanvas {
     this.particleEmitter = new ParticleEmitter();
     this.stage.addChild(this.particleEmitter.container);
 
-    this.particleExporter = new ParticleExporter(this.particleEmitter.container);
+    this.particleExporter = new ParticleExporter(this.stage);
 
 	}
 

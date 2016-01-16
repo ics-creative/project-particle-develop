@@ -35,7 +35,7 @@ System.register(["./particle-emitter", "./particle-exporter"], function(exports_
                     this.stage.addChild(this.background);
                     this.particleEmitter = new particle_emitter_1.ParticleEmitter();
                     this.stage.addChild(this.particleEmitter.container);
-                    this.particleExporter = new particle_exporter_1.ParticleExporter(this.particleEmitter.container);
+                    this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
                 }
                 return ParticleCanvas;
             })();

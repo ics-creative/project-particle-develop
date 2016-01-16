@@ -4,11 +4,12 @@ import {Component} from "angular2/core";
 import {DrawingData} from "./drawing-data";
 import {PropertyPanel} from "./property.component";
 import {StageComponent} from "./stage.component";
+import {ViewChild} from "angular2/core";
 
 const template = `
 <div class="container">
     <div class="col-sm-7 col-xs-12">
-        <stage [drawingData]="drawingData"></stage>
+        <stage #stageComponent [drawingData]="drawingData"></stage>
     </div>
     <div class="col-sm-5 col-xs-12">
         <property-panel [drawingData]="drawingData" (greetingMessage)="handleSVGClick()"></property-panel>
@@ -60,6 +61,8 @@ const modal = `
 export class AppComponent {
   private drawingData:DrawingData;
   private temporarySelect:string;
+  @ViewChild("stageComponent") stageComponent:StageComponent;
+
   selectShape = (shapeId) => {
     console.log(`selectapp:${shapeId}`);
     //  ラジオボタンとかにすればテンポラリ選択不要そう
@@ -71,7 +74,7 @@ export class AppComponent {
 
   handleSVGClick(){
     console.log("handleSVGClick");
-
+    this.stageComponent.exportSVG();
 
   }
 
@@ -101,5 +104,11 @@ export class AppComponent {
 
     this.drawingData.finishAlpha = 1;
     this.drawingData.finishAlphaVariance = 0.5;
+
+    this.drawingData.startScale = 1;
+    this.drawingData.startScaleVariance = 0;
+
+    this.drawingData.finishScale = 1;
+    this.drawingData.finishScaleVariance = 0;
   }
 }

@@ -58,6 +58,11 @@ export class ParticleEmitter {
 
       particle.particleShape.alpha = alpha;
 
+
+      var scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent ;
+
+      //particle.particleShape.size = scale;
+
       //  パーティクルが死んでいたら、オブジェクトプールに移動
       if (particle.currentLife < 0) {
         particle.isAlive = false;
@@ -137,6 +142,12 @@ export class ParticleEmitter {
     //  アルファ
     particle.startAlpha =  this.range( 0, 1, this.getParam(this.drawingData.startAlpha,this.drawingData.startAlphaVariance, false));
     particle.finishAlpha = this.range( 0, 1,this.getParam(this.drawingData.finishAlpha,this.drawingData.finishAlphaVariance, false));
+
+
+    //  スケール
+    particle.startScale =  this.range( 0, 1, this.getParam(this.drawingData.startScale,this.drawingData.startScaleVariance, false));
+    particle.finishScale = this.range( 0, 1,this.getParam(this.drawingData.finishScale,this.drawingData.finishScaleVariance, false));
+
   }
 
   generateShape = (particle:Particle,shapeId:string) =>{

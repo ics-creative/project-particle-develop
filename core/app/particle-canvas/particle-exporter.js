@@ -19,13 +19,13 @@ System.register([], function(exports_1) {
                         // for some reason, it takes a tick for the browser to init the SVG
                         setTimeout(_this.downloadFile, 1);
                     };
+                    this.downloadFile = function () {
+                        var serializer = new XMLSerializer();
+                        var svgStr = serializer.serializeToString(_this.exporter.svg);
+                        window.open("data:image/svg+xml,\n" + encodeURIComponent(svgStr));
+                    };
                     this.drawLayerContainer = drawLayerContainer;
                 }
-                ParticleExporter.prototype.downloadFile = function () {
-                    var serializer = new XMLSerializer();
-                    var svgStr = serializer.serializeToString(this.exporter.svg);
-                    window.open("data:image/svg+xml,\n" + encodeURIComponent(svgStr));
-                };
                 return ParticleExporter;
             })();
             exports_1("ParticleExporter", ParticleExporter);

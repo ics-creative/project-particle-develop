@@ -10,10 +10,9 @@ const template = `
   <div class="panel-body">
     <div class="row">
       <div class="col-xs-6">
-        <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.width" placeholder="width"/>
+        width <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.width" placeholder="width"/>
         {{drawingData.width}}
-        <hr>
-        <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.height" placeholder="height"/>
+        height <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.height" placeholder="height"/>
         {{drawingData.height}}
         <hr>
         <input type="color" [(ngModel)]="drawingData.color" placeholder="color" value="{{drawingData.color}}"/>
@@ -68,6 +67,26 @@ const template = `
                placeholder="finishAlphaVariance"/>
         {{drawingData.finishAlphaVariance}}
 
+
+        <hr>
+        start-scale
+        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startScale" placeholder="startScale"/>
+        {{drawingData.startScale}}
+        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startScaleVariance"
+               placeholder="startScaleVariance"/>
+        {{drawingData.startScaleVariance}}
+
+        <hr>
+        start-scale
+        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishScale"
+               placeholder="finishScale"/>
+        {{drawingData.finishScale}}
+        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishScaleVariance"
+               placeholder="finishScaleVariance"/>
+        {{drawingData.finishScaleVariance}}
+
+
+
         <hr>
         life span
         <input type="range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan" placeholder="lifeSpan"/>
@@ -96,7 +115,7 @@ export class PropertyPanel {
   private drawingData:DrawingData;
 
   exportSVG(){
-    this.greetingMessage.emit();
+    this.greetingMessage.emit(null);
     console.log("hoge");
   }
   constructor() {

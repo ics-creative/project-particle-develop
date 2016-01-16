@@ -37,4 +37,11 @@ export class DrawingData {
   speedVariance:number;
 
   shapeId:string;
+
+
+  startScale:number;
+  startScaleVariance:number;
+
+  finishScale:number;
+  finishScaleVariance:number;
 }

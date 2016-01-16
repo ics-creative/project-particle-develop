@@ -29,7 +29,7 @@ export class ParticleExporter {
     setTimeout(this.downloadFile, 1);
   }
 
-  downloadFile () {
+  downloadFile = () => {
     var serializer = new XMLSerializer();
     var svgStr = serializer.serializeToString(this.exporter.svg);
     window.open("data:image/svg+xml,\n"+encodeURIComponent(svgStr));
