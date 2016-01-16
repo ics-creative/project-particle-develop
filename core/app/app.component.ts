@@ -75,7 +75,6 @@ export class AppComponent {
   handleSVGClick(){
     console.log("handleSVGClick");
     this.stageComponent.exportSVG();
-
   }
 
   constructor() {

@@ -14,8 +14,8 @@ System.register(["./particle-emitter", "./particle-exporter"], function(exports_
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
-                    this.exportSVG = function () {
-                        _this.particleExporter.runExport();
+                    this.runExport = function () {
+                        return _this.particleExporter.runExport();
                     };
                     this.update = function (data) {
                         _this.backgroundColorCommand.style = data.color;
@@ -37,6 +37,9 @@ System.register(["./particle-emitter", "./particle-exporter"], function(exports_
                     this.stage.addChild(this.particleEmitter.container);
                     this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
                 }
+                ParticleCanvas.prototype.getSVGString = function () {
+                    return this.particleExporter.getSVGString();
+                };
                 return ParticleCanvas;
             })();
             exports_1("ParticleCanvas", ParticleCanvas);

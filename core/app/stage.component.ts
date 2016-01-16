@@ -19,9 +19,10 @@ export class StageComponent implements AfterViewInit {
   }
 
   exportSVG = () => {
-    // TODO:ここは本来canvasの担当にすべきではない。
-    console.log("stageComponent!!!");
-    this.particleCanvas.exportSVG();
+    this.particleCanvas.runExport().then(this.openSVGExportWindow);
+  }
+  openSVGExportWindow = () =>{
+    window.open("data:image/svg+xml,\n"+encodeURIComponent(this.particleCanvas.getSVGString()));
   }
 
   ngAfterViewInit() {

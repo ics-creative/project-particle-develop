@@ -20,13 +20,22 @@ export class ParticleExporter {
     this.drawLayerContainer = drawLayerContainer;
   }
 
-  runExport = () => {
-    this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
-    var t = new Date().getTime();
-    this.exporter.run();
+  runExport = () : Promise => {
+    return new Promise((onResolve,onReject) => {
 
-    // for some reason, it takes a tick for the browser to init the SVG
-    setTimeout(this.downloadFile, 1);
+      this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
+      var t = new Date().getTime();
+      this.exporter.run();
+
+      // for some reason, it takes a tick for the browser to init the SVG
+      setTimeout( () => { onResolve() }, 1);
+    });
+  }
+
+  getSVGString() : string{
+
+    var serializer = new XMLSerializer();
+    return serializer.serializeToString(this.exporter.svg);
   }
 
   downloadFile = () => {

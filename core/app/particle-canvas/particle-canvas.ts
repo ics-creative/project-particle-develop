@@ -38,9 +38,11 @@ export class ParticleCanvas {
     this.particleExporter = new ParticleExporter(this.stage);
 
 	}
-
-  exportSVG = () =>{
-    this.particleExporter.runExport();
+  getSVGString() : string {
+    return this.particleExporter.getSVGString();
+  }
+  runExport = () : Promise =>{
+    return this.particleExporter.runExport();
   }
 
 	update = (data:DrawingData) => {

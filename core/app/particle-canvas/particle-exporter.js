@@ -13,11 +13,13 @@ System.register([], function(exports_1) {
                 function ParticleExporter(drawLayerContainer) {
                     var _this = this;
                     this.runExport = function () {
-                        _this.exporter = new SVGExporter(_this.drawLayerContainer, false, false, false);
-                        var t = new Date().getTime();
-                        _this.exporter.run();
-                        // for some reason, it takes a tick for the browser to init the SVG
-                        setTimeout(_this.downloadFile, 1);
+                        return new Promise(function (onResolve, onReject) {
+                            _this.exporter = new SVGExporter(_this.drawLayerContainer, false, false, false);
+                            var t = new Date().getTime();
+                            _this.exporter.run();
+                            // for some reason, it takes a tick for the browser to init the SVG
+                            setTimeout(function () { onResolve(); }, 1);
+                        });
                     };
                     this.downloadFile = function () {
                         var serializer = new XMLSerializer();
@@ -26,6 +28,10 @@ System.register([], function(exports_1) {
                     };
                     this.drawLayerContainer = drawLayerContainer;
                 }
+                ParticleExporter.prototype.getSVGString = function () {
+                    var serializer = new XMLSerializer();
+                    return serializer.serializeToString(this.exporter.svg);
+                };
                 return ParticleExporter;
             })();
             exports_1("ParticleExporter", ParticleExporter);
