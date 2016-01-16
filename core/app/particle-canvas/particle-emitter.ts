@@ -90,9 +90,12 @@ export class ParticleEmitter {
    * パーティクルの生成（インターバルチェックする）
    */
   private emit = () => {
-    let particle = this.generateParticle();
-    this.container.addChild(particle.particleShape);
-    this.activeParticles.push(particle);
+
+    for(var i = 0; i < this.drawingData.emitFrequency; i ++ ) {
+      let particle = this.generateParticle();
+      this.container.addChild(particle.particleShape);
+      this.activeParticles.push(particle);
+    }
   }
 
   /**

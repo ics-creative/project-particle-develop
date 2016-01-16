@@ -64,9 +64,11 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                      * パーティクルの生成（インターバルチェックする）
                      */
                     this.emit = function () {
-                        var particle = _this.generateParticle();
-                        _this.container.addChild(particle.particleShape);
-                        _this.activeParticles.push(particle);
+                        for (var i = 0; i < _this.drawingData.emitFrequency; i++) {
+                            var particle = _this.generateParticle();
+                            _this.container.addChild(particle.particleShape);
+                            _this.activeParticles.push(particle);
+                        }
                     };
                     /**
                      * パーティクルのパラメータを設定します

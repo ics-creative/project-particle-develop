@@ -6,7 +6,7 @@ export class DrawingData {
 
   startColor:string;
 
-  emitInterval:number;
+  emitFrequency:number;
 
   lifeSpan:number;
   lifeSpanVariance:number;
