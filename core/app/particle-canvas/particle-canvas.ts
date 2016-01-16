@@ -46,7 +46,7 @@ export class ParticleCanvas {
   }
 
 	update = (data:DrawingData) => {
-		this.backgroundColorCommand.style = data.color;
+		this.backgroundColorCommand.style = data.bgColor;
 
 		this.backgroundSize.w = data.width;
 		this.backgroundSize.h = data.height;

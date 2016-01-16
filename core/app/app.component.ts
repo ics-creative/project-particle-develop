@@ -79,9 +79,11 @@ export class AppComponent {
 
   constructor() {
     this.drawingData = new DrawingData();
-    this.drawingData.color = "0xFF0000";
+    this.drawingData.bgColor = "#00000";
     this.drawingData.width = 500;
     this.drawingData.height = 500;
+
+    this.drawingData.startColor = "#FFFFFF";
 
     this.drawingData.startX = 250;
     this.drawingData.startXVariance = 50;
@@ -89,11 +91,11 @@ export class AppComponent {
     this.drawingData.startY = 250;
     this.drawingData.startYVariance = 50;
 
-    this.drawingData.lifeSpan = 500;
+    this.drawingData.lifeSpan = 100;
     this.drawingData.lifeSpanVariance = 30;
 
-    this.drawingData.angle = 0;
-    this.drawingData.angleVariance = 360;
+    this.drawingData.angle = 270;
+    this.drawingData.angleVariance = 60;
 
     this.drawingData.speed = 0.5;
     this.drawingData.speedVariance = 0.5;

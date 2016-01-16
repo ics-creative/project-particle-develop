@@ -154,26 +154,27 @@ export class ParticleEmitter {
 
     particle.particleShape.removeAllChildren();
 
+    let color = this.drawingData.startColor;
     switch(shapeId) {
       case ParticleShapeTypes.Star:
         var shape:createjs.Shape = new createjs.Shape();
 
-        shape.graphics.beginFill("white");
+        shape.graphics.beginFill(color);
         shape.graphics.drawPolyStar(0,0,10,5,0.5,0);
         particle.particleShape.addChild(shape);
         break;
       case ParticleShapeTypes.MailMark:
 
-        var text:createjs.Text = new createjs.Text("♥","20px Arial","white");
+        var text:createjs.Text = new createjs.Text("♥","20px Arial",.color);
         particle.particleShape.addChild(text);
         break;
       case ParticleShapeTypes.MailFace:
 
-        var text:createjs.Text = new createjs.Text("〠","20px Arial","white");
+        var text:createjs.Text = new createjs.Text("〠","20px Arial",color);
         particle.particleShape.addChild(text);
         break;
       case ParticleShapeTypes.MailMark:
-        var text:createjs.Text = new createjs.Text("〒","20px Arial","white");
+        var text:createjs.Text = new createjs.Text("〒","20px Arial",color);
         particle.particleShape.addChild(text);
         break;
 
@@ -181,7 +182,7 @@ export class ParticleEmitter {
       default:
         var shape:createjs.Shape = new createjs.Shape();
 
-        shape.graphics.beginFill("white");
+        shape.graphics.beginFill(color);
         shape.graphics.drawCircle(0,0,10);
         particle.particleShape.addChild(shape);
         break;

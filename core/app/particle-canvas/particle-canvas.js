@@ -18,7 +18,7 @@ System.register(["./particle-emitter", "./particle-exporter"], function(exports_
                         return _this.particleExporter.runExport();
                     };
                     this.update = function (data) {
-                        _this.backgroundColorCommand.style = data.color;
+                        _this.backgroundColorCommand.style = data.bgColor;
                         _this.backgroundSize.w = data.width;
                         _this.backgroundSize.h = data.height;
                         _this.particleEmitter.update(data);

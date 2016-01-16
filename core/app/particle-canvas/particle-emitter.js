@@ -85,28 +85,29 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                     };
                     this.generateShape = function (particle, shapeId) {
                         particle.particleShape.removeAllChildren();
+                        var color = _this.drawingData.startColor;
                         switch (shapeId) {
                             case particle_shape_types_1.ParticleShapeTypes.Star:
                                 var shape = new createjs.Shape();
-                                shape.graphics.beginFill("white");
+                                shape.graphics.beginFill(color);
                                 shape.graphics.drawPolyStar(0, 0, 10, 5, 0.5, 0);
                                 particle.particleShape.addChild(shape);
                                 break;
                             case particle_shape_types_1.ParticleShapeTypes.MailMark:
-                                var text = new createjs.Text("♥", "20px Arial", "white");
+                                var text = new createjs.Text("♥", "20px Arial", color);
                                 particle.particleShape.addChild(text);
                                 break;
                             case particle_shape_types_1.ParticleShapeTypes.MailFace:
-                                var text = new createjs.Text("〠", "20px Arial", "white");
+                                var text = new createjs.Text("〠", "20px Arial", color);
                                 particle.particleShape.addChild(text);
                                 break;
                             case particle_shape_types_1.ParticleShapeTypes.MailMark:
-                                var text = new createjs.Text("〒", "20px Arial", "white");
+                                var text = new createjs.Text("〒", "20px Arial", color);
                                 particle.particleShape.addChild(text);
                                 break;
                             default:
                                 var shape = new createjs.Shape();
-                                shape.graphics.beginFill("white");
+                                shape.graphics.beginFill(color);
                                 shape.graphics.drawCircle(0, 0, 10);
                                 particle.particleShape.addChild(shape);
                                 break;

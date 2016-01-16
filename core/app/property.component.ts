@@ -15,8 +15,13 @@ const template = `
         height <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.height" placeholder="height"/>
         {{drawingData.height}}
         <hr>
-        <input type="color" [(ngModel)]="drawingData.color" placeholder="color" value="{{drawingData.color}}"/>
-        {{drawingData.color}}
+        <input type="color" [(ngModel)]="drawingData.bgColor" placeholder="bgColor" value="{{drawingData.bgColor}}"/>
+        {{drawingData.bgColor}}
+
+
+        <hr>
+        <input type="color" [(ngModel)]="drawingData.startColor" placeholder="startColor" value="{{drawingData.startColor}}"/>
+        {{drawingData.startColor}}
         <hr>
         x-value
         <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.startX" placeholder="startX"/>

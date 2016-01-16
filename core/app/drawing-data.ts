@@ -1,10 +1,10 @@
 export class DrawingData {
-  color:string;
+  bgColor:string;
   width:number;
   height:number;
 
 
-
+  startColor:string;
 
   emitInterval:number;
 
