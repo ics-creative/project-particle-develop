@@ -93,7 +93,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                                 shape.graphics.drawPolyStar(0, 0, 10, 5, 0.5, 0);
                                 particle.particleShape.addChild(shape);
                                 break;
-                            case particle_shape_types_1.ParticleShapeTypes.MailMark:
+                            case particle_shape_types_1.ParticleShapeTypes.Heart:
                                 var text = new createjs.Text("♥", "20px Arial", color);
                                 particle.particleShape.addChild(text);
                                 break;

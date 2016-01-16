@@ -163,9 +163,9 @@ export class ParticleEmitter {
         shape.graphics.drawPolyStar(0,0,10,5,0.5,0);
         particle.particleShape.addChild(shape);
         break;
-      case ParticleShapeTypes.MailMark:
+      case ParticleShapeTypes.Heart:
 
-        var text:createjs.Text = new createjs.Text("♥","20px Arial",.color);
+        var text:createjs.Text = new createjs.Text("♥","20px Arial",color);
         particle.particleShape.addChild(text);
         break;
       case ParticleShapeTypes.MailFace:
