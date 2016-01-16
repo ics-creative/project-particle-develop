@@ -45,6 +45,14 @@ export class Particle{
 	/** 終了時のアルファ値です0〜1.0の間になります。 */
 	public finishAlpha:number;
 
+  /** スケールのイージング関数です。 */
+  public easingScale:(life:number)=>number;
+  /** 開始スケール値です0〜1.0の間になります。 */
+  public startScale:number;
+  /** 終了時のスケール値です0〜1.0の間になります。 */
+  public finishScale:number;
+
+
 	constructor() {
     this.particleShape = new createjs.Container;
 	}

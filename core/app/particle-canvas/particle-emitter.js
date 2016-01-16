@@ -38,7 +38,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                             var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
                             particle.particleShape.alpha = alpha;
                             var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
-                            //particle.particleShape.size = scale;
+                            particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
                             //  パーティクルが死んでいたら、オブジェクトプールに移動
                             if (particle.currentLife < 0) {
                                 particle.isAlive = false;
@@ -89,7 +89,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                             case particle_shape_types_1.ParticleShapeTypes.Star:
                                 var shape = new createjs.Shape();
                                 shape.graphics.beginFill("white");
-                                shape.graphics.drawPolyStar(0, 0, 10, 5, 0.5);
+                                shape.graphics.drawPolyStar(0, 0, 10, 5, 0.5, 0);
                                 particle.particleShape.addChild(shape);
                                 break;
                             case particle_shape_types_1.ParticleShapeTypes.MailMark:
@@ -127,7 +127,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                     this.container = new createjs.Container();
                 }
                 /**
-                 * パーティくるパラメータの設定
+                 * パーティクルパラメータの設定
                  * @param particle
                  */
                 ParticleEmitter.prototype.setParticleParamater = function (particle) {
@@ -140,7 +140,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                     particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
                     particle.currentLife = particle.totalLife;
                     //  スピード
-                    var speed = this.getParam(this.drawingData.speed, this.drawingData.speedVariance, false);
+                    var speed = this.range(0, 1, this.getParam(this.drawingData.speed, this.drawingData.speedVariance, false));
                     var angle = createjs.Matrix2D.DEG_TO_RAD * this.getParam(this.drawingData.angle, this.drawingData.angleVariance, false);
                     particle.vx = Math.cos(angle) + speed;
                     particle.vy = Math.sin(angle) + speed;
