@@ -2,6 +2,7 @@
 
 import {DrawingData} from "../drawing-data";
 import {ParticleEmitter} from "./particle-emitter";
+import {ParticleExporter} from "./particle-exporter";
 export class ParticleCanvas {
 
 
@@ -13,6 +14,8 @@ export class ParticleCanvas {
 	public backgroundSize:any;
 
   private particleEmitter:ParticleEmitter;
+
+  public particleExporter:ParticleExporter;
 
 	constructor(canvas:any,data:DrawingData) {
 
@@ -31,7 +34,14 @@ export class ParticleCanvas {
 
     this.particleEmitter = new ParticleEmitter();
     this.stage.addChild(this.particleEmitter.container);
+
+    this.particleExporter = new ParticleExporter(this.particleEmitter.container);
+
 	}
+
+  exportSVG = () =>{
+    this.particleExporter.runExport();
+  }
 
 	update = (data:DrawingData) => {
 		this.backgroundColorCommand.style = data.color;

@@ -11,7 +11,7 @@ const template = `
         <stage [drawingData]="drawingData"></stage>
     </div>
     <div class="col-sm-5 col-xs-12">
-        <property-panel [drawingData]="drawingData"></property-panel>
+        <property-panel [drawingData]="drawingData" (greetingMessage)="handleSVGClick()"></property-panel>
     </div>
 </div>
 `;
@@ -54,7 +54,7 @@ const modal = `
 @Component({
   selector: `my-app`,
   template: template + modal,
-  directives: [StageComponent, PropertyPanel]
+  directives: [StageComponent, PropertyPanel],
 })
 
 export class AppComponent {
@@ -67,6 +67,12 @@ export class AppComponent {
   }
   saveChanges = () => {
     this.drawingData.shapeId = this.temporarySelect;
+  }
+
+  handleSVGClick(){
+    console.log("handleSVGClick");
+
+
   }
 
   constructor() {

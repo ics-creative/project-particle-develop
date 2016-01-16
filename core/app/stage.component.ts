@@ -18,6 +18,11 @@ export class StageComponent implements AfterViewInit {
   constructor() {
   }
 
+  exportSVG = () => {
+    // TODO:ここは本来canvasの担当にすべきではない
+    this.particleCanvas.exportSVG();
+  }
+
   ngAfterViewInit() {
     let canvas = this.myCanvas.nativeElement;
 		this.particleCanvas = new ParticleCanvas(canvas,this.drawingData);

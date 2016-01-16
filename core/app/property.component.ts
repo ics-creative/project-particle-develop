@@ -1,5 +1,6 @@
 import {Component} from "angular2/core";
 import {DrawingData} from "./drawing-data";
+import {EventEmitter} from 'angular2/core';
 
 const template = `
 <div class="panel panel-default">
@@ -86,12 +87,18 @@ const template = `
 @Component({
   selector: "property-panel",
   template: template,
-  inputs: ["drawingData"]
+  inputs: ["drawingData"],
+  events: ['greetingMessage']
 })
 
 export class PropertyPanel {
+  private greetingMessage = new EventEmitter();
   private drawingData:DrawingData;
 
+  exportSVG(){
+    this.greetingMessage.emit();
+    console.log("hoge");
+  }
   constructor() {
   }
 }

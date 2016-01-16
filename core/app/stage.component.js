@@ -21,6 +21,11 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
         execute: function() {
             StageComponent = (function () {
                 function StageComponent() {
+                    var _this = this;
+                    this.exportSVG = function () {
+                        // TODO:ここは本来canvasの担当にすべきではない
+                        _this.particleCanvas.exportSVG();
+                    };
                 }
                 StageComponent.prototype.ngAfterViewInit = function () {
                     var canvas = this.myCanvas.nativeElement;

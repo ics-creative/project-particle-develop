@@ -1,16 +1,22 @@
 ///<reference path="../../typings/tsd.d.ts" />
-System.register(["./particle-emitter"], function(exports_1) {
-    var particle_emitter_1;
+System.register(["./particle-emitter", "./particle-exporter"], function(exports_1) {
+    var particle_emitter_1, particle_exporter_1;
     var ParticleCanvas;
     return {
         setters:[
             function (particle_emitter_1_1) {
                 particle_emitter_1 = particle_emitter_1_1;
+            },
+            function (particle_exporter_1_1) {
+                particle_exporter_1 = particle_exporter_1_1;
             }],
         execute: function() {
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
+                    this.exportSVG = function () {
+                        _this.particleExporter.runExport();
+                    };
                     this.update = function (data) {
                         _this.backgroundColorCommand.style = data.color;
                         _this.backgroundSize.w = data.width;
@@ -29,6 +35,7 @@ System.register(["./particle-emitter"], function(exports_1) {
                     this.stage.addChild(this.background);
                     this.particleEmitter = new particle_emitter_1.ParticleEmitter();
                     this.stage.addChild(this.particleEmitter.container);
+                    this.particleExporter = new particle_exporter_1.ParticleExporter(this.particleEmitter.container);
                 }
                 return ParticleCanvas;
             })();
