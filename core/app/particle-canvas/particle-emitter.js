@@ -34,8 +34,8 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                             particle.y = particle.y + particle.vy;
                             particle.particleShape.x = particle.x;
                             particle.particleShape.y = particle.y;
-                            var lifeParcent = particle.currentLife / particle.totalLife;
-                            var alpha = particle.startAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
+                            var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
+                            var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
                             particle.particleShape.alpha = alpha;
                             //  パーティクルが死んでいたら、オブジェクトプールに移動
                             if (particle.currentLife < 0) {

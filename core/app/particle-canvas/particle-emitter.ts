@@ -52,9 +52,9 @@ export class ParticleEmitter {
       particle.particleShape.x = particle.x;
       particle.particleShape.y = particle.y;
 
-      var lifeParcent = particle.currentLife / particle.totalLife;
+      var lifeParcent = Math.max( particle.currentLife,0 )  / particle.totalLife;
 
-      var alpha = particle.startAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent ;
+      var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent ;
 
       particle.particleShape.alpha = alpha;
 
@@ -183,7 +183,7 @@ export class ParticleEmitter {
   }
 
 
-  getParam = (value:number, variance:number, isInteger:boolean) : number => {
+  getParam = (value:any, variance:any, isInteger:boolean) : number => {
     let result = parseFloat(value) + (  Math.random() * parseFloat( variance )  ) - parseFloat( variance )  / 2;
 
     if( isInteger ) {
