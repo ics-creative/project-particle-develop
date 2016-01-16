@@ -104,7 +104,7 @@ const template = `
         </div>
       </div>
     </div>
-    <button class="btn btn-primary btn-lg btn-block" (click)="exportSVG()">保存</button>
+    <button class="btn btn-primary btn-lg btn-block" (click)="exportSVG()">SVG保存</button>
   </div>
 </div>
 `;
@@ -112,15 +112,15 @@ const template = `
   selector: "property-panel",
   template: template,
   inputs: ["drawingData"],
-  events: ['greetingMessage']
+  events: ['exportSVGEvent']
 })
 
 export class PropertyPanel {
-  private greetingMessage = new EventEmitter();
+  private exportSVGEvent = new EventEmitter();
   private drawingData:DrawingData;
 
   exportSVG(){
-    this.greetingMessage.emit(null);
+    this.exportSVGEvent.emit(null);
     console.log("hoge");
   }
   constructor() {

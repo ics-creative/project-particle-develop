@@ -12,7 +12,7 @@ const template = `
         <stage #stageComponent [drawingData]="drawingData"></stage>
     </div>
     <div class="col-sm-5 col-xs-12">
-        <property-panel [drawingData]="drawingData" (greetingMessage)="handleSVGClick()"></property-panel>
+        <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()"></property-panel>
     </div>
 </div>
 `;
