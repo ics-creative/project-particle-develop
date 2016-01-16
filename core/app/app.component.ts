@@ -5,6 +5,7 @@ import {DrawingData} from "./drawing-data";
 import {PropertyPanel} from "./property.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
+import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
 
 const template = `
 <div class="container">
@@ -117,6 +118,6 @@ export class AppComponent {
     this.drawingData.finishScale = 1;
     this.drawingData.finishScaleVariance = 0;
 
-    this.drawingData.shapeIdList = new Array();
+    this.drawingData.shapeIdList = [ParticleShapeTypes.Star,ParticleShapeTypes.MailFace,ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark]
   }
 }

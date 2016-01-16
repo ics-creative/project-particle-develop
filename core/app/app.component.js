@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./drawing-data", "./property.component", "./stage.component"], function(exports_1) {
+System.register(["angular2/core", "./drawing-data", "./property.component", "./stage.component", "./particle-canvas/particle-shape-types"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, drawing_data_1, property_component_1, stage_component_1, core_2;
+    var core_1, drawing_data_1, property_component_1, stage_component_1, core_2, particle_shape_types_1;
     var template, modal, AppComponent;
     return {
         setters:[
@@ -24,6 +24,9 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
             },
             function (stage_component_1_1) {
                 stage_component_1 = stage_component_1_1;
+            },
+            function (particle_shape_types_1_1) {
+                particle_shape_types_1 = particle_shape_types_1_1;
             }],
         execute: function() {
             template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\" (exportParamaterEvent)=\"handleExportParamaterClick()\"></property-panel>\n    </div>\n</div>\n";
@@ -63,7 +66,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.startScaleVariance = 0;
                     this.drawingData.finishScale = 1;
                     this.drawingData.finishScaleVariance = 0;
-                    this.drawingData.shapeIdList = new Array();
+                    this.drawingData.shapeIdList = [particle_shape_types_1.ParticleShapeTypes.Star, particle_shape_types_1.ParticleShapeTypes.MailFace, particle_shape_types_1.ParticleShapeTypes.Heart, particle_shape_types_1.ParticleShapeTypes.MailMark];
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     console.log("handleSVGClick");
