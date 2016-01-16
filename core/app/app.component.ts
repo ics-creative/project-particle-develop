@@ -12,7 +12,7 @@ const template = `
         <stage #stageComponent [drawingData]="drawingData"></stage>
     </div>
     <div class="col-sm-5 col-xs-12">
-        <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()"></property-panel>
+        <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()" (exportParamaterEvent)="handleExportParamaterClick()"></property-panel>
     </div>
 </div>
 `;
@@ -75,6 +75,10 @@ export class AppComponent {
   handleSVGClick(){
     console.log("handleSVGClick");
     this.stageComponent.exportSVG();
+  }
+
+  handleExportParamaterClick(){
+    console.log("handleExportParamaterClick");
   }
 
   constructor() {
