@@ -69,7 +69,8 @@ export class AppComponent {
     this.temporarySelect = shapeId;
   }
   saveChanges = () => {
-    this.drawingData.shapeId = this.temporarySelect;
+    // TODO:配列で選択できるようにする
+    this.drawingData.shapeIdList = [this.temporarySelect];
   }
 
   handleSVGClick(){
@@ -115,5 +116,7 @@ export class AppComponent {
 
     this.drawingData.finishScale = 1;
     this.drawingData.finishScaleVariance = 0;
+
+    this.drawingData.shapeIdList = new Array();
   }
 }

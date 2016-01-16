@@ -26,7 +26,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                 stage_component_1 = stage_component_1_1;
             }],
         execute: function() {
-            template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\"></property-panel>\n    </div>\n</div>\n";
+            template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\" (exportParamaterEvent)=\"handleExportParamaterClick()\"></property-panel>\n    </div>\n</div>\n";
             modal = "\n<div class=\"modal fade\" id=\"ShapeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span\n          aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Shapes</h4>\n      </div>\n      <div class=\"modal-body\">\n\n        <div class=\"col-sm-3\" (click)=\"selectShape('star')\">\n          \u2606\n        </div>\n        <div class=\"col-sm-3\" (click)=\"selectShape('heart')\">\n          \u2661\n        </div>\n        <div class=\"col-sm-3\"(click)=\"selectShape('mail-face')\">\n          \u3020\n        </div>\n        <div class=\"col-sm-3\" (click)=\"selectShape('mail-mark')\">\n          \u3012\n        </div>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"saveChanges()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n";
             AppComponent = (function () {
                 function AppComponent() {
@@ -37,7 +37,8 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                         _this.temporarySelect = shapeId;
                     };
                     this.saveChanges = function () {
-                        _this.drawingData.shapeId = _this.temporarySelect;
+                        // TODO:配列で選択できるようにする
+                        _this.drawingData.shapeIdList = [_this.temporarySelect];
                     };
                     this.drawingData = new drawing_data_1.DrawingData();
                     this.drawingData.bgColor = "#00000";
@@ -62,10 +63,14 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.startScaleVariance = 0;
                     this.drawingData.finishScale = 1;
                     this.drawingData.finishScaleVariance = 0;
+                    this.drawingData.shapeIdList = new Array();
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     console.log("handleSVGClick");
                     this.stageComponent.exportSVG();
+                };
+                AppComponent.prototype.handleExportParamaterClick = function () {
+                    console.log("handleExportParamaterClick");
                 };
                 __decorate([
                     core_2.ViewChild("stageComponent"), 

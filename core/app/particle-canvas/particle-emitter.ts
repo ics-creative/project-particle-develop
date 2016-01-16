@@ -126,7 +126,7 @@ export class ParticleEmitter {
     particle.y = this.getParam(this.drawingData.startY, this.drawingData.startYVariance,false);
 
 
-    this.generateShape(particle,this.drawingData.shapeId);
+    this.generateShape(particle,this.drawingData.shapeIdList);
 
     //  生存期間
     particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance,true));
@@ -150,11 +150,15 @@ export class ParticleEmitter {
 
   }
 
-  generateShape = (particle:Particle,shapeId:string) =>{
+  generateShape = (particle:Particle,shapeIdList:string[]) =>{
 
     particle.particleShape.removeAllChildren();
 
     let color = this.drawingData.startColor;
+
+    let r = Math.floor(Math.random() *  this.drawingData.shapeIdList.length);
+    let shapeId = ( this.drawingData.shapeIdList.length == 0 ) ? '' :  this.drawingData.shapeIdList[r]
+
     switch(shapeId) {
       case ParticleShapeTypes.Star:
         var shape:createjs.Shape = new createjs.Shape();

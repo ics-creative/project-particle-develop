@@ -36,5 +36,5 @@ export class DrawingData {
   speed:number;
   speedVariance:number;
 
-  shapeId:string;
+  shapeIdList:string[];
 }

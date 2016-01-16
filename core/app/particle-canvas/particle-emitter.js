@@ -83,9 +83,11 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                         _this.setParticleParamater(particle);
                         return particle;
                     };
-                    this.generateShape = function (particle, shapeId) {
+                    this.generateShape = function (particle, shapeIdList) {
                         particle.particleShape.removeAllChildren();
                         var color = _this.drawingData.startColor;
+                        var r = Math.floor(Math.random() * _this.drawingData.shapeIdList.length);
+                        var shapeId = (_this.drawingData.shapeIdList.length == 0) ? '' : _this.drawingData.shapeIdList[r];
                         switch (shapeId) {
                             case particle_shape_types_1.ParticleShapeTypes.Star:
                                 var shape = new createjs.Shape();
@@ -136,7 +138,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                     particle.isAlive = true;
                     particle.x = this.getParam(this.drawingData.startX, this.drawingData.startXVariance, false);
                     particle.y = this.getParam(this.drawingData.startY, this.drawingData.startYVariance, false);
-                    this.generateShape(particle, this.drawingData.shapeId);
+                    this.generateShape(particle, this.drawingData.shapeIdList);
                     //  生存期間
                     particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
                     particle.currentLife = particle.totalLife;
