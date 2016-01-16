@@ -16,12 +16,6 @@ export class Particle{
 	/** パーティクルの生存期間（フレーム数）です。 */
 	public totalLife:number;
 
-	/** パーティクルのスケールです */
-	public currentScale:number;
-	/** パーティクルの開始時のサイズです */
-	public startScale:number;
-	/** パーティクルの終了時のサイズです */
-	public finishScale:number;
 
 	/** パーティクルの現在のx位置です。 */
 	public x:number;

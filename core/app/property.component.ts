@@ -93,6 +93,11 @@ const template = `
 
 
         <hr>
+        emit frequency
+        <input type="range" min="0" max="20" step="1" [(ngModel)]="drawingData.emitFrequency"
+               placeholder="emitFrequency"/>
+        {{drawingData.emitFrequency}}
+         <hr>
         life span
         <input type="range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan" placeholder="lifeSpan"/>
         {{drawingData.lifeSpan}}

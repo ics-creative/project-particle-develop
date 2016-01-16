@@ -118,6 +118,9 @@ export class AppComponent {
     this.drawingData.finishScale = 1;
     this.drawingData.finishScaleVariance = 0;
 
-    this.drawingData.shapeIdList = [ParticleShapeTypes.Star,ParticleShapeTypes.MailFace,ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark]
+    this.drawingData.shapeIdList = [ParticleShapeTypes.Star,ParticleShapeTypes.MailFace,ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark];
+
+
+    this.drawingData.emitFrequency = 1;
   }
 }

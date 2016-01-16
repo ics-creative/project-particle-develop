@@ -20,7 +20,7 @@ export class ParticleExporter {
     this.drawLayerContainer = drawLayerContainer;
   }
 
-  runExport = () : Promise => {
+  runExport = () : Promise<any> => {
     return new Promise((onResolve,onReject) => {
 
       this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
