@@ -2,11 +2,11 @@
   "name": "desktop",
   "version": "0.1.0",
   "description": "createjs illustrator",
-  "main": "src/browser/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install": "dtsm install",
-    "build-ts": "tsc --project ./;gulp ts-compile-browser",
+    "install": "tsd install",
+    "build-ts": "tsc --project ./;gulp build-ts",
     "start": "electron .",
     "watch": "NODE_ENV=production gulp serve"
   },
@@ -17,14 +17,18 @@
   "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
   "license": "MIT",
   "devDependencies": {
-    "dtsm": "^0.13.0"
-  },
-  "dependencies": {
+    "del": "^2.2.0",
     "electron-connect": "^0.3.3",
     "electron-prebuilt": "0.35.0",
     "gulp": "^3.9.0",
+    "gulp-exec": "^2.1.2",
+    "gulp-inject": "^3.0.0",
     "gulp-sass": "^2.1.1",
+    "gulp-shell": "^0.5.1",
     "gulp-typescript": "^2.10.0",
-    "jquery": "^2.2.0"
-  }
+    "jquery": "^2.2.0",
+    "run-sequence": "^1.1.5",
+    "tsd": "^0.6.5"
+  },
+  "dependencies": {}
 }
