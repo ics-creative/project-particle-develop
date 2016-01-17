@@ -1,8 +1,10 @@
 ///<reference path="stage.component.ts"/>
 ///<reference path="property.component.ts"/>
+///<reference path="shape-property.component.ts"/>
 import {Component} from "angular2/core";
 import {DrawingData} from "./drawing-data";
 import {PropertyPanel} from "./property.component";
+import {ShapePropertyModal} from "./shape-property.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
 import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
@@ -15,64 +17,20 @@ const template = `
     <div class="col-sm-5 col-xs-12">
         <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()" (exportParamaterEvent)="handleExportParamaterClick()"></property-panel>
     </div>
-</div>
-`;
-
-const modal = `
-<div class="modal fade" id="ShapeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Shapes</h4>
-      </div>
-      <div class="modal-body">
-
-        <div class="col-sm-3" (click)="selectShape('star')">
-          ☆
-        </div>
-        <div class="col-sm-3" (click)="selectShape('heart')">
-          ♡
-        </div>
-        <div class="col-sm-3"(click)="selectShape('mail-face')">
-          〠
-        </div>
-        <div class="col-sm-3" (click)="selectShape('mail-mark')">
-          〒
-        </div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="saveChanges()" data-dismiss="modal">Save changes</button>
-      </div>
-    </div>
-  </div>
+    <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
 </div>
 `;
 
 
 @Component({
   selector: `my-app`,
-  template: template + modal,
-  directives: [StageComponent, PropertyPanel],
+  template: template,
+  directives: [StageComponent, PropertyPanel,ShapePropertyModal],
 })
 
 export class AppComponent {
   private drawingData:DrawingData;
-  private temporarySelect:string;
   @ViewChild("stageComponent") stageComponent:StageComponent;
-
-  selectShape = (shapeId) => {
-    console.log(`selectapp:${shapeId}`);
-    //  ラジオボタンとかにすればテンポラリ選択不要そう
-    this.temporarySelect = shapeId;
-  }
-  saveChanges = () => {
-    // TODO:配列で選択できるようにする
-    this.drawingData.shapeIdList = [this.temporarySelect];
-  }
 
   handleSVGClick(){
     this.stageComponent.exportSVG().then(this.openSVGExportWindow);

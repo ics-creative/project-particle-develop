@@ -23,16 +23,16 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
                 function StageComponent() {
                     var _this = this;
                     this.exportSVG = function () {
-                        _this.particleCanvas.runExport().then(_this.openSVGExportWindow);
-                    };
-                    this.openSVGExportWindow = function () {
-                        window.open("data:image/svg+xml,\n" + encodeURIComponent(_this.particleCanvas.getSVGString()));
+                        return _this.particleCanvas.runExport();
                     };
                 }
                 StageComponent.prototype.ngAfterViewInit = function () {
                     var canvas = this.myCanvas.nativeElement;
                     this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
                     this.tick();
+                };
+                StageComponent.prototype.getParticleSVGString = function () {
+                    return this.particleCanvas.getSVGString();
                 };
                 StageComponent.prototype.tick = function () {
                     var _this = this;

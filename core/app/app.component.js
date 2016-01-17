@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./drawing-data", "./property.component", "./stage.component", "./particle-canvas/particle-shape-types"], function(exports_1) {
+System.register(["angular2/core", "./drawing-data", "./property.component", "./shape-property.component", "./stage.component", "./particle-canvas/particle-shape-types"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,8 +8,8 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, drawing_data_1, property_component_1, stage_component_1, core_2, particle_shape_types_1;
-    var template, modal, AppComponent;
+    var core_1, drawing_data_1, property_component_1, shape_property_component_1, stage_component_1, core_2, particle_shape_types_1;
+    var template, AppComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -22,6 +22,9 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
             function (property_component_1_1) {
                 property_component_1 = property_component_1_1;
             },
+            function (shape_property_component_1_1) {
+                shape_property_component_1 = shape_property_component_1_1;
+            },
             function (stage_component_1_1) {
                 stage_component_1 = stage_component_1_1;
             },
@@ -29,20 +32,10 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                 particle_shape_types_1 = particle_shape_types_1_1;
             }],
         execute: function() {
-            template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\" (exportParamaterEvent)=\"handleExportParamaterClick()\"></property-panel>\n    </div>\n</div>\n";
-            modal = "\n<div class=\"modal fade\" id=\"ShapeModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span\n          aria-hidden=\"true\">&times;</span></button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Shapes</h4>\n      </div>\n      <div class=\"modal-body\">\n\n        <div class=\"col-sm-3\" (click)=\"selectShape('star')\">\n          \u2606\n        </div>\n        <div class=\"col-sm-3\" (click)=\"selectShape('heart')\">\n          \u2661\n        </div>\n        <div class=\"col-sm-3\"(click)=\"selectShape('mail-face')\">\n          \u3020\n        </div>\n        <div class=\"col-sm-3\" (click)=\"selectShape('mail-mark')\">\n          \u3012\n        </div>\n\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Close</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"saveChanges()\" data-dismiss=\"modal\">Save changes</button>\n      </div>\n    </div>\n  </div>\n</div>\n";
+            template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\" (exportParamaterEvent)=\"handleExportParamaterClick()\"></property-panel>\n    </div>\n    <shape-property-modal [drawingData]=\"drawingData\"></shape-property-modal>\n</div>\n";
             AppComponent = (function () {
                 function AppComponent() {
                     var _this = this;
-                    this.selectShape = function (shapeId) {
-                        console.log("selectapp:" + shapeId);
-                        //  ラジオボタンとかにすればテンポラリ選択不要そう
-                        _this.temporarySelect = shapeId;
-                    };
-                    this.saveChanges = function () {
-                        // TODO:配列で選択できるようにする
-                        _this.drawingData.shapeIdList = [_this.temporarySelect];
-                    };
                     this.openSVGExportWindow = function () {
                         window.open("data:image/svg+xml,\n" + encodeURIComponent(_this.stageComponent.getParticleSVGString()));
                     };
@@ -89,8 +82,8 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: template + modal,
-                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel],
+                        template: template,
+                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, shape_property_component_1.ShapePropertyModal],
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);
