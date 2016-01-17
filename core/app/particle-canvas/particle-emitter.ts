@@ -40,11 +40,17 @@ export class ParticleEmitter {
    */
   private animate = () => {
 
-    for (var i = 0; i < this.activeParticles.length; i++) {
+    var accX = Math.cos(this.drawingData.accelerationDirection) * this.drawingData.accelerationSpeed;
+    var accY = Math.sin(this.drawingData.accelerationDirection) * this.drawingData.accelerationSpeed;
 
+    for (var i = 0; i < this.activeParticles.length; i++) {
+      
       let particle = this.activeParticles[i];
 
       particle.currentLife--;
+
+      particle.vx = particle.vx + accX;
+      particle.vx = particle.vx + accY;
 
       particle.vx = particle.vx * (1 - this.drawingData.fliction);
       particle.vy = particle.vy * (1 - this.drawingData.fliction);

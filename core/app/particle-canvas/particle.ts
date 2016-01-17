@@ -22,12 +22,12 @@ export class Particle{
 	/** パーティクルの現在のy位置です。 */
 	public y:number;
 
-	/** パーティクルの向かっている位置です。 */
+	/** パーティクルが現在向かっている方向ベクトルです。 */
 	public vx:number;
-	/** パーティクルの向かっている位置です。 */
+	/** パーティクルが方向ベクトルです。 */
 	public vy:number;
 
-	/** パーティクルの開始時の色です */
+  /** パーティクルの開始時の色です */
 	public startColor:string;
 	/** パーティクルの終了時の色です */
 	public finishColor:string;

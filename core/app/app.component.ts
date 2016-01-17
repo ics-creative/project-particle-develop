@@ -108,6 +108,10 @@ export class AppComponent {
     this.drawingData.initialSpeed = 0.5;
     this.drawingData.initialSpeedVariance = 0.5;
 
+
+    this.drawingData.accelerationSpeed = 0;
+    this.drawingData.accelerationDirection = 0;
+
     this.drawingData.startAlpha = 1;
     this.drawingData.startAlphaVariance = 0;
 

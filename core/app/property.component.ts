@@ -61,6 +61,17 @@ const template = `
         <input type="range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.fliction" placeholder="fliction"/>
         {{drawingData.fliction}}
 
+
+        <hr>
+        acceleration speed
+        <input type="range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.accelerationSpeed" placeholder="accelerationSpeed"/>
+        {{drawingData.accelerationSpeed}}
+
+        acceleration direction
+        <input type="range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.accelerationDirection" placeholder="accelerationDirection"/>
+        {{drawingData.accelerationDirection}}
+        <hr>
+
       </div>
       <div class="col-xs-6">
         <hr>
