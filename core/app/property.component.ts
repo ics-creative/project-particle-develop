@@ -57,9 +57,9 @@ const template = `
 
 
         <hr>
-        fliction
-        <input type="range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.fliction" placeholder="fliction"/>
-        {{drawingData.fliction}}
+        friction
+        <input type="range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.friction" placeholder="friction"/>
+        {{drawingData.friction}}
 
 
         <hr>

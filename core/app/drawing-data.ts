@@ -17,7 +17,7 @@ export class DrawingData {
   initialSpeed:number;
   initialSpeedVariance:number;
 
-  fliction:number;
+  friction:number;
 
   accelerationSpeed:number;
   accelerationDirection:number;

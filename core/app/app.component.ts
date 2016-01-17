@@ -89,7 +89,7 @@ export class AppComponent {
     this.drawingData.width = 500;
     this.drawingData.height = 500;
 
-    this.drawingData.fliction = 0;
+    this.drawingData.friction = 0;
 
     this.drawingData.startColor = "#FFFFFF";
 
@@ -126,7 +126,7 @@ export class AppComponent {
 
     this.drawingData.shapeIdList = [ParticleShapeTypes.Star,ParticleShapeTypes.MailFace,ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark];
 
-    this.drawingData.fliction
+    this.drawingData.friction
 
     this.drawingData.emitFrequency = 1;
   }
