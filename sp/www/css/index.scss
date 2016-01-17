@@ -1,0 +1,18 @@
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#templatePanel
+{
+  min-height: 100%;
+  overflow:scroll;
+  width: 200px;
+}
+#propertyPanel
+{
+  max-height: 100%;
+  overflow:scroll;
+  left: auto;
+  width: 500px;
+}

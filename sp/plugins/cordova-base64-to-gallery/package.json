@@ -1,0 +1,61 @@
+{
+  "name": "cordova-base64-to-gallery",
+  "version": "2.0.1",
+  "description": "Cordova plugin to save base64 data as a png image into the device",
+  "license": "MIT",
+  "scripts": {
+    "update": "node ./scripts/update_version",
+    "lint": "eslint www/base64ToGallery.js",
+    "test": "npm run lint",
+    "prepublish": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nexxa/cordova-base64-to-gallery.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Nexxa/cordova-base64-to-gallery/issues"
+  },
+  "engines": [
+    {
+      "cordova": ">=3.0.0"
+    },
+    {
+      "node": ">=0.10"
+    }
+  ],
+  "cordova": {
+    "id": "cordova-base64-to-gallery",
+    "platforms": [
+      "ios",
+      "android",
+      "wp8"
+    ]
+  },
+  "keywords": [
+    "image",
+    "base64",
+    "save",
+    "photo library",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-wp8"
+  ],
+  "author": {
+    "name": "StefanoMagrassi",
+    "email": "stefano.magrassi@gmail.com",
+    "url": "http://thinkwritedone.com"
+  },
+  "contributors": [
+    {
+      "name": "Simba Zhang",
+      "email": "solderzzc@gmail.com",
+      "url": "http://www.tiegushi.com"
+    }
+  ],
+  "devDependencies": {
+    "eslint": "1.10.3",
+    "libxmljs": "0.16.1"
+  }
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns:android="http://schemas.android.com/apk/res/android" xmlns="http://www.phonegap.com/ns/plugins/1.0" id="cordova-base64-to-gallery" version="2.0.1">
+
+  <name>base64ToGallery</name>
+
+  <description>This plugin allows you to save base64 data as a png image into the device (iOS Photo Library, Android Gallery, WindowsPhone 8 Photo Album).</description>
+  <author>Tommy-Carlos Williams - tommy@devgeeks.org</author>
+  <author>Simba Zhang - solderzzc@gmail.com</author>
+  <author>StefanoMagrassi - stefano.magrassi@gmail.com</author>
+  <keywords>base64,png,save,canvas,image,photo library</keywords>
+
+  <license>MIT</license>
+
+  <js-module name="base64ToGallery" src="www/base64ToGallery.js">
+    <clobbers target="cordova.base64ToGallery"/>
+  </js-module>
+
+  <!-- ios -->
+  <platform name="ios">
+    <config-file parent="/*" target="config.xml">
+      <feature name="Base64ToGallery">
+        <param name="ios-package" value="Base64ToGallery"/>
+        <param name="onload" value="true"/>
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/Base64ToGallery.h"/>
+
+    <source-file compiler-flags="-fno-objc-arc" src="src/ios/Base64ToGallery.m"/>
+  </platform>
+
+  <!-- android -->
+  <platform name="android">
+
+    <config-file parent="/*" target="AndroidManifest.xml">
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    </config-file>
+
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="Base64ToGallery">
+        <param name="android-package" value="it.nexxa.base64ToGallery.Base64ToGallery"/>
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/Base64ToGallery.java" target-dir="src/it/nexxa/Base64ToGallery"/>
+
+  </platform>
+
+  <!-- wp8 -->
+  <platform name="wp8">
+    <config-file parent="/*" target="config.xml">
+      <feature name="Base64ToGallery">
+        <param name="wp-package" value="Base64ToGallery"/>
+        <param name="onload" value="true"/>
+      </feature>
+    </config-file>
+
+    <config-file parent="/Deployment/App/Capabilities" target="Properties/WMAppManifest.xml">
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO"/>
+    </config-file>
+
+    <source-file src="src/wp8/Base64ToGallery.cs"/>
+  </platform>
+</plugin>
