@@ -12,6 +12,7 @@
     "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-load-plugins": "^1.2.0",
+    "gulp-rename": "^1.2.2",
     "run-sequence": "^1.1.5"
   }
 }
