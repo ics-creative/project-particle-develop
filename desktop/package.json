@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "tsd install",
-    "build-ts": "tsc --project ./;gulp build-ts",
-    "start": "electron .",
-    "watch": "NODE_ENV=production gulp serve"
+    "build-ts": "gulp build-ts",
+    "clean-build" : "gulp clean-build",
+    "serve": "gulp serve",
+    "start": "electron ."
   },
   "keywords": [
     "electron",
