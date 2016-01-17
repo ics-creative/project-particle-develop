@@ -40,20 +40,25 @@ gulp.task("clean", function () {
 gulp.task("copy-core-sources",function (){
     return gulp.src([
             "../core/**",
-            "!../core/*.json",
-            "!../core/typings/**",
-            "!**/*.ts",
-            "!**/*.*.map"
+            "!../core/node_modules/**"
         ])
         .pipe(gulp.dest("src"))
+});
+
+/** coreソースをコピーするだけのタスク */
+gulp.task("copy-core-require-modules",function (){
+    return gulp.src([
+            "../core/node_modules/angular2/**",
+            "../core/node_modules/rxjs/**",
+            "../core/node_modules/systemjs/**",
+        ], {base: '../core/node_modules/'})
+        .pipe(gulp.dest("src/node_modules/"))
 });
 
 /** ブラウザ依存のソースをコピーするタスク */
 gulp.task("copy-dependent-sources",function (){
     return gulp.src([
-            "platform-dependent/**",
-            "*.ts",
-            "*.*.map"
+            "platform-dependent/**"
         ])
         .pipe(gulp.dest("src/app"))
 });
@@ -61,9 +66,10 @@ gulp.task("copy-dependent-sources",function (){
 
 gulp.task("build-all", function () {
     return runSequence(
-        "build-ts",
         "copy-core-sources",
-        "copy-dependent-sources"
+        "copy-dependent-sources",
+        "copy-core-require-modules",
+        "build-ts"
     );
 } );
 

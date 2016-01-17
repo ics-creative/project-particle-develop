@@ -14,5 +14,5 @@ System.config({
         }
     }
 });
-System.import('app/boot')
+System.import('app/boot-desktop')
     .then(null, console.error.bind(console));
