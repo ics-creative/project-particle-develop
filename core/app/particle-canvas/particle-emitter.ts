@@ -140,7 +140,7 @@ export class ParticleEmitter {
     particle.currentLife = particle.totalLife;
 
     //  スピード
-    var speed:number = this.range( 0, 1,this.getParam(this.drawingData.initialSpeed,this.drawingData.initialSpeedVariance,false));
+    var speed:number = Math.max( 0,this.getParam(this.drawingData.initialSpeed,this.drawingData.initialSpeedVariance,false));
     var angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this.drawingData.initialDirection,this.drawingData.initialDirectionVariance,false));
     particle.vx = Math.cos(angle) * speed;
     particle.vy = Math.sin(angle) * speed;
@@ -152,8 +152,8 @@ export class ParticleEmitter {
 
 
     //  スケール
-    particle.startScale =  this.range( 0, 1, this.getParam(this.drawingData.startScale,this.drawingData.startScaleVariance, false));
-    particle.finishScale = this.range( 0, 1,this.getParam(this.drawingData.finishScale,this.drawingData.finishScaleVariance, false));
+    particle.startScale =  Math.max( 0, this.getParam(this.drawingData.startScale,this.drawingData.startScaleVariance, false));
+    particle.finishScale = Math.max( 0, this.getParam(this.drawingData.finishScale,this.drawingData.finishScaleVariance, false));
 
   }
 

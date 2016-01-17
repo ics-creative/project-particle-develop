@@ -92,7 +92,7 @@ export class AppComponent {
     this.drawingData.fliction = 0;
 
     this.drawingData.startColor = "#FFFFFF";
-    
+
     this.drawingData.startX = 250;
     this.drawingData.startXVariance = 50;
 
