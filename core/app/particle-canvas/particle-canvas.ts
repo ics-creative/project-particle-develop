@@ -3,10 +3,14 @@
 import {DrawingData} from "../drawing-data";
 import {ParticleEmitter} from "./particle-emitter";
 import {ParticleExporter} from "./particle-exporter";
+import {PartcicleImageImporter} from "./particle-image-importer";
+import {ParticleCaptureImageLayer} from "./particle-capture-image-layer";
+
 export class ParticleCanvas {
 
 
   private background:createjs.Shape;
+  private captureImageLayer:ParticleCaptureImageLayer;
   private canvas:HTMLCanvasElement;
   private stage:createjs.Stage;
 
@@ -16,6 +20,8 @@ export class ParticleCanvas {
   private particleEmitter:ParticleEmitter;
 
   public particleExporter:ParticleExporter;
+
+  public partcileImageImporter:PartcicleImageImporter;
 
   constructor(canvas:any, data:DrawingData) {
 
@@ -35,8 +41,12 @@ export class ParticleCanvas {
     this.particleEmitter = new ParticleEmitter();
     this.stage.addChild(this.particleEmitter.container);
 
+    this.captureImageLayer = new ParticleCaptureImageLayer();
+    this.stage.addChild(this.captureImageLayer);
+
     this.particleExporter = new ParticleExporter(this.stage);
 
+    this.partcileImageImporter = new PartcicleImageImporter();
   }
 
   getSVGString():string {
@@ -47,8 +57,29 @@ export class ParticleCanvas {
     return this.particleExporter.runExport();
   }
 
-  runExportSP = ():Promise<any> => {
+  runExportSP():Promise<any> {
     return this.particleExporter.runExportSP(this.canvas);
+  }
+
+  runCamera():Promise<any> {
+    return this.partcileImageImporter.getCapture().then(
+        (imageData) => this.insertCaputureToStage(imageData),
+        () => this.insertDummyImageToStage()
+    );
+  }
+
+  /**
+   * Stageにキャプチャー画像を挿入します。
+   */
+  private insertCaputureToStage(imageData:string):void {
+    this.captureImageLayer.addImage(imageData);
+//    this.captureImageLayer.addImage("http://lorempixel.com/800/700/cats/");
+    this.stage.update();
+  }
+
+  private insertDummyImageToStage():void {
+    this.captureImageLayer.addImage("http://lorempixel.com/800/700/cats/");
+    this.stage.update();
   }
 
   update = (data:DrawingData) => {

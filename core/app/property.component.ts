@@ -132,6 +132,7 @@ const template = `
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportSVG()">SVG保存</button>
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportParamater()">パラメータ保存</button>
     <input  #btnSelectFile  class="btn btn-primary btn-lg btn-block hidden-xs" (change)="selectParameterFile($event)" type="file"/>
+    <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="importCamera()">画像を読み込む</button>
     <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="exportPNG()">PNG保存</button>
   </div>
 </div>
@@ -144,7 +145,8 @@ const template = `
   events: [
     "exportSVGEvent",
     "exportParamaterEvent",
-    "exportPNGEvent"
+    "exportPNGEvent",
+    "importCameraEvent"
   ]
 })
 
@@ -152,6 +154,8 @@ export class PropertyPanel {
   private exportSVGEvent = new EventEmitter();
   private exportPNGEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
+  private importCameraEvent = new EventEmitter();
+
   private drawingData:DrawingData;
   private element:ElementRef;
 
@@ -165,6 +169,10 @@ export class PropertyPanel {
 
   exportPNG() {
     this.exportPNGEvent.emit(null);
+  }
+
+  importCamera() {
+    this.importCameraEvent.emit(null);
   }
 
   selectParameterFile(obj:any){

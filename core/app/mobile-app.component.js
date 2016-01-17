@@ -20,7 +20,7 @@ System.register(["./app.component"], function(exports_1) {
                 function MobileAppComponent() {
                     _super.apply(this, arguments);
                     this.openSVGExportWindow = function () {
-                        alert("export!");
+                        alert("モバイルアプリでは使用不可能です");
                         //window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));
                     };
                 }
@@ -29,7 +29,10 @@ System.register(["./app.component"], function(exports_1) {
                 };
                 MobileAppComponent.prototype.handlePNGClick = function () {
                     this.stageComponent.runExportSP().then(function () {
-                        alert("done");
+                    });
+                };
+                MobileAppComponent.prototype.handleCamera = function () {
+                    this.stageComponent.runCamera().then(function () {
                     });
                 };
                 MobileAppComponent.prototype.handleExportParamaterClick = function () {

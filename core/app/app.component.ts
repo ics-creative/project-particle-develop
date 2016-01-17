@@ -20,7 +20,8 @@ const template = `
       (exportSVGEvent)="handleSVGClick()"
       (exportParamaterEvent)="handleExportParamaterClick()"
       (exportPNGEvent)="handlePNGClick()"
-      ></property-panel>
+      (importCameraEvent)="handleCamera()"
+   ></property-panel>
   </nav>
     <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
 </div>
@@ -36,10 +37,6 @@ export class AppComponent {
   private drawingData:DrawingData;
   @ViewChild("stageComponent") stageComponent:StageComponent;
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
-
-  private hogehoge = () => {
-
-  };
 
   handleSVGClick() {
     this.stageComponent.exportSVG().then(this.openSVGExportWindow);
