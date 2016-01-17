@@ -27,13 +27,14 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                      * パーティクルの動き。
                      */
                     this.animate = function () {
-                        var accX = Math.cos(_this.drawingData.accelerationDirection) * _this.drawingData.accelerationSpeed;
-                        var accY = Math.sin(_this.drawingData.accelerationDirection) * _this.drawingData.accelerationSpeed;
+                        var rad = createjs.Matrix2D.DEG_TO_RAD * _this.drawingData.accelerationDirection;
+                        var accX = Math.cos(rad) * _this.drawingData.accelerationSpeed;
+                        var accY = Math.sin(rad) * _this.drawingData.accelerationSpeed;
                         for (var i = 0; i < _this.activeParticles.length; i++) {
                             var particle = _this.activeParticles[i];
                             particle.currentLife--;
                             particle.vx = particle.vx + accX;
-                            particle.vx = particle.vx + accY;
+                            particle.vy = particle.vy + accY;
                             particle.vx = particle.vx * (1 - _this.drawingData.friction);
                             particle.vy = particle.vy * (1 - _this.drawingData.friction);
                             particle.x = particle.x + particle.vx;

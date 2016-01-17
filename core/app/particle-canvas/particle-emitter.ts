@@ -40,8 +40,9 @@ export class ParticleEmitter {
    */
   private animate = () => {
 
-    var accX = Math.cos(this.drawingData.accelerationDirection) * this.drawingData.accelerationSpeed;
-    var accY = Math.sin(this.drawingData.accelerationDirection) * this.drawingData.accelerationSpeed;
+    let rad = createjs.Matrix2D.DEG_TO_RAD *  this.drawingData.accelerationDirection;
+    let accX = Math.cos(rad) * this.drawingData.accelerationSpeed;
+    let accY = Math.sin(rad) * this.drawingData.accelerationSpeed;
 
     for (var i = 0; i < this.activeParticles.length; i++) {
 
@@ -50,12 +51,11 @@ export class ParticleEmitter {
       particle.currentLife--;
 
       particle.vx = particle.vx + accX;
-      particle.vx = particle.vx + accY;
+      particle.vy = particle.vy + accY;
 
       particle.vx = particle.vx * (1 - this.drawingData.friction);
       particle.vy = particle.vy * (1 - this.drawingData.friction);
-
-
+      
       particle.x = particle.x + particle.vx;
       particle.y = particle.y + particle.vy;
 
