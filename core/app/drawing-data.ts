@@ -11,8 +11,12 @@ export class DrawingData {
   lifeSpan:number;
   lifeSpanVariance:number;
 
-  angle:number;
-  angleVariance:number;
+  initialDirection:number;
+  initialDirectionVariance:number;
+
+  initialSpeed:number;
+  initialSpeedVariance:number;
+
 
   startScale:number;
   startScaleVariance:number;
@@ -32,9 +36,6 @@ export class DrawingData {
 
   startY:number;
   startYVariance:number;
-
-  speed:number;
-  speedVariance:number;
 
   shapeIdList:string[];
 }

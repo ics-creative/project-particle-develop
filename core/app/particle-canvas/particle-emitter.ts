@@ -136,8 +136,8 @@ export class ParticleEmitter {
     particle.currentLife = particle.totalLife;
 
     //  スピード
-    var speed:number = this.range( 0, 1,this.getParam(this.drawingData.speed,this.drawingData.speedVariance,false));
-    var angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this.drawingData.angle,this.drawingData.angleVariance,false));
+    var speed:number = this.range( 0, 1,this.getParam(this.drawingData.initialSpeed,this.drawingData.initialSpeedVariance,false));
+    var angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this.drawingData.initialDirection,this.drawingData.initialDirectionVariance,false));
     particle.vx = Math.cos(angle) * speed;
     particle.vy = Math.sin(angle) * speed;
 

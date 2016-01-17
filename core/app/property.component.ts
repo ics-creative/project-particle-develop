@@ -40,21 +40,23 @@ const template = `
 
 
         <hr>
-        speed
-        <input type="range" min="0" max="1" step="0.1" [(ngModel)]="drawingData.speed" placeholder="speed"/>
-        {{drawingData.speed}}
-        <input type="range" min="0" max="1" step="0.1" [(ngModel)]="drawingData.speedVariance"
-               placeholder="speedVariance"/>
-        {{drawingData.speedVariance}}
+        initial speed
+        <input type="range" min="0" max="2" step="0.1" [(ngModel)]="drawingData.initialSpeed" placeholder="initialSpeed"/>
+        {{drawingData.initialSpeed}}
+        <input type="range" min="0" max="2" step="0.1" [(ngModel)]="drawingData.initialSpeedVariance"
+               placeholder="initialSpeedVariance"/>
+        {{drawingData.initialSpeedVariance}}
+        <hr>
+
+        start-direction(angle)
+        <input type="range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.initialDirection" placeholder="initialDirection"/>
+        {{drawingData.initialDirection}}
+        <input type="range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.initialDirectionVariance"
+               placeholder="initialDirectionVariance"/>
+        {{drawingData.initialDirectionVariance}}
+
       </div>
       <div class="col-xs-6">
-        angle
-        <input type="range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.angle" placeholder="angle"/>
-        {{drawingData.angle}}
-        <input type="range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.angleVariance"
-               placeholder="angleVariance"/>
-        {{drawingData.angleVariance}}
-
         <hr>
         start-alpha
         <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlpha" placeholder="startAlpha"/>
@@ -82,7 +84,7 @@ const template = `
         {{drawingData.startScaleVariance}}
 
         <hr>
-        start-scale
+        finish-scale
         <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishScale"
                placeholder="finishScale"/>
         {{drawingData.finishScale}}

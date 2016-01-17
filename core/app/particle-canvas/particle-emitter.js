@@ -145,8 +145,8 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                     particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
                     particle.currentLife = particle.totalLife;
                     //  スピード
-                    var speed = this.range(0, 1, this.getParam(this.drawingData.speed, this.drawingData.speedVariance, false));
-                    var angle = createjs.Matrix2D.DEG_TO_RAD * (this.getParam(this.drawingData.angle, this.drawingData.angleVariance, false));
+                    var speed = this.range(0, 1, this.getParam(this.drawingData.initialSpeed, this.drawingData.initialSpeedVariance, false));
+                    var angle = createjs.Matrix2D.DEG_TO_RAD * (this.getParam(this.drawingData.initialDirection, this.drawingData.initialDirectionVariance, false));
                     particle.vx = Math.cos(angle) * speed;
                     particle.vy = Math.sin(angle) * speed;
                     //  アルファ

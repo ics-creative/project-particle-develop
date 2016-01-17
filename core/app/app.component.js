@@ -54,10 +54,10 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.startYVariance = 50;
                     this.drawingData.lifeSpan = 100;
                     this.drawingData.lifeSpanVariance = 30;
-                    this.drawingData.angle = 270;
-                    this.drawingData.angleVariance = 60;
-                    this.drawingData.speed = 0.5;
-                    this.drawingData.speedVariance = 0.5;
+                    this.drawingData.initialDirection = 270;
+                    this.drawingData.initialDirectionVariance = 60;
+                    this.drawingData.initialSpeed = 0.5;
+                    this.drawingData.initialSpeedVariance = 0.5;
                     this.drawingData.startAlpha = 1;
                     this.drawingData.startAlphaVariance = 0;
                     this.drawingData.finishAlpha = 1;
