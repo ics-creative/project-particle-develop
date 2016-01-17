@@ -75,8 +75,10 @@ export class AppComponent {
   }
 
   handleSVGClick(){
-    console.log("handleSVGClick");
-    this.stageComponent.exportSVG();
+    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+  }
+  openSVGExportWindow = () =>{
+    window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }
 
   handleExportParamaterClick(){

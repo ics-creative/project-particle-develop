@@ -43,6 +43,9 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                         // TODO:配列で選択できるようにする
                         _this.drawingData.shapeIdList = [_this.temporarySelect];
                     };
+                    this.openSVGExportWindow = function () {
+                        window.open("data:image/svg+xml,\n" + encodeURIComponent(_this.stageComponent.getParticleSVGString()));
+                    };
                     this.drawingData = new drawing_data_1.DrawingData();
                     this.drawingData.bgColor = "#00000";
                     this.drawingData.width = 500;
@@ -74,8 +77,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.emitFrequency = 1;
                 }
                 AppComponent.prototype.handleSVGClick = function () {
-                    console.log("handleSVGClick");
-                    this.stageComponent.exportSVG();
+                    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
                 };
                 AppComponent.prototype.handleExportParamaterClick = function () {
                     console.log("handleExportParamaterClick");
