@@ -21,19 +21,7 @@
   <link href="libs/bootstrap/css/superhero/bootstrap.min.css" rel="stylesheet">
 
   <!-- 2. Configure SystemJS -->
-  <script>
-    System.config({
-      packages: {
-        app: {
-          format: 'register',
-          defaultExtension: 'js'
-        }
-      }
-    });
-    System.import('app/boot')
-            .then(null, console.error.bind(console));
-  </script>
-
+  <script src="app/branch-platform.js"></script>
 </head>
 
 <!-- 3. Display the application -->
