@@ -41,9 +41,9 @@ const template = `
 
         <hr>
         initial speed
-        <input type="range" min="0" max="2" step="0.1" [(ngModel)]="drawingData.initialSpeed" placeholder="initialSpeed"/>
+        <input type="range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeed" placeholder="initialSpeed"/>
         {{drawingData.initialSpeed}}
-        <input type="range" min="0" max="2" step="0.1" [(ngModel)]="drawingData.initialSpeedVariance"
+        <input type="range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeedVariance"
                placeholder="initialSpeedVariance"/>
         {{drawingData.initialSpeedVariance}}
         <hr>
@@ -54,6 +54,12 @@ const template = `
         <input type="range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.initialDirectionVariance"
                placeholder="initialDirectionVariance"/>
         {{drawingData.initialDirectionVariance}}
+
+
+        <hr>
+        fliction
+        <input type="range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.fliction" placeholder="fliction"/>
+        {{drawingData.fliction}}
 
       </div>
       <div class="col-xs-6">

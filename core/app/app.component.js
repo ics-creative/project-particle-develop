@@ -47,6 +47,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.bgColor = "#00000";
                     this.drawingData.width = 500;
                     this.drawingData.height = 500;
+                    this.drawingData.fliction = 0;
                     this.drawingData.startColor = "#FFFFFF";
                     this.drawingData.startX = 250;
                     this.drawingData.startXVariance = 50;
@@ -67,6 +68,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     this.drawingData.finishScale = 1;
                     this.drawingData.finishScaleVariance = 0;
                     this.drawingData.shapeIdList = [particle_shape_types_1.ParticleShapeTypes.Star, particle_shape_types_1.ParticleShapeTypes.MailFace, particle_shape_types_1.ParticleShapeTypes.Heart, particle_shape_types_1.ParticleShapeTypes.MailMark];
+                    this.drawingData.fliction;
                     this.drawingData.emitFrequency = 1;
                 }
                 AppComponent.prototype.handleSVGClick = function () {

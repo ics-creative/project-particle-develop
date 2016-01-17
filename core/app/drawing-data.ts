@@ -17,6 +17,8 @@ export class DrawingData {
   initialSpeed:number;
   initialSpeedVariance:number;
 
+  fliction:number;
+
 
   startScale:number;
   startScaleVariance:number;

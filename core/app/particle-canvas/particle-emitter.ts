@@ -46,6 +46,10 @@ export class ParticleEmitter {
 
       particle.currentLife--;
 
+      particle.vx = particle.vx * (1 - this.drawingData.fliction);
+      particle.vy = particle.vy * (1 - this.drawingData.fliction);
+
+
       particle.x = particle.x + particle.vx;
       particle.y = particle.y + particle.vy;
 

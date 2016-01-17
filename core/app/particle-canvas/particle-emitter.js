@@ -30,6 +30,8 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                         for (var i = 0; i < _this.activeParticles.length; i++) {
                             var particle = _this.activeParticles[i];
                             particle.currentLife--;
+                            particle.vx = particle.vx * (1 - _this.drawingData.fliction);
+                            particle.vy = particle.vy * (1 - _this.drawingData.fliction);
                             particle.x = particle.x + particle.vx;
                             particle.y = particle.y + particle.vy;
                             particle.particleShape.x = particle.x;
