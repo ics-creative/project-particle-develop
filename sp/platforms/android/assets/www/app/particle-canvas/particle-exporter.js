@@ -1,6 +1,4 @@
-/**
- * Created by nyamogera on 2016/01/16.
- */
+///<reference path="../../typings/tsd.d.ts" />
 System.register([], function(exports_1) {
     var ParticleExporter;
     return {
@@ -17,6 +15,16 @@ System.register([], function(exports_1) {
                             _this.exporter = new SVGExporter(_this.drawLayerContainer, false, false, false);
                             var t = new Date().getTime();
                             _this.exporter.run();
+                            // for some reason, it takes a tick for the browser to init the SVG
+                            setTimeout(function () { onResolve(); }, 1);
+                        });
+                    };
+                    this.runExportSP = function (cavas) {
+                        return new Promise(function (onResolve, onReject) {
+                            var base64 = cavas.toDataURL();
+                            cordova.base64ToGallery(base64, 'img_', function (msg) {
+                            }, function (err) {
+                            });
                             // for some reason, it takes a tick for the browser to init the SVG
                             setTimeout(function () { onResolve(); }, 1);
                         });

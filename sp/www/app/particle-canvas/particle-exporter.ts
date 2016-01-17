@@ -10,11 +10,6 @@ declare class SVGExporter {
   run():void;
 }
 
-declare interface Cordova2 extends Cordova {
-  base64ToGallery(data, prefix, success, fail):void;
-
-}
-
 /**
  * Export SVG
  */
@@ -41,51 +36,19 @@ export class ParticleExporter {
 
   runExportSP = (cavas:HTMLCanvasElement) : Promise<any> => {
     return new Promise((onResolve,onReject) => {
-
-      alert("ppp");
-
-      let cordova2 = <Cordova2> cordova;
-
       let base64 = cavas.toDataURL();
-
-      alert("d");
-
-      cordova2.base64ToGallery(
+      cordova.base64ToGallery(
           base64,
           'img_',
           function(msg){
-            console.log(msg);
           },
-
           function(err){
-            console.error(err);
           }
       );
-
-      //cordova.base64To(
-      //    "",
-      //
-      //    'img_',
-      //
-      //    function(msg){
-      //      console.log(msg);
-      //    },
-      //
-      //    function(err){
-      //      console.error(err);
-      //    }
-      //);
-
-      this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
-      var t = new Date().getTime();
-      this.exporter.run();
-
       // for some reason, it takes a tick for the browser to init the SVG
       setTimeout( () => { onResolve() }, 1);
     });
   }
-
-
 
   getSVGString() : string{
 

@@ -11,10 +11,8 @@ export class MobileAppComponent extends AppComponent{
   }
 
   handlePNGClick() {
-    alert("p");
-
     this.stageComponent.runExportSP().then(function () {
-      alert("s");
+      alert("done");
     })
   }
 

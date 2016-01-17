@@ -26,7 +26,6 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
                         return _this.particleCanvas.runExport();
                     };
                     this.runExportSP = function () {
-                        alert("d");
                         return _this.particleCanvas.runExportSP();
                     };
                 }

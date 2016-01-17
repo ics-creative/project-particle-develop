@@ -1,3 +1,5 @@
+///<reference path="../../typings/tsd.d.ts" />
+
 /**
  * Created by nyamogera on 2016/01/16.
  */
@@ -27,6 +29,22 @@ export class ParticleExporter {
       var t = new Date().getTime();
       this.exporter.run();
 
+      // for some reason, it takes a tick for the browser to init the SVG
+      setTimeout( () => { onResolve() }, 1);
+    });
+  }
+
+  runExportSP = (cavas:HTMLCanvasElement) : Promise<any> => {
+    return new Promise((onResolve,onReject) => {
+      let base64 = cavas.toDataURL();
+      cordova.base64ToGallery(
+          base64,
+          'img_',
+          function(msg){
+          },
+          function(err){
+          }
+      );
       // for some reason, it takes a tick for the browser to init the SVG
       setTimeout( () => { onResolve() }, 1);
     });

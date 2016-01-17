@@ -7,8 +7,15 @@ import {AppComponent} from "./app.component";
 export class MobileAppComponent extends AppComponent{
 
   handleSVGClick(){
-    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+    //this.stageComponent.exportSVG().then(this.openSVGExportWindow);
   }
+
+  handlePNGClick() {
+    this.stageComponent.runExportSP().then(function () {
+      alert("done");
+    })
+  }
+
   openSVGExportWindow = () =>{
     alert("export!");
     //window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));

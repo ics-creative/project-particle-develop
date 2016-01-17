@@ -23,7 +23,6 @@ export class StageComponent implements AfterViewInit {
   }
 
   runExportSP = ()  : Promise<any> => {
-    alert("d");
     return this.particleCanvas.runExportSP();
   }
 
