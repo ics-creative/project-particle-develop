@@ -3,16 +3,19 @@
  */
 
 export class ParticleShapeTypes {
-  public static get Star() :string {
+  public static get Star():string {
     return "star";
   }
-  public static get Heart() :string {
+
+  public static get Heart():string {
     return "heart";
   }
-  public static get MailFace() :string {
+
+  public static get MailFace():string {
     return "mail-face";
   }
-  public static get MailMark() :string {
+
+  public static get MailMark():string {
     return "mail-mark";
   }
 }

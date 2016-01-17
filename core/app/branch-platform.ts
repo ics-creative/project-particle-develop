@@ -1,3 +1,5 @@
+///<reference path="system.d.ts"/>
+
 /**
  * プラットフォーム分岐用のコード
  */

@@ -43,7 +43,7 @@ export class DrawingData {
   startYVariance:number;
 
   shapeIdList:string[];
-  
+
   constructor() {
 
     this.bgColor = "#00000";
@@ -85,10 +85,20 @@ export class DrawingData {
     this.finishScale = 1;
     this.finishScaleVariance = 0;
 
-    this.shapeIdList = [ParticleShapeTypes.Star,ParticleShapeTypes.MailFace,ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark];
+    this.shapeIdList = [ParticleShapeTypes.Star, ParticleShapeTypes.MailFace, ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark];
 
     this.friction
 
     this.emitFrequency = 1;
+  }
+
+  into(obj:Object) {
+
+    for (var key in this) {
+      if (this.hasOwnProperty(key)) {
+        var val = this[key];
+        this[key] = obj[key];
+      }
+    }
   }
 }

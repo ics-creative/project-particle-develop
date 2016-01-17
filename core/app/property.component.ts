@@ -1,6 +1,7 @@
 import {Component} from "angular2/core";
 import {DrawingData} from "./drawing-data";
 import {EventEmitter} from 'angular2/core';
+import {ElementRef} from "angular2/core";
 
 const template = `
 <div class="panel panel-default">
@@ -130,15 +131,21 @@ const template = `
     </div>
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportSVG()">SVG保存</button>
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportParamater()">パラメータ保存</button>
+    <input  #btnSelectFile  class="btn btn-primary btn-lg btn-block hidden-xs" (change)="selectParameterFile($event)" type="file"/>
     <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="exportPNG()">PNG保存</button>
   </div>
 </div>
 `;
+
 @Component({
   selector: "property-panel",
   template: template,
   inputs: ["drawingData"],
-  events: ["exportSVGEvent","exportParamaterEvent", "exportPNGEvent"]
+  events: [
+    "exportSVGEvent",
+    "exportParamaterEvent",
+    "exportPNGEvent"
+  ]
 })
 
 export class PropertyPanel {
@@ -146,6 +153,7 @@ export class PropertyPanel {
   private exportPNGEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
   private drawingData:DrawingData;
+  private element:ElementRef;
 
   exportParamater(){
     this.exportParamaterEvent.emit(null);
@@ -159,6 +167,57 @@ export class PropertyPanel {
     this.exportPNGEvent.emit(null);
   }
 
-  constructor() {
+  selectParameterFile(obj:any){
+    this.importParameterFile(obj.target.files[0])
   }
+
+  importParameterFile(file:any) {
+
+    alert(file);
+    // ファイルの内容は FileReader で読み込みます.
+    var fileReader = new FileReader();
+    fileReader.onload = (event) => {
+      // event.target.result に読み込んだファイルの内容が入っています。
+      var json = event.target.result;
+      let object = JSON.parse(json);
+
+      this.drawingData.into(object);
+    }
+    fileReader.readAsText(file);
+  }
+
+  constructor(element:ElementRef) {
+    this.element = element;
+    this.setDragAndDropSettings(element);
+  }
+
+  setDragAndDropSettings(element:ElementRef) {
+    /** documentにドラッグされた場合 / ドロップされた場合 */
+    document.ondragover = document.ondrop = function (e) {
+      e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+      return false;
+    };
+
+
+    var holder = element.nativeElement;
+    /** hoverエリアにドラッグされた場合 */
+    holder.ondragover = function () {
+      return false;
+    };
+    /** hoverエリアから外れた or ドラッグが終了した */
+    holder.ondragleave = holder.ondragend = function () {
+      return false;
+    };
+    /** hoverエリアにドロップされた */
+    holder.ondrop = this.onDrop;
+  }
+  onDrop = (e) => {
+    e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+
+    var file = e.dataTransfer.files[0];
+    this.importParameterFile(file);
+
+    return false;
+  };
+
 }
