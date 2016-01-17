@@ -38,6 +38,14 @@ System.register(["./particle-canvas/particle-shape-types"], function(exports_1) 
                     this.friction;
                     this.emitFrequency = 1;
                 }
+                DrawingData.prototype.into = function (obj) {
+                    for (var key in this) {
+                        if (this.hasOwnProperty(key)) {
+                            var val = this[key];
+                            this[key] = obj[key];
+                        }
+                    }
+                };
                 return DrawingData;
             })();
             exports_1("DrawingData", DrawingData);

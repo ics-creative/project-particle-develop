@@ -41,12 +41,12 @@ export class ParticleExporter {
           base64,
           'img_',
           function(msg){
+            onResolve();
           },
           function(err){
+            onReject();
           }
       );
-      // for some reason, it takes a tick for the browser to init the SVG
-      setTimeout( () => { onResolve() }, 1);
     });
   }
 

@@ -23,10 +23,10 @@ System.register([], function(exports_1) {
                         return new Promise(function (onResolve, onReject) {
                             var base64 = cavas.toDataURL();
                             cordova.base64ToGallery(base64, 'img_', function (msg) {
+                                onResolve();
                             }, function (err) {
+                                onReject();
                             });
-                            // for some reason, it takes a tick for the browser to init the SVG
-                            setTimeout(function () { onResolve(); }, 1);
                         });
                     };
                     this.downloadFile = function () {

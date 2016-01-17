@@ -28,6 +28,9 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
                     this.runExportSP = function () {
                         return _this.particleCanvas.runExportSP();
                     };
+                    this.runCamera = function () {
+                        return _this.particleCanvas.runCamera();
+                    };
                 }
                 StageComponent.prototype.ngAfterViewInit = function () {
                     var canvas = this.myCanvas.nativeElement;

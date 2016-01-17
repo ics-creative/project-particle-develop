@@ -26,6 +26,10 @@ export class StageComponent implements AfterViewInit {
     return this.particleCanvas.runExportSP();
   }
 
+  runCamera = ()  : Promise<any> => {
+    return this.particleCanvas.runCamera();
+  }
+
   ngAfterViewInit() {
     let canvas = this.myCanvas.nativeElement;
 		this.particleCanvas = new ParticleCanvas(canvas,this.drawingData);

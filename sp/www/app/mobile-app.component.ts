@@ -13,11 +13,19 @@ export class MobileAppComponent extends AppComponent{
   handlePNGClick() {
     this.stageComponent.runExportSP().then(function () {
       alert("done");
-    })
+    });
   }
 
+  handleCamera() {
+    this.stageComponent.runCamera().then(function() {
+      alert("done");
+    });
+  }
+
+
+
   openSVGExportWindow = () =>{
-    alert("export!");
+    alert("モバイルアプリでは使用不可能です");
     //window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }
 
