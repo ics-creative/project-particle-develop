@@ -14,7 +14,11 @@ const template = `
       <stage #stageComponent [drawingData]="drawingData"></stage>
   </div>
   <nav id="propertyPanel" class="navbar navbar-fixed-top">
-      <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()" (exportParamaterEvent)="handleExportParamaterClick()"></property-panel>
+      <property-panel [drawingData]="drawingData"
+      (exportSVGEvent)="handleSVGClick()"
+      (exportParamaterEvent)="handleExportParamaterClick()"
+      (exportPNGEvent)="handlePNGClick()"
+      ></property-panel>
   </nav>
   <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
 `;

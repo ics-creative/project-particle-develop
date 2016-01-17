@@ -128,9 +128,9 @@ const template = `
         </div>
       </div>
     </div>
-    <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="exportPNG()">PNG保存</button>
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportSVG()">SVG保存</button>
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportParamater()">パラメータ保存</button>
+    <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="exportPNG()">PNG保存</button>
   </div>
 </div>
 `;
@@ -138,11 +138,12 @@ const template = `
   selector: "property-panel",
   template: template,
   inputs: ["drawingData"],
-  events: ["exportSVGEvent","exportParamaterEvent"]
+  events: ["exportSVGEvent","exportParamaterEvent", "exportPNGEvent"]
 })
 
 export class PropertyPanel {
   private exportSVGEvent = new EventEmitter();
+  private exportPNGEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
   private drawingData:DrawingData;
 
@@ -153,6 +154,11 @@ export class PropertyPanel {
   exportSVG(){
     this.exportSVGEvent.emit(null);
   }
+
+  exportPNG() {
+    this.exportPNGEvent.emit(null);
+  }
+
   constructor() {
   }
 }

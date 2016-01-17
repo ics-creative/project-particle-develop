@@ -25,7 +25,12 @@ System.register(["./app.component"], function(exports_1) {
                     };
                 }
                 MobileAppComponent.prototype.handleSVGClick = function () {
-                    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+                    //this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+                };
+                MobileAppComponent.prototype.handlePNGClick = function () {
+                    this.stageComponent.runExportSP().then(function () {
+                        alert("done");
+                    });
                 };
                 MobileAppComponent.prototype.handleExportParamaterClick = function () {
                     alert("paramater!");

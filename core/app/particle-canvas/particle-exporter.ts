@@ -1,3 +1,5 @@
+///<reference path="../../typings/tsd.d.ts" />
+
 /**
  * Created by nyamogera on 2016/01/16.
  */
@@ -6,6 +8,11 @@ declare class SVGExporter {
   constructor(stage:createjs.Container,value1:boolean,value2:boolean,value3:boolean);
   svg:Node;
   run():void;
+}
+
+declare interface Cordova2 extends Cordova {
+  base64ToGallery(data, prefix, success, fail):void;
+
 }
 
 /**
@@ -26,6 +33,26 @@ export class ParticleExporter {
       this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
       var t = new Date().getTime();
       this.exporter.run();
+
+      // for some reason, it takes a tick for the browser to init the SVG
+      setTimeout( () => { onResolve() }, 1);
+    });
+  }
+
+  runExportSP = (cavas:HTMLCanvasElement) : Promise<any> => {
+    return new Promise((onResolve,onReject) => {
+      let cordova2 = <Cordova2> cordova;
+      let base64 = cavas.toDataURL();
+      cordova2.base64ToGallery(
+          base64,
+          'img_',
+          function(msg){
+            alert(msg);
+          },
+          function(err){
+            alert(err);
+          }
+      );
 
       // for some reason, it takes a tick for the browser to init the SVG
       setTimeout( () => { onResolve() }, 1);

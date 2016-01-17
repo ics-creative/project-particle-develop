@@ -45,6 +45,10 @@ export class ParticleCanvas {
     return this.particleExporter.runExport();
   }
 
+    runExportSP = () : Promise<any> =>{
+        return this.particleExporter.runExportSP(this.canvas);
+    }
+
 	update = (data:DrawingData) => {
 		this.backgroundColorCommand.style = data.bgColor;
 
