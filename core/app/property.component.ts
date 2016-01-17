@@ -83,18 +83,18 @@ const template = `
 
         <hr>
         start-scale
-        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startScale" placeholder="startScale"/>
+        <input type="range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.startScale" placeholder="startScale"/>
         {{drawingData.startScale}}
-        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startScaleVariance"
+        <input type="range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.startScaleVariance"
                placeholder="startScaleVariance"/>
         {{drawingData.startScaleVariance}}
 
         <hr>
         finish-scale
-        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishScale"
+        <input type="range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.finishScale"
                placeholder="finishScale"/>
         {{drawingData.finishScale}}
-        <input type="range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishScaleVariance"
+        <input type="range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.finishScaleVariance"
                placeholder="finishScaleVariance"/>
         {{drawingData.finishScaleVariance}}
 
