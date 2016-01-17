@@ -21,7 +21,6 @@ const template = `
 </div>
 `;
 
-
 @Component({
   selector: `my-app`,
   template: template,
@@ -45,49 +44,5 @@ export class AppComponent {
 
   constructor() {
     this.drawingData = new DrawingData();
-    this.drawingData.bgColor = "#00000";
-    this.drawingData.width = 500;
-    this.drawingData.height = 500;
-
-    this.drawingData.friction = 0;
-
-    this.drawingData.startColor = "#FFFFFF";
-
-    this.drawingData.startX = 250;
-    this.drawingData.startXVariance = 50;
-
-    this.drawingData.startY = 250;
-    this.drawingData.startYVariance = 50;
-
-    this.drawingData.lifeSpan = 100;
-    this.drawingData.lifeSpanVariance = 30;
-
-    this.drawingData.initialDirection = 270;
-    this.drawingData.initialDirectionVariance = 60;
-
-    this.drawingData.initialSpeed = 0.5;
-    this.drawingData.initialSpeedVariance = 0.5;
-
-
-    this.drawingData.accelerationSpeed = 0;
-    this.drawingData.accelerationDirection = 0;
-
-    this.drawingData.startAlpha = 1;
-    this.drawingData.startAlphaVariance = 0;
-
-    this.drawingData.finishAlpha = 1;
-    this.drawingData.finishAlphaVariance = 0.5;
-
-    this.drawingData.startScale = 1;
-    this.drawingData.startScaleVariance = 0;
-
-    this.drawingData.finishScale = 1;
-    this.drawingData.finishScaleVariance = 0;
-
-    this.drawingData.shapeIdList = [ParticleShapeTypes.Star,ParticleShapeTypes.MailFace,ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark];
-
-    this.drawingData.friction
-
-    this.drawingData.emitFrequency = 1;
   }
 }
