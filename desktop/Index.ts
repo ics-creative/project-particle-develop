@@ -1,4 +1,4 @@
-/// <reference path="../../typings/bundle.d.ts" />
+/// <reference path="typings/tsd.d.ts" />
 
 const electron = require("electron");
 const app = electron.app;  // Module to control application life.
@@ -33,7 +33,7 @@ app.on("ready", function() {
   // Create the browser window.
   mainWindow = new BrowserWindow({ width: 800, height: 600});
   // and load the index.html of the app.
-  mainWindow.loadURL("file://" + __dirname + "/../renderer/index.html");
+  mainWindow.loadURL("file://" + __dirname + "/src/index.html");
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();

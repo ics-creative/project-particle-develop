@@ -4,12 +4,11 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "target":"ES6",
     "sourceMap": true,
-    "out" : "./src/renderer/index.js"
+    "out" : "./index.js"
   },
   "files": [
-    "./ts/renderer/index.ts"
+    "./Index.ts"
   ],
   "exclude": "node_modules"
 }
