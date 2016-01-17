@@ -21,12 +21,9 @@ System.register([], function(exports_1) {
                     };
                     this.runExportSP = function (cavas) {
                         return new Promise(function (onResolve, onReject) {
-                            var cordova2 = cordova;
                             var base64 = cavas.toDataURL();
-                            cordova2.base64ToGallery(base64, 'img_', function (msg) {
-                                alert(msg);
+                            cordova.base64ToGallery(base64, 'img_', function (msg) {
                             }, function (err) {
-                                alert(err);
                             });
                             // for some reason, it takes a tick for the browser to init the SVG
                             setTimeout(function () { onResolve(); }, 1);
