@@ -10,15 +10,13 @@ import {ViewChild} from "angular2/core";
 import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
 
 const template = `
-<div class="container">
-    <div class="col-sm-7 col-xs-12">
-        <stage #stageComponent [drawingData]="drawingData"></stage>
-    </div>
-    <div class="col-sm-5 col-xs-12">
-        <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()" (exportParamaterEvent)="handleExportParamaterClick()"></property-panel>
-    </div>
-    <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
-</div>
+  <div class="col-sm-7 col-xs-12">
+      <stage #stageComponent [drawingData]="drawingData"></stage>
+  </div>
+  <nav id="propertyPanel" class="navbar navbar-fixed-top">
+      <property-panel [drawingData]="drawingData" (exportSVGEvent)="handleSVGClick()" (exportParamaterEvent)="handleExportParamaterClick()"></property-panel>
+  </nav>
+  <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
 `;
 
 @Component({

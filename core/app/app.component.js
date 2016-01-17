@@ -29,7 +29,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                 stage_component_1 = stage_component_1_1;
             }],
         execute: function() {
-            template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n    <div class=\"col-sm-5 col-xs-12\">\n        <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\" (exportParamaterEvent)=\"handleExportParamaterClick()\"></property-panel>\n    </div>\n    <shape-property-modal [drawingData]=\"drawingData\"></shape-property-modal>\n</div>\n";
+            template = "\n  <div class=\"col-sm-7 col-xs-12\">\n      <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n  </div>\n  <nav id=\"propertyPanel\" class=\"navbar navbar-fixed-top\">\n      <property-panel [drawingData]=\"drawingData\" (exportSVGEvent)=\"handleSVGClick()\" (exportParamaterEvent)=\"handleExportParamaterClick()\"></property-panel>\n  </nav>\n  <shape-property-modal [drawingData]=\"drawingData\"></shape-property-modal>\n";
             AppComponent = (function () {
                 function AppComponent() {
                     var _this = this;
