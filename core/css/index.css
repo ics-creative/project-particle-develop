@@ -2,15 +2,18 @@ body {
   height: 100%;
   overflow: hidden; }
 
-#templatePanel {
-  min-height: 100%;
-  overflow: scroll;
-  width: 200px; }
+#main {
+  width: 100%;
+  float: left; }
+
+#mainContent {
+  margin-right: 300px; }
 
 #propertyPanel {
+  width: 300px;
+  margin-left: -300px;
+  float: right;
   max-height: 100%;
-  overflow: scroll;
-  left: auto;
-  width: 500px; }
+  overflow-y: scroll; }
 
 /*# sourceMappingURL=index.css.map */

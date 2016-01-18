@@ -9,7 +9,7 @@ const template = `
     <h3 class="panel-title">Canvas Settings</h3>
   </div>
   <div class="panel-body">
-    <div class="row hidden-xs">
+    <div class="row">
       <div class="col-xs-6">
         width <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.width" placeholder="width"/>
         {{drawingData.width}}
@@ -132,8 +132,6 @@ const template = `
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportSVG()">SVG保存</button>
     <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportParamater()">パラメータ保存</button>
     <input  #btnSelectFile  class="btn btn-primary btn-lg btn-block hidden-xs" (change)="selectParameterFile($event)" type="file"/>
-    <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="importCamera()">画像を読み込む</button>
-    <button class="btn btn-primary btn-lg btn-block visible-xs" (click)="exportPNG()">PNG保存</button>
   </div>
 </div>
 `;
@@ -144,17 +142,13 @@ const template = `
   inputs: ["drawingData"],
   events: [
     "exportSVGEvent",
-    "exportParamaterEvent",
-    "exportPNGEvent",
-    "importCameraEvent"
+    "exportParamaterEvent"
   ]
 })
 
 export class PropertyPanel {
   private exportSVGEvent = new EventEmitter();
-  private exportPNGEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
-  private importCameraEvent = new EventEmitter();
 
   private drawingData:DrawingData;
   private element:ElementRef;
@@ -165,14 +159,6 @@ export class PropertyPanel {
 
   exportSVG(){
     this.exportSVGEvent.emit(null);
-  }
-
-  exportPNG() {
-    this.exportPNGEvent.emit(null);
-  }
-
-  importCamera() {
-    this.importCameraEvent.emit(null);
   }
 
   selectParameterFile(obj:any){
@@ -205,7 +191,6 @@ export class PropertyPanel {
       e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
       return false;
     };
-
 
     var holder = element.nativeElement;
     /** hoverエリアにドラッグされた場合 */

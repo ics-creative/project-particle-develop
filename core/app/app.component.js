@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./drawing-data", "./property.component", "./shape-property.component", "./stage.component"], function(exports_1) {
+System.register(["angular2/core", "./drawing-data", "./property.component", "./sp-property.component", "./shape-property.component", "./stage.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, drawing_data_1, property_component_1, shape_property_component_1, stage_component_1, core_2, core_3;
+    var core_1, drawing_data_1, property_component_1, sp_property_component_1, shape_property_component_1, stage_component_1, core_2, core_3;
     var template, AppComponent;
     return {
         setters:[
@@ -23,6 +23,9 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
             function (property_component_1_1) {
                 property_component_1 = property_component_1_1;
             },
+            function (sp_property_component_1_1) {
+                sp_property_component_1 = sp_property_component_1_1;
+            },
             function (shape_property_component_1_1) {
                 shape_property_component_1 = shape_property_component_1_1;
             },
@@ -30,7 +33,7 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                 stage_component_1 = stage_component_1_1;
             }],
         execute: function() {
-            template = "\n<div class=\"container\">\n    <div class=\"col-sm-7 col-xs-12\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n    </div>\n  <nav id=\"propertyPanel\" class=\"navbar navbar-fixed-top\">\n      <property-panel [drawingData]=\"drawingData\"\n      (exportSVGEvent)=\"handleSVGClick()\"\n      (exportParamaterEvent)=\"handleExportParamaterClick()\"\n      (exportPNGEvent)=\"handlePNGClick()\"\n      (importCameraEvent)=\"handleCamera()\"\n   ></property-panel>\n  </nav>\n    <shape-property-modal [drawingData]=\"drawingData\"></shape-property-modal>\n</div>\n";
+            template = "\n<div class=\"navbar navbar-default\">\n  <div class=\"container\">\n    ICS Draw\n  </div>\n</div>\n<div id=\"wrapper\" class=\"clearfix\">\n  <div id=\"main\">\n    <div>\n      <div id=\"mainContent\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n      </div>\n    </div>\n  </div>\n  <nav id=\"propertyPanel\" class=\"hidden-xs\">\n    <property-panel [drawingData]=\"drawingData\"\n                    (exportSVGEvent)=\"handleSVGClick()\"\n                    (exportParamaterEvent)=\"handleExportParamaterClick()\"\n    ></property-panel>\n  </nav>\n</div>\n<nav id=\"spPropertyPanel\" class=\"show-xs\">\n  <sp-property-panel [drawingData]=\"drawingData\"\n                (exportPNGEvent)=\"handlePNGClick()\"\n                (importCameraEvent)=\"handleCamera()\"\n></sp-property-panel>\n</nav>\n\n<shape-property-modal [drawingData]=\"drawingData\"></shape-property-modal>\n";
             AppComponent = (function () {
                 function AppComponent(element) {
                     var _this = this;
@@ -53,11 +56,15 @@ System.register(["angular2/core", "./drawing-data", "./property.component", "./s
                     core_2.ViewChild("propertyPanel"), 
                     __metadata('design:type', property_component_1.PropertyPanel)
                 ], AppComponent.prototype, "propertyPanel", void 0);
+                __decorate([
+                    core_2.ViewChild("spPropertyPanel"), 
+                    __metadata('design:type', sp_property_component_1.SPPropertyPanel)
+                ], AppComponent.prototype, "spPropertyPanel", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
                         template: template,
-                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, shape_property_component_1.ShapePropertyModal],
+                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, sp_property_component_1.SPPropertyPanel, shape_property_component_1.ShapePropertyModal],
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])
                 ], AppComponent);

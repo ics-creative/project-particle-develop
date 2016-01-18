@@ -13,14 +13,23 @@ export class ParticleCaptureImageLayer extends createjs.Container {
 
     /**
      * 画像を追加します。
-     *
      */
-    public addImage(imageData:string):void {
+    public addImageFromImageData(imageData:string):void {
         this.removeImage();
         var base64 = "data:image/jpeg;base64," + imageData.replace("file:///", "");
         this.captureImage = new createjs.Bitmap(base64);
         this.captureImage.scaleX = 0.3;
         this.captureImage.scaleY = 0.3;
+        this.addChild(this.captureImage);
+    }
+
+    /**
+     * URLから画像を追加します。
+     *
+     */
+    public addImageFromURL(imageURL:string):void {
+        this.removeImage();
+        this.captureImage = new createjs.Bitmap(imageURL);
         this.addChild(this.captureImage);
     }
 

@@ -72,13 +72,12 @@ export class ParticleCanvas {
    * Stageにキャプチャー画像を挿入します。
    */
   private insertCaputureToStage(imageData:string):void {
-    this.captureImageLayer.addImage(imageData);
-//    this.captureImageLayer.addImage("http://lorempixel.com/800/700/cats/");
+    this.captureImageLayer.addImageFromImageData(imageData);
     this.stage.update();
   }
 
   private insertDummyImageToStage():void {
-    this.captureImageLayer.addImage("http://lorempixel.com/800/700/cats/");
+    this.captureImageLayer.addImageFromURL("http://ics-web.jp/imgs/works/pollenmap.jpg");
     this.stage.update();
   }
 
