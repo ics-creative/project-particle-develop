@@ -16,7 +16,9 @@ System.register([], function(exports_1) {
                             var t = new Date().getTime();
                             _this.exporter.run();
                             // for some reason, it takes a tick for the browser to init the SVG
-                            setTimeout(function () { onResolve(); }, 1);
+                            setTimeout(function () {
+                                onResolve();
+                            }, 1);
                         });
                     };
                     this.runExportSP = function (cavas) {

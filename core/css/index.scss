@@ -3,16 +3,15 @@ body {
   overflow: hidden;
 }
 
-#templatePanel
-{
+#templatePanel {
   min-height: 100%;
-  overflow:scroll;
+  overflow: scroll;
   width: 200px;
 }
-#propertyPanel
-{
+
+#propertyPanel {
   max-height: 100%;
-  overflow:scroll;
+  overflow: scroll;
   left: auto;
   width: 500px;
 }

@@ -159,11 +159,11 @@ export class PropertyPanel {
   private drawingData:DrawingData;
   private element:ElementRef;
 
-  exportParamater(){
+  exportParamater() {
     this.exportParamaterEvent.emit(null);
   }
 
-  exportSVG(){
+  exportSVG() {
     this.exportSVGEvent.emit(null);
   }
 
@@ -175,7 +175,7 @@ export class PropertyPanel {
     this.importCameraEvent.emit(null);
   }
 
-  selectParameterFile(obj:any){
+  selectParameterFile(obj:any) {
     this.importParameterFile(obj.target.files[0])
   }
 
@@ -219,6 +219,7 @@ export class PropertyPanel {
     /** hoverエリアにドロップされた */
     holder.ondrop = this.onDrop;
   }
+
   onDrop = (e) => {
     e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
 

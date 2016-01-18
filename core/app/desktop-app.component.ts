@@ -4,12 +4,13 @@
 import {AppComponent} from "./app.component";
 
 
-export class DesktopAppComponent extends AppComponent{
+export class DesktopAppComponent extends AppComponent {
 
-  handleSVGClick(){
+  handleSVGClick() {
     this.stageComponent.exportSVG().then(this.openSVGExportWindow);
   }
-  openSVGExportWindow = () =>{
+
+  openSVGExportWindow = () => {
 
     const electron = require('electron');
     var dialog = electron.remote.dialog;
@@ -21,10 +22,10 @@ export class DesktopAppComponent extends AppComponent{
       ]
     };
 
-    dialog.showSaveDialog( options, (filename) => {
+    dialog.showSaveDialog(options, (filename) => {
       var fs = require('fs');
 
-      fs.writeFile(filename,this.stageComponent.getParticleSVGString(), function (error) {
+      fs.writeFile(filename, this.stageComponent.getParticleSVGString(), function (error) {
         if (error != null) {
           alert('error : ' + error);
         }
@@ -34,7 +35,7 @@ export class DesktopAppComponent extends AppComponent{
 
   }
 
-  handleExportParamaterClick(){
+  handleExportParamaterClick() {
     alert("paramater!");
     console.log("handleExportParamaterClick");
   }

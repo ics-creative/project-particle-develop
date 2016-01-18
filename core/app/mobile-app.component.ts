@@ -4,9 +4,9 @@ import {AppComponent} from "./app.component";
  */
 
 
-export class MobileAppComponent extends AppComponent{
+export class MobileAppComponent extends AppComponent {
 
-  handleSVGClick(){
+  handleSVGClick() {
     //this.stageComponent.exportSVG().then(this.openSVGExportWindow);
   }
 
@@ -16,18 +16,17 @@ export class MobileAppComponent extends AppComponent{
   }
 
   handleCamera() {
-    this.stageComponent.runCamera().then(function() {
+    this.stageComponent.runCamera().then(function () {
     });
   }
 
 
-
-  openSVGExportWindow = () =>{
+  openSVGExportWindow = () => {
     alert("モバイルアプリでは使用不可能です");
     //window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }
 
-  handleExportParamaterClick(){
+  handleExportParamaterClick() {
     alert("paramater!");
     console.log("handleExportParamaterClick");
   }

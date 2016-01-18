@@ -63,8 +63,8 @@ export class ParticleCanvas {
 
   runCamera():Promise<any> {
     return this.partcileImageImporter.getCapture().then(
-        (imageData) => this.insertCaputureToStage(imageData),
-        () => this.insertDummyImageToStage()
+      (imageData) => this.insertCaputureToStage(imageData),
+      () => this.insertDummyImageToStage()
     );
   }
 

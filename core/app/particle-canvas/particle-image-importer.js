@@ -11,8 +11,8 @@ System.register([], function(exports_1) {
                 function PartcicleImageImporter() {
                 }
                 /*
-                * ネイティブ機能を使ってカメラを撮影します。
-                */
+                 * ネイティブ機能を使ってカメラを撮影します。
+                 */
                 PartcicleImageImporter.prototype.getCapture = function () {
                     var _this = this;
                     return new Promise(function (onResolve, onReject) {
