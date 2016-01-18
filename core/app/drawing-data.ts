@@ -1,4 +1,4 @@
-import {ParticleShapeTypes} from "../particle/particle-shape-types";
+import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
 export class DrawingData {
   bgColor:string;
   width:number;

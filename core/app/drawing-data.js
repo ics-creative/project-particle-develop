@@ -1,4 +1,4 @@
-System.register(["../particle/particle-shape-types"], function(exports_1) {
+System.register(["./particle-canvas/particle-shape-types"], function(exports_1) {
     var particle_shape_types_1;
     var DrawingData;
     return {

@@ -1,14 +1,14 @@
 ///<reference path="stage.component.ts"/>
 ///<reference path="property.component.ts"/>
 ///<reference path="shape-property.component.ts"/>
-import {Component} from "../../node_modules/angular2/core.d";
-import {DrawingData} from "./../data/drawing-data";
-import {PropertyPanel} from "./property.component.ts";
-import {ShapePropertyModal} from "./shape-property.component.ts";
-import {StageComponent} from "./stage.component.ts";
-import {ViewChild} from "../../node_modules/angular2/core.d";
-import {ParticleShapeTypes} from "../particle/particle-shape-types";
-import {ElementRef} from "../../node_modules/angular2/core.d";
+import {Component} from "angular2/core";
+import {DrawingData} from "./drawing-data";
+import {PropertyPanel} from "./property.component";
+import {ShapePropertyModal} from "./shape-property.component";
+import {StageComponent} from "./stage.component";
+import {ViewChild} from "angular2/core";
+import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
+import {ElementRef} from "angular2/core";
 
 const template = `
 <div class="container">

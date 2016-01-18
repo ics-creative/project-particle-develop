@@ -1,6 +1,6 @@
-import {Component} from "../../node_modules/angular2/core.d";
-import {DrawingData} from "./../data/drawing-data";
-import {EventEmitter} from '../../node_modules/angular2/core.d';
+import {Component} from "angular2/core";
+import {DrawingData} from "./drawing-data";
+import {EventEmitter} from 'angular2/core';
 
 const template = `
 <div class="modal fade" id="ShapeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
