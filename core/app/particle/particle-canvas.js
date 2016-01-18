@@ -45,6 +45,9 @@ System.register(["./particle-emitter", "./particle-exporter", "./particle-image-
                     this.stage.addChild(this.particleEmitter.container);
                     this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
                     this.partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
+                    // リサイズイベント
+                    this.resizeHandler();
+                    window.addEventListener("resize", function () { return _this.resizeHandler(); });
                 }
                 ParticleCanvas.prototype.getSVGString = function () {
                     return this.particleExporter.getSVGString();
@@ -66,6 +69,16 @@ System.register(["./particle-emitter", "./particle-exporter", "./particle-image-
                 ParticleCanvas.prototype.insertDummyImageToStage = function () {
                     this.captureImageLayer.addImageFromURL("http://ics-web.jp/imgs/works/pollenmap.jpg");
                     this.stage.update();
+                };
+                /**
+                 * リサイズのイベント処理
+                 */
+                ParticleCanvas.prototype.resizeHandler = function () {
+                    var canvasWidth = window.innerWidth - 400;
+                    var canvasHeight = window.innerHeight - 50;
+                    // ステージのサイズをwindowのサイズに変更
+                    this.stage.canvas.width = canvasWidth;
+                    this.stage.canvas.height = canvasHeight;
                 };
                 return ParticleCanvas;
             })();

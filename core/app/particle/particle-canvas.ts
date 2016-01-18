@@ -47,6 +47,10 @@ export class ParticleCanvas {
     this.particleExporter = new ParticleExporter(this.stage);
 
     this.partcileImageImporter = new PartcicleImageImporter();
+
+    // リサイズイベント
+    this.resizeHandler();
+    window.addEventListener("resize", () => this.resizeHandler());
   }
 
   getSVGString():string {
@@ -79,6 +83,17 @@ export class ParticleCanvas {
   private insertDummyImageToStage():void {
     this.captureImageLayer.addImageFromURL("http://ics-web.jp/imgs/works/pollenmap.jpg");
     this.stage.update();
+  }
+
+  /**
+   * リサイズのイベント処理
+   */
+  private resizeHandler():void {
+    var canvasWidth:number = window.innerWidth - 400;
+    var canvasHeight:number = window.innerHeight - 50;
+    // ステージのサイズをwindowのサイズに変更
+    this.stage.canvas.width = canvasWidth;
+    this.stage.canvas.height = canvasHeight;
   }
 
   update = (data:DrawingData) => {

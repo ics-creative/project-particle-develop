@@ -4,7 +4,7 @@ import {ParticleCanvas} from "../particle/particle-canvas";
 
 @Component({
   selector: "stage",
-  template: `<canvas #myCanvas></canvas>`,
+  template: `<canvas #myCanvas id="myCanvas"></canvas>`,
   inputs: ["drawingData"]
 })
 
@@ -16,17 +16,18 @@ export class StageComponent implements AfterViewInit {
   private particleCanvas:ParticleCanvas;
 
   constructor() {
+
   }
 
   exportSVG = ():Promise<any> => {
     return this.particleCanvas.runExport();
   }
 
-  runExportSP = ():Promise<any> => {
+  runExportSP():Promise<any> {
     return this.particleCanvas.runExportSP();
   }
 
-  runCamera = ():Promise<any> => {
+  runCamera():Promise<any> {
     return this.particleCanvas.runCamera();
   }
 

@@ -6,7 +6,7 @@ body {
   width: 100%;
   float: left; }
 
-#mainContent {
+#canvasBox {
   margin-right: 400px; }
 
 #propertyPanel {
@@ -15,5 +15,8 @@ body {
   float: right;
   max-height: 100%;
   overflow-y: scroll; }
+
+#myCanvas {
+  border: 1px solid #f00; }
 
 /*# sourceMappingURL=index.css.map */

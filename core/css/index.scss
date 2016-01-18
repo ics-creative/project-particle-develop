@@ -9,7 +9,8 @@ body {
   width: 100%;
   float: left;
 }
-#mainContent {
+
+#canvasBox {
   margin-right: $sideWidth + px;
 }
 #propertyPanel {
@@ -19,4 +20,7 @@ body {
   max-height: 100%;
   overflow-y:scroll;
 }
-
+#myCanvas
+{
+  border:1px solid #f00;
+}

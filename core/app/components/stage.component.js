@@ -25,13 +25,13 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                     this.exportSVG = function () {
                         return _this.particleCanvas.runExport();
                     };
-                    this.runExportSP = function () {
-                        return _this.particleCanvas.runExportSP();
-                    };
-                    this.runCamera = function () {
-                        return _this.particleCanvas.runCamera();
-                    };
                 }
+                StageComponent.prototype.runExportSP = function () {
+                    return this.particleCanvas.runExportSP();
+                };
+                StageComponent.prototype.runCamera = function () {
+                    return this.particleCanvas.runCamera();
+                };
                 StageComponent.prototype.ngAfterViewInit = function () {
                     var canvas = this.myCanvas.nativeElement;
                     this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
@@ -54,7 +54,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                 StageComponent = __decorate([
                     core_1.Component({
                         selector: "stage",
-                        template: "<canvas #myCanvas></canvas>",
+                        template: "<canvas #myCanvas id=\"myCanvas\"></canvas>",
                         inputs: ["drawingData"]
                     }), 
                     __metadata('design:paramtypes', [])

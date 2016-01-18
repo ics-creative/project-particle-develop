@@ -20,7 +20,7 @@ const template = `
 <div id="wrapper" class="clearfix">
   <div id="main">
     <div>
-      <div id="mainContent">
+      <div id="canvasBox">
         <stage #stageComponent [drawingData]="drawingData"></stage>
       </div>
     </div>
