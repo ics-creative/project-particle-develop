@@ -20,14 +20,22 @@ System.register([], function(exports_1) {
                 }
                 /**
                  * 画像を追加します。
-                 *
                  */
-                ParticleCaptureImageLayer.prototype.addImage = function (imageData) {
+                ParticleCaptureImageLayer.prototype.addImageFromImageData = function (imageData) {
                     this.removeImage();
                     var base64 = "data:image/jpeg;base64," + imageData.replace("file:///", "");
                     this.captureImage = new createjs.Bitmap(base64);
                     this.captureImage.scaleX = 0.3;
                     this.captureImage.scaleY = 0.3;
+                    this.addChild(this.captureImage);
+                };
+                /**
+                 * URLから画像を追加します。
+                 *
+                 */
+                ParticleCaptureImageLayer.prototype.addImageFromURL = function (imageURL) {
+                    this.removeImage();
+                    this.captureImage = new createjs.Bitmap(imageURL);
                     this.addChild(this.captureImage);
                 };
                 /**

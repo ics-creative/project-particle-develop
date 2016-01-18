@@ -4,6 +4,7 @@
 import {Component} from "angular2/core";
 import {DrawingData} from "./drawing-data";
 import {PropertyPanel} from "./property.component";
+import {SPPropertyPanel} from "./sp-property.component";
 import {ShapePropertyModal} from "./shape-property.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
@@ -11,46 +12,61 @@ import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
 import {ElementRef} from "angular2/core";
 
 const template = `
-<div class="container">
-    <div class="col-sm-7 col-xs-12">
-        <stage #stageComponent [drawingData]="drawingData"></stage>
-    </div>
-  <nav id="propertyPanel" class="navbar navbar-fixed-top">
-      <property-panel [drawingData]="drawingData"
-      (exportSVGEvent)="handleSVGClick()"
-      (exportParamaterEvent)="handleExportParamaterClick()"
-      (exportPNGEvent)="handlePNGClick()"
-      (importCameraEvent)="handleCamera()"
-   ></property-panel>
-  </nav>
-    <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
+<div class="navbar navbar-default">
+  <div class="container">
+    ICS Draw
+  </div>
 </div>
+<div id="wrapper" class="clearfix">
+  <div id="main">
+    <div>
+      <div id="mainContent">
+        <stage #stageComponent [drawingData]="drawingData"></stage>
+      </div>
+    </div>
+  </div>
+  <nav id="propertyPanel" class="hidden-xs">
+    <property-panel [drawingData]="drawingData"
+                    (exportSVGEvent)="handleSVGClick()"
+                    (exportParamaterEvent)="handleExportParamaterClick()"
+    ></property-panel>
+  </nav>
+</div>
+<nav id="spPropertyPanel" class="show-xs">
+  <sp-property-panel [drawingData]="drawingData"
+                (exportPNGEvent)="handlePNGClick()"
+                (importCameraEvent)="handleCamera()"
+></sp-property-panel>
+</nav>
+
+<shape-property-modal [drawingData]="drawingData"></shape-property-modal>
 `;
 
 @Component({
-  selector: `my-app`,
-  template: template,
-  directives: [StageComponent, PropertyPanel, ShapePropertyModal],
+    selector: `my-app`,
+    template: template,
+    directives: [StageComponent, PropertyPanel, SPPropertyPanel, ShapePropertyModal],
 })
 
 export class AppComponent {
-  private drawingData:DrawingData;
-  @ViewChild("stageComponent") stageComponent:StageComponent;
-  @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
+    private drawingData:DrawingData;
+    @ViewChild("stageComponent") stageComponent:StageComponent;
+    @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
+    @ViewChild("spPropertyPanel") spPropertyPanel:SPPropertyPanel;
 
-  handleSVGClick() {
-    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
-  }
+    handleSVGClick() {
+        this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+    }
 
-  openSVGExportWindow = () => {
-    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
-  };
+    openSVGExportWindow = () => {
+        window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+    };
 
-  handleExportParamaterClick() {
-    window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
-  }
+    handleExportParamaterClick() {
+        window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
+    }
 
-  constructor(element:ElementRef) {
-    this.drawingData = new DrawingData();
-  }
+    constructor(element:ElementRef) {
+        this.drawingData = new DrawingData();
+    }
 }

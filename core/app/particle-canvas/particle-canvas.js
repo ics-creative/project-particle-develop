@@ -60,12 +60,11 @@ System.register(["./particle-emitter", "./particle-exporter", "./particle-image-
                  * Stageにキャプチャー画像を挿入します。
                  */
                 ParticleCanvas.prototype.insertCaputureToStage = function (imageData) {
-                    this.captureImageLayer.addImage(imageData);
-                    //    this.captureImageLayer.addImage("http://lorempixel.com/800/700/cats/");
+                    this.captureImageLayer.addImageFromImageData(imageData);
                     this.stage.update();
                 };
                 ParticleCanvas.prototype.insertDummyImageToStage = function () {
-                    this.captureImageLayer.addImage("http://lorempixel.com/800/700/cats/");
+                    this.captureImageLayer.addImageFromURL("http://ics-web.jp/imgs/works/pollenmap.jpg");
                     this.stage.update();
                 };
                 return ParticleCanvas;
