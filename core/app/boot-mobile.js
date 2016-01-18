@@ -1,4 +1,4 @@
-System.register(['angular2/platform/browser', './mobile-app.component'], function(exports_1) {
+System.register(['angular2/platform/browser', './components/mobile-app.component'], function(exports_1) {
     var browser_1, mobile_app_component_1;
     return {
         setters:[

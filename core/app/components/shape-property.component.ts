@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {DrawingData} from "./drawing-data";
+import {DrawingData} from "../data/drawing-data";
 import {EventEmitter} from 'angular2/core';
 
 const template = `

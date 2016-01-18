@@ -2,13 +2,13 @@
 ///<reference path="property.component.ts"/>
 ///<reference path="shape-property.component.ts"/>
 import {Component} from "angular2/core";
-import {DrawingData} from "./drawing-data";
+import {DrawingData} from "../data/drawing-data";
 import {PropertyPanel} from "./property.component";
 import {SPPropertyPanel} from "./sp-property.component";
 import {ShapePropertyModal} from "./shape-property.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
-import {ParticleShapeTypes} from "./particle-canvas/particle-shape-types";
+import {ParticleShapeTypes} from "../particle/particle-shape-types";
 import {ElementRef} from "angular2/core";
 
 const template = `
