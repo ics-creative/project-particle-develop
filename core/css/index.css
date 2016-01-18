@@ -7,11 +7,11 @@ body {
   float: left; }
 
 #mainContent {
-  margin-right: 300px; }
+  margin-right: 400px; }
 
 #propertyPanel {
-  width: 300px;
-  margin-left: -300px;
+  width: 400px;
+  margin-left: -400px;
   float: right;
   max-height: 100%;
   overflow-y: scroll; }

@@ -39,10 +39,10 @@ System.register(["./particle-emitter", "./particle-exporter", "./particle-image-
                     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
                     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
                     this.stage.addChild(this.background);
-                    this.particleEmitter = new particle_emitter_1.ParticleEmitter();
-                    this.stage.addChild(this.particleEmitter.container);
                     this.captureImageLayer = new particle_capture_image_layer_1.ParticleCaptureImageLayer();
                     this.stage.addChild(this.captureImageLayer);
+                    this.particleEmitter = new particle_emitter_1.ParticleEmitter();
+                    this.stage.addChild(this.particleEmitter.container);
                     this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
                     this.partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
                 }

@@ -38,11 +38,11 @@ export class ParticleCanvas {
     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
     this.stage.addChild(this.background);
 
-    this.particleEmitter = new ParticleEmitter();
-    this.stage.addChild(this.particleEmitter.container);
-
     this.captureImageLayer = new ParticleCaptureImageLayer();
     this.stage.addChild(this.captureImageLayer);
+
+    this.particleEmitter = new ParticleEmitter();
+    this.stage.addChild(this.particleEmitter.container);
 
     this.particleExporter = new ParticleExporter(this.stage);
 

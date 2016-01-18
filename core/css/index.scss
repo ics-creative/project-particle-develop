@@ -1,3 +1,6 @@
+
+$sideWidth:400;
+
 body {
   height: 100%;
   overflow: hidden;
@@ -7,11 +10,11 @@ body {
   float: left;
 }
 #mainContent {
-  margin-right: 300px;
+  margin-right: $sideWidth + px;
 }
 #propertyPanel {
-  width: 300px;
-  margin-left: -300px;
+  width: $sideWidth + px;
+  margin-left: - $sideWidth + px;
   float: right;
   max-height: 100%;
   overflow-y:scroll;
