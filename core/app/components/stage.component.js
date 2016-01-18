@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./particle-canvas/particle-canvas"], function(exports_1) {
+System.register(["../../node_modules/angular2/core.d", "../particle/particle-canvas"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,12 +8,12 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, particle_canvas_1;
+    var core_d_1, particle_canvas_1;
     var StageComponent;
     return {
         setters:[
-            function (core_1_1) {
-                core_1 = core_1_1;
+            function (core_d_1_1) {
+                core_d_1 = core_d_1_1;
             },
             function (particle_canvas_1_1) {
                 particle_canvas_1 = particle_canvas_1_1;
@@ -48,11 +48,11 @@ System.register(["angular2/core", "./particle-canvas/particle-canvas"], function
                     this.particleCanvas.update(this.drawingData);
                 };
                 __decorate([
-                    core_1.ViewChild("myCanvas"), 
+                    core_d_1.ViewChild("myCanvas"), 
                     __metadata('design:type', Object)
                 ], StageComponent.prototype, "myCanvas", void 0);
                 StageComponent = __decorate([
-                    core_1.Component({
+                    core_d_1.Component({
                         selector: "stage",
                         template: "<canvas #myCanvas></canvas>",
                         inputs: ["drawingData"]

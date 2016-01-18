@@ -2,7 +2,7 @@ import {ParticleShapeTypes} from "./particle-shape-types";
 "use strict";
 
 import {Particle} from "./particle";
-import {DrawingData} from "../drawing-data";
+import {DrawingData} from "../data/drawing-data";
 /**
  * Created by nyamogera on 2016/01/15.
  */

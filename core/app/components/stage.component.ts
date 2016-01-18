@@ -1,6 +1,6 @@
-import {Component, ViewChild, AfterViewInit} from "angular2/core";
-import {DrawingData} from "./drawing-data";
-import {ParticleCanvas} from "./particle-canvas/particle-canvas";
+import {Component, ViewChild, AfterViewInit} from "../../node_modules/angular2/core.d";
+import {DrawingData} from "./../data/drawing-data";
+import {ParticleCanvas} from "../particle/particle-canvas";
 
 @Component({
   selector: "stage",

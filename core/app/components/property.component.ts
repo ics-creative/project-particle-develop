@@ -1,7 +1,7 @@
-import {Component} from "angular2/core";
-import {DrawingData} from "./drawing-data";
-import {EventEmitter} from 'angular2/core';
-import {ElementRef} from "angular2/core";
+import {Component} from "../../node_modules/angular2/core.d";
+import {DrawingData} from "./../data/drawing-data";
+import {EventEmitter} from '../../node_modules/angular2/core.d';
+import {ElementRef} from "../../node_modules/angular2/core.d";
 
 const template = `
 <div class="panel panel-default">

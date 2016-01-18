@@ -1,15 +1,15 @@
-System.register(["./app.component"], function(exports_1) {
+System.register(["./app.component.ts"], function(exports_1) {
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    var app_component_1;
+    var app_component_ts_1;
     var DesktopAppComponent;
     return {
         setters:[
-            function (app_component_1_1) {
-                app_component_1 = app_component_1_1;
+            function (app_component_ts_1_1) {
+                app_component_ts_1 = app_component_ts_1_1;
             }],
         execute: function() {
             DesktopAppComponent = (function (_super) {
@@ -44,7 +44,7 @@ System.register(["./app.component"], function(exports_1) {
                     console.log("handleExportParamaterClick");
                 };
                 return DesktopAppComponent;
-            })(app_component_1.AppComponent);
+            })(app_component_ts_1.AppComponent);
             exports_1("DesktopAppComponent", DesktopAppComponent);
         }
     }

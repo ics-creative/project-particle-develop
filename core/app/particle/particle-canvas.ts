@@ -1,6 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts" />
 
-import {DrawingData} from "../drawing-data";
+import {DrawingData} from "../data/drawing-data";
 import {ParticleEmitter} from "./particle-emitter";
 import {ParticleExporter} from "./particle-exporter";
 import {PartcicleImageImporter} from "./particle-image-importer";

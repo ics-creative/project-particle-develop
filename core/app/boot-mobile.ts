@@ -1,4 +1,4 @@
 import {bootstrap}        from 'angular2/platform/browser'
-import {MobileAppComponent}     from './mobile-app.component';
+import {MobileAppComponent}     from './components/mobile-app.component.ts';
 
 bootstrap(MobileAppComponent, []);

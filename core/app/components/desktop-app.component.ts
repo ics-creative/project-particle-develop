@@ -1,7 +1,7 @@
 /**
  * Created by nyamogera on 2016/01/17.
  */
-import {AppComponent} from "./app.component";
+import {AppComponent} from "./app.component.ts";
 
 
 export class DesktopAppComponent extends AppComponent {
