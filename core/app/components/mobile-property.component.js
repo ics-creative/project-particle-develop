@@ -9,7 +9,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, core_2, core_3;
-    var template, MobilePropertyPanel;
+    var MobilePropertyPanel;
     return {
         setters:[
             function (core_1_1) {
@@ -20,7 +20,6 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 core_2 = core_2_1;
             }],
         execute: function() {
-            template = "\n<div class=\"panel panel-default\">\n  <div class=\"panel-heading\">\n    <h3 class=\"panel-title\">SP Canvas Settings</h3>\n  </div>\n  <div class=\"panel-body\">\n    <button class=\"btn btn-primary btn-sm btn-block visible-xs\" (click)=\"importCamera()\">\u753B\u50CF\u3092\u8AAD\u307F\u8FBC\u3080</button>\n    <button class=\"btn btn-primary btn-sm btn-block visible-xs\" (click)=\"exportPNG()\">PNG\u4FDD\u5B58</button>\n  </div>\n</div>\n";
             MobilePropertyPanel = (function () {
                 function MobilePropertyPanel(element) {
                     this.exportPNGEvent = new core_2.EventEmitter();
@@ -36,7 +35,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 MobilePropertyPanel = __decorate([
                     core_1.Component({
                         selector: "mobile-property-panel",
-                        template: template,
+                        templateUrl: "app/components/template/mobile-property.html",
                         inputs: ["drawingData"],
                         events: [
                             "exportPNGEvent",

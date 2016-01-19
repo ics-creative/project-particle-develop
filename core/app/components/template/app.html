@@ -1,0 +1,29 @@
+
+<div class="navbar navbar-default">
+  <div class="container">
+    ICS Draw
+  </div>
+</div>
+<div id="wrapper" class="clearfix">
+  <div id="main">
+    <div>
+      <div id="canvasBox">
+        <stage #stageComponent [drawingData]="drawingData"></stage>
+      </div>
+    </div>
+  </div>
+  <nav id="propertyPanel" class="hidden-xs">
+    <property-panel [drawingData]="drawingData"
+                    (exportSVGEvent)="handleSVGClick()"
+                    (exportParamaterEvent)="handleExportParamaterClick()"
+    ></property-panel>
+  </nav>
+</div>
+<nav id="spPropertyPanel" class="show-xs">
+  <sp-property-panel [drawingData]="drawingData"
+                     (exportPNGEvent)="handlePNGClick()"
+                     (importCameraEvent)="handleCamera()"
+  ></sp-property-panel>
+</nav>
+
+<shape-property-modal [drawingData]="drawingData"></shape-property-modal>

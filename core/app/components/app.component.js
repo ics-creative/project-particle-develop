@@ -9,7 +9,7 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, drawing_data_1, property_component_1, sp_property_component_1, shape_property_component_1, stage_component_1, core_2, core_3;
-    var template, AppComponent;
+    var AppComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -33,7 +33,6 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                 stage_component_1 = stage_component_1_1;
             }],
         execute: function() {
-            template = "\n<div class=\"navbar navbar-default\">\n  <div class=\"container\">\n    ICS Draw\n  </div>\n</div>\n<div id=\"wrapper\" class=\"clearfix\">\n  <div id=\"main\">\n    <div>\n      <div id=\"canvasBox\">\n        <stage #stageComponent [drawingData]=\"drawingData\"></stage>\n      </div>\n    </div>\n  </div>\n  <nav id=\"propertyPanel\" class=\"hidden-xs\">\n    <property-panel [drawingData]=\"drawingData\"\n                    (exportSVGEvent)=\"handleSVGClick()\"\n                    (exportParamaterEvent)=\"handleExportParamaterClick()\"\n    ></property-panel>\n  </nav>\n</div>\n<nav id=\"spPropertyPanel\" class=\"show-xs\">\n  <sp-property-panel [drawingData]=\"drawingData\"\n                (exportPNGEvent)=\"handlePNGClick()\"\n                (importCameraEvent)=\"handleCamera()\"\n></sp-property-panel>\n</nav>\n\n<shape-property-modal [drawingData]=\"drawingData\"></shape-property-modal>\n";
             AppComponent = (function () {
                 function AppComponent(element) {
                     var _this = this;
@@ -63,7 +62,7 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        template: template,
+                        templateUrl: "app/components/template/app.html",
                         directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, sp_property_component_1.SPPropertyPanel, shape_property_component_1.ShapePropertyModal],
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])

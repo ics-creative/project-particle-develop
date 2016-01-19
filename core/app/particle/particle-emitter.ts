@@ -50,6 +50,7 @@ export class ParticleEmitter {
 
       particle.currentLife--;
 
+
       particle.vx = particle.vx + accX;
       particle.vy = particle.vy + accY;
 
@@ -65,12 +66,10 @@ export class ParticleEmitter {
       var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
 
       var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
-
       particle.particleShape.alpha = alpha;
 
 
       var scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent;
-
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
 
       //  パーティクルが死んでいたら、オブジェクトプールに移動
