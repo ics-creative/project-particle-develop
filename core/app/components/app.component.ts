@@ -4,7 +4,7 @@
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/drawing-data";
 import {PropertyPanel} from "./property.component";
-import {SPPropertyPanel} from "./sp-property.component";
+import {MobilePropertyPanel} from "./mobile-property.component";
 import {ShapePropertyModal} from "./shape-property.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
@@ -14,14 +14,14 @@ import {ElementRef} from "angular2/core";
 @Component({
     selector: `my-app`,
     templateUrl: "app/components/template/app.html",
-    directives: [StageComponent, PropertyPanel, SPPropertyPanel, ShapePropertyModal],
+    directives: [StageComponent, PropertyPanel, MobilePropertyPanel, ShapePropertyModal],
 })
 
 export class AppComponent {
     private drawingData:DrawingData;
     @ViewChild("stageComponent") stageComponent:StageComponent;
     @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
-    @ViewChild("spPropertyPanel") spPropertyPanel:SPPropertyPanel;
+    @ViewChild("mobilePropertyPanel") mobilePropertyPanel:MobilePropertyPanel;
 
     handleSVGClick() {
         this.stageComponent.exportSVG().then(this.openSVGExportWindow);
