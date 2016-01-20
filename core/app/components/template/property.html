@@ -5,21 +5,44 @@
   <div class="panel-body">
     <!--タブ-->
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab" title="エミッター設定"><i class="fa fa-sitemap"></i></a></li>
-      <li><a href="#tab2" data-toggle="tab" title="パーティクル設定"><i class="fa fa-sliders"></i></a></li>
-      <li><a href="#tab3" data-toggle="tab" title="カラー設定"><i class="fa fa-paint-brush"></i></a></li>
-      <li><a href="#tab4" data-toggle="tab" title="テンプレート設定"><i class="fa fa-sticky-note"></i></a></li>
+      <li class="active"><a href="#tab1" data-toggle="tab" title="テンプレート設定"><i class="fa fa-sticky-note"></i></a></li>
+      <li><a href="#tab2" data-toggle="tab" title="エミッター設定"><i class="fa fa-sitemap"></i></a></li>
+      <li><a href="#tab3" data-toggle="tab" title="パーティクル設定"><i class="fa fa-sliders"></i></a></li>
+      <li><a href="#tab4" data-toggle="tab" title="カラー設定"><i class="fa fa-paint-brush"></i></a></li>
       <li><a href="#tab5" data-toggle="tab" title="形状設定"><i class="fa fa-star"></i></a></li>
     </ul>
     <!-- / タブ-->
     <div id="myTabContent" class="tab-content">
-      <emitter-property-panel class="tab-pane in active" id="tab1"
-                              [drawingData]="drawingData"></emitter-property-panel>
-      <particle-property-panel class="tab-pane" id="tab2" [drawingData]="drawingData"></particle-property-panel>
-      <color-property-panel class="tab-pane" id="tab3" [drawingData]="drawingData"></color-property-panel>
-      <particle-template-property-panel class="tab-pane" id="tab4"
-                                        [drawingData]="drawingData"></particle-template-property-panel>
-      <shape-property-panel class="tab-pane" id="tab5" [drawingData]="drawingData"></shape-property-panel>
+      <particle-template-property-panel
+              id="tab1"
+              class="tab-pane active"
+              [drawingData]="drawingData">
+      </particle-template-property-panel>
+
+      <emitter-property-panel
+              class="tab-pane"
+              id="tab2"
+              [drawingData]="drawingData">
+      </emitter-property-panel>
+
+      <particle-property-panel
+              id="tab3"
+              class="tab-pane"
+              [drawingData]="drawingData">
+      </particle-property-panel>
+
+      <color-property-panel
+              id="tab4"
+              class="tab-pane"
+              [drawingData]="drawingData">
+      </color-property-panel>
+
+      <shape-property-panel
+              id="tab5"
+              class="tab-pane"
+              [drawingData]="drawingData">
+
+      </shape-property-panel>
     </div>
   </div>
 </div>

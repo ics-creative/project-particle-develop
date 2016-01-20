@@ -35,14 +35,13 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(element) {
-                    var _this = this;
-                    this.openSVGExportWindow = function () {
-                        window.open("data:image/svg+xml,\n" + encodeURIComponent(_this.stageComponent.getParticleSVGString()));
-                    };
                     this.drawingData = new drawing_data_1.DrawingData();
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+                };
+                AppComponent.prototype.openSVGExportWindow = function () {
+                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
                 };
                 AppComponent.prototype.handleExportParamaterClick = function () {
                     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
