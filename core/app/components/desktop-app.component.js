@@ -15,29 +15,30 @@ System.register(["./app.component"], function(exports_1) {
             DesktopAppComponent = (function (_super) {
                 __extends(DesktopAppComponent, _super);
                 function DesktopAppComponent() {
-                    var _this = this;
                     _super.apply(this, arguments);
-                    this.openSVGExportWindow = function () {
-                        var electron = require('electron');
-                        var dialog = electron.remote.dialog;
-                        var options = {
-                            title: 'Save Dialog Example',
-                            filters: [
-                                { name: 'Images', extensions: ['svg'] }
-                            ]
-                        };
-                        dialog.showSaveDialog(options, function (filename) {
-                            var fs = require('fs');
-                            fs.writeFile(filename, _this.stageComponent.getParticleSVGString(), function (error) {
-                                if (error != null) {
-                                    alert('error : ' + error);
-                                }
-                            });
-                        });
-                    };
                 }
                 DesktopAppComponent.prototype.handleSVGClick = function () {
-                    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+                    var _this = this;
+                    this.stageComponent.exportSVG().then(function () { _this.openSVGExportWindow(); });
+                };
+                DesktopAppComponent.prototype.openSVGExportWindow = function () {
+                    var _this = this;
+                    var electron = require('electron');
+                    var dialog = electron.remote.dialog;
+                    var options = {
+                        title: 'Save Dialog Example',
+                        filters: [
+                            { name: 'Images', extensions: ['svg'] }
+                        ]
+                    };
+                    dialog.showSaveDialog(options, function (filename) {
+                        var fs = require('fs');
+                        fs.writeFile(filename, _this.stageComponent.getParticleSVGString(), function (error) {
+                            if (error != null) {
+                                alert('error : ' + error);
+                            }
+                        });
+                    });
                 };
                 DesktopAppComponent.prototype.handleExportParamaterClick = function () {
                     alert("paramater!");
