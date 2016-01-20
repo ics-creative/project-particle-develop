@@ -68,8 +68,9 @@ export class ParticleCanvas {
 
   runCamera():Promise<any> {
     let canvasWidth:number =  this.stage.canvas.width;
-    return this.partcileImageImporter.getCapture().then(
-      (imageData) => this.insertCaputureToStage(imageData, canvasWidth),
+    let canvasHeight:number =  this.stage.canvas.height;
+    return this.partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(
+      (imageData) => this.insertCaptureToStage(imageData),
       () => this.insertDummyImageToStage()
     );
   }
@@ -77,8 +78,8 @@ export class ParticleCanvas {
   /**
    * Stageにキャプチャー画像を挿入します。
    */
-  private insertCaputureToStage(imageData:string, targetWidth:number):void {
-    this.captureImageLayer.addImageFromImageData(imageData, targetWidth);
+  private insertCaptureToStage(imageData:string):void {
+    this.captureImageLayer.addImageFromImageData(imageData);
     this.stage.update();
   }
 
