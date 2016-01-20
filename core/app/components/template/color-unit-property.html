@@ -1,38 +1,43 @@
-<div>
+<h4>Color Setting</h4>
 
-  hue
-  <input type="range" class="topcoat-range" min="0" max="360" step="0.01" [(ngModel)]="colorData.hue"
-         placeholder="hue"/>
-  {{colorData.hue}}
-  <hr>
+<input-range
+        label="色相"
+        min="0" max="360" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="hue">
+</input-range>
 
-  hue variance
-  <input type="range" class="topcoat-range" min="0" max="360" step="0.01" [(ngModel)]="colorData.hueVariance"
-         placeholder="hueVariance"/>
-  {{colorData.hueVariance}}
-  <hr>
+<input-range
+        label="色相 (変化量)"
+        min="0" max="360" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="hueVariance">
+</input-range>
 
-  satuation
-  <input type="range" class="topcoat-range" min="0" max="100" step="0.01" [(ngModel)]="colorData.satuation"
-         placeholder="satuation"/>
-  {{colorData.satuation}}
-  <hr>
+<input-range
+        label="彩度"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="satuation">
+</input-range>
 
-  satuatio variance
-  <input type="range" class="topcoat-range" min="0" max="100" step="0.01" [(ngModel)]="colorData.satuationVariance"
-         placeholder="satuationVariance"/>
-  {{colorData.satuationVariance}}
-  <hr>
+<input-range
+        label="彩度 (変化量)"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="satuationVariance">
+</input-range>
 
-  luminance
-  <input type="range" class="topcoat-range" min="0" max="100" step="0.01" [(ngModel)]="colorData.luminance"
-         placeholder="luminance"/>
-  {{colorData.luminance}}
-  <hr>
+<input-range
+        label="明度"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="luminance">
+</input-range>
 
-  luminance variance
-  <input type="range" class="topcoat-range" min="0" max="100" step="0.01" [(ngModel)]="colorData.luminanceVariance"
-         placeholder="luminanceVariance"/>
-  {{colorData.luminanceVariance}}
-
-</div>
+<input-range
+        label="明度 (変化量)"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="luminanceVariance">
+</input-range>
