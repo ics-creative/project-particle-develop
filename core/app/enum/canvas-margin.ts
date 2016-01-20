@@ -1,6 +1,6 @@
 export enum CanvasMargin {
-  TOP_DESKTOP = 168,
-  RIGHT_DESKTOP = 322,
+  TOP_DESKTOP = 100,
+  RIGHT_DESKTOP = 294,
   TOP_MOBILE = 116,
   RIGHT_MOBILE = 34
 }

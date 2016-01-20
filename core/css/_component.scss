@@ -24,8 +24,11 @@ $headerHeight: 44;
   height: $headerHeight + px;
 }
 
+html, body{
+  height:100%;
+}
+
 body {
-  height: 100%;
   overflow: hidden;
   background-color: $body_color;
 }
@@ -41,11 +44,7 @@ body {
   }
 }
 
-#header {
-  margin-bottom: $panelSpace+px;
-}
-
-#header h1 {
+h1 {
   font-size: 16px;
   height: $headerHeight + px;
   line-height: $headerHeight + px;
@@ -54,17 +53,28 @@ body {
   text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 0px +1px 1px rgba(255, 255, 255, 0.6);
 }
 
+#wrapper{
+  height: calc(100% - 54px);
+  margin-top: 3px;
+}
+
 #main {
-  width: 100%;
+  width: calc(100%-$sideWidth);
+  height: 100%;
   float: left;
 }
 
 #canvasBox {
   margin-left: $panelSpace / 2 + px;
   margin-right: ($sideWidth + $panelSpace + $panelSpace / 2) + px;
+  height: 100%;
   @media (max-width: $screen-sm) {
     margin-top: $panelSpace / 2 + px;
     margin-right: $panelSpace / 2 + px;
+  }
+
+  .panel-body {
+    padding: 0;
   }
 }
 
@@ -77,6 +87,7 @@ body {
 }
 
 #propertyPanel {
+  height: 100%;
   width: $sideWidth + px;
   margin-left: -  ($sideWidth + $panelSpace) + px;
   margin-right: ($panelSpace / 2) + px;

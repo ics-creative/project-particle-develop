@@ -7815,8 +7815,11 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
   height: 44px;
 }
 
-body {
+html, body {
   height: 100%;
+}
+
+body {
   overflow: hidden;
   background-color: #484848;
 }
@@ -7832,11 +7835,7 @@ body {
   }
 }
 
-#header {
-  margin-bottom: 4px;
-}
-
-#header h1 {
+h1 {
   font-size: 16px;
   height: 44px;
   line-height: 44px;
@@ -7844,20 +7843,30 @@ body {
   text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 1px 1px rgba(255, 255, 255, 0.6);
 }
 
+#wrapper {
+  height: calc(100% - 54px);
+  margin-top: 3px;
+}
+
 #main {
-  width: 100%;
+  width: calc(100%-$sideWidth);
+  height: 100%;
   float: left;
 }
 
 #canvasBox {
   margin-left: 2px;
   margin-right: 291px;
+  height: 100%;
 }
 @media (max-width: 768px) {
   #canvasBox {
     margin-top: 2px;
     margin-right: 2px;
   }
+}
+#canvasBox .panel-body {
+  padding: 0;
 }
 
 .panel h3 {
@@ -7867,6 +7876,7 @@ body {
 }
 
 #propertyPanel {
+  height: 100%;
   width: 285px;
   margin-left: -289px;
   margin-right: 2px;

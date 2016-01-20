@@ -1,6 +1,22 @@
-<header id="header" class="navbar navbar-default hidden-xs">
-  <h1>Particle Professional</h1>
-</header>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1 class="navbar-brand" href="#">Particle Professional</h1>
+    </div>
+    <div class="collapse navbar-collapse">
+      <desktop-io-box [drawingData]="drawingData"
+                      (exportSVGEvent)="handleSVGClick()"
+                      (exportParamaterEvent)="handleExportParamaterClick()">
+      </desktop-io-box>
+    </div>
+    <div class="row show-xs hidden-sm hidden-md hidden-lg">
+      <mobile-io-box [drawingData]="drawingData"
+                     (exportPNGEvent)="handlePNGClick()"
+                     (importCameraEvent)="handleCamera()"></mobile-io-box>
+    </div>
+  </div>
+</nav>
+
 <div id="wrapper" class="clearfix">
   <div id="main">
     <div id="canvasBox" class="panel panel-default">
@@ -10,27 +26,9 @@
       <div class="panel-body">
         <stage #stageComponent [drawingData]="drawingData"></stage>
       </div>
-      <div class="panel-footer">
-        <div id="fileIO">
-          <div class="row hidden-xs">
-            <desktop-io-box [drawingData]="drawingData"
-                            (exportSVGEvent)="handleSVGClick()"
-                            (exportParamaterEvent)="handleExportParamaterClick()"
-            ></desktop-io-box>
-          </div>
-          <div class="row show-xs hidden-sm hidden-md hidden-lg">
-            <mobile-io-box [drawingData]="drawingData"
-                           (exportPNGEvent)="handlePNGClick()"
-                           (importCameraEvent)="handleCamera()"
-            ></mobile-io-box>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
   <nav id="propertyPanel" class="hidden-xs">
     <property-panel [drawingData]="drawingData"></property-panel>
   </nav>
 </div>
-<nav id="desktopOutputBox">
-</nav>
