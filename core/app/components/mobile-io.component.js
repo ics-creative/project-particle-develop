@@ -9,7 +9,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, core_2, core_3;
-    var MobilePropertyPanel;
+    var MobileIOBox;
     return {
         setters:[
             function (core_1_1) {
@@ -20,22 +20,22 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 core_2 = core_2_1;
             }],
         execute: function() {
-            MobilePropertyPanel = (function () {
-                function MobilePropertyPanel(element) {
+            MobileIOBox = (function () {
+                function MobileIOBox(element) {
                     this.exportPNGEvent = new core_2.EventEmitter();
                     this.importCameraEvent = new core_2.EventEmitter();
                     this.element = element;
                 }
-                MobilePropertyPanel.prototype.exportPNG = function () {
+                MobileIOBox.prototype.exportPNG = function () {
                     this.exportPNGEvent.emit(null);
                 };
-                MobilePropertyPanel.prototype.importCamera = function () {
+                MobileIOBox.prototype.importCamera = function () {
                     this.importCameraEvent.emit(null);
                 };
-                MobilePropertyPanel = __decorate([
+                MobileIOBox = __decorate([
                     core_1.Component({
-                        selector: "mobile-property-panel",
-                        templateUrl: "app/components/template/mobile-property.html",
+                        selector: "mobile-io-box",
+                        templateUrl: "app/components/template/mobile-io-box.html",
                         inputs: ["drawingData"],
                         events: [
                             "exportPNGEvent",
@@ -43,11 +43,11 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                         ]
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])
-                ], MobilePropertyPanel);
-                return MobilePropertyPanel;
+                ], MobileIOBox);
+                return MobileIOBox;
             })();
-            exports_1("MobilePropertyPanel", MobilePropertyPanel);
+            exports_1("MobileIOBox", MobileIOBox);
         }
     }
 });
-//# sourceMappingURL=mobile-property.component.js.map
+//# sourceMappingURL=mobile-io.component.js.map

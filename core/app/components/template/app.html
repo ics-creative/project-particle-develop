@@ -1,4 +1,3 @@
-
 <div class="navbar navbar-default hidden-xs">
   <div class="container">
     ICS Draw
@@ -6,24 +5,28 @@
 </div>
 <div id="wrapper" class="clearfix">
   <div id="main">
-    <div>
       <div id="canvasBox">
         <stage #stageComponent [drawingData]="drawingData"></stage>
+        <div id="fileIO">
+          <div class="row hidden-xs">
+            <desktop-io-box [drawingData]="drawingData"
+                            (exportSVGEvent)="handleSVGClick()"
+                            (exportParamaterEvent)="handleExportParamaterClick()"
+            ></desktop-io-box>
+          </div>
+          <div class="row show-xs hidden-sm hidden-md hidden-lg">
+            <mobile-io-box [drawingData]="drawingData"
+                                   (exportPNGEvent)="handlePNGClick()"
+                                   (importCameraEvent)="handleCamera()"
+            ></mobile-io-box>
+          </div>
+        </div>
       </div>
-    </div>
   </div>
   <nav id="propertyPanel" class="hidden-xs">
-    <property-panel [drawingData]="drawingData"
-                    (exportSVGEvent)="handleSVGClick()"
-                    (exportParamaterEvent)="handleExportParamaterClick()"
-    ></property-panel>
+    <property-panel [drawingData]="drawingData"></property-panel>
   </nav>
 </div>
-<nav id="mobilePropertyPanel" class="show-xs">
-  <mobile-property-panel [drawingData]="drawingData"
-                     (exportPNGEvent)="handlePNGClick()"
-                     (importCameraEvent)="handleCamera()"
-  ></mobile-property-panel>
+<nav id="desktopOutputBox">
 </nav>
-
 <shape-property-modal [drawingData]="drawingData"></shape-property-modal>

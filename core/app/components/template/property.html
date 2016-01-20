@@ -1,12 +1,21 @@
-
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title">Canvas Settings</h3>
+    <h3 class="panel-title">Settings</h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-xs-6">
-        width <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.width" placeholder="width"/>
+    <!--タブ-->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">タブ1</a></li>
+      <li><a href="#tab2" data-toggle="tab">タブ2</a></li>
+      <li><a href="#tab3" data-toggle="tab">タブ3</a></li>
+      <li><a href="#tab4" data-toggle="tab">タブ4</a></li>
+    </ul>
+    <!-- / タブ-->
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="tab1">
+        <h4>Emitter Setting</h4>
+        width <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.width"
+                     placeholder="width"/>
         {{drawingData.width}}
         height <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.height" placeholder="height"/>
         {{drawingData.height}}
@@ -17,11 +26,9 @@
         {{drawingData.bgColor}}
 
         <hr>
-        <input type="color" [(ngModel)]="drawingData.startColor" placeholder="startColor" value="{{drawingData.startColor}}"/>
-        {{drawingData.startColor}}
-        <hr>
         x-value
-        <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startX" placeholder="startX"/>
+        <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startX"
+               placeholder="startX"/>
         {{drawingData.startX}}
         <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startXVariance"
                placeholder="startXVariance"/>
@@ -29,53 +36,61 @@
 
         <hr>
         y-value
-        <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startY" placeholder="startY"/>
+        <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startY"
+               placeholder="startY"/>
         {{drawingData.startY}}
         <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startYVariance"
                placeholder="startYVariance"/>
         {{drawingData.startYVariance}}
-
-
-        <hr>
+      </div>
+      <div class="tab-pane fade" id="tab2">
+        <h4>Particle Setting</h4>
         initial speed
-        <input type="range" class="topcoat-range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeed" placeholder="initialSpeed"/>
+        <input type="range" class="topcoat-range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeed"
+               placeholder="initialSpeed"/>
         {{drawingData.initialSpeed}}
-        <input type="range" class="topcoat-range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeedVariance"
+        <input type="range" class="topcoat-range" min="0" max="20" step="0.1"
+               [(ngModel)]="drawingData.initialSpeedVariance"
                placeholder="initialSpeedVariance"/>
         {{drawingData.initialSpeedVariance}}
         <hr>
 
         start-direction(angle)
-        <input type="range" class="topcoat-range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.initialDirection" placeholder="initialDirection"/>
+        <input type="range" class="topcoat-range" min="0" max="360" step="0.1"
+               [(ngModel)]="drawingData.initialDirection" placeholder="initialDirection"/>
         {{drawingData.initialDirection}}
-        <input type="range" class="topcoat-range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.initialDirectionVariance"
+        <input type="range" class="topcoat-range" min="0" max="360" step="0.1"
+               [(ngModel)]="drawingData.initialDirectionVariance"
                placeholder="initialDirectionVariance"/>
         {{drawingData.initialDirectionVariance}}
 
 
         <hr>
         friction
-        <input type="range" class="topcoat-range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.friction" placeholder="friction"/>
+        <input type="range" class="topcoat-range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.friction"
+               placeholder="friction"/>
         {{drawingData.friction}}
 
 
         <hr>
         acceleration speed
-        <input type="range" class="topcoat-range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.accelerationSpeed" placeholder="accelerationSpeed"/>
+        <input type="range" class="topcoat-range" min="0" max="20" step="0.1"
+               [(ngModel)]="drawingData.accelerationSpeed" placeholder="accelerationSpeed"/>
         {{drawingData.accelerationSpeed}}
 
         acceleration direction
-        <input type="range" class="topcoat-range" min="0" max="360" step="0.1" [(ngModel)]="drawingData.accelerationDirection" placeholder="accelerationDirection"/>
+        <input type="range" class="topcoat-range" min="0" max="360" step="0.1"
+               [(ngModel)]="drawingData.accelerationDirection" placeholder="accelerationDirection"/>
         {{drawingData.accelerationDirection}}
         <hr>
 
-      </div>
-      <div class="col-xs-6">
         <hr>
         start-alpha
-        <input type="range" class="topcoat-range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlpha" placeholder="startAlpha"/>
+        <input type="range" class="topcoat-range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlpha"
+               placeholder="startAlpha"/>
         {{drawingData.startAlpha}}
-        <input type="range" class="topcoat-range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.startAlphaVariance"
+        <input type="range" class="topcoat-range" min="0" max="1" step="0.01"
+               [(ngModel)]="drawingData.startAlphaVariance"
                placeholder="startAlphaVariance"/>
         {{drawingData.startAlphaVariance}}
 
@@ -84,16 +99,19 @@
         <input type="range" class="topcoat-range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishAlpha"
                placeholder="finishAlpha"/>
         {{drawingData.finishAlpha}}
-        <input type="range" class="topcoat-range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishAlphaVariance"
+        <input type="range" class="topcoat-range" min="0" max="1" step="0.01"
+               [(ngModel)]="drawingData.finishAlphaVariance"
                placeholder="finishAlphaVariance"/>
         {{drawingData.finishAlphaVariance}}
 
 
         <hr>
         start-scale
-        <input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.startScale" placeholder="startScale"/>
+        <input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.startScale"
+               placeholder="startScale"/>
         {{drawingData.startScale}}
-        <input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.startScaleVariance"
+        <input type="range" class="topcoat-range" min="0" max="5" step="0.01"
+               [(ngModel)]="drawingData.startScaleVariance"
                placeholder="startScaleVariance"/>
         {{drawingData.startScaleVariance}}
 
@@ -102,31 +120,41 @@
         <input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.finishScale"
                placeholder="finishScale"/>
         {{drawingData.finishScale}}
-        <input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.finishScaleVariance"
+        <input type="range" class="topcoat-range" min="0" max="5" step="0.01"
+               [(ngModel)]="drawingData.finishScaleVariance"
                placeholder="finishScaleVariance"/>
         {{drawingData.finishScaleVariance}}
 
+        <hr>
+        life span
+        <input type="range" class="topcoat-range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan"
+               placeholder="lifeSpan"/>
+        {{drawingData.lifeSpan}}
+        <input type="range" class="topcoat-range" min="0" max="500" step="0.01"
+               [(ngModel)]="drawingData.lifeSpanVariance"
+               placeholder="lifeSpanVariance"/>
+        {{drawingData.lifeSpanVariance}}
 
+      </div>
+      <div class="tab-pane fade" id="tab3">
+        Color Settings
 
         <hr>
+        <input type="color" [(ngModel)]="drawingData.startColor" placeholder="startColor"
+               value="{{drawingData.startColor}}"/>
+        {{drawingData.startColor}}
+        <hr>
+
         emit frequency
         <input type="range" class="topcoat-range" min="0" max="20" step="1" [(ngModel)]="drawingData.emitFrequency"
                placeholder="emitFrequency"/>
         {{drawingData.emitFrequency}}
-        <hr>
-        life span
-        <input type="range" class="topcoat-range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan" placeholder="lifeSpan"/>
-        {{drawingData.lifeSpan}}
-        <input type="range" class="topcoat-range" min="0" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpanVariance"
-               placeholder="lifeSpanVariance"/>
-        {{drawingData.lifeSpanVariance}}
         <div>
           <a href="#" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#ShapeModal">Shapes</a>
         </div>
       </div>
+      <div class="tab-pane fade" id="tab4">
+      </div>
     </div>
-    <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportSVG()">SVG保存</button>
-    <button class="btn btn-primary btn-lg btn-block hidden-xs" (click)="exportParamater()">パラメータ保存</button>
-    <input  #btnSelectFile  class="btn btn-primary btn-lg btn-block hidden-xs" (change)="selectParameterFile($event)" type="file"/>
   </div>
 </div>

@@ -4,8 +4,8 @@ import {EventEmitter} from 'angular2/core';
 import {ElementRef} from "angular2/core";
 
 @Component({
-  selector: "mobile-property-panel",
-  templateUrl: "app/components/template/mobile-property.html",
+  selector: "mobile-io-box",
+  templateUrl: "app/components/template/mobile-io-box.html",
   inputs: ["drawingData"],
   events: [
     "exportPNGEvent",
@@ -13,7 +13,7 @@ import {ElementRef} from "angular2/core";
   ]
 })
 
-export class MobilePropertyPanel {
+export class MobileIOBox {
   private exportPNGEvent = new EventEmitter();
   private importCameraEvent = new EventEmitter();
 

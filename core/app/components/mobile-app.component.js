@@ -12,20 +12,13 @@ System.register(["./app.component"], function(exports_1) {
                 app_component_1 = app_component_1_1;
             }],
         execute: function() {
-            /**
-             * Created by nyamogera on 2016/01/17.
-             */
             MobileAppComponent = (function (_super) {
                 __extends(MobileAppComponent, _super);
                 function MobileAppComponent() {
                     _super.apply(this, arguments);
-                    this.openSVGExportWindow = function () {
-                        alert("モバイルアプリでは使用不可能です");
-                        //window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));
-                    };
                 }
                 MobileAppComponent.prototype.handleSVGClick = function () {
-                    //this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+                    alert("モバイルアプリでは使用不可能です");
                 };
                 MobileAppComponent.prototype.handlePNGClick = function () {
                     this.stageComponent.runExportSP().then(function () {

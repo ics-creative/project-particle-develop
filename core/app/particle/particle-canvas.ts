@@ -98,7 +98,7 @@ export class ParticleCanvas {
     let windowHeight:number = window.innerHeight;
 
     canvasWidth = windowWidth;
-    canvasHeight = windowHeight - 50;
+    canvasHeight = windowHeight - 100;
 
     if (windowWidth > Viewport.xs)
       canvasWidth -= 400;
