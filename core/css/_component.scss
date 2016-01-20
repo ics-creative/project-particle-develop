@@ -1,0 +1,98 @@
+// --------------------------
+// Custom CSS
+// --------------------------
+
+$panelSpace: 4;
+$sideWidth: 285;
+$headerHeight: 44;
+
+.panel-default > .panel-heading,
+.panel-default > .panel-footer {
+  @include btn-shadow($navbar-default-bg);
+}
+
+.panel {
+  background-color: #151515;
+}
+
+.panel-title {
+  font-size: $font-size-base;
+}
+
+.panel-footer {
+  padding: 0;
+  height: $headerHeight + px;
+}
+
+body {
+  height: 100%;
+  overflow: hidden;
+  background-color: $body_color;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar {
+  @media (min-width: $grid-float-breakpoint) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
+
+#header {
+  margin-bottom: $panelSpace+px;
+}
+
+#header h1 {
+  font-size: 16px;
+  height: $headerHeight + px;
+  line-height: $headerHeight + px;
+
+  color: #d2d2d2;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
+}
+
+#main {
+  width: 100%;
+  float: left;
+}
+
+#canvasBox {
+  margin-left: $panelSpace / 2 + px;
+  margin-right: ($sideWidth + $panelSpace + $panelSpace / 2) + px;
+  @media (max-width: $screen-sm) {
+    margin-top: $panelSpace / 2 + px;
+    margin-right: $panelSpace / 2 + px;
+  }
+}
+
+.panel {
+  h3 {
+    color: #d2d2d2;
+    text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
+  }
+}
+
+#propertyPanel {
+  width: $sideWidth + px;
+  margin-left: -  ($sideWidth + $panelSpace) + px;
+  margin-right: ($panelSpace / 2) + px;
+  float: right;
+  max-height: 100%;
+  overflow-y: scroll;
+
+  .panel {
+    background: #2a2a2a;
+    height: 100%;
+
+    color: #8b9292;
+  }
+
+}
+
+#myCanvas {
+}
+
+
