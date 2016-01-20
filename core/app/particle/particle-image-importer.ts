@@ -7,7 +7,7 @@ export class PartcicleImageImporter {
   constructor() {
   }
 
-  /*
+  /**
    * ネイティブ機能を使ってカメラを撮影します。
    */
   public getCapture():Promise<any> {
@@ -16,8 +16,9 @@ export class PartcicleImageImporter {
         (imageData:string) => this.cameraSuccessHandler(imageData, onResolve),
         (errorMessage:string) => this.cameraFailHandler(errorMessage, onReject),
         {
-          quality: 50,
-          destinationType: Camera.DestinationType.DATA_URL
+          quality: 70,
+          destinationType: Camera.DestinationType.DATA_URL,
+          correctOrientation:true
         }
       )
     });

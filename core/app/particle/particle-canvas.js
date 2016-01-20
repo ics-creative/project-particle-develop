@@ -63,13 +63,14 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                 };
                 ParticleCanvas.prototype.runCamera = function () {
                     var _this = this;
-                    return this.partcileImageImporter.getCapture().then(function (imageData) { return _this.insertCaputureToStage(imageData); }, function () { return _this.insertDummyImageToStage(); });
+                    var canvasWidth = this.stage.canvas.width;
+                    return this.partcileImageImporter.getCapture().then(function (imageData) { return _this.insertCaputureToStage(imageData, canvasWidth); }, function () { return _this.insertDummyImageToStage(); });
                 };
                 /**
                  * Stageにキャプチャー画像を挿入します。
                  */
-                ParticleCanvas.prototype.insertCaputureToStage = function (imageData) {
-                    this.captureImageLayer.addImageFromImageData(imageData);
+                ParticleCanvas.prototype.insertCaputureToStage = function (imageData, targetWidth) {
+                    this.captureImageLayer.addImageFromImageData(imageData, targetWidth);
                     this.stage.update();
                 };
                 ParticleCanvas.prototype.insertDummyImageToStage = function () {
