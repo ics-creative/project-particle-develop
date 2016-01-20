@@ -1,12 +1,16 @@
-<div class="navbar navbar-default hidden-xs">
-  <div class="container">
-    ICS Draw
-  </div>
-</div>
+<header id="header" class="navbar navbar-default hidden-xs">
+  <h1>Particle Professional</h1>
+</header>
 <div id="wrapper" class="clearfix">
   <div id="main">
-      <div id="canvasBox">
+    <div id="canvasBox" class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Preview</h3>
+      </div>
+      <div class="panel-body">
         <stage #stageComponent [drawingData]="drawingData"></stage>
+      </div>
+      <div class="panel-footer">
         <div id="fileIO">
           <div class="row hidden-xs">
             <desktop-io-box [drawingData]="drawingData"
@@ -16,12 +20,13 @@
           </div>
           <div class="row show-xs hidden-sm hidden-md hidden-lg">
             <mobile-io-box [drawingData]="drawingData"
-                                   (exportPNGEvent)="handlePNGClick()"
-                                   (importCameraEvent)="handleCamera()"
+                           (exportPNGEvent)="handlePNGClick()"
+                           (importCameraEvent)="handleCamera()"
             ></mobile-io-box>
           </div>
         </div>
       </div>
+    </div>
   </div>
   <nav id="propertyPanel" class="hidden-xs">
     <property-panel [drawingData]="drawingData"></property-panel>

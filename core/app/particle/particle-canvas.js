@@ -1,11 +1,14 @@
 ///<reference path="../../typings/tsd.d.ts" />
-System.register(["../enum/view-port", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer"], function(exports_1) {
-    var view_port_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1;
+System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer"], function(exports_1) {
+    var view_port_1, canvas_margin_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1;
     var ParticleCanvas;
     return {
         setters:[
             function (view_port_1_1) {
                 view_port_1 = view_port_1_1;
+            },
+            function (canvas_margin_1_1) {
+                canvas_margin_1 = canvas_margin_1_1;
             },
             function (particle_emitter_1_1) {
                 particle_emitter_1 = particle_emitter_1_1;
@@ -84,9 +87,15 @@ System.register(["../enum/view-port", "./particle-emitter", "./particle-exporter
                     var windowWidth = window.innerWidth;
                     var windowHeight = window.innerHeight;
                     canvasWidth = windowWidth;
-                    canvasHeight = windowHeight - 100;
-                    if (windowWidth > view_port_1.Viewport.xs)
-                        canvasWidth -= 400;
+                    canvasHeight = windowHeight;
+                    if (windowWidth > view_port_1.Viewport.sm) {
+                        canvasHeight -= canvas_margin_1.CanvasMargin.TOP_DESKTOP;
+                        canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_DESKTOP;
+                    }
+                    else {
+                        canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
+                        canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
+                    }
                     // ステージのサイズをwindowのサイズに変更
                     this.stage.canvas.width = canvasWidth;
                     this.stage.canvas.height = canvasHeight;
