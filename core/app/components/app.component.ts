@@ -12,7 +12,7 @@ import {ElementRef} from "angular2/core";
 @Component({
     selector: `my-app`,
     templateUrl: "app/components/template/app.html",
-    directives: [StageComponent, PropertyPanel, DesktopIOBox,  MobileIOBox, ShapePropertyModal]
+    directives: [StageComponent, PropertyPanel, DesktopIOBox,  MobileIOBox]
 })
 
 export class AppComponent {

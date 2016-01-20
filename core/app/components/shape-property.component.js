@@ -27,6 +27,7 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
                         console.log("selectapp:" + shapeId);
                         //  ラジオボタンとかにすればテンポラリ選択不要そう
                         _this.temporarySelect = shapeId;
+                        _this.drawingData.shapeIdList = [_this.temporarySelect];
                     };
                     this.saveChanges = function () {
                         // TODO:配列で選択できるようにする
@@ -35,7 +36,7 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
                 }
                 ShapePropertyModal = __decorate([
                     core_1.Component({
-                        selector: "shape-property-modal",
+                        selector: "shape-property-panel",
                         templateUrl: "app/components/template/shape-property.html",
                         inputs: ["drawingData", "shapeIdList"]
                     }), 

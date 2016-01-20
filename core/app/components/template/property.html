@@ -5,42 +5,21 @@
   <div class="panel-body">
     <!--タブ-->
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">タブ1</a></li>
-      <li><a href="#tab2" data-toggle="tab">タブ2</a></li>
-      <li><a href="#tab3" data-toggle="tab">タブ3</a></li>
-      <li><a href="#tab4" data-toggle="tab">タブ4</a></li>
+      <li class="active"><a href="#tab1" data-toggle="tab">Emitter</a></li>
+      <li><a href="#tab2" data-toggle="tab">Particle</a></li>
+      <li><a href="#tab3" data-toggle="tab">Color</a></li>
+      <li><a href="#tab4" data-toggle="tab">Template</a></li>
+      <li><a href="#tab5" data-toggle="tab">Shape</a></li>
     </ul>
     <!-- / タブ-->
     <div id="myTabContent" class="tab-content">
-      <emitter-property-panel class="tab-pane fade in active" [drawingData]="drawingData"></emitter-property-panel>
+      <emitter-property-panel class="tab-pane fade in active" id="tab1"
+                              [drawingData]="drawingData"></emitter-property-panel>
       <particle-property-panel class="tab-pane fade" id="tab2" [drawingData]="drawingData"></particle-property-panel>
-      <div class="tab-pane fade" id="tab3">
-        Color Settings
-
-        <h3>Start Color</h3>
-        <color-unit-property-panel  [colorData]="drawingData.startColor"></color-unit-property-panel>
-
-        <h3>Finish Color</h3>
-        <color-unit-property-panel  [colorData]="drawingData.finishColor"></color-unit-property-panel>
-
-        <hr>
-        emit frequency
-        <input type="range" class="topcoat-range" min="0" max="20" step="1" [(ngModel)]="drawingData.emitFrequency"
-               placeholder="emitFrequency"/>
-        {{drawingData.emitFrequency}}
-        <div>
-          <a href="#" class="btn btn-info btn-lg btn-block" data-toggle="modal" data-target="#ShapeModal">Shapes</a>
-        </div>
-      </div>
-      <div class="tab-pane fade" id="tab4">
-        <div class="modal-body" *ngFor="#template of templateList">
-
-          <div (click)="selectTemplate(template)">
-            テンプレ
-          </div>
-        </div>
-
-      </div>
+      <color-property-panel class="tab-pane fade" id="tab3" [drawingData]="drawingData"></color-property-panel>
+      <particle-template-property-panel class="tab-pane fade" id="tab4"
+                                        [drawingData]="drawingData"></particle-template-property-panel>
+      <shape-property-panel class="tab-pane fade" id="tab5" [drawingData]="drawingData"></shape-property-panel>
     </div>
   </div>
 </div>

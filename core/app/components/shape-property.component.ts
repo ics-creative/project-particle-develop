@@ -4,7 +4,7 @@ import {EventEmitter} from 'angular2/core';
 import {ShapeData} from "../data/shape-data";
 
 @Component({
-  selector: "shape-property-modal",
+  selector: "shape-property-panel",
   templateUrl: "app/components/template/shape-property.html",
   inputs: ["drawingData","shapeIdList"]
 })
@@ -18,6 +18,7 @@ export class ShapePropertyModal {
     console.log(`selectapp:${shapeId}`);
     //  ラジオボタンとかにすればテンポラリ選択不要そう
     this.temporarySelect = shapeId;
+    this.drawingData.shapeIdList = [this.temporarySelect];
   }
 
   saveChanges = () => {
