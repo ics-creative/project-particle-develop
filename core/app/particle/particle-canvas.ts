@@ -1,7 +1,6 @@
-///<reference path="../" />
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 
-import {DrawingData} from "../drawing-data";
+import {DrawingData} from "../data/drawing-data";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
 import {ParticleEmitter} from "./particle-emitter";

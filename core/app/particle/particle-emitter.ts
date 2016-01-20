@@ -1,10 +1,9 @@
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 
-import {ParticleShapeTypes} from "./particle-shape-types";
 "use strict";
 
 import {Particle} from "./particle";
-import {DrawingData} from "../drawing-data";
+import {DrawingData} from "../data/drawing-data";
 import {ShapeGenerator} from "../assets/shape-generator";
 import {ColorData} from "../data/color-data";
 
