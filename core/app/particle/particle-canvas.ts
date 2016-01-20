@@ -40,7 +40,7 @@ export class ParticleCanvas {
     this.stage = new createjs.Stage(this.canvas);
 
     this.canvasContainer = new createjs.Container();
-    this.stage.addChild( this.canvasContainer ) ;
+    this.stage.addChild(this.canvasContainer);
 
 
     //  キャンバスより後ろ
@@ -132,7 +132,7 @@ export class ParticleCanvas {
     }
 
     //  ルーラーなどのセンタリング
-    let canvasPoint = new createjs.Point( (canvasWidth-this.data.width) / 2, (canvasHeight-this.data.height) / 2);
+    let canvasPoint = new createjs.Point((canvasWidth - this.data.width) / 2, (canvasHeight - this.data.height) / 2);
 
     this.canvasContainer.x = canvasPoint.x;
     this.canvasContainer.y = canvasPoint.y;
@@ -143,7 +143,7 @@ export class ParticleCanvas {
 
   }
 
-  public update(data:DrawingData) {
+  public update(data:DrawingData):void {
 
     if (data.width != this.backgroundSize.w
         || data.height != this.backgroundSize.h
@@ -151,7 +151,7 @@ export class ParticleCanvas {
       this.backgroundColorCommand.style = data.bgColor;
       this.backgroundSize.w = data.width;
       this.backgroundSize.h = data.height;
-      this.ruler.setSize(data.width,data.height);
+      this.ruler.setSize(data.width, data.height);
       this.resizeHandler();
     }
 
