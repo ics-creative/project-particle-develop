@@ -1,6 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts" />
-System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer"], function(exports_1) {
-    var view_port_1, canvas_margin_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1;
+System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer", "./particle-ruler"], function(exports_1) {
+    var view_port_1, canvas_margin_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1, particle_ruler_1;
     var ParticleCanvas;
     return {
         setters:[
@@ -21,11 +21,15 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
             },
             function (particle_capture_image_layer_1_1) {
                 particle_capture_image_layer_1 = particle_capture_image_layer_1_1;
+            },
+            function (particle_ruler_1_1) {
+                particle_ruler_1 = particle_ruler_1_1;
             }],
         execute: function() {
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
+                    var canvasPoint = new createjs.Point(100, 100);
                     this.canvas = canvas;
                     this.canvas.width = data.width;
                     this.canvas.height = data.height;
@@ -34,13 +38,24 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.background = new createjs.Shape();
                     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
                     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
+                    this.ruler = new particle_ruler_1.Ruler(this.stage);
+                    this.ruler.setSize(data.width, data.height);
+                    this.stage.addChild(this.ruler.container);
+                    this.ruler.container.x = canvasPoint.x;
+                    this.ruler.container.y = canvasPoint.y;
                     this.backgroundColorCommand.style = data.bgColor;
                     this.backgroundSize.w = data.width;
                     this.backgroundSize.h = data.height;
+                    this.backgroundSize.x = canvasPoint.x;
+                    this.backgroundSize.y = canvasPoint.y;
                     this.stage.addChild(this.background);
                     this.captureImageLayer = new particle_capture_image_layer_1.ParticleCaptureImageLayer();
+                    this.captureImageLayer.x = canvasPoint.x;
+                    this.captureImageLayer.y = canvasPoint.y;
                     this.stage.addChild(this.captureImageLayer);
                     this.particleEmitter = new particle_emitter_1.ParticleEmitter();
+                    this.particleEmitter.container.x = canvasPoint.x;
+                    this.particleEmitter.container.y = canvasPoint.y;
                     this.stage.addChild(this.particleEmitter.container);
                     this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
                     this.partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
@@ -102,8 +117,10 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         this.backgroundColorCommand.style = data.bgColor;
                         this.backgroundSize.w = data.width;
                         this.backgroundSize.h = data.height;
+                        this.ruler.setSize(data.width, data.height);
                     }
                     this.particleEmitter.update(data);
+                    this.ruler.update();
                     this.stage.update();
                 };
                 return ParticleCanvas;
