@@ -23,6 +23,10 @@ export class ParticleEmitter {
 
     this.container = new createjs.Container();
 
+    // パフォーマンス向上の基本テクニック
+    this.container.mouseChildren = false;
+    this.container.mouseEnabled = false;
+
     this.shapeGenerator = new ShapeGenerator();
   }
 
