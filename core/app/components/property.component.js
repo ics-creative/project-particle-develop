@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./color-property.component", "../assets/particle-paramater"], function(exports_1) {
+System.register(["angular2/core", "./color-unit-property.component", "../assets/particle-paramater", "./emitter-property.component", "./particle-property.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,18 +8,24 @@ System.register(["angular2/core", "./color-property.component", "../assets/parti
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, color_property_component_1, particle_paramater_1;
+    var core_1, color_unit_property_component_1, particle_paramater_1, emitter_property_component_1, particle_property_component_1;
     var PropertyPanel;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (color_property_component_1_1) {
-                color_property_component_1 = color_property_component_1_1;
+            function (color_unit_property_component_1_1) {
+                color_unit_property_component_1 = color_unit_property_component_1_1;
             },
             function (particle_paramater_1_1) {
                 particle_paramater_1 = particle_paramater_1_1;
+            },
+            function (emitter_property_component_1_1) {
+                emitter_property_component_1 = emitter_property_component_1_1;
+            },
+            function (particle_property_component_1_1) {
+                particle_property_component_1 = particle_property_component_1_1;
             }],
         execute: function() {
             PropertyPanel = (function () {
@@ -35,7 +41,7 @@ System.register(["angular2/core", "./color-property.component", "../assets/parti
                         selector: "property-panel",
                         templateUrl: "app/components/template/property.html",
                         inputs: ["drawingData", "templateList"],
-                        directives: [color_property_component_1.ColorPropertyPanel]
+                        directives: [color_unit_property_component_1.ColorUnitPropertyPanel, emitter_property_component_1.EmitterPropertyPanel, particle_property_component_1.ParticlePropertyPanel]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], PropertyPanel);

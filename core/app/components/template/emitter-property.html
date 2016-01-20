@@ -1,0 +1,71 @@
+
+<h4>Emitter Setting</h4>
+
+width <input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.width"
+             placeholder="width"/>
+{{drawingData.width}}
+height <input type="range" min="0" max="500" step="1" [(ngModel)]="drawingData.height" placeholder="height"/>
+{{drawingData.height}}
+
+<hr>
+<input type="color" [(ngModel)]="drawingData.bgColor" placeholder="bgColor" value="{{drawingData.bgColor}}"/>
+{{drawingData.bgColor}}
+
+<hr>
+x-value
+<input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startX"
+       placeholder="startX"/>
+{{drawingData.startX}}
+<input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startXVariance"
+       placeholder="startXVariance"/>
+{{drawingData.startXVariance}}
+
+<hr>
+y-value
+<input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startY"
+       placeholder="startY"/>
+{{drawingData.startY}}
+<input type="range" class="topcoat-range" min="0" max="500" step="1" [(ngModel)]="drawingData.startYVariance"
+       placeholder="startYVariance"/>
+{{drawingData.startYVariance}}
+
+
+
+initial speed
+<input type="range" class="topcoat-range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeed"
+       placeholder="initialSpeed"/>
+{{drawingData.initialSpeed}}
+<input type="range" class="topcoat-range" min="0" max="20" step="0.1"
+       [(ngModel)]="drawingData.initialSpeedVariance"
+       placeholder="initialSpeedVariance"/>
+{{drawingData.initialSpeedVariance}}
+<hr>
+
+start-direction(angle)
+<input type="range" class="topcoat-range" min="0" max="360" step="0.1"
+       [(ngModel)]="drawingData.initialDirection" placeholder="initialDirection"/>
+{{drawingData.initialDirection}}
+<input type="range" class="topcoat-range" min="0" max="360" step="0.1"
+       [(ngModel)]="drawingData.initialDirectionVariance"
+       placeholder="initialDirectionVariance"/>
+{{drawingData.initialDirectionVariance}}
+
+
+<hr>
+friction
+<input type="range" class="topcoat-range" min="0" max="0.5" step="0.001" [(ngModel)]="drawingData.friction"
+       placeholder="friction"/>
+{{drawingData.friction}}
+
+
+<hr>
+acceleration speed
+<input type="range" class="topcoat-range" min="0" max="20" step="0.1"
+       [(ngModel)]="drawingData.accelerationSpeed" placeholder="accelerationSpeed"/>
+{{drawingData.accelerationSpeed}}
+
+acceleration direction
+<input type="range" class="topcoat-range" min="0" max="360" step="0.1"
+       [(ngModel)]="drawingData.accelerationDirection" placeholder="accelerationDirection"/>
+{{drawingData.accelerationDirection}}
+<hr>

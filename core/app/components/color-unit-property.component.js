@@ -9,28 +9,28 @@ System.register(["angular2/core"], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var ColorPropertyPanel;
+    var ColorUnitPropertyPanel;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            ColorPropertyPanel = (function () {
-                function ColorPropertyPanel() {
+            ColorUnitPropertyPanel = (function () {
+                function ColorUnitPropertyPanel() {
                 }
-                ColorPropertyPanel = __decorate([
+                ColorUnitPropertyPanel = __decorate([
                     core_1.Component({
-                        selector: "color-property-panel",
-                        templateUrl: "app/components/template/color-property.html",
+                        selector: "color-unit-property-panel",
+                        templateUrl: "app/components/template/color-unit-property.html",
                         inputs: ["colorData"]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ColorPropertyPanel);
-                return ColorPropertyPanel;
+                ], ColorUnitPropertyPanel);
+                return ColorUnitPropertyPanel;
             })();
-            exports_1("ColorPropertyPanel", ColorPropertyPanel);
+            exports_1("ColorUnitPropertyPanel", ColorUnitPropertyPanel);
         }
     }
 });
-//# sourceMappingURL=color-property.component.js.map
+//# sourceMappingURL=color-unit-property.component.js.map
