@@ -33,7 +33,7 @@ System.register(["./color-data"], function(exports_1) {
                     this.startScaleVariance = 0;
                     this.finishScale = 1;
                     this.finishScaleVariance = 0;
-                    this.shapeIdList = ["kirakira"];
+                    this.shapeIdList = ["square"];
                     this.emitFrequency = 1;
                     this.startColor = new color_data_1.ColorData();
                     this.finishColor = new color_data_1.ColorData();

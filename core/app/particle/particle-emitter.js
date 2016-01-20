@@ -127,6 +127,8 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     //  スケール
                     particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
                     particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
+                    // ブレンドモードを設定
+                    particle.particleShape.compositeOperation = "lighter";
                 };
                 ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
                     particle.particleShape.removeAllChildren();
@@ -138,20 +140,30 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     particle.finishColor.hue = this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
                     particle.finishColor.luminance = this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
                     particle.finishColor.satuation = this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
-                    var hue = parseInt(particle.startColor.hue);
-                    var satuation = parseInt(particle.startColor.satuation);
-                    var luminance = parseInt(particle.startColor.luminance);
+                    var hue = Number(particle.startColor.hue);
+                    var satuation = Number(particle.startColor.satuation);
+                    var luminance = Number(particle.startColor.luminance);
                     var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
                     var r = Math.floor(Math.random() * this.drawingData.shapeIdList.length);
                     var shapeId = (this.drawingData.shapeIdList.length == 0) ? '' : this.drawingData.shapeIdList[r];
                     particle.colorCommand = null;
-                    var shape = this.shapeGenerator.generateShape(shapeId);
-                    if (shape.hasOwnProperty("command")) {
-                        var myShape = shape.command;
-                        myShape.style = color;
-                        particle.colorCommand = shape.command;
+                    var container = this.shapeGenerator.generateShape(shapeId);
+                    var shape = container.getChildAt(0); // こういう作りにする
+                    var instructions = shape.graphics.instructions;
+                    if (instructions && instructions.length > 0) {
+                        for (var i = 0; i < instructions.length; i++) {
+                            var cmd = instructions[i];
+                            if (cmd instanceof createjs.Graphics.Fill) {
+                                cmd.style = color;
+                                particle.colorCommand = cmd;
+                            }
+                            else if (cmd instanceof createjs.Graphics.Stroke) {
+                                cmd.style = color;
+                                particle.colorCommand = cmd;
+                            }
+                        }
                     }
-                    particle.particleShape.addChild(shape);
+                    particle.particleShape.addChild(container);
                 };
                 ParticleEmitter.prototype.range = function (minValue, maxValue, value) {
                     return Math.min(maxValue, Math.max(minValue, value));

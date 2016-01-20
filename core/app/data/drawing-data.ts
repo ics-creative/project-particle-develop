@@ -86,7 +86,7 @@ export class DrawingData {
     this.finishScale = 1;
     this.finishScaleVariance = 0;
 
-    this.shapeIdList = ["kirakira"];
+    this.shapeIdList = ["square"];
 
     this.emitFrequency = 1;
 

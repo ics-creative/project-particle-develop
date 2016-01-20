@@ -211,16 +211,24 @@ export class ParticleEmitter {
 
     particle.colorCommand = null;
 
-    var shape = this.shapeGenerator.generateShape(shapeId);
-    if (shape.hasOwnProperty("command")) {
+    let container = <createjs.Container> this.shapeGenerator.generateShape(shapeId);
+    let shape = <createjs.Shape> container.getChildAt(0); // こういう作りにする
 
-      var myShape = shape.command;
-      myShape.style = color;
 
-      particle.colorCommand = shape.command;
+    let instructions = shape.graphics.instructions;
+    if (instructions && instructions.length > 0) {
+      for (let i = 0; i < instructions.length; i++) {
+        let cmd = instructions[i];
+        if (cmd instanceof createjs.Graphics.Fill) { // 塗りのとき
+          cmd.style = color;
+          particle.colorCommand = cmd;
+        } else if (cmd instanceof createjs.Graphics.Stroke) { // 線のとき
+          cmd.style = color;
+          particle.colorCommand = cmd;
+        }
+      }
     }
-
-    particle.particleShape.addChild(shape);
+    particle.particleShape.addChild(container);
 
   }
 
