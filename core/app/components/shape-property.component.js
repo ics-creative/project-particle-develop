@@ -21,19 +21,18 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
         execute: function() {
             ShapePropertyModal = (function () {
                 function ShapePropertyModal() {
-                    var _this = this;
                     this.shapeIdList = new shape_data_1.ShapeData().assetList;
-                    this.selectShape = function (shapeId) {
-                        console.log("selectapp:" + shapeId);
-                        //  ラジオボタンとかにすればテンポラリ選択不要そう
-                        _this.temporarySelect = shapeId;
-                        _this.drawingData.shapeIdList = [_this.temporarySelect];
-                    };
-                    this.saveChanges = function () {
-                        // TODO:配列で選択できるようにする
-                        _this.drawingData.shapeIdList = [_this.temporarySelect];
-                    };
                 }
+                ShapePropertyModal.prototype.selectShape = function (shapeId) {
+                    console.log("selectapp:" + shapeId);
+                    //  ラジオボタンとかにすればテンポラリ選択不要そう
+                    this.temporarySelect = shapeId;
+                    this.drawingData.shapeIdList = [this.temporarySelect];
+                };
+                ShapePropertyModal.prototype.saveChanges = function () {
+                    // TODO:配列で選択できるようにする
+                    this.drawingData.shapeIdList = [this.temporarySelect];
+                };
                 ShapePropertyModal = __decorate([
                     core_1.Component({
                         selector: "shape-property-panel",
