@@ -30,9 +30,11 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         return _this.particleExporter.runExport();
                     };
                     this.update = function (data) {
-                        _this.backgroundColorCommand.style = data.bgColor;
-                        _this.backgroundSize.w = data.width;
-                        _this.backgroundSize.h = data.height;
+                        if (data.width != _this.backgroundSize.w || data.height != _this.backgroundSize.h) {
+                            _this.backgroundColorCommand.style = data.bgColor;
+                            _this.backgroundSize.w = data.width;
+                            _this.backgroundSize.h = data.height;
+                        }
                         _this.particleEmitter.update(data);
                         _this.stage.update();
                     };

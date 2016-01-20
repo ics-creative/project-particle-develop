@@ -1,7 +1,11 @@
-System.register([], function(exports_1) {
+System.register(["./color-data"], function(exports_1) {
+    var color_data_1;
     var DrawingData;
     return {
-        setters:[],
+        setters:[
+            function (color_data_1_1) {
+                color_data_1 = color_data_1_1;
+            }],
         execute: function() {
             DrawingData = (function () {
                 function DrawingData() {
@@ -9,7 +13,6 @@ System.register([], function(exports_1) {
                     this.width = 500;
                     this.height = 500;
                     this.friction = 0;
-                    this.startColor = "#FFFFFF";
                     this.startX = 250;
                     this.startXVariance = 50;
                     this.startY = 250;
@@ -30,9 +33,10 @@ System.register([], function(exports_1) {
                     this.startScaleVariance = 0;
                     this.finishScale = 1;
                     this.finishScaleVariance = 0;
-                    this.shapeIdList = ["circle"];
-                    this.friction;
+                    this.shapeIdList = ["kirakira"];
                     this.emitFrequency = 1;
+                    this.startColor = new color_data_1.ColorData();
+                    this.finishColor = new color_data_1.ColorData();
                 }
                 DrawingData.prototype.into = function (obj) {
                     for (var key in this) {

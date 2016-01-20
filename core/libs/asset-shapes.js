@@ -22,7 +22,8 @@ lib.properties = {
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AhZArICAiDIAzCyg");
+    this.command = this.shape.graphics.f("#FFFFFF").command;
+	this.shape.graphics.s().p("AhZArICAiDIAzCyg");
 	this.shape.setTransform(-1.1,-1);
 
 	this.addChild(this.shape);
@@ -35,7 +36,8 @@ p.nominalBounds = new cjs.Rectangle(-10.2,-10,18.2,18);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AgMA7IgzAkIASg+Ig5AAIAngfIglgdIA0gBIgVg4IA1AgIAQgyIAOAuIAsggIgQA+IA4ABIgiAZIAoAbIg/ADIASBCIgrggIgMAng");
+	this.command = this.shape.graphics.f("#FFFFFF").command;
+    this.shape.graphics.s().p("AgMA7IgzAkIASg+Ig5AAIAngfIglgdIA0gBIgVg4IA1AgIAQgyIAOAuIAsggIgQA+IA4ABIgiAZIAoAbIg/ADIASBCIgrggIgMAng");
 	this.shape.setTransform(0.6,-1);
 
 	this.addChild(this.shape);
@@ -48,7 +50,8 @@ p.nominalBounds = new cjs.Rectangle(-9.8,-11.3,20.8,20.7);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AAAA2Ig+AsIAXhMIg8gtIBMgBIAYhLIAXBLIBMACIg8AtIAUBNg");
+    this.command = this.shape.graphics.f("#FFFFFF").command;
+	this.shape.graphics.s().p("AAAA2Ig+AsIAXhMIg8gtIBMgBIAYhLIAXBLIBMACIg8AtIAUBNg");
 	this.shape.setTransform(0.4,-1.3);
 
 	this.addChild(this.shape);
@@ -61,7 +64,8 @@ p.nominalBounds = new cjs.Rectangle(-9.6,-11.3,20,20);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().dr(-10,-10,20,20);
+	this.command = this.shape.graphics.f("#FFFFFF").command;
+    this.shape.graphics.s().dr(-10,-10,20,20);
 	this.shape.setTransform(10,10);
 
 	this.addChild(this.shape);
@@ -87,7 +91,8 @@ p.nominalBounds = new cjs.Rectangle(-10,-10,20,20);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AgKAcQgMgcgRAAQARAAAMgcQAKgcAAgnQAAAnALAcQANAcAQAAQgQAAgNAcQgLAdAAAnQAAgngKgdg");
+    this.command = this.shape.graphics.f("#FFFFFF").command;
+	this.shape.graphics.s().p("AgKAcQgMgcgRAAQARAAAMgcQAKgcAAgnQAAAnALAcQANAcAQAAQgQAAgNAcQgLAdAAAnQAAgngKgdg");
 
 	this.addChild(this.shape);
 }).prototype = p = new cjs.Container();
@@ -99,7 +104,8 @@ p.nominalBounds = new cjs.Rectangle(-4,-9.6,8.1,19.3);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AgcAcQgdgcgoAAQAoAAAdgcQAcgdAAgoQAAAoAdAdQAdAcAoAAQgoAAgdAcQgdAeAAAoQAAgogcgeg");
+    this.command = this.shape.graphics.f("#FFFFFF").command;
+	this.shape.graphics.s().p("AgcAcQgdgcgoAAQAoAAAdgcQAcgdAAgoQAAAoAdAdQAdAcAoAAQgoAAgdAcQgdAeAAAoQAAgogcgeg");
 
 	this.addChild(this.shape);
 }).prototype = p = new cjs.Container();
@@ -111,7 +117,8 @@ p.nominalBounds = new cjs.Rectangle(-9.8,-9.8,19.8,19.8);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("Ag+AfIgOgUQgHgLgEgIIgIgUQgEgLAAgJQABgMAFgJQAEgJAHgGQAJgGAJgDQAJgCAJAAQALgBAJAEQAHADAHAFQAEAFAEAGIAEAJIAFgJQAEgGAFgFQAGgFAHgDQAJgEALABQAKAAAJACQAJAEAIAFQAHAGAFAJQAFAJAAALQgBAJgDALQgCAKgGAKQgEAJgHAKIgOAUIghAlIgeAdQgpgogVgZg");
+	this.shape.this.command = this.shape.graphics.f("#FFFFFF");
+    this.shape.graphics.s().p("Ag+AfIgOgUQgHgLgEgIIgIgUQgEgLAAgJQABgMAFgJQAEgJAHgGQAJgGAJgDQAJgCAJAAQALgBAJAEQAHADAHAFQAEAFAEAGIAEAJIAFgJQAEgGAFgFQAGgFAHgDQAJgEALABQAKAAAJACQAJAEAIAFQAHAGAFAJQAFAJAAALQgBAJgDALQgCAKgGAKQgEAJgHAKIgOAUIghAlIgeAdQgpgogVgZg");
 	this.shape.setTransform(0,0.9);
 
 	this.addChild(this.shape);
@@ -124,7 +131,8 @@ p.nominalBounds = new cjs.Rectangle(-10,-8.8,20,19.4);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AAMBXQgLgLAAgQIAAgMIgBAAIgBAMQAAARgLALQgKALgPAAQgQAAgMgLQgNgMAAgPQAAgMAIgLQAIgKAMgEIALgEIAAgCIgBgBIgLAEIgMABQgRAAgLgKQgKgKAAgOQAAgRAKgLQALgMAPAAQAJAAAJAEQAJAFAGAHIAHAKIABgBIACgBIgHgKQgEgFgCgGQgCgHAAgGQAAgQALgKQALgKAPAAQAQAAALAKQAKAKAAAQQAAAHgBAGQgCAGgEAFIgHAKIACABIABABIAHgKQAGgHAIgFQAJgEAJAAQAQAAAKAMQALALAAARQAAAOgLAKQgKAKgRAAIgMgBIgLgEIgBACIAAABIALAEQAMAFAIAKQAHAKAAAMQAAAPgMAMQgMALgQAAQgPAAgLgMgAgXgRQgKAKAAAMQAAAPAKAKQAKAKANAAQAOAAAKgKQAKgKAAgPQAAgMgKgKQgKgKgOAAQgNAAgKAKg");
+	this.command = this.shape.graphics.f("#FFFFFF");
+    this.shape.graphics.s().p("AAMBXQgLgLAAgQIAAgMIgBAAIgBAMQAAARgLALQgKALgPAAQgQAAgMgLQgNgMAAgPQAAgMAIgLQAIgKAMgEIALgEIAAgCIgBgBIgLAEIgMABQgRAAgLgKQgKgKAAgOQAAgRAKgLQALgMAPAAQAJAAAJAEQAJAFAGAHIAHAKIABgBIACgBIgHgKQgEgFgCgGQgCgHAAgGQAAgQALgKQALgKAPAAQAQAAALAKQAKAKAAAQQAAAHgBAGQgCAGgEAFIgHAKIACABIABABIAHgKQAGgHAIgFQAJgEAJAAQAQAAAKAMQALALAAARQAAAOgLAKQgKAKgRAAIgMgBIgLgEIgBACIAAABIALAEQAMAFAIAKQAHAKAAAMQAAAPgMAMQgMALgQAAQgPAAgLgMgAgXgRQgKAKAAAMQAAAPAKAKQAKAKANAAQAOAAAKgKQAKgKAAgPQAAgMgKgKQgKgKgOAAQgNAAgKAKg");
 	this.shape.setTransform(0.1,-0.6);
 
 	this.addChild(this.shape);
@@ -137,7 +145,8 @@ p.nominalBounds = new cjs.Rectangle(-10.2,-10.5,20.5,20);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().de(-10.8,-10.8,21.7,21.7);
+	this.command = this.shape.graphics.f("#FFFFFF");
+    this.shape.graphics.s().de(-10.8,-10.8,21.7,21.7);
 	this.shape.setTransform(0,0,0.922,0.922);
 
 	this.addChild(this.shape);
