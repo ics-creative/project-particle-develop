@@ -2,3 +2,5 @@ node_modules
 typings
 .idea
 *.map
+core/.sass-cache
+core/npm-debug.log
