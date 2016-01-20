@@ -1,8 +1,4 @@
-/**
- * Created by nyamogera on 2016/01/20.
- */
-
-export class ColorData{
+export class ColorData {
   hue:number;
   hueVariance:number;
 

@@ -1,6 +1,3 @@
-/**
- * Created by nyamogera on 2016/01/20.
- */
 System.register([], function(exports_1) {
     var ColorData;
     return {

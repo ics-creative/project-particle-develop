@@ -47,7 +47,6 @@ export class DrawingData {
   shapeIdList:string[];
 
 
-
   startColor:ColorData;
   finishColor:ColorData;
 

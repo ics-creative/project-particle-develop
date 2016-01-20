@@ -13,16 +13,16 @@ export class PartcicleImageImporter {
   public getCapture(canvasWidth:number, canvasHeight:number):Promise<any> {
     return new Promise((onResolve, onReject) => {
       navigator.camera.getPicture(
-        (imageData:string) => this.cameraSuccessHandler(imageData, onResolve),
-        (errorMessage:string) => this.cameraFailHandler(errorMessage, onReject),
-        {
-          quality: 70,
-          destinationType: Camera.DestinationType.DATA_URL,
-          targetWidth:canvasWidth,
-          targetHeight:canvasHeight,
-          correctOrientation:true,
-          encodingType: Camera.EncodingType.PNG
-        }
+          (imageData:string) => this.cameraSuccessHandler(imageData, onResolve),
+          (errorMessage:string) => this.cameraFailHandler(errorMessage, onReject),
+          {
+            quality: 70,
+            destinationType: Camera.DestinationType.DATA_URL,
+            targetWidth: canvasWidth,
+            targetHeight: canvasHeight,
+            correctOrientation: true,
+            encodingType: Camera.EncodingType.PNG
+          }
       )
     });
   }

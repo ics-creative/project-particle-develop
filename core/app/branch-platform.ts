@@ -16,4 +16,4 @@ System.config({
 //  .then(null, console.error.bind(console));
 
 System.import('app/boot')
-  .then(null, console.error.bind(console));
+    .then(null, console.error.bind(console));

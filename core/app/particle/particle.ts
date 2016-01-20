@@ -50,14 +50,14 @@ export class Particle {
   /** 開始時のカラーです。 */
   public startColor:ColorData;
   /** 終了時のカラーです。 */
-  public finishColor:ColorData ;
+  public finishColor:ColorData;
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
   public colorCommand:any;
 
   constructor() {
     this.particleShape = new createjs.Container;
 
-    this.startColor  = new ColorData();
-    this.finishColor  = new ColorData();
+    this.startColor = new ColorData();
+    this.finishColor = new ColorData();
   }
 }

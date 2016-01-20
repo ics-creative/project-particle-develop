@@ -31,7 +31,7 @@ export class ParticleEmitter {
 
   private shapeGenerator:ShapeGenerator;
 
-  update (drawingData:DrawingData){
+  update(drawingData:DrawingData) {
     this.drawingData = drawingData;
 
     this.emit();
@@ -43,7 +43,7 @@ export class ParticleEmitter {
   /**
    * パーティクルの動き。
    */
-  private animate () {
+  private animate() {
 
     let rad = createjs.Matrix2D.DEG_TO_RAD * this.drawingData.accelerationDirection;
     let accX = Math.cos(rad) * this.drawingData.accelerationSpeed;
@@ -77,7 +77,7 @@ export class ParticleEmitter {
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
 
 
-      if( particle.colorCommand ) {
+      if (particle.colorCommand) {
 
         var hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue ) * lifeParcent;
         var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation ) * lifeParcent;
@@ -98,7 +98,7 @@ export class ParticleEmitter {
   /**
    * パーティクルが生きているか確認する。
    */
-  lifeCheck (){
+  lifeCheck() {
     for (var i = 0; i < this.activeParticles.length; i++) {
       // もしも死んでいたら、アクティブリストから外してプールに保存する。
       if (!this.activeParticles[i].isAlive) {
@@ -114,7 +114,7 @@ export class ParticleEmitter {
   /**
    * パーティクルの生成（インターバルチェックする）
    */
-  private emit()  {
+  private emit() {
 
     for (var i = 0; i < this.drawingData.emitFrequency; i++) {
       let particle = this.generateParticle();
@@ -127,7 +127,7 @@ export class ParticleEmitter {
    * パーティクルのパラメータを設定します
    * @returns {null}
    */
-  private generateParticle ():Particle  {
+  private generateParticle():Particle {
 
     var particle:Particle = null;
     if (this.particlesPool.length >= 1) {
@@ -178,26 +178,26 @@ export class ParticleEmitter {
 
   }
 
-  generateShape (particle:Particle, shapeIdList:string[]) {
+  generateShape(particle:Particle, shapeIdList:string[]) {
 
     particle.particleShape.removeAllChildren();
 
     var startColor:ColorData = this.drawingData.startColor;
     var finishColor:ColorData = this.drawingData.finishColor;
 
-    particle.startColor.hue = this.getParam( startColor.hue, startColor.hueVariance, false ) % 360;
-    particle.startColor.luminance = this.getParam( startColor.luminance, startColor.luminanceVariance, false );
-    particle.startColor.satuation = this.getParam( startColor.satuation, startColor.satuationVariance, false );
+    particle.startColor.hue = this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
+    particle.startColor.luminance = this.getParam(startColor.luminance, startColor.luminanceVariance, false);
+    particle.startColor.satuation = this.getParam(startColor.satuation, startColor.satuationVariance, false);
 
 
-    particle.finishColor.hue = this.getParam( finishColor.hue, finishColor.hueVariance, false ) % 360;
-    particle.finishColor.luminance = this.getParam( finishColor.luminance, finishColor.luminanceVariance, false );
-    particle.finishColor.satuation = this.getParam( finishColor.satuation, finishColor.satuationVariance, false );
+    particle.finishColor.hue = this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
+    particle.finishColor.luminance = this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
+    particle.finishColor.satuation = this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
 
 
-    var hue = parseInt(  particle.startColor.hue );
-    var satuation = parseInt(  particle.startColor.satuation );
-    var luminance = parseInt(  particle.startColor.luminance );
+    var hue = parseInt(particle.startColor.hue);
+    var satuation = parseInt(particle.startColor.satuation);
+    var luminance = parseInt(particle.startColor.luminance);
 
     var color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
@@ -208,7 +208,7 @@ export class ParticleEmitter {
     particle.colorCommand = null;
 
     var shape = this.shapeGenerator.generateShape(shapeId);
-    if( shape.hasOwnProperty("command") ) {
+    if (shape.hasOwnProperty("command")) {
 
       var myShape = shape.command;
       myShape.style = color;
@@ -220,12 +220,12 @@ export class ParticleEmitter {
 
   }
 
-  range (minValue, maxValue, value):number {
+  range(minValue, maxValue, value):number {
     return Math.min(maxValue, Math.max(minValue, value));
   }
 
 
-  getParam (value:any, variance:any, isInteger:boolean):number{
+  getParam(value:any, variance:any, isInteger:boolean):number {
     let result = parseFloat(value) + (  Math.random() * parseFloat(variance)  ) - parseFloat(variance) / 2;
 
     if (isInteger) {

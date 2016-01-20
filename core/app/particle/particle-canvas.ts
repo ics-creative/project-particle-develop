@@ -63,7 +63,7 @@ export class ParticleCanvas {
     return this.particleExporter.getSVGString();
   }
 
-  runExport ():Promise<any> {
+  runExport():Promise<any> {
     return this.particleExporter.runExport();
   }
 
@@ -72,11 +72,11 @@ export class ParticleCanvas {
   }
 
   runCamera():Promise<any> {
-    let canvasWidth:number =  this.stage.canvas.width;
-    let canvasHeight:number =  this.stage.canvas.height;
+    let canvasWidth:number = this.stage.canvas.width;
+    let canvasHeight:number = this.stage.canvas.height;
     return this.partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(
-      (imageData) => this.insertCaptureToStage(imageData),
-      () => this.insertDummyImageToStage()
+        (imageData) => this.insertCaptureToStage(imageData),
+        () => this.insertDummyImageToStage()
     );
   }
 
@@ -107,13 +107,11 @@ export class ParticleCanvas {
     canvasWidth = windowWidth;
     canvasHeight = windowHeight;
 
-    if (windowWidth > Viewport.sm)
-    {
+    if (windowWidth > Viewport.sm) {
       canvasHeight -= CanvasMargin.TOP_DESKTOP;
       canvasWidth -= CanvasMargin.RIGHT_DESKTOP;
     }
-    else
-    {
+    else {
       canvasHeight -= CanvasMargin.TOP_MOBILE;
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
@@ -123,10 +121,10 @@ export class ParticleCanvas {
     this.stage.canvas.height = canvasHeight;
   }
 
-  update(data:DrawingData){
+  update(data:DrawingData) {
 
-    if( data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ||
-      this.backgroundColorCommand.style != data.bgColor) {
+    if (data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ||
+        this.backgroundColorCommand.style != data.bgColor) {
       this.backgroundColorCommand.style = data.bgColor;
       this.backgroundSize.w = data.width;
       this.backgroundSize.h = data.height;

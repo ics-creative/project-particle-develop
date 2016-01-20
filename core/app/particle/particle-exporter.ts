@@ -1,9 +1,5 @@
 ///<reference path="../../typings/tsd.d.ts" />
 
-/**
- * Created by nyamogera on 2016/01/16.
- */
-
 declare class SVGExporter {
   constructor(stage:createjs.Container, value1:boolean, value2:boolean, value3:boolean);
 
@@ -36,20 +32,20 @@ export class ParticleExporter {
     });
   }
 
-  runExportSP (cavas:HTMLCanvasElement):Promise<any> {
+  runExportSP(cavas:HTMLCanvasElement):Promise<any> {
     return new Promise((onResolve, onReject) => {
       let base64 = cavas.toDataURL();
       cordova.base64ToGallery(
-        base64,
-        'img_',
-        function (msg) {
-          onResolve();
-          alert("画像ライブラリに保存しました。");
-        },
-        function (err) {
-          onReject();
-          alert("画像保存に失敗しました。");
-        }
+          base64,
+          'img_',
+          function (msg) {
+            onResolve();
+            alert("画像ライブラリに保存しました。");
+          },
+          function (err) {
+            onReject();
+            alert("画像保存に失敗しました。");
+          }
       );
     });
   }
