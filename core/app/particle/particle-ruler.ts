@@ -23,8 +23,8 @@ export class Ruler {
     this.mouseBase = new createjs.Shape();
     this.container.addChild(this.mouseBase);
 
-    this.verticalTextList = new Array();
-    this.horizontalTextList = new Array();
+    this.verticalTextList = [];
+    this.horizontalTextList = [];
   }
 
   setSize(ws:number, hs:number) {
