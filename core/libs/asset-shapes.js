@@ -117,7 +117,7 @@ p.nominalBounds = new cjs.Rectangle(-9.8,-9.8,19.8,19.8);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.this.command = this.shape.graphics.f("#FFFFFF");
+	this.command = this.shape.graphics.f("red").command;
     this.shape.graphics.s().p("Ag+AfIgOgUQgHgLgEgIIgIgUQgEgLAAgJQABgMAFgJQAEgJAHgGQAJgGAJgDQAJgCAJAAQALgBAJAEQAHADAHAFQAEAFAEAGIAEAJIAFgJQAEgGAFgFQAGgFAHgDQAJgEALABQAKAAAJACQAJAEAIAFQAHAGAFAJQAFAJAAALQgBAJgDALQgCAKgGAKQgEAJgHAKIgOAUIghAlIgeAdQgpgogVgZg");
 	this.shape.setTransform(0,0.9);
 
@@ -131,7 +131,7 @@ p.nominalBounds = new cjs.Rectangle(-10,-8.8,20,19.4);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.command = this.shape.graphics.f("#FFFFFF");
+	this.command = this.shape.graphics.f("#FFFFFF").command;
     this.shape.graphics.s().p("AAMBXQgLgLAAgQIAAgMIgBAAIgBAMQAAARgLALQgKALgPAAQgQAAgMgLQgNgMAAgPQAAgMAIgLQAIgKAMgEIALgEIAAgCIgBgBIgLAEIgMABQgRAAgLgKQgKgKAAgOQAAgRAKgLQALgMAPAAQAJAAAJAEQAJAFAGAHIAHAKIABgBIACgBIgHgKQgEgFgCgGQgCgHAAgGQAAgQALgKQALgKAPAAQAQAAALAKQAKAKAAAQQAAAHgBAGQgCAGgEAFIgHAKIACABIABABIAHgKQAGgHAIgFQAJgEAJAAQAQAAAKAMQALALAAARQAAAOgLAKQgKAKgRAAIgMgBIgLgEIgBACIAAABIALAEQAMAFAIAKQAHAKAAAMQAAAPgMAMQgMALgQAAQgPAAgLgMgAgXgRQgKAKAAAMQAAAPAKAKQAKAKANAAQAOAAAKgKQAKgKAAgPQAAgMgKgKQgKgKgOAAQgNAAgKAKg");
 	this.shape.setTransform(0.1,-0.6);
 
@@ -145,7 +145,7 @@ p.nominalBounds = new cjs.Rectangle(-10.2,-10.5,20.5,20);
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.command = this.shape.graphics.f("#FFFFFF");
+	this.command = this.shape.graphics.f("#FFFFFF").command;
     this.shape.graphics.s().de(-10.8,-10.8,21.7,21.7);
 	this.shape.setTransform(0,0,0.922,0.922);
 
