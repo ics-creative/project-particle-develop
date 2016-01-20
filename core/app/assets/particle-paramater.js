@@ -204,7 +204,7 @@ System.register([], function(exports_1) {
                             }
                         }
                     };
-                    this.list = new Array();
+                    this.list = [];
                     this.list.push(this.setting1);
                     this.list.push(this.setting2);
                     this.list.push(this.setting3);

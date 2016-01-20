@@ -17,15 +17,16 @@ System.register([], function(exports_1) {
                     this.verticalTextList = new Array();
                     this.horizontalTextList = new Array();
                 }
-                Ruler.prototype.setSize = function (w, h) {
-                    this.width = w;
-                    this.height = h;
+                Ruler.prototype.setSize = function (ws, hs) {
+                    this.width = ws;
+                    this.height = hs;
                     var distance = 35;
                     var w = Math.floor(this.width / distance);
                     var h = Math.floor(this.height / distance);
                     var graphics = this.base.graphics;
                     graphics.clear();
                     graphics.beginStroke("white");
+                    graphics.beginFill(0, 0, this.w, this.h);
                     for (var i = 0; i < w; i++) {
                         var ii = (i);
                         if (this.horizontalTextList.length <= ii) {
