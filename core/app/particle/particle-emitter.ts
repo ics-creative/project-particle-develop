@@ -1,11 +1,10 @@
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
-
-"use strict";
-
 import {Particle} from "./particle";
 import {DrawingData} from "../data/drawing-data";
 import {ShapeGenerator} from "../assets/shape-generator";
 import {ColorData} from "../data/color-data";
+
+"use strict";
 
 export class ParticleEmitter {
 

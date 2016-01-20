@@ -1,4 +1,5 @@
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+"use strict";
 
 declare class SVGExporter {
   constructor(stage:createjs.Container, value1:boolean, value2:boolean, value3:boolean);
@@ -25,7 +26,7 @@ export class ParticleExporter {
 
       this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
       this.exporter.run();
-      
+
       setTimeout(() => {
         onResolve()
       }, 1);

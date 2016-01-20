@@ -1,10 +1,12 @@
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 
-import {ColorData} from "../data/color-data";
-/**
- * Created by nyamogera on 2016/01/15.
- */
+"use strict";
 
+import {ColorData} from "../data/color-data";
+
+/**
+ * パーティクルエミッターのバリューオブジェクトのクラスです。
+ */
 export class Particle {
 
   /** パーティクルの形状です。 */

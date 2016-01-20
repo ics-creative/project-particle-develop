@@ -1,5 +1,4 @@
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
-
 import {DrawingData} from "../data/drawing-data";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
@@ -8,6 +7,7 @@ import {ParticleExporter} from "./particle-exporter";
 import {PartcicleImageImporter} from "./particle-image-importer";
 import {ParticleCaptureImageLayer} from "./particle-capture-image-layer";
 
+"use strict";
 export class ParticleCanvas {
 
   private background:createjs.Shape;
