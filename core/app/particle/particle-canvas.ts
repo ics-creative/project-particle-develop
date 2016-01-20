@@ -72,8 +72,8 @@ export class ParticleCanvas {
   }
 
   runCamera():Promise<any> {
-    let canvasWidth:number = this.stage.canvas.width;
-    let canvasHeight:number = this.stage.canvas.height;
+    let canvasWidth:number = (<HTMLCanvasElement>this.stage.canvas).width;
+    let canvasHeight:number = (<HTMLCanvasElement>this.stage.canvas).height;
     return this.partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(
         (imageData) => this.insertCaptureToStage(imageData),
         () => this.insertDummyImageToStage()
@@ -117,8 +117,8 @@ export class ParticleCanvas {
     }
 
     // ステージのサイズをwindowのサイズに変更
-    this.stage.canvas.width = canvasWidth;
-    this.stage.canvas.height = canvasHeight;
+    (<HTMLCanvasElement>this.stage.canvas).width = canvasWidth;
+    (<HTMLCanvasElement>this.stage.canvas).height = canvasHeight;
   }
 
   update(data:DrawingData) {
