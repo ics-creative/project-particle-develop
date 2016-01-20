@@ -27,9 +27,9 @@ export class Ruler {
     this.horizontalTextList = new Array();
   }
 
-  setSize(w:number,h:number) {
-    this.width = w;
-    this.height = h;
+  setSize(ws:number,hs:number) {
+    this.width = ws;
+    this.height = hs;
 
     let distance:number = 35;
     var w:number = Math.floor(this.width / distance);
@@ -38,6 +38,8 @@ export class Ruler {
     let graphics = this.base.graphics;
     graphics.clear();
     graphics.beginStroke("white");
+
+    graphics.beginFill(0,0,this.w,this.h);
     for(var i = 0; i < w; i ++ ) {
       let ii = (i);
       if(this.horizontalTextList.length <= ii ) {

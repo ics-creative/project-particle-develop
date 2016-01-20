@@ -1,5 +1,6 @@
-///<reference path="../../typings/tsd.d.ts" />
+///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 System.register(["../data/color-data"], function(exports_1) {
+    "use strict";
     var color_data_1;
     var Particle;
     return {
@@ -9,7 +10,7 @@ System.register(["../data/color-data"], function(exports_1) {
             }],
         execute: function() {
             /**
-             * Created by nyamogera on 2016/01/15.
+             * パーティクルエミッターのバリューオブジェクトのクラスです。
              */
             Particle = (function () {
                 function Particle() {

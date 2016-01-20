@@ -11,14 +11,14 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
             }],
         execute: function() {
             "use strict";
-            /**
-             * Created by nyamogera on 2016/01/15.
-             */
             ParticleEmitter = (function () {
                 function ParticleEmitter() {
-                    this.particlesPool = new Array();
-                    this.activeParticles = new Array();
+                    this.particlesPool = [];
+                    this.activeParticles = [];
                     this.container = new createjs.Container();
+                    // パフォーマンス向上の基本テクニック
+                    this.container.mouseChildren = false;
+                    this.container.mouseEnabled = false;
                     this.shapeGenerator = new shape_generator_1.ShapeGenerator();
                 }
                 ParticleEmitter.prototype.update = function (drawingData) {

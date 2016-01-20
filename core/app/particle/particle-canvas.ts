@@ -15,6 +15,7 @@ export class ParticleCanvas {
   private captureImageLayer:ParticleCaptureImageLayer;
   private canvas:HTMLCanvasElement;
   private stage:createjs.Stage;
+  private canvasContainer:createjs.Container;
 
   public backgroundColorCommand:any;
   public backgroundSize:any;
@@ -24,19 +25,23 @@ export class ParticleCanvas {
   public particleExporter:ParticleExporter;
 
   public partcileImageImporter:PartcicleImageImporter;
+  public data:DrawingData;
 
   private ruler:Ruler;
 
   constructor(canvas:any, data:DrawingData) {
 
-    let canvasPoint = new createjs.Point(100,100);
-
+    this.data = data;
     this.canvas = canvas;
 
     this.canvas.width = data.width;
     this.canvas.height = data.height;
 
     this.stage = new createjs.Stage(this.canvas);
+
+    this.canvasContainer = new createjs.Container();
+    this.stage.addChild( this.canvasContainer ) ;
+
 
     //  キャンバスより後ろ
     this.background = new createjs.Shape();
@@ -46,30 +51,19 @@ export class ParticleCanvas {
     this.ruler = new Ruler(this.stage);
     this.ruler.setSize(data.width, data.height);
 
-    this.stage.addChild(this.ruler.container);
-
-    this.ruler.container.x = canvasPoint.x;
-    this.ruler.container.y = canvasPoint.y;
+    this.canvasContainer.addChild(this.ruler.container);
 
     this.backgroundColorCommand.style = data.bgColor;
     this.backgroundSize.w = data.width;
     this.backgroundSize.h = data.height;
 
-    this.backgroundSize.x = canvasPoint.x;
-    this.backgroundSize.y = canvasPoint.y;
-
-    this.stage.addChild(this.background);
+    this.canvasContainer.addChild(this.background);
 
     this.captureImageLayer = new ParticleCaptureImageLayer();
-    this.captureImageLayer.x = canvasPoint.x;
-    this.captureImageLayer.y = canvasPoint.y;
-
-    this.stage.addChild(this.captureImageLayer);
+    this.canvasContainer.addChild(this.captureImageLayer);
 
     this.particleEmitter = new ParticleEmitter();
-    this.particleEmitter.container.x = canvasPoint.x;
-    this.particleEmitter.container.y = canvasPoint.y;
-    this.stage.addChild(this.particleEmitter.container);
+    this.canvasContainer.addChild(this.particleEmitter.container);
 
     this.particleExporter = new ParticleExporter(this.stage);
 
@@ -137,9 +131,16 @@ export class ParticleCanvas {
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
 
+    //  ルーラーなどのセンタリング
+    let canvasPoint = new createjs.Point( (canvasWidth-this.data.width) / 2, (canvasHeight-this.data.height) / 2);
+
+    this.canvasContainer.x = canvasPoint.x;
+    this.canvasContainer.y = canvasPoint.y;
+
     // ステージのサイズをwindowのサイズに変更
     (<HTMLCanvasElement>this.stage.canvas).width = canvasWidth;
     (<HTMLCanvasElement>this.stage.canvas).height = canvasHeight;
+
   }
 
   public update(data:DrawingData) {
@@ -151,6 +152,7 @@ export class ParticleCanvas {
       this.backgroundSize.w = data.width;
       this.backgroundSize.h = data.height;
       this.ruler.setSize(data.width,data.height);
+      this.resizeHandler();
     }
 
     this.particleEmitter.update(data);
