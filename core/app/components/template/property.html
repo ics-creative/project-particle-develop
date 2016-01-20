@@ -46,13 +46,6 @@
       <div class="tab-pane fade" id="tab2">
         <h4>Particle Setting</h4>
 
-        <h3>Start Color</h3>
-        <color-property-panel  [colorData]="drawingData.startColor"></color-property-panel>
-
-        <h3>Finish Color</h3>
-        <color-property-panel  [colorData]="drawingData.finishColor"></color-property-panel>
-
-        <hr>
 
         initial speed
         <input type="range" class="topcoat-range" min="0" max="20" step="0.1" [(ngModel)]="drawingData.initialSpeed"
@@ -148,12 +141,13 @@
       <div class="tab-pane fade" id="tab3">
         Color Settings
 
-        <hr>
-        <input type="color" [(ngModel)]="drawingData.startColor" placeholder="startColor"
-               value="{{drawingData.startColor}}"/>
-        {{drawingData.startColor}}
-        <hr>
+        <h3>Start Color</h3>
+        <color-property-panel  [colorData]="drawingData.startColor"></color-property-panel>
 
+        <h3>Finish Color</h3>
+        <color-property-panel  [colorData]="drawingData.finishColor"></color-property-panel>
+
+        <hr>
         emit frequency
         <input type="range" class="topcoat-range" min="0" max="20" step="1" [(ngModel)]="drawingData.emitFrequency"
                placeholder="emitFrequency"/>
@@ -163,6 +157,15 @@
         </div>
       </div>
       <div class="tab-pane fade" id="tab4">
+aaa
+
+        <div class="modal-body" *ngFor="#template of templateList">
+
+          <div (click)="selectTemplate(template)">
+            テンプレ
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
