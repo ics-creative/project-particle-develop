@@ -30,7 +30,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         return _this.particleExporter.runExport();
                     };
                     this.update = function (data) {
-                        if (data.width != _this.backgroundSize.w || data.height != _this.backgroundSize.h) {
+                        if (data.width != _this.backgroundSize.w || data.height != _this.backgroundSize.h ||
+                            _this.backgroundColorCommand.style != data.bgColor) {
                             _this.backgroundColorCommand.style = data.bgColor;
                             _this.backgroundSize.w = data.width;
                             _this.backgroundSize.h = data.height;
@@ -46,6 +47,9 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.background = new createjs.Shape();
                     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
                     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
+                    this.backgroundColorCommand.style = data.bgColor;
+                    this.backgroundSize.w = data.width;
+                    this.backgroundSize.h = data.height;
                     this.stage.addChild(this.background);
                     this.captureImageLayer = new particle_capture_image_layer_1.ParticleCaptureImageLayer();
                     this.stage.addChild(this.captureImageLayer);

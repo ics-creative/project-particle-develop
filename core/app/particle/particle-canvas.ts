@@ -37,6 +37,11 @@ export class ParticleCanvas {
     this.background = new createjs.Shape();
     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
+
+    this.backgroundColorCommand.style = data.bgColor;
+    this.backgroundSize.w = data.width;
+    this.backgroundSize.h = data.height;
+
     this.stage.addChild(this.background);
 
     this.captureImageLayer = new ParticleCaptureImageLayer();
@@ -118,7 +123,8 @@ export class ParticleCanvas {
 
   update = (data:DrawingData) => {
 
-    if( data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ) {
+    if( data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ||
+      this.backgroundColorCommand.style != data.bgColor) {
       this.backgroundColorCommand.style = data.bgColor;
       this.backgroundSize.w = data.width;
       this.backgroundSize.h = data.height;
