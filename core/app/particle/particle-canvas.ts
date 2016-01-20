@@ -6,6 +6,7 @@ import {ParticleEmitter} from "./particle-emitter";
 import {ParticleExporter} from "./particle-exporter";
 import {PartcicleImageImporter} from "./particle-image-importer";
 import {ParticleCaptureImageLayer} from "./particle-capture-image-layer";
+import {Ruler} from "./particle-ruler";
 
 "use strict";
 export class ParticleCanvas {
@@ -24,7 +25,11 @@ export class ParticleCanvas {
 
   public partcileImageImporter:PartcicleImageImporter;
 
+  private ruler:Ruler;
+
   constructor(canvas:any, data:DrawingData) {
+
+    let canvasPoint = new createjs.Point(100,100);
 
     this.canvas = canvas;
 
@@ -38,16 +43,32 @@ export class ParticleCanvas {
     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
 
+    this.ruler = new Ruler(this.stage);
+    this.ruler.setSize(data.width, data.height);
+
+    this.stage.addChild(this.ruler.container);
+
+    this.ruler.container.x = canvasPoint.x;
+    this.ruler.container.y = canvasPoint.y;
+
     this.backgroundColorCommand.style = data.bgColor;
     this.backgroundSize.w = data.width;
     this.backgroundSize.h = data.height;
 
+    this.backgroundSize.x = canvasPoint.x;
+    this.backgroundSize.y = canvasPoint.y;
+
     this.stage.addChild(this.background);
 
     this.captureImageLayer = new ParticleCaptureImageLayer();
+    this.captureImageLayer.x = canvasPoint.x;
+    this.captureImageLayer.y = canvasPoint.y;
+
     this.stage.addChild(this.captureImageLayer);
 
     this.particleEmitter = new ParticleEmitter();
+    this.particleEmitter.container.x = canvasPoint.x;
+    this.particleEmitter.container.y = canvasPoint.y;
     this.stage.addChild(this.particleEmitter.container);
 
     this.particleExporter = new ParticleExporter(this.stage);
@@ -128,10 +149,11 @@ export class ParticleCanvas {
       this.backgroundColorCommand.style = data.bgColor;
       this.backgroundSize.w = data.width;
       this.backgroundSize.h = data.height;
+      this.ruler.setSize(data.width,data.height);
     }
 
     this.particleEmitter.update(data);
-
+    this.ruler.update();
     this.stage.update();
   }
 }
