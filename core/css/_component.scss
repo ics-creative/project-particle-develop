@@ -89,18 +89,23 @@ body {
 
     color: #8b9292;
 
-
     div.shapeListItem {
-      height : 32px;
-      line-height:32px;
+      height: 64px;
+      line-height: 64px;
       text-align: center;
       background: inherit;
       cursor: pointer;
-      border-radius: 3px;
+      border-radius: 5px;
+
+      display: flex;
+      align-items: center; /* 縦方向中央揃え */
+      justify-content: center; /* 横方向中央揃え */
 
       &.selected {
-        background: blue;
+        background: #333333;
       }
+
+      margin-bottom: 1px;
 
     }
   }
