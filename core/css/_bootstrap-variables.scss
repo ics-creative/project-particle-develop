@@ -10,7 +10,7 @@ $bootstrap-sass-asset-helper: false !default;
 
 $gray-base:              #000 !default;
 $gray-darker:            #272B30 !default; // #222
-$gray-dark:              #3A3F44 !default;   // #333
+$gray-dark:              #3e4042 !default;   // #333
 $gray:                   #52575C !default; // #555
 $gray-light:             #7A8288 !default;   // #999
 $gray-lighter:           #999 !default; // #eee
@@ -49,7 +49,7 @@ $font-family-serif:       Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:        $font-family-sans-serif !default;
 
-$font-size-base:          14px !default;
+$font-size-base:          12px !default;
 $font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~18px
 $font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~12px
 

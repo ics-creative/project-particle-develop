@@ -1,34 +1,31 @@
 // Import Bootstrap Compass integration
 @import "bootstrap-compass";
-
 // Import custom Bootstrap variables
 @import "bootstrap-variables";
-
 // Import Bootstrap for Sass
 @import "bootstrap";
 
+$body_color: #484848;
 
 // Slate 3.3.5
 // Bootswatch
 // -----------------------------------------------------
 
-@mixin btn-shadow($color){
+@mixin btn-shadow($color) {
   @include gradient-vertical-three-colors(lighten($color, 6%), $color, 60%, darken($color, 4%));
   filter: none;
 }
 
-@mixin btn-shadow-inverse($color){
+@mixin btn-shadow-inverse($color) {
   @include gradient-vertical-three-colors(darken($color, 24%), darken($color, 18%), 40%, darken($color, 14%));
   filter: none;
 }
-
-
 
 // Navbar =====================================================================
 
 .navbar {
   @include btn-shadow($navbar-default-bg);
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 1);
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   &-inverse {
     @include btn-shadow($navbar-inverse-bg);
@@ -127,6 +124,14 @@
 
 h1, h2, h3, h4, h5, h6 {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.3);
+  font-weight: normal;
+  text-align: center;
+}
+
+h1 {
+  font-size: 12px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .text-primary,
@@ -450,19 +455,50 @@ a.list-group-item {
   }
 }
 
+// --------------------------
+// Custom CSS
+// --------------------------
 
+$panelSpace: 4;
+$sideWidth: 285;
 
-$sideWidth:400;
+.panel-default > .panel-heading {
+  @include btn-shadow($navbar-default-bg);
+}
+.panel-title
+{
+  font-size:$font-size-base;
+}
+.panel 
+{
+  background-color: #151515;
+}
+
 body {
   height: 100%;
   overflow: hidden;
+  background-color: $body_color;
 }
 
-.navbar
-{
+.navbar {
   margin-bottom: 0;
 }
+.navbar {
+  @media (min-width: $grid-float-breakpoint) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
 
+
+#header {
+  margin-bottom: $panelSpace+px;
+}
+
+#header h1 {
+  height: 44px;
+  line-height: 44px;
+}
 
 #main {
   width: 100%;
@@ -470,17 +506,20 @@ body {
 }
 
 #canvasBox {
-  margin-right: $sideWidth + px;
+  margin-right: ($sideWidth + $panelSpace + $panelSpace / 2) + px;
 }
+
 #propertyPanel {
   width: $sideWidth + px;
-  margin-left: - $sideWidth + px;
+  margin-left: -  ($sideWidth + $panelSpace) + px;
+  margin-right: ($panelSpace / 2) + px;
   float: right;
   max-height: 100%;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
-#myCanvas
-{
-  border:1px solid #f00;
+
+#myCanvas {
+  border: 1px solid #f00;
 }
+
 
