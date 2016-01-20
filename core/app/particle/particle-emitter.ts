@@ -19,8 +19,8 @@ export class ParticleEmitter {
   public drawingData:DrawingData;
 
   constructor() {
-    this.particlesPool = new Array();
-    this.activeParticles = new Array();
+    this.particlesPool = [];
+    this.activeParticles = [];
 
     this.container = new createjs.Container();
 
