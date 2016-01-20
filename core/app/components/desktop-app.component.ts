@@ -7,10 +7,10 @@ import {AppComponent} from "./app.component";
 export class DesktopAppComponent extends AppComponent {
 
   handleSVGClick() {
-    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+    this.stageComponent.exportSVG().then(() => {this.openSVGExportWindow()});
   }
 
-  openSVGExportWindow = () => {
+  openSVGExportWindow() {
 
     const electron = require('electron');
     var dialog = electron.remote.dialog;
@@ -30,9 +30,7 @@ export class DesktopAppComponent extends AppComponent {
           alert('error : ' + error);
         }
       });
-
     });
-
   }
 
   handleExportParamaterClick() {

@@ -22,15 +22,8 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
         execute: function() {
             DesktopIOBox = (function () {
                 function DesktopIOBox(element) {
-                    var _this = this;
                     this.exportSVGEvent = new core_2.EventEmitter();
                     this.exportParamaterEvent = new core_2.EventEmitter();
-                    this.onDrop = function (e) {
-                        e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-                        var file = e.dataTransfer.files[0];
-                        _this.importParameterFile(file);
-                        return false;
-                    };
                     this.element = element;
                     this.setDragAndDropSettings(element);
                 }
@@ -73,6 +66,12 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                     };
                     /** hoverエリアにドロップされた */
                     holder.ondrop = this.onDrop;
+                };
+                DesktopIOBox.prototype.onDrop = function (e) {
+                    e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+                    var file = e.dataTransfer.files[0];
+                    this.importParameterFile(file);
+                    return false;
                 };
                 DesktopIOBox = __decorate([
                     core_1.Component({

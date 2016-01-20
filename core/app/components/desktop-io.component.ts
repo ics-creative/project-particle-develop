@@ -43,7 +43,7 @@ export class DesktopIOBox {
       let object = JSON.parse(json);
 
       this.drawingData.into(object);
-    }
+    };
     fileReader.readAsText(file);
   }
 
@@ -72,13 +72,13 @@ export class DesktopIOBox {
     holder.ondrop = this.onDrop;
   }
 
-  onDrop = (e) => {
+  onDrop(e) {
     e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
 
     var file = e.dataTransfer.files[0];
     this.importParameterFile(file);
 
     return false;
-  };
+  }
 
 }
