@@ -23,15 +23,16 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
                 function ShapePropertyModal() {
                     this.shapeIdList = new shape_data_1.ShapeData().assetList;
                 }
-                ShapePropertyModal.prototype.selectShape = function (shapeId) {
-                    console.log("selectapp:" + shapeId);
-                    //  ラジオボタンとかにすればテンポラリ選択不要そう
-                    this.temporarySelect = shapeId;
-                    this.drawingData.shapeIdList = [this.temporarySelect];
-                };
-                ShapePropertyModal.prototype.saveChanges = function () {
-                    // TODO:配列で選択できるようにする
-                    this.drawingData.shapeIdList = [this.temporarySelect];
+                ShapePropertyModal.prototype.handleClick = function (shapeId) {
+                    var index = this.drawingData.shapeIdList.indexOf(shapeId);
+                    if (index == -1) {
+                        // 追加
+                        this.drawingData.shapeIdList.push(shapeId);
+                    }
+                    else {
+                        // 削除
+                        this.drawingData.shapeIdList.splice(index, 1);
+                    }
                 };
                 ShapePropertyModal = __decorate([
                     core_1.Component({

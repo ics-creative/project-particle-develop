@@ -9,21 +9,22 @@ import {ShapeData} from "../data/shape-data";
   inputs: ["drawingData", "shapeIdList"]
 })
 
+/**
+ * シェイプの選択パネルの制御クラスです。
+ */
 export class ShapePropertyModal {
   private drawingData:DrawingData;
-  private temporarySelect:string;
   private shapeIdList:string[] = new ShapeData().assetList;
 
-  selectShape(shapeId:string) {
-    console.log(`selectapp:${shapeId}`);
-    //  ラジオボタンとかにすればテンポラリ選択不要そう
-    this.temporarySelect = shapeId;
-    this.drawingData.shapeIdList = [this.temporarySelect];
-  }
-
-  saveChanges () {
-    // TODO:配列で選択できるようにする
-    this.drawingData.shapeIdList = [this.temporarySelect];
+  private handleClick(shapeId:string) {
+    var index = this.drawingData.shapeIdList.indexOf(shapeId);
+    if (index == -1) { // 含まれていなければ
+      // 追加
+      this.drawingData.shapeIdList.push(shapeId);
+    } else { // 含まれていたら
+      // 削除
+      this.drawingData.shapeIdList.splice(index, 1);
+    }
   }
 
   constructor() {

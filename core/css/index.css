@@ -7874,9 +7874,20 @@ body {
   overflow-y: scroll;
 }
 #propertyPanel .panel {
-  background: #333;
+  background: #2a2a2a;
   height: 100%;
   color: #8b9292;
+}
+#propertyPanel .panel div.shapeListItem {
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  background: inherit;
+  cursor: pointer;
+  border-radius: 3px;
+}
+#propertyPanel .panel div.shapeListItem.selected {
+  background: blue;
 }
 
 /*# sourceMappingURL=index.css.map */

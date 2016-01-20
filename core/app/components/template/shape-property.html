@@ -1,6 +1,9 @@
-<div class="modal-body" *ngFor="#shapeId of shapeIdList">
-
-  <div class="col-sm-3" (click)="selectShape(shapeId)">
-    <img src="images/shape/{{shapeId}}.png">
+<div class="row">
+  <div *ngFor="#shapeId of shapeIdList">
+    <div class="col-sm-3 shapeListItem"
+         [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > 0"
+         (click)="handleClick(shapeId)">
+      <img src="images/shape/{{shapeId}}.png">
+    </div>
   </div>
 </div>
