@@ -86,7 +86,7 @@ export class ParticleEmitter {
 
         var color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
-        particle.colorCommand.style = color;
+        //particle.colorCommand.style = color;
       }
 
       //  パーティクルが死んでいたら、オブジェクトプールに移動
@@ -220,8 +220,25 @@ export class ParticleEmitter {
       for (let i = 0; i < instructions.length; i++) {
         let cmd = instructions[i];
         if (cmd instanceof createjs.Graphics.Fill) { // 塗りのとき
-          cmd.style = color;
-          particle.colorCommand = cmd;
+          // グラデーション塗りだったら
+          if (cmd.style instanceof CanvasGradient) {
+            // 昔のグラデーションを保持
+            let oldStyle = <any> cmd.style;
+            var g = new createjs.Graphics();
+            var newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${satuation}%, ${luminance}%, 0)`],
+                oldStyle.props.ratios,
+                oldStyle.props.x0,
+                oldStyle.props.y0,
+                oldStyle.props.r0,
+                oldStyle.props.x1,
+                oldStyle.props.y1,
+                oldStyle.props.r1).command;
+
+            instructions[i] = newStyle;
+          } else { // 単色塗りなら
+            cmd.style = color;
+            particle.colorCommand = cmd;
+          }
         } else if (cmd instanceof createjs.Graphics.Stroke) { // 線のとき
           cmd.style = color;
           particle.colorCommand = cmd;

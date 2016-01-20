@@ -55,7 +55,6 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                             var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation) * lifeParcent;
                             var luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance) * lifeParcent;
                             var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
-                            particle.colorCommand.style = color;
                         }
                         //  パーティクルが死んでいたら、オブジェクトプールに移動
                         if (particle.currentLife < 0) {
@@ -154,8 +153,18 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                         for (var i = 0; i < instructions.length; i++) {
                             var cmd = instructions[i];
                             if (cmd instanceof createjs.Graphics.Fill) {
-                                cmd.style = color;
-                                particle.colorCommand = cmd;
+                                // グラデーション塗りだったら
+                                if (cmd.style instanceof CanvasGradient) {
+                                    // 昔のグラデーションを保持
+                                    var oldStyle = cmd.style;
+                                    var g = new createjs.Graphics();
+                                    var newStyle = g.beginRadialGradientFill([color, ("hsla(" + hue + ", " + satuation + "%, " + luminance + "%, 0)")], oldStyle.props.ratios, oldStyle.props.x0, oldStyle.props.y0, oldStyle.props.r0, oldStyle.props.x1, oldStyle.props.y1, oldStyle.props.r1).command;
+                                    instructions[i] = newStyle;
+                                }
+                                else {
+                                    cmd.style = color;
+                                    particle.colorCommand = cmd;
+                                }
                             }
                             else if (cmd instanceof createjs.Graphics.Stroke) {
                                 cmd.style = color;
