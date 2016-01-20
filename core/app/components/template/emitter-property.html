@@ -1,5 +1,3 @@
-<h4>Emitter Setting</h4>
-
 <input-range
         label="ステージの幅 (px)"
         min="0" max="500" step="1"
@@ -104,4 +102,13 @@
         min="0" max="360" step="0.1"
         [drawingData]="drawingData"
         targetProperty="accelerationDirection">
+</input-range>
+
+<hr />
+
+<input-range
+        label="1フレームあたりの発生数"
+        min="1" max="5" step="1"
+        [drawingData]="drawingData"
+        targetProperty="emitFrequency">
 </input-range>
