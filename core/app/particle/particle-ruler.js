@@ -11,22 +11,25 @@ System.register([], function(exports_1) {
                     this.FONT_COLOR = "#888";
                     this.stage = stage;
                     this.container = new createjs.Container();
-                    this.base = new createjs.Shape();
-                    this.container.addChild(this.base);
-                    this.mouseBase = new createjs.Shape();
-                    this.container.addChild(this.mouseBase);
+                    this.shapeBg = new createjs.Shape();
+                    this.container.addChild(this.shapeBg);
+                    this.shapeMouse = new createjs.Shape();
+                    this.container.addChild(this.shapeMouse);
                     this.verticalTextList = [];
                     this.horizontalTextList = [];
                 }
                 Ruler.prototype.setSize = function (ws, hs) {
                     this.width = ws;
                     this.height = hs;
+                    var graphics = this.shapeBg.graphics;
+                    graphics.clear();
+                    graphics.setStrokeStyle(1);
+                    graphics.beginStroke(this.FONT_COLOR);
+                    // 枠線を描く
+                    graphics.drawRect(-0.5, -0.5, ws + 1.0, hs + 1.0);
                     var distance = 35;
                     var w = Math.floor(this.width / distance);
                     var h = Math.floor(this.height / distance);
-                    var graphics = this.base.graphics;
-                    graphics.clear();
-                    graphics.beginStroke(this.FONT_COLOR);
                     for (var i = 0; i < w; i++) {
                         var ii = (i);
                         if (this.horizontalTextList.length <= ii) {
@@ -62,21 +65,20 @@ System.register([], function(exports_1) {
                     for (var i = h; i < this.verticalTextList.length; i++) {
                         this.verticalTextList[i].visible = false;
                     }
-                    graphics.beginFill("red");
-                    graphics.drawRect(0, 0, this.width, this.height);
                 };
                 Ruler.prototype.update = function () {
                     var mousePt = this.container.globalToLocal(this.stage.mouseX, this.stage.mouseY);
-                    var graphics = this.mouseBase.graphics;
-                    graphics.clear();
-                    graphics.beginStroke("#6699ff");
+                    var graphics = this.shapeMouse.graphics;
+                    graphics.clear()
+                        .setStrokeStyle(2)
+                        .beginStroke("#6699ff");
                     if (mousePt.x >= 0 && mousePt.x <= this.width) {
                         graphics.moveTo(mousePt.x, 0);
                         graphics.lineTo(mousePt.x, -16);
                     }
                     if (mousePt.y >= 0 && mousePt.y <= this.height) {
-                        graphics.moveTo(0, mousePt.y);
-                        graphics.lineTo(16, mousePt.y);
+                        graphics.moveTo(-16, mousePt.y);
+                        graphics.lineTo(0, mousePt.y);
                     }
                 };
                 return Ruler;

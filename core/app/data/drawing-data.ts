@@ -3,8 +3,8 @@ import {ColorData} from "./color-data";
 
 export class DrawingData {
   bgColor:string = "";
-  width:number = 0;
-  height:number = 0;
+  width:number = 0.0;
+  height:number = 0.0;
 
   emitFrequency:number = 0;
 

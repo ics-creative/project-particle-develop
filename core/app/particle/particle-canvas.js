@@ -29,6 +29,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
+                    /** 座布団 */
+                    this._outerZabuton = new createjs.Shape();
                     this.data = data;
                     this.canvas = canvas;
                     this.canvas.width = data.width;
@@ -40,9 +42,6 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.background = new createjs.Shape();
                     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
                     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
-                    this.ruler = new particle_ruler_1.Ruler(this.stage);
-                    this.ruler.setSize(data.width, data.height);
-                    this.canvasContainer.addChild(this.ruler.container);
                     this.backgroundColorCommand.style = data.bgColor;
                     this.backgroundSize.w = data.width;
                     this.backgroundSize.h = data.height;
@@ -53,6 +52,12 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.canvasContainer.addChild(this.particleEmitter.container);
                     this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
                     this.partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
+                    // 座布団
+                    this.stage.addChild(this._outerZabuton);
+                    // ルーラーは最前面
+                    this.ruler = new particle_ruler_1.Ruler(this.stage);
+                    this.ruler.setSize(data.width, data.height);
+                    this.stage.addChild(this.ruler.container);
                     // リサイズイベント
                     this.resizeHandler();
                     window.addEventListener("resize", function () { return _this.resizeHandler(); });
@@ -70,7 +75,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     var _this = this;
                     var canvasWidth = this.stage.canvas.width;
                     var canvasHeight = this.stage.canvas.height;
-                    return this.partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(function (imageData) { return _this.insertCaptureToStage(imageData); }, function () { return _this.insertDummyImageToStage(); });
+                    return this.partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(function (imageData) { return _this.insertCaptureToStage(imageData); });
                 };
                 /**
                  * Stageにキャプチャー画像を挿入します。
@@ -79,21 +84,13 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.captureImageLayer.addImageFromImageData(imageData);
                     this.stage.update();
                 };
-                ParticleCanvas.prototype.insertDummyImageToStage = function () {
-                    this.captureImageLayer.addImageFromURL("http://ics-web.jp/imgs/works/pollenmap.jpg");
-                    this.stage.update();
-                };
                 /**
                  * リサイズのイベント処理
                  */
                 ParticleCanvas.prototype.resizeHandler = function () {
-                    var canvasWidth;
-                    var canvasHeight;
-                    var windowWidth = window.innerWidth;
-                    var windowHeight = window.innerHeight;
-                    canvasWidth = windowWidth;
-                    canvasHeight = windowHeight;
-                    if (windowWidth > view_port_1.Viewport.sm) {
+                    var canvasWidth = innerWidth;
+                    var canvasHeight = innerHeight;
+                    if (innerWidth > view_port_1.Viewport.sm) {
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_DESKTOP;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_DESKTOP;
                     }
@@ -101,22 +98,36 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
                     }
+                    var palletW = Number(this.data.width) >> 0;
+                    var palletH = Number(this.data.height) >> 0;
+                    var canvasX = Math.floor((canvasWidth - palletW) / 2);
+                    var canvasY = Math.floor((canvasHeight - palletH) / 2);
                     //  ルーラーなどのセンタリング
-                    var canvasPoint = new createjs.Point((canvasWidth - this.data.width) / 2, (canvasHeight - this.data.height) / 2);
-                    this.canvasContainer.x = canvasPoint.x;
-                    this.canvasContainer.y = canvasPoint.y;
+                    var canvasPoint = new createjs.Point(canvasX, canvasY);
+                    this._outerZabuton.graphics
+                        .clear()
+                        .beginFill("rgba(32, 32, 32, 0.7)")
+                        .drawRect(0, 0, canvasWidth, canvasY)
+                        .drawRect(0, canvasY, canvasX, palletH)
+                        .drawRect(canvasX + palletW, canvasY, canvasX, palletH)
+                        .drawRect(0, canvasY + palletH, canvasWidth, canvasY)
+                        .endFill();
+                    this.canvasContainer.x = this.ruler.container.x = canvasPoint.x;
+                    this.canvasContainer.y = this.ruler.container.y = canvasPoint.y;
                     // ステージのサイズをwindowのサイズに変更
                     this.stage.canvas.width = canvasWidth;
                     this.stage.canvas.height = canvasHeight;
                 };
                 ParticleCanvas.prototype.update = function (data) {
-                    if (data.width != this.backgroundSize.w
-                        || data.height != this.backgroundSize.h
+                    var palletW = Number(this.data.width) >> 0;
+                    var palletH = Number(this.data.height) >> 0;
+                    if (palletW != this.backgroundSize.w
+                        || palletH != this.backgroundSize.h
                         || this.backgroundColorCommand.style != data.bgColor) {
                         this.backgroundColorCommand.style = data.bgColor;
-                        this.backgroundSize.w = data.width;
-                        this.backgroundSize.h = data.height;
-                        this.ruler.setSize(data.width, data.height);
+                        this.backgroundSize.w = palletW;
+                        this.backgroundSize.h = palletH;
+                        this.ruler.setSize(palletW, palletH);
                         this.resizeHandler();
                     }
                     this.particleEmitter.update(data);

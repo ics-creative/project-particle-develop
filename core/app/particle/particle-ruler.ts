@@ -4,41 +4,46 @@
 export class Ruler {
 
   public container:createjs.Container;
-  private base:createjs.Shape;
-  private mouseBase:createjs.Shape;
+  private shapeBg:createjs.Shape;
+  private shapeMouse:createjs.Shape;
   private verticalTextList:createjs.Text[];
   private horizontalTextList:createjs.Text[];
   private stage:createjs.Stage;
 
   private FONT_COLOR = "#888";
 
-  public width:number;
-  public height:number;
+  private width:number;
+  private height:number;
 
   constructor(stage:createjs.Stage) {
     this.stage = stage;
     this.container = new createjs.Container();
-    this.base = new createjs.Shape();
-    this.container.addChild(this.base);
+    this.shapeBg = new createjs.Shape();
+    this.container.addChild(this.shapeBg);
 
-    this.mouseBase = new createjs.Shape();
-    this.container.addChild(this.mouseBase);
+    this.shapeMouse = new createjs.Shape();
+    this.container.addChild(this.shapeMouse);
 
     this.verticalTextList = [];
     this.horizontalTextList = [];
   }
 
-  public setSize(ws:number, hs:number) {
+  public setSize(ws:number, hs:number):void {
     this.width = ws;
     this.height = hs;
+
+
+    let graphics = this.shapeBg.graphics;
+    graphics.clear();
+    graphics.setStrokeStyle(1);
+    graphics.beginStroke(this.FONT_COLOR);
+
+    // 枠線を描く
+    graphics.drawRect(-0.5, -0.5, ws + 1.0, hs + 1.0);
 
     let distance:number = 35;
     let w:number = Math.floor(this.width / distance);
     let h:number = Math.floor(this.height / distance);
-
-    let graphics = this.base.graphics;
-    graphics.clear();
-    graphics.beginStroke(this.FONT_COLOR);
 
     for (let i = 0; i < w; i++) {
       let ii = (i);
@@ -80,16 +85,16 @@ export class Ruler {
       this.verticalTextList[i].visible = false;
     }
 
-    graphics.beginFill("red")
-    graphics.drawRect(0, 0, this.width, this.height);
+
   }
 
   public update() {
     let mousePt = this.container.globalToLocal(this.stage.mouseX, this.stage.mouseY);
-    let graphics = this.mouseBase.graphics;
+    let graphics = this.shapeMouse.graphics;
 
-    graphics.clear();
-    graphics.beginStroke("#6699ff");
+    graphics.clear()
+        .setStrokeStyle(2)
+        .beginStroke("#6699ff");
 
     if (mousePt.x >= 0 && mousePt.x <= this.width) {
       graphics.moveTo(mousePt.x, 0);
@@ -97,8 +102,8 @@ export class Ruler {
     }
 
     if (mousePt.y >= 0 && mousePt.y <= this.height) {
-      graphics.moveTo(0, mousePt.y);
-      graphics.lineTo(16, mousePt.y);
+      graphics.moveTo(-16, mousePt.y);
+      graphics.lineTo(0, mousePt.y);
     }
 
   }

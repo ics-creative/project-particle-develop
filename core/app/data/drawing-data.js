@@ -10,8 +10,8 @@ System.register(["./color-data"], function(exports_1) {
             DrawingData = (function () {
                 function DrawingData() {
                     this.bgColor = "";
-                    this.width = 0;
-                    this.height = 0;
+                    this.width = 0.0;
+                    this.height = 0.0;
                     this.emitFrequency = 0;
                     this.lifeSpan = 0;
                     this.lifeSpanVariance = 0;

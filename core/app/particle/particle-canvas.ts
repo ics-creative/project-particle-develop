@@ -28,6 +28,8 @@ export class ParticleCanvas {
   public data:DrawingData;
 
   private ruler:Ruler;
+  /** 座布団 */
+  private _outerZabuton:createjs.Shape = new createjs.Shape();
 
   constructor(canvas:any, data:DrawingData) {
 
@@ -48,10 +50,6 @@ export class ParticleCanvas {
     this.backgroundColorCommand = this.background.graphics.beginFill("gray").command;
     this.backgroundSize = this.background.graphics.drawRect(0, 0, data.width, data.height).command;
 
-    this.ruler = new Ruler(this.stage);
-    this.ruler.setSize(data.width, data.height);
-
-    this.canvasContainer.addChild(this.ruler.container);
 
     this.backgroundColorCommand.style = data.bgColor;
     this.backgroundSize.w = data.width;
@@ -68,6 +66,14 @@ export class ParticleCanvas {
     this.particleExporter = new ParticleExporter(this.stage);
 
     this.partcileImageImporter = new PartcicleImageImporter();
+
+    // 座布団
+    this.stage.addChild(this._outerZabuton);
+
+    // ルーラーは最前面
+    this.ruler = new Ruler(this.stage);
+    this.ruler.setSize(data.width, data.height);
+    this.stage.addChild(this.ruler.container);
 
     // リサイズイベント
     this.resizeHandler();
@@ -90,8 +96,7 @@ export class ParticleCanvas {
     let canvasWidth:number = (<HTMLCanvasElement>this.stage.canvas).width;
     let canvasHeight:number = (<HTMLCanvasElement>this.stage.canvas).height;
     return this.partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(
-        (imageData) => this.insertCaptureToStage(imageData),
-        () => this.insertDummyImageToStage()
+        (imageData) => this.insertCaptureToStage(imageData)
     );
   }
 
@@ -103,26 +108,15 @@ export class ParticleCanvas {
     this.stage.update();
   }
 
-  private insertDummyImageToStage():void {
-    this.captureImageLayer.addImageFromURL("http://ics-web.jp/imgs/works/pollenmap.jpg");
-    this.stage.update();
-  }
-
   /**
    * リサイズのイベント処理
    */
   private resizeHandler():void {
 
-    var canvasWidth:number;
-    var canvasHeight:number;
+    var canvasWidth:number = innerWidth;
+    var canvasHeight:number = innerHeight;
 
-    let windowWidth:number = window.innerWidth;
-    let windowHeight:number = window.innerHeight;
-
-    canvasWidth = windowWidth;
-    canvasHeight = windowHeight;
-
-    if (windowWidth > Viewport.sm) {
+    if (innerWidth > Viewport.sm) {
       canvasHeight -= CanvasMargin.TOP_DESKTOP;
       canvasWidth -= CanvasMargin.RIGHT_DESKTOP;
     }
@@ -131,27 +125,44 @@ export class ParticleCanvas {
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
 
-    //  ルーラーなどのセンタリング
-    let canvasPoint = new createjs.Point((canvasWidth - this.data.width) / 2, (canvasHeight - this.data.height) / 2);
+    var palletW = Number(this.data.width) >> 0;
+    var palletH = Number(this.data.height) >> 0;
 
-    this.canvasContainer.x = canvasPoint.x;
-    this.canvasContainer.y = canvasPoint.y;
+    let canvasX = Math.floor((canvasWidth - palletW) / 2);
+    let canvasY = Math.floor((canvasHeight - palletH) / 2);
+
+    //  ルーラーなどのセンタリング
+    let canvasPoint = new createjs.Point(canvasX, canvasY);
+
+    this._outerZabuton.graphics
+        .clear()
+        .beginFill("rgba(32, 32, 32, 0.7)")
+        .drawRect(0, 0, canvasWidth, canvasY)
+        .drawRect(0, canvasY, canvasX, palletH)
+        .drawRect(canvasX + palletW, canvasY, canvasX, palletH)
+        .drawRect(0, canvasY + palletH, canvasWidth, canvasY)
+        .endFill();
+
+    this.canvasContainer.x = this.ruler.container.x = canvasPoint.x;
+    this.canvasContainer.y = this.ruler.container.y = canvasPoint.y;
 
     // ステージのサイズをwindowのサイズに変更
     (<HTMLCanvasElement>this.stage.canvas).width = canvasWidth;
     (<HTMLCanvasElement>this.stage.canvas).height = canvasHeight;
-
   }
 
   public update(data:DrawingData):void {
 
-    if (data.width != this.backgroundSize.w
-        || data.height != this.backgroundSize.h
+    var palletW = Number(this.data.width) >> 0;
+    var palletH = Number(this.data.height) >> 0;
+
+    if (palletW != this.backgroundSize.w
+        || palletH != this.backgroundSize.h
         || this.backgroundColorCommand.style != data.bgColor) {
       this.backgroundColorCommand.style = data.bgColor;
-      this.backgroundSize.w = data.width;
-      this.backgroundSize.h = data.height;
-      this.ruler.setSize(data.width, data.height);
+      this.backgroundSize.w = palletW;
+      this.backgroundSize.h = palletH;
+      this.ruler.setSize(palletW, palletH);
       this.resizeHandler();
     }
 
