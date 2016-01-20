@@ -521,6 +521,8 @@ body {
   }
 }
 
+
+
 #propertyPanel {
   width: $sideWidth + px;
   margin-left: -  ($sideWidth + $panelSpace) + px;
@@ -528,10 +530,15 @@ body {
   float: right;
   max-height: 100%;
   overflow-y: scroll;
+
+  .panel {
+    background : #333;
+    height : 100%;
+  }
+
 }
 
 #myCanvas {
-  border: 1px solid #f00;
 }
 
 
