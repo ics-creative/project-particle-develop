@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-md-8">
+    <input type="range" class="topcoat-range"
+           min="0" max="1" step="0.01"
+           [(ngModel)]="drawingData[targetProperty]"
+           placeholder="targetProperty"
+          (change)="handleChange()"
+    />
+  </div>
+  <div class="col-md-4">
+    {{drawingData[targetProperty]}}
+  </div>
+</div>

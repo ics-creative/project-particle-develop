@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./input-range.component"], function(exports_1) {
+System.register(["angular2/core"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,33 +8,34 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, input_range_component_1;
-    var ParticlePropertyPanel;
+    var core_1;
+    var InputRangeComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (input_range_component_1_1) {
-                input_range_component_1 = input_range_component_1_1;
             }],
         execute: function() {
-            ParticlePropertyPanel = (function () {
-                function ParticlePropertyPanel() {
+            InputRangeComponent = (function () {
+                function InputRangeComponent() {
                 }
-                ParticlePropertyPanel = __decorate([
+                InputRangeComponent.prototype.handleChange = function () {
+                    console.log(this.targetProperty);
+                    console.log(this.drawingData[this.targetProperty]);
+                    console.log(this.drawingData);
+                };
+                InputRangeComponent = __decorate([
                     core_1.Component({
-                        selector: "particle-property-panel",
-                        templateUrl: "app/components/template/particle-property.html",
-                        inputs: ["drawingData", "shapeIdList"],
-                        directives: [input_range_component_1.InputRangeComponent]
+                        selector: "input-range",
+                        templateUrl: "app/components/template/input-range.html",
+                        inputs: ["drawingData", "targetProperty"]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ParticlePropertyPanel);
-                return ParticlePropertyPanel;
+                ], InputRangeComponent);
+                return InputRangeComponent;
             })();
-            exports_1("ParticlePropertyPanel", ParticlePropertyPanel);
+            exports_1("InputRangeComponent", InputRangeComponent);
         }
     }
 });
-//# sourceMappingURL=particle-property.component.js.map
+//# sourceMappingURL=input-range.component.js.map
