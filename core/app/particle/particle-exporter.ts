@@ -28,10 +28,8 @@ export class ParticleExporter {
     return new Promise((onResolve, onReject) => {
 
       this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
-      var t = new Date().getTime();
       this.exporter.run();
-
-      // for some reason, it takes a tick for the browser to init the SVG
+      
       setTimeout(() => {
         onResolve()
       }, 1);
@@ -60,9 +58,4 @@ export class ParticleExporter {
     return serializer.serializeToString(this.exporter.svg);
   }
 
-  downloadFile = () => {
-    var serializer = new XMLSerializer();
-    var svgStr = serializer.serializeToString(this.exporter.svg);
-    window.open("data:image/svg+xml,\n" + encodeURIComponent(svgStr));
-  }
 }
