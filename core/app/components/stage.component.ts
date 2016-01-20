@@ -19,7 +19,7 @@ export class StageComponent implements AfterViewInit {
 
   }
 
-  exportSVG = ():Promise<any> => {
+  exportSVG():Promise<any> {
     return this.particleCanvas.runExport();
   }
 
