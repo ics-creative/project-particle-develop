@@ -8,6 +8,6 @@ import {InputRangeComponent} from "./input-range.component";
   inputs: ["colorData"],
   directives: [InputRangeComponent]
 })
-export class ColorUnitPropertyPanel {
+export class PropertyColorUnit {
   private colorData:ColorData;
 }

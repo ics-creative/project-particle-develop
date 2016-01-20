@@ -3,10 +3,9 @@ import {DrawingData} from "../data/drawing-data";
 import {PropertyPanel} from "./property.component";
 import {DesktopIOBox} from "./desktop-io.component";
 import {MobileIOBox} from "./mobile-io.component";
-import {ShapePropertyModal} from "./shape-property.component";
+import {PropertyShapePanel} from "./property-shape.component.ts";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
-import {ParticleShapeTypes} from "../particle/particle-shape-types";
 import {ElementRef} from "angular2/core";
 
 @Component({

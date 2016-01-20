@@ -9,7 +9,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, input_range_component_1;
-    var ParticlePropertyPanel;
+    var PropertyParticlePanel;
     return {
         setters:[
             function (core_1_1) {
@@ -19,22 +19,22 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 input_range_component_1 = input_range_component_1_1;
             }],
         execute: function() {
-            ParticlePropertyPanel = (function () {
-                function ParticlePropertyPanel() {
+            PropertyParticlePanel = (function () {
+                function PropertyParticlePanel() {
                 }
-                ParticlePropertyPanel = __decorate([
+                PropertyParticlePanel = __decorate([
                     core_1.Component({
                         selector: "particle-property-panel",
-                        templateUrl: "app/components/template/particle-property.html",
+                        templateUrl: "app/components/template/property-particle.html",
                         inputs: ["drawingData", "shapeIdList"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ParticlePropertyPanel);
-                return ParticlePropertyPanel;
+                ], PropertyParticlePanel);
+                return PropertyParticlePanel;
             })();
-            exports_1("ParticlePropertyPanel", ParticlePropertyPanel);
+            exports_1("PropertyParticlePanel", PropertyParticlePanel);
         }
     }
 });
-//# sourceMappingURL=particle-property.component.js.map
+//# sourceMappingURL=property-particle.component.js.map

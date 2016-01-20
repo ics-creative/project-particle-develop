@@ -44,4 +44,4 @@ System.register(["angular2/core"], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=shape-property.component.js.map
+//# sourceMappingURL=property-shape.component.js.map

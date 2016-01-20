@@ -1,5 +1,3 @@
-
-
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/drawing-data";
 import {EventEmitter} from 'angular2/core';
@@ -8,21 +6,21 @@ import {ParticleParamater} from "../assets/particle-paramater";
 
 @Component({
   selector: "particle-template-property-panel",
-  templateUrl: "app/components/template/particle-template-property.html",
-  inputs: ["drawingData","templateList"]
+  templateUrl: "app/components/template/property-template.html",
+  inputs: ["drawingData", "templateList"]
 })
 
-export class ParticleTemplatePropertyPanel {
+export class PropertyTemplatePanel {
   private drawingData:DrawingData;
   private templateList:any[];
-  private template:ParticleParamater ;
-
+  private template:ParticleParamater;
 
   constructor() {
     var template = new ParticleParamater();
     this.templateList = template.list;
   }
-  selectTemplate(value:Object) {
+
+  private selectTemplate(value:Object) {
     this.drawingData.into(value);
   }
 }

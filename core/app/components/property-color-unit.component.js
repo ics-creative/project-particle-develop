@@ -9,7 +9,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, input_range_component_1;
-    var EmitterPropertyPanel;
+    var PropertyColorUnit;
     return {
         setters:[
             function (core_1_1) {
@@ -19,22 +19,22 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 input_range_component_1 = input_range_component_1_1;
             }],
         execute: function() {
-            EmitterPropertyPanel = (function () {
-                function EmitterPropertyPanel() {
+            PropertyColorUnit = (function () {
+                function PropertyColorUnit() {
                 }
-                EmitterPropertyPanel = __decorate([
+                PropertyColorUnit = __decorate([
                     core_1.Component({
-                        selector: "emitter-property-panel",
-                        templateUrl: "app/components/template/emitter-property.html",
-                        inputs: ["drawingData", "shapeIdList"],
+                        selector: "color-unit-property-panel",
+                        templateUrl: "app/components/template/color-unit-property.html",
+                        inputs: ["colorData"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], EmitterPropertyPanel);
-                return EmitterPropertyPanel;
+                ], PropertyColorUnit);
+                return PropertyColorUnit;
             })();
-            exports_1("EmitterPropertyPanel", EmitterPropertyPanel);
+            exports_1("PropertyColorUnit", PropertyColorUnit);
         }
     }
 });
-//# sourceMappingURL=emitter-property.component.js.map
+//# sourceMappingURL=property-color-unit.component.js.map

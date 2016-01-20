@@ -5,14 +5,14 @@ import {ShapeData} from "../data/shape-data";
 
 @Component({
   selector: "shape-property-panel",
-  templateUrl: "app/components/template/shape-property.html",
+  templateUrl: "app/components/template/property-shape.html",
   inputs: ["drawingData", "shapeIdList"]
 })
 
 /**
  * シェイプの選択パネルの制御クラスです。
  */
-export class ShapePropertyModal {
+export class PropertyShapePanel {
   private drawingData:DrawingData;
   private shapeIdList:string[] = new ShapeData().assetList;
 

@@ -1,6 +1,3 @@
-/**
- * Created by nyamogera on 2016/01/20.
- */
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/drawing-data";
 import {EventEmitter} from 'angular2/core';
@@ -9,12 +6,12 @@ import {InputRangeComponent} from "./input-range.component";
 
 @Component({
   selector: "emitter-property-panel",
-  templateUrl: "app/components/template/emitter-property.html",
+  templateUrl: "app/components/template/property-emitter.html",
   inputs: ["drawingData", "shapeIdList"],
   directives: [InputRangeComponent]
 })
 
-export class EmitterPropertyPanel {
+export class PropertyEmitterPanel {
   private drawingData:DrawingData;
 
   constructor() {

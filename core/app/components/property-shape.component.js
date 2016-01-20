@@ -9,7 +9,7 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, shape_data_1;
-    var ShapePropertyModal;
+    var PropertyShapePanel;
     return {
         setters:[
             function (core_1_1) {
@@ -19,11 +19,11 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
                 shape_data_1 = shape_data_1_1;
             }],
         execute: function() {
-            ShapePropertyModal = (function () {
-                function ShapePropertyModal() {
+            PropertyShapePanel = (function () {
+                function PropertyShapePanel() {
                     this.shapeIdList = new shape_data_1.ShapeData().assetList;
                 }
-                ShapePropertyModal.prototype.handleClick = function (shapeId) {
+                PropertyShapePanel.prototype.handleClick = function (shapeId) {
                     var index = this.drawingData.shapeIdList.indexOf(shapeId);
                     if (index == -1) {
                         // 追加
@@ -34,18 +34,18 @@ System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
                         this.drawingData.shapeIdList.splice(index, 1);
                     }
                 };
-                ShapePropertyModal = __decorate([
+                PropertyShapePanel = __decorate([
                     core_1.Component({
                         selector: "shape-property-panel",
-                        templateUrl: "app/components/template/shape-property.html",
+                        templateUrl: "app/components/template/property-shape.html",
                         inputs: ["drawingData", "shapeIdList"]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ShapePropertyModal);
-                return ShapePropertyModal;
+                ], PropertyShapePanel);
+                return PropertyShapePanel;
             })();
-            exports_1("ShapePropertyModal", ShapePropertyModal);
+            exports_1("PropertyShapePanel", PropertyShapePanel);
         }
     }
 });
-//# sourceMappingURL=shape-property.component.js.map
+//# sourceMappingURL=property-shape.component.js.map

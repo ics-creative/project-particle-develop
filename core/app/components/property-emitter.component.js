@@ -9,7 +9,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, input_range_component_1;
-    var ColorUnitPropertyPanel;
+    var PropertyEmitterPanel;
     return {
         setters:[
             function (core_1_1) {
@@ -19,22 +19,22 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 input_range_component_1 = input_range_component_1_1;
             }],
         execute: function() {
-            ColorUnitPropertyPanel = (function () {
-                function ColorUnitPropertyPanel() {
+            PropertyEmitterPanel = (function () {
+                function PropertyEmitterPanel() {
                 }
-                ColorUnitPropertyPanel = __decorate([
+                PropertyEmitterPanel = __decorate([
                     core_1.Component({
-                        selector: "color-unit-property-panel",
-                        templateUrl: "app/components/template/color-unit-property.html",
-                        inputs: ["colorData"],
+                        selector: "emitter-property-panel",
+                        templateUrl: "app/components/template/property-emitter.html",
+                        inputs: ["drawingData", "shapeIdList"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ColorUnitPropertyPanel);
-                return ColorUnitPropertyPanel;
+                ], PropertyEmitterPanel);
+                return PropertyEmitterPanel;
             })();
-            exports_1("ColorUnitPropertyPanel", ColorUnitPropertyPanel);
+            exports_1("PropertyEmitterPanel", PropertyEmitterPanel);
         }
     }
 });
-//# sourceMappingURL=color-unit-property.component.js.map
+//# sourceMappingURL=property-emitter.component.js.map

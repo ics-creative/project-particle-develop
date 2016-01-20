@@ -9,7 +9,7 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, particle_paramater_1;
-    var ParticleTemplatePropertyPanel;
+    var PropertyTemplatePanel;
     return {
         setters:[
             function (core_1_1) {
@@ -19,26 +19,26 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
                 particle_paramater_1 = particle_paramater_1_1;
             }],
         execute: function() {
-            ParticleTemplatePropertyPanel = (function () {
-                function ParticleTemplatePropertyPanel() {
+            PropertyTemplatePanel = (function () {
+                function PropertyTemplatePanel() {
                     var template = new particle_paramater_1.ParticleParamater();
                     this.templateList = template.list;
                 }
-                ParticleTemplatePropertyPanel.prototype.selectTemplate = function (value) {
+                PropertyTemplatePanel.prototype.selectTemplate = function (value) {
                     this.drawingData.into(value);
                 };
-                ParticleTemplatePropertyPanel = __decorate([
+                PropertyTemplatePanel = __decorate([
                     core_1.Component({
                         selector: "particle-template-property-panel",
-                        templateUrl: "app/components/template/particle-template-property.html",
+                        templateUrl: "app/components/template/property-template.html",
                         inputs: ["drawingData", "templateList"]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ParticleTemplatePropertyPanel);
-                return ParticleTemplatePropertyPanel;
+                ], PropertyTemplatePanel);
+                return PropertyTemplatePanel;
             })();
-            exports_1("ParticleTemplatePropertyPanel", ParticleTemplatePropertyPanel);
+            exports_1("PropertyTemplatePanel", PropertyTemplatePanel);
         }
     }
 });
-//# sourceMappingURL=particle-template-property.js.map
+//# sourceMappingURL=property-template.component.js.map
