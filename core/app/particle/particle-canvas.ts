@@ -142,10 +142,11 @@ export class ParticleCanvas {
     (<HTMLCanvasElement>this.stage.canvas).height = canvasHeight;
   }
 
-  update(data:DrawingData) {
+  public update(data:DrawingData) {
 
-    if (data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ||
-        this.backgroundColorCommand.style != data.bgColor) {
+    if (data.width != this.backgroundSize.w
+        || data.height != this.backgroundSize.h
+        || this.backgroundColorCommand.style != data.bgColor) {
       this.backgroundColorCommand.style = data.bgColor;
       this.backgroundSize.w = data.width;
       this.backgroundSize.h = data.height;
