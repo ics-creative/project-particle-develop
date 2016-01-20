@@ -63,7 +63,7 @@ export class ParticleCanvas {
     return this.particleExporter.getSVGString();
   }
 
-  runExport = ():Promise<any> => {
+  runExport ():Promise<any> {
     return this.particleExporter.runExport();
   }
 
@@ -123,7 +123,7 @@ export class ParticleCanvas {
     this.stage.canvas.height = canvasHeight;
   }
 
-  update = (data:DrawingData) => {
+  update(data:DrawingData){
 
     if( data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ||
       this.backgroundColorCommand.style != data.bgColor) {

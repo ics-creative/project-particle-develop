@@ -24,7 +24,7 @@ export class ParticleExporter {
     this.drawLayerContainer = drawLayerContainer;
   }
 
-  runExport = ():Promise<any> => {
+  runExport():Promise<any> {
     return new Promise((onResolve, onReject) => {
 
       this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
@@ -36,7 +36,7 @@ export class ParticleExporter {
     });
   }
 
-  runExportSP = (cavas:HTMLCanvasElement):Promise<any> => {
+  runExportSP (cavas:HTMLCanvasElement):Promise<any> {
     return new Promise((onResolve, onReject) => {
       let base64 = cavas.toDataURL();
       cordova.base64ToGallery(

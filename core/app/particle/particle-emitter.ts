@@ -31,7 +31,7 @@ export class ParticleEmitter {
 
   private shapeGenerator:ShapeGenerator;
 
-  update = (drawingData:DrawingData) => {
+  update (drawingData:DrawingData){
     this.drawingData = drawingData;
 
     this.emit();
@@ -43,7 +43,7 @@ export class ParticleEmitter {
   /**
    * パーティクルの動き。
    */
-  private animate = () => {
+  private animate () {
 
     let rad = createjs.Matrix2D.DEG_TO_RAD * this.drawingData.accelerationDirection;
     let accX = Math.cos(rad) * this.drawingData.accelerationSpeed;
@@ -98,7 +98,7 @@ export class ParticleEmitter {
   /**
    * パーティクルが生きているか確認する。
    */
-  lifeCheck = () => {
+  lifeCheck (){
     for (var i = 0; i < this.activeParticles.length; i++) {
       // もしも死んでいたら、アクティブリストから外してプールに保存する。
       if (!this.activeParticles[i].isAlive) {
@@ -114,7 +114,7 @@ export class ParticleEmitter {
   /**
    * パーティクルの生成（インターバルチェックする）
    */
-  private emit = () => {
+  private emit()  {
 
     for (var i = 0; i < this.drawingData.emitFrequency; i++) {
       let particle = this.generateParticle();
@@ -127,7 +127,7 @@ export class ParticleEmitter {
    * パーティクルのパラメータを設定します
    * @returns {null}
    */
-  private generateParticle = ():Particle => {
+  private generateParticle ():Particle  {
 
     var particle:Particle = null;
     if (this.particlesPool.length >= 1) {
@@ -178,7 +178,7 @@ export class ParticleEmitter {
 
   }
 
-  generateShape = (particle:Particle, shapeIdList:string[]) => {
+  generateShape (particle:Particle, shapeIdList:string[]) {
 
     particle.particleShape.removeAllChildren();
 
@@ -220,12 +220,12 @@ export class ParticleEmitter {
 
   }
 
-  range = (minValue, maxValue, value):number => {
+  range (minValue, maxValue, value):number {
     return Math.min(maxValue, Math.max(minValue, value));
   }
 
 
-  getParam = (value:any, variance:any, isInteger:boolean):number => {
+  getParam (value:any, variance:any, isInteger:boolean):number{
     let result = parseFloat(value) + (  Math.random() * parseFloat(variance)  ) - parseFloat(variance) / 2;
 
     if (isInteger) {

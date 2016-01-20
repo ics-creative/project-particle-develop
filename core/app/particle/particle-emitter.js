@@ -16,129 +16,93 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
              */
             ParticleEmitter = (function () {
                 function ParticleEmitter() {
-                    var _this = this;
-                    this.update = function (drawingData) {
-                        _this.drawingData = drawingData;
-                        _this.emit();
-                        _this.animate();
-                        _this.lifeCheck();
-                    };
-                    /**
-                     * パーティクルの動き。
-                     */
-                    this.animate = function () {
-                        var rad = createjs.Matrix2D.DEG_TO_RAD * _this.drawingData.accelerationDirection;
-                        var accX = Math.cos(rad) * _this.drawingData.accelerationSpeed;
-                        var accY = Math.sin(rad) * _this.drawingData.accelerationSpeed;
-                        for (var i = 0; i < _this.activeParticles.length; i++) {
-                            var particle = _this.activeParticles[i];
-                            particle.currentLife--;
-                            particle.vx = particle.vx + accX;
-                            particle.vy = particle.vy + accY;
-                            particle.vx = particle.vx * (1 - _this.drawingData.friction);
-                            particle.vy = particle.vy * (1 - _this.drawingData.friction);
-                            particle.x = particle.x + particle.vx;
-                            particle.y = particle.y + particle.vy;
-                            particle.particleShape.x = particle.x;
-                            particle.particleShape.y = particle.y;
-                            var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
-                            var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
-                            particle.particleShape.alpha = alpha;
-                            var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
-                            particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
-                            if (particle.colorCommand) {
-                                var hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue) * lifeParcent;
-                                var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation) * lifeParcent;
-                                var luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance) * lifeParcent;
-                                var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
-                                particle.colorCommand.style = color;
-                            }
-                            //  パーティクルが死んでいたら、オブジェクトプールに移動
-                            if (particle.currentLife < 0) {
-                                particle.isAlive = false;
-                            }
-                        }
-                    };
-                    /**
-                     * パーティクルが生きているか確認する。
-                     */
-                    this.lifeCheck = function () {
-                        for (var i = 0; i < _this.activeParticles.length; i++) {
-                            // もしも死んでいたら、アクティブリストから外してプールに保存する。
-                            if (!_this.activeParticles[i].isAlive) {
-                                var particle = _this.activeParticles[i];
-                                _this.container.removeChild(particle.particleShape);
-                                _this.activeParticles.splice(i, 1);
-                                _this.particlesPool.push(particle);
-                                i--;
-                            }
-                        }
-                    };
-                    /**
-                     * パーティクルの生成（インターバルチェックする）
-                     */
-                    this.emit = function () {
-                        for (var i = 0; i < _this.drawingData.emitFrequency; i++) {
-                            var particle = _this.generateParticle();
-                            _this.container.addChild(particle.particleShape);
-                            _this.activeParticles.push(particle);
-                        }
-                    };
-                    /**
-                     * パーティクルのパラメータを設定します
-                     * @returns {null}
-                     */
-                    this.generateParticle = function () {
-                        var particle = null;
-                        if (_this.particlesPool.length >= 1) {
-                            particle = _this.particlesPool.shift();
-                        }
-                        else {
-                            particle = new particle_1.Particle();
-                        }
-                        _this.setParticleParamater(particle);
-                        return particle;
-                    };
-                    this.generateShape = function (particle, shapeIdList) {
-                        particle.particleShape.removeAllChildren();
-                        var startColor = _this.drawingData.startColor;
-                        var finishColor = _this.drawingData.finishColor;
-                        particle.startColor.hue = _this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
-                        particle.startColor.luminance = _this.getParam(startColor.luminance, startColor.luminanceVariance, false);
-                        particle.startColor.satuation = _this.getParam(startColor.satuation, startColor.satuationVariance, false);
-                        particle.finishColor.hue = _this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
-                        particle.finishColor.luminance = _this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
-                        particle.finishColor.satuation = _this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
-                        var hue = parseInt(particle.startColor.hue);
-                        var satuation = parseInt(particle.startColor.satuation);
-                        var luminance = parseInt(particle.startColor.luminance);
-                        var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
-                        var r = Math.floor(Math.random() * _this.drawingData.shapeIdList.length);
-                        var shapeId = (_this.drawingData.shapeIdList.length == 0) ? '' : _this.drawingData.shapeIdList[r];
-                        particle.colorCommand = null;
-                        var shape = _this.shapeGenerator.generateShape(shapeId);
-                        if (shape.hasOwnProperty("command")) {
-                            var myShape = shape.command;
-                            myShape.style = color;
-                            particle.colorCommand = shape.command;
-                        }
-                        particle.particleShape.addChild(shape);
-                    };
-                    this.range = function (minValue, maxValue, value) {
-                        return Math.min(maxValue, Math.max(minValue, value));
-                    };
-                    this.getParam = function (value, variance, isInteger) {
-                        var result = parseFloat(value) + (Math.random() * parseFloat(variance)) - parseFloat(variance) / 2;
-                        if (isInteger) {
-                            return Math.floor(result);
-                        }
-                        return result;
-                    };
                     this.particlesPool = new Array();
                     this.activeParticles = new Array();
                     this.container = new createjs.Container();
                     this.shapeGenerator = new shape_generator_1.ShapeGenerator();
                 }
+                ParticleEmitter.prototype.update = function (drawingData) {
+                    this.drawingData = drawingData;
+                    this.emit();
+                    this.animate();
+                    this.lifeCheck();
+                };
+                /**
+                 * パーティクルの動き。
+                 */
+                ParticleEmitter.prototype.animate = function () {
+                    var rad = createjs.Matrix2D.DEG_TO_RAD * this.drawingData.accelerationDirection;
+                    var accX = Math.cos(rad) * this.drawingData.accelerationSpeed;
+                    var accY = Math.sin(rad) * this.drawingData.accelerationSpeed;
+                    for (var i = 0; i < this.activeParticles.length; i++) {
+                        var particle = this.activeParticles[i];
+                        particle.currentLife--;
+                        particle.vx = particle.vx + accX;
+                        particle.vy = particle.vy + accY;
+                        particle.vx = particle.vx * (1 - this.drawingData.friction);
+                        particle.vy = particle.vy * (1 - this.drawingData.friction);
+                        particle.x = particle.x + particle.vx;
+                        particle.y = particle.y + particle.vy;
+                        particle.particleShape.x = particle.x;
+                        particle.particleShape.y = particle.y;
+                        var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
+                        var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
+                        particle.particleShape.alpha = alpha;
+                        var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
+                        particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
+                        if (particle.colorCommand) {
+                            var hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue) * lifeParcent;
+                            var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation) * lifeParcent;
+                            var luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance) * lifeParcent;
+                            var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
+                            particle.colorCommand.style = color;
+                        }
+                        //  パーティクルが死んでいたら、オブジェクトプールに移動
+                        if (particle.currentLife < 0) {
+                            particle.isAlive = false;
+                        }
+                    }
+                };
+                /**
+                 * パーティクルが生きているか確認する。
+                 */
+                ParticleEmitter.prototype.lifeCheck = function () {
+                    for (var i = 0; i < this.activeParticles.length; i++) {
+                        // もしも死んでいたら、アクティブリストから外してプールに保存する。
+                        if (!this.activeParticles[i].isAlive) {
+                            var particle = this.activeParticles[i];
+                            this.container.removeChild(particle.particleShape);
+                            this.activeParticles.splice(i, 1);
+                            this.particlesPool.push(particle);
+                            i--;
+                        }
+                    }
+                };
+                /**
+                 * パーティクルの生成（インターバルチェックする）
+                 */
+                ParticleEmitter.prototype.emit = function () {
+                    for (var i = 0; i < this.drawingData.emitFrequency; i++) {
+                        var particle = this.generateParticle();
+                        this.container.addChild(particle.particleShape);
+                        this.activeParticles.push(particle);
+                    }
+                };
+                /**
+                 * パーティクルのパラメータを設定します
+                 * @returns {null}
+                 */
+                ParticleEmitter.prototype.generateParticle = function () {
+                    var particle = null;
+                    if (this.particlesPool.length >= 1) {
+                        particle = this.particlesPool.shift();
+                    }
+                    else {
+                        particle = new particle_1.Particle();
+                    }
+                    this.setParticleParamater(particle);
+                    return particle;
+                };
                 /**
                  * パーティクルパラメータの設定
                  * @param particle
@@ -163,6 +127,41 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     //  スケール
                     particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
                     particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
+                };
+                ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
+                    particle.particleShape.removeAllChildren();
+                    var startColor = this.drawingData.startColor;
+                    var finishColor = this.drawingData.finishColor;
+                    particle.startColor.hue = this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
+                    particle.startColor.luminance = this.getParam(startColor.luminance, startColor.luminanceVariance, false);
+                    particle.startColor.satuation = this.getParam(startColor.satuation, startColor.satuationVariance, false);
+                    particle.finishColor.hue = this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
+                    particle.finishColor.luminance = this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
+                    particle.finishColor.satuation = this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
+                    var hue = parseInt(particle.startColor.hue);
+                    var satuation = parseInt(particle.startColor.satuation);
+                    var luminance = parseInt(particle.startColor.luminance);
+                    var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
+                    var r = Math.floor(Math.random() * this.drawingData.shapeIdList.length);
+                    var shapeId = (this.drawingData.shapeIdList.length == 0) ? '' : this.drawingData.shapeIdList[r];
+                    particle.colorCommand = null;
+                    var shape = this.shapeGenerator.generateShape(shapeId);
+                    if (shape.hasOwnProperty("command")) {
+                        var myShape = shape.command;
+                        myShape.style = color;
+                        particle.colorCommand = shape.command;
+                    }
+                    particle.particleShape.addChild(shape);
+                };
+                ParticleEmitter.prototype.range = function (minValue, maxValue, value) {
+                    return Math.min(maxValue, Math.max(minValue, value));
+                };
+                ParticleEmitter.prototype.getParam = function (value, variance, isInteger) {
+                    var result = parseFloat(value) + (Math.random() * parseFloat(variance)) - parseFloat(variance) / 2;
+                    if (isInteger) {
+                        return Math.floor(result);
+                    }
+                    return result;
                 };
                 return ParticleEmitter;
             })();

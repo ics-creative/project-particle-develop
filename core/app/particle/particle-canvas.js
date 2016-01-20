@@ -26,19 +26,6 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
-                    this.runExport = function () {
-                        return _this.particleExporter.runExport();
-                    };
-                    this.update = function (data) {
-                        if (data.width != _this.backgroundSize.w || data.height != _this.backgroundSize.h ||
-                            _this.backgroundColorCommand.style != data.bgColor) {
-                            _this.backgroundColorCommand.style = data.bgColor;
-                            _this.backgroundSize.w = data.width;
-                            _this.backgroundSize.h = data.height;
-                        }
-                        _this.particleEmitter.update(data);
-                        _this.stage.update();
-                    };
                     this.canvas = canvas;
                     this.canvas.width = data.width;
                     this.canvas.height = data.height;
@@ -63,6 +50,9 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                 }
                 ParticleCanvas.prototype.getSVGString = function () {
                     return this.particleExporter.getSVGString();
+                };
+                ParticleCanvas.prototype.runExport = function () {
+                    return this.particleExporter.runExport();
                 };
                 ParticleCanvas.prototype.runExportSP = function () {
                     return this.particleExporter.runExportSP(this.canvas);
@@ -105,6 +95,16 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     // ステージのサイズをwindowのサイズに変更
                     this.stage.canvas.width = canvasWidth;
                     this.stage.canvas.height = canvasHeight;
+                };
+                ParticleCanvas.prototype.update = function (data) {
+                    if (data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ||
+                        this.backgroundColorCommand.style != data.bgColor) {
+                        this.backgroundColorCommand.style = data.bgColor;
+                        this.backgroundSize.w = data.width;
+                        this.backgroundSize.h = data.height;
+                    }
+                    this.particleEmitter.update(data);
+                    this.stage.update();
                 };
                 return ParticleCanvas;
             })();
