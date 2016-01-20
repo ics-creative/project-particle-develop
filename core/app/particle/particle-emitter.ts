@@ -146,7 +146,7 @@ export class ParticleEmitter {
    * パーティクルパラメータの設定
    * @param particle
    */
-  private setParticleParamater(particle):void {
+  private setParticleParamater(particle:Particle):void {
 
     particle.particleShape.removeAllChildren();
 
@@ -177,6 +177,9 @@ export class ParticleEmitter {
     particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
     particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
 
+
+    // ブレンドモードを設定
+    particle.particleShape.compositeOperation = "lighter";
   }
 
   generateShape(particle:Particle, shapeIdList:string[]) {
@@ -196,9 +199,9 @@ export class ParticleEmitter {
     particle.finishColor.satuation = this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
 
 
-    var hue = parseInt(particle.startColor.hue);
-    var satuation = parseInt(particle.startColor.satuation);
-    var luminance = parseInt(particle.startColor.luminance);
+    var hue = Number(particle.startColor.hue);
+    var satuation = Number(particle.startColor.satuation);
+    var luminance = Number(particle.startColor.luminance);
 
     var color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
@@ -221,12 +224,11 @@ export class ParticleEmitter {
 
   }
 
-  range(minValue, maxValue, value):number {
+  private range(minValue, maxValue, value):number {
     return Math.min(maxValue, Math.max(minValue, value));
   }
 
-
-  getParam(value:any, variance:any, isInteger:boolean):number {
+  private getParam(value:any, variance:any, isInteger:boolean):number {
     let result = parseFloat(value) + (  Math.random() * parseFloat(variance)  ) - parseFloat(variance) / 2;
 
     if (isInteger) {
