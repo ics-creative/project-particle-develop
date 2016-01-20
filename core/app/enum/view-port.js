@@ -4,7 +4,7 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             (function (Viewport) {
-                Viewport[Viewport["xs"] = 767] = "xs";
+                Viewport[Viewport["sm"] = 768] = "sm";
             })(Viewport || (Viewport = {}));
             exports_1("Viewport", Viewport);
         }
