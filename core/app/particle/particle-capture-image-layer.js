@@ -23,10 +23,8 @@ System.register([], function(exports_1) {
                  */
                 ParticleCaptureImageLayer.prototype.addImageFromImageData = function (imageData) {
                     this.removeImage();
-                    var base64 = "data:image/jpeg;base64," + imageData.replace("file:///", "");
+                    var base64 = "data:image/png;base64," + imageData.replace("file:///", "");
                     this.captureImage = new createjs.Bitmap(base64);
-                    this.captureImage.scaleX = 0.3;
-                    this.captureImage.scaleY = 0.3;
                     this.addChild(this.captureImage);
                 };
                 /**

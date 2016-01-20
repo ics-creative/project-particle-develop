@@ -10,15 +10,19 @@ System.register([], function(exports_1) {
             PartcicleImageImporter = (function () {
                 function PartcicleImageImporter() {
                 }
-                /*
+                /**
                  * ネイティブ機能を使ってカメラを撮影します。
                  */
-                PartcicleImageImporter.prototype.getCapture = function () {
+                PartcicleImageImporter.prototype.getCapture = function (canvasWidth, canvasHeight) {
                     var _this = this;
                     return new Promise(function (onResolve, onReject) {
                         navigator.camera.getPicture(function (imageData) { return _this.cameraSuccessHandler(imageData, onResolve); }, function (errorMessage) { return _this.cameraFailHandler(errorMessage, onReject); }, {
-                            quality: 50,
-                            destinationType: Camera.DestinationType.DATA_URL
+                            quality: 70,
+                            destinationType: Camera.DestinationType.DATA_URL,
+                            targetWidth: canvasWidth,
+                            targetHeight: canvasHeight,
+                            correctOrientation: true,
+                            encodingType: Camera.EncodingType.PNG
                         });
                     });
                 };
