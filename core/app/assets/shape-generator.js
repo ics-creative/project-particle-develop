@@ -8,7 +8,6 @@ System.register([], function(exports_1) {
         execute: function() {
             ShapeGenerator = (function () {
                 function ShapeGenerator() {
-                    this.assetList = ["blur_circle", "circle", "flower", "heart", "kirakira", "kirakira2", "reverse_blur_circle", "square", "star", "star_10", "triangle"];
                     this.shapeObjects = new Object();
                     this.shapeObjects["blur_circle"] = lib.blur_circle;
                     this.shapeObjects["circle"] = lib.circle;

@@ -7,21 +7,11 @@
           aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">Shapes</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" *ngFor="#shapeId of shapeIdList">
 
         <div class="col-sm-3" (click)="selectShape('star')">
-          ☆
+          <img src="images/shape/{{shapeId}}.png">
         </div>
-        <div class="col-sm-3" (click)="selectShape('heart')">
-          ♡
-        </div>
-        <div class="col-sm-3"(click)="selectShape('mail-face')">
-          〠
-        </div>
-        <div class="col-sm-3" (click)="selectShape('mail-mark')">
-          〒
-        </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

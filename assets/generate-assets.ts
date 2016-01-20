@@ -15,8 +15,8 @@ function exportAssets(){
   pathArr.pop();
 
   var exportClassPath = pathArr.join("/");
-
-  exportClassPath = exportClassPath + "/core/app/assets/"
+  let exportShapeClassPath = exportClassPath +  "/core/app/assets/";
+  let exportShapeDataClassPath = exportClassPath +  "/core/app/data/";
 
   var exportPNGPath = pathArr.join("/");
 
@@ -48,11 +48,8 @@ function exportAssets(){
 
 export class ShapeGenerator {
   shapeObjects:Object;
-  assetList:string[];
 
   constructor () {
-
-    this.assetList = ${assetArrayString};
     this.shapeObjects = new Object();
 ${assetHash}
   }
@@ -61,7 +58,23 @@ ${assetHash}
     return new this.shapeObjects[id]();
   }
 }`
-  FLfile.write(exportClassPath +  "shape-generator.ts", generatingClass );
+
+
+  FLfile.write(exportShapeClassPath +  "shape-generator.ts", generatingClass );
+
+  let generatingDataClass = `/**
+ * Created by 「${flaName}」/「generate-assets.jsfl」 on ${date}
+ */
+
+export class ShapeData {
+  public assetList:string[];
+
+  constructor () {
+    this.assetList = ${assetArrayString};
+  }
+}`
+
+  FLfile.write(exportShapeDataClassPath +  "shape-data.ts", generatingDataClass );
 }
 
 exportAssets();

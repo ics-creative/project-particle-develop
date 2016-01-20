@@ -85,7 +85,7 @@ export class DrawingData {
     this.finishScale = 1;
     this.finishScaleVariance = 0;
 
-    this.shapeIdList = [ParticleShapeTypes.Star, ParticleShapeTypes.MailFace, ParticleShapeTypes.Heart, ParticleShapeTypes.MailMark];
+    this.shapeIdList = ["circle"];
 
     this.friction
 

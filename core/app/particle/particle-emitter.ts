@@ -72,7 +72,6 @@ export class ParticleEmitter {
       var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
       particle.particleShape.alpha = alpha;
 
-
       var scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent;
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
 
@@ -176,7 +175,7 @@ export class ParticleEmitter {
     let shapeId = ( this.drawingData.shapeIdList.length == 0 ) ? '' : this.drawingData.shapeIdList[r]
 
 
-    var shape = this.shapeGenerator.generateShape("star");
+    var shape = this.shapeGenerator.generateShape(shapeId);
     particle.particleShape.addChild(shape);
 
   }

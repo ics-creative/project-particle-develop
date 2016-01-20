@@ -97,7 +97,7 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                         var color = _this.drawingData.startColor;
                         var r = Math.floor(Math.random() * _this.drawingData.shapeIdList.length);
                         var shapeId = (_this.drawingData.shapeIdList.length == 0) ? '' : _this.drawingData.shapeIdList[r];
-                        var shape = _this.shapeGenerator.generateShape("star");
+                        var shape = _this.shapeGenerator.generateShape(shapeId);
                         particle.particleShape.addChild(shape);
                     };
                     this.range = function (minValue, maxValue, value) {

@@ -6,7 +6,8 @@ function exportAssets() {
     var flaName = pathArr.pop();
     pathArr.pop();
     var exportClassPath = pathArr.join("/");
-    exportClassPath = exportClassPath + "/core/app/assets/";
+    var exportShapeClassPath = exportClassPath + "/core/app/assets/";
+    var exportShapeDataClassPath = exportClassPath + "/core/app/data/";
     var exportPNGPath = pathArr.join("/");
     exportPNGPath = exportPNGPath + "/core/images/shape/";
     fl.trace(exportPNGPath);
@@ -26,8 +27,10 @@ function exportAssets() {
     }
     var date = new Date().toDateString();
     var assetArrayString = "[" + assetList.join(",") + "]";
-    var generatingClass = "/**\n * Created by \u300C" + flaName + "\u300D/\u300Cgenerate-assets.jsfl\u300D on " + date + "\n */\n\nexport class ShapeGenerator {\n  shapeObjects:Object;\n  assetList:string[];\n\n  constructor () {\n\n    this.assetList = " + assetArrayString + ";\n    this.shapeObjects = new Object();\n" + assetHash + "\n  }\n\n  generateShape(id:string) {\n    return new this.shapeObjects[id]();\n  }\n}";
-    FLfile.write(exportClassPath + "shape-generator.ts", generatingClass);
+    var generatingClass = "/**\n * Created by \u300C" + flaName + "\u300D/\u300Cgenerate-assets.jsfl\u300D on " + date + "\n */\n\nexport class ShapeGenerator {\n  shapeObjects:Object;\n\n  constructor () {\n    this.shapeObjects = new Object();\n" + assetHash + "\n  }\n\n  generateShape(id:string) {\n    return new this.shapeObjects[id]();\n  }\n}";
+    FLfile.write(exportShapeClassPath + "shape-generator.ts", generatingClass);
+    var generatingDataClass = "/**\n * Created by \u300C" + flaName + "\u300D/\u300Cgenerate-assets.jsfl\u300D on " + date + "\n */\n\nexport class ShapeData {\n  public assetList:string[];\n\n  constructor () {\n    this.assetList = " + assetArrayString + ";\n  }\n}";
+    FLfile.write(exportShapeDataClassPath + "shape-data.ts", generatingDataClass);
 }
 exportAssets();
 //# sourceMappingURL=generate-assets.js.map

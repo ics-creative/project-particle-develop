@@ -4,11 +4,8 @@
 
 export class ShapeGenerator {
   shapeObjects:Object;
-  assetList:string[];
 
   constructor () {
-
-    this.assetList = ["blur_circle","circle","flower","heart","kirakira","kirakira2","reverse_blur_circle","square","star","star_10","triangle"];
     this.shapeObjects = new Object();
     this.shapeObjects["blur_circle"] = lib.blur_circle
     this.shapeObjects["circle"] = lib.circle
@@ -25,6 +22,6 @@ export class ShapeGenerator {
   }
 
   generateShape(id:string) {
-    return new this.shapeObjects[id]();
+    return new this.shapeObjects[id]():
   }
 }
