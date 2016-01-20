@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./color-property.component"], function(exports_1) {
+System.register(["angular2/core"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,33 +8,29 @@ System.register(["angular2/core", "./color-property.component"], function(export
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, color_property_component_1;
-    var PropertyPanel;
+    var core_1;
+    var ColorPropertyPanel;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (color_property_component_1_1) {
-                color_property_component_1 = color_property_component_1_1;
             }],
         execute: function() {
-            PropertyPanel = (function () {
-                function PropertyPanel() {
+            ColorPropertyPanel = (function () {
+                function ColorPropertyPanel() {
                 }
-                PropertyPanel = __decorate([
+                ColorPropertyPanel = __decorate([
                     core_1.Component({
-                        selector: "property-panel",
-                        templateUrl: "app/components/template/property.html",
-                        inputs: ["drawingData"],
-                        directives: [color_property_component_1.ColorPropertyPanel]
+                        selector: "color-property-panel",
+                        templateUrl: "app/components/template/color-property.html",
+                        inputs: ["colorData"]
                     }), 
                     __metadata('design:paramtypes', [])
-                ], PropertyPanel);
-                return PropertyPanel;
+                ], ColorPropertyPanel);
+                return ColorPropertyPanel;
             })();
-            exports_1("PropertyPanel", PropertyPanel);
+            exports_1("ColorPropertyPanel", ColorPropertyPanel);
         }
     }
 });
-//# sourceMappingURL=property.component.js.map
+//# sourceMappingURL=color-property.component.js.map

@@ -109,9 +109,12 @@ export class ParticleCanvas {
   }
 
   update = (data:DrawingData) => {
-    this.backgroundColorCommand.style = data.bgColor;
-    this.backgroundSize.w = data.width;
-    this.backgroundSize.h = data.height;
+
+    if( data.width != this.backgroundSize.w || data.height != this.backgroundSize.h ) {
+      this.backgroundColorCommand.style = data.bgColor;
+      this.backgroundSize.w = data.width;
+      this.backgroundSize.h = data.height;
+    }
 
     this.particleEmitter.update(data);
 

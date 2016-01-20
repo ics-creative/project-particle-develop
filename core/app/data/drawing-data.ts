@@ -1,4 +1,6 @@
 import {ParticleShapeTypes} from "../particle/particle-shape-types";
+import {ColorData} from "./color-data";
+
 export class DrawingData {
   bgColor:string;
   width:number;
@@ -44,6 +46,11 @@ export class DrawingData {
 
   shapeIdList:string[];
 
+
+
+  startColor:ColorData;
+  finishColor:ColorData;
+
   constructor() {
 
     this.bgColor = "#00000";
@@ -85,11 +92,15 @@ export class DrawingData {
     this.finishScale = 1;
     this.finishScaleVariance = 0;
 
-    this.shapeIdList = ["circle"];
+    this.shapeIdList = ["kirakira"];
 
     this.friction
 
     this.emitFrequency = 1;
+
+
+    this.startColor = new ColorData();
+    this.finishColor = new ColorData();
   }
 
   into(obj:Object) {

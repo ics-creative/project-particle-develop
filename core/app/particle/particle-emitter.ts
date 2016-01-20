@@ -4,6 +4,7 @@ import {ParticleShapeTypes} from "./particle-shape-types";
 import {Particle} from "./particle";
 import {DrawingData} from "../drawing-data";
 import {ShapeGenerator} from "../assets/shape-generator";
+import {ColorData} from "../data/color-data";
 /**
  * Created by nyamogera on 2016/01/15.
  */
@@ -169,13 +170,27 @@ export class ParticleEmitter {
 
     particle.particleShape.removeAllChildren();
 
-    let color = this.drawingData.startColor;
+    var startColor:ColorData = this.drawingData.startColor;
+
+    var hue = parseInt( startColor.hue );
+    var satuation = parseInt( startColor.satuation );
+    var luminance = parseInt( startColor.luminance );
+
+    var color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
     let r = Math.floor(Math.random() * this.drawingData.shapeIdList.length);
     let shapeId = ( this.drawingData.shapeIdList.length == 0 ) ? '' : this.drawingData.shapeIdList[r]
 
 
     var shape = this.shapeGenerator.generateShape(shapeId);
+    if( shape.hasOwnProperty("command") ) {
+
+      var myShape = shape.command;
+      myShape.style = color;
+    }
+
+    var container:createjs.Container = shape;
+
     particle.particleShape.addChild(shape);
 
   }

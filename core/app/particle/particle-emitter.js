@@ -94,10 +94,19 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     };
                     this.generateShape = function (particle, shapeIdList) {
                         particle.particleShape.removeAllChildren();
-                        var color = _this.drawingData.startColor;
+                        var startColor = _this.drawingData.startColor;
+                        var hue = parseInt(startColor.hue);
+                        var satuation = parseInt(startColor.satuation);
+                        var luminance = parseInt(startColor.luminance);
+                        var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
                         var r = Math.floor(Math.random() * _this.drawingData.shapeIdList.length);
                         var shapeId = (_this.drawingData.shapeIdList.length == 0) ? '' : _this.drawingData.shapeIdList[r];
                         var shape = _this.shapeGenerator.generateShape(shapeId);
+                        if (shape.hasOwnProperty("command")) {
+                            var myShape = shape.command;
+                            myShape.style = color;
+                        }
+                        var container = shape;
                         particle.particleShape.addChild(shape);
                     };
                     this.range = function (minValue, maxValue, value) {
