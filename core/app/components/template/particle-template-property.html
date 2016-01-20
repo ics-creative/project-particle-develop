@@ -1,6 +1,6 @@
 <div class="modal-body" *ngFor="#template of templateList">
 
-  <div (click)="selectTemplate(template)">
-    テンプレ
+  <div (click)="selectTemplate(template.property)">
+    <img src="images/particle-template/{{template.name}}.png">
   </div>
 </div>
