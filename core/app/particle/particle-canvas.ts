@@ -1,4 +1,5 @@
-///<reference path="../../typings/tsd.d.ts" />
+///<reference path="../" />
+///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 
 import {DrawingData} from "../drawing-data";
 import {Viewport} from "../enum/view-port";

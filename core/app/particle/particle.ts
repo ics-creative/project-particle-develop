@@ -1,4 +1,4 @@
-///<reference path="../../typings/tsd.d.ts" />
+///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 
 import {ColorData} from "../data/color-data";
 /**

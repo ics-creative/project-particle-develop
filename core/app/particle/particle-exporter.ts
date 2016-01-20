@@ -1,4 +1,4 @@
-///<reference path="../../typings/tsd.d.ts" />
+///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 
 declare class SVGExporter {
   constructor(stage:createjs.Container, value1:boolean, value2:boolean, value3:boolean);

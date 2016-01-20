@@ -1,3 +1,5 @@
+///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+
 "use strict";
 
 /**
