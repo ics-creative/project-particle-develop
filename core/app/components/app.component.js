@@ -38,7 +38,10 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                     this.drawingData = new drawing_data_1.DrawingData();
                 }
                 AppComponent.prototype.handleSVGClick = function () {
-                    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+                    var _this = this;
+                    this.stageComponent.exportSVG().then(function () {
+                        _this.openSVGExportWindow();
+                    });
                 };
                 AppComponent.prototype.openSVGExportWindow = function () {
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));

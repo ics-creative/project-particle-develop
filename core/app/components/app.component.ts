@@ -26,7 +26,9 @@ export class AppComponent {
   }
 
   private handleSVGClick() {
-    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+    this.stageComponent.exportSVG().then(() => {
+      this.openSVGExportWindow();
+    });
   }
 
   private openSVGExportWindow() {
