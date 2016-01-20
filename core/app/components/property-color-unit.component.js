@@ -25,7 +25,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 PropertyColorUnit = __decorate([
                     core_1.Component({
                         selector: "color-unit-property-panel",
-                        templateUrl: "app/components/template/color-unit-property.html",
+                        templateUrl: "app/components/template/property-color-unit.html",
                         inputs: ["colorData"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 

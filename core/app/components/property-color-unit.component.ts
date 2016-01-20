@@ -4,7 +4,7 @@ import {InputRangeComponent} from "./input-range.component";
 
 @Component({
   selector: "color-unit-property-panel",
-  templateUrl: "app/components/template/color-unit-property.html",
+  templateUrl: "app/components/template/property-color-unit.html",
   inputs: ["colorData"],
   directives: [InputRangeComponent]
 })
