@@ -6,7 +6,7 @@ import {ShapeData} from "../data/shape-data";
 @Component({
   selector: "shape-property-panel",
   templateUrl: "app/components/template/shape-property.html",
-  inputs: ["drawingData","shapeIdList"]
+  inputs: ["drawingData", "shapeIdList"]
 })
 
 export class ShapePropertyModal {
@@ -14,14 +14,14 @@ export class ShapePropertyModal {
   private temporarySelect:string;
   private shapeIdList:string[] = new ShapeData().assetList;
 
-  selectShape = (shapeId) => {
+  selectShape(shapeId:string) {
     console.log(`selectapp:${shapeId}`);
     //  ラジオボタンとかにすればテンポラリ選択不要そう
     this.temporarySelect = shapeId;
     this.drawingData.shapeIdList = [this.temporarySelect];
   }
 
-  saveChanges = () => {
+  saveChanges () {
     // TODO:配列で選択できるようにする
     this.drawingData.shapeIdList = [this.temporarySelect];
   }
