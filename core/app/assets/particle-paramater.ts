@@ -11,6 +11,7 @@ export class ParticleParamater{
     this.list.push( this.setting1 );
     this.list.push( this.setting2 );
     this.list.push( this.setting3 );
+    this.list.push( this.setting4 );
   }
 
   setting1 = {
@@ -153,4 +154,50 @@ export class ParticleParamater{
       "luminanceVariance": 0
     }
   }
+  setting4 = {
+    "bgColor": "#00000",
+    "width": 500,
+    "height": 500,
+    "friction": "0",
+    "startX": "262",
+    "startXVariance": "25",
+    "startY": "381",
+    "startYVariance": "23",
+    "lifeSpan": "113.24",
+    "lifeSpanVariance": 30,
+    "initialDirection": "268.2",
+    "initialDirectionVariance": "0.8",
+    "initialSpeed": "1.8",
+    "initialSpeedVariance": "0",
+    "accelerationSpeed": "0",
+    "accelerationDirection": 0,
+    "startAlpha": 1,
+    "startAlphaVariance": 0,
+    "finishAlpha": "0.13",
+    "finishAlphaVariance": "0.08",
+    "startScale": "0.9",
+    "startScaleVariance": 0,
+    "finishScale": "0.31",
+    "finishScaleVariance": 0,
+    "shapeIdList": [
+      "circle"
+    ],
+    "emitFrequency": "3",
+    "startColor": {
+      "hue": "360",
+      "hueVariance": 0,
+      "satuation": "93.17",
+      "satuationVariance": 0,
+      "luminance": "41.49",
+      "luminanceVariance": 0
+    },
+    "finishColor": {
+      "hue": "32.07",
+      "hueVariance": "3.91",
+      "satuation": "17.16",
+      "satuationVariance": 0,
+      "luminance": "32.8",
+      "luminanceVariance": 0
+    }
+  };
 }
