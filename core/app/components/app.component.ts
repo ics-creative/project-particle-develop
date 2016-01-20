@@ -9,31 +9,31 @@ import {ViewChild} from "angular2/core";
 import {ElementRef} from "angular2/core";
 
 @Component({
-    selector: `my-app`,
-    templateUrl: "app/components/template/app.html",
-    directives: [StageComponent, PropertyPanel, DesktopIOBox,  MobileIOBox]
+  selector: `my-app`,
+  templateUrl: "app/components/template/app.html",
+  directives: [StageComponent, PropertyPanel, DesktopIOBox, MobileIOBox]
 })
 
 export class AppComponent {
-    private drawingData:DrawingData;
-    @ViewChild("stageComponent") stageComponent:StageComponent;
-    @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
-    @ViewChild("desktopIOBox") desktopIOBox:DesktopIOBox;
-    @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
+  private drawingData:DrawingData;
+  @ViewChild("stageComponent") stageComponent:StageComponent;
+  @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
+  @ViewChild("desktopIOBox") desktopIOBox:DesktopIOBox;
+  @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
 
-    handleSVGClick() {
-        this.stageComponent.exportSVG().then(this.openSVGExportWindow);
-    }
+  constructor(element:ElementRef) {
+    this.drawingData = new DrawingData();
+  }
 
-    openSVGExportWindow = () => {
-        window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
-    };
+  private handleSVGClick() {
+    this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+  }
 
-    handleExportParamaterClick() {
-        window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
-    }
+  private openSVGExportWindow() {
+    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+  }
 
-    constructor(element:ElementRef) {
-        this.drawingData = new DrawingData();
-    }
+  private handleExportParamaterClick() {
+    window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
+  }
 }
