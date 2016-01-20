@@ -46,6 +46,13 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                             particle.particleShape.alpha = alpha;
                             var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
                             particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
+                            if (particle.colorCommand) {
+                                var hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue) * lifeParcent;
+                                var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation) * lifeParcent;
+                                var luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance) * lifeParcent;
+                                var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
+                                particle.colorCommand.style = color;
+                            }
                             //  パーティクルが死んでいたら、オブジェクトプールに移動
                             if (particle.currentLife < 0) {
                                 particle.isAlive = false;
@@ -95,18 +102,26 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     this.generateShape = function (particle, shapeIdList) {
                         particle.particleShape.removeAllChildren();
                         var startColor = _this.drawingData.startColor;
-                        var hue = parseInt(startColor.hue);
-                        var satuation = parseInt(startColor.satuation);
-                        var luminance = parseInt(startColor.luminance);
+                        var finishColor = _this.drawingData.finishColor;
+                        particle.startColor.hue = _this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
+                        particle.startColor.luminance = _this.getParam(startColor.luminance, startColor.luminanceVariance, false);
+                        particle.startColor.satuation = _this.getParam(startColor.satuation, startColor.satuationVariance, false);
+                        particle.finishColor.hue = _this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
+                        particle.finishColor.luminance = _this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
+                        particle.finishColor.satuation = _this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
+                        var hue = parseInt(particle.startColor.hue);
+                        var satuation = parseInt(particle.startColor.satuation);
+                        var luminance = parseInt(particle.startColor.luminance);
                         var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
                         var r = Math.floor(Math.random() * _this.drawingData.shapeIdList.length);
                         var shapeId = (_this.drawingData.shapeIdList.length == 0) ? '' : _this.drawingData.shapeIdList[r];
+                        particle.colorCommand = null;
                         var shape = _this.shapeGenerator.generateShape(shapeId);
                         if (shape.hasOwnProperty("command")) {
                             var myShape = shape.command;
                             myShape.style = color;
+                            particle.colorCommand = shape.command;
                         }
-                        var container = shape;
                         particle.particleShape.addChild(shape);
                     };
                     this.range = function (minValue, maxValue, value) {

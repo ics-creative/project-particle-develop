@@ -59,8 +59,6 @@ export class DrawingData {
 
     this.friction = 0;
 
-    this.startColor = "#FFFFFF";
-
     this.startX = 250;
     this.startXVariance = 50;
 
@@ -93,8 +91,6 @@ export class DrawingData {
     this.finishScaleVariance = 0;
 
     this.shapeIdList = ["kirakira"];
-
-    this.friction
 
     this.emitFrequency = 1;
 

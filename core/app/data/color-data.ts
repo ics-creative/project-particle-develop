@@ -14,13 +14,13 @@ export class ColorData{
 
   constructor() {
 
-    this.hue = 360;
+    this.hue = 50;
     this.hueVariance = 0;
 
-    this.satuation = 0;
+    this.satuation = 75;
     this.satuationVariance = 0;
 
-    this.luminance = 100;
+    this.luminance = 75;
     this.luminanceVariance = 0;
   }
 }

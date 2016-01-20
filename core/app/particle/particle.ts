@@ -1,5 +1,6 @@
 ///<reference path="../../typings/tsd.d.ts" />
 
+import {ColorData} from "../data/color-data";
 /**
  * Created by nyamogera on 2016/01/15.
  */
@@ -46,8 +47,17 @@ export class Particle {
   /** 終了時のスケール値です0〜1.0の間になります。 */
   public finishScale:number;
 
+  /** 開始時のカラーです。 */
+  public startColor:ColorData;
+  /** 終了時のカラーです。 */
+  public finishColor:ColorData ;
+  /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
+  public colorCommand:any;
 
   constructor() {
     this.particleShape = new createjs.Container;
+
+    this.startColor  = new ColorData();
+    this.finishColor  = new ColorData();
   }
 }

@@ -76,6 +76,18 @@ export class ParticleEmitter {
       var scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent;
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
 
+
+      if( particle.colorCommand ) {
+
+        var hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue ) * lifeParcent;
+        var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation ) * lifeParcent;
+        var luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance ) * lifeParcent;
+
+        var color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
+
+        particle.colorCommand.style = color;
+      }
+
       //  パーティクルが死んでいたら、オブジェクトプールに移動
       if (particle.currentLife < 0) {
         particle.isAlive = false;
@@ -171,10 +183,21 @@ export class ParticleEmitter {
     particle.particleShape.removeAllChildren();
 
     var startColor:ColorData = this.drawingData.startColor;
+    var finishColor:ColorData = this.drawingData.finishColor;
 
-    var hue = parseInt( startColor.hue );
-    var satuation = parseInt( startColor.satuation );
-    var luminance = parseInt( startColor.luminance );
+    particle.startColor.hue = this.getParam( startColor.hue, startColor.hueVariance, false ) % 360;
+    particle.startColor.luminance = this.getParam( startColor.luminance, startColor.luminanceVariance, false );
+    particle.startColor.satuation = this.getParam( startColor.satuation, startColor.satuationVariance, false );
+
+
+    particle.finishColor.hue = this.getParam( finishColor.hue, finishColor.hueVariance, false ) % 360;
+    particle.finishColor.luminance = this.getParam( finishColor.luminance, finishColor.luminanceVariance, false );
+    particle.finishColor.satuation = this.getParam( finishColor.satuation, finishColor.satuationVariance, false );
+
+
+    var hue = parseInt(  particle.startColor.hue );
+    var satuation = parseInt(  particle.startColor.satuation );
+    var luminance = parseInt(  particle.startColor.luminance );
 
     var color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
@@ -182,14 +205,16 @@ export class ParticleEmitter {
     let shapeId = ( this.drawingData.shapeIdList.length == 0 ) ? '' : this.drawingData.shapeIdList[r]
 
 
+    particle.colorCommand = null;
+
     var shape = this.shapeGenerator.generateShape(shapeId);
     if( shape.hasOwnProperty("command") ) {
 
       var myShape = shape.command;
       myShape.style = color;
-    }
 
-    var container:createjs.Container = shape;
+      particle.colorCommand = shape.command;
+    }
 
     particle.particleShape.addChild(shape);
 
