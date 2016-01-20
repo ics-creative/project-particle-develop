@@ -110,6 +110,30 @@ body {
     }
   }
 
+  hr {
+    border-top: 1px solid #1c1e22;
+    border-bottom: 1px solid #333333;
+  }
+
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+
+    $color: #333;
+    @include gradient-vertical-three-colors(lighten($color, 6%), $color, 60%, darken($color, 4%));
+    border-bottom-color: #2a2a2a;
+    cursor: default;
+  }
+  .nav-tabs > li {
+    & > a {
+      color: #888;
+    }
+
+    $color: #333;
+    @include gradient-vertical-three-colors(darken($color, 6%), $color, 60%, lighten($color, 4%));
+
+    text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 0px +1px 1px rgba(255, 255, 255, 0.6);
+    border-bottom-color: black;
+  }
+
 }
 
 #myCanvas {
