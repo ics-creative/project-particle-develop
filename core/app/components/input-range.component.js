@@ -28,7 +28,7 @@ System.register(["angular2/core"], function(exports_1) {
                     core_1.Component({
                         selector: "input-range",
                         templateUrl: "app/components/template/input-range.html",
-                        inputs: ["drawingData", "targetProperty"]
+                        inputs: ["drawingData", "targetProperty", "label", "min", "max", "step"]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], InputRangeComponent);
