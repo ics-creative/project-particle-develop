@@ -1,10 +1,8 @@
-///<reference path="stage.component.ts"/>
-///<reference path="property.component.ts"/>
-///<reference path="shape-property.component.ts"/>
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/drawing-data";
 import {PropertyPanel} from "./property.component";
-import {MobilePropertyPanel} from "./mobile-property.component";
+import {DesktopIOBox} from "./desktop-io.component";
+import {MobileIOBox} from "./mobile-io.component";
 import {ShapePropertyModal} from "./shape-property.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
@@ -14,14 +12,15 @@ import {ElementRef} from "angular2/core";
 @Component({
     selector: `my-app`,
     templateUrl: "app/components/template/app.html",
-    directives: [StageComponent, PropertyPanel, MobilePropertyPanel, ShapePropertyModal],
+    directives: [StageComponent, PropertyPanel, DesktopIOBox,  MobileIOBox, ShapePropertyModal]
 })
 
 export class AppComponent {
     private drawingData:DrawingData;
     @ViewChild("stageComponent") stageComponent:StageComponent;
     @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
-    @ViewChild("mobilePropertyPanel") mobilePropertyPanel:MobilePropertyPanel;
+    @ViewChild("desktopIOBox") desktopIOBox:DesktopIOBox;
+    @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
 
     handleSVGClick() {
         this.stageComponent.exportSVG().then(this.openSVGExportWindow);

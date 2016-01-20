@@ -82,7 +82,7 @@ System.register(["../enum/view-port", "./particle-emitter", "./particle-exporter
                     var windowWidth = window.innerWidth;
                     var windowHeight = window.innerHeight;
                     canvasWidth = windowWidth;
-                    canvasHeight = windowHeight - 50;
+                    canvasHeight = windowHeight - 100;
                     if (windowWidth > view_port_1.Viewport.xs)
                         canvasWidth -= 400;
                     // ステージのサイズをwindowのサイズに変更

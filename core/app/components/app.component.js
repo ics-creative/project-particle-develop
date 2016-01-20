@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../data/drawing-data", "./property.component", "./mobile-property.component", "./shape-property.component", "./stage.component"], function(exports_1) {
+System.register(["angular2/core", "../data/drawing-data", "./property.component", "./desktop-io.component", "./mobile-io.component", "./shape-property.component", "./stage.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, drawing_data_1, property_component_1, mobile_property_component_1, shape_property_component_1, stage_component_1, core_2, core_3;
+    var core_1, drawing_data_1, property_component_1, desktop_io_component_1, mobile_io_component_1, shape_property_component_1, stage_component_1, core_2, core_3;
     var AppComponent;
     return {
         setters:[
@@ -23,8 +23,11 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
             function (property_component_1_1) {
                 property_component_1 = property_component_1_1;
             },
-            function (mobile_property_component_1_1) {
-                mobile_property_component_1 = mobile_property_component_1_1;
+            function (desktop_io_component_1_1) {
+                desktop_io_component_1 = desktop_io_component_1_1;
+            },
+            function (mobile_io_component_1_1) {
+                mobile_io_component_1 = mobile_io_component_1_1;
             },
             function (shape_property_component_1_1) {
                 shape_property_component_1 = shape_property_component_1_1;
@@ -56,14 +59,18 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                     __metadata('design:type', property_component_1.PropertyPanel)
                 ], AppComponent.prototype, "propertyPanel", void 0);
                 __decorate([
-                    core_2.ViewChild("mobilePropertyPanel"), 
-                    __metadata('design:type', mobile_property_component_1.MobilePropertyPanel)
-                ], AppComponent.prototype, "mobilePropertyPanel", void 0);
+                    core_2.ViewChild("desktopIOBox"), 
+                    __metadata('design:type', desktop_io_component_1.DesktopIOBox)
+                ], AppComponent.prototype, "desktopIOBox", void 0);
+                __decorate([
+                    core_2.ViewChild("mobileIOBox"), 
+                    __metadata('design:type', mobile_io_component_1.MobileIOBox)
+                ], AppComponent.prototype, "mobileIOBox", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
                         templateUrl: "app/components/template/app.html",
-                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, mobile_property_component_1.MobilePropertyPanel, shape_property_component_1.ShapePropertyModal],
+                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, desktop_io_component_1.DesktopIOBox, mobile_io_component_1.MobileIOBox, shape_property_component_1.ShapePropertyModal]
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])
                 ], AppComponent);

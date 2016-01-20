@@ -1,10 +1,15 @@
-
 $sideWidth:400;
-
 body {
   height: 100%;
   overflow: hidden;
 }
+
+.navbar
+{
+  margin-bottom: 0;
+}
+
+
 #main {
   width: 100%;
   float: left;
@@ -25,7 +30,3 @@ body {
   border:1px solid #f00;
 }
 
-#mobilePropertyPanel
-{
-  height: 50px;
-}

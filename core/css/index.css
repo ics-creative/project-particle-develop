@@ -2,6 +2,9 @@ body {
   height: 100%;
   overflow: hidden; }
 
+.navbar {
+  margin-bottom: 0; }
+
 #main {
   width: 100%;
   float: left; }
@@ -18,8 +21,5 @@ body {
 
 #myCanvas {
   border: 1px solid #f00; }
-
-#mobilePropertyPanel {
-  height: 50px; }
 
 /*# sourceMappingURL=index.css.map */

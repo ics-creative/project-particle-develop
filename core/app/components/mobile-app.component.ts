@@ -1,13 +1,7 @@
 import {AppComponent} from "./app.component";
-/**
- * Created by nyamogera on 2016/01/17.
- */
-
-
 export class MobileAppComponent extends AppComponent {
-
   handleSVGClick() {
-    //this.stageComponent.exportSVG().then(this.openSVGExportWindow);
+    alert("モバイルアプリでは使用不可能です");
   }
 
   handlePNGClick() {
@@ -18,12 +12,6 @@ export class MobileAppComponent extends AppComponent {
   handleCamera() {
     this.stageComponent.runCamera().then(function () {
     });
-  }
-
-
-  openSVGExportWindow = () => {
-    alert("モバイルアプリでは使用不可能です");
-    //window.open("data:image/svg+xml,\n"+encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }
 
   handleExportParamaterClick() {
