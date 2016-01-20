@@ -44,6 +44,7 @@ function exportAssets(){
 
   let generatingClass = `/**
  * Created by 「${flaName}」/「generate-assets.jsfl」 on ${date}
+ * !!!!!このコードはJSFLから自動生成されたコードです。修正する場合はご注意ください。!!!!!
  */
 
 export class ShapeGenerator {
@@ -64,6 +65,7 @@ ${assetHash}
 
   let generatingDataClass = `/**
  * Created by 「${flaName}」/「generate-assets.jsfl」 on ${date}
+ * !!!!!このコードはJSFLから自動生成されたコードです。修正する場合はご注意ください。!!!!!
  */
 
 export class ShapeData {
