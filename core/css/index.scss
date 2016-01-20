@@ -16,6 +16,11 @@ $body_color: #484848;
   filter: none;
 }
 
+@mixin btn-shadow-hover($color) {
+  @include gradient-vertical-three-colors(lighten($color, 8%), $color, 60%, darken($color, 6%));
+  filter: none;
+}
+
 @mixin btn-shadow-inverse($color) {
   @include gradient-vertical-three-colors(darken($color, 24%), darken($color, 18%), 40%, darken($color, 14%));
   filter: none;
@@ -79,7 +84,7 @@ $body_color: #484848;
   @include btn-shadow($btn-primary-bg);
 
   &:hover {
-    @include btn-shadow-inverse($btn-primary-bg);
+    @include btn-shadow-hover($btn-primary-bg);
   }
 }
 
@@ -521,6 +526,8 @@ body {
   }
 }
 
+
+
 #propertyPanel {
   width: $sideWidth + px;
   margin-left: -  ($sideWidth + $panelSpace) + px;
@@ -528,10 +535,17 @@ body {
   float: right;
   max-height: 100%;
   overflow-y: scroll;
+
+  .panel {
+    background : #333;
+    height : 100%;
+
+    color : #8b9292;
+  }
+
 }
 
 #myCanvas {
-  border: 1px solid #f00;
 }
 
 
