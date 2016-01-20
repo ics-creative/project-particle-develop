@@ -1,7 +1,6 @@
 /**
- * Created by nyamogera on 2016/01/20.
+ * ルーラーの制御クラスです。
  */
-
 export class Ruler {
 
   public container:createjs.Container;
@@ -10,6 +9,8 @@ export class Ruler {
   private verticalTextList:createjs.Text[];
   private horizontalTextList:createjs.Text[];
   private stage:createjs.Stage;
+
+  private FONT_COLOR = "#888";
 
   public width:number;
   public height:number;
@@ -27,72 +28,77 @@ export class Ruler {
     this.horizontalTextList = [];
   }
 
-  setSize(ws:number, hs:number) {
+  public setSize(ws:number, hs:number) {
     this.width = ws;
     this.height = hs;
 
     let distance:number = 35;
-    var w:number = Math.floor(this.width / distance);
-    var h:number = Math.floor(this.height / distance);
+    let w:number = Math.floor(this.width / distance);
+    let h:number = Math.floor(this.height / distance);
 
     let graphics = this.base.graphics;
     graphics.clear();
-    graphics.beginStroke("white");
+    graphics.beginStroke(this.FONT_COLOR);
 
-    graphics.beginFill(0, 0, this.w, this.h);
-    for (var i = 0; i < w; i++) {
+    for (let i = 0; i < w; i++) {
       let ii = (i);
       if (this.horizontalTextList.length <= ii) {
-        this.horizontalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", "white"));
+        this.horizontalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", this.FONT_COLOR));
       }
       this.horizontalTextList[ii].visible = true;
       this.horizontalTextList[ii].x = (i * distance);
       this.horizontalTextList[ii].y = -20;
+      this.horizontalTextList[ii].rotation = -90;
       this.horizontalTextList[ii].textAlign = "center";
+      this.horizontalTextList[ii].textBaseline = "middle";
       this.container.addChild(this.horizontalTextList[ii]);
 
       graphics.moveTo((i * distance), -5);
       graphics.lineTo((i * distance), 0);
     }
-    for (var i = w; i < this.horizontalTextList.length; i++) {
+    for (let i = w; i < this.horizontalTextList.length; i++) {
       this.horizontalTextList[i].visible = false;
     }
 
-    for (var i = 0; i < h; i++) {
+    for (let i = 0; i < h; i++) {
       let ii = (i);
       if (this.verticalTextList.length <= ii) {
-        this.verticalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", "white"));
+        this.verticalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", this.FONT_COLOR));
       }
       this.verticalTextList[ii].visible = true;
       this.verticalTextList[ii].y = (i * distance);
       this.verticalTextList[ii].x = -20;
       this.verticalTextList[ii].textAlign = "right";
+      this.verticalTextList[ii].textBaseline = "middle";
       this.container.addChild(this.verticalTextList[ii]);
 
       graphics.moveTo(-5, (i * distance));
       graphics.lineTo(0, (i * distance));
     }
 
-    for (var i = h; i < this.verticalTextList.length; i++) {
+    for (let i = h; i < this.verticalTextList.length; i++) {
       this.verticalTextList[i].visible = false;
     }
+
+    graphics.beginFill("red")
+    graphics.drawRect(0, 0, this.width, this.height);
   }
 
-  update() {
+  public update() {
     let mousePt = this.container.globalToLocal(this.stage.mouseX, this.stage.mouseY);
     let graphics = this.mouseBase.graphics;
 
     graphics.clear();
-    graphics.beginStroke("skyblue");
+    graphics.beginStroke("#6699ff");
 
     if (mousePt.x >= 0 && mousePt.x <= this.width) {
       graphics.moveTo(mousePt.x, 0);
-      graphics.lineTo(mousePt.x, -8);
+      graphics.lineTo(mousePt.x, -16);
     }
 
     if (mousePt.y >= 0 && mousePt.y <= this.height) {
       graphics.moveTo(0, mousePt.y);
-      graphics.lineTo(-8, mousePt.y);
+      graphics.lineTo(16, mousePt.y);
     }
 
   }
