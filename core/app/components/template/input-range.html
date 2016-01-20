@@ -1,11 +1,12 @@
+<label>{{label}}</label>
 <div class="row">
   <div class="col-md-8">
-    <input type="range" class="topcoat-range"
-           min="0" max="1" step="0.01"
+    <input type="range"
+           class="topcoat-range"
+           min="{{min}}" max="{{max}}" step="{{step}}"
            [(ngModel)]="drawingData[targetProperty]"
            placeholder="targetProperty"
-          (change)="handleChange()"
-    />
+           (change)="handleChange()"/>
   </div>
   <div class="col-md-4">
     {{drawingData[targetProperty]}}

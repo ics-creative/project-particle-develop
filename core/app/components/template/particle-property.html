@@ -1,69 +1,76 @@
 <h4>Particle Setting</h4>
 
 <input-range
-        [drawingData]="drawingData"
-        targetProperty="startAlpha"
         label="Start Alpha"
-        min="0"
-        max="1"
-        step="0.01"
-        >
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="startAlpha">
 </input-range>
 
-<label>Start Alpha</label>
-<div class="row">
-  <div class="col-md-8">
-    <input type="range" class="topcoat-range"
-           min="0" max="1" step="0.01"
-           [(ngModel)]="drawingData.startAlpha"
-           placeholder="startAlpha"/>
-  </div>
-  <div class="col-md-4">
-      {{drawingData.startAlpha}}
-  </div>
-</div>
-<input type="range" class="topcoat-range" min="0" max="1" step="0.01"
-       [(ngModel)]="drawingData.startAlphaVariance"
-       placeholder="startAlphaVariance"/>
-{{drawingData.startAlphaVariance}}
-
-<hr>
-finish-alpha
-<input type="range" class="topcoat-range" min="0" max="1" step="0.01" [(ngModel)]="drawingData.finishAlpha"
-       placeholder="finishAlpha"/>
-{{drawingData.finishAlpha}}
-<input type="range" class="topcoat-range" min="0" max="1" step="0.01"
-       [(ngModel)]="drawingData.finishAlphaVariance"
-       placeholder="finishAlphaVariance"/>
-{{drawingData.finishAlphaVariance}}
+<input-range
+        label="Start Alpha Variance"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="startAlphaVariance">
+</input-range>
 
 
-<hr>
-start-scale
-<input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.startScale"
-       placeholder="startScale"/>
-{{drawingData.startScale}}
-<input type="range" class="topcoat-range" min="0" max="5" step="0.01"
-       [(ngModel)]="drawingData.startScaleVariance"
-       placeholder="startScaleVariance"/>
-{{drawingData.startScaleVariance}}
+<input-range
+        label="End Alpha"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="finishAlpha">
+</input-range>
 
-<hr>
-finish-scale
-<input type="range" class="topcoat-range" min="0" max="5" step="0.01" [(ngModel)]="drawingData.finishScale"
-       placeholder="finishScale"/>
-{{drawingData.finishScale}}
-<input type="range" class="topcoat-range" min="0" max="5" step="0.01"
-       [(ngModel)]="drawingData.finishScaleVariance"
-       placeholder="finishScaleVariance"/>
-{{drawingData.finishScaleVariance}}
+<input-range
+        label="End Alpha Variance"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="finishAlphaVariance">
+</input-range>
 
-<hr>
-life span
-<input type="range" class="topcoat-range" min="10" max="500" step="0.01" [(ngModel)]="drawingData.lifeSpan"
-       placeholder="lifeSpan"/>
-{{drawingData.lifeSpan}}
-<input type="range" class="topcoat-range" min="0" max="500" step="0.01"
-       [(ngModel)]="drawingData.lifeSpanVariance"
-       placeholder="lifeSpanVariance"/>
-{{drawingData.lifeSpanVariance}}
+
+<input-range
+        label="Start Scale"
+        min="0.0" max="5.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="startScale">
+</input-range>
+
+<input-range
+        label="Start Scale Variance"
+        min="0.0" max="5.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="startScaleVariance">
+</input-range>
+
+
+<input-range
+        label="End Scale"
+        min="0.0" max="5.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="finishScale">
+</input-range>
+
+<input-range
+        label="End Scale Variance"
+        min="0.0" max="5.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="finishScaleVariance">
+</input-range>
+
+
+<input-range
+        label="Life Span"
+        min="10" max="500" step="1.0"
+        [drawingData]="drawingData"
+        targetProperty="lifeSpan">
+</input-range>
+
+<input-range
+        label="Life Span Variance"
+        min="10" max="500" step="1.0"
+        [drawingData]="drawingData"
+        targetProperty="lifeSpanVariance">
+</input-range>
+
