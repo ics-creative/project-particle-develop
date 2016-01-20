@@ -33,8 +33,11 @@ System.register(["angular2/core", "../data/shape-data", "./property-shape-itemre
                         this.drawingData.shapeIdList.push(shapeId);
                     }
                     else {
-                        // 削除
-                        this.drawingData.shapeIdList.splice(index, 1);
+                        // 2個以上のときのみ
+                        if (this.drawingData.shapeIdList.length >= 2) {
+                            // 削除
+                            this.drawingData.shapeIdList.splice(index, 1);
+                        }
                     }
                 };
                 PropertyShapePanel = __decorate([
