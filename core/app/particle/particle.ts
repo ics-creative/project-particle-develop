@@ -30,11 +30,6 @@ export class Particle {
   /** パーティクルが方向ベクトルです。 */
   public vy:number;
 
-  /** パーティクルの開始時の色です */
-  public startColor:string;
-  /** パーティクルの終了時の色です */
-  public finishColor:string;
-
   /** アルファのイージング関数です。 */
   public easingAlpha:(life:number)=>number;
   /** 開始アルファ値です0〜1.0の間になります。 */

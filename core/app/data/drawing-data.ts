@@ -6,9 +6,6 @@ export class DrawingData {
   width:number;
   height:number;
 
-
-  startColor:string;
-
   emitFrequency:number;
 
   lifeSpan:number;
