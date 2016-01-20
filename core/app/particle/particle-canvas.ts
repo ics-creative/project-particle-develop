@@ -1,6 +1,7 @@
 ///<reference path="../../typings/tsd.d.ts" />
 
 import {DrawingData} from "../drawing-data";
+import {Viewport} from "../enum/view-port";
 import {ParticleEmitter} from "./particle-emitter";
 import {ParticleExporter} from "./particle-exporter";
 import {PartcicleImageImporter} from "./particle-image-importer";
@@ -89,8 +90,19 @@ export class ParticleCanvas {
    * リサイズのイベント処理
    */
   private resizeHandler():void {
-    var canvasWidth:number = window.innerWidth - 400;
-    var canvasHeight:number = window.innerHeight - 50;
+
+    var canvasWidth:number;
+    var canvasHeight:number;
+
+    let windowWidth:number = window.innerWidth;
+    let windowHeight:number = window.innerHeight;
+
+    canvasWidth = windowWidth;
+    canvasHeight = windowHeight - 50;
+
+    if (windowWidth > Viewport.xs)
+      canvasWidth -= 400;
+
     // ステージのサイズをwindowのサイズに変更
     this.stage.canvas.width = canvasWidth;
     this.stage.canvas.height = canvasHeight;

@@ -1,9 +1,12 @@
 ///<reference path="../../typings/tsd.d.ts" />
-System.register(["./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer"], function(exports_1) {
-    var particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1;
+System.register(["../enum/view-port", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer"], function(exports_1) {
+    var view_port_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1;
     var ParticleCanvas;
     return {
         setters:[
+            function (view_port_1_1) {
+                view_port_1 = view_port_1_1;
+            },
             function (particle_emitter_1_1) {
                 particle_emitter_1 = particle_emitter_1_1;
             },
@@ -74,8 +77,14 @@ System.register(["./particle-emitter", "./particle-exporter", "./particle-image-
                  * リサイズのイベント処理
                  */
                 ParticleCanvas.prototype.resizeHandler = function () {
-                    var canvasWidth = window.innerWidth - 400;
-                    var canvasHeight = window.innerHeight - 50;
+                    var canvasWidth;
+                    var canvasHeight;
+                    var windowWidth = window.innerWidth;
+                    var windowHeight = window.innerHeight;
+                    canvasWidth = windowWidth;
+                    canvasHeight = windowHeight - 50;
+                    if (windowWidth > view_port_1.Viewport.xs)
+                        canvasWidth -= 400;
                     // ステージのサイズをwindowのサイズに変更
                     this.stage.canvas.width = canvasWidth;
                     this.stage.canvas.height = canvasHeight;

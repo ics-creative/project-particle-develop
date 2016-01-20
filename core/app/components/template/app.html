@@ -1,5 +1,5 @@
 
-<div class="navbar navbar-default">
+<div class="navbar navbar-default hidden-xs">
   <div class="container">
     ICS Draw
   </div>
@@ -19,11 +19,11 @@
     ></property-panel>
   </nav>
 </div>
-<nav id="spPropertyPanel" class="show-xs">
-  <sp-property-panel [drawingData]="drawingData"
+<nav id="mobilePropertyPanel" class="show-xs">
+  <mobile-property-panel [drawingData]="drawingData"
                      (exportPNGEvent)="handlePNGClick()"
                      (importCameraEvent)="handleCamera()"
-  ></sp-property-panel>
+  ></mobile-property-panel>
 </nav>
 
 <shape-property-modal [drawingData]="drawingData"></shape-property-modal>
