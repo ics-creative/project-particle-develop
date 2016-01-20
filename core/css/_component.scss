@@ -102,13 +102,10 @@ h1 {
     color: #8b9292;
 
     div.shapeListItem {
-      height: 64px;
-      line-height: 64px;
       text-align: center;
       background: inherit;
       cursor: pointer;
       border-radius: 5px;
-
       display: flex;
       align-items: center; /* 縦方向中央揃え */
       justify-content: center; /* 横方向中央揃え */

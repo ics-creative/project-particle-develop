@@ -2,11 +2,13 @@ import {Component} from "angular2/core";
 import {DrawingData} from "../data/drawing-data";
 import {EventEmitter} from 'angular2/core';
 import {ShapeData} from "../data/shape-data";
+import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component";
 
 @Component({
   selector: "shape-property-panel",
   templateUrl: "app/components/template/property-shape.html",
-  inputs: ["drawingData", "shapeIdList"]
+  inputs: ["drawingData", "shapeIdList"],
+  directives : [PropertyShapeItemRenderer]
 })
 
 /**

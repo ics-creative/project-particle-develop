@@ -7890,8 +7890,6 @@ h1 {
   color: #8b9292;
 }
 #propertyPanel .panel div.shapeListItem {
-  height: 64px;
-  line-height: 64px;
   text-align: center;
   background: inherit;
   cursor: pointer;
