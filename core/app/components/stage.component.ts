@@ -34,18 +34,16 @@ export class StageComponent implements AfterViewInit {
   ngAfterViewInit() {
     let canvas = this.myCanvas.nativeElement;
     this.particleCanvas = new ParticleCanvas(canvas, this.drawingData);
-    this.tick();
+
+    createjs.Ticker.timingMode = createjs.Ticker.RAF;
+    createjs.Ticker.on("tick", this.handleTick, this);
   }
 
   getParticleSVGString():string {
     return this.particleCanvas.getSVGString();
   }
 
-  tick() {
-    requestAnimationFrame(()=> {
-      this.tick()
-    });
-
+  private handleTick() {
     this.particleCanvas.update(this.drawingData);
   }
 }
