@@ -10,18 +10,20 @@
       <div class="panel-body">
         <stage #stageComponent [drawingData]="drawingData"></stage>
       </div>
-      <div id="fileIO">
-        <div class="row hidden-xs">
-          <desktop-io-box [drawingData]="drawingData"
-                          (exportSVGEvent)="handleSVGClick()"
-                          (exportParamaterEvent)="handleExportParamaterClick()"
-          ></desktop-io-box>
-        </div>
-        <div class="row show-xs hidden-sm hidden-md hidden-lg">
-          <mobile-io-box [drawingData]="drawingData"
-                         (exportPNGEvent)="handlePNGClick()"
-                         (importCameraEvent)="handleCamera()"
-          ></mobile-io-box>
+      <div class="panel-footer">
+        <div id="fileIO">
+          <div class="row hidden-xs">
+            <desktop-io-box [drawingData]="drawingData"
+                            (exportSVGEvent)="handleSVGClick()"
+                            (exportParamaterEvent)="handleExportParamaterClick()"
+            ></desktop-io-box>
+          </div>
+          <div class="row show-xs hidden-sm hidden-md hidden-lg">
+            <mobile-io-box [drawingData]="drawingData"
+                           (exportPNGEvent)="handlePNGClick()"
+                           (importCameraEvent)="handleCamera()"
+            ></mobile-io-box>
+          </div>
         </div>
       </div>
     </div>

@@ -2,13 +2,13 @@
 
 import {DrawingData} from "../drawing-data";
 import {Viewport} from "../enum/view-port";
+import {CanvasMargin} from "../enum/canvas-margin";
 import {ParticleEmitter} from "./particle-emitter";
 import {ParticleExporter} from "./particle-exporter";
 import {PartcicleImageImporter} from "./particle-image-importer";
 import {ParticleCaptureImageLayer} from "./particle-capture-image-layer";
 
 export class ParticleCanvas {
-
 
   private background:createjs.Shape;
   private captureImageLayer:ParticleCaptureImageLayer;
@@ -98,10 +98,18 @@ export class ParticleCanvas {
     let windowHeight:number = window.innerHeight;
 
     canvasWidth = windowWidth;
-    canvasHeight = windowHeight - 100;
+    canvasHeight = windowHeight;
 
-    if (windowWidth > Viewport.xs)
-      canvasWidth -= 400;
+    if (windowWidth > Viewport.sm)
+    {
+      canvasHeight -= CanvasMargin.TOP_DESKTOP;
+      canvasWidth -= CanvasMargin.RIGHT_DESKTOP;
+    }
+    else
+    {
+      canvasHeight -= CanvasMargin.TOP_MOBILE;
+      canvasWidth -= CanvasMargin.RIGHT_MOBILE;
+    }
 
     // ステージのサイズをwindowのサイズに変更
     this.stage.canvas.width = canvasWidth;
