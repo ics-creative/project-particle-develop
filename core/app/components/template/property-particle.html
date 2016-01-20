@@ -1,12 +1,14 @@
+<h3>パーティクル設定</h3>
+
 <input-range
-        label="Start Alpha"
+        label="開始時の透明度"
         min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="startAlpha">
 </input-range>
 
 <input-range
-        label="Start Alpha Variance"
+        label="開始時の透明度のばらつき"
         min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="startAlphaVariance">
@@ -14,59 +16,62 @@
 
 
 <input-range
-        label="End Alpha"
+        label="終了時の透明度"
         min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="finishAlpha">
 </input-range>
 
+
 <input-range
-        label="End Alpha Variance"
+        label="終了時の透明度のばらつき"
         min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="finishAlphaVariance">
 </input-range>
 
+<hr/>
 
 <input-range
-        label="Start Scale"
-        min="0.0" max="5.0" step="0.01"
+        label="開始時のスケール"
+        min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="startScale">
 </input-range>
 
 <input-range
-        label="Start Scale Variance"
-        min="0.0" max="5.0" step="0.01"
+        label="開始時のスケールのばらつき"
+        min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="startScaleVariance">
 </input-range>
 
 
 <input-range
-        label="End Scale"
-        min="0.0" max="5.0" step="0.01"
+        label="終了時のスケール"
+        min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="finishScale">
 </input-range>
 
 <input-range
-        label="End Scale Variance"
-        min="0.0" max="5.0" step="0.01"
+        label="終了時のスケールのばらつき"
+        min="0.0" max="1.0" step="0.01"
         [drawingData]="drawingData"
         targetProperty="finishScaleVariance">
 </input-range>
 
+<hr/>
 
 <input-range
-        label="Life Span"
+        label="ライフ (フレーム数)"
         min="10" max="500" step="1.0"
         [drawingData]="drawingData"
         targetProperty="lifeSpan">
 </input-range>
 
 <input-range
-        label="Life Span Variance"
+        label="ライフのばらつき (フレーム数)"
         min="10" max="500" step="1.0"
         [drawingData]="drawingData"
         targetProperty="lifeSpanVariance">

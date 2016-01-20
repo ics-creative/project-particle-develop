@@ -1,3 +1,4 @@
+<h3>ステージ設定</h3>
 <input-range
         label="ステージの幅 (px)"
         min="0" max="500" step="1"
@@ -12,12 +13,11 @@
         targetProperty="height">
 </input-range>
 
-
 <hr>
 <input type="color" [(ngModel)]="drawingData.bgColor" placeholder="bgColor" value="{{drawingData.bgColor}}"/>
 {{drawingData.bgColor}}
 
-<hr>
+<h3>エミッター設定</h3>
 
 <input-range
         label="発生位置 - X座標 (px)"
@@ -48,6 +48,8 @@
         targetProperty="startYVariance">
 </input-range>
 
+<hr>
+
 <input-range
         label="初期速度 (px)"
         min="0" max="20" step="0.1"
@@ -61,7 +63,6 @@
         [drawingData]="drawingData"
         targetProperty="initialSpeedVariance">
 </input-range>
-
 
 <hr>
 
@@ -91,14 +92,14 @@
 <hr>
 
 <input-range
-        label="加速量"
+        label="重力"
         min="0" max="20" step="0.1"
         [drawingData]="drawingData"
         targetProperty="accelerationSpeed">
 </input-range>
 
 <input-range
-        label="加速方向"
+        label="重力方向"
         min="0" max="360" step="0.1"
         [drawingData]="drawingData"
         targetProperty="accelerationDirection">

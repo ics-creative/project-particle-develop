@@ -51,7 +51,7 @@ body {
   line-height: $headerHeight + px;
 
   color: #d2d2d2;
-  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 0px +1px 1px rgba(255, 255, 255, 0.6);
 }
 
 #main {
@@ -70,6 +70,7 @@ body {
 
 .panel {
   h3 {
+    font-size: 14px;
     color: #d2d2d2;
     text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
   }
