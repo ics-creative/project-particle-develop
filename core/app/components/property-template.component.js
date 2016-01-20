@@ -24,6 +24,10 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
                     var template = new particle_paramater_1.ParticleParamater();
                     this.templateList = template.list;
                 }
+                PropertyTemplatePanel.prototype.ngOnInit = function () {
+                    // テンプレートを適用
+                    this.drawingData.into(this.templateList[0].property);
+                };
                 PropertyTemplatePanel.prototype.selectTemplate = function (value) {
                     this.drawingData.into(value);
                 };

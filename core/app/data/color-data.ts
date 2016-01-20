@@ -1,22 +1,15 @@
 export class ColorData {
-  hue:number;
-  hueVariance:number;
+  hue:number = 0;
+  hueVariance:number = 0;
 
-  satuation:number;
-  satuationVariance:number;
+  satuation:number = 0;
+  satuationVariance:number = 0;
 
-  luminance:number;
-  luminanceVariance:number;
+  luminance:number = 0;
+  luminanceVariance:number = 0;
 
   constructor() {
-
-    this.hue = 50;
-    this.hueVariance = 0;
-
-    this.satuation = 75;
-    this.satuationVariance = 0;
-
-    this.luminance = 75;
-    this.luminanceVariance = 0;
   }
 }
+
+

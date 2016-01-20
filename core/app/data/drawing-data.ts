@@ -2,100 +2,54 @@ import {ParticleShapeTypes} from "../particle/particle-shape-types";
 import {ColorData} from "./color-data";
 
 export class DrawingData {
-  bgColor:string;
-  width:number;
-  height:number;
+  bgColor:string = "";
+  width:number = 0;
+  height:number = 0;
 
-  emitFrequency:number;
+  emitFrequency:number = 0;
 
-  lifeSpan:number;
-  lifeSpanVariance:number;
+  lifeSpan:number = 0;
+  lifeSpanVariance:number = 0;
 
-  initialDirection:number;
-  initialDirectionVariance:number;
+  initialDirection:number = 0;
+  initialDirectionVariance:number = 0;
 
-  initialSpeed:number;
-  initialSpeedVariance:number;
+  initialSpeed:number = 0;
+  initialSpeedVariance:number = 0;
 
-  friction:number;
+  friction:number = 0;
 
-  accelerationSpeed:number;
-  accelerationDirection:number;
+  accelerationSpeed:number = 0;
+  accelerationDirection:number = 0;
 
-  startScale:number;
-  startScaleVariance:number;
+  startScale:number = 0;
+  startScaleVariance:number = 0;
 
-  finishScale:number;
-  finishScaleVariance:number;
-
-
-  startAlpha:number;
-  startAlphaVariance:number;
-
-  finishAlpha:number;
-  finishAlphaVariance:number;
-
-  startX:number;
-  startXVariance:number;
-
-  startY:number;
-  startYVariance:number;
-
-  shapeIdList:string[];
+  finishScale:number = 0;
+  finishScaleVariance:number = 0;
 
 
-  startColor:ColorData;
-  finishColor:ColorData;
+  startAlpha:number = 0;
+  startAlphaVariance:number = 0;
+
+  finishAlpha:number = 0;
+  finishAlphaVariance:number = 0;
+
+  startX:number = 0;
+  startXVariance:number = 0;
+
+  startY:number = 0;
+  startYVariance:number = 0;
+
+  shapeIdList:string[] = ["kirakira"];
+
+  startColor:ColorData = new ColorData();
+  finishColor:ColorData = new ColorData();
 
   constructor() {
-
-    this.bgColor = "#00000";
-    this.width = 500;
-    this.height = 500;
-
-    this.friction = 0;
-
-    this.startX = 250;
-    this.startXVariance = 50;
-
-    this.startY = 250;
-    this.startYVariance = 50;
-
-    this.lifeSpan = 100;
-    this.lifeSpanVariance = 30;
-
-    this.initialDirection = 270;
-    this.initialDirectionVariance = 60;
-
-    this.initialSpeed = 0.5;
-    this.initialSpeedVariance = 0.5;
-
-
-    this.accelerationSpeed = 0;
-    this.accelerationDirection = 0;
-
-    this.startAlpha = 1;
-    this.startAlphaVariance = 0;
-
-    this.finishAlpha = 1;
-    this.finishAlphaVariance = 0.5;
-
-    this.startScale = 1;
-    this.startScaleVariance = 0;
-
-    this.finishScale = 1;
-    this.finishScaleVariance = 0;
-
-    this.shapeIdList = ["square"];
-
-    this.emitFrequency = 1;
-
-
-    this.startColor = new ColorData();
-    this.finishColor = new ColorData();
   }
 
-  into(obj:Object) {
+  public into(obj:Object):void {
 
     for (var key in this) {
       if (this.hasOwnProperty(key)) {
