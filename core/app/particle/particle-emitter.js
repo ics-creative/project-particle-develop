@@ -1,13 +1,13 @@
-System.register(["./particle-shape-types", "./particle"], function(exports_1) {
-    var particle_shape_types_1, particle_1;
+System.register(["./particle", "../assets/shape-generator"], function(exports_1) {
+    var particle_1, shape_generator_1;
     var ParticleEmitter;
     return {
         setters:[
-            function (particle_shape_types_1_1) {
-                particle_shape_types_1 = particle_shape_types_1_1;
-            },
             function (particle_1_1) {
                 particle_1 = particle_1_1;
+            },
+            function (shape_generator_1_1) {
+                shape_generator_1 = shape_generator_1_1;
             }],
         execute: function() {
             "use strict";
@@ -97,32 +97,8 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                         var color = _this.drawingData.startColor;
                         var r = Math.floor(Math.random() * _this.drawingData.shapeIdList.length);
                         var shapeId = (_this.drawingData.shapeIdList.length == 0) ? '' : _this.drawingData.shapeIdList[r];
-                        switch (shapeId) {
-                            case particle_shape_types_1.ParticleShapeTypes.Star:
-                                var shape = new createjs.Shape();
-                                shape.graphics.beginFill(color);
-                                shape.graphics.drawPolyStar(0, 0, 10, 5, 0.5, 0);
-                                particle.particleShape.addChild(shape);
-                                break;
-                            case particle_shape_types_1.ParticleShapeTypes.Heart:
-                                var text = new createjs.Text("♥", "20px Arial", color);
-                                particle.particleShape.addChild(text);
-                                break;
-                            case particle_shape_types_1.ParticleShapeTypes.MailFace:
-                                var text = new createjs.Text("〠", "20px Arial", color);
-                                particle.particleShape.addChild(text);
-                                break;
-                            case particle_shape_types_1.ParticleShapeTypes.MailMark:
-                                var text = new createjs.Text("〒", "20px Arial", color);
-                                particle.particleShape.addChild(text);
-                                break;
-                            default:
-                                var shape = new createjs.Shape();
-                                shape.graphics.beginFill(color);
-                                shape.graphics.drawCircle(0, 0, 10);
-                                particle.particleShape.addChild(shape);
-                                break;
-                        }
+                        var shape = _this.shapeGenerator.generateShape(shapeId);
+                        particle.particleShape.addChild(shape);
                     };
                     this.range = function (minValue, maxValue, value) {
                         return Math.min(maxValue, Math.max(minValue, value));
@@ -137,6 +113,7 @@ System.register(["./particle-shape-types", "./particle"], function(exports_1) {
                     this.particlesPool = new Array();
                     this.activeParticles = new Array();
                     this.container = new createjs.Container();
+                    this.shapeGenerator = new shape_generator_1.ShapeGenerator();
                 }
                 /**
                  * パーティクルパラメータの設定

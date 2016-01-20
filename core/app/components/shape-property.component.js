@@ -1,4 +1,4 @@
-System.register(["angular2/core"], function(exports_1) {
+System.register(["angular2/core", "../data/shape-data"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,17 +8,21 @@ System.register(["angular2/core"], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, shape_data_1;
     var ShapePropertyModal;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (shape_data_1_1) {
+                shape_data_1 = shape_data_1_1;
             }],
         execute: function() {
             ShapePropertyModal = (function () {
                 function ShapePropertyModal() {
                     var _this = this;
+                    this.shapeIdList = new shape_data_1.ShapeData().assetList;
                     this.selectShape = function (shapeId) {
                         console.log("selectapp:" + shapeId);
                         //  ラジオボタンとかにすればテンポラリ選択不要そう
@@ -33,7 +37,7 @@ System.register(["angular2/core"], function(exports_1) {
                     core_1.Component({
                         selector: "shape-property-modal",
                         templateUrl: "app/components/template/shape-property.html",
-                        inputs: ["drawingData"]
+                        inputs: ["drawingData", "shapeIdList"]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ShapePropertyModal);

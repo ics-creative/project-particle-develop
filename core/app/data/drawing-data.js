@@ -1,11 +1,7 @@
-System.register(["../particle/particle-shape-types"], function(exports_1) {
-    var particle_shape_types_1;
+System.register([], function(exports_1) {
     var DrawingData;
     return {
-        setters:[
-            function (particle_shape_types_1_1) {
-                particle_shape_types_1 = particle_shape_types_1_1;
-            }],
+        setters:[],
         execute: function() {
             DrawingData = (function () {
                 function DrawingData() {
@@ -34,7 +30,7 @@ System.register(["../particle/particle-shape-types"], function(exports_1) {
                     this.startScaleVariance = 0;
                     this.finishScale = 1;
                     this.finishScaleVariance = 0;
-                    this.shapeIdList = [particle_shape_types_1.ParticleShapeTypes.Star, particle_shape_types_1.ParticleShapeTypes.MailFace, particle_shape_types_1.ParticleShapeTypes.Heart, particle_shape_types_1.ParticleShapeTypes.MailMark];
+                    this.shapeIdList = ["circle"];
                     this.friction;
                     this.emitFrequency = 1;
                 }

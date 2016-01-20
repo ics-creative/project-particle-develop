@@ -3,6 +3,7 @@ import {ParticleShapeTypes} from "./particle-shape-types";
 
 import {Particle} from "./particle";
 import {DrawingData} from "../drawing-data";
+import {ShapeGenerator} from "../assets/shape-generator";
 /**
  * Created by nyamogera on 2016/01/15.
  */
@@ -24,7 +25,10 @@ export class ParticleEmitter {
 
     this.container = new createjs.Container();
 
+    this.shapeGenerator = new ShapeGenerator();
   }
+
+  private shapeGenerator:ShapeGenerator;
 
   update = (drawingData:DrawingData) => {
     this.drawingData = drawingData;
@@ -67,7 +71,6 @@ export class ParticleEmitter {
 
       var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
       particle.particleShape.alpha = alpha;
-
 
       var scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent;
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
@@ -171,38 +174,9 @@ export class ParticleEmitter {
     let r = Math.floor(Math.random() * this.drawingData.shapeIdList.length);
     let shapeId = ( this.drawingData.shapeIdList.length == 0 ) ? '' : this.drawingData.shapeIdList[r]
 
-    switch (shapeId) {
-      case ParticleShapeTypes.Star:
-        var shape:createjs.Shape = new createjs.Shape();
 
-        shape.graphics.beginFill(color);
-        shape.graphics.drawPolyStar(0, 0, 10, 5, 0.5, 0);
-        particle.particleShape.addChild(shape);
-        break;
-      case ParticleShapeTypes.Heart:
-
-        var text:createjs.Text = new createjs.Text("♥", "20px Arial", color);
-        particle.particleShape.addChild(text);
-        break;
-      case ParticleShapeTypes.MailFace:
-
-        var text:createjs.Text = new createjs.Text("〠", "20px Arial", color);
-        particle.particleShape.addChild(text);
-        break;
-      case ParticleShapeTypes.MailMark:
-        var text:createjs.Text = new createjs.Text("〒", "20px Arial", color);
-        particle.particleShape.addChild(text);
-        break;
-
-
-      default:
-        var shape:createjs.Shape = new createjs.Shape();
-
-        shape.graphics.beginFill(color);
-        shape.graphics.drawCircle(0, 0, 10);
-        particle.particleShape.addChild(shape);
-        break;
-    }
+    var shape = this.shapeGenerator.generateShape(shapeId);
+    particle.particleShape.addChild(shape);
 
   }
 

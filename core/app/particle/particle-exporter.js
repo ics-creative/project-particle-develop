@@ -13,9 +13,7 @@ System.register([], function(exports_1) {
                     this.runExport = function () {
                         return new Promise(function (onResolve, onReject) {
                             _this.exporter = new SVGExporter(_this.drawLayerContainer, false, false, false);
-                            var t = new Date().getTime();
                             _this.exporter.run();
-                            // for some reason, it takes a tick for the browser to init the SVG
                             setTimeout(function () {
                                 onResolve();
                             }, 1);
@@ -30,11 +28,6 @@ System.register([], function(exports_1) {
                                 onReject();
                             });
                         });
-                    };
-                    this.downloadFile = function () {
-                        var serializer = new XMLSerializer();
-                        var svgStr = serializer.serializeToString(_this.exporter.svg);
-                        window.open("data:image/svg+xml,\n" + encodeURIComponent(svgStr));
                     };
                     this.drawLayerContainer = drawLayerContainer;
                 }
