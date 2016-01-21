@@ -52,7 +52,9 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                         if (particle.alphaCurveType == 1)
                             switch (Number(particle.alphaCurveType)) {
                                 case alpha_curve_type_1.AlphaCurveType.Random:
-                                    particle.particleShape.alpha = Math.random();
+                                    var min = Math.min(particle.finishAlpha, particle.startAlpha);
+                                    var max = Math.max(particle.finishAlpha, particle.startAlpha);
+                                    particle.particleShape.alpha = Math.random() * (max - min) + min;
                                     break;
                                 case alpha_curve_type_1.AlphaCurveType.Normal:
                                 default:

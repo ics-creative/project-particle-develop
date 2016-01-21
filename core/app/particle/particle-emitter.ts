@@ -72,17 +72,19 @@ export class ParticleEmitter {
 
       var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
 
-      if(particle.alphaCurveType == 1)
-      switch (Number(particle.alphaCurveType)){
-        case AlphaCurveType.Random:
-          particle.particleShape.alpha = Math.random();
-          break;
-        case AlphaCurveType.Normal:
-        default:
-          var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
-          particle.particleShape.alpha = alpha;
-          break;
-      }
+      if (particle.alphaCurveType == 1)
+        switch (Number(particle.alphaCurveType)) {
+          case AlphaCurveType.Random:
+            let min = Math.min(particle.finishAlpha, particle.startAlpha);
+            let max = Math.max(particle.finishAlpha, particle.startAlpha);
+            particle.particleShape.alpha = Math.random() * (max - min) + min;
+            break;
+          case AlphaCurveType.Normal:
+          default:
+            let alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
+            particle.particleShape.alpha = alpha;
+            break;
+        }
 
       //particle.particleShape.alpha = Math.random();
 
