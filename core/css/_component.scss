@@ -114,18 +114,24 @@ h2 {
       display: flex;
       align-items: center; /* 縦方向中央揃え */
       justify-content: center; /* 横方向中央揃え */
+      box-sizing: border-box;
+      line-height: 0;
+      margin-bottom: 20px;
 
-      &.selected {
-        background: #333333;
+      shape-itemrenderer {
+        border: 1px solid rgba(0, 0, 0, 0);
       }
 
-      margin-bottom: 1px;
-
+      &.selected shape-itemrenderer {
+        background: #222;
+        border: 1px solid #333;
+      }
     }
 
     div.templateListItem {
       padding: 6px;
       cursor: pointer;
+      margin-top: 0;
 
       img {
         border: 1px solid #555;

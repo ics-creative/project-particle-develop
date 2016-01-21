@@ -7904,14 +7904,21 @@ h2 {
   /* 縦方向中央揃え */
   justify-content: center;
   /* 横方向中央揃え */
-  margin-bottom: 1px;
+  box-sizing: border-box;
+  line-height: 0;
+  margin-bottom: 20px;
 }
-#propertyPanel .panel div.shapeListItem.selected {
-  background: #333333;
+#propertyPanel .panel div.shapeListItem shape-itemrenderer {
+  border: 1px solid transparent;
+}
+#propertyPanel .panel div.shapeListItem.selected shape-itemrenderer {
+  background: #222;
+  border: 1px solid #333;
 }
 #propertyPanel .panel div.templateListItem {
   padding: 6px;
   cursor: pointer;
+  margin-top: 0;
 }
 #propertyPanel .panel div.templateListItem img {
   border: 1px solid #555;
