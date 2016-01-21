@@ -7817,7 +7817,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 
 html, body {
   height: 100%;
-  font-size: 12px !important;
+  font-size: 14px !important;
 }
 
 body {
@@ -7849,11 +7849,15 @@ h1 {
   margin-top: 3px;
   display: flex;
 }
+@media (max-width: 768px) {
+  #wrapper {
+    margin-top: 0;
+  }
+}
 
 #main {
   width: calc(100% - $sideWidth);
   height: 100%;
-  float: left;
 }
 
 #canvasBox {
@@ -7863,8 +7867,8 @@ h1 {
 }
 @media (max-width: 768px) {
   #canvasBox {
-    margin-top: 2px;
-    margin-right: 2px;
+    margin: 0;
+    border-radius: 0;
   }
 }
 #canvasBox .panel-body {
@@ -7887,7 +7891,9 @@ h2 {
   flex: 285px;
   margin-left: -289px;
   margin-right: 2px;
-  overflow-y: auto;
+  float: right;
+  max-height: 100%;
+  overflow-y: scroll;
 }
 #propertyPanel .panel {
   background: #2a2a2a;
@@ -7975,6 +7981,22 @@ h2 {
 }
 .inputRangeContainer .label {
   flex: 20%;
+}
+
+mobile-io-box .nav {
+  width: 150px;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+}
+mobile-io-box .nav li {
+  width: 33.3%;
+  float: left;
+  padding: 0;
+}
+mobile-io-box .nav li a {
+  color: #888 !important;
+  font-size: 16px !important;
 }
 
 #myCanvas {

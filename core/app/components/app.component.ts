@@ -4,16 +4,18 @@ import {PropertyPanel} from "./property.component";
 import {DesktopIOBox} from "./desktop-io.component";
 import {MobileIOBox} from "./mobile-io.component";
 import {PropertyShapePanel} from "./property-shape.component";
+import {MobilePropertyTemplateModal} from "./mobile-template.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
 import {ElementRef} from "angular2/core";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
 
+
 @Component({
   selector: `my-app`,
   templateUrl: "app/components/template/app.html",
-  directives: [StageComponent, PropertyPanel, DesktopIOBox, MobileIOBox]
+  directives: [StageComponent, PropertyPanel, DesktopIOBox, MobileIOBox, MobilePropertyTemplateModal]
 })
 
 export class AppComponent {
@@ -22,6 +24,7 @@ export class AppComponent {
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
   @ViewChild("desktopIOBox") desktopIOBox:DesktopIOBox;
   @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
+  @ViewChild("MobilePropertyTemplateModal") mobilePropertyTemplateModal:MobilePropertyTemplateModal;
 
   constructor(element:ElementRef) {
     this.drawingData = new DrawingData();
