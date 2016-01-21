@@ -1,6 +1,6 @@
 <label>{{label}}</label>
-<div class="row">
-  <div class="col-md-8">
+<div class="inputRangeContainer">
+  <div class="range">
     <input type="range"
            class="topcoat-range"
            min="{{min}}" max="{{max}}" step="{{step}}"
@@ -8,7 +8,7 @@
            placeholder="targetProperty"
            (change)="handleChange()"/>
   </div>
-  <div class="col-md-4">
-    {{drawingData[targetProperty]}}
+  <div class="label">
+    <input type="text" class="topcoat-text-input" placeholder="text" value="{{drawingData[targetProperty]}}">
   </div>
 </div>

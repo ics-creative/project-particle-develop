@@ -148,6 +148,22 @@ h2 {
     text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
     border-bottom-color: black;
   }
+}
+
+.inputRangeContainer {
+  display: flex;
+
+  -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+  align-items: center; /* 縦方向中央揃え */
+  -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+  justify-content: center; /* 横方向中央揃え */
+
+  .range {
+    flex: 80%;
+  }
+  .label {
+    flex: 20%;
+  }
 
 }
 

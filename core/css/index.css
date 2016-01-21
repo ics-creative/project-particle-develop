@@ -7936,6 +7936,24 @@ h2 {
   font-size: 16px;
 }
 
+.inputRangeContainer {
+  display: flex;
+  -webkit-align-items: center;
+  /* 縦方向中央揃え（Safari用） */
+  align-items: center;
+  /* 縦方向中央揃え */
+  -webkit-justify-content: center;
+  /* 横方向中央揃え（Safari用） */
+  justify-content: center;
+  /* 横方向中央揃え */
+}
+.inputRangeContainer .range {
+  flex: 80%;
+}
+.inputRangeContainer .label {
+  flex: 20%;
+}
+
 #myCanvas {
   cursor: crosshair;
 }
