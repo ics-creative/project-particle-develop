@@ -50,7 +50,7 @@ export class DesktopIOBox {
     var fileReader = new FileReader();
     fileReader.onload = (event) => {
       // event.target.result に読み込んだファイルの内容が入っています。
-      var json = event.target.result;
+      var json = (<FileReader>event.target).result;
       let object = JSON.parse(json);
 
       this.drawingData.into(object);

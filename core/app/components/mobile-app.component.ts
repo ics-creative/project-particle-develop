@@ -1,17 +1,15 @@
 import {AppComponent} from "./app.component";
 export class MobileAppComponent extends AppComponent {
-  handleSVGClick() {
+  protected handleSVGClick() {
     alert("モバイルアプリでは使用不可能です");
   }
 
-  handlePNGClick() {
-    this.stageComponent.runExportSP().then(function () {
-    });
+  protected handlePNGClick() {
+    this.stageComponent.runExportSP().then();
   }
 
-  handleCamera() {
-    this.stageComponent.runCamera().then(function () {
-    });
+  protected handleCamera() {
+    this.stageComponent.runCamera().then();
   }
 
   handleExportParamaterClick() {

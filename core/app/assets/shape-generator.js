@@ -9,7 +9,7 @@ System.register([], function(exports_1) {
         execute: function() {
             ShapeGenerator = (function () {
                 function ShapeGenerator() {
-                    this.shapeObjects = lib;
+                    this.shapeObjects = window["lib"];
                 }
                 ShapeGenerator.prototype.generateShape = function (id) {
                     return new this.shapeObjects[id]();

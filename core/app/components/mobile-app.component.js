@@ -21,12 +21,10 @@ System.register(["./app.component"], function(exports_1) {
                     alert("モバイルアプリでは使用不可能です");
                 };
                 MobileAppComponent.prototype.handlePNGClick = function () {
-                    this.stageComponent.runExportSP().then(function () {
-                    });
+                    this.stageComponent.runExportSP().then();
                 };
                 MobileAppComponent.prototype.handleCamera = function () {
-                    this.stageComponent.runCamera().then(function () {
-                    });
+                    this.stageComponent.runCamera().then();
                 };
                 MobileAppComponent.prototype.handleExportParamaterClick = function () {
                     alert("paramater!");

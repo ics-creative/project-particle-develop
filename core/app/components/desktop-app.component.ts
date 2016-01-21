@@ -1,18 +1,14 @@
-/**
- * Created by nyamogera on 2016/01/17.
- */
 import {AppComponent} from "./app.component";
-
 
 export class DesktopAppComponent extends AppComponent {
 
-  handleSVGClick() {
+  protected handleSVGClick() {
     this.stageComponent.exportSVG().then(() => {
       this.openSVGExportWindow()
     });
   }
 
-  handlePNGClick() {
+  protected handlePNGClick() {
     let electron = require('electron');
     let dialog = electron.remote.dialog;
 
@@ -29,7 +25,7 @@ export class DesktopAppComponent extends AppComponent {
         return;
       }
 
-      let dataUrl = this.stageComponent.toDataURL('image/png');
+      let dataUrl = this.stageComponent.toDataURL('image/png', null);
       // 「data:image/png;base64,」の文字列を置換して削除
       let data = dataUrl.replace(/^data:image\/png;base64,/, "");
 
@@ -43,7 +39,7 @@ export class DesktopAppComponent extends AppComponent {
     });
   }
 
-  handleJPEGClick() {
+  protected handleJPEGClick() {
     let electron = require('electron');
     let dialog = electron.remote.dialog;
 
@@ -60,7 +56,7 @@ export class DesktopAppComponent extends AppComponent {
         return;
       }
 
-      let dataUrl = this.stageComponent.toDataURL('image/jpeg', 0.9);
+      let dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.9");
       // 「data:image/jpeg;base64,」の文字列を置換して削除
       let data = dataUrl.replace(/^data:image\/jpeg;base64,/, "");
 
@@ -75,7 +71,7 @@ export class DesktopAppComponent extends AppComponent {
   }
 
 
-  openSVGExportWindow() {
+  protected openSVGExportWindow() {
 
     let electron = require('electron');
     let dialog = electron.remote.dialog;
@@ -104,7 +100,7 @@ export class DesktopAppComponent extends AppComponent {
     });
   }
 
-  handleExportParamaterClick() {
+  protected handleExportParamaterClick() {
     let electron = require('electron');
     let dialog = electron.remote.dialog;
 

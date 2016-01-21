@@ -1,5 +1,5 @@
 import {Component, ViewChild, AfterViewInit} from "angular2/core";
-import {DrawingData} from "./data/drawing-data";
+import {DrawingData} from "../data/drawing-data";
 import {ParticleCanvas} from "../particle/particle-canvas";
 
 @Component({

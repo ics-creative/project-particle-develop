@@ -1,4 +1,3 @@
-import {ParticleShapeTypes} from "../particle/particle-shape-types";
 import {ColorData} from "./color-data";
 
 export class DrawingData {

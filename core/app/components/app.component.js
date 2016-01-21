@@ -44,11 +44,11 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                     });
                 };
                 AppComponent.prototype.handleJPEGClick = function () {
-                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', 0.8);
+                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
                     window.open(dataUrl);
                 };
                 AppComponent.prototype.handlePNGClick = function () {
-                    var dataUrl = this.stageComponent.toDataURL('image/png');
+                    var dataUrl = this.stageComponent.toDataURL('image/png', null);
                     window.open(dataUrl);
                 };
                 AppComponent.prototype.openSVGExportWindow = function () {

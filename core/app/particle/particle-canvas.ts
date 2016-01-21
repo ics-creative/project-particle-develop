@@ -107,7 +107,7 @@ export class ParticleCanvas {
 
   public toDataURL(type:string, params:string):string {
     this._canvasContainer.cache(0, 0, this.data.width, this.data.height);
-    var capture = this._canvasContainer.cacheCanvas;
+    var capture = <HTMLCanvasElement> this._canvasContainer.cacheCanvas;
     var dataURL = capture.toDataURL(type, params);
     this._canvasContainer.uncache();
 

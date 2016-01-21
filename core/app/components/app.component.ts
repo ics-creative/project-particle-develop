@@ -15,7 +15,7 @@ import {ElementRef} from "angular2/core";
 })
 
 export class AppComponent {
-  private drawingData:DrawingData;
+  protected drawingData:DrawingData;
   @ViewChild("stageComponent") stageComponent:StageComponent;
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
   @ViewChild("desktopIOBox") desktopIOBox:DesktopIOBox;
@@ -25,27 +25,26 @@ export class AppComponent {
     this.drawingData = new DrawingData();
   }
 
-  private handleSVGClick() {
+  protected handleSVGClick() {
     this.stageComponent.exportSVG().then(() => {
       this.openSVGExportWindow();
     });
   }
 
-  private handleJPEGClick() {
-
-    var dataUrl = this.stageComponent.toDataURL('image/jpeg' , 0.8);
+  protected handleJPEGClick() {
+    var dataUrl = this.stageComponent.toDataURL('image/jpeg' , "0.8");
     window.open(dataUrl);
   }
-  private handlePNGClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/png');
+  protected handlePNGClick() {
+    var dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
 
-  private openSVGExportWindow() {
+  protected openSVGExportWindow() {
     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }
 
-  private handleExportParamaterClick() {
+  protected handleExportParamaterClick() {
     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
   }
 }

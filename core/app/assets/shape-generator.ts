@@ -7,7 +7,7 @@ export class ShapeGenerator {
   shapeObjects:Object;
 
   constructor () {
-    this.shapeObjects = lib;
+    this.shapeObjects = window["lib"];
   }
 
   generateShape(id:string) {

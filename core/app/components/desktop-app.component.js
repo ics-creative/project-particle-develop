@@ -38,7 +38,7 @@ System.register(["./app.component"], function(exports_1) {
                         if (!filename) {
                             return;
                         }
-                        var dataUrl = _this.stageComponent.toDataURL('image/png');
+                        var dataUrl = _this.stageComponent.toDataURL('image/png', null);
                         // 「data:image/png;base64,」の文字列を置換して削除
                         var data = dataUrl.replace(/^data:image\/png;base64,/, "");
                         var fs = require('fs');
@@ -64,7 +64,7 @@ System.register(["./app.component"], function(exports_1) {
                         if (!filename) {
                             return;
                         }
-                        var dataUrl = _this.stageComponent.toDataURL('image/jpeg', 0.9);
+                        var dataUrl = _this.stageComponent.toDataURL('image/jpeg', "0.9");
                         // 「data:image/jpeg;base64,」の文字列を置換して削除
                         var data = dataUrl.replace(/^data:image\/jpeg;base64,/, "");
                         var fs = require('fs');
