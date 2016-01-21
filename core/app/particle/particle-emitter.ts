@@ -179,7 +179,7 @@ export class ParticleEmitter {
 
 
     // ブレンドモードを設定
-    particle.particleShape.compositeOperation = "lighter";
+    particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
   }
 
   generateShape(particle:Particle, shapeIdList:string[]) {

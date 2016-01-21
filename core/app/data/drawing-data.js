@@ -37,6 +37,7 @@ System.register(["./color-data"], function(exports_1) {
                     this.shapeIdList = ["kirakira"];
                     this.startColor = new color_data_1.ColorData();
                     this.finishColor = new color_data_1.ColorData();
+                    this.blendMode = true;
                 }
                 DrawingData.prototype.into = function (obj) {
                     for (var key in this) {

@@ -46,6 +46,8 @@ export class DrawingData {
   startColor:ColorData = new ColorData();
   finishColor:ColorData = new ColorData();
 
+  blendMode:boolean = true;
+
   constructor() {
   }
 

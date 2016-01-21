@@ -127,7 +127,7 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
                     particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
                     // ブレンドモードを設定
-                    particle.particleShape.compositeOperation = "lighter";
+                    particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
                 };
                 ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
                     particle.particleShape.removeAllChildren();
