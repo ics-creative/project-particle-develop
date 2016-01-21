@@ -157,8 +157,7 @@ export class ParticleParamater {
         "luminanceVariance": 0
       }
     }
-  }
-,
+  };
   setting4 = {
     name: "fire",
     property: {

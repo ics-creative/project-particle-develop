@@ -7,9 +7,8 @@ System.register([], function(exports_1) {
              * ルーラーの制御クラスです。
              */
             Ruler = (function () {
-                function Ruler(stage) {
+                function Ruler() {
                     this.FONT_COLOR = "#888";
-                    this.stage = stage;
                     this.container = new createjs.Container();
                     this.shapeBg = new createjs.Shape();
                     this.container.addChild(this.shapeBg);
@@ -67,7 +66,8 @@ System.register([], function(exports_1) {
                     }
                 };
                 Ruler.prototype.update = function () {
-                    var mousePt = this.container.globalToLocal(this.stage.mouseX, this.stage.mouseY);
+                    var stage = this.container.stage;
+                    var mousePt = this.container.globalToLocal(stage.mouseX, stage.mouseY);
                     var graphics = this.shapeMouse.graphics;
                     graphics.clear()
                         .setStrokeStyle(2)

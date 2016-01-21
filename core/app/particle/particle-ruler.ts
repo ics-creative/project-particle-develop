@@ -8,15 +8,13 @@ export class Ruler {
   private shapeMouse:createjs.Shape;
   private verticalTextList:createjs.Text[];
   private horizontalTextList:createjs.Text[];
-  private stage:createjs.Stage;
 
   private FONT_COLOR = "#888";
 
   private width:number;
   private height:number;
 
-  constructor(stage:createjs.Stage) {
-    this.stage = stage;
+  constructor() {
     this.container = new createjs.Container();
     this.shapeBg = new createjs.Shape();
     this.container.addChild(this.shapeBg);
@@ -89,7 +87,9 @@ export class Ruler {
   }
 
   public update() {
-    let mousePt = this.container.globalToLocal(this.stage.mouseX, this.stage.mouseY);
+    let stage = this.container.stage;
+
+    let mousePt = this.container.globalToLocal(stage.mouseX, stage.mouseY);
     let graphics = this.shapeMouse.graphics;
 
     graphics.clear()
