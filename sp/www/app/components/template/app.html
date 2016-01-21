@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header hidden-xs">
+      <h1 class="navbar-brand" href="#">Particle Professional</h1>
+    </div>
+    <div class="collapse navbar-collapse">
+      <desktop-io-box [drawingData]="drawingData"
+                      (exportSVGEvent)="handleSVGClick()"
+                      (exportPNGEvent)="handlePNGClick()"
+                      (exportJPEGEvent)="handleJPEGClick()"
+                      (exportParamaterEvent)="handleExportParamaterClick()">
+      </desktop-io-box>
+    </div>
+    <div class="row show-xs hidden-sm hidden-md hidden-lg">
+      <mobile-io-box [drawingData]="drawingData"
+                     (exportPNGEvent)="handlePNGClick()"
+                     (importCameraEvent)="handleCamera()"></mobile-io-box>
+    </div>
+  </div>
+</nav>
+
+<div id="wrapper">
+  <div id="main">
+    <div id="canvasBox" class="panel panel-default">
+      <div class="panel-heading hidden-xs">
+        <h2 class="panel-title">Preview</h2>
+      </div>
+      <div class="panel-body">
+        <stage #stageComponent [drawingData]="drawingData"></stage>
+      </div>
+    </div>
+  </div>
+  <nav id="propertyPanel" class="hidden-xs">
+    <property-panel [drawingData]="drawingData"></property-panel>
+  </nav>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog clearfix" role="document">
+    <mobile-particle-template-property-modal [drawingData]="drawingData"></mobile-particle-template-property-modal>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+  </div>
+</div>

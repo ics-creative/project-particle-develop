@@ -1,0 +1,13 @@
+<h3>形状設定</h3>
+
+<hr />
+
+<div class="row">
+  <div *ngFor="#shapeId of shapeIdList">
+    <div class="col-sm-4 shapeListItem"
+         [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
+         (click)="handleClick(shapeId)">
+      <shape-itemrenderer shapeId="{{shapeId}}"></shape-itemrenderer>
+    </div>
+  </div>
+</div>

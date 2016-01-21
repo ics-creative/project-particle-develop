@@ -1,4 +1,4 @@
-System.register(['angular2/platform/browser', './desktop-app.component'], function(exports_1) {
+System.register(['angular2/platform/browser', './components/desktop-app.component'], function(exports_1) {
     var browser_1, desktop_app_component_1;
     return {
         setters:[

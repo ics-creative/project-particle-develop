@@ -7,14 +7,14 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
         "cordova-base64-to-gallery": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "jp.ics.particledevelop"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
+            "PACKAGE_NAME": "jp.ics.particledevelop"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "jp.ics.particledevelop"
         }
     },
     "dependent_plugins": {}

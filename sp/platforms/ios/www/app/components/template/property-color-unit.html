@@ -1,0 +1,41 @@
+<input-range
+        label="色相 (度)"
+        min="0" max="360" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="hue">
+</input-range>
+
+<input-range
+        label="色相のばらつき (度)"
+        min="0" max="360" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="hueVariance">
+</input-range>
+
+<input-range
+        label="彩度 (%)"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="satuation">
+</input-range>
+
+<input-range
+        label="彩度のばらつき (%)"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="satuationVariance">
+</input-range>
+
+<input-range
+        label="明度 (%)"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="luminance">
+</input-range>
+
+<input-range
+        label="明度のばらつき (%)"
+        min="0" max="100" step="1.0"
+        [drawingData]="colorData"
+        targetProperty="luminanceVariance">
+</input-range>
