@@ -43,6 +43,14 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                         _this.openSVGExportWindow();
                     });
                 };
+                AppComponent.prototype.handleJPEGClick = function () {
+                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', 0.8);
+                    window.open(dataUrl);
+                };
+                AppComponent.prototype.handlePNGClick = function () {
+                    var dataUrl = this.stageComponent.toDataURL('image/png');
+                    window.open(dataUrl);
+                };
                 AppComponent.prototype.openSVGExportWindow = function () {
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
                 };

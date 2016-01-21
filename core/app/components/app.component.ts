@@ -31,6 +31,16 @@ export class AppComponent {
     });
   }
 
+  private handleJPEGClick() {
+
+    var dataUrl = this.stageComponent.toDataURL('image/jpeg' , 0.8);
+    window.open(dataUrl);
+  }
+  private handlePNGClick() {
+    var dataUrl = this.stageComponent.toDataURL('image/png');
+    window.open(dataUrl);
+  }
+
   private openSVGExportWindow() {
     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }

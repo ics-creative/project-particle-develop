@@ -23,6 +23,8 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
             DesktopIOBox = (function () {
                 function DesktopIOBox(element) {
                     this.exportSVGEvent = new core_2.EventEmitter();
+                    this.exportPNGEvent = new core_2.EventEmitter();
+                    this.exportJPEGEvent = new core_2.EventEmitter();
                     this.exportParamaterEvent = new core_2.EventEmitter();
                     this.element = element;
                     this.setDragAndDropSettings(element);
@@ -32,6 +34,12 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 };
                 DesktopIOBox.prototype.exportSVG = function () {
                     this.exportSVGEvent.emit(null);
+                };
+                DesktopIOBox.prototype.exportPNG = function () {
+                    this.exportPNGEvent.emit(null);
+                };
+                DesktopIOBox.prototype.exportJPEG = function () {
+                    this.exportJPEGEvent.emit(null);
                 };
                 DesktopIOBox.prototype.selectParameterFile = function (obj) {
                     this.importParameterFile(obj.target.files[0]);
@@ -80,6 +88,8 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                         inputs: ["drawingData"],
                         events: [
                             "exportSVGEvent",
+                            "exportPNGEvent",
+                            "exportJPEGEvent",
                             "exportParamaterEvent"
                         ]
                     }), 

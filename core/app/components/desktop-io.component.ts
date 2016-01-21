@@ -9,12 +9,16 @@ import {ElementRef} from "angular2/core";
   inputs: ["drawingData"],
   events: [
     "exportSVGEvent",
+    "exportPNGEvent",
+    "exportJPEGEvent",
     "exportParamaterEvent"
   ]
 })
 
 export class DesktopIOBox {
   private exportSVGEvent = new EventEmitter();
+  private exportPNGEvent = new EventEmitter();
+  private exportJPEGEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
 
   private drawingData:DrawingData;
@@ -26,6 +30,12 @@ export class DesktopIOBox {
 
   exportSVG() {
     this.exportSVGEvent.emit(null);
+  }
+  exportPNG() {
+    this.exportPNGEvent.emit(null);
+  }
+  exportJPEG() {
+    this.exportJPEGEvent.emit(null);
   }
 
   selectParameterFile(obj:any){

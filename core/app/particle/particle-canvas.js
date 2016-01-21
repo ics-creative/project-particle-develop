@@ -84,6 +84,13 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.captureImageLayer.addImageFromImageData(imageData);
                     this.stage.update();
                 };
+                ParticleCanvas.prototype.toDataURL = function (type, params) {
+                    this.canvasContainer.cache(0, 0, this.data.width, this.data.height);
+                    var capture = this.canvasContainer.cacheCanvas;
+                    var dataURL = capture.toDataURL(type, params);
+                    this.canvasContainer.uncache();
+                    return dataURL;
+                };
                 /**
                  * リサイズのイベント処理
                  */

@@ -25,6 +25,9 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                 StageComponent.prototype.exportSVG = function () {
                     return this.particleCanvas.runExport();
                 };
+                StageComponent.prototype.toDataURL = function (type, params) {
+                    return this.particleCanvas.toDataURL(type, params);
+                };
                 StageComponent.prototype.runExportSP = function () {
                     return this.particleCanvas.runExportSP();
                 };
