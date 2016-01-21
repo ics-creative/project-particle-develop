@@ -7900,6 +7900,10 @@ h2 {
   height: 100%;
   color: #8b9292;
 }
+#propertyPanel .panel .tab-pane label {
+  font-size: 12px;
+  margin-bottom: 2px;
+}
 #propertyPanel .panel div.shapeListItem {
   text-align: center;
   background: inherit;
@@ -7941,6 +7945,8 @@ h2 {
 #propertyPanel hr {
   border-top: 1px solid #1c1e22;
   border-bottom: 1px solid #333333;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 #propertyPanel .nav-tabs > li.active > a, #propertyPanel .nav-tabs > li.active > a:hover, #propertyPanel .nav-tabs > li.active > a:focus {
   background-image: -webkit-linear-gradient(#424242, #333 60%, #292929);

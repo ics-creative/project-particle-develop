@@ -77,7 +77,7 @@ h1 {
   height: 100%;
   @media (max-width: $screen-sm) {
     margin: 0;
-    border-radius:0;
+    border-radius: 0;
   }
 
   .panel-body {
@@ -112,6 +112,13 @@ h2 {
     height: 100%;
 
     color: #8b9292;
+
+    .tab-pane {
+      label {
+        font-size: 12px;
+        margin-bottom: 2px;
+      }
+    }
 
     div.shapeListItem {
       text-align: center;
@@ -160,6 +167,9 @@ h2 {
   hr {
     border-top: 1px solid #1c1e22;
     border-bottom: 1px solid #333333;
+
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
 
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -199,8 +209,8 @@ h2 {
   }
 }
 
-mobile-io-box .nav  {
-  $buttonW:50;
+mobile-io-box .nav {
+  $buttonW: 50;
   width: ($buttonW * 3) + px;
   float: right;
   margin-left: 0;
