@@ -85,6 +85,7 @@ h1 {
   }
 }
 
+
 h2 {
   text-shadow: 0px -2px 0 rgba(0, 0, 0, 0.9);
   font-weight: bold;
@@ -215,6 +216,29 @@ mobile-io-box .nav  {
     }
   }
 
+}
+
+mobile-particle-template-property-modal
+{
+  .media {
+    float: left;
+    width: 25%;
+    margin-top: 0;
+  }
+
+  .media-left {
+    width: 100%;
+    display: block;
+
+    img {
+      border:1px solid $gray-dark;
+      width: 100%;
+    }
+  }
+
+  .media-body {
+    display: none;
+  }
 }
 
 #myCanvas {
