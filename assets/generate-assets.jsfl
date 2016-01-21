@@ -30,7 +30,7 @@ function exportAssets() {
     var generatingClass = "/**\n * Created by \u300C" + flaName + "\u300D/\u300Cgenerate-assets.jsfl\u300D on " + date + "\n * !!!!!\u3053\u306E\u30B3\u30FC\u30C9\u306FJSFL\u304B\u3089\u81EA\u52D5\u751F\u6210\u3055\u308C\u305F\u30B3\u30FC\u30C9\u3067\u3059\u3002\u4FEE\u6B63\u3059\u308B\u5834\u5408\u306F\u3054\u6CE8\u610F\u304F\u3060\u3055\u3044\u3002!!!!!\n */\n\nexport class ShapeGenerator {\n  shapeObjects:Object;\n\n  constructor () {\n    this.shapeObjects = new Object();\n" + assetHash + "\n  }\n\n  generateShape(id:string) {\n    return new this.shapeObjects[id]();\n  }\n}";
     FLfile.write(exportShapeClassPath + "shape-generator.ts", generatingClass);
     var generatingDataClass = "/**\n * Created by \u300C" + flaName + "\u300D/\u300Cgenerate-assets.jsfl\u300D on " + date + "\n * !!!!!\u3053\u306E\u30B3\u30FC\u30C9\u306FJSFL\u304B\u3089\u81EA\u52D5\u751F\u6210\u3055\u308C\u305F\u30B3\u30FC\u30C9\u3067\u3059\u3002\u4FEE\u6B63\u3059\u308B\u5834\u5408\u306F\u3054\u6CE8\u610F\u304F\u3060\u3055\u3044\u3002!!!!!\n */\n\nexport class ShapeData {\n  public assetList:string[];\n\n  constructor () {\n    this.assetList = " + assetArrayString + ";\n  }\n}";
-    FLfile.write(exportShapeDataClassPath + "shape-data.ts", generatingDataClass);
+    FLfile.write(exportShapeDataClassPath + "data-shape.ts", generatingDataClass);
 }
 exportAssets();
 //# sourceMappingURL=generate-assets.js.map

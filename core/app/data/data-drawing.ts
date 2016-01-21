@@ -1,4 +1,4 @@
-import {ColorData} from "./color-data";
+import {ColorData} from "./data-color";
 
 export class DrawingData {
   bgColor:string = "";

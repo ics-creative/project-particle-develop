@@ -1,4 +1,4 @@
-import {DrawingData} from "../data/drawing-data";
+import {DrawingData} from "../data/data-drawing";
 /**
  * ルーラーの制御クラスです。
  */

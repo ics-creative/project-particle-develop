@@ -18,4 +18,4 @@ System.register([], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=color-data.js.map
+//# sourceMappingURL=data-color.js.map

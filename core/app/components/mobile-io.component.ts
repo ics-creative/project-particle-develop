@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {DrawingData} from "../data/drawing-data";
+import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';
 import {ElementRef} from "angular2/core";
 

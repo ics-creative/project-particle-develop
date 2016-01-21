@@ -76,7 +76,7 @@ export class ShapeData {
   }
 }`
 
-  FLfile.write(exportShapeDataClassPath +  "shape-data.ts", generatingDataClass );
+  FLfile.write(exportShapeDataClassPath +  "data-shape.ts", generatingDataClass );
 }
 
 exportAssets();

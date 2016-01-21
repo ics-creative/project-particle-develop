@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
-import {DrawingData} from "../data/drawing-data";
+import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';
-import {ShapeData} from "../data/shape-data";
+import {ShapeData} from "../data/data-shape";
 import {InputRangeComponent} from "./input-range.component";
 
 @Component({

@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../data/drawing-data", "./property.component", "./desktop-io.component", "./mobile-io.component", "./stage.component"], function(exports_1) {
+System.register(["angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./stage.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, drawing_data_1, property_component_1, desktop_io_component_1, mobile_io_component_1, stage_component_1, core_2, core_3;
+    var core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, stage_component_1, core_2, core_3;
     var AppComponent;
     return {
         setters:[
@@ -17,8 +17,8 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
                 core_2 = core_1_1;
                 core_3 = core_1_1;
             },
-            function (drawing_data_1_1) {
-                drawing_data_1 = drawing_data_1_1;
+            function (data_drawing_1_1) {
+                data_drawing_1 = data_drawing_1_1;
             },
             function (property_component_1_1) {
                 property_component_1 = property_component_1_1;
@@ -35,7 +35,7 @@ System.register(["angular2/core", "../data/drawing-data", "./property.component"
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(element) {
-                    this.drawingData = new drawing_data_1.DrawingData();
+                    this.drawingData = new data_drawing_1.DrawingData();
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     var _this = this;

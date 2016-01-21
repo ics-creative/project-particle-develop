@@ -1,10 +1,10 @@
-System.register(["./color-data"], function(exports_1) {
-    var color_data_1;
+System.register(["./data-color"], function(exports_1) {
+    var data_color_1;
     var DrawingData;
     return {
         setters:[
-            function (color_data_1_1) {
-                color_data_1 = color_data_1_1;
+            function (data_color_1_1) {
+                data_color_1 = data_color_1_1;
             }],
         execute: function() {
             DrawingData = (function () {
@@ -35,8 +35,8 @@ System.register(["./color-data"], function(exports_1) {
                     this.startY = 0;
                     this.startYVariance = 0;
                     this.shapeIdList = ["kirakira"];
-                    this.startColor = new color_data_1.ColorData();
-                    this.finishColor = new color_data_1.ColorData();
+                    this.startColor = new data_color_1.ColorData();
+                    this.finishColor = new data_color_1.ColorData();
                     this.blendMode = true;
                 }
                 DrawingData.prototype.into = function (obj) {
@@ -53,4 +53,4 @@ System.register(["./color-data"], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=drawing-data.js.map
+//# sourceMappingURL=data-drawing.js.map

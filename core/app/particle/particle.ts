@@ -2,7 +2,7 @@
 
 "use strict";
 
-import {ColorData} from "../data/color-data";
+import {ColorData} from "../data/data-color";
 
 /**
  * パーティクルエミッターのバリューオブジェクトのクラスです。

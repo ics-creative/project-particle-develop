@@ -1,7 +1,7 @@
 ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
 "use strict";
 
-import {DrawingData} from "../data/drawing-data";
+import {DrawingData} from "../data/data-drawing";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
 import {ParticleEmitter} from "./particle-emitter";
