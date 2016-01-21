@@ -139,6 +139,7 @@ export class Ruler {
       graphics.lineTo(0, mousePt.y);
     }
 
+    // ドラッグ中でなければ、かっこ良く目盛りを表示する
     if (this._isMouseDown == true) {
 
       let mx:number = Math.floor(mousePt.x) - 0.5;
@@ -157,6 +158,10 @@ export class Ruler {
         graphics.moveTo(0, my);
         graphics.lineTo(this._data.width, my);
       }
+    } else {
+      // ドラッグ中でなければ、データを反映
+      this._thumb.x = this._data.startX;
+      this._thumb.y = this._data.startY;
     }
   }
 }

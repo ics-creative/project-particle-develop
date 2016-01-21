@@ -108,6 +108,7 @@ System.register([], function(exports_1) {
                         graphics.moveTo(-16, mousePt.y);
                         graphics.lineTo(0, mousePt.y);
                     }
+                    // ドラッグ中でなければ、かっこ良く目盛りを表示する
                     if (this._isMouseDown == true) {
                         var mx = Math.floor(mousePt.x) - 0.5;
                         var my = Math.floor(mousePt.y) - 0.5;
@@ -122,6 +123,11 @@ System.register([], function(exports_1) {
                             graphics.moveTo(0, my);
                             graphics.lineTo(this._data.width, my);
                         }
+                    }
+                    else {
+                        // ドラッグ中でなければ、データを反映
+                        this._thumb.x = this._data.startX;
+                        this._thumb.y = this._data.startY;
                     }
                 };
                 return Ruler;
