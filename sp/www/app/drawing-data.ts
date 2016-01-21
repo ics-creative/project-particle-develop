@@ -44,6 +44,7 @@ export class DrawingData {
 
   shapeIdList:string[];
 
+
   constructor() {
 
     this.bgColor = "#00000";

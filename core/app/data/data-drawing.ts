@@ -1,4 +1,5 @@
 import {ColorData} from "./data-color";
+import {AlphaCurveType} from "../enum/alpha-curve-type";
 
 export class DrawingData {
   bgColor:string = "";
@@ -46,6 +47,7 @@ export class DrawingData {
   finishColor:ColorData = new ColorData();
 
   blendMode:boolean = true;
+  alphaCurveType:number = AlphaCurveType.Random;
 
   constructor() {
   }

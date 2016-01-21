@@ -1,10 +1,13 @@
-System.register(["./data-color"], function(exports_1) {
-    var data_color_1;
+System.register(["./data-color", "../enum/alpha-curve-type"], function(exports_1) {
+    var data_color_1, alpha_curve_type_1;
     var DrawingData;
     return {
         setters:[
             function (data_color_1_1) {
                 data_color_1 = data_color_1_1;
+            },
+            function (alpha_curve_type_1_1) {
+                alpha_curve_type_1 = alpha_curve_type_1_1;
             }],
         execute: function() {
             DrawingData = (function () {
@@ -38,6 +41,7 @@ System.register(["./data-color"], function(exports_1) {
                     this.startColor = new data_color_1.ColorData();
                     this.finishColor = new data_color_1.ColorData();
                     this.blendMode = true;
+                    this.alphaCurveType = alpha_curve_type_1.AlphaCurveType.Random;
                 }
                 DrawingData.prototype.into = function (obj) {
                     for (var key in this) {
