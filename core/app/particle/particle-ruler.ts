@@ -15,6 +15,7 @@ export class Ruler {
   private width:number;
   private height:number;
   private _thumb:createjs.Shape;
+  private _isMouseDown:boolean = false;
 
   constructor(private _data:DrawingData) {
     this.container = new createjs.Container();
@@ -26,10 +27,19 @@ export class Ruler {
 
     this._thumb = new createjs.Shape();
     this._thumb.cursor = "crosshair";
-    this._thumb.graphics.beginFill("white").drawCircle(0,0,10);
+    this._thumb.graphics.setStrokeStyle(3)
+        .beginStroke("white").drawRect(-8, -8, 16, 16).endStroke()
+        .beginStroke("black").drawRect(-6, -6, 12, 12).endStroke()
+        .beginFill("rgba(0, 0, 0, 0.01)").drawRect(-24, -24, 48, 48);
     this.container.addChild(this._thumb);
 
+    this.container.on("mousedown", ()=> {
+      this._isMouseDown = true
+    });
     this.container.on("pressmove", this.handleThumbMouseMove, this);
+    this.container.on("pressup", ()=> {
+      this._isMouseDown = false
+    });
 
     this.verticalTextList = [];
     this.horizontalTextList = [];
@@ -116,15 +126,37 @@ export class Ruler {
         .setStrokeStyle(2)
         .beginStroke("#6699ff");
 
-    if (mousePt.x >= 0 && mousePt.x <= this.width) {
+    let isInHorizontal:boolean = 0 <= mousePt.x && mousePt.x <= this.width;
+    let isInVertical:boolean = 0 <= mousePt.y && mousePt.y <= this.height;
+
+    if (isInHorizontal == true) {
       graphics.moveTo(mousePt.x, 0);
       graphics.lineTo(mousePt.x, -16);
     }
 
-    if (mousePt.y >= 0 && mousePt.y <= this.height) {
+    if (isInVertical == true) {
       graphics.moveTo(-16, mousePt.y);
       graphics.lineTo(0, mousePt.y);
     }
 
+    if (this._isMouseDown == true) {
+
+      let mx:number = Math.floor(mousePt.x) - 0.5;
+      let my:number = Math.floor(mousePt.y) - 0.5;
+
+      graphics
+          .setStrokeStyle(1)
+          .beginStroke(createjs.Graphics.getRGB(255, 255, 255, 0.5));
+
+      if (isInHorizontal == true) {
+        graphics.moveTo(mx, 0);
+        graphics.lineTo(mx, this._data.height);
+      }
+
+      if (isInVertical == true) {
+        graphics.moveTo(0, my);
+        graphics.lineTo(this._data.width, my);
+      }
+    }
   }
 }
