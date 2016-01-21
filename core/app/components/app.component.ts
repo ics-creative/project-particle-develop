@@ -23,6 +23,14 @@ export class AppComponent {
 
   constructor(element:ElementRef) {
     this.drawingData = new DrawingData();
+
+    // ステージサイズに対して適当な値を適用する
+    let sw = 960;
+    let sh = 640;
+    this.drawingData.startX = sw / 2;
+    this.drawingData.startY = sh / 2;
+    this.drawingData.width = sw;
+    this.drawingData.height = sh;
   }
 
   protected handleSVGClick() {

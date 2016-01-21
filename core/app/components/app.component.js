@@ -36,6 +36,13 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
             AppComponent = (function () {
                 function AppComponent(element) {
                     this.drawingData = new data_drawing_1.DrawingData();
+                    // ステージサイズに対して適当な値を適用する
+                    var sw = 960;
+                    var sh = 640;
+                    this.drawingData.startX = sw / 2;
+                    this.drawingData.startY = sh / 2;
+                    this.drawingData.width = sw;
+                    this.drawingData.height = sh;
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     var _this = this;

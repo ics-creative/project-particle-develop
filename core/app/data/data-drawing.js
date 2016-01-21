@@ -41,6 +41,9 @@ System.register(["./data-color"], function(exports_1) {
                 }
                 DrawingData.prototype.into = function (obj) {
                     for (var key in this) {
+                        if (key == "width" || key == "height" || key == "startX" || key == "startY") {
+                            continue;
+                        }
                         if (this.hasOwnProperty(key)) {
                             var val = this[key];
                             this[key] = obj[key];
