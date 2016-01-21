@@ -46,7 +46,6 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 };
                 DesktopIOBox.prototype.importParameterFile = function (file) {
                     var _this = this;
-                    alert(file);
                     // ファイルの内容は FileReader で読み込みます.
                     var fileReader = new FileReader();
                     fileReader.onload = function (event) {

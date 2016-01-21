@@ -19,19 +19,77 @@ System.register(["./app.component"], function(exports_1) {
                 }
                 DesktopAppComponent.prototype.handleSVGClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () { _this.openSVGExportWindow(); });
+                    this.stageComponent.exportSVG().then(function () {
+                        _this.openSVGExportWindow();
+                    });
+                };
+                DesktopAppComponent.prototype.handlePNGClick = function () {
+                    var _this = this;
+                    var electron = require('electron');
+                    var dialog = electron.remote.dialog;
+                    var options = {
+                        title: 'PNGとして保存',
+                        defaultPath: 'particle.png',
+                        filters: [
+                            { name: 'Images', extensions: ['png'] }
+                        ]
+                    };
+                    dialog.showSaveDialog(options, function (filename) {
+                        if (!filename) {
+                            return;
+                        }
+                        var dataUrl = _this.stageComponent.toDataURL('image/png');
+                        // 「data:image/png;base64,」の文字列を置換して削除
+                        var data = dataUrl.replace(/^data:image\/png;base64,/, "");
+                        var fs = require('fs');
+                        fs.writeFile(filename, data, 'base64', function (error) {
+                            if (error != null) {
+                                alert('error : ' + error);
+                            }
+                        });
+                    });
+                };
+                DesktopAppComponent.prototype.handleJPEGClick = function () {
+                    var _this = this;
+                    var electron = require('electron');
+                    var dialog = electron.remote.dialog;
+                    var options = {
+                        title: 'JPEGとして保存',
+                        defaultPath: 'particle.jpg',
+                        filters: [
+                            { name: 'Images', extensions: ['jpeg'] }
+                        ]
+                    };
+                    dialog.showSaveDialog(options, function (filename) {
+                        if (!filename) {
+                            return;
+                        }
+                        var dataUrl = _this.stageComponent.toDataURL('image/jpeg', 0.9);
+                        // 「data:image/jpeg;base64,」の文字列を置換して削除
+                        var data = dataUrl.replace(/^data:image\/jpeg;base64,/, "");
+                        var fs = require('fs');
+                        fs.writeFile(filename, data, 'base64', function (error) {
+                            if (error != null) {
+                                alert('error : ' + error);
+                            }
+                        });
+                    });
                 };
                 DesktopAppComponent.prototype.openSVGExportWindow = function () {
                     var _this = this;
                     var electron = require('electron');
                     var dialog = electron.remote.dialog;
                     var options = {
-                        title: 'Save Dialog Example',
+                        title: 'SVGとして保存',
+                        defaultPath: 'particle.svg',
                         filters: [
                             { name: 'Images', extensions: ['svg'] }
                         ]
                     };
                     dialog.showSaveDialog(options, function (filename) {
+                        if (!filename) {
+                            return;
+                        }
                         var fs = require('fs');
                         fs.writeFile(filename, _this.stageComponent.getParticleSVGString(), function (error) {
                             if (error != null) {
@@ -41,8 +99,28 @@ System.register(["./app.component"], function(exports_1) {
                     });
                 };
                 DesktopAppComponent.prototype.handleExportParamaterClick = function () {
-                    alert("paramater!");
-                    console.log("handleExportParamaterClick");
+                    var _this = this;
+                    var electron = require('electron');
+                    var dialog = electron.remote.dialog;
+                    var options = {
+                        title: 'パラメータを保存',
+                        defaultPath: 'particle.json',
+                        filters: [
+                            { name: 'Documents', extensions: ['json'] }
+                        ]
+                    };
+                    dialog.showSaveDialog(options, function (filename) {
+                        if (!filename) {
+                            return;
+                        }
+                        var fs = require('fs');
+                        var data = JSON.stringify(_this.drawingData);
+                        fs.writeFile(filename, data, function (error) {
+                            if (error != null) {
+                                alert('error : ' + error);
+                            }
+                        });
+                    });
                 };
                 return DesktopAppComponent;
             })(app_component_1.AppComponent);
