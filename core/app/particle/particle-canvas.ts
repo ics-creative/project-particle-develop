@@ -63,7 +63,7 @@ export class ParticleCanvas {
     this.particleEmitter = new ParticleEmitter();
     this.canvasContainer.addChild(this.particleEmitter.container);
 
-    this.particleExporter = new ParticleExporter(this.stage);
+    this.particleExporter = new ParticleExporter(this.particleEmitter.container);
 
     this.partcileImageImporter = new PartcicleImageImporter();
 
@@ -85,7 +85,7 @@ export class ParticleCanvas {
   }
 
   runExport():Promise<any> {
-    return this.particleExporter.runExport();
+    return this.particleExporter.runExport(this.data.width,this.data.height);
   }
 
   runExportSP():Promise<any> {
