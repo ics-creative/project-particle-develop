@@ -7,6 +7,8 @@ import {PropertyShapePanel} from "./property-shape.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
 import {ElementRef} from "angular2/core";
+import {Viewport} from "../enum/view-port";
+import {CanvasMargin} from "../enum/canvas-margin";
 
 @Component({
   selector: `my-app`,
@@ -25,8 +27,21 @@ export class AppComponent {
     this.drawingData = new DrawingData();
 
     // ステージサイズに対して適当な値を適用する
-    let sw = 960;
-    let sh = 640;
+
+    let canvasWidth:number = innerWidth;
+    let canvasHeight:number = innerHeight;
+
+    if (innerWidth > Viewport.sm) {
+      canvasHeight -= CanvasMargin.TOP_DESKTOP;
+      canvasWidth -= CanvasMargin.RIGHT_DESKTOP;
+    }
+    else {
+      canvasHeight -= CanvasMargin.TOP_MOBILE;
+      canvasWidth -= CanvasMargin.RIGHT_MOBILE;
+    }
+
+    let sw = canvasWidth * 2 / 3;
+    let sh = canvasHeight * 2 / 3;
     this.drawingData.startX = sw / 2;
     this.drawingData.startY = sh / 2;
     this.drawingData.width = sw;

@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./stage.component"], function(exports_1) {
+System.register(["angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, stage_component_1, core_2, core_3;
+    var core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, stage_component_1, core_2, core_3, view_port_1, canvas_margin_1;
     var AppComponent;
     return {
         setters:[
@@ -31,14 +31,30 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
             },
             function (stage_component_1_1) {
                 stage_component_1 = stage_component_1_1;
+            },
+            function (view_port_1_1) {
+                view_port_1 = view_port_1_1;
+            },
+            function (canvas_margin_1_1) {
+                canvas_margin_1 = canvas_margin_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
                 function AppComponent(element) {
                     this.drawingData = new data_drawing_1.DrawingData();
                     // ステージサイズに対して適当な値を適用する
-                    var sw = 960;
-                    var sh = 640;
+                    var canvasWidth = innerWidth;
+                    var canvasHeight = innerHeight;
+                    if (innerWidth > view_port_1.Viewport.sm) {
+                        canvasHeight -= canvas_margin_1.CanvasMargin.TOP_DESKTOP;
+                        canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_DESKTOP;
+                    }
+                    else {
+                        canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
+                        canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
+                    }
+                    var sw = canvasWidth * 2 / 3;
+                    var sh = canvasHeight * 2 / 3;
                     this.drawingData.startX = sw / 2;
                     this.drawingData.startY = sh / 2;
                     this.drawingData.width = sw;
