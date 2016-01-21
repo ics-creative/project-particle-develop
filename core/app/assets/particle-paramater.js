@@ -58,7 +58,52 @@ System.register([], function(exports_1) {
                     this.setting2 = {
                         name: "紫色のパーティクル",
                         description: "上方向に向かってうごく",
-                        property: { "bgColor": "#00000", "width": "1024", "height": 744, "emitFrequency": "5", "lifeSpan": "50", "lifeSpanVariance": "196", "initialDirection": "0", "initialDirectionVariance": "360", "initialSpeed": "2", "initialSpeedVariance": "3.7", "friction": "0.038", "accelerationSpeed": "0.13", "accelerationDirection": "273.3", "startScale": "0.76", "startScaleVariance": "1", "finishScale": "0", "finishScaleVariance": "0", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "0.35", "finishAlphaVariance": 0.5, "startX": 505, "startXVariance": "594", "startY": 518, "startYVariance": "222", "shapeIdList": ["blur_circle", "circle"], "startColor": { "hue": "312", "hueVariance": "55", "satuation": "71", "satuationVariance": "78", "luminance": "83", "luminanceVariance": "16" }, "finishColor": { "hue": "0", "hueVariance": "0", "satuation": "54", "satuationVariance": 0, "luminance": "10", "luminanceVariance": 0 }, "blendMode": true, "alphaCurveType": "1" }
+                        property: {
+                            "bgColor": "#00000",
+                            "width": "1024",
+                            "height": 744,
+                            "emitFrequency": "5",
+                            "lifeSpan": "50",
+                            "lifeSpanVariance": "196",
+                            "initialDirection": "0",
+                            "initialDirectionVariance": "360",
+                            "initialSpeed": "2",
+                            "initialSpeedVariance": "3.7",
+                            "friction": "0.038",
+                            "accelerationSpeed": "0.13",
+                            "accelerationDirection": "273.3",
+                            "startScale": "0.76",
+                            "startScaleVariance": "1",
+                            "finishScale": "0",
+                            "finishScaleVariance": "0",
+                            "startAlpha": "1",
+                            "startAlphaVariance": "0",
+                            "finishAlpha": "0.35",
+                            "finishAlphaVariance": 0.5,
+                            "startX": 505,
+                            "startXVariance": "594",
+                            "startY": 518,
+                            "startYVariance": "222",
+                            "shapeIdList": ["blur_circle", "circle"],
+                            "startColor": {
+                                "hue": "312",
+                                "hueVariance": "55",
+                                "satuation": "71",
+                                "satuationVariance": "78",
+                                "luminance": "83",
+                                "luminanceVariance": "16"
+                            },
+                            "finishColor": {
+                                "hue": "0",
+                                "hueVariance": "0",
+                                "satuation": "54",
+                                "satuationVariance": 0,
+                                "luminance": "10",
+                                "luminanceVariance": 0
+                            },
+                            "blendMode": true,
+                            "alphaCurveType": "1"
+                        }
                     };
                     this.setting3 = {
                         name: "heart",
@@ -154,11 +199,61 @@ System.register([], function(exports_1) {
                             }
                         }
                     };
+                    this.setting5 = {
+                        name: "Starts",
+                        property: {
+                            "bgColor": "#00000",
+                            "width": 611.3333333333334,
+                            "height": 624.6666666666666,
+                            "emitFrequency": "3",
+                            "lifeSpan": "59",
+                            "lifeSpanVariance": "144",
+                            "initialDirection": "0",
+                            "initialDirectionVariance": "360",
+                            "initialSpeed": "7.7",
+                            "initialSpeedVariance": "10.3",
+                            "friction": "0.0365",
+                            "accelerationSpeed": "0.5215",
+                            "accelerationDirection": "123.7",
+                            "startScale": "0.68",
+                            "startScaleVariance": "1",
+                            "finishScale": "0",
+                            "finishScaleVariance": "0.36",
+                            "startAlpha": "1",
+                            "startAlphaVariance": "0.1",
+                            "finishAlpha": "0.47",
+                            "finishAlphaVariance": 0.5,
+                            "startX": 447,
+                            "startXVariance": "0",
+                            "startY": 135,
+                            "startYVariance": "0",
+                            "shapeIdList": ["star", "kirakira", "circle"],
+                            "startColor": {
+                                "hue": "294",
+                                "hueVariance": "75",
+                                "satuation": "57",
+                                "satuationVariance": "55",
+                                "luminance": "57",
+                                "luminanceVariance": "56"
+                            },
+                            "finishColor": {
+                                "hue": 50,
+                                "hueVariance": 0,
+                                "satuation": 75,
+                                "satuationVariance": 0,
+                                "luminance": 75,
+                                "luminanceVariance": 0
+                            },
+                            "blendMode": true,
+                            "alphaCurveType": "1"
+                        }
+                    };
                     this.list = [];
                     this.list.push(this.setting1);
                     this.list.push(this.setting2);
                     this.list.push(this.setting3);
                     this.list.push(this.setting4);
+                    this.list.push(this.setting5);
                 }
                 return ParticleParamater;
             })();
