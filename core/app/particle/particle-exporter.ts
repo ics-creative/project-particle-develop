@@ -2,7 +2,7 @@
 "use strict";
 
 declare class SVGExporter {
-  constructor(stage:createjs.Container, value1:boolean, value2:boolean, value3:boolean);
+  constructor(stage:createjs.Container, width:number, height:number);
 
   svg:Node;
 
@@ -16,15 +16,20 @@ export class ParticleExporter {
 
   private exporter:SVGExporter;
   private drawLayerContainer:createjs.Container;
+  private width:number;
+  private height:number;
 
   constructor(drawLayerContainer:createjs.Container) {
     this.drawLayerContainer = drawLayerContainer;
   }
 
-  runExport():Promise<any> {
+  runExport(width:number,height:number):Promise<any> {
+    this.width = width;
+    this.height = height;
+
     return new Promise((onResolve, onReject) => {
 
-      this.exporter = new SVGExporter(this.drawLayerContainer, false, false, false);
+      this.exporter = new SVGExporter(this.drawLayerContainer, this.width, this.height);
       this.exporter.run();
 
       setTimeout(() => {

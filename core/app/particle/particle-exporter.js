@@ -12,10 +12,12 @@ System.register([], function(exports_1) {
                 function ParticleExporter(drawLayerContainer) {
                     this.drawLayerContainer = drawLayerContainer;
                 }
-                ParticleExporter.prototype.runExport = function () {
+                ParticleExporter.prototype.runExport = function (width, height) {
                     var _this = this;
+                    this.width = width;
+                    this.height = height;
                     return new Promise(function (onResolve, onReject) {
-                        _this.exporter = new SVGExporter(_this.drawLayerContainer, false, false, false);
+                        _this.exporter = new SVGExporter(_this.drawLayerContainer, _this.width, _this.height);
                         _this.exporter.run();
                         setTimeout(function () {
                             onResolve();

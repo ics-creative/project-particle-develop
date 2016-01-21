@@ -50,7 +50,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.canvasContainer.addChild(this.captureImageLayer);
                     this.particleEmitter = new particle_emitter_1.ParticleEmitter();
                     this.canvasContainer.addChild(this.particleEmitter.container);
-                    this.particleExporter = new particle_exporter_1.ParticleExporter(this.stage);
+                    this.particleExporter = new particle_exporter_1.ParticleExporter(this.particleEmitter.container);
                     this.partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
                     // 座布団
                     this.stage.addChild(this._outerZabuton);
@@ -66,7 +66,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     return this.particleExporter.getSVGString();
                 };
                 ParticleCanvas.prototype.runExport = function () {
-                    return this.particleExporter.runExport();
+                    return this.particleExporter.runExport(this.data.width, this.data.height);
                 };
                 ParticleCanvas.prototype.runExportSP = function () {
                     return this.particleExporter.runExportSP(this.canvas);
