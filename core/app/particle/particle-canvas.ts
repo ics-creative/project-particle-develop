@@ -125,10 +125,16 @@ export class ParticleCanvas {
     if (innerWidth > Viewport.sm) {
       canvasHeight -= CanvasMargin.TOP_DESKTOP;
       canvasWidth -= CanvasMargin.RIGHT_DESKTOP;
+      this._ruler.container.visible = true;
+      this._background.visible = true;
+      this._outerZabuton.visible = true;
     }
     else {
       canvasHeight -= CanvasMargin.TOP_MOBILE;
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
+      this._ruler.container.visible = false;
+      this._background.visible = false;
+      this._outerZabuton.visible = false;
     }
 
     var palletW = Number(this._data.width) >> 0;

@@ -101,10 +101,16 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     if (innerWidth > view_port_1.Viewport.sm) {
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_DESKTOP;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_DESKTOP;
+                        this._ruler.container.visible = true;
+                        this._background.visible = true;
+                        this._outerZabuton.visible = true;
                     }
                     else {
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
+                        this._ruler.container.visible = false;
+                        this._background.visible = false;
+                        this._outerZabuton.visible = false;
                     }
                     var palletW = Number(this._data.width) >> 0;
                     var palletH = Number(this._data.height) >> 0;
