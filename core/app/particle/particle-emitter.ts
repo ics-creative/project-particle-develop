@@ -3,6 +3,7 @@ import {Particle} from "./particle";
 import {DrawingData} from "../data/data-drawing";
 import {ShapeGenerator} from "../assets/shape-generator";
 import {ColorData} from "../data/data-color";
+import {AlphaCurveType} from "../enum/alpha-curve-type";
 
 "use strict";
 
@@ -52,7 +53,7 @@ export class ParticleEmitter {
 
     for (var i = 0; i < this.activeParticles.length; i++) {
 
-      let particle = this.activeParticles[i];
+      let particle:Particle = this.activeParticles[i];
 
       particle.currentLife--;
 
@@ -71,8 +72,19 @@ export class ParticleEmitter {
 
       var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
 
-      var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
-      particle.particleShape.alpha = alpha;
+      if(particle.alphaCurveType == 1)
+      switch (Number(particle.alphaCurveType)){
+        case AlphaCurveType.Random:
+          particle.particleShape.alpha = Math.random();
+          break;
+        case AlphaCurveType.Normal:
+        default:
+          var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
+          particle.particleShape.alpha = alpha;
+          break;
+      }
+
+      //particle.particleShape.alpha = Math.random();
 
       var scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent;
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
@@ -180,6 +192,10 @@ export class ParticleEmitter {
 
     // ブレンドモードを設定
     particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
+
+
+    particle.alphaCurveType = this.drawingData.alphaCurveType;
+
   }
 
   generateShape(particle:Particle, shapeIdList:string[]) {

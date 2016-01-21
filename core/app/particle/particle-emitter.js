@@ -1,5 +1,5 @@
-System.register(["./particle", "../assets/shape-generator"], function(exports_1) {
-    var particle_1, shape_generator_1;
+System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve-type"], function(exports_1) {
+    var particle_1, shape_generator_1, alpha_curve_type_1;
     var ParticleEmitter;
     return {
         setters:[
@@ -8,6 +8,9 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
             },
             function (shape_generator_1_1) {
                 shape_generator_1 = shape_generator_1_1;
+            },
+            function (alpha_curve_type_1_1) {
+                alpha_curve_type_1 = alpha_curve_type_1_1;
             }],
         execute: function() {
             "use strict";
@@ -46,8 +49,18 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                         particle.particleShape.x = particle.x;
                         particle.particleShape.y = particle.y;
                         var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
-                        var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
-                        particle.particleShape.alpha = alpha;
+                        if (particle.alphaCurveType == 1)
+                            switch (Number(particle.alphaCurveType)) {
+                                case alpha_curve_type_1.AlphaCurveType.Random:
+                                    particle.particleShape.alpha = Math.random();
+                                    break;
+                                case alpha_curve_type_1.AlphaCurveType.Normal:
+                                default:
+                                    var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
+                                    particle.particleShape.alpha = alpha;
+                                    break;
+                            }
+                        //particle.particleShape.alpha = Math.random();
                         var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
                         particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
                         if (particle.colorCommand) {
@@ -128,6 +141,7 @@ System.register(["./particle", "../assets/shape-generator"], function(exports_1)
                     particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
                     // ブレンドモードを設定
                     particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
+                    particle.alphaCurveType = this.drawingData.alphaCurveType;
                 };
                 ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
                     particle.particleShape.removeAllChildren();

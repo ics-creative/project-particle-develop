@@ -1,4 +1,4 @@
-System.register(["angular2/core", "./property-color-unit.component", "./input-range.component"], function(exports_1) {
+System.register(["angular2/core", "./property-color-unit.component", "./input-range.component", "angular2/common", "../enum/alpha-curve-type"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, property_color_unit_component_1, input_range_component_1;
+    var core_1, property_color_unit_component_1, input_range_component_1, common_1, alpha_curve_type_1;
     var PropertyColorPanel;
     return {
         setters:[
@@ -20,17 +20,30 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
             },
             function (input_range_component_1_1) {
                 input_range_component_1 = input_range_component_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (alpha_curve_type_1_1) {
+                alpha_curve_type_1 = alpha_curve_type_1_1;
             }],
         execute: function() {
             PropertyColorPanel = (function () {
                 function PropertyColorPanel() {
+                    this.objArray = [
+                        { name: 'Normal', value: alpha_curve_type_1.AlphaCurveType.Normal },
+                        { name: 'Random', value: alpha_curve_type_1.AlphaCurveType.Random }
+                    ];
                 }
+                PropertyColorPanel.prototype.hoge = function () {
+                    console.log(this.drawingData.alphaCurveType);
+                };
                 PropertyColorPanel = __decorate([
                     core_1.Component({
                         selector: "color-property-panel",
                         templateUrl: "app/components/template/property-color.html",
                         inputs: ["drawingData"],
-                        directives: [property_color_unit_component_1.PropertyColorUnit, input_range_component_1.InputRangeComponent]
+                        directives: [property_color_unit_component_1.PropertyColorUnit, input_range_component_1.InputRangeComponent, common_1.FORM_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], PropertyColorPanel);

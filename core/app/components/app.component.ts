@@ -46,6 +46,7 @@ export class AppComponent {
     this.drawingData.startY = sh / 2;
     this.drawingData.width = sw;
     this.drawingData.height = sh;
+
   }
 
   protected handleSVGClick() {
