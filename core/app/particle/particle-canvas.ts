@@ -85,7 +85,7 @@ export class ParticleCanvas {
   }
 
   runExport():Promise<any> {
-    return this.particleExporter.runExport(this.data.width,this.data.height);
+    return this.particleExporter.runExport(this.data.width, this.data.height);
   }
 
   runExportSP():Promise<any> {
@@ -108,10 +108,10 @@ export class ParticleCanvas {
     this.stage.update();
   }
 
-  toDataURL(type:string,params:string):string{
-    this.canvasContainer.cache(0,0,this.data.width,this.data.height);
+  toDataURL(type:string, params:string):string {
+    this.canvasContainer.cache(0, 0, this.data.width, this.data.height);
     var capture = this.canvasContainer.cacheCanvas;
-    var dataURL = capture.toDataURL(type,params);
+    var dataURL = capture.toDataURL(type, params);
     this.canvasContainer.uncache();
 
     return dataURL;
