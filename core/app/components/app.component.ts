@@ -32,9 +32,10 @@ export class AppComponent {
   }
 
   protected handleJPEGClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/jpeg' , "0.8");
+    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
     window.open(dataUrl);
   }
+
   protected handlePNGClick() {
     var dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);

@@ -23,8 +23,8 @@ export class StageComponent implements AfterViewInit {
     return this.particleCanvas.runExport();
   }
 
-  toDataURL(type:string,params:string):string{
-    return this.particleCanvas.toDataURL(type,params);
+  toDataURL(type:string, params:string):string {
+    return this.particleCanvas.toDataURL(type, params);
   }
 
   runExportSP():Promise<any> {

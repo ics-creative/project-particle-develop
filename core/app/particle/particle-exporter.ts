@@ -23,7 +23,7 @@ export class ParticleExporter {
     this.drawLayerContainer = drawLayerContainer;
   }
 
-  runExport(width:number,height:number):Promise<any> {
+  runExport(width:number, height:number):Promise<any> {
     this.width = width;
     this.height = height;
 
@@ -37,6 +37,7 @@ export class ParticleExporter {
       }, 1);
     });
   }
+
   runExportSP(cavas:HTMLCanvasElement):Promise<any> {
     return new Promise((onResolve, onReject) => {
       let base64 = cavas.toDataURL();

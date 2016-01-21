@@ -20,7 +20,8 @@ export class PropertyTemplatePanel implements OnInit {
     var template = new ParticleParamater();
     this.templateList = template.list;
   }
-  ngOnInit(){
+
+  ngOnInit() {
     // テンプレートを適用
     this.drawingData.into(this.templateList[0].property);
   }
