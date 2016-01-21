@@ -7,16 +7,31 @@ System.register([], function(exports_1) {
              * ルーラーの制御クラスです。
              */
             Ruler = (function () {
-                function Ruler() {
+                function Ruler(_data) {
+                    this._data = _data;
                     this.FONT_COLOR = "#888";
                     this.container = new createjs.Container();
                     this.shapeBg = new createjs.Shape();
                     this.container.addChild(this.shapeBg);
                     this.shapeMouse = new createjs.Shape();
                     this.container.addChild(this.shapeMouse);
+                    this._thumb = new createjs.Shape();
+                    this._thumb.cursor = "crosshair";
+                    this._thumb.graphics.beginFill("white").drawCircle(0, 0, 10);
+                    this.container.addChild(this._thumb);
+                    this.container.on("pressmove", this.handleThumbMouseMove, this);
                     this.verticalTextList = [];
                     this.horizontalTextList = [];
                 }
+                Ruler.prototype.handleThumbMouseMove = function (event) {
+                    var stage = this.container.stage;
+                    var point = this.container.globalToLocal(stage.mouseX, stage.mouseY);
+                    this._thumb.x = point.x;
+                    this._thumb.y = point.y;
+                    // データに反映
+                    this._data.startX = point.x;
+                    this._data.startY = point.y;
+                };
                 Ruler.prototype.setSize = function (ws, hs) {
                     this.width = ws;
                     this.height = hs;

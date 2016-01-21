@@ -1,3 +1,4 @@
+import {DrawingData} from "../data/drawing-data";
 /**
  * ルーラーの制御クラスです。
  */
@@ -13,8 +14,9 @@ export class Ruler {
 
   private width:number;
   private height:number;
+  private _thumb:createjs.Shape;
 
-  constructor() {
+  constructor(private _data:DrawingData) {
     this.container = new createjs.Container();
     this.shapeBg = new createjs.Shape();
     this.container.addChild(this.shapeBg);
@@ -22,8 +24,26 @@ export class Ruler {
     this.shapeMouse = new createjs.Shape();
     this.container.addChild(this.shapeMouse);
 
+    this._thumb = new createjs.Shape();
+    this._thumb.cursor = "crosshair";
+    this._thumb.graphics.beginFill("white").drawCircle(0,0,10);
+    this.container.addChild(this._thumb);
+
+    this.container.on("pressmove", this.handleThumbMouseMove, this);
+
     this.verticalTextList = [];
     this.horizontalTextList = [];
+  }
+
+  private handleThumbMouseMove(event:createjs.MouseEvent):void {
+    let stage = this.container.stage;
+    let point = this.container.globalToLocal(stage.mouseX, stage.mouseY);
+    this._thumb.x = point.x;
+    this._thumb.y = point.y;
+
+    // データに反映
+    this._data.startX = point.x;
+    this._data.startY = point.y;
   }
 
   public setSize(ws:number, hs:number):void {

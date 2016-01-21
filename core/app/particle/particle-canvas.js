@@ -32,7 +32,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     var _this = this;
                     /** 座布団 */
                     this._outerZabuton = new createjs.Shape();
-                    this.data = data;
+                    this._data = data;
                     this._canvas = canvas;
                     this._canvas.width = data.width;
                     this._canvas.height = data.height;
@@ -56,7 +56,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     // 座布団
                     this._stage.addChild(this._outerZabuton);
                     // ルーラーは最前面
-                    this._ruler = new particle_ruler_1.Ruler();
+                    this._ruler = new particle_ruler_1.Ruler(this._data);
                     this._ruler.setSize(data.width, data.height);
                     this._stage.addChild(this._ruler.container);
                     // リサイズイベント
@@ -67,7 +67,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     return this._particleExporter.getSVGString();
                 };
                 ParticleCanvas.prototype.runExport = function () {
-                    return this._particleExporter.runExport(this.data.width, this.data.height);
+                    return this._particleExporter.runExport(this._data.width, this._data.height);
                 };
                 ParticleCanvas.prototype.runExportSP = function () {
                     return this._particleExporter.runExportSP(this._canvas);
@@ -86,7 +86,7 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this._stage.update();
                 };
                 ParticleCanvas.prototype.toDataURL = function (type, params) {
-                    this._canvasContainer.cache(0, 0, this.data.width, this.data.height);
+                    this._canvasContainer.cache(0, 0, this._data.width, this._data.height);
                     var capture = this._canvasContainer.cacheCanvas;
                     var dataURL = capture.toDataURL(type, params);
                     this._canvasContainer.uncache();
@@ -106,8 +106,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
                     }
-                    var palletW = Number(this.data.width) >> 0;
-                    var palletH = Number(this.data.height) >> 0;
+                    var palletW = Number(this._data.width) >> 0;
+                    var palletH = Number(this._data.height) >> 0;
                     var canvasX = Math.floor((canvasWidth - palletW) / 2);
                     var canvasY = Math.floor((canvasHeight - palletH) / 2);
                     //  ルーラーなどのセンタリング
@@ -127,8 +127,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this._stage.canvas.height = canvasHeight;
                 };
                 ParticleCanvas.prototype.update = function (data) {
-                    var palletW = Number(this.data.width) >> 0;
-                    var palletH = Number(this.data.height) >> 0;
+                    var palletW = Number(this._data.width) >> 0;
+                    var palletH = Number(this._data.height) >> 0;
                     if (palletW != this._backgroundSize.w
                         || palletH != this._backgroundSize.h
                         || this._backgroundColorCommand.style != data.bgColor) {

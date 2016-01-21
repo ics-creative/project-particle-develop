@@ -12,7 +12,7 @@ import {Ruler} from "./particle-ruler";
 
 export class ParticleCanvas {
 
-  private data:DrawingData;
+  private _data:DrawingData;
 
   private _background:createjs.Shape;
   private _captureImageLayer:ParticleCaptureImageLayer;
@@ -30,7 +30,7 @@ export class ParticleCanvas {
 
   constructor(canvas:any, data:DrawingData) {
 
-    this.data = data;
+    this._data = data;
     this._canvas = canvas;
 
     this._canvas.width = data.width;
@@ -68,7 +68,7 @@ export class ParticleCanvas {
     this._stage.addChild(this._outerZabuton);
 
     // ルーラーは最前面
-    this._ruler = new Ruler();
+    this._ruler = new Ruler(this._data);
     this._ruler.setSize(data.width, data.height);
     this._stage.addChild(this._ruler.container);
 
@@ -82,7 +82,7 @@ export class ParticleCanvas {
   }
 
   public runExport():Promise<any> {
-    return this._particleExporter.runExport(this.data.width, this.data.height);
+    return this._particleExporter.runExport(this._data.width, this._data.height);
   }
 
   public  runExportSP():Promise<any> {
@@ -106,7 +106,7 @@ export class ParticleCanvas {
   }
 
   public toDataURL(type:string, params:string):string {
-    this._canvasContainer.cache(0, 0, this.data.width, this.data.height);
+    this._canvasContainer.cache(0, 0, this._data.width, this._data.height);
     var capture = <HTMLCanvasElement> this._canvasContainer.cacheCanvas;
     var dataURL = capture.toDataURL(type, params);
     this._canvasContainer.uncache();
@@ -131,8 +131,8 @@ export class ParticleCanvas {
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
 
-    var palletW = Number(this.data.width) >> 0;
-    var palletH = Number(this.data.height) >> 0;
+    var palletW = Number(this._data.width) >> 0;
+    var palletH = Number(this._data.height) >> 0;
 
     let canvasX = Math.floor((canvasWidth - palletW) / 2);
     let canvasY = Math.floor((canvasHeight - palletH) / 2);
@@ -159,8 +159,8 @@ export class ParticleCanvas {
 
   public update(data:DrawingData):void {
 
-    var palletW = Number(this.data.width) >> 0;
-    var palletH = Number(this.data.height) >> 0;
+    var palletW = Number(this._data.width) >> 0;
+    var palletH = Number(this._data.height) >> 0;
 
     if (palletW != this._backgroundSize.w
         || palletH != this._backgroundSize.h
