@@ -40,7 +40,7 @@
 
 <h3>透明度の変化</h3>
 
-<select [(ngModel)]="drawingData.alphaCurveType" (ngModelChange)="hoge()" >
+<select [(ngModel)]="drawingData.alphaCurveType" class="topcoat-select" >
   <option *ngFor="#o of objArray" [value]="o.value">{{o.name}}</option>
 </select>
 
