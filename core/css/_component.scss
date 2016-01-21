@@ -56,6 +56,12 @@ h1 {
 #wrapper {
   height: calc(100% - 54px);
   margin-top: 3px;
+
+  @media (max-width: $screen-sm) {
+    margin-top: 0;
+  }
+
+
 }
 
 #main {
@@ -69,8 +75,8 @@ h1 {
   margin-right: ($sideWidth + $panelSpace + $panelSpace / 2) + px;
   height: 100%;
   @media (max-width: $screen-sm) {
-    margin-top: $panelSpace / 2 + px;
-    margin-right: $panelSpace / 2 + px;
+    margin: 0;
+    border-radius:0;
   }
 
   .panel-body {
@@ -189,6 +195,23 @@ h2 {
   }
   .label {
     flex: 20%;
+  }
+}
+
+mobile-io-box .nav  {
+  $buttonW:50;
+  width: ($buttonW * 3) + px;
+  float: right;
+  margin-left: 0;
+  margin-right: 0;
+  li {
+    width: 33.3%;
+    float: left;
+    padding: 0;
+    a {
+      color: #888 !important;
+      font-size: 16px !important;;
+    }
   }
 
 }
