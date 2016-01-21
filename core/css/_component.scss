@@ -24,8 +24,8 @@ $headerHeight: 44;
   height: $headerHeight + px;
 }
 
-html, body{
-  height:100%;
+html, body {
+  height: 100%;
 }
 
 body {
@@ -53,13 +53,13 @@ h1 {
   text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 0px +1px 1px rgba(255, 255, 255, 0.6);
 }
 
-#wrapper{
+#wrapper {
   height: calc(100% - 54px);
   margin-top: 3px;
 }
 
 #main {
-  width: calc(100%-$sideWidth);
+  width: calc(100% - $sideWidth);
   height: 100%;
   float: left;
 }
@@ -80,7 +80,7 @@ h1 {
 
 h2 {
   text-shadow: 0px -2px 0 rgba(0, 0, 0, 0.9);
-  font-weight:bold;
+  font-weight: bold;
 }
 
 .panel {

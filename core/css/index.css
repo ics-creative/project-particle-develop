@@ -7849,7 +7849,7 @@ h1 {
 }
 
 #main {
-  width: calc(100%-$sideWidth);
+  width: calc(100% - $sideWidth);
   height: 100%;
   float: left;
 }
