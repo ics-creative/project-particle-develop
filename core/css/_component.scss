@@ -122,6 +122,19 @@ h2 {
       margin-bottom: 1px;
 
     }
+
+    div.templateListItem {
+      padding: 6px;
+      cursor: pointer;
+
+      img {
+        border: 1px solid #555;
+      }
+
+      &:hover {
+        background: #333;
+      }
+    }
   }
 
   hr {

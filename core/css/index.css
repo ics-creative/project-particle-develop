@@ -7909,6 +7909,16 @@ h2 {
 #propertyPanel .panel div.shapeListItem.selected {
   background: #333333;
 }
+#propertyPanel .panel div.templateListItem {
+  padding: 6px;
+  cursor: pointer;
+}
+#propertyPanel .panel div.templateListItem img {
+  border: 1px solid #555;
+}
+#propertyPanel .panel div.templateListItem:hover {
+  background: #333;
+}
 #propertyPanel hr {
   border-top: 1px solid #1c1e22;
   border-bottom: 1px solid #333333;
