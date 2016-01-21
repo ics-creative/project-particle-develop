@@ -10,6 +10,7 @@
       <li><a href="#tab3" data-toggle="tab" title="パーティクル設定"><i class="fa fa-sliders"></i></a></li>
       <li><a href="#tab4" data-toggle="tab" title="カラー設定"><i class="fa fa-paint-brush"></i></a></li>
       <li><a href="#tab5" data-toggle="tab" title="形状設定"><i class="fa fa-star"></i></a></li>
+      <li><a href="#tab6" data-toggle="tab" title="キャンバス設定"><i class="fa fa-gear"></i></a></li>
     </ul>
     <!-- / タブ-->
     <div id="myTabContent" class="tab-content">
@@ -41,8 +42,13 @@
               id="tab5"
               class="tab-pane"
               [drawingData]="drawingData">
-
       </shape-property-panel>
+
+      <canvas-property-panel
+              id="tab6"
+              class="tab-pane"
+              [drawingData]="drawingData">
+      </canvas-property-panel>
     </div>
   </div>
 </div>

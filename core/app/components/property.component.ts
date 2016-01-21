@@ -7,6 +7,7 @@ import {PropertyParticlePanel} from "./property-particle.component";
 import {PropertyColorPanel} from "./property-color.component";
 import {PropertyTemplatePanel} from "./property-template.component";
 import {PropertyShapePanel} from "./property-shape.component";
+import {PropertyCanvasPanel} from "./property-canvas.component";
 
 @Component({
   selector: "property-panel",
@@ -18,7 +19,8 @@ import {PropertyShapePanel} from "./property-shape.component";
     PropertyParticlePanel,
     PropertyColorPanel,
     PropertyTemplatePanel,
-    PropertyShapePanel]
+    PropertyShapePanel,
+    PropertyCanvasPanel]
 })
 export class PropertyPanel {
   private drawingData:DrawingData;
