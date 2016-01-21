@@ -8005,6 +8005,23 @@ mobile-io-box .nav li a {
   font-size: 16px !important;
 }
 
+mobile-particle-template-property-modal .media {
+  float: left;
+  width: 25%;
+  margin-top: 0;
+}
+mobile-particle-template-property-modal .media-left {
+  width: 100%;
+  display: block;
+}
+mobile-particle-template-property-modal .media-left img {
+  border: 1px solid #303234;
+  width: 100%;
+}
+mobile-particle-template-property-modal .media-body {
+  display: none;
+}
+
 #myCanvas {
   cursor: crosshair;
 }
