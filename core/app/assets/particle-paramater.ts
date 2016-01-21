@@ -1,7 +1,3 @@
-/**
- * Created by nyamogera on 2016/01/20.
- */
-
 export class ParticleParamater {
 
   public list:Object[];
@@ -14,6 +10,7 @@ export class ParticleParamater {
     this.list.push(this.setting3);
     this.list.push(this.setting4);
     this.list.push(this.setting5);
+    this.list.push(this.setting6);
   }
 
   private setting1 = {
@@ -259,4 +256,54 @@ export class ParticleParamater {
       "alphaCurveType": "1"
     }
   };
+
+  private setting6 = {
+    name: "Snow",
+    property: {
+      "bgColor": "#00000",
+      "width": "628",
+      "height": "810",
+      "emitFrequency": "5",
+      "lifeSpan": "136",
+      "lifeSpanVariance": "500",
+      "initialDirection": "192.5",
+      "initialDirectionVariance": "148.5",
+      "initialSpeed": "6.4",
+      "initialSpeedVariance": "0",
+      "friction": "0.0035",
+      "accelerationSpeed": "0.0695",
+      "accelerationDirection": "87.7",
+      "startScale": "0.02",
+      "startScaleVariance": "0.63",
+      "finishScale": "0",
+      "finishScaleVariance": "0",
+      "startAlpha": "0.51",
+      "startAlphaVariance": "1",
+      "finishAlpha": "0",
+      "finishAlphaVariance": "0",
+      "startX": 684,
+      "startXVariance": "668",
+      "startY": -16,
+      "startYVariance": "378",
+      "shapeIdList": ["blur_circle"],
+      "startColor": {
+        "hue": "0",
+        "hueVariance": "0",
+        "satuation": "0",
+        "satuationVariance": 0,
+        "luminance": "100",
+        "luminanceVariance": "47"
+      },
+      "finishColor": {
+        "hue": 50,
+        "hueVariance": 0,
+        "satuation": 75,
+        "satuationVariance": 0,
+        "luminance": 75,
+        "luminanceVariance": 0
+      },
+      "blendMode": true,
+      "alphaCurveType": "0"
+    }
+  }
 }
