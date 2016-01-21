@@ -6,6 +6,8 @@
     <div class="collapse navbar-collapse">
       <desktop-io-box [drawingData]="drawingData"
                       (exportSVGEvent)="handleSVGClick()"
+                      (exportPNGEvent)="handlePNGClick()"
+                      (exportJPEGEvent)="handleJPEGClick()"
                       (exportParamaterEvent)="handleExportParamaterClick()">
       </desktop-io-box>
     </div>

@@ -37,7 +37,6 @@ export class ParticleExporter {
       }, 1);
     });
   }
-
   runExportSP(cavas:HTMLCanvasElement):Promise<any> {
     return new Promise((onResolve, onReject) => {
       let base64 = cavas.toDataURL();
