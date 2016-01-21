@@ -9,6 +9,9 @@
            (change)="handleChange()"/>
   </div>
   <div class="label">
-    <input type="text" class="topcoat-text-input" placeholder="text" value="{{drawingData[targetProperty]}}">
+    <input type="text"
+           class="topcoat-text-input"
+           placeholder="text"
+           [(ngModel)]="drawingData[targetProperty]" />
   </div>
 </div>
