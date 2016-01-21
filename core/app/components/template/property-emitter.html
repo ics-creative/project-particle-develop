@@ -2,14 +2,14 @@
 
 <input-range
         label="発生位置 - X座標 (px)"
-        min="0" max="500" step="1"
+        min="0" max="1024" step="1"
         [drawingData]="drawingData"
         targetProperty="startX">
 </input-range>
 
 <input-range
-        label="発生位置 - X座標 (ばらつき)"
-        min="0" max="500" step="1"
+        label="発生位置 - X座標のばらつき (px)"
+        min="0" max="1024" step="1"
         [drawingData]="drawingData"
         targetProperty="startXVariance">
 </input-range>
@@ -17,14 +17,14 @@
 
 <input-range
         label="発生位置 - Y座標 (px)"
-        min="0" max="500" step="1"
+        min="0" max="1024" step="1"
         [drawingData]="drawingData"
         targetProperty="startY">
 </input-range>
 
 <input-range
-        label="発生位置 - Y座標 (ばらつき)"
-        min="0" max="500" step="1"
+        label="発生位置 - Y座標のばらつき (px)"
+        min="0" max="1024" step="1"
         [drawingData]="drawingData"
         targetProperty="startYVariance">
 </input-range>
@@ -39,7 +39,7 @@
 </input-range>
 
 <input-range
-        label="初期速度 (ばらつき)"
+        label="初期速度のばらつき"
         min="0" max="20" step="0.1"
         [drawingData]="drawingData"
         targetProperty="initialSpeedVariance">
@@ -48,14 +48,14 @@
 <hr>
 
 <input-range
-        label="初期速度 - 方向"
+        label="初期速度 - 方向 (度)"
         min="0" max="360" step="0.5"
         [drawingData]="drawingData"
         targetProperty="initialDirection">
 </input-range>
 
 <input-range
-        label="初期速度 - 方向 (ばらつき)"
+        label="初期速度 - 方向のばらつき (度)"
         min="0" max="360" step="0.5"
         [drawingData]="drawingData"
         targetProperty="initialDirectionVariance">
@@ -65,7 +65,7 @@
 
 <input-range
         label="摩擦"
-        min="0" max="0.2" step="0.001"
+        min="0" max="0.15" step="0.0005"
         [drawingData]="drawingData"
         targetProperty="friction">
 </input-range>
@@ -74,13 +74,13 @@
 
 <input-range
         label="重力"
-        min="0" max="5" step="0.001"
+        min="0" max="4" step="0.0005"
         [drawingData]="drawingData"
         targetProperty="accelerationSpeed">
 </input-range>
 
 <input-range
-        label="重力方向"
+        label="重力方向 (度)"
         min="0" max="360" step="0.1"
         [drawingData]="drawingData"
         targetProperty="accelerationDirection">
