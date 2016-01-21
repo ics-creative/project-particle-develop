@@ -31,20 +31,21 @@ export class DesktopIOBox {
   exportSVG() {
     this.exportSVGEvent.emit(null);
   }
+
   exportPNG() {
     this.exportPNGEvent.emit(null);
   }
+
   exportJPEG() {
     this.exportJPEGEvent.emit(null);
   }
 
-  selectParameterFile(obj:any){
+  selectParameterFile(obj:any) {
     this.importParameterFile(obj.target.files[0])
   }
 
   importParameterFile(file:any) {
 
-    alert(file);
     // ファイルの内容は FileReader で読み込みます.
     var fileReader = new FileReader();
     fileReader.onload = (event) => {
