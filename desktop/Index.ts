@@ -4,6 +4,7 @@ const electron = require("electron");
 const app = electron.app;  // Module to control application life.
 const BrowserWindow = electron.BrowserWindow;  // Module to create native browser window.
 var client:any = null;
+const windowStateKeeper = require('electron-window-state');
 
 console.log(process.env.NODE_ENV)
 if( process.env.NODE_ENV === 'production' ){
@@ -31,12 +32,24 @@ app.on("window-all-closed", function() {
 // initialization and is ready to create browser windows.
 app.on("ready", function() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 600});
+
+  let mainWindowState = windowStateKeeper({
+    defaultWidth: 960,
+    defaultHeight: 800
+  });
+
+  var mainWindow = new BrowserWindow({
+    x:mainWindowState.x,
+    y:mainWindowState.y,
+    width: mainWindowState.width,
+    height: mainWindowState.height
+  });
+
   // and load the index.html of the app.
   mainWindow.loadURL("file://" + __dirname + "/src/index.html");
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   // Connect to server process
   if( client ) {

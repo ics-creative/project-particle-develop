@@ -2,6 +2,7 @@ var electron = require("electron");
 var app = electron.app;
 var BrowserWindow = electron.BrowserWindow;
 var client = null;
+var windowStateKeeper = require('electron-window-state');
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'production') {
     client = require('electron-connect').client;
@@ -15,9 +16,17 @@ app.on("window-all-closed", function () {
     }
 });
 app.on("ready", function () {
-    mainWindow = new BrowserWindow({ width: 800, height: 600 });
+    var mainWindowState = windowStateKeeper({
+        defaultWidth: 960,
+        defaultHeight: 800
+    });
+    var mainWindow = new BrowserWindow({
+        x: mainWindowState.x,
+        y: mainWindowState.y,
+        width: mainWindowState.width,
+        height: mainWindowState.height
+    });
     mainWindow.loadURL("file://" + __dirname + "/src/index.html");
-    mainWindow.webContents.openDevTools();
     if (client) {
         client.create(mainWindow);
     }
