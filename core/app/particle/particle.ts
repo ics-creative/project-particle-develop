@@ -51,6 +51,8 @@ export class Particle {
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
   public colorCommand:any;
 
+  alphaCurveType:number;
+
   constructor() {
     this.particleShape = new createjs.Container;
 

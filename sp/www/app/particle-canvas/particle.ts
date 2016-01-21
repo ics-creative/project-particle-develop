@@ -47,6 +47,9 @@ export class Particle {
   public finishScale:number;
 
 
+  public alphaCurveType:number;
+
+
   constructor() {
     this.particleShape = new createjs.Container;
   }

@@ -7817,6 +7817,7 @@ a.list-group-item-danger.active:hover, a.list-group-item-danger.active:focus {
 
 html, body {
   height: 100%;
+  font-size: 14px !important;
 }
 
 body {

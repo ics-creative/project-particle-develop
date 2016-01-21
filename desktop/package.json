@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "install": "tsd install",
     "build-ts": "gulp build-ts",
-    "clean-build" : "gulp clean-build",
+    "clean-build": "gulp clean-build",
     "serve": "gulp serve",
-    "start": "electron ."
+    "start": "electron .",
+    "packaging": "electron-packager . ParticleDevelop --platform=darwin,win32 --arch=x64 --version=0.35.0 --overwrite"
   },
   "keywords": [
     "electron",
@@ -20,7 +21,9 @@
   "devDependencies": {
     "del": "^2.2.0",
     "electron-connect": "^0.3.3",
+    "electron-packager": "^5.2.1",
     "electron-prebuilt": "0.35.0",
+    "electron-window-state": "^2.0.0",
     "gulp": "^3.9.0",
     "gulp-exec": "^2.1.2",
     "gulp-inject": "^3.0.0",

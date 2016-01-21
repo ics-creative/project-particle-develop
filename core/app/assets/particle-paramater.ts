@@ -64,51 +64,9 @@ export class ParticleParamater {
   };
 
   setting2 = {
-    name: "igaguri",
-    property: {
-      "bgColor": "#00000",
-      "width": "620",
-      "height": "771",
-      "emitFrequency": "3",
-      "lifeSpan": "192",
-      "lifeSpanVariance": "100",
-      "initialDirection": "177",
-      "initialDirectionVariance": "360",
-      "initialSpeed": "1.7",
-      "initialSpeedVariance": "1.6",
-      "friction": "0.038",
-      "accelerationSpeed": "0.075",
-      "accelerationDirection": "273.3",
-      "startScale": "0.14",
-      "startScaleVariance": "0.74",
-      "finishScale": "0",
-      "finishScaleVariance": "0",
-      "startAlpha": "1",
-      "startAlphaVariance": "0",
-      "finishAlpha": "0",
-      "finishAlphaVariance": 0.5,
-      "startX": "303",
-      "startXVariance": "500",
-      "startY": "500",
-      "startYVariance": "222",
-      "shapeIdList": ["blur_circle", "reverse_blur_circle"],
-      "startColor": {
-        "hue": "312",
-        "hueVariance": "0",
-        "satuation": "71",
-        "satuationVariance": "49",
-        "luminance": "83",
-        "luminanceVariance": "16"
-      },
-      "finishColor": {
-        "hue": "0",
-        "hueVariance": "0",
-        "satuation": "54",
-        "satuationVariance": 0,
-        "luminance": "10",
-        "luminanceVariance": 0
-      }
-    }
+    name: "紫色のパーティクル",
+    description : "上方向に向かってうごく",
+    property: {"bgColor":"#00000","width":"1024","height":744,"emitFrequency":"5","lifeSpan":"50","lifeSpanVariance":"196","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"2","initialSpeedVariance":"3.7","friction":"0.038","accelerationSpeed":"0.13","accelerationDirection":"273.3","startScale":"0.76","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.35","finishAlphaVariance":0.5,"startX":505,"startXVariance":"594","startY":518,"startYVariance":"222","shapeIdList":["blur_circle","circle"],"startColor":{"hue":"312","hueVariance":"55","satuation":"71","satuationVariance":"78","luminance":"83","luminanceVariance":"16"},"finishColor":{"hue":"0","hueVariance":"0","satuation":"54","satuationVariance":0,"luminance":"10","luminanceVariance":0},"blendMode":true,"alphaCurveType":"1"}
   };
 
   setting3 = {

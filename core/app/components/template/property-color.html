@@ -1,7 +1,7 @@
 <h3>開始色</h3>
 <color-unit-property-panel [colorData]="drawingData.startColor"></color-unit-property-panel>
 
-<hr />
+<hr/>
 
 <input-range
         label="開始時の透明度"
@@ -18,7 +18,7 @@
 </input-range>
 
 
-<hr />
+<hr/>
 
 <h3>終了色</h3>
 
@@ -36,11 +36,17 @@
         targetProperty="finishAlphaVariance">
 </input-range>
 
-<hr />
+<hr/>
+
+<h3>透明度の変化</h3>
+
+<select [(ngModel)]="drawingData.alphaCurveType" class="topcoat-select" >
+  <option *ngFor="#o of objArray" [value]="o.value">{{o.name}}</option>
+</select>
 
 <h3>ブレンドモード</h3>
 
 <label class="topcoat-checkbox">
-  <input type="checkbox" [(ngModel)]="drawingData.blendMode" />
+  <input type="checkbox" [(ngModel)]="drawingData.blendMode"/>
   Use lighter
 </label>
