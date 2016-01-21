@@ -26,7 +26,7 @@ $headerHeight: 44;
 
 html, body {
   height: 100%;
-  font-size: 14px !important;
+  font-size: 12px !important;
 }
 
 body {
@@ -57,6 +57,8 @@ h1 {
 #wrapper {
   height: calc(100% - 54px);
   margin-top: 3px;
+
+  display: flex;
 }
 
 #main {
@@ -94,12 +96,10 @@ h2 {
 
 #propertyPanel {
   height: 100%;
-  width: $sideWidth + px;
+  flex: $sideWidth + px;
   margin-left: -  ($sideWidth + $panelSpace) + px;
   margin-right: ($panelSpace / 2) + px;
-  float: right;
-  max-height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 
   .panel {
     background: #2a2a2a;
