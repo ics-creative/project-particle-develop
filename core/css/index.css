@@ -7923,11 +7923,12 @@ h1 {
   background-image: linear-gradient(#242424, #333 60%, #3d3d3d);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF242424', endColorstr='#FF3D3D3D', GradientType=0);
-  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 1px 1px rgba(255, 255, 255, 0.6);
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
   border-bottom-color: black;
 }
 #propertyPanel .nav-tabs > li > a {
   color: #888;
+  font-size: 16px;
 }
 
 #myCanvas {

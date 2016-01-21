@@ -3,6 +3,39 @@
 
 <hr />
 
+<input-range
+        label="開始時の透明度"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="startAlpha">
+</input-range>
+
+<input-range
+        label="開始時の透明度のばらつき"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="startAlphaVariance">
+</input-range>
+
+
+<hr />
+
 <h3>終了色</h3>
 <color-unit-property-panel [colorData]="drawingData.finishColor"></color-unit-property-panel>
+
+<hr />
+
+<input-range
+        label="終了時の透明度"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="finishAlpha">
+</input-range>
+
+<input-range
+        label="終了時の透明度のばらつき"
+        min="0.0" max="1.0" step="0.01"
+        [drawingData]="drawingData"
+        targetProperty="finishAlphaVariance">
+</input-range>
 

@@ -134,12 +134,13 @@ h1 {
   .nav-tabs > li {
     & > a {
       color: #888;
+      font-size: 16px;
     }
 
     $color: #333;
     @include gradient-vertical-three-colors(darken($color, 6%), $color, 60%, lighten($color, 4%));
 
-    text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 0px +1px 1px rgba(255, 255, 255, 0.6);
+    text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
     border-bottom-color: black;
   }
 
