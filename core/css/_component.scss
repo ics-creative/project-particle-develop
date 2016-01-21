@@ -119,12 +119,19 @@ h2 {
       margin-bottom: 20px;
 
       shape-itemrenderer {
-        border: 1px solid rgba(0, 0, 0, 0);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+
+        canvas {
+          opacity: 0.25;
+        }
       }
 
       &.selected shape-itemrenderer {
         background: #222;
         border: 1px solid #333;
+        canvas {
+          opacity: 1.0;
+        }
       }
     }
 

@@ -7909,11 +7909,17 @@ h2 {
   margin-bottom: 20px;
 }
 #propertyPanel .panel div.shapeListItem shape-itemrenderer {
-  border: 1px solid transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+#propertyPanel .panel div.shapeListItem shape-itemrenderer canvas {
+  opacity: 0.25;
 }
 #propertyPanel .panel div.shapeListItem.selected shape-itemrenderer {
   background: #222;
   border: 1px solid #333;
+}
+#propertyPanel .panel div.shapeListItem.selected shape-itemrenderer canvas {
+  opacity: 1.0;
 }
 #propertyPanel .panel div.templateListItem {
   padding: 6px;
