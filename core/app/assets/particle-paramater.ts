@@ -21,56 +21,15 @@ export class ParticleParamater {
     name: "Basic",
     description : "プレーンなテンプレート",
     imageId : "basic",
-    property: {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"103","lifeSpanVariance":"0","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"7.5","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.5","startScaleVariance":"0","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":305.6666666666667,"startXVariance":"0","startY":312.3333333333333,"startYVariance":"0","shapeIdList":["circle"],"startColor":{"hue":"0","hueVariance":"0","satuation":"100","satuationVariance":0,"luminance":"50","luminanceVariance":0},"blendMode":false,"alphaCurveType":"0"}
+    property:
+      {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"103","lifeSpanVariance":"0","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"7.5","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.5","startScaleVariance":"0","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":305.6666666666667,"startXVariance":"0","startY":312.3333333333333,"startYVariance":"0","shapeIdList":["circle"],"startColor":{"hue":"0","hueVariance":"0","satuation":"100","satuationVariance":0,"luminance":"50","luminanceVariance":0},"blendMode":false,"alphaCurveType":"0"}
   };
   private setting1 = {
-    name: "きらきら",
+    name: "グラフィック",
     description : "綺羅びやかな雰囲気",
-    imageId : "kirakira",
-    property: {
-      "bgColor": "#00000",
-      "width": 500,
-      "height": 500,
-      "friction": "0.058",
-      "startX": "252",
-      "startXVariance": "0",
-      "startY": "71",
-      "startYVariance": "148",
-      "lifeSpan": "136",
-      "lifeSpanVariance": "27",
-      "initialDirection": "283",
-      "initialDirectionVariance": "348",
-      "initialSpeed": "12.9",
-      "initialSpeedVariance": "1.6",
-      "accelerationSpeed": "0.7",
-      "accelerationDirection": "116.5",
-      "startAlpha": "1",
-      "startAlphaVariance": "0",
-      "finishAlpha": "0",
-      "finishAlphaVariance": 0.5,
-      "startScale": "0.18",
-      "startScaleVariance": "1",
-      "finishScale": "0",
-      "finishScaleVariance": "0",
-      "shapeIdList": ["blur_circle", "triangle", "circle", "reverse_blur_circle"],
-      "emitFrequency": "3",
-      "startColor": {
-        "hue": "170",
-        "hueVariance": 0,
-        "satuation": 75,
-        "satuationVariance": 0,
-        "luminance": 75,
-        "luminanceVariance": 0
-      },
-      "finishColor": {
-        "hue": 50,
-        "hueVariance": 0,
-        "satuation": 75,
-        "satuationVariance": 0,
-        "luminance": 75,
-        "luminanceVariance": 0
-      }
-    }
+    imageId : "graphic",
+    property:
+      {"bgColor":"#724383","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"2","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"3.5","initialSpeedVariance":"7.7","friction":"0.023","accelerationSpeed":"0","accelerationDirection":"116.5","startScale":"0.3","startScaleVariance":"1","finishScale":"0.26","finishScaleVariance":"0.54","startAlpha":"0.69","startAlphaVariance":"0.53","finishAlpha":"0","finishAlphaVariance":"0","startX":300,"startXVariance":"0","startY":307,"startYVariance":"0","shapeIdList":["circle","reverse_blur_circle","star"],"startColor":{"hue":"0","hueVariance":"0","satuation":"92","satuationVariance":0,"luminance":"100","luminanceVariance":0},"blendMode":true,"alphaCurveType":"0"}
   };
 
   private setting2 = {
@@ -289,12 +248,14 @@ export class ParticleParamater {
     name : "隕石",
     description : "赤い火球の落下を想定",
     imageId : "commet",
-    property : {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"5","lifeSpan":"40","lifeSpanVariance":"0","initialDirection":"209.5","initialDirectionVariance":"155","initialSpeed":"2.6","initialSpeedVariance":"3.8","friction":"0.0085","accelerationSpeed":"0.835","accelerationDirection":"233.2","startScale":"1","startScaleVariance":"0.52","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":320,"startXVariance":"0","startY":349,"startYVariance":"0","shapeIdList":["blur_circle"],"startColor":{"hue":"17","hueVariance":"32","satuation":"100","satuationVariance":"45","luminance":"56","luminanceVariance":"19"},"blendMode":true,"alphaCurveType":"0"}
+    property :
+      {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"5","lifeSpan":"40","lifeSpanVariance":"0","initialDirection":"209.5","initialDirectionVariance":"155","initialSpeed":"2.6","initialSpeedVariance":"3.8","friction":"0.0085","accelerationSpeed":"0.835","accelerationDirection":"233.2","startScale":"1","startScaleVariance":"0.52","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":320,"startXVariance":"0","startY":349,"startYVariance":"0","shapeIdList":["blur_circle"],"startColor":{"hue":"17","hueVariance":"32","satuation":"100","satuationVariance":"45","luminance":"56","luminanceVariance":"19"},"blendMode":true,"alphaCurveType":"0"}
   }
   private setting8 = {
     name : "ピンクの世界",
     description : "ハートいっぱい現れる雰囲気",
     imageId : "heart_world",
-    property : {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"270","initialDirectionVariance":"360","initialSpeed":"1","initialSpeedVariance":"0","friction":"0.071","accelerationSpeed":"0.1045","accelerationDirection":"270","startScale":"0.5","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.8","finishAlphaVariance":"0","startX":309,"startXVariance":"597","startY":516,"startYVariance":"165","shapeIdList":["heart"],"startColor":{"hue":"335","hueVariance":"0","satuation":"78","satuationVariance":"0","luminance":"59","luminanceVariance":"50"},"blendMode":true,"alphaCurveType":"1"}
+    property :
+      {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"270","initialDirectionVariance":"360","initialSpeed":"1","initialSpeedVariance":"0","friction":"0.071","accelerationSpeed":"0.1045","accelerationDirection":"270","startScale":"0.5","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.8","finishAlphaVariance":"0","startX":309,"startXVariance":"597","startY":516,"startYVariance":"165","shapeIdList":["heart"],"startColor":{"hue":"335","hueVariance":"0","satuation":"78","satuationVariance":"0","luminance":"59","luminanceVariance":"50"},"blendMode":true,"alphaCurveType":"1"}
   }
 }

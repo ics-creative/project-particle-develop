@@ -13,53 +13,10 @@ System.register([], function(exports_1) {
                         property: { "bgColor": "#00000", "width": 611.3333333333334, "height": 624.6666666666666, "emitFrequency": "1", "lifeSpan": "103", "lifeSpanVariance": "0", "initialDirection": "0", "initialDirectionVariance": "360", "initialSpeed": "7.5", "initialSpeedVariance": "0", "friction": "0", "accelerationSpeed": "0", "accelerationDirection": "0", "startScale": "0.5", "startScaleVariance": "0", "finishScale": "0", "finishScaleVariance": "0", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "1", "finishAlphaVariance": "0", "startX": 305.6666666666667, "startXVariance": "0", "startY": 312.3333333333333, "startYVariance": "0", "shapeIdList": ["circle"], "startColor": { "hue": "0", "hueVariance": "0", "satuation": "100", "satuationVariance": 0, "luminance": "50", "luminanceVariance": 0 }, "blendMode": false, "alphaCurveType": "0" }
                     };
                     this.setting1 = {
-                        name: "きらきら",
+                        name: "グラフィック",
                         description: "綺羅びやかな雰囲気",
-                        imageId: "kirakira",
-                        property: {
-                            "bgColor": "#00000",
-                            "width": 500,
-                            "height": 500,
-                            "friction": "0.058",
-                            "startX": "252",
-                            "startXVariance": "0",
-                            "startY": "71",
-                            "startYVariance": "148",
-                            "lifeSpan": "136",
-                            "lifeSpanVariance": "27",
-                            "initialDirection": "283",
-                            "initialDirectionVariance": "348",
-                            "initialSpeed": "12.9",
-                            "initialSpeedVariance": "1.6",
-                            "accelerationSpeed": "0.7",
-                            "accelerationDirection": "116.5",
-                            "startAlpha": "1",
-                            "startAlphaVariance": "0",
-                            "finishAlpha": "0",
-                            "finishAlphaVariance": 0.5,
-                            "startScale": "0.18",
-                            "startScaleVariance": "1",
-                            "finishScale": "0",
-                            "finishScaleVariance": "0",
-                            "shapeIdList": ["blur_circle", "triangle", "circle", "reverse_blur_circle"],
-                            "emitFrequency": "3",
-                            "startColor": {
-                                "hue": "170",
-                                "hueVariance": 0,
-                                "satuation": 75,
-                                "satuationVariance": 0,
-                                "luminance": 75,
-                                "luminanceVariance": 0
-                            },
-                            "finishColor": {
-                                "hue": 50,
-                                "hueVariance": 0,
-                                "satuation": 75,
-                                "satuationVariance": 0,
-                                "luminance": 75,
-                                "luminanceVariance": 0
-                            }
-                        }
+                        imageId: "graphic",
+                        property: { "bgColor": "#724383", "width": 611.3333333333334, "height": 624.6666666666666, "emitFrequency": "2", "lifeSpan": "136", "lifeSpanVariance": "27", "initialDirection": "0", "initialDirectionVariance": "360", "initialSpeed": "3.5", "initialSpeedVariance": "7.7", "friction": "0.023", "accelerationSpeed": "0", "accelerationDirection": "116.5", "startScale": "0.3", "startScaleVariance": "1", "finishScale": "0.26", "finishScaleVariance": "0.54", "startAlpha": "0.69", "startAlphaVariance": "0.53", "finishAlpha": "0", "finishAlphaVariance": "0", "startX": 300, "startXVariance": "0", "startY": 307, "startYVariance": "0", "shapeIdList": ["circle", "reverse_blur_circle", "star"], "startColor": { "hue": "0", "hueVariance": "0", "satuation": "92", "satuationVariance": 0, "luminance": "100", "luminanceVariance": 0 }, "blendMode": true, "alphaCurveType": "0" }
                     };
                     this.setting2 = {
                         name: "紫色のパーティクル",
