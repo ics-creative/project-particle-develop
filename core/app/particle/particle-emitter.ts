@@ -53,46 +53,47 @@ export class ParticleEmitter {
 
       let particle:Particle = this._activeParticles[i];
 
-      particle.currentLife--;
+      // 加速度計算 (重力)
+      particle.vx += accX;
+      particle.vy += accY;
 
+      // 摩擦計算
+      particle.vx *= (1 - this._drawingData.friction);
+      particle.vy *= (1 - this._drawingData.friction);
 
-      particle.vx = particle.vx + accX;
-      particle.vy = particle.vy + accY;
+      // 座標計算
+      particle.x += particle.vx;
+      particle.y += particle.vy;
 
-      particle.vx = particle.vx * (1 - this._drawingData.friction);
-      particle.vy = particle.vy * (1 - this._drawingData.friction);
-
-      particle.x = particle.x + particle.vx;
-      particle.y = particle.y + particle.vy;
-
+      // 座標の適用
       particle.particleShape.x = particle.x;
       particle.particleShape.y = particle.y;
 
-      let lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
+      let lifeParcent = particle.currentLife / particle.totalLife;
 
-      if (particle.alphaCurveType == 1)
-        switch (Number(particle.alphaCurveType)) {
-          case AlphaCurveType.Random:
-            let min = Math.min(particle.finishAlpha, particle.startAlpha);
-            let max = Math.max(particle.finishAlpha, particle.startAlpha);
-            particle.particleShape.alpha = Math.random() * (max - min) + min;
-            break;
-          case AlphaCurveType.Normal:
-          default:
-            let alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
-            particle.particleShape.alpha = alpha;
-            break;
-        }
+      switch (Number(particle.alphaCurveType)) {
+        case AlphaCurveType.Random:
+          let min = Math.min(particle.finishAlpha, particle.startAlpha);
+          let max = Math.max(particle.finishAlpha, particle.startAlpha);
+          particle.particleShape.alpha = Math.random() * (max - min) + min;
+          break;
+        case AlphaCurveType.Normal:
+        default:
+          let alpha = this.calcCurrentValue(particle.startAlpha, particle.finishAlpha, lifeParcent);
+          particle.particleShape.alpha = alpha;
+          break;
+      }
 
-      //particle.particleShape.alpha = Math.random();
-
-      let scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
+      let scale = this.calcCurrentValue(particle.startScale, particle.finishScale, lifeParcent);
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
 
       //  パーティクルが死んでいたら、オブジェクトプールに移動
       if (particle.currentLife < 0) {
         particle.isAlive = false;
       }
+
+      // 年齢追加
+      particle.currentLife--;
     }
   }
 
@@ -168,8 +169,8 @@ export class ParticleEmitter {
     particle.vy = Math.sin(angle) * speed;
 
     //  アルファ
-    particle.startAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
-    particle.finishAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
+    particle.startAlpha = this.calcRandomValueWithRange(0.0, 1.0, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
+    particle.finishAlpha = this.calcRandomValueWithRange(0.0, 1.0, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
 
     //  スケール
     particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
@@ -266,5 +267,16 @@ export class ParticleEmitter {
     }
 
     return result;
+  }
+
+  /**
+   * 現在の年齢依存の数値を計算します。
+   * @param start 開始時の値です。
+   * @param end 終了時の値です。
+   * @param life 現在の寿命を示します。開始時は1.0で、終了時は0.0の想定です。
+   * @returns {number} 現在の値です。
+   */
+  private calcCurrentValue(start:number, end:number, life:number):number {
+    return Number(start) * life + Number(end) * (1 - life);
   }
 }

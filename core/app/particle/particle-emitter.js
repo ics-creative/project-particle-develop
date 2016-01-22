@@ -41,36 +41,39 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     var accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
                     for (var i = 0; i < this._activeParticles.length; i++) {
                         var particle = this._activeParticles[i];
-                        particle.currentLife--;
-                        particle.vx = particle.vx + accX;
-                        particle.vy = particle.vy + accY;
-                        particle.vx = particle.vx * (1 - this._drawingData.friction);
-                        particle.vy = particle.vy * (1 - this._drawingData.friction);
-                        particle.x = particle.x + particle.vx;
-                        particle.y = particle.y + particle.vy;
+                        // 加速度計算 (重力)
+                        particle.vx += accX;
+                        particle.vy += accY;
+                        // 摩擦計算
+                        particle.vx *= (1 - this._drawingData.friction);
+                        particle.vy *= (1 - this._drawingData.friction);
+                        // 座標計算
+                        particle.x += particle.vx;
+                        particle.y += particle.vy;
+                        // 座標の適用
                         particle.particleShape.x = particle.x;
                         particle.particleShape.y = particle.y;
-                        var lifeParcent = Math.max(particle.currentLife, 0) / particle.totalLife;
-                        if (particle.alphaCurveType == 1)
-                            switch (Number(particle.alphaCurveType)) {
-                                case alpha_curve_type_1.AlphaCurveType.Random:
-                                    var min = Math.min(particle.finishAlpha, particle.startAlpha);
-                                    var max = Math.max(particle.finishAlpha, particle.startAlpha);
-                                    particle.particleShape.alpha = Math.random() * (max - min) + min;
-                                    break;
-                                case alpha_curve_type_1.AlphaCurveType.Normal:
-                                default:
-                                    var alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
-                                    particle.particleShape.alpha = alpha;
-                                    break;
-                            }
-                        //particle.particleShape.alpha = Math.random();
-                        var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
+                        var lifeParcent = particle.currentLife / particle.totalLife;
+                        switch (Number(particle.alphaCurveType)) {
+                            case alpha_curve_type_1.AlphaCurveType.Random:
+                                var min = Math.min(particle.finishAlpha, particle.startAlpha);
+                                var max = Math.max(particle.finishAlpha, particle.startAlpha);
+                                particle.particleShape.alpha = Math.random() * (max - min) + min;
+                                break;
+                            case alpha_curve_type_1.AlphaCurveType.Normal:
+                            default:
+                                var alpha = this.calcCurrentValue(particle.startAlpha, particle.finishAlpha, lifeParcent);
+                                particle.particleShape.alpha = alpha;
+                                break;
+                        }
+                        var scale = this.calcCurrentValue(particle.startScale, particle.finishScale, lifeParcent);
                         particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
                         //  パーティクルが死んでいたら、オブジェクトプールに移動
                         if (particle.currentLife < 0) {
                             particle.isAlive = false;
                         }
+                        // 年齢追加
+                        particle.currentLife--;
                     }
                 };
                 /**
@@ -132,8 +135,8 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     particle.vx = Math.cos(angle) * speed;
                     particle.vy = Math.sin(angle) * speed;
                     //  アルファ
-                    particle.startAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
-                    particle.finishAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
+                    particle.startAlpha = this.calcRandomValueWithRange(0.0, 1.0, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
+                    particle.finishAlpha = this.calcRandomValueWithRange(0.0, 1.0, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
                     //  スケール
                     particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
                     particle.finishScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
@@ -207,6 +210,16 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                         return Math.floor(result);
                     }
                     return result;
+                };
+                /**
+                 * 現在の年齢依存の数値を計算します。
+                 * @param start 開始時の値です。
+                 * @param end 終了時の値です。
+                 * @param life 現在の寿命を示します。開始時は1.0で、終了時は0.0の想定です。
+                 * @returns {number} 現在の値です。
+                 */
+                ParticleEmitter.prototype.calcCurrentValue = function (start, end, life) {
+                    return Number(start) * life + Number(end) * (1 - life);
                 };
                 /** グラフィックオブジェクトです。内部計算に使用します。 */
                 ParticleEmitter.HELPER_GRAPHICS = new createjs.Graphics();
