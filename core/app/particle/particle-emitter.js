@@ -17,8 +17,8 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
         execute: function() {
             ParticleEmitter = (function () {
                 function ParticleEmitter() {
-                    this.particlesPool = [];
-                    this.activeParticles = [];
+                    this._particlesPool = [];
+                    this._activeParticles = [];
                     this.container = new createjs.Container();
                     // パフォーマンス向上の基本テクニック
                     this.container.mouseChildren = false;
@@ -26,7 +26,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     this.shapeGenerator = new shape_generator_1.ShapeGenerator();
                 }
                 ParticleEmitter.prototype.update = function (drawingData) {
-                    this.drawingData = drawingData;
+                    this._drawingData = drawingData;
                     this.emit();
                     this.animate();
                     this.lifeCheck();
@@ -35,16 +35,16 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                  * パーティクルの動き。
                  */
                 ParticleEmitter.prototype.animate = function () {
-                    var rad = createjs.Matrix2D.DEG_TO_RAD * this.drawingData.accelerationDirection;
-                    var accX = Math.cos(rad) * this.drawingData.accelerationSpeed;
-                    var accY = Math.sin(rad) * this.drawingData.accelerationSpeed;
-                    for (var i = 0; i < this.activeParticles.length; i++) {
-                        var particle = this.activeParticles[i];
+                    var rad = createjs.Matrix2D.DEG_TO_RAD * this._drawingData.accelerationDirection;
+                    var accX = Math.cos(rad) * this._drawingData.accelerationSpeed;
+                    var accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
+                    for (var i = 0; i < this._activeParticles.length; i++) {
+                        var particle = this._activeParticles[i];
                         particle.currentLife--;
                         particle.vx = particle.vx + accX;
                         particle.vy = particle.vy + accY;
-                        particle.vx = particle.vx * (1 - this.drawingData.friction);
-                        particle.vy = particle.vy * (1 - this.drawingData.friction);
+                        particle.vx = particle.vx * (1 - this._drawingData.friction);
+                        particle.vy = particle.vy * (1 - this._drawingData.friction);
                         particle.x = particle.x + particle.vx;
                         particle.y = particle.y + particle.vy;
                         particle.particleShape.x = particle.x;
@@ -82,13 +82,13 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                  * パーティクルが生きているか確認する。
                  */
                 ParticleEmitter.prototype.lifeCheck = function () {
-                    for (var i = 0; i < this.activeParticles.length; i++) {
+                    for (var i = 0; i < this._activeParticles.length; i++) {
                         // もしも死んでいたら、アクティブリストから外してプールに保存する。
-                        if (!this.activeParticles[i].isAlive) {
-                            var particle = this.activeParticles[i];
+                        if (!this._activeParticles[i].isAlive) {
+                            var particle = this._activeParticles[i];
                             this.container.removeChild(particle.particleShape);
-                            this.activeParticles.splice(i, 1);
-                            this.particlesPool.push(particle);
+                            this._activeParticles.splice(i, 1);
+                            this._particlesPool.push(particle);
                             i--;
                         }
                     }
@@ -97,10 +97,10 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                  * パーティクルの生成（インターバルチェックする）
                  */
                 ParticleEmitter.prototype.emit = function () {
-                    for (var i = 0; i < this.drawingData.emitFrequency; i++) {
+                    for (var i = 0; i < this._drawingData.emitFrequency; i++) {
                         var particle = this.generateParticle();
                         this.container.addChild(particle.particleShape);
-                        this.activeParticles.push(particle);
+                        this._activeParticles.push(particle);
                     }
                 };
                 /**
@@ -109,8 +109,8 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                  */
                 ParticleEmitter.prototype.generateParticle = function () {
                     var particle = null;
-                    if (this.particlesPool.length >= 1) {
-                        particle = this.particlesPool.shift();
+                    if (this._particlesPool.length >= 1) {
+                        particle = this._particlesPool.shift();
                     }
                     else {
                         particle = new particle_1.Particle();
@@ -125,31 +125,31 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                 ParticleEmitter.prototype.setParticleParamater = function (particle) {
                     particle.particleShape.removeAllChildren();
                     particle.isAlive = true;
-                    particle.x = this.getParam(this.drawingData.startX, this.drawingData.startXVariance, false);
-                    particle.y = this.getParam(this.drawingData.startY, this.drawingData.startYVariance, false);
-                    this.generateShape(particle, this.drawingData.shapeIdList);
+                    particle.x = this.getParam(this._drawingData.startX, this._drawingData.startXVariance, false);
+                    particle.y = this.getParam(this._drawingData.startY, this._drawingData.startYVariance, false);
+                    this.generateShape(particle, this._drawingData.shapeIdList);
                     //  生存期間
-                    particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
+                    particle.totalLife = Math.max(1, this.getParam(this._drawingData.lifeSpan, this._drawingData.lifeSpanVariance, true));
                     particle.currentLife = particle.totalLife;
                     //  スピード
-                    var speed = Math.max(0, this.getParam(this.drawingData.initialSpeed, this.drawingData.initialSpeedVariance, false));
-                    var angle = createjs.Matrix2D.DEG_TO_RAD * (this.getParam(this.drawingData.initialDirection, this.drawingData.initialDirectionVariance, false));
+                    var speed = Math.max(0, this.getParam(this._drawingData.initialSpeed, this._drawingData.initialSpeedVariance, false));
+                    var angle = createjs.Matrix2D.DEG_TO_RAD * (this.getParam(this._drawingData.initialDirection, this._drawingData.initialDirectionVariance, false));
                     particle.vx = Math.cos(angle) * speed;
                     particle.vy = Math.sin(angle) * speed;
                     //  アルファ
-                    particle.startAlpha = this.range(0, 1, this.getParam(this.drawingData.startAlpha, this.drawingData.startAlphaVariance, false));
-                    particle.finishAlpha = this.range(0, 1, this.getParam(this.drawingData.finishAlpha, this.drawingData.finishAlphaVariance, false));
+                    particle.startAlpha = this.range(0, 1, this.getParam(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
+                    particle.finishAlpha = this.range(0, 1, this.getParam(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
                     //  スケール
-                    particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
-                    particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
+                    particle.startScale = Math.max(0, this.getParam(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
+                    particle.finishScale = Math.max(0, this.getParam(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
                     // ブレンドモードを設定
-                    particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
-                    particle.alphaCurveType = this.drawingData.alphaCurveType;
+                    particle.particleShape.compositeOperation = this._drawingData.blendMode == true ? "lighter" : null;
+                    particle.alphaCurveType = this._drawingData.alphaCurveType;
                 };
                 ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
                     particle.particleShape.removeAllChildren();
-                    var startColor = this.drawingData.startColor;
-                    var finishColor = this.drawingData.finishColor;
+                    var startColor = this._drawingData.startColor;
+                    var finishColor = this._drawingData.finishColor;
                     particle.startColor.hue = this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
                     particle.startColor.luminance = this.getParam(startColor.luminance, startColor.luminanceVariance, false);
                     particle.startColor.satuation = this.getParam(startColor.satuation, startColor.satuationVariance, false);
@@ -160,8 +160,8 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     var satuation = Number(particle.startColor.satuation);
                     var luminance = Number(particle.startColor.luminance);
                     var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
-                    var r = Math.floor(Math.random() * this.drawingData.shapeIdList.length);
-                    var shapeId = (this.drawingData.shapeIdList.length == 0) ? '' : this.drawingData.shapeIdList[r];
+                    var r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
+                    var shapeId = (this._drawingData.shapeIdList.length == 0) ? '' : this._drawingData.shapeIdList[r];
                     particle.colorCommand = null;
                     var container = this.shapeGenerator.generateShape(shapeId);
                     var shape = container.getChildAt(0); // こういう作りにする

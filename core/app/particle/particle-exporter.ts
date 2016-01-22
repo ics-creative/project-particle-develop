@@ -14,23 +14,23 @@ declare class SVGExporter {
  */
 export class ParticleExporter {
 
-  private exporter:SVGExporter;
-  private drawLayerContainer:createjs.Container;
-  private width:number;
-  private height:number;
+  private _exporter:SVGExporter;
+  private _drawLayerContainer:createjs.Container;
+  private _width:number;
+  private _height:number;
 
   constructor(drawLayerContainer:createjs.Container) {
-    this.drawLayerContainer = drawLayerContainer;
+    this._drawLayerContainer = drawLayerContainer;
   }
 
   public runExport(width:number, height:number):Promise<any> {
-    this.width = width;
-    this.height = height;
+    this._width = width;
+    this._height = height;
 
     return new Promise((onResolve, onReject) => {
 
-      this.exporter = new SVGExporter(this.drawLayerContainer, this.width, this.height);
-      this.exporter.run();
+      this._exporter = new SVGExporter(this._drawLayerContainer, this._width, this._height);
+      this._exporter.run();
 
       setTimeout(() => {
         onResolve()
@@ -58,7 +58,6 @@ export class ParticleExporter {
 
   public getSVGString():string {
     var serializer = new XMLSerializer();
-    return serializer.serializeToString(this.exporter.svg);
+    return serializer.serializeToString(this._exporter.svg);
   }
-
 }

@@ -6,26 +6,25 @@ import {DrawingData} from "../data/data-drawing";
  */
 export class Ruler {
 
-  public container:createjs.Container;
-  private shapeBg:createjs.Shape;
-  private shapeMouse:createjs.Shape;
-  private verticalTextList:createjs.Text[];
-  private horizontalTextList:createjs.Text[];
-
   private FONT_COLOR = "#888";
 
-  private width:number;
-  private height:number;
+  public container:createjs.Container;
+  private _shapeBg:createjs.Shape;
+  private _shapeMouse:createjs.Shape;
+  private _verticalTextList:createjs.Text[];
+  private _horizontalTextList:createjs.Text[];
+  private _width:number;
+  private _height:number;
   private _thumb:createjs.Shape;
   private _isMouseDown:boolean = false;
 
   constructor(private _data:DrawingData) {
     this.container = new createjs.Container();
-    this.shapeBg = new createjs.Shape();
-    this.container.addChild(this.shapeBg);
+    this._shapeBg = new createjs.Shape();
+    this.container.addChild(this._shapeBg);
 
-    this.shapeMouse = new createjs.Shape();
-    this.container.addChild(this.shapeMouse);
+    this._shapeMouse = new createjs.Shape();
+    this.container.addChild(this._shapeMouse);
 
     this._thumb = new createjs.Shape();
     this._thumb.cursor = "crosshair";
@@ -43,8 +42,8 @@ export class Ruler {
       this._isMouseDown = false
     });
 
-    this.verticalTextList = [];
-    this.horizontalTextList = [];
+    this._verticalTextList = [];
+    this._horizontalTextList = [];
   }
 
   private handleThumbMouseMove(event:createjs.MouseEvent):void {
@@ -59,11 +58,11 @@ export class Ruler {
   }
 
   public setSize(ws:number, hs:number):void {
-    this.width = ws;
-    this.height = hs;
+    this._width = ws;
+    this._height = hs;
 
 
-    let graphics = this.shapeBg.graphics;
+    let graphics = this._shapeBg.graphics;
     graphics.clear();
     graphics.setStrokeStyle(1);
     graphics.beginStroke(this.FONT_COLOR);
@@ -72,47 +71,47 @@ export class Ruler {
     graphics.drawRect(-0.5, -0.5, ws + 1.0, hs + 1.0);
 
     let distance:number = 35;
-    let w:number = Math.floor(this.width / distance);
-    let h:number = Math.floor(this.height / distance);
+    let w:number = Math.floor(this._width / distance);
+    let h:number = Math.floor(this._height / distance);
 
     for (let i = 0; i < w; i++) {
       let ii = (i);
-      if (this.horizontalTextList.length <= ii) {
-        this.horizontalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", this.FONT_COLOR));
+      if (this._horizontalTextList.length <= ii) {
+        this._horizontalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", this.FONT_COLOR));
       }
-      this.horizontalTextList[ii].visible = true;
-      this.horizontalTextList[ii].x = (i * distance);
-      this.horizontalTextList[ii].y = -20;
-      this.horizontalTextList[ii].rotation = -90;
-      this.horizontalTextList[ii].textAlign = "center";
-      this.horizontalTextList[ii].textBaseline = "middle";
-      this.container.addChild(this.horizontalTextList[ii]);
+      this._horizontalTextList[ii].visible = true;
+      this._horizontalTextList[ii].x = (i * distance);
+      this._horizontalTextList[ii].y = -20;
+      this._horizontalTextList[ii].rotation = -90;
+      this._horizontalTextList[ii].textAlign = "center";
+      this._horizontalTextList[ii].textBaseline = "middle";
+      this.container.addChild(this._horizontalTextList[ii]);
 
       graphics.moveTo((i * distance), -5);
       graphics.lineTo((i * distance), 0);
     }
-    for (let i = w; i < this.horizontalTextList.length; i++) {
-      this.horizontalTextList[i].visible = false;
+    for (let i = w; i < this._horizontalTextList.length; i++) {
+      this._horizontalTextList[i].visible = false;
     }
 
     for (let i = 0; i < h; i++) {
       let ii = (i);
-      if (this.verticalTextList.length <= ii) {
-        this.verticalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", this.FONT_COLOR));
+      if (this._verticalTextList.length <= ii) {
+        this._verticalTextList.push(new createjs.Text((i * distance) + "", "Arial 20px", this.FONT_COLOR));
       }
-      this.verticalTextList[ii].visible = true;
-      this.verticalTextList[ii].y = (i * distance);
-      this.verticalTextList[ii].x = -20;
-      this.verticalTextList[ii].textAlign = "right";
-      this.verticalTextList[ii].textBaseline = "middle";
-      this.container.addChild(this.verticalTextList[ii]);
+      this._verticalTextList[ii].visible = true;
+      this._verticalTextList[ii].y = (i * distance);
+      this._verticalTextList[ii].x = -20;
+      this._verticalTextList[ii].textAlign = "right";
+      this._verticalTextList[ii].textBaseline = "middle";
+      this.container.addChild(this._verticalTextList[ii]);
 
       graphics.moveTo(-5, (i * distance));
       graphics.lineTo(0, (i * distance));
     }
 
-    for (let i = h; i < this.verticalTextList.length; i++) {
-      this.verticalTextList[i].visible = false;
+    for (let i = h; i < this._verticalTextList.length; i++) {
+      this._verticalTextList[i].visible = false;
     }
 
 
@@ -122,14 +121,14 @@ export class Ruler {
     let stage = this.container.stage;
 
     let mousePt = this.container.globalToLocal(stage.mouseX, stage.mouseY);
-    let graphics = this.shapeMouse.graphics;
+    let graphics = this._shapeMouse.graphics;
 
     graphics.clear()
         .setStrokeStyle(2)
         .beginStroke("#6699ff");
 
-    let isInHorizontal:boolean = 0 <= mousePt.x && mousePt.x <= this.width;
-    let isInVertical:boolean = 0 <= mousePt.y && mousePt.y <= this.height;
+    let isInHorizontal:boolean = 0 <= mousePt.x && mousePt.x <= this._width;
+    let isInVertical:boolean = 0 <= mousePt.y && mousePt.y <= this._height;
 
     if (isInHorizontal == true) {
       graphics.moveTo(mousePt.x, 0);

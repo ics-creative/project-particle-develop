@@ -9,14 +9,14 @@ import {AlphaCurveType} from "../enum/alpha-curve-type";
 
 export class ParticleEmitter {
 
-  public particlesPool:Particle[];
-  public activeParticles:Particle[];
   public container:createjs.Container;
-  public drawingData:DrawingData;
+  private _particlesPool:Particle[];
+  private _activeParticles:Particle[];
+  private _drawingData:DrawingData;
 
   constructor() {
-    this.particlesPool = [];
-    this.activeParticles = [];
+    this._particlesPool = [];
+    this._activeParticles = [];
 
     this.container = new createjs.Container();
 
@@ -30,7 +30,7 @@ export class ParticleEmitter {
   private shapeGenerator:ShapeGenerator;
 
   public update(drawingData:DrawingData) {
-    this.drawingData = drawingData;
+    this._drawingData = drawingData;
 
     this.emit();
     this.animate();
@@ -42,13 +42,13 @@ export class ParticleEmitter {
    */
   private animate() {
 
-    let rad = createjs.Matrix2D.DEG_TO_RAD * this.drawingData.accelerationDirection;
-    let accX = Math.cos(rad) * this.drawingData.accelerationSpeed;
-    let accY = Math.sin(rad) * this.drawingData.accelerationSpeed;
+    let rad = createjs.Matrix2D.DEG_TO_RAD * this._drawingData.accelerationDirection;
+    let accX = Math.cos(rad) * this._drawingData.accelerationSpeed;
+    let accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
 
-    for (let i = 0; i < this.activeParticles.length; i++) {
+    for (let i = 0; i < this._activeParticles.length; i++) {
 
-      let particle:Particle = this.activeParticles[i];
+      let particle:Particle = this._activeParticles[i];
 
       particle.currentLife--;
 
@@ -56,8 +56,8 @@ export class ParticleEmitter {
       particle.vx = particle.vx + accX;
       particle.vy = particle.vy + accY;
 
-      particle.vx = particle.vx * (1 - this.drawingData.friction);
-      particle.vy = particle.vy * (1 - this.drawingData.friction);
+      particle.vx = particle.vx * (1 - this._drawingData.friction);
+      particle.vy = particle.vy * (1 - this._drawingData.friction);
 
       particle.x = particle.x + particle.vx;
       particle.y = particle.y + particle.vy;
@@ -109,13 +109,13 @@ export class ParticleEmitter {
    * パーティクルが生きているか確認する。
    */
   private lifeCheck() {
-    for (let i = 0; i < this.activeParticles.length; i++) {
+    for (let i = 0; i < this._activeParticles.length; i++) {
       // もしも死んでいたら、アクティブリストから外してプールに保存する。
-      if (!this.activeParticles[i].isAlive) {
-        let particle = this.activeParticles[i];
+      if (!this._activeParticles[i].isAlive) {
+        let particle = this._activeParticles[i];
         this.container.removeChild(particle.particleShape);
-        this.activeParticles.splice(i, 1);
-        this.particlesPool.push(particle);
+        this._activeParticles.splice(i, 1);
+        this._particlesPool.push(particle);
         i--;
       }
     }
@@ -126,10 +126,10 @@ export class ParticleEmitter {
    */
   private emit() {
 
-    for (let i = 0; i < this.drawingData.emitFrequency; i++) {
+    for (let i = 0; i < this._drawingData.emitFrequency; i++) {
       let particle = this.generateParticle();
       this.container.addChild(particle.particleShape);
-      this.activeParticles.push(particle);
+      this._activeParticles.push(particle);
     }
   }
 
@@ -140,8 +140,8 @@ export class ParticleEmitter {
   private generateParticle():Particle {
 
     let particle:Particle = null;
-    if (this.particlesPool.length >= 1) {
-      particle = this.particlesPool.shift();
+    if (this._particlesPool.length >= 1) {
+      particle = this._particlesPool.shift();
     } else {
       particle = new Particle();
     }
@@ -160,38 +160,38 @@ export class ParticleEmitter {
     particle.particleShape.removeAllChildren();
 
     particle.isAlive = true;
-    particle.x = this.getParam(this.drawingData.startX, this.drawingData.startXVariance, false);
-    particle.y = this.getParam(this.drawingData.startY, this.drawingData.startYVariance, false);
+    particle.x = this.getParam(this._drawingData.startX, this._drawingData.startXVariance, false);
+    particle.y = this.getParam(this._drawingData.startY, this._drawingData.startYVariance, false);
 
 
-    this.generateShape(particle, this.drawingData.shapeIdList);
+    this.generateShape(particle, this._drawingData.shapeIdList);
 
     //  生存期間
-    particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
+    particle.totalLife = Math.max(1, this.getParam(this._drawingData.lifeSpan, this._drawingData.lifeSpanVariance, true));
     particle.currentLife = particle.totalLife;
 
     //  スピード
-    let speed:number = Math.max(0, this.getParam(this.drawingData.initialSpeed, this.drawingData.initialSpeedVariance, false));
-    let angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this.drawingData.initialDirection, this.drawingData.initialDirectionVariance, false));
+    let speed:number = Math.max(0, this.getParam(this._drawingData.initialSpeed, this._drawingData.initialSpeedVariance, false));
+    let angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this._drawingData.initialDirection, this._drawingData.initialDirectionVariance, false));
     particle.vx = Math.cos(angle) * speed;
     particle.vy = Math.sin(angle) * speed;
 
 
     //  アルファ
-    particle.startAlpha = this.range(0, 1, this.getParam(this.drawingData.startAlpha, this.drawingData.startAlphaVariance, false));
-    particle.finishAlpha = this.range(0, 1, this.getParam(this.drawingData.finishAlpha, this.drawingData.finishAlphaVariance, false));
+    particle.startAlpha = this.range(0, 1, this.getParam(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
+    particle.finishAlpha = this.range(0, 1, this.getParam(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
 
 
     //  スケール
-    particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
-    particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
+    particle.startScale = Math.max(0, this.getParam(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
+    particle.finishScale = Math.max(0, this.getParam(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
 
 
     // ブレンドモードを設定
-    particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
+    particle.particleShape.compositeOperation = this._drawingData.blendMode == true ? "lighter" : null;
 
 
-    particle.alphaCurveType = this.drawingData.alphaCurveType;
+    particle.alphaCurveType = this._drawingData.alphaCurveType;
 
   }
 
@@ -199,8 +199,8 @@ export class ParticleEmitter {
 
     particle.particleShape.removeAllChildren();
 
-    let startColor:ColorData = this.drawingData.startColor;
-    let finishColor:ColorData = this.drawingData.finishColor;
+    let startColor:ColorData = this._drawingData.startColor;
+    let finishColor:ColorData = this._drawingData.finishColor;
 
     particle.startColor.hue = this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
     particle.startColor.luminance = this.getParam(startColor.luminance, startColor.luminanceVariance, false);
@@ -218,8 +218,8 @@ export class ParticleEmitter {
 
     let color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
-    let r = Math.floor(Math.random() * this.drawingData.shapeIdList.length);
-    let shapeId = ( this.drawingData.shapeIdList.length == 0 ) ? '' : this.drawingData.shapeIdList[r]
+    let r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
+    let shapeId = ( this._drawingData.shapeIdList.length == 0 ) ? '' : this._drawingData.shapeIdList[r]
 
 
     particle.colorCommand = null;
@@ -262,12 +262,12 @@ export class ParticleEmitter {
 
   }
 
-  private range(minValue, maxValue, value):number {
+  private range(minValue:number, maxValue:number, value:number):number {
     return Math.min(maxValue, Math.max(minValue, value));
   }
 
   private getParam(value:any, variance:any, isInteger:boolean):number {
-    let result = parseFloat(value) + (  Math.random() * parseFloat(variance)  ) - parseFloat(variance) / 2;
+    let result = parseFloat(value) + ( Math.random() * parseFloat(variance) ) - parseFloat(variance) / 2;
 
     if (isInteger) {
       return Math.floor(result);
@@ -275,5 +275,4 @@ export class ParticleEmitter {
 
     return result;
   }
-
 }

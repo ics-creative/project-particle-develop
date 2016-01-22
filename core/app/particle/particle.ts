@@ -8,7 +8,6 @@ import {ColorData} from "../data/data-color";
  * パーティクルエミッターのバリューオブジェクトのクラスです。
  */
 export class Particle {
-
   /** パーティクルの形状です。 */
   public particleShape:createjs.Container;
 

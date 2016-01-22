@@ -13,7 +13,6 @@ import {Ruler} from "./particle-ruler";
 export class ParticleCanvas {
 
   private _data:DrawingData;
-
   private _background:createjs.Shape;
   private _captureImageLayer:ParticleCaptureImageLayer;
   private _canvas:HTMLCanvasElement;

@@ -10,15 +10,15 @@ System.register([], function(exports_1) {
              */
             ParticleExporter = (function () {
                 function ParticleExporter(drawLayerContainer) {
-                    this.drawLayerContainer = drawLayerContainer;
+                    this._drawLayerContainer = drawLayerContainer;
                 }
                 ParticleExporter.prototype.runExport = function (width, height) {
                     var _this = this;
-                    this.width = width;
-                    this.height = height;
+                    this._width = width;
+                    this._height = height;
                     return new Promise(function (onResolve, onReject) {
-                        _this.exporter = new SVGExporter(_this.drawLayerContainer, _this.width, _this.height);
-                        _this.exporter.run();
+                        _this._exporter = new SVGExporter(_this._drawLayerContainer, _this._width, _this._height);
+                        _this._exporter.run();
                         setTimeout(function () {
                             onResolve();
                         }, 1);
@@ -38,7 +38,7 @@ System.register([], function(exports_1) {
                 };
                 ParticleExporter.prototype.getSVGString = function () {
                     var serializer = new XMLSerializer();
-                    return serializer.serializeToString(this.exporter.svg);
+                    return serializer.serializeToString(this._exporter.svg);
                 };
                 return ParticleExporter;
             })();
