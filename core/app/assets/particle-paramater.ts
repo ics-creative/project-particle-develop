@@ -11,6 +11,7 @@ export class ParticleParamater {
     this.list.push(this.setting2);
     this.list.push(this.setting3);
     this.list.push(this.setting4);
+    this.list.push(this.setting9);
     this.list.push(this.setting5);
     this.list.push(this.setting6);
     this.list.push(this.setting7);
@@ -258,4 +259,10 @@ export class ParticleParamater {
     property :
       {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"270","initialDirectionVariance":"360","initialSpeed":"1","initialSpeedVariance":"0","friction":"0.071","accelerationSpeed":"0.1045","accelerationDirection":"270","startScale":"0.5","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.8","finishAlphaVariance":"0","startX":309,"startXVariance":"597","startY":516,"startYVariance":"165","shapeIdList":["heart"],"startColor":{"hue":"335","hueVariance":"0","satuation":"78","satuationVariance":"0","luminance":"59","luminanceVariance":"50"},"blendMode":true,"alphaCurveType":"1"}
   }
+  private setting9 = {
+    name : "キラキラ",
+    description : "星やぼけ玉を使用し、ちらつき",
+    imageId : "green_kirakira",
+    property :
+       {"bgColor":"#00000","width":"512","height":"512","emitFrequency":"2","lifeSpan":"27","lifeSpanVariance":"93","initialDirection":"0","initialDirectionVariance":"0","initialSpeed":"0","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.98","startScaleVariance":"1","finishScale":"0.07","finishScaleVariance":"0.23","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.34","finishAlphaVariance":0.5,"startX":254,"startXVariance":"570","startY":252,"startYVariance":"98","shapeIdList":["blur_circle","kirakira2","kirakira","star"],"startColor":{"hue":"88","hueVariance":"99","satuation":"76","satuationVariance":"0","luminance":"77","luminanceVariance":"46"},"blendMode":true,"alphaCurveType":"1"}  }
 }
