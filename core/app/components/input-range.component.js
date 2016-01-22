@@ -20,9 +20,6 @@ System.register(["angular2/core"], function(exports_1) {
             InputRangeComponent = (function () {
                 function InputRangeComponent() {
                 }
-                InputRangeComponent.prototype.handleChange = function () {
-                    console.log(this.drawingData);
-                };
                 InputRangeComponent = __decorate([
                     core_1.Component({
                         selector: "input-range",

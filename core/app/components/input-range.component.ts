@@ -28,8 +28,4 @@ export class InputRangeComponent {
 
   constructor() {
   }
-
-  handleChange() {
-    console.log(this.drawingData);
-  }
 }
