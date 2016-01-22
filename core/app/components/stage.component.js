@@ -36,16 +36,23 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                     return this.particleCanvas.runCamera();
                 };
                 StageComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
                     var canvas = this.myCanvas.nativeElement;
                     this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.on("tick", this.handleTick, this);
+                    canvas.addEventListener("contextmenu", function (event) {
+                        _this.handleContextMenu(event);
+                    });
                 };
                 StageComponent.prototype.getParticleSVGString = function () {
                     return this.particleCanvas.getSVGString();
                 };
                 StageComponent.prototype.handleTick = function () {
                     this.particleCanvas.update(this.drawingData);
+                };
+                StageComponent.prototype.handleContextMenu = function (event) {
+                    event.preventDefault();
                 };
                 __decorate([
                     core_1.ViewChild("myCanvas"), 

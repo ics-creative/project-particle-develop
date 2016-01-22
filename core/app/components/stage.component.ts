@@ -38,11 +38,15 @@ export class StageComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let canvas = this.myCanvas.nativeElement;
+    let canvas = <HTMLCanvasElement> this.myCanvas.nativeElement;
     this.particleCanvas = new ParticleCanvas(canvas, this.drawingData);
 
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.on("tick", this.handleTick, this);
+
+    canvas.addEventListener("contextmenu", (event:Event)=> {
+      this.handleContextMenu(event)
+    });
   }
 
   public getParticleSVGString():string {
@@ -51,5 +55,9 @@ export class StageComponent implements AfterViewInit {
 
   private handleTick() {
     this.particleCanvas.update(this.drawingData);
+  }
+
+  private handleContextMenu(event:Event) {
+    event.preventDefault();
   }
 }
