@@ -1,4 +1,5 @@
 System.register(["./data-color", "../enum/alpha-curve-type"], function(exports_1) {
+    "use strict";
     var data_color_1, alpha_curve_type_1;
     var DrawingData;
     return {

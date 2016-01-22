@@ -1,4 +1,6 @@
 System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve-type"], function(exports_1) {
+    ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+    "use strict";
     var particle_1, shape_generator_1, alpha_curve_type_1;
     var ParticleEmitter;
     return {
@@ -13,7 +15,6 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                 alpha_curve_type_1 = alpha_curve_type_1_1;
             }],
         execute: function() {
-            "use strict";
             ParticleEmitter = (function () {
                 function ParticleEmitter() {
                     this.particlesPool = [];

@@ -1,3 +1,5 @@
+"use strict";
+
 import {DrawingData} from "../data/data-drawing";
 /**
  * ルーラーの制御クラスです。

@@ -1,3 +1,4 @@
+"use strict";
 import {AppComponent} from "./app.component";
 export class MobileAppComponent extends AppComponent {
   protected handleSVGClick() {

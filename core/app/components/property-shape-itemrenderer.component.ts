@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component, ViewChild} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 

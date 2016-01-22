@@ -1,3 +1,5 @@
+"use strict";
+
 import {AppComponent} from "./app.component";
 
 export class DesktopAppComponent extends AppComponent {

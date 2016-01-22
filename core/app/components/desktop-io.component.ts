@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';
@@ -24,30 +26,30 @@ export class DesktopIOBox {
   private drawingData:DrawingData;
   private element:ElementRef;
 
-  exportParamater() {
+  public exportParamater():void {
     this.exportParamaterEvent.emit(null);
   }
 
-  exportSVG() {
+  public exportSVG():void {
     this.exportSVGEvent.emit(null);
   }
 
-  exportPNG() {
+  public exportPNG():void {
     this.exportPNGEvent.emit(null);
   }
 
-  exportJPEG() {
+  public exportJPEG():void {
     this.exportJPEGEvent.emit(null);
   }
 
-  selectParameterFile(obj:any) {
+  private selectParameterFile(obj:any):void {
     this.importParameterFile(obj.target.files[0])
   }
 
-  importParameterFile(file:any) {
+  private importParameterFile(file:File):void {
 
     // ファイルの内容は FileReader で読み込みます.
-    var fileReader = new FileReader();
+    let fileReader = new FileReader();
     fileReader.onload = (event) => {
       // event.target.result に読み込んだファイルの内容が入っています。
       var json = (<FileReader>event.target).result;
@@ -63,14 +65,14 @@ export class DesktopIOBox {
     this.setDragAndDropSettings(element);
   }
 
-  setDragAndDropSettings(element:ElementRef) {
+  private setDragAndDropSettings(element:ElementRef):void {
     /** documentにドラッグされた場合 / ドロップされた場合 */
     document.ondragover = document.ondrop = function (e) {
       e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
       return false;
     };
 
-    var holder = element.nativeElement;
+    let holder = element.nativeElement;
     /** hoverエリアにドラッグされた場合 */
     holder.ondragover = function () {
       return false;
@@ -83,10 +85,10 @@ export class DesktopIOBox {
     holder.ondrop = this.onDrop;
   }
 
-  onDrop(e) {
+  private onDrop(e) {
     e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
 
-    var file = e.dataTransfer.files[0];
+    let file = e.dataTransfer.files[0];
     this.importParameterFile(file);
 
     return false;

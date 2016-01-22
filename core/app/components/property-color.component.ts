@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component} from "angular2/core";
 import {ColorData} from "../data/data-color";
 import {DrawingData} from "../data/data-drawing";

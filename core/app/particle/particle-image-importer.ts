@@ -1,4 +1,5 @@
 ///<reference path="../../typings/tsd.d.ts" />
+"use strict";
 
 /**
  * 画像を読み込むクラスです
