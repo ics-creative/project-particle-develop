@@ -10,19 +10,27 @@ import {PartcicleImageImporter} from "./particle-image-importer";
 import {ParticleCaptureImageLayer} from "./particle-capture-image-layer";
 import {Ruler} from "./particle-ruler";
 
+/**
+ * パーティクル表示エリアの制御クラスです。
+ */
 export class ParticleCanvas {
 
   private _data:DrawingData;
-
+  /** 背景の表示オブジェクトです。 */
   private _background:createjs.Shape;
   private _captureImageLayer:ParticleCaptureImageLayer;
+  /** canvas 要素です。 */
   private _canvas:HTMLCanvasElement;
+  /** CreateJS の Stage インスタンスです。 */
   private _stage:createjs.Stage;
   private _canvasContainer:createjs.Container;
   private _backgroundColorCommand:any;
   private _backgroundSize:any;
+  /** パーティクルエミッターのインスタンスです。 */
   private _particleEmitter:ParticleEmitter;
+  /** パーティクルの設定情報生成のインスタンスです。 */
   private _particleExporter:ParticleExporter;
+  /** パーティクルの画像生成のインスタンスです。 */
   private _partcileImageImporter:PartcicleImageImporter;
   private _ruler:Ruler;
   /** 座布団 */

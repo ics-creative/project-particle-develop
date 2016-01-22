@@ -9,28 +9,30 @@ declare class SVGExporter {
   run():void;
 }
 
+declare let cordova:any;
+
 /**
- * Export SVG
+ * SVG ファイルに出力するクラスです。
  */
 export class ParticleExporter {
 
-  private exporter:SVGExporter;
-  private drawLayerContainer:createjs.Container;
-  private width:number;
-  private height:number;
+  private _exporter:SVGExporter;
+  private _drawLayerContainer:createjs.Container;
+  private _width:number;
+  private _height:number;
 
   constructor(drawLayerContainer:createjs.Container) {
-    this.drawLayerContainer = drawLayerContainer;
+    this._drawLayerContainer = drawLayerContainer;
   }
 
-  runExport(width:number, height:number):Promise<any> {
-    this.width = width;
-    this.height = height;
+  public runExport(width:number, height:number):Promise<any> {
+    this._width = width;
+    this._height = height;
 
     return new Promise((onResolve, onReject) => {
 
-      this.exporter = new SVGExporter(this.drawLayerContainer, this.width, this.height);
-      this.exporter.run();
+      this._exporter = new SVGExporter(this._drawLayerContainer, this._width, this._height);
+      this._exporter.run();
 
       setTimeout(() => {
         onResolve()
@@ -38,17 +40,17 @@ export class ParticleExporter {
     });
   }
 
-  runExportSP(cavas:HTMLCanvasElement):Promise<any> {
+  public runExportSP(cavas:HTMLCanvasElement):Promise<any> {
     return new Promise((onResolve, onReject) => {
       let base64 = cavas.toDataURL();
       cordova.base64ToGallery(
           base64,
           'img_',
-          function (msg) {
+          function (msg:any) {
             onResolve();
             alert("画像ライブラリに保存しました。");
           },
-          function (err) {
+          function (err:any) {
             onReject();
             alert("画像保存に失敗しました。");
           }
@@ -56,10 +58,8 @@ export class ParticleExporter {
     });
   }
 
-  getSVGString():string {
-
+  public getSVGString():string {
     var serializer = new XMLSerializer();
-    return serializer.serializeToString(this.exporter.svg);
+    return serializer.serializeToString(this._exporter.svg);
   }
-
 }

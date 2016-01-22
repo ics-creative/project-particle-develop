@@ -12,7 +12,6 @@ System.register([], function(exports_1) {
         execute: function() {
             /**
              * キャプチャーした画像を配置するレイヤーです。
-             *
              */
             ParticleCaptureImageLayer = (function (_super) {
                 __extends(ParticleCaptureImageLayer, _super);
@@ -25,8 +24,8 @@ System.register([], function(exports_1) {
                 ParticleCaptureImageLayer.prototype.addImageFromImageData = function (imageData) {
                     this.removeImage();
                     var base64 = "data:image/png;base64," + imageData.replace("file:///", "");
-                    this.captureImage = new createjs.Bitmap(base64);
-                    this.addChild(this.captureImage);
+                    this._captureImage = new createjs.Bitmap(base64);
+                    this.addChild(this._captureImage);
                 };
                 /**
                  * URLから画像を追加します。
@@ -34,8 +33,8 @@ System.register([], function(exports_1) {
                  */
                 ParticleCaptureImageLayer.prototype.addImageFromURL = function (imageURL) {
                     this.removeImage();
-                    this.captureImage = new createjs.Bitmap(imageURL);
-                    this.addChild(this.captureImage);
+                    this._captureImage = new createjs.Bitmap(imageURL);
+                    this.addChild(this._captureImage);
                 };
                 /**
                  * 画像を削除します。

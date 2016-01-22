@@ -1,3 +1,5 @@
+"use strict";
+
 import {ColorData} from "./data-color";
 import {AlphaCurveType} from "../enum/alpha-curve-type";
 
@@ -47,21 +49,23 @@ export class DrawingData {
   finishColor:ColorData = new ColorData();
 
   blendMode:boolean = true;
-  alphaCurveType:number = AlphaCurveType.Random;
+  alphaCurveType:number = AlphaCurveType.Normal;
 
   constructor() {
   }
 
-  public into(obj:Object):void {
-    for (var key in this) {
+  public into(obj:any):void {
+    for (let key in obj) {
 
+      // 無視するプロパティー
       if (key == "width" || key == "height" || key == "startX" || key == "startY") {
         continue;
       }
 
-      if (this.hasOwnProperty(key)) {
-        var val = this[key];
-        this[key] = obj[key];
+      if (Reflect.has(this, key) == true) {
+        let val = <any> obj[key];
+        // イマドキなプロパティー反映方法を適用 ICS-Ikeda 2016-01-22
+        Reflect.set(this, key, val);
       }
     }
   }

@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component, ViewChild, AfterViewInit} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {ParticleCanvas} from "../particle/particle-canvas";
@@ -10,7 +12,7 @@ import {ParticleCanvas} from "../particle/particle-canvas";
 
 export class StageComponent implements AfterViewInit {
 
-  @ViewChild("myCanvas") myCanvas;
+  @ViewChild("myCanvas") myCanvas:any;
 
   private drawingData:DrawingData;
   private particleCanvas:ParticleCanvas;
@@ -19,19 +21,19 @@ export class StageComponent implements AfterViewInit {
 
   }
 
-  exportSVG():Promise<any> {
+  public exportSVG():Promise<any> {
     return this.particleCanvas.runExport();
   }
 
-  toDataURL(type:string, params:string):string {
+  public toDataURL(type:string, params:string):string {
     return this.particleCanvas.toDataURL(type, params);
   }
 
-  runExportSP():Promise<any> {
+  public runExportSP():Promise<any> {
     return this.particleCanvas.runExportSP();
   }
 
-  runCamera():Promise<any> {
+  public runCamera():Promise<any> {
     return this.particleCanvas.runCamera();
   }
 
@@ -43,7 +45,7 @@ export class StageComponent implements AfterViewInit {
     createjs.Ticker.on("tick", this.handleTick, this);
   }
 
-  getParticleSVGString():string {
+  public getParticleSVGString():string {
     return this.particleCanvas.getSVGString();
   }
 

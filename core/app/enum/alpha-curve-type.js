@@ -1,4 +1,5 @@
 System.register([], function(exports_1) {
+    "use strict";
     var AlphaCurveType;
     return {
         setters:[],
