@@ -29,10 +29,8 @@ System.register([], function(exports_1) {
                         var base64 = cavas.toDataURL();
                         cordova.base64ToGallery(base64, 'img_', function (msg) {
                             onResolve();
-                            alert("画像ライブラリに保存しました。");
                         }, function (err) {
                             onReject();
-                            alert("画像保存に失敗しました。");
                         });
                     });
                 };
