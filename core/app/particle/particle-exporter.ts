@@ -48,11 +48,9 @@ export class ParticleExporter {
           'img_',
           function (msg:any) {
             onResolve();
-            alert("画像ライブラリに保存しました。");
           },
           function (err:any) {
             onReject();
-            alert("画像保存に失敗しました。");
           }
       );
     });
