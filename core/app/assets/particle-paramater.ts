@@ -11,6 +11,7 @@ export class ParticleParamater {
     this.list.push(this.setting2);
     this.list.push(this.setting3);
     this.list.push(this.setting4);
+    this.list.push(this.setting9);
     this.list.push(this.setting5);
     this.list.push(this.setting6);
     this.list.push(this.setting7);
@@ -26,7 +27,7 @@ export class ParticleParamater {
   };
   private setting1 = {
     name: "グラフィック",
-    description : "綺羅びやかな雰囲気",
+    description : "シンプルに動く丸や星や四角形",
     imageId : "graphic",
     property:
       {"bgColor":"#724383","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"2","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"3.5","initialSpeedVariance":"7.7","friction":"0.023","accelerationSpeed":"0","accelerationDirection":"116.5","startScale":"0.3","startScaleVariance":"1","finishScale":"0.26","finishScaleVariance":"0.54","startAlpha":"0.69","startAlphaVariance":"0.53","finishAlpha":"0","finishAlphaVariance":"0","startX":300,"startXVariance":"0","startY":307,"startYVariance":"0","shapeIdList":["circle","reverse_blur_circle","star"],"startColor":{"hue":"0","hueVariance":"0","satuation":"92","satuationVariance":0,"luminance":"100","luminanceVariance":0},"blendMode":true,"alphaCurveType":"0"}
@@ -34,7 +35,7 @@ export class ParticleParamater {
 
   private setting2 = {
     name: "紫色のパーティクル",
-    description: "上方向に向かってうごく",
+    description: "紫の丸がキラキラしながら上方向に移動",
     imageId : "parple",
     property: {
       "bgColor": "#00000",
@@ -86,7 +87,7 @@ export class ParticleParamater {
 
   setting3 = {
     name: "炎",
-    description: "焚き火",
+    description: "赤いぼけ玉を上方向に移動",
     imageId : "fire",
     property: {
       "bgColor": "#00000",
@@ -135,14 +136,14 @@ export class ParticleParamater {
   };
   private setting4 = {
     name: "魂",
-    description: "オーラ",
+    description: "白に近いぼけ玉をキラキラさせた",
     imageId : "spirit",
     property: {"bgColor":"#00000","width":"512","height":" 512","emitFrequency":"1","lifeSpan":"343","lifeSpanVariance":"188","initialDirection":"102","initialDirectionVariance":"360","initialSpeed":"1.4","initialSpeedVariance":"0.7","friction":"0.022","accelerationSpeed":"0.042","accelerationDirection":"280.6","startScale":"1","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0.17","startAlpha":"1","startAlphaVariance":"0.58","finishAlpha":"0","finishAlphaVariance":0.5,"startX":253,"startXVariance":"178","startY":385,"startYVariance":"111","shapeIdList":["blur_circle"],"startColor":{"hue":"224","hueVariance":"41","satuation":"59","satuationVariance":"0","luminance":"85","luminanceVariance":"18"},"blendMode":true,"alphaCurveType":"1"}
   };
 
   private setting5 = {
     name: "Starts",
-    description: "散りばめられた星",
+    description: "緑色の星をランダムに配置",
     imageId : "star",
     property: {
       "bgColor": "#00000",
@@ -193,8 +194,8 @@ export class ParticleParamater {
   };
 
   private setting6 = {
-    name: "Snow",
-    description: "散りばめられた星",
+    name: "粉雪",
+    description: "白いボケ玉をランダムに移動",
     imageId : "snow",
     property: {
       "bgColor": "#00000",
@@ -253,9 +254,15 @@ export class ParticleParamater {
   }
   private setting8 = {
     name : "ピンクの世界",
-    description : "ハートいっぱい現れる雰囲気",
+    description : "ハートマークを上方向に移動",
     imageId : "heart_world",
     property :
       {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"270","initialDirectionVariance":"360","initialSpeed":"1","initialSpeedVariance":"0","friction":"0.071","accelerationSpeed":"0.1045","accelerationDirection":"270","startScale":"0.5","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.8","finishAlphaVariance":"0","startX":309,"startXVariance":"597","startY":516,"startYVariance":"165","shapeIdList":["heart"],"startColor":{"hue":"335","hueVariance":"0","satuation":"78","satuationVariance":"0","luminance":"59","luminanceVariance":"50"},"blendMode":true,"alphaCurveType":"1"}
   }
+  private setting9 = {
+    name : "キラキラ",
+    description : "星やぼけ玉を使用し、ちらつき",
+    imageId : "green_kirakira",
+    property :
+       {"bgColor":"#00000","width":"512","height":"512","emitFrequency":"2","lifeSpan":"27","lifeSpanVariance":"93","initialDirection":"0","initialDirectionVariance":"0","initialSpeed":"0","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.98","startScaleVariance":"1","finishScale":"0.07","finishScaleVariance":"0.23","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.34","finishAlphaVariance":0.5,"startX":254,"startXVariance":"570","startY":252,"startYVariance":"98","shapeIdList":["blur_circle","kirakira2","kirakira","star"],"startColor":{"hue":"88","hueVariance":"99","satuation":"76","satuationVariance":"0","luminance":"77","luminanceVariance":"46"},"blendMode":true,"alphaCurveType":"1"}  }
 }
