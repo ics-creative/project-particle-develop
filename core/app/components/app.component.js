@@ -63,7 +63,14 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     this.drawingData.startY = sh / 2;
                     this.drawingData.width = sw;
                     this.drawingData.height = sh;
+                    this.adjustUi();
                 }
+                /**
+                 * UIの表示制御
+                 */
+                AppComponent.prototype.adjustUi = function () {
+                    document.getElementById("fileSelectUi").style.display;
+                };
                 AppComponent.prototype.handleSVGClick = function () {
                     var _this = this;
                     this.stageComponent.exportSVG().then(function () {
