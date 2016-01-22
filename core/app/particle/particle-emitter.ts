@@ -160,31 +160,31 @@ export class ParticleEmitter {
     particle.particleShape.removeAllChildren();
 
     particle.isAlive = true;
-    particle.x = this.getParam(this._drawingData.startX, this._drawingData.startXVariance, false);
-    particle.y = this.getParam(this._drawingData.startY, this._drawingData.startYVariance, false);
+    particle.x = this.calcRandomValueWithVariance(this._drawingData.startX, this._drawingData.startXVariance, false);
+    particle.y = this.calcRandomValueWithVariance(this._drawingData.startY, this._drawingData.startYVariance, false);
 
 
     this.generateShape(particle, this._drawingData.shapeIdList);
 
     //  生存期間
-    particle.totalLife = Math.max(1, this.getParam(this._drawingData.lifeSpan, this._drawingData.lifeSpanVariance, true));
+    particle.totalLife = Math.max(1, this.calcRandomValueWithVariance(this._drawingData.lifeSpan, this._drawingData.lifeSpanVariance, true));
     particle.currentLife = particle.totalLife;
 
     //  スピード
-    let speed:number = Math.max(0, this.getParam(this._drawingData.initialSpeed, this._drawingData.initialSpeedVariance, false));
-    let angle = createjs.Matrix2D.DEG_TO_RAD * ( this.getParam(this._drawingData.initialDirection, this._drawingData.initialDirectionVariance, false));
+    let speed:number = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.initialSpeed, this._drawingData.initialSpeedVariance, false));
+    let angle = createjs.Matrix2D.DEG_TO_RAD * ( this.calcRandomValueWithVariance(this._drawingData.initialDirection, this._drawingData.initialDirectionVariance, false));
     particle.vx = Math.cos(angle) * speed;
     particle.vy = Math.sin(angle) * speed;
 
 
     //  アルファ
-    particle.startAlpha = this.range(0, 1, this.getParam(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
-    particle.finishAlpha = this.range(0, 1, this.getParam(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
+    particle.startAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
+    particle.finishAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
 
 
     //  スケール
-    particle.startScale = Math.max(0, this.getParam(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
-    particle.finishScale = Math.max(0, this.getParam(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
+    particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
+    particle.finishScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
 
 
     // ブレンドモードを設定
@@ -202,14 +202,14 @@ export class ParticleEmitter {
     let startColor:ColorData = this._drawingData.startColor;
     let finishColor:ColorData = this._drawingData.finishColor;
 
-    particle.startColor.hue = this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
-    particle.startColor.luminance = this.getParam(startColor.luminance, startColor.luminanceVariance, false);
-    particle.startColor.satuation = this.getParam(startColor.satuation, startColor.satuationVariance, false);
+    particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
+    particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
+    particle.startColor.satuation = this.calcRandomValueWithVariance(startColor.satuation, startColor.satuationVariance, false);
 
 
-    particle.finishColor.hue = this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
-    particle.finishColor.luminance = this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
-    particle.finishColor.satuation = this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
+    particle.finishColor.hue = this.calcRandomValueWithVariance(finishColor.hue, finishColor.hueVariance, false) % 360;
+    particle.finishColor.luminance = this.calcRandomValueWithVariance(finishColor.luminance, finishColor.luminanceVariance, false);
+    particle.finishColor.satuation = this.calcRandomValueWithVariance(finishColor.satuation, finishColor.satuationVariance, false);
 
 
     let hue = Number(particle.startColor.hue);
@@ -262,14 +262,28 @@ export class ParticleEmitter {
 
   }
 
-  private range(minValue:number, maxValue:number, value:number):number {
+  /**
+   * 一定範囲の数値を計算します。
+   * @param minValue
+   * @param maxValue
+   * @param value
+   * @returns {number}
+   */
+  private calcRandomValueWithRange(minValue:number, maxValue:number, value:number):number {
     return Math.min(maxValue, Math.max(minValue, value));
   }
 
-  private getParam(value:any, variance:any, isInteger:boolean):number {
-    let result = parseFloat(value) + ( Math.random() * parseFloat(variance) ) - parseFloat(variance) / 2;
+  /**
+   * ばらつきのある値を計算し取得します。
+   * @param value 基準値です。
+   * @param variance バラつきの範囲です。
+   * @param isInteger 整数であるかを指定します。
+   * @returns {number}  数値を返します。
+   */
+  private calcRandomValueWithVariance(value:number, variance:number, isInteger:boolean):number {
+    let result = Number(value) + ( Math.random() * Number(variance) ) - Number(variance) / 2;
 
-    if (isInteger) {
+    if (isInteger == true) {
       return Math.floor(result);
     }
 
