@@ -10,7 +10,7 @@
     "clean-build": "gulp clean-build",
     "serve": "gulp serve",
     "start": "electron .",
-    "packaging": "electron-packager . ParticleDevelop --platform=darwin,win32 --arch=x64 --version=0.35.0 --overwrite"
+    "packaging": "electron-packager . ParticleDevelop --platform=darwin --icon='resources/particle-develop.icns' --arch=x64 --version=0.35.0 --overwrite --out ../"
   },
   "keywords": [
     "electron",
