@@ -1,5 +1,9 @@
 "use strict";
 
+declare namespace window {
+  export var lib:Object;
+}
+
 import {Component, ViewChild} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 
@@ -15,7 +19,7 @@ import {AfterViewInit} from "angular2/core";
 export class PropertyShapeItemRenderer implements AfterViewInit {
   private shapeId:string;
 
-  @ViewChild("myCanvas") myCanvas;
+  @ViewChild("myCanvas") myCanvas:any;
 
   constructor() {
   }
@@ -26,7 +30,9 @@ export class PropertyShapeItemRenderer implements AfterViewInit {
     let stage = new createjs.Stage(canvas);
 
     // Adobe Animate CCから書きだしたシェイプを使う
-    let shape = new window["lib"][this.shapeId];
+    let namespaceObj = <any> window["lib"];
+    let cls = <any> namespaceObj[this.shapeId];
+    let shape = new cls();
     shape.x = 32;
     shape.y = 32;
     shape.scaleX = shape.scaleY = 0.5;
@@ -37,3 +43,4 @@ export class PropertyShapeItemRenderer implements AfterViewInit {
     stage.update();
   }
 }
+

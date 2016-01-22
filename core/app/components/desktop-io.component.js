@@ -75,9 +75,9 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                     /** hoverエリアにドロップされた */
                     holder.ondrop = this.onDrop;
                 };
-                DesktopIOBox.prototype.onDrop = function (e) {
-                    e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-                    var file = e.dataTransfer.files[0];
+                DesktopIOBox.prototype.onDrop = function (event) {
+                    event.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+                    var file = event.dataTransfer.files[0];
                     this.importParameterFile(file);
                     return false;
                 };

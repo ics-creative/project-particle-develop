@@ -6,10 +6,11 @@ System.register([], function(exports_1) {
         execute: function() {
             ShapeGenerator = (function () {
                 function ShapeGenerator() {
-                    this.shapeObjects = window["lib"];
                 }
                 ShapeGenerator.prototype.generateShape = function (id) {
-                    return new this.shapeObjects[id]();
+                    var namespaceObj = window["lib"];
+                    var cls = namespaceObj[id];
+                    return new cls();
                 };
                 return ShapeGenerator;
             })();

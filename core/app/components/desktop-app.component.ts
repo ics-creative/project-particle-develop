@@ -22,7 +22,7 @@ export class DesktopAppComponent extends AppComponent {
       ]
     };
 
-    dialog.showSaveDialog(options, (filename) => {
+    dialog.showSaveDialog(options, (filename:string) => {
       if (!filename) {
         return;
       }
@@ -33,7 +33,7 @@ export class DesktopAppComponent extends AppComponent {
 
       let fs = require('fs');
 
-      fs.writeFile(filename, data, 'base64', function (error) {
+      fs.writeFile(filename, data, 'base64', function (error:Error) {
         if (error != null) {
           alert('error : ' + error);
         }
@@ -53,7 +53,7 @@ export class DesktopAppComponent extends AppComponent {
       ]
     };
 
-    dialog.showSaveDialog(options, (filename) => {
+    dialog.showSaveDialog(options, (filename:string) => {
       if (!filename) {
         return;
       }
@@ -64,7 +64,7 @@ export class DesktopAppComponent extends AppComponent {
 
       let fs = require('fs');
 
-      fs.writeFile(filename, data, 'base64', function (error) {
+      fs.writeFile(filename, data, 'base64', function (error:Error) {
         if (error != null) {
           alert('error : ' + error);
         }
@@ -86,7 +86,7 @@ export class DesktopAppComponent extends AppComponent {
       ]
     };
 
-    dialog.showSaveDialog(options, (filename) => {
+    dialog.showSaveDialog(options, (filename:string) => {
 
       if (!filename) {
         return;
@@ -94,7 +94,7 @@ export class DesktopAppComponent extends AppComponent {
 
       let fs = require('fs');
 
-      fs.writeFile(filename, this.stageComponent.getParticleSVGString(), function (error) {
+      fs.writeFile(filename, this.stageComponent.getParticleSVGString(), function (error:Error) {
         if (error != null) {
           alert('error : ' + error);
         }
@@ -114,14 +114,14 @@ export class DesktopAppComponent extends AppComponent {
       ]
     };
 
-    dialog.showSaveDialog(options, (filename) => {
+    dialog.showSaveDialog(options, (filename:string) => {
       if (!filename) {
         return;
       }
       let fs = require('fs');
       let data = JSON.stringify(this.drawingData);
 
-      fs.writeFile(filename, data, function (error) {
+      fs.writeFile(filename, data, function (error:Error) {
         if (error != null) {
           alert('error : ' + error);
         }

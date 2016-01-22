@@ -9,6 +9,8 @@ declare class SVGExporter {
   run():void;
 }
 
+declare let cordova:any;
+
 /**
  * SVG ファイルに出力するクラスです。
  */
@@ -44,11 +46,11 @@ export class ParticleExporter {
       cordova.base64ToGallery(
           base64,
           'img_',
-          function (msg) {
+          function (msg:any) {
             onResolve();
             alert("画像ライブラリに保存しました。");
           },
-          function (err) {
+          function (err:any) {
             onReject();
             alert("画像保存に失敗しました。");
           }

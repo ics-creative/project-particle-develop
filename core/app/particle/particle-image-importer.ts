@@ -1,5 +1,9 @@
-///<reference path="../../typings/tsd.d.ts" />
 "use strict";
+
+declare var Camera:any;
+declare namespace navigator {
+  export var camera:any;
+}
 
 /**
  * 画像を読み込むクラスです

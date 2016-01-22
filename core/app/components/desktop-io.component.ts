@@ -67,7 +67,7 @@ export class DesktopIOBox {
 
   private setDragAndDropSettings(element:ElementRef):void {
     /** documentにドラッグされた場合 / ドロップされた場合 */
-    document.ondragover = document.ondrop = function (e) {
+    document.ondragover = document.ondrop = function (e:Event) {
       e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
       return false;
     };
@@ -85,10 +85,10 @@ export class DesktopIOBox {
     holder.ondrop = this.onDrop;
   }
 
-  private onDrop(e) {
-    e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
+  private onDrop(event:any) {
+    event.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
 
-    let file = e.dataTransfer.files[0];
+    let file = event.dataTransfer.files[0];
     this.importParameterFile(file);
 
     return false;
