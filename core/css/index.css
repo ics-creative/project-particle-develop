@@ -7896,6 +7896,9 @@ h2 {
   height: 100%;
   color: #8b9292;
 }
+#propertyPanel .panel .panel-body {
+  background: #2a2a2a;
+}
 #propertyPanel .panel .tab-pane label {
   font-size: 12px;
   margin-bottom: 2px;
@@ -8040,6 +8043,18 @@ mobile-particle-template-property-modal .media-body {
 
 #myCanvas {
   cursor: crosshair;
+}
+
+.footer_left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.footer_right {
+  position: absolute;
+  bottom: 10px;
+  right: 360px;
 }
 
 /*# sourceMappingURL=index.css.map */
