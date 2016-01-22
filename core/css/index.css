@@ -7942,6 +7942,15 @@ h2 {
 #propertyPanel .panel div.templateListItem:hover {
   background: #333;
 }
+#propertyPanel .panel div.templateListItem h4 {
+  margin-top: 3px;
+  font-size: 14px;
+  font-weight: bold;
+}
+#propertyPanel .panel div.templateListItem p {
+  color: #666;
+  font-size: 12px;
+}
 #propertyPanel hr {
   border-top: 1px solid #1c1e22;
   border-bottom: 1px solid #333333;

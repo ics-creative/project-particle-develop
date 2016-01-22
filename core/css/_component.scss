@@ -85,7 +85,6 @@ h1 {
   }
 }
 
-
 h2 {
   text-shadow: 0px -2px 0 rgba(0, 0, 0, 0.9);
   font-weight: bold;
@@ -162,6 +161,16 @@ h2 {
       &:hover {
         background: #333;
       }
+
+      h4 {
+        margin-top: 3px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      p {
+        color: #666;
+        font-size: 12px;
+      }
     }
   }
 
@@ -177,7 +186,7 @@ h2 {
     $color: #333;
     cursor: default;
     background: none;
-    border : none;
+    border: none;
 
   }
 
@@ -242,8 +251,7 @@ mobile-io-box .nav {
 
 }
 
-mobile-particle-template-property-modal
-{
+mobile-particle-template-property-modal {
   .media {
     float: left;
     width: 25%;
@@ -255,7 +263,7 @@ mobile-particle-template-property-modal
     display: block;
 
     img {
-      border:1px solid $gray-dark;
+      border: 1px solid $gray-dark;
       width: 100%;
     }
   }
