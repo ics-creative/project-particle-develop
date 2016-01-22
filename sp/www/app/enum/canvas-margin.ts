@@ -1,3 +1,5 @@
+"use strict";
+
 export enum CanvasMargin {
   TOP_DESKTOP = 100,
   RIGHT_DESKTOP = 350,

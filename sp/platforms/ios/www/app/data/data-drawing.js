@@ -1,4 +1,5 @@
 System.register(["./data-color", "../enum/alpha-curve-type"], function(exports_1) {
+    "use strict";
     var data_color_1, alpha_curve_type_1;
     var DrawingData;
     return {
@@ -39,18 +40,19 @@ System.register(["./data-color", "../enum/alpha-curve-type"], function(exports_1
                     this.startYVariance = 0;
                     this.shapeIdList = ["kirakira"];
                     this.startColor = new data_color_1.ColorData();
-                    this.finishColor = new data_color_1.ColorData();
                     this.blendMode = true;
-                    this.alphaCurveType = alpha_curve_type_1.AlphaCurveType.Random;
+                    this.alphaCurveType = alpha_curve_type_1.AlphaCurveType.Normal;
                 }
                 DrawingData.prototype.into = function (obj) {
-                    for (var key in this) {
+                    for (var key in obj) {
+                        // 無視するプロパティー
                         if (key == "width" || key == "height" || key == "startX" || key == "startY") {
                             continue;
                         }
-                        if (this.hasOwnProperty(key)) {
-                            var val = this[key];
-                            this[key] = obj[key];
+                        if (Reflect.has(this, key) == true) {
+                            var val = obj[key];
+                            // イマドキなプロパティー反映方法を適用 ICS-Ikeda 2016-01-22
+                            Reflect.set(this, key, val);
                         }
                     }
                 };

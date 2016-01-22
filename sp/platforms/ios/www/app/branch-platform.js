@@ -1,4 +1,5 @@
 ///<reference path="system.d.ts"/>
+"use strict";
 /**
  * プラットフォーム分岐用のコード
  */
