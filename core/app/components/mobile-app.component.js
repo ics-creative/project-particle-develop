@@ -27,8 +27,7 @@ System.register(["./app.component"], function(exports_1) {
                     this.stageComponent.runCamera().then();
                 };
                 MobileAppComponent.prototype.handleExportParamaterClick = function () {
-                    alert("paramater!");
-                    console.log("handleExportParamaterClick");
+                    alert("モバイルアプリでは使用不可能です");
                 };
                 return MobileAppComponent;
             })(app_component_1.AppComponent);

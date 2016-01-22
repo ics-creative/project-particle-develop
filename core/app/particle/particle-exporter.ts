@@ -23,7 +23,7 @@ export class ParticleExporter {
     this.drawLayerContainer = drawLayerContainer;
   }
 
-  runExport(width:number, height:number):Promise<any> {
+  public runExport(width:number, height:number):Promise<any> {
     this.width = width;
     this.height = height;
 
@@ -38,7 +38,7 @@ export class ParticleExporter {
     });
   }
 
-  runExportSP(cavas:HTMLCanvasElement):Promise<any> {
+  public runExportSP(cavas:HTMLCanvasElement):Promise<any> {
     return new Promise((onResolve, onReject) => {
       let base64 = cavas.toDataURL();
       cordova.base64ToGallery(
@@ -56,8 +56,7 @@ export class ParticleExporter {
     });
   }
 
-  getSVGString():string {
-
+  public getSVGString():string {
     var serializer = new XMLSerializer();
     return serializer.serializeToString(this.exporter.svg);
   }

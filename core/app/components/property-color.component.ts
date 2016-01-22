@@ -29,8 +29,4 @@ export class PropertyColorPanel {
       {name: 'Random', value: AlphaCurveType.Random}
     ];
   }
-
-  hoge(){
-    console.log(this.drawingData.alphaCurveType)
-  }
 }

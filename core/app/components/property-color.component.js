@@ -35,9 +35,6 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
                         { name: 'Random', value: alpha_curve_type_1.AlphaCurveType.Random }
                     ];
                 }
-                PropertyColorPanel.prototype.hoge = function () {
-                    console.log(this.drawingData.alphaCurveType);
-                };
                 PropertyColorPanel = __decorate([
                     core_1.Component({
                         selector: "color-property-panel",

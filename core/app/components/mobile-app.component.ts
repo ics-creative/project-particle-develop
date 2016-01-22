@@ -13,7 +13,6 @@ export class MobileAppComponent extends AppComponent {
   }
 
   handleExportParamaterClick() {
-    alert("paramater!");
-    console.log("handleExportParamaterClick");
+    alert("モバイルアプリでは使用不可能です");
   }
 }
