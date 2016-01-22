@@ -9,6 +9,9 @@ import {AlphaCurveType} from "../enum/alpha-curve-type";
 /** パーティクルの発生装置の制御クラスです。 */
 export class ParticleEmitter {
 
+  /** グラフィックオブジェクトです。内部計算に使用します。 */
+  static HELPER_GRAPHICS:createjs.Graphics = new createjs.Graphics();
+
   public container:createjs.Container;
   private _particlesPool:Particle[];
   private _activeParticles:Particle[];
@@ -76,27 +79,15 @@ export class ParticleEmitter {
             break;
           case AlphaCurveType.Normal:
           default:
-            let alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha ) * lifeParcent;
+            let alpha = particle.finishAlpha + (particle.startAlpha - particle.finishAlpha) * lifeParcent;
             particle.particleShape.alpha = alpha;
             break;
         }
 
       //particle.particleShape.alpha = Math.random();
 
-      let scale = particle.finishScale + (particle.startScale - particle.finishScale ) * lifeParcent;
+      let scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
-
-
-      if (particle.colorCommand) {
-
-        let hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue ) * lifeParcent;
-        let satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation ) * lifeParcent;
-        let luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance ) * lifeParcent;
-
-        let color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
-
-        //particle.colorCommand.style = color;
-      }
 
       //  パーティクルが死んでいたら、オブジェクトプールに移動
       if (particle.currentLife < 0) {
@@ -176,41 +167,30 @@ export class ParticleEmitter {
     particle.vx = Math.cos(angle) * speed;
     particle.vy = Math.sin(angle) * speed;
 
-
     //  アルファ
     particle.startAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
     particle.finishAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
-
 
     //  スケール
     particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
     particle.finishScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
 
-
     // ブレンドモードを設定
     particle.particleShape.compositeOperation = this._drawingData.blendMode == true ? "lighter" : null;
 
-
     particle.alphaCurveType = this._drawingData.alphaCurveType;
-
   }
+
 
   public generateShape(particle:Particle, shapeIdList:string[]) {
 
     particle.particleShape.removeAllChildren();
 
     let startColor:ColorData = this._drawingData.startColor;
-    let finishColor:ColorData = this._drawingData.finishColor;
 
     particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
     particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
     particle.startColor.satuation = this.calcRandomValueWithVariance(startColor.satuation, startColor.satuationVariance, false);
-
-
-    particle.finishColor.hue = this.calcRandomValueWithVariance(finishColor.hue, finishColor.hueVariance, false) % 360;
-    particle.finishColor.luminance = this.calcRandomValueWithVariance(finishColor.luminance, finishColor.luminanceVariance, false);
-    particle.finishColor.satuation = this.calcRandomValueWithVariance(finishColor.satuation, finishColor.satuationVariance, false);
-
 
     let hue = Number(particle.startColor.hue);
     let satuation = Number(particle.startColor.satuation);
@@ -219,14 +199,14 @@ export class ParticleEmitter {
     let color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
 
     let r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
-    let shapeId = ( this._drawingData.shapeIdList.length == 0 ) ? '' : this._drawingData.shapeIdList[r]
-
+    let shapeId = ( this._drawingData.shapeIdList.length == 0 )
+        ? ''
+        : this._drawingData.shapeIdList[r]
 
     particle.colorCommand = null;
 
     let container = <createjs.Container> this.shapeGenerator.generateShape(shapeId);
     let shape = <createjs.Shape> container.getChildAt(0); // こういう作りにする
-
 
     let instructions = shape.graphics.instructions;
     if (instructions && instructions.length > 0) {
@@ -237,7 +217,7 @@ export class ParticleEmitter {
           if (cmd.style instanceof CanvasGradient) {
             // 昔のグラデーションを保持
             let oldStyle = <any> cmd.style;
-            let g = new createjs.Graphics();
+            let g = ParticleEmitter.HELPER_GRAPHICS;
             let newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${satuation}%, ${luminance}%, 0)`],
                 oldStyle.props.ratios,
                 oldStyle.props.x0,
@@ -246,7 +226,6 @@ export class ParticleEmitter {
                 oldStyle.props.x1,
                 oldStyle.props.y1,
                 oldStyle.props.r1).command;
-
             instructions[i] = newStyle;
           } else { // 単色塗りなら
             cmd.style = color;
@@ -259,7 +238,6 @@ export class ParticleEmitter {
       }
     }
     particle.particleShape.addChild(container);
-
   }
 
   /**
@@ -281,7 +259,7 @@ export class ParticleEmitter {
    * @returns {number}  数値を返します。
    */
   private calcRandomValueWithVariance(value:number, variance:number, isInteger:boolean):number {
-    let result = Number(value) + ( Math.random() * Number(variance) ) - Number(variance) / 2;
+    let result = Number(value) + ( Math.random() - 0.5 ) * variance;
 
     if (isInteger == true) {
       return Math.floor(result);

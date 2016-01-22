@@ -67,12 +67,6 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                         //particle.particleShape.alpha = Math.random();
                         var scale = particle.finishScale + (particle.startScale - particle.finishScale) * lifeParcent;
                         particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
-                        if (particle.colorCommand) {
-                            var hue = particle.startColor.hue + (particle.startColor.hue - particle.finishColor.hue) * lifeParcent;
-                            var satuation = particle.startColor.satuation + (particle.startColor.satuation - particle.finishColor.satuation) * lifeParcent;
-                            var luminance = particle.startColor.luminance + (particle.startColor.luminance - particle.finishColor.luminance) * lifeParcent;
-                            var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
-                        }
                         //  パーティクルが死んでいたら、オブジェクトプールに移動
                         if (particle.currentLife < 0) {
                             particle.isAlive = false;
@@ -150,19 +144,17 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                 ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
                     particle.particleShape.removeAllChildren();
                     var startColor = this._drawingData.startColor;
-                    var finishColor = this._drawingData.finishColor;
                     particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
                     particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
                     particle.startColor.satuation = this.calcRandomValueWithVariance(startColor.satuation, startColor.satuationVariance, false);
-                    particle.finishColor.hue = this.calcRandomValueWithVariance(finishColor.hue, finishColor.hueVariance, false) % 360;
-                    particle.finishColor.luminance = this.calcRandomValueWithVariance(finishColor.luminance, finishColor.luminanceVariance, false);
-                    particle.finishColor.satuation = this.calcRandomValueWithVariance(finishColor.satuation, finishColor.satuationVariance, false);
                     var hue = Number(particle.startColor.hue);
                     var satuation = Number(particle.startColor.satuation);
                     var luminance = Number(particle.startColor.luminance);
                     var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
                     var r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
-                    var shapeId = (this._drawingData.shapeIdList.length == 0) ? '' : this._drawingData.shapeIdList[r];
+                    var shapeId = (this._drawingData.shapeIdList.length == 0)
+                        ? ''
+                        : this._drawingData.shapeIdList[r];
                     particle.colorCommand = null;
                     var container = this.shapeGenerator.generateShape(shapeId);
                     var shape = container.getChildAt(0); // こういう作りにする
@@ -175,7 +167,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                                 if (cmd.style instanceof CanvasGradient) {
                                     // 昔のグラデーションを保持
                                     var oldStyle = cmd.style;
-                                    var g = new createjs.Graphics();
+                                    var g = ParticleEmitter.HELPER_GRAPHICS;
                                     var newStyle = g.beginRadialGradientFill([color, ("hsla(" + hue + ", " + satuation + "%, " + luminance + "%, 0)")], oldStyle.props.ratios, oldStyle.props.x0, oldStyle.props.y0, oldStyle.props.r0, oldStyle.props.x1, oldStyle.props.y1, oldStyle.props.r1).command;
                                     instructions[i] = newStyle;
                                 }
@@ -210,12 +202,14 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                  * @returns {number}  数値を返します。
                  */
                 ParticleEmitter.prototype.calcRandomValueWithVariance = function (value, variance, isInteger) {
-                    var result = Number(value) + (Math.random() * Number(variance)) - Number(variance) / 2;
+                    var result = Number(value) + (Math.random() - 0.5) * variance;
                     if (isInteger == true) {
                         return Math.floor(result);
                     }
                     return result;
                 };
+                /** グラフィックオブジェクトです。内部計算に使用します。 */
+                ParticleEmitter.HELPER_GRAPHICS = new createjs.Graphics();
                 return ParticleEmitter;
             })();
             exports_1("ParticleEmitter", ParticleEmitter);

@@ -40,7 +40,6 @@ System.register(["./data-color", "../enum/alpha-curve-type"], function(exports_1
                     this.startYVariance = 0;
                     this.shapeIdList = ["kirakira"];
                     this.startColor = new data_color_1.ColorData();
-                    this.finishColor = new data_color_1.ColorData();
                     this.blendMode = true;
                     this.alphaCurveType = alpha_curve_type_1.AlphaCurveType.Normal;
                 }

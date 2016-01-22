@@ -45,8 +45,6 @@ export class Particle {
 
   /** 開始時のカラーです。 */
   public startColor:ColorData;
-  /** 終了時のカラーです。 */
-  public finishColor:ColorData;
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
   public colorCommand:any;
 

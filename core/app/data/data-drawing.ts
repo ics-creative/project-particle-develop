@@ -46,7 +46,6 @@ export class DrawingData {
   shapeIdList:string[] = ["kirakira"];
 
   startColor:ColorData = new ColorData();
-  finishColor:ColorData = new ColorData();
 
   blendMode:boolean = true;
   alphaCurveType:number = AlphaCurveType.Normal;
