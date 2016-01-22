@@ -303,6 +303,10 @@ System.register([], function(exports_1) {
                         name: "隕石",
                         property: { "bgColor": "#00000", "width": 611.3333333333334, "height": 624.6666666666666, "emitFrequency": "5", "lifeSpan": "40", "lifeSpanVariance": "0", "initialDirection": "209.5", "initialDirectionVariance": "155", "initialSpeed": "2.6", "initialSpeedVariance": "3.8", "friction": "0.0085", "accelerationSpeed": "0.835", "accelerationDirection": "233.2", "startScale": "1", "startScaleVariance": "0.52", "finishScale": "0", "finishScaleVariance": "0", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "1", "finishAlphaVariance": "0", "startX": 320, "startXVariance": "0", "startY": 349, "startYVariance": "0", "shapeIdList": ["blur_circle"], "startColor": { "hue": "17", "hueVariance": "32", "satuation": "100", "satuationVariance": "45", "luminance": "56", "luminanceVariance": "19" }, "blendMode": true, "alphaCurveType": "0" }
                     };
+                    this.setting8 = {
+                        name: "ピンクの世界",
+                        property: { "bgColor": "#00000", "width": 611.3333333333334, "height": 624.6666666666666, "emitFrequency": "1", "lifeSpan": "136", "lifeSpanVariance": "27", "initialDirection": "270", "initialDirectionVariance": "360", "initialSpeed": "1", "initialSpeedVariance": "0", "friction": "0.071", "accelerationSpeed": "0.1045", "accelerationDirection": "270", "startScale": "0.5", "startScaleVariance": "1", "finishScale": "0", "finishScaleVariance": "0", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "0.8", "finishAlphaVariance": "0", "startX": 309, "startXVariance": "597", "startY": 516, "startYVariance": "165", "shapeIdList": ["heart"], "startColor": { "hue": "335", "hueVariance": "0", "satuation": "78", "satuationVariance": "0", "luminance": "59", "luminanceVariance": "50" }, "blendMode": true, "alphaCurveType": "1" }
+                    };
                     this.list = [];
                     this.list.push(this.setting0);
                     this.list.push(this.setting1);
@@ -312,6 +316,7 @@ System.register([], function(exports_1) {
                     this.list.push(this.setting5);
                     this.list.push(this.setting6);
                     this.list.push(this.setting7);
+                    this.list.push(this.setting8);
                 }
                 return ParticleParamater;
             })();
