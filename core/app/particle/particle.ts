@@ -54,6 +54,5 @@ export class Particle {
     this.particleShape = new createjs.Container;
 
     this.startColor = new ColorData();
-    this.finishColor = new ColorData();
   }
 }
