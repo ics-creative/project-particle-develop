@@ -166,6 +166,9 @@ export class ParticleCanvas {
     this._canvasContainer.x = this._ruler.container.x = canvasPoint.x;
     this._canvasContainer.y = this._ruler.container.y = canvasPoint.y;
 
+    this._captureImageLayer.x = -canvasPoint.x;
+    this._captureImageLayer.y = -canvasPoint.y;
+
     // ステージのサイズをwindowのサイズに変更
     (<HTMLCanvasElement>this._stage.canvas).width = canvasWidth;
     (<HTMLCanvasElement>this._stage.canvas).height = canvasHeight;
