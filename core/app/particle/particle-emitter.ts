@@ -6,7 +6,7 @@ import {DrawingData} from "../data/data-drawing";
 import {ShapeGenerator} from "../assets/shape-generator";
 import {ColorData} from "../data/data-color";
 import {AlphaCurveType} from "../enum/alpha-curve-type";
-
+/** パーティクルの発生装置の制御クラスです。 */
 export class ParticleEmitter {
 
   public container:createjs.Container;

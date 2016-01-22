@@ -2,7 +2,7 @@
 
 import {DrawingData} from "../data/data-drawing";
 /**
- * ルーラーの制御クラスです。
+ * キャンバスに表示するルーラーの制御クラスです。
  */
 export class Ruler {
 

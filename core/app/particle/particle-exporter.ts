@@ -10,7 +10,7 @@ declare class SVGExporter {
 }
 
 /**
- * Export SVG
+ * SVG ファイルに出力するクラスです。
  */
 export class ParticleExporter {
 

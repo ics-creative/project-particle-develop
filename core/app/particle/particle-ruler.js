@@ -5,7 +5,7 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             /**
-             * ルーラーの制御クラスです。
+             * キャンバスに表示するルーラーの制御クラスです。
              */
             Ruler = (function () {
                 function Ruler(_data) {

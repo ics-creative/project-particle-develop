@@ -12,7 +12,6 @@ System.register([], function(exports_1) {
         execute: function() {
             /**
              * キャプチャーした画像を配置するレイヤーです。
-             *
              */
             ParticleCaptureImageLayer = (function (_super) {
                 __extends(ParticleCaptureImageLayer, _super);

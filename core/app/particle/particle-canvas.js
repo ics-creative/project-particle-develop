@@ -27,6 +27,9 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                 particle_ruler_1 = particle_ruler_1_1;
             }],
         execute: function() {
+            /**
+             * パーティクル表示エリアの制御クラスです。
+             */
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;

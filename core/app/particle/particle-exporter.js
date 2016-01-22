@@ -6,7 +6,7 @@ System.register([], function(exports_1) {
         setters:[],
         execute: function() {
             /**
-             * Export SVG
+             * SVG ファイルに出力するクラスです。
              */
             ParticleExporter = (function () {
                 function ParticleExporter(drawLayerContainer) {

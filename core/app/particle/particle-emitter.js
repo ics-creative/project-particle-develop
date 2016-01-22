@@ -15,6 +15,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                 alpha_curve_type_1 = alpha_curve_type_1_1;
             }],
         execute: function() {
+            /** パーティクルの発生装置の制御クラスです。 */
             ParticleEmitter = (function () {
                 function ParticleEmitter() {
                     this._particlesPool = [];

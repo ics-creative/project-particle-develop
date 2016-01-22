@@ -4,7 +4,6 @@
 
 /**
  * キャプチャーした画像を配置するレイヤーです。
- *
  */
 export class ParticleCaptureImageLayer extends createjs.Container {
   private _captureImage:createjs.Bitmap;
