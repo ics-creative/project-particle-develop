@@ -1,12 +1,13 @@
-# 160122_createjs_app
+# Particle Develop
+
+
+![ParticleDevelop](image.png)
 
 ## Description
-ICS Draw
-
-## Features
+Particle DevelopはHTML5製のデザインツールです。雪や炎、キラキラなどのパーティクル表現を作成でき、ベクター画像として保存することができます。Adobe Illustratorのイラスト制作にも役立ちます。
 
 
-## ファイル構成
 
-- [common 共通ソースディレクトリ](common/)
+- [core 共通ソースディレクトリ](core/)
 - [desktop デスクトップ用のソースディレクトリ](desktop/)
+- [sp モバイル用のソースディレクトリ](sp/)
