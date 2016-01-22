@@ -102,8 +102,14 @@ h2 {
   max-height: 100%;
   overflow-y: scroll;
 
+
+
   .panel {
     background: #2a2a2a;
+    .panel-body {
+      background: #2a2a2a;
+    }
+
     height: 100%;
 
     color: #8b9292;
@@ -272,4 +278,19 @@ mobile-particle-template-property-modal {
   cursor: crosshair;
 }
 
+.footer_left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.footer_right {
+  position: absolute;
+  bottom: 10px;
+  right: 360px;
+
+  @media (max-width: $screen-sm) {
+    right: 10px;
+  }
+}
 
