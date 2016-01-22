@@ -52,6 +52,14 @@ export class AppComponent {
     this.drawingData.width = sw;
     this.drawingData.height = sh;
 
+    this.adjustUi();
+  }
+
+  /**
+   * UIの表示制御
+   */
+  protected adjustUi() {
+    document.getElementById("fileSelectUi").style.display
   }
 
   protected handleSVGClick() {
