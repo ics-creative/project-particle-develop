@@ -26,7 +26,7 @@ app.on("ready", function () {
         width: mainWindowState.width,
         height: mainWindowState.height
     });
-    mainWindow.loadURL("file://" + __dirname + "/src/index.html");
+    mainWindow.loadURL("file://" + __dirname + "/src/desktop.html");
     if (client) {
         client.create(mainWindow);
     }
@@ -34,4 +34,3 @@ app.on("ready", function () {
         mainWindow = null;
     });
 });
-//# sourceMappingURL=index.js.map
