@@ -6,6 +6,10 @@ System.register([], function(exports_1) {
         execute: function() {
             ParticleParamater = (function () {
                 function ParticleParamater() {
+                    this.setting0 = {
+                        name: "Basic",
+                        property: { "bgColor": "#00000", "width": 611.3333333333334, "height": 624.6666666666666, "emitFrequency": "1", "lifeSpan": "103", "lifeSpanVariance": "0", "initialDirection": "0", "initialDirectionVariance": "360", "initialSpeed": "7.5", "initialSpeedVariance": "0", "friction": "0", "accelerationSpeed": "0", "accelerationDirection": "0", "startScale": "0.5", "startScaleVariance": "0", "finishScale": "0", "finishScaleVariance": "0", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "1", "finishAlphaVariance": "0", "startX": 305.6666666666667, "startXVariance": "0", "startY": 312.3333333333333, "startYVariance": "0", "shapeIdList": ["circle"], "startColor": { "hue": "0", "hueVariance": "0", "satuation": "100", "satuationVariance": 0, "luminance": "50", "luminanceVariance": 0 }, "blendMode": false, "alphaCurveType": "0" }
+                    };
                     this.setting1 = {
                         name: "kirakira",
                         property: {
@@ -295,13 +299,19 @@ System.register([], function(exports_1) {
                             "alphaCurveType": "0"
                         }
                     };
+                    this.setting7 = {
+                        name: "隕石",
+                        property: { "bgColor": "#00000", "width": 611.3333333333334, "height": 624.6666666666666, "emitFrequency": "5", "lifeSpan": "40", "lifeSpanVariance": "0", "initialDirection": "209.5", "initialDirectionVariance": "155", "initialSpeed": "2.6", "initialSpeedVariance": "3.8", "friction": "0.0085", "accelerationSpeed": "0.835", "accelerationDirection": "233.2", "startScale": "1", "startScaleVariance": "0.52", "finishScale": "0", "finishScaleVariance": "0", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "1", "finishAlphaVariance": "0", "startX": 320, "startXVariance": "0", "startY": 349, "startYVariance": "0", "shapeIdList": ["blur_circle"], "startColor": { "hue": "17", "hueVariance": "32", "satuation": "100", "satuationVariance": "45", "luminance": "56", "luminanceVariance": "19" }, "blendMode": true, "alphaCurveType": "0" }
+                    };
                     this.list = [];
+                    this.list.push(this.setting0);
                     this.list.push(this.setting1);
                     this.list.push(this.setting2);
                     this.list.push(this.setting3);
                     this.list.push(this.setting4);
                     this.list.push(this.setting5);
                     this.list.push(this.setting6);
+                    this.list.push(this.setting7);
                 }
                 return ParticleParamater;
             })();
