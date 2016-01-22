@@ -1,4 +1,5 @@
 System.register(["angular2/core"], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -23,7 +24,9 @@ System.register(["angular2/core"], function(exports_1) {
                     var canvas = this.myCanvas.nativeElement;
                     var stage = new createjs.Stage(canvas);
                     // Adobe Animate CCから書きだしたシェイプを使う
-                    var shape = new window["lib"][this.shapeId];
+                    var namespaceObj = window["lib"];
+                    var cls = namespaceObj[this.shapeId];
+                    var shape = new cls();
                     shape.x = 32;
                     shape.y = 32;
                     shape.scaleX = shape.scaleY = 0.5;

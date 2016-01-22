@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';

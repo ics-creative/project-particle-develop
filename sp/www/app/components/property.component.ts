@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component} from "angular2/core";
 import {PropertyColorUnit} from "./property-color-unit.component";
 import {ParticleParamater} from "../assets/particle-paramater";

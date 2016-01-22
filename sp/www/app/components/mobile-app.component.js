@@ -1,4 +1,5 @@
 System.register(["./app.component"], function(exports_1) {
+    "use strict";
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -27,8 +28,7 @@ System.register(["./app.component"], function(exports_1) {
                     this.stageComponent.runCamera().then();
                 };
                 MobileAppComponent.prototype.handleExportParamaterClick = function () {
-                    alert("paramater!");
-                    console.log("handleExportParamaterClick");
+                    alert("モバイルアプリでは使用不可能です");
                 };
                 return MobileAppComponent;
             })(app_component_1.AppComponent);

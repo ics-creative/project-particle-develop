@@ -16,7 +16,6 @@ System.register(["../data/data-color"], function(exports_1) {
                 function Particle() {
                     this.particleShape = new createjs.Container;
                     this.startColor = new data_color_1.ColorData();
-                    this.finishColor = new data_color_1.ColorData();
                 }
                 return Particle;
             })();

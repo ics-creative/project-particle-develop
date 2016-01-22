@@ -1,16 +1,17 @@
-/**
- * Created by 「asset-shapes.fla」/「generate-assets.jsfl」 on Wed Jan 20 2016
- * !!!!!このコードはJSFLから自動生成されたコードです。修正する場合はご注意ください。!!!!!
- */
+"use strict";
+
+declare namespace window {
+  export var lib:Object;
+}
 
 export class ShapeGenerator {
-  shapeObjects:Object;
 
-  constructor () {
-    this.shapeObjects = window["lib"];
+  constructor() {
   }
 
-  generateShape(id:string) {
-    return new this.shapeObjects[id]();
+  public generateShape(id:string):createjs.Container {
+    let namespaceObj = <any> window["lib"];
+    let cls = <any> namespaceObj[id];
+    return <createjs.Container> new cls();
   }
 }

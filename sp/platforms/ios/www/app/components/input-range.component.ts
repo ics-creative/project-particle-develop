@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 
@@ -25,11 +27,5 @@ export class InputRangeComponent {
   private step:number;
 
   constructor() {
-  }
-
-  handleChange() {
-    console.log(this.targetProperty);
-    console.log(this.drawingData[this.targetProperty]);
-    console.log(this.drawingData);
   }
 }

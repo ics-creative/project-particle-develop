@@ -8,7 +8,6 @@ import {ColorData} from "../data/data-color";
  * パーティクルエミッターのバリューオブジェクトのクラスです。
  */
 export class Particle {
-
   /** パーティクルの形状です。 */
   public particleShape:createjs.Container;
 
@@ -46,8 +45,6 @@ export class Particle {
 
   /** 開始時のカラーです。 */
   public startColor:ColorData;
-  /** 終了時のカラーです。 */
-  public finishColor:ColorData;
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
   public colorCommand:any;
 
@@ -57,6 +54,5 @@ export class Particle {
     this.particleShape = new createjs.Container;
 
     this.startColor = new ColorData();
-    this.finishColor = new ColorData();
   }
 }
