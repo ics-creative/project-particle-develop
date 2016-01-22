@@ -19,10 +19,14 @@ export class ParticleParamater {
 
   private setting0 = {
     name: "Basic",
+    description : "プレーンなテンプレート",
+    imageId : "basic",
     property: {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"103","lifeSpanVariance":"0","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"7.5","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.5","startScaleVariance":"0","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":305.6666666666667,"startXVariance":"0","startY":312.3333333333333,"startYVariance":"0","shapeIdList":["circle"],"startColor":{"hue":"0","hueVariance":"0","satuation":"100","satuationVariance":0,"luminance":"50","luminanceVariance":0},"blendMode":false,"alphaCurveType":"0"}
   };
   private setting1 = {
-    name: "kirakira",
+    name: "きらきら",
+    description : "綺羅びやかな雰囲気",
+    imageId : "kirakira",
     property: {
       "bgColor": "#00000",
       "width": 500,
@@ -72,6 +76,7 @@ export class ParticleParamater {
   private setting2 = {
     name: "紫色のパーティクル",
     description: "上方向に向かってうごく",
+    imageId : "parple",
     property: {
       "bgColor": "#00000",
       "width": "1024",
@@ -121,7 +126,9 @@ export class ParticleParamater {
   };
 
   setting3 = {
-    name: "heart",
+    name: "炎",
+    description: "焚き火",
+    imageId : "fire",
     property: {
       "bgColor": "#00000",
       "width": 500,
@@ -168,55 +175,16 @@ export class ParticleParamater {
     }
   };
   private setting4 = {
-    name: "fire",
-    property: {
-      "bgColor": "#00000",
-      "width": "819",
-      "height": "729",
-      "emitFrequency": "1",
-      "lifeSpan": "343",
-      "lifeSpanVariance": "188",
-      "initialDirection": "102",
-      "initialDirectionVariance": "360",
-      "initialSpeed": "1.4",
-      "initialSpeedVariance": "0.7",
-      "friction": "0.022",
-      "accelerationSpeed": "0.042",
-      "accelerationDirection": "280.6",
-      "startScale": "0.61",
-      "startScaleVariance": "1",
-      "finishScale": "0",
-      "finishScaleVariance": "0.17",
-      "startAlpha": "0.65",
-      "startAlphaVariance": "0.58",
-      "finishAlpha": "0",
-      "finishAlphaVariance": 0.5,
-      "startX": "420",
-      "startXVariance": "500",
-      "startY": "500",
-      "startYVariance": "172",
-      "shapeIdList": ["blur_circle"],
-      "startColor": {
-        "hue": "223",
-        "hueVariance": "0",
-        "satuation": "59",
-        "satuationVariance": 0,
-        "luminance": "73",
-        "luminanceVariance": 0
-      },
-      "finishColor": {
-        "hue": "261",
-        "hueVariance": 0,
-        "satuation": "100",
-        "satuationVariance": 0,
-        "luminance": 75,
-        "luminanceVariance": 0
-      }
-    }
+    name: "魂",
+    description: "オーラ",
+    imageId : "spirit",
+    property: {"bgColor":"#00000","width":"512","height":" 512","emitFrequency":"1","lifeSpan":"343","lifeSpanVariance":"188","initialDirection":"102","initialDirectionVariance":"360","initialSpeed":"1.4","initialSpeedVariance":"0.7","friction":"0.022","accelerationSpeed":"0.042","accelerationDirection":"280.6","startScale":"1","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0.17","startAlpha":"1","startAlphaVariance":"0.58","finishAlpha":"0","finishAlphaVariance":0.5,"startX":253,"startXVariance":"178","startY":385,"startYVariance":"111","shapeIdList":["blur_circle"],"startColor":{"hue":"224","hueVariance":"41","satuation":"59","satuationVariance":"0","luminance":"85","luminanceVariance":"18"},"blendMode":true,"alphaCurveType":"1"}
   };
 
   private setting5 = {
     name: "Starts",
+    description: "散りばめられた星",
+    imageId : "star",
     property: {
       "bgColor": "#00000",
       "width": 611.3333333333334,
@@ -267,6 +235,8 @@ export class ParticleParamater {
 
   private setting6 = {
     name: "Snow",
+    description: "散りばめられた星",
+    imageId : "snow",
     property: {
       "bgColor": "#00000",
       "width": "628",
@@ -317,10 +287,14 @@ export class ParticleParamater {
 
   private setting7 = {
     name : "隕石",
+    description : "赤い火球の落下を想定",
+    imageId : "commet",
     property : {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"5","lifeSpan":"40","lifeSpanVariance":"0","initialDirection":"209.5","initialDirectionVariance":"155","initialSpeed":"2.6","initialSpeedVariance":"3.8","friction":"0.0085","accelerationSpeed":"0.835","accelerationDirection":"233.2","startScale":"1","startScaleVariance":"0.52","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":320,"startXVariance":"0","startY":349,"startYVariance":"0","shapeIdList":["blur_circle"],"startColor":{"hue":"17","hueVariance":"32","satuation":"100","satuationVariance":"45","luminance":"56","luminanceVariance":"19"},"blendMode":true,"alphaCurveType":"0"}
   }
   private setting8 = {
     name : "ピンクの世界",
+    description : "ハートいっぱい現れる雰囲気",
+    imageId : "heart_world",
     property : {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":"1","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"270","initialDirectionVariance":"360","initialSpeed":"1","initialSpeedVariance":"0","friction":"0.071","accelerationSpeed":"0.1045","accelerationDirection":"270","startScale":"0.5","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.8","finishAlphaVariance":"0","startX":309,"startXVariance":"597","startY":516,"startYVariance":"165","shapeIdList":["heart"],"startColor":{"hue":"335","hueVariance":"0","satuation":"78","satuationVariance":"0","luminance":"59","luminanceVariance":"50"},"blendMode":true,"alphaCurveType":"1"}
   }
 }
