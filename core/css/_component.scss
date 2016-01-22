@@ -288,5 +288,9 @@ mobile-particle-template-property-modal {
   position: absolute;
   bottom: 10px;
   right: 360px;
+
+  @media (max-width: $screen-sm) {
+    right: 10px;
+  }
 }
 
