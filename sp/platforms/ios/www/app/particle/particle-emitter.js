@@ -124,23 +124,23 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                 ParticleEmitter.prototype.setParticleParamater = function (particle) {
                     particle.particleShape.removeAllChildren();
                     particle.isAlive = true;
-                    particle.x = this.getParam(this.drawingData.startX, this.drawingData.startXVariance, false);
-                    particle.y = this.getParam(this.drawingData.startY, this.drawingData.startYVariance, false);
+                    particle.x = this.calcRandomValueWithVariance(this.drawingData.startX, this.drawingData.startXVariance, false);
+                    particle.y = this.calcRandomValueWithVariance(this.drawingData.startY, this.drawingData.startYVariance, false);
                     this.generateShape(particle, this.drawingData.shapeIdList);
                     //  生存期間
-                    particle.totalLife = Math.max(1, this.getParam(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
+                    particle.totalLife = Math.max(1, this.calcRandomValueWithVariance(this.drawingData.lifeSpan, this.drawingData.lifeSpanVariance, true));
                     particle.currentLife = particle.totalLife;
                     //  スピード
-                    var speed = Math.max(0, this.getParam(this.drawingData.initialSpeed, this.drawingData.initialSpeedVariance, false));
-                    var angle = createjs.Matrix2D.DEG_TO_RAD * (this.getParam(this.drawingData.initialDirection, this.drawingData.initialDirectionVariance, false));
+                    var speed = Math.max(0, this.calcRandomValueWithVariance(this.drawingData.initialSpeed, this.drawingData.initialSpeedVariance, false));
+                    var angle = createjs.Matrix2D.DEG_TO_RAD * (this.calcRandomValueWithVariance(this.drawingData.initialDirection, this.drawingData.initialDirectionVariance, false));
                     particle.vx = Math.cos(angle) * speed;
                     particle.vy = Math.sin(angle) * speed;
                     //  アルファ
-                    particle.startAlpha = this.range(0, 1, this.getParam(this.drawingData.startAlpha, this.drawingData.startAlphaVariance, false));
-                    particle.finishAlpha = this.range(0, 1, this.getParam(this.drawingData.finishAlpha, this.drawingData.finishAlphaVariance, false));
+                    particle.startAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this.drawingData.startAlpha, this.drawingData.startAlphaVariance, false));
+                    particle.finishAlpha = this.calcRandomValueWithRange(0, 1, this.calcRandomValueWithVariance(this.drawingData.finishAlpha, this.drawingData.finishAlphaVariance, false));
                     //  スケール
-                    particle.startScale = Math.max(0, this.getParam(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
-                    particle.finishScale = Math.max(0, this.getParam(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
+                    particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this.drawingData.startScale, this.drawingData.startScaleVariance, false));
+                    particle.finishScale = Math.max(0, this.calcRandomValueWithVariance(this.drawingData.finishScale, this.drawingData.finishScaleVariance, false));
                     // ブレンドモードを設定
                     particle.particleShape.compositeOperation = this.drawingData.blendMode == true ? "lighter" : null;
                     particle.alphaCurveType = this.drawingData.alphaCurveType;
@@ -149,12 +149,12 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     particle.particleShape.removeAllChildren();
                     var startColor = this.drawingData.startColor;
                     var finishColor = this.drawingData.finishColor;
-                    particle.startColor.hue = this.getParam(startColor.hue, startColor.hueVariance, false) % 360;
-                    particle.startColor.luminance = this.getParam(startColor.luminance, startColor.luminanceVariance, false);
-                    particle.startColor.satuation = this.getParam(startColor.satuation, startColor.satuationVariance, false);
-                    particle.finishColor.hue = this.getParam(finishColor.hue, finishColor.hueVariance, false) % 360;
-                    particle.finishColor.luminance = this.getParam(finishColor.luminance, finishColor.luminanceVariance, false);
-                    particle.finishColor.satuation = this.getParam(finishColor.satuation, finishColor.satuationVariance, false);
+                    particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
+                    particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
+                    particle.startColor.satuation = this.calcRandomValueWithVariance(startColor.satuation, startColor.satuationVariance, false);
+                    particle.finishColor.hue = this.calcRandomValueWithVariance(finishColor.hue, finishColor.hueVariance, false) % 360;
+                    particle.finishColor.luminance = this.calcRandomValueWithVariance(finishColor.luminance, finishColor.luminanceVariance, false);
+                    particle.finishColor.satuation = this.calcRandomValueWithVariance(finishColor.satuation, finishColor.satuationVariance, false);
                     var hue = Number(particle.startColor.hue);
                     var satuation = Number(particle.startColor.satuation);
                     var luminance = Number(particle.startColor.luminance);
