@@ -69,7 +69,6 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                  * UIの表示制御
                  */
                 AppComponent.prototype.adjustUi = function () {
-                    document.getElementById("fileSelectUi").style.display;
                 };
                 AppComponent.prototype.handleSVGClick = function () {
                     var _this = this;

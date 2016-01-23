@@ -59,7 +59,6 @@ export class AppComponent {
    * UIの表示制御
    */
   protected adjustUi() {
-    document.getElementById("fileSelectUi").style.display
   }
 
   protected handleSVGClick() {
