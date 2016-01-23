@@ -39,6 +39,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                     var _this = this;
                     var canvas = this.myCanvas.nativeElement;
                     this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
+                    createjs.Ticker.framerate = 60;
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.on("tick", this.handleTick, this);
                     canvas.addEventListener("contextmenu", function (event) {

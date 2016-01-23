@@ -41,6 +41,7 @@ export class StageComponent implements AfterViewInit {
     let canvas = <HTMLCanvasElement> this.myCanvas.nativeElement;
     this.particleCanvas = new ParticleCanvas(canvas, this.drawingData);
 
+    createjs.Ticker.framerate = 60;
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.on("tick", this.handleTick, this);
 
