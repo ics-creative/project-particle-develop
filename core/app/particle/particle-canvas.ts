@@ -85,8 +85,8 @@ export class ParticleCanvas {
     window.addEventListener("resize", () => this.resizeHandler());
   }
 
-  public getSVGString():string {
-    return this._particleExporter.getSVGString();
+  public getSvgString():string {
+    return this._particleExporter.getSvgString();
   }
 
   public runExport():Promise<any> {

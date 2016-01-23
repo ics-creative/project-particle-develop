@@ -56,7 +56,7 @@ export class ParticleExporter {
     });
   }
 
-  public getSVGString():string {
+  public getSvgString():string {
     var serializer = new XMLSerializer();
     return serializer.serializeToString(this._exporter.svg);
   }

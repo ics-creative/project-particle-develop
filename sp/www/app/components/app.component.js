@@ -66,8 +66,8 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
                 AppComponent.prototype.handleJPEGClick = function () {

@@ -18,10 +18,10 @@ System.register(["./app.component"], function(exports_1) {
                 function MobileAppComponent() {
                     _super.apply(this, arguments);
                 }
-                MobileAppComponent.prototype.handleSVGClick = function () {
+                MobileAppComponent.prototype.handleSvgClick = function () {
                     alert("モバイルアプリでは使用不可能です");
                 };
-                MobileAppComponent.prototype.handlePNGClick = function () {
+                MobileAppComponent.prototype.handlePngClick = function () {
                     this.stageComponent.runExportSP().then();
                 };
                 MobileAppComponent.prototype.handleCamera = function () {

@@ -23,11 +23,11 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
         execute: function() {
             MobileIOBox = (function () {
                 function MobileIOBox(element) {
-                    this.exportPNGEvent = new core_2.EventEmitter();
+                    this.exportPngEvent = new core_2.EventEmitter();
                     this.importCameraEvent = new core_2.EventEmitter();
                     this.element = element;
                 }
-                MobileIOBox.prototype.exportPNG = function () {
+                MobileIOBox.prototype.exportPng = function () {
                     this.exportPNGEvent.emit(null);
                 };
                 MobileIOBox.prototype.importCamera = function () {
@@ -39,7 +39,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                         templateUrl: "app/components/template/mobile-io-box.html",
                         inputs: ["drawingData"],
                         events: [
-                            "exportPNGEvent",
+                            "exportPngEvent",
                             "importCameraEvent"
                         ]
                     }), 

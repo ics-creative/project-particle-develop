@@ -17,7 +17,13 @@ import {CanvasMargin} from "../enum/canvas-margin";
 @Component({
   selector: `my-app`,
   templateUrl: "app/components/template/app.html",
-  directives: [StageComponent, PropertyPanel, DesktopIOBox, MobileIOBox, MobilePropertyTemplateModal]
+  directives: [
+    StageComponent,
+    PropertyPanel,
+    DesktopIOBox,
+    MobileIOBox,
+    MobilePropertyTemplateModal
+  ]
 })
 
 export class AppComponent {
@@ -61,23 +67,23 @@ export class AppComponent {
   protected adjustUi() {
   }
 
-  protected handleSVGClick() {
-    this.stageComponent.exportSVG().then(() => {
-      this.openSVGExportWindow();
+  protected handleSvgClick() {
+    this.stageComponent.exportSvg().then(() => {
+      this.openSvgExportWindow();
     });
   }
 
-  protected handleJPEGClick() {
+  protected handleJpgClick() {
     var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
     window.open(dataUrl);
   }
 
-  protected handlePNGClick() {
+  protected handlePngClick() {
     var dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
 
-  protected openSVGExportWindow() {
+  protected openSvgExportWindow() {
     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
   }
 

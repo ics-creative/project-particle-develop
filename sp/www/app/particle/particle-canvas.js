@@ -66,8 +66,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.resizeHandler();
                     window.addEventListener("resize", function () { return _this.resizeHandler(); });
                 }
-                ParticleCanvas.prototype.getSVGString = function () {
-                    return this._particleExporter.getSVGString();
+                ParticleCanvas.prototype.getSvgString = function () {
+                    return this._particleExporter.getSvgString();
                 };
                 ParticleCanvas.prototype.runExport = function () {
                     return this._particleExporter.runExport(this._data.width, this._data.height);

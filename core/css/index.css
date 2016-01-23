@@ -7858,7 +7858,6 @@ h1 {
 
 #canvasBox {
   margin-left: 2px;
-  margin-right: 291px;
   height: 100%;
 }
 @media (max-width: 768px) {
@@ -7885,7 +7884,6 @@ h2 {
 #propertyPanel {
   height: 100%;
   flex: 285px;
-  margin-left: -289px;
   margin-right: 2px;
   float: right;
   max-height: 100%;

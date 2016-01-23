@@ -5,15 +5,15 @@
     </div>
     <div class="collapse navbar-collapse">
       <desktop-io-box [drawingData]="drawingData"
-                      (exportSVGEvent)="handleSVGClick()"
-                      (exportPNGEvent)="handlePNGClick()"
-                      (exportJPEGEvent)="handleJPEGClick()"
+                      (exportSvgEvent)="handleSvgClick()"
+                      (exportPngEvent)="handlePngClick()"
+                      (exportJpgEvent)="handleJpgClick()"
                       (exportParamaterEvent)="handleExportParamaterClick()">
       </desktop-io-box>
     </div>
     <div class="row show-xs hidden-sm hidden-md hidden-lg">
       <mobile-io-box [drawingData]="drawingData"
-                     (exportPNGEvent)="handlePNGClick()"
+                     (exportPngEvent)="handlePngClick()"
                      (importCameraEvent)="handleCamera()"></mobile-io-box>
     </div>
   </div>

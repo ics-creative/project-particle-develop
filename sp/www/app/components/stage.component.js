@@ -23,7 +23,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
             StageComponent = (function () {
                 function StageComponent() {
                 }
-                StageComponent.prototype.exportSVG = function () {
+                StageComponent.prototype.exportSvg = function () {
                     return this.particleCanvas.runExport();
                 };
                 StageComponent.prototype.toDataURL = function (type, params) {
@@ -46,7 +46,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                     });
                 };
                 StageComponent.prototype.getParticleSVGString = function () {
-                    return this.particleCanvas.getSVGString();
+                    return this.particleCanvas.getSvgString();
                 };
                 StageComponent.prototype.handleTick = function () {
                     this.particleCanvas.update(this.drawingData);

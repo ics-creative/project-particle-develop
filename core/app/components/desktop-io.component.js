@@ -23,9 +23,9 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
         execute: function() {
             DesktopIOBox = (function () {
                 function DesktopIOBox(element) {
-                    this.exportSVGEvent = new core_2.EventEmitter();
-                    this.exportPNGEvent = new core_2.EventEmitter();
-                    this.exportJPEGEvent = new core_2.EventEmitter();
+                    this.exportSvgEvent = new core_2.EventEmitter();
+                    this.exportPngEvent = new core_2.EventEmitter();
+                    this.exportJpgEvent = new core_2.EventEmitter();
                     this.exportParamaterEvent = new core_2.EventEmitter();
                     this.element = element;
                     this.setDragAndDropSettings(element);
@@ -33,14 +33,14 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 DesktopIOBox.prototype.exportParamater = function () {
                     this.exportParamaterEvent.emit(null);
                 };
-                DesktopIOBox.prototype.exportSVG = function () {
-                    this.exportSVGEvent.emit(null);
+                DesktopIOBox.prototype.exportSvg = function () {
+                    this.exportSvgEvent.emit(null);
                 };
-                DesktopIOBox.prototype.exportPNG = function () {
-                    this.exportPNGEvent.emit(null);
+                DesktopIOBox.prototype.exportPng = function () {
+                    this.exportPngEvent.emit(null);
                 };
-                DesktopIOBox.prototype.exportJPEG = function () {
-                    this.exportJPEGEvent.emit(null);
+                DesktopIOBox.prototype.exportJpg = function () {
+                    this.exportJpgEvent.emit(null);
                 };
                 DesktopIOBox.prototype.selectParameterFile = function (obj) {
                     this.importParameterFile(obj.target.files[0]);
@@ -87,9 +87,9 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                         templateUrl: "app/components/template/desktop-io-box.html",
                         inputs: ["drawingData"],
                         events: [
-                            "exportSVGEvent",
-                            "exportPNGEvent",
-                            "exportJPEGEvent",
+                            "exportSvgEvent",
+                            "exportPngEvent",
+                            "exportJpgEvent",
                             "exportParamaterEvent"
                         ]
                     }), 

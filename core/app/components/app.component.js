@@ -70,21 +70,21 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                  */
                 AppComponent.prototype.adjustUi = function () {
                 };
-                AppComponent.prototype.handleSVGClick = function () {
+                AppComponent.prototype.handleSvgClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
-                AppComponent.prototype.handleJPEGClick = function () {
+                AppComponent.prototype.handleJpgClick = function () {
                     var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
                     window.open(dataUrl);
                 };
-                AppComponent.prototype.handlePNGClick = function () {
+                AppComponent.prototype.handlePngClick = function () {
                     var dataUrl = this.stageComponent.toDataURL('image/png', null);
                     window.open(dataUrl);
                 };
-                AppComponent.prototype.openSVGExportWindow = function () {
+                AppComponent.prototype.openSvgExportWindow = function () {
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
                 };
                 AppComponent.prototype.handleExportParamaterClick = function () {
@@ -114,7 +114,13 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     core_1.Component({
                         selector: "my-app",
                         templateUrl: "app/components/template/app.html",
-                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, desktop_io_component_1.DesktopIOBox, mobile_io_component_1.MobileIOBox, mobile_template_component_1.MobilePropertyTemplateModal]
+                        directives: [
+                            stage_component_1.StageComponent,
+                            property_component_1.PropertyPanel,
+                            desktop_io_component_1.DesktopIOBox,
+                            mobile_io_component_1.MobileIOBox,
+                            mobile_template_component_1.MobilePropertyTemplateModal
+                        ]
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])
                 ], AppComponent);

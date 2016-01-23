@@ -20,8 +20,8 @@ System.register(["./app.component"], function(exports_1) {
                 }
                 DesktopAppComponent.prototype.handleSVGClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
                 DesktopAppComponent.prototype.handlePNGClick = function () {

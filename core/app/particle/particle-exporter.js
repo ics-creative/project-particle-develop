@@ -34,7 +34,7 @@ System.register([], function(exports_1) {
                         });
                     });
                 };
-                ParticleExporter.prototype.getSVGString = function () {
+                ParticleExporter.prototype.getSvgString = function () {
                     var serializer = new XMLSerializer();
                     return serializer.serializeToString(this._exporter.svg);
                 };

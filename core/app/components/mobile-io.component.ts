@@ -10,19 +10,19 @@ import {ElementRef} from "angular2/core";
   templateUrl: "app/components/template/mobile-io-box.html",
   inputs: ["drawingData"],
   events: [
-    "exportPNGEvent",
+    "exportPngEvent",
     "importCameraEvent"
   ]
 })
 
 export class MobileIOBox {
-  private exportPNGEvent = new EventEmitter();
+  private exportPngEvent = new EventEmitter();
   private importCameraEvent = new EventEmitter();
 
   private drawingData:DrawingData;
   private element:ElementRef;
 
-  exportPNG() {
+  exportPng() {
     this.exportPNGEvent.emit(null);
   }
 
