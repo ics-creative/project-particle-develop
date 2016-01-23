@@ -68,7 +68,6 @@ h1 {
 
 #canvasBox {
   margin-left: $panelSpace / 2 + px;
-  margin-right: ($sideWidth + $panelSpace + $panelSpace / 2) + px;
   height: 100%;
   @media (max-width: $screen-sm) {
     margin: 0;
@@ -96,7 +95,6 @@ h2 {
 #propertyPanel {
   height: 100%;
   flex: $sideWidth + px;
-  margin-left: -  ($sideWidth + $panelSpace) + px;
   margin-right: ($panelSpace / 2) + px;
   float: right;
   max-height: 100%;
