@@ -74,7 +74,7 @@ export class AppComponent {
   }
 
   protected handleJpgClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
+    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "1.0");
     window.open(dataUrl);
   }
 
@@ -84,7 +84,7 @@ export class AppComponent {
   }
 
   protected openSvgExportWindow() {
-    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
   }
 
   protected handleExportParamaterClick() {

@@ -77,7 +77,7 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     });
                 };
                 AppComponent.prototype.handleJpgClick = function () {
-                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
+                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "1.0");
                     window.open(dataUrl);
                 };
                 AppComponent.prototype.handlePngClick = function () {
@@ -85,7 +85,7 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     window.open(dataUrl);
                 };
                 AppComponent.prototype.openSvgExportWindow = function () {
-                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };
                 AppComponent.prototype.handleExportParamaterClick = function () {
                     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
