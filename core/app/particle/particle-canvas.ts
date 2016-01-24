@@ -101,7 +101,7 @@ export class ParticleCanvas {
     let canvasWidth:number = (<HTMLCanvasElement>this._stage.canvas).width;
     let canvasHeight:number = (<HTMLCanvasElement>this._stage.canvas).height;
     return this._partcileImageImporter.getCapture(canvasWidth, canvasHeight).then(
-        (imageData) => this.insertCaptureToStage(imageData)
+      (imageData) => this.insertCaptureToStage(imageData)
     );
   }
 
@@ -155,13 +155,13 @@ export class ParticleCanvas {
     let canvasPoint = new createjs.Point(canvasX, canvasY);
 
     this._outerZabuton.graphics
-        .clear()
-        .beginFill("rgba(32, 32, 32, 0.7)")
-        .drawRect(0, 0, canvasWidth, canvasY)
-        .drawRect(0, canvasY, canvasX, palletH)
-        .drawRect(canvasX + palletW, canvasY, canvasX, palletH)
-        .drawRect(0, canvasY + palletH, canvasWidth, canvasY)
-        .endFill();
+      .clear()
+      .beginFill("rgba(32, 32, 32, 0.7)")
+      .drawRect(0, 0, canvasWidth, canvasY)
+      .drawRect(0, canvasY, canvasX, palletH)
+      .drawRect(canvasX + palletW, canvasY, canvasX, palletH)
+      .drawRect(0, canvasY + palletH, canvasWidth, canvasY)
+      .endFill();
 
     this._canvasContainer.x = this._ruler.container.x = canvasPoint.x;
     this._canvasContainer.y = this._ruler.container.y = canvasPoint.y;
@@ -169,9 +169,18 @@ export class ParticleCanvas {
     this._captureImageLayer.x = -canvasPoint.x;
     this._captureImageLayer.y = -canvasPoint.y;
 
+    let dpi = window.devicePixelRatio || 1.0;
+
     // ステージのサイズをwindowのサイズに変更
-    (<HTMLCanvasElement>this._stage.canvas).width = canvasWidth;
-    (<HTMLCanvasElement>this._stage.canvas).height = canvasHeight;
+    (<HTMLCanvasElement>this._stage.canvas).width = canvasWidth * dpi;
+    (<HTMLCanvasElement>this._stage.canvas).height = canvasHeight * dpi;
+
+    this._stage.scaleX = dpi;
+    this._stage.scaleY = dpi;
+
+    // canvas 要素のスタイルを調整
+    (<HTMLCanvasElement>this._stage.canvas).style.width = `${canvasWidth}px`;
+    (<HTMLCanvasElement>this._stage.canvas).style.height = `${canvasHeight}px`;
   }
 
   public update(data:DrawingData):void {
@@ -180,8 +189,8 @@ export class ParticleCanvas {
     var palletH = Number(this._data.height) >> 0;
 
     if (palletW != this._backgroundSize.w
-        || palletH != this._backgroundSize.h
-        || this._backgroundColorCommand.style != data.bgColor) {
+      || palletH != this._backgroundSize.h
+      || this._backgroundColorCommand.style != data.bgColor) {
       this._backgroundColorCommand.style = data.bgColor;
       this._backgroundSize.w = palletW;
       this._backgroundSize.h = palletH;
