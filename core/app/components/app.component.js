@@ -57,10 +57,10 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
                     }
-                    var sw = canvasWidth * 2 / 3;
-                    var sh = canvasHeight * 2 / 3;
-                    this.drawingData.startX = sw / 2;
-                    this.drawingData.startY = sh / 2;
+                    var sw = Math.round(canvasWidth * 2 / 3);
+                    var sh = Math.round(canvasHeight * 2 / 3);
+                    this.drawingData.startX = Math.round(sw / 2);
+                    this.drawingData.startY = Math.round(sh / 2);
                     this.drawingData.width = sw;
                     this.drawingData.height = sh;
                     this.adjustUi();

@@ -51,10 +51,10 @@ export class AppComponent {
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
 
-    let sw = canvasWidth * 2 / 3;
-    let sh = canvasHeight * 2 / 3;
-    this.drawingData.startX = sw / 2;
-    this.drawingData.startY = sh / 2;
+    let sw = Math.round(canvasWidth * 2 / 3);
+    let sh = Math.round(canvasHeight * 2 / 3);
+    this.drawingData.startX = Math.round(sw / 2);
+    this.drawingData.startY = Math.round(sh / 2);
     this.drawingData.width = sw;
     this.drawingData.height = sh;
 
