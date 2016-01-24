@@ -92,7 +92,7 @@ System.register(["./app.component"], function(exports_1) {
                             return;
                         }
                         var fs = require('fs');
-                        fs.writeFile(filename, _this.stageComponent.getParticleSVGString(), function (error) {
+                        fs.writeFile(filename, _this.stageComponent.getParticleSvgString(), function (error) {
                             if (error != null) {
                                 alert('error : ' + error);
                             }

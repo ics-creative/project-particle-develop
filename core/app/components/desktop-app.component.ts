@@ -94,7 +94,7 @@ export class DesktopAppComponent extends AppComponent {
 
       let fs = require('fs');
 
-      fs.writeFile(filename, this.stageComponent.getParticleSVGString(), function (error:Error) {
+      fs.writeFile(filename, this.stageComponent.getParticleSvgString(), function (error:Error) {
         if (error != null) {
           alert('error : ' + error);
         }

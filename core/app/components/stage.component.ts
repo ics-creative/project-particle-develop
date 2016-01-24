@@ -50,7 +50,7 @@ export class StageComponent implements AfterViewInit {
     });
   }
 
-  public getParticleSVGString():string {
+  public getParticleSvgString():string {
     return this.particleCanvas.getSvgString();
   }
 

@@ -46,7 +46,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                         _this.handleContextMenu(event);
                     });
                 };
-                StageComponent.prototype.getParticleSVGString = function () {
+                StageComponent.prototype.getParticleSvgString = function () {
                     return this.particleCanvas.getSvgString();
                 };
                 StageComponent.prototype.handleTick = function () {
