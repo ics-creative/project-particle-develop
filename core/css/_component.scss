@@ -96,19 +96,21 @@ h2 {
   height: 100%;
   flex: $sideWidth + px;
   margin-right: ($panelSpace / 2) + px;
-  float: right;
-  max-height: 100%;
-  overflow-y: scroll;
-
-
 
   .panel {
     background: #2a2a2a;
-    .panel-body {
-      background: #2a2a2a;
-    }
-
     height: 100%;
+    overflow: hidden;
+
+    .panel-mybody {
+      background: #2a2a2a;
+      height: calc(100% - 80px);
+
+      #myTabContent {
+        height: 100%;
+        overflow: auto;
+      }
+    }
 
     color: #8b9292;
 
