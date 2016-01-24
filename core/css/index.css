@@ -7899,6 +7899,8 @@ h2 {
 #propertyPanel .panel .panel-mybody #myTabContent {
   height: 100%;
   overflow: auto;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 #propertyPanel .panel .tab-pane label {
   font-size: 12px;

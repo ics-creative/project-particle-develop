@@ -101,6 +101,7 @@ h2 {
     background: #2a2a2a;
     height: 100%;
     overflow: hidden;
+    color: #8b9292;
 
     .panel-mybody {
       background: #2a2a2a;
@@ -109,10 +110,12 @@ h2 {
       #myTabContent {
         height: 100%;
         overflow: auto;
+        padding-left: 15px;
+        padding-right: 15px;
       }
     }
 
-    color: #8b9292;
+
 
     .tab-pane {
       label {
