@@ -122,6 +122,10 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     var dataUrl = this.stageComponent.toDataURL('image/png', null);
                     window.open(dataUrl);
                 };
+                AppComponent.prototype.handleWebpClick = function () {
+                    var dataUrl = this.stageComponent.toDataURL('image/webp', null);
+                    window.open(dataUrl);
+                };
                 AppComponent.prototype.openSvgExportWindow = function () {
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };

@@ -123,6 +123,10 @@ export class AppComponent implements AfterViewInit {
     var dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
+  protected handleWebpClick() {
+    var dataUrl = this.stageComponent.toDataURL('image/webp', null);
+    window.open(dataUrl);
+  }
 
   protected openSvgExportWindow() {
     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));

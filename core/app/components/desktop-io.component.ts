@@ -15,34 +15,40 @@ import {LocaleManager} from "../i18n/locale-manager";
     "exportSvgEvent",
     "exportPngEvent",
     "exportJpgEvent",
+    "exportWebpEvent",
     "exportParamaterEvent"
   ]
 })
 
 export class DesktopIoBox {
-  private exportSvgEvent:EventEmitter = new EventEmitter();
-  private exportPngEvent:EventEmitter = new EventEmitter();
-  private exportJpgEvent:EventEmitter = new EventEmitter();
-  private exportParamaterEvent:EventEmitter = new EventEmitter();
+  private exportSvgEvent = new EventEmitter();
+  private exportPngEvent = new EventEmitter();
+  private exportJpgEvent = new EventEmitter();
+  private exportWebpEvent = new EventEmitter();
+  private exportParamaterEvent = new EventEmitter();
+
   private drawingData:DrawingData;
 
   constructor(private localeData:LocaleData) {
   }
 
-  public exportParamater():void {
+  private exportParamater():void {
     this.exportParamaterEvent.emit(null);
   }
 
-  public exportSvg():void {
+  private exportSvg():void {
     this.exportSvgEvent.emit(null);
   }
 
-  public exportPng():void {
+  private exportPng():void {
     this.exportPngEvent.emit(null);
   }
 
-  public exportJpg():void {
+  private exportJpg():void {
     this.exportJpgEvent.emit(null);
+  }
+  private exportWebp():void {
+    this.exportWebpEvent.emit(null);
   }
 
   private selectParameterFile(obj:any):void {

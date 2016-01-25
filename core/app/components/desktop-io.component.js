@@ -35,6 +35,7 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                     this.exportSvgEvent = new core_1.EventEmitter();
                     this.exportPngEvent = new core_1.EventEmitter();
                     this.exportJpgEvent = new core_1.EventEmitter();
+                    this.exportWebpEvent = new core_1.EventEmitter();
                     this.exportParamaterEvent = new core_1.EventEmitter();
                 }
                 DesktopIoBox.prototype.exportParamater = function () {
@@ -48,6 +49,9 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                 };
                 DesktopIoBox.prototype.exportJpg = function () {
                     this.exportJpgEvent.emit(null);
+                };
+                DesktopIoBox.prototype.exportWebp = function () {
+                    this.exportWebpEvent.emit(null);
                 };
                 DesktopIoBox.prototype.selectParameterFile = function (obj) {
                     this.importParameterFile(obj.target.files[0]);
@@ -79,6 +83,7 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                             "exportSvgEvent",
                             "exportPngEvent",
                             "exportJpgEvent",
+                            "exportWebpEvent",
                             "exportParamaterEvent"
                         ]
                     }), 
