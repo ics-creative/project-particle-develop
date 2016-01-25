@@ -4,10 +4,9 @@
 
 /**
  * キャプチャーした画像を配置するレイヤーです。
- *
  */
 export class ParticleCaptureImageLayer extends createjs.Container {
-  captureImage:createjs.Bitmap;
+  private _captureImage:createjs.Bitmap;
 
   constructor() {
     super();
@@ -18,11 +17,10 @@ export class ParticleCaptureImageLayer extends createjs.Container {
    */
   public addImageFromImageData(imageData:string):void {
     this.removeImage();
-    var base64 = "data:image/png;base64," + imageData.replace("file:///", "");
-    this.captureImage = new createjs.Bitmap(base64);
-    this.addChild(this.captureImage);
+    let base64 = "data:image/png;base64," + imageData.replace("file:///", "");
+    this._captureImage = new createjs.Bitmap(base64);
+    this.addChild(this._captureImage);
   }
-
 
   /**
    * URLから画像を追加します。
@@ -30,8 +28,8 @@ export class ParticleCaptureImageLayer extends createjs.Container {
    */
   public addImageFromURL(imageURL:string):void {
     this.removeImage();
-    this.captureImage = new createjs.Bitmap(imageURL);
-    this.addChild(this.captureImage);
+    this._captureImage = new createjs.Bitmap(imageURL);
+    this.addChild(this._captureImage);
   }
 
   /**

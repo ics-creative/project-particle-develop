@@ -20,6 +20,12 @@ System.register(["angular2/core"], function(exports_1) {
             InputRangeComponent = (function () {
                 function InputRangeComponent() {
                 }
+                InputRangeComponent.prototype.handleChange = function (event) {
+                    // なぜか string 担っている可能性がある
+                    var value = this.drawingData[this.targetProperty];
+                    // そのため、明示的な型変換を行う
+                    this.drawingData[this.targetProperty] = Number(value);
+                };
                 InputRangeComponent = __decorate([
                     core_1.Component({
                         selector: "input-range",

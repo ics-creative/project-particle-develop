@@ -23,7 +23,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
             StageComponent = (function () {
                 function StageComponent() {
                 }
-                StageComponent.prototype.exportSVG = function () {
+                StageComponent.prototype.exportSvg = function () {
                     return this.particleCanvas.runExport();
                 };
                 StageComponent.prototype.toDataURL = function (type, params) {
@@ -39,14 +39,15 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                     var _this = this;
                     var canvas = this.myCanvas.nativeElement;
                     this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
+                    createjs.Ticker.framerate = 60;
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.on("tick", this.handleTick, this);
                     canvas.addEventListener("contextmenu", function (event) {
                         _this.handleContextMenu(event);
                     });
                 };
-                StageComponent.prototype.getParticleSVGString = function () {
-                    return this.particleCanvas.getSVGString();
+                StageComponent.prototype.getParticleSvgString = function () {
+                    return this.particleCanvas.getSvgString();
                 };
                 StageComponent.prototype.handleTick = function () {
                     this.particleCanvas.update(this.drawingData);

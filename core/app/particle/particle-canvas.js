@@ -66,8 +66,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.resizeHandler();
                     window.addEventListener("resize", function () { return _this.resizeHandler(); });
                 }
-                ParticleCanvas.prototype.getSVGString = function () {
-                    return this._particleExporter.getSVGString();
+                ParticleCanvas.prototype.getSvgString = function () {
+                    return this._particleExporter.getSvgString();
                 };
                 ParticleCanvas.prototype.runExport = function () {
                     return this._particleExporter.runExport(this._data.width, this._data.height);
@@ -131,9 +131,17 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         .endFill();
                     this._canvasContainer.x = this._ruler.container.x = canvasPoint.x;
                     this._canvasContainer.y = this._ruler.container.y = canvasPoint.y;
+                    this._captureImageLayer.x = -canvasPoint.x;
+                    this._captureImageLayer.y = -canvasPoint.y;
+                    var dpi = window.devicePixelRatio || 1.0;
                     // ステージのサイズをwindowのサイズに変更
-                    this._stage.canvas.width = canvasWidth;
-                    this._stage.canvas.height = canvasHeight;
+                    this._stage.canvas.width = canvasWidth * dpi;
+                    this._stage.canvas.height = canvasHeight * dpi;
+                    this._stage.scaleX = dpi;
+                    this._stage.scaleY = dpi;
+                    // canvas 要素のスタイルを調整
+                    this._stage.canvas.style.width = canvasWidth + "px";
+                    this._stage.canvas.style.height = canvasHeight + "px";
                 };
                 ParticleCanvas.prototype.update = function (data) {
                     var palletW = Number(this._data.width) >> 0;

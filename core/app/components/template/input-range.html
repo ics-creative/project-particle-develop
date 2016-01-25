@@ -5,12 +5,14 @@
            class="topcoat-range"
            min="{{min}}" max="{{max}}" step="{{step}}"
            [(ngModel)]="drawingData[targetProperty]"
-           placeholder="targetProperty"/>
+           placeholder="targetProperty"
+           (change)="handleChange($event)"/>
   </div>
   <div class="label">
     <input type="text"
            class="topcoat-text-input"
            placeholder="text"
-           [(ngModel)]="drawingData[targetProperty]"/>
+           [(ngModel)]="drawingData[targetProperty]"
+           (change)="handleChange($event)"/>
   </div>
 </div>

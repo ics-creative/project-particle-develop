@@ -17,7 +17,13 @@ import {CanvasMargin} from "../enum/canvas-margin";
 @Component({
   selector: `my-app`,
   templateUrl: "app/components/template/app.html",
-  directives: [StageComponent, PropertyPanel, DesktopIOBox, MobileIOBox, MobilePropertyTemplateModal]
+  directives: [
+    StageComponent,
+    PropertyPanel,
+    DesktopIOBox,
+    MobileIOBox,
+    MobilePropertyTemplateModal
+  ]
 })
 
 export class AppComponent {
@@ -45,33 +51,40 @@ export class AppComponent {
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
 
-    let sw = canvasWidth * 2 / 3;
-    let sh = canvasHeight * 2 / 3;
-    this.drawingData.startX = sw / 2;
-    this.drawingData.startY = sh / 2;
+    let sw = Math.round(canvasWidth * 2 / 3);
+    let sh = Math.round(canvasHeight * 2 / 3);
+    this.drawingData.startX = Math.round(sw / 2);
+    this.drawingData.startY = Math.round(sh / 2);
     this.drawingData.width = sw;
     this.drawingData.height = sh;
 
+    this.adjustUi();
   }
 
-  protected handleSVGClick() {
-    this.stageComponent.exportSVG().then(() => {
-      this.openSVGExportWindow();
+  /**
+   * UIの表示制御
+   */
+  protected adjustUi() {
+  }
+
+  protected handleSvgClick() {
+    this.stageComponent.exportSvg().then(() => {
+      this.openSvgExportWindow();
     });
   }
 
-  protected handleJPEGClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
+  protected handleJpgClick() {
+    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "1.0");
     window.open(dataUrl);
   }
 
-  protected handlePNGClick() {
+  protected handlePngClick() {
     var dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
 
-  protected openSVGExportWindow() {
-    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+  protected openSvgExportWindow() {
+    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
   }
 
   protected handleExportParamaterClick() {

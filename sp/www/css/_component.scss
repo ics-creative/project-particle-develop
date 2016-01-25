@@ -46,12 +46,7 @@ body {
 }
 
 h1 {
-  font-size: 16px;
-  height: $headerHeight + px;
-  line-height: $headerHeight + px;
-
-  color: #d2d2d2;
-  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6), 0px +1px 1px rgba(255, 255, 255, 0.6);
+  line-height: 48px;
 }
 
 #wrapper {
@@ -85,7 +80,6 @@ h1 {
   }
 }
 
-
 h2 {
   text-shadow: 0px -2px 0 rgba(0, 0, 0, 0.9);
   font-weight: bold;
@@ -108,8 +102,14 @@ h2 {
   max-height: 100%;
   overflow-y: scroll;
 
+
+
   .panel {
     background: #2a2a2a;
+    .panel-body {
+      background: #2a2a2a;
+    }
+
     height: 100%;
 
     color: #8b9292;
@@ -162,6 +162,16 @@ h2 {
       &:hover {
         background: #333;
       }
+
+      h4 {
+        margin-top: 3px;
+        font-size: 14px;
+        font-weight: bold;
+      }
+      p {
+        color: #666;
+        font-size: 12px;
+      }
     }
   }
 
@@ -177,7 +187,7 @@ h2 {
     $color: #333;
     cursor: default;
     background: none;
-    border : none;
+    border: none;
 
   }
 
@@ -242,8 +252,7 @@ mobile-io-box .nav {
 
 }
 
-mobile-particle-template-property-modal
-{
+mobile-particle-template-property-modal {
   .media {
     float: left;
     width: 25%;
@@ -255,7 +264,7 @@ mobile-particle-template-property-modal
     display: block;
 
     img {
-      border:1px solid $gray-dark;
+      border: 1px solid $gray-dark;
       width: 100%;
     }
   }
@@ -269,4 +278,19 @@ mobile-particle-template-property-modal
   cursor: crosshair;
 }
 
+.footer_left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.footer_right {
+  position: absolute;
+  bottom: 10px;
+  right: 360px;
+
+  @media (max-width: $screen-sm) {
+    right: 10px;
+  }
+}
 

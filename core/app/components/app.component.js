@@ -57,29 +57,35 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                         canvasHeight -= canvas_margin_1.CanvasMargin.TOP_MOBILE;
                         canvasWidth -= canvas_margin_1.CanvasMargin.RIGHT_MOBILE;
                     }
-                    var sw = canvasWidth * 2 / 3;
-                    var sh = canvasHeight * 2 / 3;
-                    this.drawingData.startX = sw / 2;
-                    this.drawingData.startY = sh / 2;
+                    var sw = Math.round(canvasWidth * 2 / 3);
+                    var sh = Math.round(canvasHeight * 2 / 3);
+                    this.drawingData.startX = Math.round(sw / 2);
+                    this.drawingData.startY = Math.round(sh / 2);
                     this.drawingData.width = sw;
                     this.drawingData.height = sh;
+                    this.adjustUi();
                 }
-                AppComponent.prototype.handleSVGClick = function () {
+                /**
+                 * UIの表示制御
+                 */
+                AppComponent.prototype.adjustUi = function () {
+                };
+                AppComponent.prototype.handleSvgClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
-                AppComponent.prototype.handleJPEGClick = function () {
-                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "0.8");
+                AppComponent.prototype.handleJpgClick = function () {
+                    var dataUrl = this.stageComponent.toDataURL('image/jpeg', "1.0");
                     window.open(dataUrl);
                 };
-                AppComponent.prototype.handlePNGClick = function () {
+                AppComponent.prototype.handlePngClick = function () {
                     var dataUrl = this.stageComponent.toDataURL('image/png', null);
                     window.open(dataUrl);
                 };
-                AppComponent.prototype.openSVGExportWindow = function () {
-                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+                AppComponent.prototype.openSvgExportWindow = function () {
+                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };
                 AppComponent.prototype.handleExportParamaterClick = function () {
                     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
@@ -108,7 +114,13 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     core_1.Component({
                         selector: "my-app",
                         templateUrl: "app/components/template/app.html",
-                        directives: [stage_component_1.StageComponent, property_component_1.PropertyPanel, desktop_io_component_1.DesktopIOBox, mobile_io_component_1.MobileIOBox, mobile_template_component_1.MobilePropertyTemplateModal]
+                        directives: [
+                            stage_component_1.StageComponent,
+                            property_component_1.PropertyPanel,
+                            desktop_io_component_1.DesktopIOBox,
+                            mobile_io_component_1.MobileIOBox,
+                            mobile_template_component_1.MobilePropertyTemplateModal
+                        ]
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])
                 ], AppComponent);

@@ -16,6 +16,7 @@ export class ParticleEmitter {
   private _particlesPool:Particle[];
   private _activeParticles:Particle[];
   private _drawingData:DrawingData;
+  private _frameCount:number = 0;
 
   constructor() {
     this._particlesPool = [];
@@ -118,11 +119,35 @@ export class ParticleEmitter {
    */
   private emit() {
 
-    for (let i = 0; i < this._drawingData.emitFrequency; i++) {
-      let particle = this.generateParticle();
-      this.container.addChild(particle.particleShape);
-      this._activeParticles.push(particle);
+    const framerate = Math.round(createjs.Ticker.framerate);
+    const frameInSec = this._frameCount % framerate;
+    const emitPerSec = this._drawingData.emitFrequency;
+    const loopInt = Math.floor(emitPerSec / framerate);
+
+
+    // ① 整数分の実行回数
+    for (let i = 0; i < loopInt; i++) {
+      this.emitParticle();
     }
+
+    // ② 小数点分の実行回数
+    const loopFloat = ((emitPerSec / framerate) - loopInt);
+    // フレームレートより少ない場合
+    if (frameInSec % Math.floor(1 / loopFloat) == 0) {
+      this.emitParticle();
+    }
+
+    this._frameCount++;
+    if (this._frameCount >= framerate) {
+      this._frameCount = 0;
+    }
+
+  }
+
+  private emitParticle():void {
+    let particle = this.generateParticle();
+    this.container.addChild(particle.particleShape);
+    this._activeParticles.push(particle);
   }
 
   /**
@@ -201,8 +226,8 @@ export class ParticleEmitter {
 
     let r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
     let shapeId = ( this._drawingData.shapeIdList.length == 0 )
-        ? ''
-        : this._drawingData.shapeIdList[r]
+      ? ''
+      : this._drawingData.shapeIdList[r]
 
     particle.colorCommand = null;
 
@@ -220,13 +245,13 @@ export class ParticleEmitter {
             let oldStyle = <any> cmd.style;
             let g = ParticleEmitter.HELPER_GRAPHICS;
             let newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${satuation}%, ${luminance}%, 0)`],
-                oldStyle.props.ratios,
-                oldStyle.props.x0,
-                oldStyle.props.y0,
-                oldStyle.props.r0,
-                oldStyle.props.x1,
-                oldStyle.props.y1,
-                oldStyle.props.r1).command;
+              oldStyle.props.ratios,
+              oldStyle.props.x0,
+              oldStyle.props.y0,
+              oldStyle.props.r0,
+              oldStyle.props.x1,
+              oldStyle.props.y1,
+              oldStyle.props.r1).command;
             instructions[i] = newStyle;
           } else { // 単色塗りなら
             cmd.style = color;

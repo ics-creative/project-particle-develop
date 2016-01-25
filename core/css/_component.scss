@@ -68,7 +68,6 @@ h1 {
 
 #canvasBox {
   margin-left: $panelSpace / 2 + px;
-  margin-right: ($sideWidth + $panelSpace + $panelSpace / 2) + px;
   height: 100%;
   @media (max-width: $screen-sm) {
     margin: 0;
@@ -96,17 +95,27 @@ h2 {
 #propertyPanel {
   height: 100%;
   flex: $sideWidth + px;
-  margin-left: -  ($sideWidth + $panelSpace) + px;
   margin-right: ($panelSpace / 2) + px;
-  float: right;
-  max-height: 100%;
-  overflow-y: scroll;
 
   .panel {
     background: #2a2a2a;
     height: 100%;
-
+    overflow: hidden;
     color: #8b9292;
+
+    .panel-mybody {
+      background: #2a2a2a;
+      height: calc(100% - 80px);
+
+      #myTabContent {
+        height: 100%;
+        overflow: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+
 
     .tab-pane {
       label {
@@ -272,4 +281,19 @@ mobile-particle-template-property-modal {
   cursor: crosshair;
 }
 
+.footer_left {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.footer_right {
+  position: absolute;
+  bottom: 10px;
+  right: 360px;
+
+  @media (max-width: $screen-sm) {
+    right: 10px;
+  }
+}
 

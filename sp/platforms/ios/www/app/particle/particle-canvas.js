@@ -27,6 +27,9 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                 particle_ruler_1 = particle_ruler_1_1;
             }],
         execute: function() {
+            /**
+             * パーティクル表示エリアの制御クラスです。
+             */
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
@@ -128,6 +131,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         .endFill();
                     this._canvasContainer.x = this._ruler.container.x = canvasPoint.x;
                     this._canvasContainer.y = this._ruler.container.y = canvasPoint.y;
+                    this._captureImageLayer.x = -canvasPoint.x;
+                    this._captureImageLayer.y = -canvasPoint.y;
                     // ステージのサイズをwindowのサイズに変更
                     this._stage.canvas.width = canvasWidth;
                     this._stage.canvas.height = canvasHeight;

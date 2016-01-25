@@ -1,4 +1,5 @@
 System.register(["angular2/core", "../particle/particle-canvas"], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,7 +23,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
             StageComponent = (function () {
                 function StageComponent() {
                 }
-                StageComponent.prototype.exportSVG = function () {
+                StageComponent.prototype.exportSvg = function () {
                     return this.particleCanvas.runExport();
                 };
                 StageComponent.prototype.toDataURL = function (type, params) {
@@ -35,16 +36,23 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                     return this.particleCanvas.runCamera();
                 };
                 StageComponent.prototype.ngAfterViewInit = function () {
+                    var _this = this;
                     var canvas = this.myCanvas.nativeElement;
                     this.particleCanvas = new particle_canvas_1.ParticleCanvas(canvas, this.drawingData);
                     createjs.Ticker.timingMode = createjs.Ticker.RAF;
                     createjs.Ticker.on("tick", this.handleTick, this);
+                    canvas.addEventListener("contextmenu", function (event) {
+                        _this.handleContextMenu(event);
+                    });
                 };
-                StageComponent.prototype.getParticleSVGString = function () {
-                    return this.particleCanvas.getSVGString();
+                StageComponent.prototype.getParticleSvgString = function () {
+                    return this.particleCanvas.getSvgString();
                 };
                 StageComponent.prototype.handleTick = function () {
                     this.particleCanvas.update(this.drawingData);
+                };
+                StageComponent.prototype.handleContextMenu = function (event) {
+                    event.preventDefault();
                 };
                 __decorate([
                     core_1.ViewChild("myCanvas"), 

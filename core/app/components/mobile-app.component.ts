@@ -1,11 +1,11 @@
 "use strict";
 import {AppComponent} from "./app.component";
 export class MobileAppComponent extends AppComponent {
-  protected handleSVGClick() {
+  protected handleSvgClick() {
     alert("モバイルアプリでは使用不可能です");
   }
 
-  protected handlePNGClick() {
+  protected handlePngClick() {
     this.stageComponent.runExportSP().then();
   }
 

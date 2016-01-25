@@ -1,5 +1,5 @@
-///<reference path="../../typings/tsd.d.ts" />
 System.register([], function(exports_1) {
+    "use strict";
     var PartcicleImageImporter;
     return {
         setters:[],

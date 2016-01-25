@@ -18,6 +18,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
             /** パーティクルの発生装置の制御クラスです。 */
             ParticleEmitter = (function () {
                 function ParticleEmitter() {
+                    this._frameCount = 0;
                     this._particlesPool = [];
                     this._activeParticles = [];
                     this.container = new createjs.Container();
@@ -95,11 +96,29 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                  * パーティクルの生成（インターバルチェックする）
                  */
                 ParticleEmitter.prototype.emit = function () {
-                    for (var i = 0; i < this._drawingData.emitFrequency; i++) {
-                        var particle = this.generateParticle();
-                        this.container.addChild(particle.particleShape);
-                        this._activeParticles.push(particle);
+                    var framerate = Math.round(createjs.Ticker.framerate);
+                    var frameInSec = this._frameCount % framerate;
+                    var emitPerSec = this._drawingData.emitFrequency;
+                    var loopInt = Math.floor(emitPerSec / framerate);
+                    // ① 整数分の実行回数
+                    for (var i = 0; i < loopInt; i++) {
+                        this.emitParticle();
                     }
+                    // ② 小数点分の実行回数
+                    var loopFloat = ((emitPerSec / framerate) - loopInt);
+                    // フレームレートより少ない場合
+                    if (frameInSec % Math.floor(1 / loopFloat) == 0) {
+                        this.emitParticle();
+                    }
+                    this._frameCount++;
+                    if (this._frameCount >= framerate) {
+                        this._frameCount = 0;
+                    }
+                };
+                ParticleEmitter.prototype.emitParticle = function () {
+                    var particle = this.generateParticle();
+                    this.container.addChild(particle.particleShape);
+                    this._activeParticles.push(particle);
                 };
                 /**
                  * パーティクルのパラメータを設定します

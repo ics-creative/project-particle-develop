@@ -31,6 +31,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         ICS
     </author>
+    <preference name="Fullscreen" value="true" />
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

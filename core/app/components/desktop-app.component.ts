@@ -4,13 +4,13 @@ import {AppComponent} from "./app.component";
 
 export class DesktopAppComponent extends AppComponent {
 
-  protected handleSVGClick() {
-    this.stageComponent.exportSVG().then(() => {
-      this.openSVGExportWindow()
+  protected handleSvgClick() {
+    this.stageComponent.exportSvg().then(() => {
+      this.openSvgExportWindow()
     });
   }
 
-  protected handlePNGClick() {
+  protected handlePngClick() {
     let electron = require('electron');
     let dialog = electron.remote.dialog;
 
@@ -41,7 +41,7 @@ export class DesktopAppComponent extends AppComponent {
     });
   }
 
-  protected handleJPEGClick() {
+  protected handleJpgClick() {
     let electron = require('electron');
     let dialog = electron.remote.dialog;
 
@@ -73,7 +73,7 @@ export class DesktopAppComponent extends AppComponent {
   }
 
 
-  protected openSVGExportWindow() {
+  protected openSvgExportWindow() {
 
     let electron = require('electron');
     let dialog = electron.remote.dialog;
@@ -94,7 +94,7 @@ export class DesktopAppComponent extends AppComponent {
 
       let fs = require('fs');
 
-      fs.writeFile(filename, this.stageComponent.getParticleSVGString(), function (error:Error) {
+      fs.writeFile(filename, this.stageComponent.getParticleSvgString(), function (error:Error) {
         if (error != null) {
           alert('error : ' + error);
         }

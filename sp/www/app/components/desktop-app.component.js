@@ -1,4 +1,5 @@
 System.register(["./app.component"], function(exports_1) {
+    "use strict";
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -19,8 +20,8 @@ System.register(["./app.component"], function(exports_1) {
                 }
                 DesktopAppComponent.prototype.handleSVGClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
                 DesktopAppComponent.prototype.handlePNGClick = function () {
@@ -91,7 +92,7 @@ System.register(["./app.component"], function(exports_1) {
                             return;
                         }
                         var fs = require('fs');
-                        fs.writeFile(filename, _this.stageComponent.getParticleSVGString(), function (error) {
+                        fs.writeFile(filename, _this.stageComponent.getParticleSvgString(), function (error) {
                             if (error != null) {
                                 alert('error : ' + error);
                             }

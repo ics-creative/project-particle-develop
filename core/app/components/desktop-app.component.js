@@ -18,13 +18,13 @@ System.register(["./app.component"], function(exports_1) {
                 function DesktopAppComponent() {
                     _super.apply(this, arguments);
                 }
-                DesktopAppComponent.prototype.handleSVGClick = function () {
+                DesktopAppComponent.prototype.handleSvgClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
-                DesktopAppComponent.prototype.handlePNGClick = function () {
+                DesktopAppComponent.prototype.handlePngClick = function () {
                     var _this = this;
                     var electron = require('electron');
                     var dialog = electron.remote.dialog;
@@ -50,7 +50,7 @@ System.register(["./app.component"], function(exports_1) {
                         });
                     });
                 };
-                DesktopAppComponent.prototype.handleJPEGClick = function () {
+                DesktopAppComponent.prototype.handleJpgClick = function () {
                     var _this = this;
                     var electron = require('electron');
                     var dialog = electron.remote.dialog;
@@ -76,7 +76,7 @@ System.register(["./app.component"], function(exports_1) {
                         });
                     });
                 };
-                DesktopAppComponent.prototype.openSVGExportWindow = function () {
+                DesktopAppComponent.prototype.openSvgExportWindow = function () {
                     var _this = this;
                     var electron = require('electron');
                     var dialog = electron.remote.dialog;
@@ -92,7 +92,7 @@ System.register(["./app.component"], function(exports_1) {
                             return;
                         }
                         var fs = require('fs');
-                        fs.writeFile(filename, _this.stageComponent.getParticleSVGString(), function (error) {
+                        fs.writeFile(filename, _this.stageComponent.getParticleSvgString(), function (error) {
                             if (error != null) {
                                 alert('error : ' + error);
                             }

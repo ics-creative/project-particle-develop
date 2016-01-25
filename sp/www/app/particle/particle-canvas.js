@@ -27,6 +27,9 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                 particle_ruler_1 = particle_ruler_1_1;
             }],
         execute: function() {
+            /**
+             * パーティクル表示エリアの制御クラスです。
+             */
             ParticleCanvas = (function () {
                 function ParticleCanvas(canvas, data) {
                     var _this = this;
@@ -63,8 +66,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                     this.resizeHandler();
                     window.addEventListener("resize", function () { return _this.resizeHandler(); });
                 }
-                ParticleCanvas.prototype.getSVGString = function () {
-                    return this._particleExporter.getSVGString();
+                ParticleCanvas.prototype.getSvgString = function () {
+                    return this._particleExporter.getSvgString();
                 };
                 ParticleCanvas.prototype.runExport = function () {
                     return this._particleExporter.runExport(this._data.width, this._data.height);
@@ -128,6 +131,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitt
                         .endFill();
                     this._canvasContainer.x = this._ruler.container.x = canvasPoint.x;
                     this._canvasContainer.y = this._ruler.container.y = canvasPoint.y;
+                    this._captureImageLayer.x = -canvasPoint.x;
+                    this._captureImageLayer.y = -canvasPoint.y;
                     // ステージのサイズをwindowのサイズに変更
                     this._stage.canvas.width = canvasWidth;
                     this._stage.canvas.height = canvasHeight;

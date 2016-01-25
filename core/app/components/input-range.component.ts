@@ -28,4 +28,11 @@ export class InputRangeComponent {
 
   constructor() {
   }
+
+  private handleChange(event:any):void{
+    // なぜか string 担っている可能性がある
+    const value:any = this.drawingData[this.targetProperty];
+    // そのため、明示的な型変換を行う
+    this.drawingData[this.targetProperty] = Number(value);
+  }
 }

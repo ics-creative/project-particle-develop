@@ -21,7 +21,7 @@ export class StageComponent implements AfterViewInit {
 
   }
 
-  public exportSVG():Promise<any> {
+  public exportSvg():Promise<any> {
     return this.particleCanvas.runExport();
   }
 
@@ -41,6 +41,7 @@ export class StageComponent implements AfterViewInit {
     let canvas = <HTMLCanvasElement> this.myCanvas.nativeElement;
     this.particleCanvas = new ParticleCanvas(canvas, this.drawingData);
 
+    createjs.Ticker.framerate = 60;
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.on("tick", this.handleTick, this);
 
@@ -49,8 +50,8 @@ export class StageComponent implements AfterViewInit {
     });
   }
 
-  public getParticleSVGString():string {
-    return this.particleCanvas.getSVGString();
+  public getParticleSvgString():string {
+    return this.particleCanvas.getSvgString();
   }
 
   private handleTick() {

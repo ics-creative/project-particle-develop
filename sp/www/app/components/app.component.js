@@ -1,4 +1,5 @@
 System.register(["angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin"], function(exports_1) {
+    "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -65,8 +66,8 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                 }
                 AppComponent.prototype.handleSVGClick = function () {
                     var _this = this;
-                    this.stageComponent.exportSVG().then(function () {
-                        _this.openSVGExportWindow();
+                    this.stageComponent.exportSvg().then(function () {
+                        _this.openSvgExportWindow();
                     });
                 };
                 AppComponent.prototype.handleJPEGClick = function () {
@@ -78,7 +79,7 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     window.open(dataUrl);
                 };
                 AppComponent.prototype.openSVGExportWindow = function () {
-                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSVGString()));
+                    window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };
                 AppComponent.prototype.handleExportParamaterClick = function () {
                     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));

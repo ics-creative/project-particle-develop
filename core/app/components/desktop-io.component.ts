@@ -10,17 +10,17 @@ import {ElementRef} from "angular2/core";
   templateUrl: "app/components/template/desktop-io-box.html",
   inputs: ["drawingData"],
   events: [
-    "exportSVGEvent",
-    "exportPNGEvent",
-    "exportJPEGEvent",
+    "exportSvgEvent",
+    "exportPngEvent",
+    "exportJpgEvent",
     "exportParamaterEvent"
   ]
 })
 
 export class DesktopIOBox {
-  private exportSVGEvent = new EventEmitter();
-  private exportPNGEvent = new EventEmitter();
-  private exportJPEGEvent = new EventEmitter();
+  private exportSvgEvent = new EventEmitter();
+  private exportPngEvent = new EventEmitter();
+  private exportJpgEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
 
   private drawingData:DrawingData;
@@ -30,16 +30,16 @@ export class DesktopIOBox {
     this.exportParamaterEvent.emit(null);
   }
 
-  public exportSVG():void {
-    this.exportSVGEvent.emit(null);
+  public exportSvg():void {
+    this.exportSvgEvent.emit(null);
   }
 
-  public exportPNG():void {
-    this.exportPNGEvent.emit(null);
+  public exportPng():void {
+    this.exportPngEvent.emit(null);
   }
 
-  public exportJPEG():void {
-    this.exportJPEGEvent.emit(null);
+  public exportJpg():void {
+    this.exportJpgEvent.emit(null);
   }
 
   private selectParameterFile(obj:any):void {

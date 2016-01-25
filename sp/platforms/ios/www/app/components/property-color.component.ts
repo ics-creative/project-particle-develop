@@ -1,3 +1,5 @@
+"use strict";
+
 import {Component} from "angular2/core";
 import {ColorData} from "../data/data-color";
 import {DrawingData} from "../data/data-drawing";
@@ -28,9 +30,5 @@ export class PropertyColorPanel {
       {name: 'Normal', value: AlphaCurveType.Normal},
       {name: 'Random', value: AlphaCurveType.Random}
     ];
-  }
-
-  hoge(){
-    console.log(this.drawingData.alphaCurveType)
   }
 }
