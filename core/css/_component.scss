@@ -35,18 +35,21 @@ body {
 }
 
 .navbar {
-  margin-bottom: 0;
-}
+  h1 {
+    line-height: 48px;
+  }
 
-.navbar {
+  margin-bottom: 0;
+
   @media (min-width: $grid-float-breakpoint) {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
-}
 
-h1 {
-  line-height: 48px;
+  li > a {
+    line-height: 40px;
+  }
+
 }
 
 #wrapper {

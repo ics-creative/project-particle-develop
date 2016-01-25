@@ -7819,16 +7819,17 @@ body {
 .navbar {
   margin-bottom: 0;
 }
-
+.navbar h1 {
+  line-height: 48px;
+}
 @media (min-width: 768px) {
   .navbar {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 }
-
-h1 {
-  line-height: 48px;
+.navbar li > a {
+  line-height: 40px;
 }
 
 #wrapper {
