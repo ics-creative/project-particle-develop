@@ -1,5 +1,4 @@
-System.register(["angular2/core", "./property-color-unit.component", "./property-emitter.component", "./property-particle.component", "./property-color.component", "./property-template.component", "./property-shape.component", "./property-canvas.component"], function(exports_1) {
-    "use strict";
+System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.component", "./property-emitter.component", "./property-particle.component", "./property-color.component", "./property-template.component", "./property-shape.component", "./property-canvas.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,10 +8,13 @@ System.register(["angular2/core", "./property-color-unit.component", "./property
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, property_color_unit_component_1, property_emitter_component_1, property_particle_component_1, property_color_component_1, property_template_component_1, property_shape_component_1, property_canvas_component_1;
+    var locale_data_1, core_1, property_color_unit_component_1, property_emitter_component_1, property_particle_component_1, property_color_component_1, property_template_component_1, property_shape_component_1, property_canvas_component_1;
     var PropertyPanel;
     return {
         setters:[
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -38,8 +40,10 @@ System.register(["angular2/core", "./property-color-unit.component", "./property
                 property_canvas_component_1 = property_canvas_component_1_1;
             }],
         execute: function() {
+            "use strict";
             PropertyPanel = (function () {
-                function PropertyPanel() {
+                function PropertyPanel(localeData) {
+                    this.localeData = localeData;
                 }
                 PropertyPanel = __decorate([
                     core_1.Component({
@@ -53,9 +57,9 @@ System.register(["angular2/core", "./property-color-unit.component", "./property
                             property_color_component_1.PropertyColorPanel,
                             property_template_component_1.PropertyTemplatePanel,
                             property_shape_component_1.PropertyShapePanel,
-                            property_canvas_component_1.PropertyCanvasPanel]
+                            property_canvas_component_1.PropertyCanvasPanel],
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], PropertyPanel);
                 return PropertyPanel;
             })();

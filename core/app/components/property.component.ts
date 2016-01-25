@@ -1,5 +1,4 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {PropertyColorUnit} from "./property-color-unit.component";
 import {ParticleParamater} from "../assets/particle-paramater";
@@ -10,6 +9,8 @@ import {PropertyColorPanel} from "./property-color.component";
 import {PropertyTemplatePanel} from "./property-template.component";
 import {PropertyShapePanel} from "./property-shape.component";
 import {PropertyCanvasPanel} from "./property-canvas.component";
+
+"use strict";
 
 @Component({
   selector: "property-panel",
@@ -22,13 +23,12 @@ import {PropertyCanvasPanel} from "./property-canvas.component";
     PropertyColorPanel,
     PropertyTemplatePanel,
     PropertyShapePanel,
-    PropertyCanvasPanel]
+    PropertyCanvasPanel],
 })
 export class PropertyPanel {
   private drawingData:DrawingData;
 
-  constructor() {
-
+  constructor(private localeData:LocaleData) {
   }
 
 }

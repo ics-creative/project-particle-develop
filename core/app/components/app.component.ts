@@ -1,5 +1,4 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
@@ -13,7 +12,9 @@ import {ViewChild} from "angular2/core";
 import {ElementRef} from "angular2/core";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
+import {LocaleJaData} from "../i18n/locale-ja";
 
+"use strict";
 
 @Component({
   selector: `my-app`,
@@ -24,7 +25,8 @@ import {CanvasMargin} from "../enum/canvas-margin";
     DesktopIOBox,
     MobileIOBox,
     MobilePropertyTemplateModal
-  ]
+  ],
+  providers: [LocaleData],
 })
 
 export class AppComponent implements AfterViewInit {
@@ -35,7 +37,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
   @ViewChild("MobilePropertyTemplateModal") mobilePropertyTemplateModal:MobilePropertyTemplateModal;
 
-  constructor(element:ElementRef) {
+  constructor(private localeData:LocaleData) {
     this.drawingData = new DrawingData();
 
     // ステージサイズに対して適当な値を適用する
@@ -58,6 +60,16 @@ export class AppComponent implements AfterViewInit {
     this.drawingData.startY = Math.round(sh / 2);
     this.drawingData.width = sw;
     this.drawingData.height = sh;
+
+    this.localeData.preview_head = "ぴよ";
+    this.localeData.settings_head = "ほげ";
+
+    setTimeout(()=>{
+      this.localeData.preview_head = "もじゃ";
+      this.localeData.settings_head = "はげ";
+    },1000)
+
+    console.log(this.localeData);
   }
 
   ngAfterViewInit() {
