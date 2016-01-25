@@ -2,7 +2,7 @@
 // Custom CSS
 // --------------------------
 
-$panelSpace: 4;
+$panelSpace: 3;
 $sideWidth: 285;
 $headerHeight: 44;
 
@@ -56,18 +56,16 @@ h1 {
   @media (max-width: $screen-sm) {
     margin-top: 0;
   }
-
   display: flex;
-
 }
 
 #main {
-  width: calc(100% - $sideWidth);
+  margin-right: 3px;
   height: 100%;
 }
 
 #canvasBox {
-  margin-left: $panelSpace / 2 + px;
+  margin-left: $panelSpace + px;
   height: 100%;
   @media (max-width: $screen-sm) {
     margin: 0;
@@ -95,7 +93,7 @@ h2 {
 #propertyPanel {
   height: 100%;
   flex: $sideWidth + px;
-  margin-right: ($panelSpace / 2) + px;
+  margin-right: $panelSpace + px;
 
   .panel {
     background: #2a2a2a;
