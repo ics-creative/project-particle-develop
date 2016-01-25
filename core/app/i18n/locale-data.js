@@ -21,6 +21,7 @@ System.register(['angular2/core'], function(exports_1) {
                 function LocaleData() {
                     this.H_exportImage = null;
                     this.H_exportParam = null;
+                    this.H_language = null;
                     this.preview_head = null;
                     this.settings_head = null;
                     this.ST_head = null;

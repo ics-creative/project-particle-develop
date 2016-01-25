@@ -1,9 +1,8 @@
-import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {PropertyPanel} from "./property.component";
-import {DesktopIOBox} from "./desktop-io.component";
+import {DesktopIoBox} from "./desktop-io.component";
 import {MobileIOBox} from "./mobile-io.component";
 import {PropertyShapePanel} from "./property-shape.component";
 import {MobilePropertyTemplateModal} from "./mobile-template.component";
@@ -14,6 +13,8 @@ import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
 import {LocaleJaData} from "../i18n/locale-ja";
 import {LocaleEnData} from "../i18n/locale-en";
+import {LocaleData} from "../i18n/locale-data";
+import {LocaleManager} from "../i18n/locale-manager";
 
 "use strict";
 
@@ -23,7 +24,7 @@ import {LocaleEnData} from "../i18n/locale-en";
   directives: [
     StageComponent,
     PropertyPanel,
-    DesktopIOBox,
+    DesktopIoBox,
     MobileIOBox,
     MobilePropertyTemplateModal
   ],
@@ -34,7 +35,6 @@ export class AppComponent implements AfterViewInit {
   protected drawingData:DrawingData;
   @ViewChild("stageComponent") stageComponent:StageComponent;
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
-  @ViewChild("desktopIOBox") desktopIOBox:DesktopIOBox;
   @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
   @ViewChild("MobilePropertyTemplateModal") mobilePropertyTemplateModal:MobilePropertyTemplateModal;
 
@@ -62,13 +62,7 @@ export class AppComponent implements AfterViewInit {
     this.drawingData.width = sw;
     this.drawingData.height = sh;
 
-    let ja = new LocaleJaData();
-    for (let key in ja) {
-      if (Reflect.has(ja, key) == true) {
-        let val = <any> ja[key];
-        Reflect.set(localeData, key, val);
-      }
-    }
+    LocaleManager.applyClientLocale(localeData);
   }
 
   ngAfterViewInit() {

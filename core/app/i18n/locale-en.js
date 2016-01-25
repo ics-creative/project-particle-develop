@@ -19,6 +19,7 @@ System.register(["./locale-data"], function(exports_1) {
                     _super.apply(this, arguments);
                     this.H_exportImage = "Export";
                     this.H_exportParam = "Save";
+                    this.H_language = "Select Language";
                     this.preview_head = "Preview";
                     this.settings_head = "Settings";
                     this.ST_head = "Template Settings";

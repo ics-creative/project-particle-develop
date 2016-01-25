@@ -4,6 +4,7 @@ import {LocaleData} from "./locale-data";
 export class LocaleJaData extends LocaleData {
   H_exportImage:string = "書き出し";
   H_exportParam:string = "保存";
+  H_language:string = "言語選択";
 
   preview_head:string = "プレビュー";
   settings_head:string = "設定";

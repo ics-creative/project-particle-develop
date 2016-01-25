@@ -1,4 +1,4 @@
-System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-ja"], function(exports_1) {
+System.register(["angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,13 +8,10 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var locale_data_1, core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, mobile_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_ja_1;
+    var core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, mobile_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1;
     var AppComponent;
     return {
         setters:[
-            function (locale_data_1_1) {
-                locale_data_1 = locale_data_1_1;
-            },
             function (core_1_1) {
                 core_1 = core_1_1;
                 core_2 = core_1_1;
@@ -43,8 +40,11 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
             function (canvas_margin_1_1) {
                 canvas_margin_1 = canvas_margin_1_1;
             },
-            function (locale_ja_1_1) {
-                locale_ja_1 = locale_ja_1_1;
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
+            },
+            function (locale_manager_1_1) {
+                locale_manager_1 = locale_manager_1_1;
             }],
         execute: function() {
             "use strict";
@@ -69,13 +69,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
                     this.drawingData.startY = Math.round(sh / 2);
                     this.drawingData.width = sw;
                     this.drawingData.height = sh;
-                    var ja = new locale_ja_1.LocaleJaData();
-                    for (var key in ja) {
-                        if (Reflect.has(ja, key) == true) {
-                            var val = ja[key];
-                            Reflect.set(localeData, key, val);
-                        }
-                    }
+                    locale_manager_1.LocaleManager.applyClientLocale(localeData);
                 }
                 AppComponent.prototype.ngAfterViewInit = function () {
                     this.adjustUi();
@@ -141,10 +135,6 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
                     __metadata('design:type', property_component_1.PropertyPanel)
                 ], AppComponent.prototype, "propertyPanel", void 0);
                 __decorate([
-                    core_2.ViewChild("desktopIOBox"), 
-                    __metadata('design:type', desktop_io_component_1.DesktopIOBox)
-                ], AppComponent.prototype, "desktopIOBox", void 0);
-                __decorate([
                     core_2.ViewChild("mobileIOBox"), 
                     __metadata('design:type', mobile_io_component_1.MobileIOBox)
                 ], AppComponent.prototype, "mobileIOBox", void 0);
@@ -159,7 +149,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
                         directives: [
                             stage_component_1.StageComponent,
                             property_component_1.PropertyPanel,
-                            desktop_io_component_1.DesktopIOBox,
+                            desktop_io_component_1.DesktopIoBox,
                             mobile_io_component_1.MobileIOBox,
                             mobile_template_component_1.MobilePropertyTemplateModal
                         ],

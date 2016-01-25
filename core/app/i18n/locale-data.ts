@@ -6,6 +6,7 @@ import {Injectable} from 'angular2/core';
 export class LocaleData {
   H_exportImage:string = null;
   H_exportParam:string = null;
+  H_language:string = null;
 
   preview_head:string = null;
   settings_head:string = null;

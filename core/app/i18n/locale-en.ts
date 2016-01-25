@@ -4,6 +4,7 @@ import {LocaleData} from "./locale-data";
 export class LocaleEnData extends LocaleData {
   H_exportImage:string = "Export";
   H_exportParam:string = "Save";
+  H_language:string = "Select Language";
 
   preview_head:string = "Preview";
   settings_head:string = "Settings";
