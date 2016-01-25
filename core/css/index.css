@@ -7841,7 +7841,7 @@ h1 {
 }
 
 #wrapper {
-  height: calc(100% - 54px);
+  height: calc(100% - 54px - 46px);
   margin-top: 3px;
   display: flex;
 }
@@ -7850,63 +7850,61 @@ h1 {
     margin-top: 0;
   }
 }
-
-#main {
+#wrapper #main {
   margin-right: 3px;
   height: 100%;
 }
-
-#canvasBox {
+#wrapper #canvasBox {
   margin-left: 3px;
   height: 100%;
 }
 @media (max-width: 768px) {
-  #canvasBox {
+  #wrapper #canvasBox {
     margin: 0;
     border-radius: 0;
   }
 }
-#canvasBox .panel-body {
+#wrapper #canvasBox .panel-body {
   padding: 0;
 }
-
-h2 {
+#wrapper #canvasBox #myCanvas {
+  cursor: crosshair;
+}
+#wrapper h2 {
   text-shadow: 0px -2px 0 rgba(0, 0, 0, 0.9);
   font-weight: bold;
 }
-
-.panel h3 {
+#wrapper .panel h3 {
   font-size: 14px;
   color: #d2d2d2;
   text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
 }
-
-#propertyPanel {
+#wrapper #propertyPanel {
   height: 100%;
   flex: 285px;
   margin-right: 3px;
 }
-#propertyPanel .panel {
+#wrapper #propertyPanel .panel {
   background: #2a2a2a;
   height: 100%;
   overflow: hidden;
   color: #8b9292;
 }
-#propertyPanel .panel .panel-mybody {
+#wrapper #propertyPanel .panel .panel-mybody {
   background: #2a2a2a;
   height: calc(100% - 80px);
 }
-#propertyPanel .panel .panel-mybody #myTabContent {
+#wrapper #propertyPanel .panel .panel-mybody #myTabContent {
   height: 100%;
   overflow: auto;
   padding-left: 15px;
   padding-right: 15px;
 }
-#propertyPanel .panel .tab-pane label {
+#wrapper #propertyPanel .panel .tab-pane label {
   font-size: 12px;
   margin-bottom: 2px;
 }
-#propertyPanel .panel div.shapeListItem {
+#wrapper #propertyPanel .panel div.shapeListItem {
   text-align: center;
   background: inherit;
   cursor: pointer;
@@ -7920,54 +7918,54 @@ h2 {
   line-height: 0;
   margin-bottom: 20px;
 }
-#propertyPanel .panel div.shapeListItem shape-itemrenderer {
+#wrapper #propertyPanel .panel div.shapeListItem shape-itemrenderer {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
-#propertyPanel .panel div.shapeListItem shape-itemrenderer canvas {
+#wrapper #propertyPanel .panel div.shapeListItem shape-itemrenderer canvas {
   opacity: 0.25;
 }
-#propertyPanel .panel div.shapeListItem.selected shape-itemrenderer {
+#wrapper #propertyPanel .panel div.shapeListItem.selected shape-itemrenderer {
   background: #222;
   border: 1px solid #333;
 }
-#propertyPanel .panel div.shapeListItem.selected shape-itemrenderer canvas {
+#wrapper #propertyPanel .panel div.shapeListItem.selected shape-itemrenderer canvas {
   opacity: 1.0;
 }
-#propertyPanel .panel div.templateListItem {
+#wrapper #propertyPanel .panel div.templateListItem {
   padding: 6px;
   cursor: pointer;
   margin-top: 0;
 }
-#propertyPanel .panel div.templateListItem img {
+#wrapper #propertyPanel .panel div.templateListItem img {
   border: 1px solid #555;
 }
-#propertyPanel .panel div.templateListItem:hover {
+#wrapper #propertyPanel .panel div.templateListItem:hover {
   background: #333;
 }
-#propertyPanel .panel div.templateListItem h4 {
+#wrapper #propertyPanel .panel div.templateListItem h4 {
   margin-top: 3px;
   font-size: 14px;
   font-weight: bold;
 }
-#propertyPanel .panel div.templateListItem p {
+#wrapper #propertyPanel .panel div.templateListItem p {
   color: #666;
   font-size: 12px;
 }
-#propertyPanel hr {
+#wrapper #propertyPanel hr {
   border-top: 1px solid #1c1e22;
   border-bottom: 1px solid #333333;
   margin-top: 12px;
   margin-bottom: 12px;
 }
-#propertyPanel .nav-tabs > li.active > a, #propertyPanel .nav-tabs > li.active > a:hover, #propertyPanel .nav-tabs > li.active > a:focus {
+#wrapper #propertyPanel .nav-tabs > li.active > a, #wrapper #propertyPanel .nav-tabs > li.active > a:hover, #wrapper #propertyPanel .nav-tabs > li.active > a:focus {
   cursor: default;
   background: none;
   border: none;
 }
-#propertyPanel .nav-tabs {
+#wrapper #propertyPanel .nav-tabs {
   border-bottom: none;
 }
-#propertyPanel .nav-tabs > li {
+#wrapper #propertyPanel .nav-tabs > li {
   background-image: -webkit-linear-gradient(#242424, #333 60%, #3d3d3d);
   background-image: -o-linear-gradient(#242424, #333 60%, #3d3d3d);
   background-image: linear-gradient(#242424, #333 60%, #3d3d3d);
@@ -7976,12 +7974,12 @@ h2 {
   text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.6);
   border-bottom: 1px solid black;
 }
-#propertyPanel .nav-tabs > li > a {
+#wrapper #propertyPanel .nav-tabs > li > a {
   color: #888;
   font-size: 16px;
   border-radius: 0;
 }
-#propertyPanel .nav-tabs > li.active {
+#wrapper #propertyPanel .nav-tabs > li.active {
   border-bottom: 1px solid #2a2a2a;
   background-image: -webkit-linear-gradient(#424242, #333 60%, #292929);
   background-image: -o-linear-gradient(#424242, #333 60%, #292929);
@@ -7992,8 +7990,7 @@ h2 {
   border-left: 1px solid black;
   border-right: 1px solid black;
 }
-
-.inputRangeContainer {
+#wrapper .inputRangeContainer {
   display: flex;
   -webkit-align-items: center;
   /* 縦方向中央揃え（Safari用） */
@@ -8004,10 +8001,10 @@ h2 {
   justify-content: center;
   /* 横方向中央揃え */
 }
-.inputRangeContainer .range {
+#wrapper .inputRangeContainer .range {
   flex: 80%;
 }
-.inputRangeContainer .label {
+#wrapper .inputRangeContainer .label {
   flex: 20%;
 }
 
@@ -8044,23 +8041,26 @@ mobile-particle-template-property-modal .media-body {
   display: none;
 }
 
-#myCanvas {
-  cursor: crosshair;
-}
-
-.footer_left {
+.footer {
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
+  width: 100%;
+  height: 42px;
+  background: black;
+  border-top: 1px solid #333;
+}
+.footer .footer_left {
+  position: absolute;
   left: 10px;
+  top: 8px;
 }
-
-.footer_right {
+.footer .footer_right {
   position: absolute;
-  bottom: 10px;
-  right: 360px;
+  right: 3px;
+  top: 8px;
 }
 @media (max-width: 768px) {
-  .footer_right {
+  .footer .footer_right {
     right: 10px;
   }
 }
