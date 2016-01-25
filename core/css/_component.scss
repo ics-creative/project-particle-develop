@@ -308,6 +308,16 @@ mobile-particle-template-property-modal {
   background: #323232;
   border-top: 1px solid black;
 
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+
+  transition: all 0.2s;
+
+  &:hover {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+  }
+
   .footer_left {
     left: 10px;
   }
