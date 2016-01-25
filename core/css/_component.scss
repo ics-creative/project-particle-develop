@@ -200,16 +200,16 @@ h1 {
         color: #d6d6d6;
         font-size: 16px;
         border-radius: 0;
-        border : none;
+        border: none;
       }
 
       &.active, &.active:hover {
         background: #323232;
-        border : none;
+        border: none;
       }
       &:hover {
         background: #2a2a2a;
-        border : none;
+        border: none;
       }
     }
   }
@@ -280,19 +280,26 @@ mobile-particle-template-property-modal {
   border-top: 1px solid black;
 
   .footer_left {
-    position: absolute;
     left: 10px;
-    top: 8px;
   }
 
   .footer_right {
-    position: absolute;
     right: 10px;
-    top: 8px;
-
     @media (max-width: $screen-sm) {
       right: 10px;
     }
+  }
+
+  .footer_left, .footer_right {
+    display: flex;
+
+    position: absolute;
+    height: 42px;
+
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
   }
 }
 

@@ -8032,19 +8032,28 @@ mobile-particle-template-property-modal .media-body {
   border-top: 1px solid black;
 }
 .footer .footer_left {
-  position: absolute;
   left: 10px;
-  top: 8px;
 }
 .footer .footer_right {
-  position: absolute;
   right: 10px;
-  top: 8px;
 }
 @media (max-width: 768px) {
   .footer .footer_right {
     right: 10px;
   }
+}
+.footer .footer_left, .footer .footer_right {
+  display: flex;
+  position: absolute;
+  height: 42px;
+  -webkit-align-items: center;
+  /* 縦方向中央揃え（Safari用） */
+  align-items: center;
+  /* 縦方向中央揃え */
+  -webkit-justify-content: center;
+  /* 横方向中央揃え（Safari用） */
+  justify-content: center;
+  /* 横方向中央揃え */
 }
 
 /*# sourceMappingURL=index.css.map */
