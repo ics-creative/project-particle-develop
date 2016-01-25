@@ -19,10 +19,49 @@ System.register(['angular2/core'], function(exports_1) {
             "use strict";
             LocaleData = (function () {
                 function LocaleData() {
+                    this.H_exportImage = null;
+                    this.H_exportParam = null;
+                    this.preview_head = null;
+                    this.settings_head = null;
+                    this.ST_head = null;
+                    this.SE_head = null;
+                    this.SE_startXVariance = null;
+                    this.SE_startYVariance = null;
+                    this.SE_initialSpeed = null;
+                    this.SE_initialSpeedVariance = null;
+                    this.SE_initialDirection = null;
+                    this.SE_initialDirectionVariance = null;
+                    this.SE_friction = null;
+                    this.SE_accelerationSpeed = null;
+                    this.SE_accelerationDirection = null;
+                    this.SE_emitFrequency = null;
+                    this.SP_startScale = null;
+                    this.SP_startScale = null;
+                    this.SP_startScaleVariance = null;
+                    this.SP_endScale = null;
+                    this.SP_endScaleVariance = null;
+                    this.SP_lifeSpan = null;
+                    this.SP_lifeSpanVariance = null;
+                    this.SC_head_start = null;
+                    this.SC_hue = null;
+                    this.SC_hueVariance = null;
+                    this.SC_saturation = null;
+                    this.SC_saturationVariance = null;
+                    this.SC_luminance = null;
+                    this.SC_luminanceVariance = null;
+                    this.SC_startAlpha = null;
+                    this.SC_startAlphaVariance = null;
+                    this.SC_head_end = null;
+                    this.SC_endAlpha = null;
+                    this.SC_endAlphaVariance = null;
+                    this.SC_head_alphaCurve = null;
+                    this.SC_head_blendMode = null;
+                    this.SS_head = null;
+                    this.SF_head = null;
+                    this.SF_stageW = null;
+                    this.SF_stageH = null;
+                    this.SF_bgColor = null;
                 }
-                LocaleData.prototype.say = function () {
-                    return this.preview_head;
-                };
                 LocaleData = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
