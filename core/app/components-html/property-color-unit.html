@@ -1,5 +1,5 @@
 <input-range
-        label="色相 (度)"
+        label="{{localeData.SC_hue}}"
         min="0" max="360" step="1.0"
         [drawingData]="colorData"
         targetProperty="hue">
@@ -8,7 +8,7 @@
 <div class="gradation-box-hue"></div>
 
 <input-range
-        label="色相のばらつき (度)"
+        label="{{localeData.SC_hueVariance}}"
         min="0" max="360" step="1.0"
         [drawingData]="colorData"
         targetProperty="hueVariance">
@@ -16,7 +16,7 @@
 
 
 <input-range
-        label="彩度 (%)"
+        label="{{localeData.SC_saturation}}"
         min="0" max="100" step="1.0"
         [drawingData]="colorData"
         targetProperty="satuation">
@@ -25,14 +25,14 @@
 <div class="gradation-box-saturation"></div>
 
 <input-range
-        label="彩度のばらつき (%)"
+        label="{{localeData.SC_saturationVariance}}"
         min="0" max="100" step="1.0"
         [drawingData]="colorData"
         targetProperty="satuationVariance">
 </input-range>
 
 <input-range
-        label="明度 (%)"
+        label="{{localeData.SC_luminance}}"
         min="0" max="100" step="1.0"
         [drawingData]="colorData"
         targetProperty="luminance">
@@ -41,7 +41,7 @@
 <div class="gradation-box-luminance"></div>
 
 <input-range
-        label="明度のばらつき (%)"
+        label="{{localeData.SC_luminanceVariance}}"
         min="0" max="100" step="1.0"
         [drawingData]="colorData"
         targetProperty="luminanceVariance">

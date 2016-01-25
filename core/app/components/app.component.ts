@@ -13,6 +13,7 @@ import {ElementRef} from "angular2/core";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
 import {LocaleJaData} from "../i18n/locale-ja";
+import {LocaleEnData} from "../i18n/locale-en";
 
 "use strict";
 
@@ -61,15 +62,13 @@ export class AppComponent implements AfterViewInit {
     this.drawingData.width = sw;
     this.drawingData.height = sh;
 
-    this.localeData.preview_head = "ぴよ";
-    this.localeData.settings_head = "ほげ";
-
-    setTimeout(()=>{
-      this.localeData.preview_head = "もじゃ";
-      this.localeData.settings_head = "はげ";
-    },1000)
-
-    console.log(this.localeData);
+    let ja = new LocaleJaData();
+    for (let key in ja) {
+      if (Reflect.has(ja, key) == true) {
+        let val = <any> ja[key];
+        Reflect.set(localeData, key, val);
+      }
+    }
   }
 
   ngAfterViewInit() {

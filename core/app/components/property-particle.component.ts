@@ -1,10 +1,11 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';
 import {ShapeData} from "../data/data-shape";
 import {InputRangeComponent} from "./input-range.component";
+
+"use strict";
 
 @Component({
   selector: "particle-property-panel",
@@ -16,6 +17,6 @@ import {InputRangeComponent} from "./input-range.component";
 export class PropertyParticlePanel {
   private drawingData:DrawingData;
 
-  constructor() {
+  constructor(private localeData:LocaleData) {
   }
 }

@@ -1,10 +1,11 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';
 import {ShapeData} from "../data/data-shape";
 import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component";
+
+"use strict";
 
 @Component({
   selector: "shape-property-panel",
@@ -19,6 +20,9 @@ import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component
 export class PropertyShapePanel {
   private drawingData:DrawingData;
   private shapeIdList:string[] = new ShapeData().assetList;
+
+  constructor(private localeData:LocaleData) {
+  }
 
   private handleClick(shapeId:string) {
 
@@ -35,6 +39,5 @@ export class PropertyShapePanel {
     }
   }
 
-  constructor() {
-  }
+
 }

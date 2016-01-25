@@ -1,5 +1,4 @@
-System.register(["angular2/core", "./property-color-unit.component", "./input-range.component", "angular2/common", "../enum/alpha-curve-type"], function(exports_1) {
-    "use strict";
+System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.component", "./input-range.component", "angular2/common", "../enum/alpha-curve-type"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,10 +8,13 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, property_color_unit_component_1, input_range_component_1, common_1, alpha_curve_type_1;
+    var locale_data_1, core_1, property_color_unit_component_1, input_range_component_1, common_1, alpha_curve_type_1;
     var PropertyColorPanel;
     return {
         setters:[
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -29,8 +31,10 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
                 alpha_curve_type_1 = alpha_curve_type_1_1;
             }],
         execute: function() {
+            "use strict";
             PropertyColorPanel = (function () {
-                function PropertyColorPanel() {
+                function PropertyColorPanel(localeData) {
+                    this.localeData = localeData;
                     this.objArray = [
                         { name: 'Normal', value: alpha_curve_type_1.AlphaCurveType.Normal },
                         { name: 'Random', value: alpha_curve_type_1.AlphaCurveType.Random }
@@ -43,7 +47,7 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
                         inputs: ["drawingData"],
                         directives: [property_color_unit_component_1.PropertyColorUnit, input_range_component_1.InputRangeComponent, common_1.FORM_DIRECTIVES]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], PropertyColorPanel);
                 return PropertyColorPanel;
             })();

@@ -1,13 +1,13 @@
 <ul class="nav navbar-nav navbar-right">
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-file-image-o"></i>
-      書き出し <span class="caret"></span></a>
+      {{localeData.H_exportImage}}<span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
       <li><a (click)="exportSvg()">SVG</a></li>
       <li><a (click)="exportPng()">PNG</a></li>
       <li><a (click)="exportJpg()">JPEG</a></li>
     </ul>
   </li>
-  <li><a (click)="exportParamater()"><i class="fa fa-save"></i> パラメーター保存</a></li>
+  <li><a (click)="exportParamater()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
   <li><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
 </ul>

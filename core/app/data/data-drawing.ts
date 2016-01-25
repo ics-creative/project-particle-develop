@@ -8,40 +8,60 @@ export class DrawingData {
   width:number = 0.0;
   height:number = 0.0;
 
+  /** 1秒あたりの発生数 */
   emitFrequency:number = 0;
 
-  lifeSpan:number = 0;
-  lifeSpanVariance:number = 0;
-
-  initialDirection:number = 0;
-  initialDirectionVariance:number = 0;
-
-  initialSpeed:number = 0;
-  initialSpeedVariance:number = 0;
-
-  friction:number = 0;
-
-  accelerationSpeed:number = 0;
-  accelerationDirection:number = 0;
-
-  startScale:number = 0;
-  startScaleVariance:number = 0;
-
-  finishScale:number = 0;
-  finishScaleVariance:number = 0;
-
-
-  startAlpha:number = 0;
-  startAlphaVariance:number = 0;
-
-  finishAlpha:number = 0;
-  finishAlphaVariance:number = 0;
-
   startX:number = 0;
+  /** 発生位置 - X座標のばらつき (px) */
   startXVariance:number = 0;
 
   startY:number = 0;
+  /** 発生位置 - Y座標のばらつき (px) */
   startYVariance:number = 0;
+
+  /** 初期速度 - 方向 (度) */
+  initialDirection:number = 0;
+  /** 初期速度 - 方向のばらつき (度) */
+  initialDirectionVariance:number = 0;
+
+  /** 初期速度 (px) */
+  initialSpeed:number = 0;
+  /** 初期速度のばらつき */
+  initialSpeedVariance:number = 0;
+
+  /** 摩擦 */
+  friction:number = 0;
+
+  /** 重力 */
+  accelerationSpeed:number = 0;
+  /** 重力方向 (度) */
+  accelerationDirection:number = 0;
+
+  /** 開始時のスケール */
+  startScale:number = 0;
+  /** 開始時のスケールのばらつき */
+  startScaleVariance:number = 0;
+
+  /** 終了時のスケール */
+  finishScale:number = 0;
+  /** 終了時のスケールのばらつき */
+  finishScaleVariance:number = 0;
+
+  /** ライフ(フレーム数) */
+  lifeSpan:number = 0;
+  /** ライフのばらつき(フレーム数) */
+  lifeSpanVariance:number = 0;
+
+  /** 開始時の透明度 */
+  startAlpha:number = 0;
+  /** 開始時の透明度のばらつき */
+  startAlphaVariance:number = 0;
+
+  /** 終了時の透明度 */
+  finishAlpha:number = 0;
+  /** 終了時の透明度のばらつき */
+  finishAlphaVariance:number = 0;
+
 
   shapeIdList:string[] = ["kirakira"];
 

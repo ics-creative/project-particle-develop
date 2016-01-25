@@ -1,8 +1,9 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {InputRangeComponent} from "./input-range.component";
+
+"use strict";
 
 @Component({
   selector: "canvas-property-panel",
@@ -14,6 +15,6 @@ import {InputRangeComponent} from "./input-range.component";
 export class PropertyCanvasPanel {
   private drawingData:DrawingData;
 
-  constructor() {
+  constructor(private localeData:LocaleData) {
   }
 }

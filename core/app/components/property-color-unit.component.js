@@ -1,5 +1,4 @@
-System.register(["angular2/core", "./input-range.component"], function(exports_1) {
-    "use strict";
+System.register(["../i18n/locale-data", "angular2/core", "./input-range.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,10 +8,13 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, input_range_component_1;
+    var locale_data_1, core_1, input_range_component_1;
     var PropertyColorUnit;
     return {
         setters:[
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -20,8 +22,10 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 input_range_component_1 = input_range_component_1_1;
             }],
         execute: function() {
+            "use strict";
             PropertyColorUnit = (function () {
-                function PropertyColorUnit() {
+                function PropertyColorUnit(localeData) {
+                    this.localeData = localeData;
                 }
                 PropertyColorUnit = __decorate([
                     core_1.Component({
@@ -30,7 +34,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                         inputs: ["colorData"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], PropertyColorUnit);
                 return PropertyColorUnit;
             })();

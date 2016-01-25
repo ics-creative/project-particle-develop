@@ -1,16 +1,16 @@
-<h3>エミッター設定</h3>
+<h3>{{localeData.SE_head}}</h3>
 
-<hr />
+<hr/>
 
 <input-range
-        label="発生位置 - X座標のばらつき (px)"
+        label="{{localeData.SE_startXVariance}}"
         min="0" max="1024" step="1"
         [drawingData]="drawingData"
         targetProperty="startXVariance">
 </input-range>
 
 <input-range
-        label="発生位置 - Y座標のばらつき (px)"
+        label="{{localeData.SE_startYVariance}}"
         min="0" max="1024" step="1"
         [drawingData]="drawingData"
         targetProperty="startYVariance">
@@ -19,14 +19,14 @@
 <hr>
 
 <input-range
-        label="初期速度 (px)"
+        label="{{localeData.SE_initialSpeed}}"
         min="0" max="40" step="0.1"
         [drawingData]="drawingData"
         targetProperty="initialSpeed">
 </input-range>
 
 <input-range
-        label="初期速度のばらつき"
+        label="{{localeData.SE_initialSpeedVariance}}"
         min="0" max="20" step="0.1"
         [drawingData]="drawingData"
         targetProperty="initialSpeedVariance">
@@ -35,14 +35,14 @@
 <hr>
 
 <input-range
-        label="初期速度 - 方向 (度)"
+        label="{{localeData.SE_initialDirection}}"
         min="0" max="360" step="0.5"
         [drawingData]="drawingData"
         targetProperty="initialDirection">
 </input-range>
 
 <input-range
-        label="初期速度 - 方向のばらつき (度)"
+        label="{{localeData.SE_initialDirectionVariance}}"
         min="0" max="360" step="0.5"
         [drawingData]="drawingData"
         targetProperty="initialDirectionVariance">
@@ -51,7 +51,7 @@
 <hr>
 
 <input-range
-        label="摩擦"
+        label="{{localeData.SE_friction}}"
         min="0" max="0.15" step="0.0005"
         [drawingData]="drawingData"
         targetProperty="friction">
@@ -60,23 +60,23 @@
 <hr>
 
 <input-range
-        label="重力"
+        label="{{localeData.SE_accelerationSpeed}}"
         min="0" max="4" step="0.0005"
         [drawingData]="drawingData"
         targetProperty="accelerationSpeed">
 </input-range>
 
 <input-range
-        label="重力方向 (度)"
+        label="{{localeData.SE_accelerationDirection}}"
         min="0" max="360" step="0.1"
         [drawingData]="drawingData"
         targetProperty="accelerationDirection">
 </input-range>
 
-<hr />
+<hr/>
 
 <input-range
-        label="1秒あたりの発生数"
+        label="{{localeData.SE_emitFrequency}}"
         min="1" max="300" step="1"
         [drawingData]="drawingData"
         targetProperty="emitFrequency">

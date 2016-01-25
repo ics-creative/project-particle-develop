@@ -1,9 +1,10 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
 import {EventEmitter} from 'angular2/core';
 import {ElementRef} from "angular2/core";
+
+"use strict";
 
 @Component({
   selector: "desktop-io-box",
@@ -60,7 +61,7 @@ export class DesktopIOBox {
     fileReader.readAsText(file);
   }
 
-  constructor(element:ElementRef) {
+  constructor(element:ElementRef, private localeData:LocaleData) {
     this.element = element;
     this.setDragAndDropSettings(element);
   }

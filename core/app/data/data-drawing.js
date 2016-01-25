@@ -16,28 +16,48 @@ System.register(["./data-color", "../enum/alpha-curve-type"], function(exports_1
                     this.bgColor = "";
                     this.width = 0.0;
                     this.height = 0.0;
+                    /** 1秒あたりの発生数 */
                     this.emitFrequency = 0;
-                    this.lifeSpan = 0;
-                    this.lifeSpanVariance = 0;
-                    this.initialDirection = 0;
-                    this.initialDirectionVariance = 0;
-                    this.initialSpeed = 0;
-                    this.initialSpeedVariance = 0;
-                    this.friction = 0;
-                    this.accelerationSpeed = 0;
-                    this.accelerationDirection = 0;
-                    this.startScale = 0;
-                    this.startScaleVariance = 0;
-                    this.finishScale = 0;
-                    this.finishScaleVariance = 0;
-                    this.startAlpha = 0;
-                    this.startAlphaVariance = 0;
-                    this.finishAlpha = 0;
-                    this.finishAlphaVariance = 0;
                     this.startX = 0;
+                    /** 発生位置 - X座標のばらつき (px) */
                     this.startXVariance = 0;
                     this.startY = 0;
+                    /** 発生位置 - Y座標のばらつき (px) */
                     this.startYVariance = 0;
+                    /** 初期速度 - 方向 (度) */
+                    this.initialDirection = 0;
+                    /** 初期速度 - 方向のばらつき (度) */
+                    this.initialDirectionVariance = 0;
+                    /** 初期速度 (px) */
+                    this.initialSpeed = 0;
+                    /** 初期速度のばらつき */
+                    this.initialSpeedVariance = 0;
+                    /** 摩擦 */
+                    this.friction = 0;
+                    /** 重力 */
+                    this.accelerationSpeed = 0;
+                    /** 重力方向 (度) */
+                    this.accelerationDirection = 0;
+                    /** 開始時のスケール */
+                    this.startScale = 0;
+                    /** 開始時のスケールのばらつき */
+                    this.startScaleVariance = 0;
+                    /** 終了時のスケール */
+                    this.finishScale = 0;
+                    /** 終了時のスケールのばらつき */
+                    this.finishScaleVariance = 0;
+                    /** ライフ(フレーム数) */
+                    this.lifeSpan = 0;
+                    /** ライフのばらつき(フレーム数) */
+                    this.lifeSpanVariance = 0;
+                    /** 開始時の透明度 */
+                    this.startAlpha = 0;
+                    /** 開始時の透明度のばらつき */
+                    this.startAlphaVariance = 0;
+                    /** 終了時の透明度 */
+                    this.finishAlpha = 0;
+                    /** 終了時の透明度のばらつき */
+                    this.finishAlphaVariance = 0;
                     this.shapeIdList = ["kirakira"];
                     this.startColor = new data_color_1.ColorData();
                     this.blendMode = true;

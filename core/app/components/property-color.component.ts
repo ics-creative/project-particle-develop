@@ -1,5 +1,4 @@
-"use strict";
-
+import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {ColorData} from "../data/data-color";
 import {DrawingData} from "../data/data-drawing";
@@ -8,6 +7,8 @@ import {InputRangeComponent} from "./input-range.component";
 import {FORM_DIRECTIVES} from "angular2/common";
 import {AlphaCurveType} from "../enum/alpha-curve-type";
 import {NgForm}    from 'angular2/common';
+
+"use strict";
 
 interface TestObject {
   name:string;
@@ -25,7 +26,7 @@ export class PropertyColorPanel {
   private drawingData:DrawingData;
   private objArray:TestObject[];
 
-  constructor() {
+  constructor(private localeData:LocaleData) {
     this.objArray = [
       {name: 'Normal', value: AlphaCurveType.Normal},
       {name: 'Random', value: AlphaCurveType.Random}

@@ -1,11 +1,11 @@
-"use strict";
+import {Component, ViewChild} from "angular2/core";
+import {AfterViewInit} from "angular2/core";
 
 declare namespace window {
   export var lib:Object;
 }
 
-import {Component, ViewChild} from "angular2/core";
-import {AfterViewInit} from "angular2/core";
+"use strict";
 
 @Component({
   selector: "shape-itemrenderer",

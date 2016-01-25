@@ -1,5 +1,4 @@
-System.register(["angular2/core", 'angular2/core'], function(exports_1) {
-    "use strict";
+System.register(["../i18n/locale-data", "angular2/core", 'angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,10 +8,13 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, core_2, core_3;
+    var locale_data_1, core_1, core_2, core_3;
     var DesktopIOBox;
     return {
         setters:[
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
+            },
             function (core_1_1) {
                 core_1 = core_1_1;
                 core_3 = core_1_1;
@@ -21,8 +23,10 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 core_2 = core_2_1;
             }],
         execute: function() {
+            "use strict";
             DesktopIOBox = (function () {
-                function DesktopIOBox(element) {
+                function DesktopIOBox(element, localeData) {
+                    this.localeData = localeData;
                     this.exportSvgEvent = new core_2.EventEmitter();
                     this.exportPngEvent = new core_2.EventEmitter();
                     this.exportJpgEvent = new core_2.EventEmitter();
@@ -93,7 +97,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                             "exportParamaterEvent"
                         ]
                     }), 
-                    __metadata('design:paramtypes', [core_3.ElementRef])
+                    __metadata('design:paramtypes', [core_3.ElementRef, locale_data_1.LocaleData])
                 ], DesktopIOBox);
                 return DesktopIOBox;
             })();

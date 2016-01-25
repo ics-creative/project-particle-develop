@@ -1,4 +1,4 @@
-System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin"], function(exports_1) {
+System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-ja"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var locale_data_1, core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, mobile_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1;
+    var locale_data_1, core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, mobile_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_ja_1;
     var AppComponent;
     return {
         setters:[
@@ -42,12 +42,14 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
             },
             function (canvas_margin_1_1) {
                 canvas_margin_1 = canvas_margin_1_1;
+            },
+            function (locale_ja_1_1) {
+                locale_ja_1 = locale_ja_1_1;
             }],
         execute: function() {
             "use strict";
             AppComponent = (function () {
                 function AppComponent(localeData) {
-                    var _this = this;
                     this.localeData = localeData;
                     this.drawingData = new data_drawing_1.DrawingData();
                     // ステージサイズに対して適当な値を適用する
@@ -67,13 +69,13 @@ System.register(["../i18n/locale-data", "angular2/core", "../data/data-drawing",
                     this.drawingData.startY = Math.round(sh / 2);
                     this.drawingData.width = sw;
                     this.drawingData.height = sh;
-                    this.localeData.preview_head = "ぴよ";
-                    this.localeData.settings_head = "ほげ";
-                    setTimeout(function () {
-                        _this.localeData.preview_head = "もじゃ";
-                        _this.localeData.settings_head = "はげ";
-                    }, 1000);
-                    console.log(this.localeData);
+                    var ja = new locale_ja_1.LocaleJaData();
+                    for (var key in ja) {
+                        if (Reflect.has(ja, key) == true) {
+                            var val = ja[key];
+                            Reflect.set(localeData, key, val);
+                        }
+                    }
                 }
                 AppComponent.prototype.ngAfterViewInit = function () {
                     this.adjustUi();

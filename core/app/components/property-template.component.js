@@ -1,5 +1,4 @@
-System.register(["angular2/core", "../assets/particle-paramater"], function(exports_1) {
-    "use strict";
+System.register(["angular2/core", "../assets/particle-paramater", "../i18n/locale-data"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -9,7 +8,7 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, particle_paramater_1;
+    var core_1, particle_paramater_1, locale_data_1;
     var PropertyTemplatePanel;
     return {
         setters:[
@@ -18,10 +17,15 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
             },
             function (particle_paramater_1_1) {
                 particle_paramater_1 = particle_paramater_1_1;
+            },
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
             }],
         execute: function() {
+            "use strict";
             PropertyTemplatePanel = (function () {
-                function PropertyTemplatePanel() {
+                function PropertyTemplatePanel(localeData) {
+                    this.localeData = localeData;
                     var template = new particle_paramater_1.ParticleParamater();
                     this.templateList = template.list;
                 }
@@ -38,7 +42,7 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
                         templateUrl: "app/components-html/property-template.html",
                         inputs: ["drawingData", "templateList"]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], PropertyTemplatePanel);
                 return PropertyTemplatePanel;
             })();
