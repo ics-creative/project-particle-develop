@@ -7922,15 +7922,14 @@ body {
   opacity: 1.0;
 }
 #wrapper #propertyPanel .panel div.templateListItem {
-  padding: 6px;
   cursor: pointer;
   margin-top: 0;
 }
 #wrapper #propertyPanel .panel div.templateListItem img {
   border: 1px solid #555;
 }
-#wrapper #propertyPanel .panel div.templateListItem:hover {
-  background: #222;
+#wrapper #propertyPanel .panel div.templateListItem:hover img {
+  border: 1px solid #999;
 }
 #wrapper #propertyPanel .panel div.templateListItem h4 {
   margin-top: 3px;

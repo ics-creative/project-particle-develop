@@ -152,7 +152,6 @@ body {
       }
 
       div.templateListItem {
-        padding: 6px;
         cursor: pointer;
         margin-top: 0;
 
@@ -161,7 +160,9 @@ body {
         }
 
         &:hover {
-          background: #222;
+          img {
+            border: 1px solid #999;
+          }
         }
 
         h4 {

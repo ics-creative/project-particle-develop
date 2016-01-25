@@ -6,9 +6,8 @@ export class ParticleParamater {
   constructor() {
     this.list = [];
 
-    this.list.push(this.setting0);
-    this.list.push(this.setting1);
     this.list.push(this.setting2);
+    this.list.push(this.setting0);
     this.list.push(this.setting3);
     this.list.push(this.setting4);
     this.list.push(this.setting9);
@@ -16,17 +15,19 @@ export class ParticleParamater {
     this.list.push(this.setting6);
     this.list.push(this.setting7);
     this.list.push(this.setting8);
+    this.list.push(this.setting10);
+    this.list.push(this.setting1);
   }
 
   private setting0 = {
     name: "Basic",
-    description : "プレーンなテンプレート",
+    description : "This is Basic Template",
     imageId : "basic",
     property:
     {"bgColor":"#00000","width":481.3333333333333,"height":366.6666666666667,"emitFrequency":"60","lifeSpan":"103","lifeSpanVariance":"0","initialDirection":"0","initialDirectionVariance":"360","initialSpeed":"7.5","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.5","startScaleVariance":"0","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":240.66666666666666,"startXVariance":"0","startY":183.33333333333334,"startYVariance":"0","shapeIdList":["circle"],"startColor":{"hue":"0","hueVariance":"0","satuation":"100","satuationVariance":0,"luminance":"50","luminanceVariance":0},"blendMode":false,"alphaCurveType":"0"}
   };
   private setting1 = {
-    name: "グラフィック",
+    name: "Abstract",
     description : "シンプルに動く丸や星や四角形",
     imageId : "graphic",
     property:
@@ -34,7 +35,7 @@ export class ParticleParamater {
   };
 
   private setting2 = {
-    name: "紫色のパーティクル",
+    name: "Purple",
     description: "紫の丸がキラキラしながら上方向に移動",
     imageId : "parple",
     property:
@@ -42,14 +43,14 @@ export class ParticleParamater {
   };
 
   setting3 = {
-    name: "炎",
+    name: "Fire",
     description: "赤いぼけ玉を上方向に移動",
     imageId : "fire",
     property:
     {"bgColor":"#00000","width":481.3333333333333,"height":366.6666666666667,"emitFrequency":"200","lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"49","initialDirectionVariance":"360","initialSpeed":"3.8","initialSpeedVariance":"7.4","friction":"0.063","accelerationSpeed":"0.142","accelerationDirection":"275.8","startScale":"0.93","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0","finishAlphaVariance":0.5,"startX":240.66666666666666,"startXVariance":"128","startY":183.33333333333334,"startYVariance":"148","shapeIdList":["blur_circle"],"startColor":{"hue":"17","hueVariance":"32","satuation":"91","satuationVariance":0,"luminance":"56","luminanceVariance":"16"},"blendMode":true,"alphaCurveType":"1"}
   };
   private setting4 = {
-    name: "魂",
+    name: "Spirit",
     description: "白に近いぼけ玉をキラキラさせた",
     imageId : "spirit",
     property:
@@ -65,7 +66,7 @@ export class ParticleParamater {
   };
 
   private setting6 = {
-    name: "粉雪",
+    name: "Snow",
     description: "白いボケ玉をランダムに移動",
     imageId : "snow",
     property: {
@@ -114,26 +115,36 @@ export class ParticleParamater {
       "blendMode": true,
       "alphaCurveType": "0"
     }
-  }
+  };
 
   private setting7 = {
-    name : "隕石",
+    name : "Commet",
     description : "赤い火球の落下を想定",
     imageId : "commet",
     property :
       {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":300,"lifeSpan":"40","lifeSpanVariance":"0","initialDirection":"209.5","initialDirectionVariance":"155","initialSpeed":"2.6","initialSpeedVariance":"3.8","friction":"0.0085","accelerationSpeed":"0.835","accelerationDirection":"233.2","startScale":"1","startScaleVariance":"0.52","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"1","finishAlphaVariance":"0","startX":320,"startXVariance":"0","startY":349,"startYVariance":"0","shapeIdList":["blur_circle"],"startColor":{"hue":"17","hueVariance":"32","satuation":"100","satuationVariance":"45","luminance":"56","luminanceVariance":"19"},"blendMode":true,"alphaCurveType":"0"}
-  }
+  };
   private setting8 = {
-    name : "ピンクの世界",
+    name : "Heart",
     description : "ハートマークを上方向に移動",
     imageId : "heart_world",
     property :
       {"bgColor":"#00000","width":611.3333333333334,"height":624.6666666666666,"emitFrequency":60,"lifeSpan":"136","lifeSpanVariance":"27","initialDirection":"270","initialDirectionVariance":"360","initialSpeed":"1","initialSpeedVariance":"0","friction":"0.071","accelerationSpeed":"0.1045","accelerationDirection":"270","startScale":"0.5","startScaleVariance":"1","finishScale":"0","finishScaleVariance":"0","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.8","finishAlphaVariance":"0","startX":309,"startXVariance":"597","startY":516,"startYVariance":"165","shapeIdList":["heart"],"startColor":{"hue":"335","hueVariance":"0","satuation":"78","satuationVariance":"0","luminance":"59","luminanceVariance":"50"},"blendMode":true,"alphaCurveType":"1"}
-  }
+  };
+
+  private setting10 = {
+    name : "Blue Light",
+    description : "ハートマークを上方向に移動",
+    imageId : "blue_light",
+    property :
+      {"width":512,"height":512,"startX":146,"startY":251,"bgColor":"#00000","initialDirection":0,"initialDirectionVariance":"360","finishScale":0.18,"finishScaleVariance":0.68,"startAlpha":"1","startAlphaVariance":"0","emitFrequency":129,"lifeSpan":60,"lifeSpanVariance":80,"initialSpeed":18.8,"initialSpeedVariance":"3.7","friction":0.1165,"accelerationSpeed":0.4705,"accelerationDirection":"360","startScale":0.88,"startScaleVariance":"1","finishAlpha":0.51,"finishAlphaVariance":0.5,"startXVariance":73,"startYVariance":43,"shapeIdList":["circle","blur_circle"],"startColor":{"hue":195,"hueVariance":21,"satuation":70,"satuationVariance":"0","luminance":77,"luminanceVariance":37},"blendMode":true,"alphaCurveType":"1"}
+  };
+
   private setting9 = {
-    name : "キラキラ",
+    name : "Sparticle",
     description : "星やぼけ玉を使用し、ちらつき",
     imageId : "green_kirakira",
     property :
       {"bgColor":"#00000","width":481.3333333333333,"height":366.6666666666667,"emitFrequency":"38","lifeSpan":"27","lifeSpanVariance":"93","initialDirection":"0","initialDirectionVariance":"0","initialSpeed":"0","initialSpeedVariance":"0","friction":"0","accelerationSpeed":"0","accelerationDirection":"0","startScale":"0.98","startScaleVariance":"1","finishScale":"0.07","finishScaleVariance":"0.23","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0.34","finishAlphaVariance":0.5,"startX":240.66666666666666,"startXVariance":"570","startY":183.33333333333334,"startYVariance":"98","shapeIdList":["blur_circle","kirakira2","kirakira","star"],"startColor":{"hue":"88","hueVariance":"99","satuation":"76","satuationVariance":"0","luminance":"77","luminanceVariance":"46"},"blendMode":true,"alphaCurveType":"1"}
+    };
 }
