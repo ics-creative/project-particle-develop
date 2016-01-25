@@ -65,10 +65,10 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                     fileReader.readAsText(file);
                 };
                 DesktopIoBox.prototype.selectEn = function () {
-                    locale_manager_1.LocaleManager.changeLocale(this.localeData, new locale_en_1.LocaleEnData());
+                    new locale_manager_1.LocaleManager().changeLocale(this.localeData, new locale_en_1.LocaleEnData());
                 };
                 DesktopIoBox.prototype.selectJa = function () {
-                    locale_manager_1.LocaleManager.changeLocale(this.localeData, new locale_ja_1.LocaleJaData());
+                    new locale_manager_1.LocaleManager().changeLocale(this.localeData, new locale_ja_1.LocaleJaData());
                 };
                 DesktopIoBox = __decorate([
                     core_1.Component({

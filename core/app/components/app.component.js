@@ -69,10 +69,12 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     this.drawingData.startY = Math.round(sh / 2);
                     this.drawingData.width = sw;
                     this.drawingData.height = sh;
-                    locale_manager_1.LocaleManager.applyClientLocale(localeData);
+                    new locale_manager_1.LocaleManager().applyClientLocale(localeData);
                 }
                 AppComponent.prototype.ngAfterViewInit = function () {
                     this.adjustUi();
+                    var lang = new locale_manager_1.LocaleManager().checkLocale();
+                    var langLong = lang == "ja" ? "ja_JP" : "en_EN";
                     (function (d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0];
                         if (d.getElementById(id))
@@ -97,7 +99,7 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                             return;
                         js = d.createElement(s);
                         js.id = id;
-                        js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v2.5&appId=566926136738876";
+                        js.src = "//connect.facebook.net/" + langLong + "/sdk.js#xfbml=1&version=v2.5&appId=566926136738876";
                         fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));
                 };

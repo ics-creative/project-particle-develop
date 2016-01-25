@@ -65,11 +65,11 @@ export class DesktopIoBox {
 
 
   private selectEn():void {
-    LocaleManager.changeLocale(this.localeData, new LocaleEnData());
+    new LocaleManager().changeLocale(this.localeData, new LocaleEnData());
   }
 
   private selectJa():void {
-    LocaleManager.changeLocale(this.localeData, new LocaleJaData());
+    new LocaleManager().changeLocale(this.localeData, new LocaleJaData());
   }
 
 }
