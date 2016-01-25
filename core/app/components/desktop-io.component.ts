@@ -7,7 +7,7 @@ import {ElementRef} from "angular2/core";
 
 @Component({
   selector: "desktop-io-box",
-  templateUrl: "app/components/template/desktop-io-box.html",
+  templateUrl: "app/components-html/desktop-io-box.html",
   inputs: ["drawingData"],
   events: [
     "exportSvgEvent",

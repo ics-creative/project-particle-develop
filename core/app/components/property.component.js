@@ -44,7 +44,7 @@ System.register(["angular2/core", "./property-color-unit.component", "./property
                 PropertyPanel = __decorate([
                     core_1.Component({
                         selector: "property-panel",
-                        templateUrl: "app/components/template/property.html",
+                        templateUrl: "app/components-html/property.html",
                         inputs: ["drawingData"],
                         directives: [
                             property_color_unit_component_1.PropertyColorUnit,

@@ -9,7 +9,7 @@ import {OnInit} from "angular2/core";
 
 @Component({
   selector: "particle-template-property-panel",
-  templateUrl: "app/components/template/property-template.html",
+  templateUrl: "app/components-html/property-template.html",
   inputs: ["drawingData", "templateList"]
 })
 

@@ -16,7 +16,7 @@ interface TestObject {
 
 @Component({
   selector: "color-property-panel",
-  templateUrl: "app/components/template/property-color.html",
+  templateUrl: "app/components-html/property-color.html",
   inputs: ["drawingData"],
   directives: [PropertyColorUnit, InputRangeComponent, FORM_DIRECTIVES]
 })

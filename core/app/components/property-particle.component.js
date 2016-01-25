@@ -26,7 +26,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 PropertyParticlePanel = __decorate([
                     core_1.Component({
                         selector: "particle-property-panel",
-                        templateUrl: "app/components/template/property-particle.html",
+                        templateUrl: "app/components-html/property-particle.html",
                         inputs: ["drawingData", "shapeIdList"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 

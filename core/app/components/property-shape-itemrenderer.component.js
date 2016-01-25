@@ -42,7 +42,7 @@ System.register(["angular2/core"], function(exports_1) {
                 PropertyShapeItemRenderer = __decorate([
                     core_1.Component({
                         selector: "shape-itemrenderer",
-                        templateUrl: "app/components/template/property-shape-itemrenderer.html",
+                        templateUrl: "app/components-html/property-shape-itemrenderer.html",
                         inputs: ["shapeId"]
                     }), 
                     __metadata('design:paramtypes', [])

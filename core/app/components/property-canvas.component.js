@@ -26,7 +26,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 PropertyCanvasPanel = __decorate([
                     core_1.Component({
                         selector: "canvas-property-panel",
-                        templateUrl: "app/components/template/property-canvas.html",
+                        templateUrl: "app/components-html/property-canvas.html",
                         inputs: ["drawingData"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 

@@ -16,7 +16,7 @@ import {CanvasMargin} from "../enum/canvas-margin";
 
 @Component({
   selector: `my-app`,
-  templateUrl: "app/components/template/app.html",
+  templateUrl: "app/components-html/app.html",
   directives: [
     StageComponent,
     PropertyPanel,

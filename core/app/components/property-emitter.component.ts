@@ -8,7 +8,7 @@ import {InputRangeComponent} from "./input-range.component";
 
 @Component({
   selector: "emitter-property-panel",
-  templateUrl: "app/components/template/property-emitter.html",
+  templateUrl: "app/components-html/property-emitter.html",
   inputs: ["drawingData", "shapeIdList"],
   directives: [InputRangeComponent]
 })

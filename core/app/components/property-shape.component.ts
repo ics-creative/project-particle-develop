@@ -8,7 +8,7 @@ import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component
 
 @Component({
   selector: "shape-property-panel",
-  templateUrl: "app/components/template/property-shape.html",
+  templateUrl: "app/components-html/property-shape.html",
   inputs: ["drawingData", "shapeIdList"],
   directives: [PropertyShapeItemRenderer]
 })

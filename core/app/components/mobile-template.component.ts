@@ -9,7 +9,7 @@ import {OnInit} from "angular2/core";
 
 @Component({
   selector: "mobile-particle-template-property-modal",
-  templateUrl: "app/components/template/property-template.html",
+  templateUrl: "app/components-html/property-template.html",
   inputs: ["drawingData", "templateList"]
 })
 

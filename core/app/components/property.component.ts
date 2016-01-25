@@ -13,7 +13,7 @@ import {PropertyCanvasPanel} from "./property-canvas.component";
 
 @Component({
   selector: "property-panel",
-  templateUrl: "app/components/template/property.html",
+  templateUrl: "app/components-html/property.html",
   inputs: ["drawingData"],
   directives: [
     PropertyColorUnit,

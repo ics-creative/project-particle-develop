@@ -26,7 +26,7 @@ System.register(["angular2/core", "./input-range.component"], function(exports_1
                 PropertyEmitterPanel = __decorate([
                     core_1.Component({
                         selector: "emitter-property-panel",
-                        templateUrl: "app/components/template/property-emitter.html",
+                        templateUrl: "app/components-html/property-emitter.html",
                         inputs: ["drawingData", "shapeIdList"],
                         directives: [input_range_component_1.InputRangeComponent]
                     }), 

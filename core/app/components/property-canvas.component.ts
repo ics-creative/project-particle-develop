@@ -6,7 +6,7 @@ import {InputRangeComponent} from "./input-range.component";
 
 @Component({
   selector: "canvas-property-panel",
-  templateUrl: "app/components/template/property-canvas.html",
+  templateUrl: "app/components-html/property-canvas.html",
   inputs: ["drawingData"],
   directives: [InputRangeComponent]
 })

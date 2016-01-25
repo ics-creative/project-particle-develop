@@ -35,7 +35,7 @@ System.register(["angular2/core", "../assets/particle-paramater"], function(expo
                 PropertyTemplatePanel = __decorate([
                     core_1.Component({
                         selector: "particle-template-property-panel",
-                        templateUrl: "app/components/template/property-template.html",
+                        templateUrl: "app/components-html/property-template.html",
                         inputs: ["drawingData", "templateList"]
                     }), 
                     __metadata('design:paramtypes', [])

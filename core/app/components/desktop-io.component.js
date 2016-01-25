@@ -84,7 +84,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 DesktopIOBox = __decorate([
                     core_1.Component({
                         selector: "desktop-io-box",
-                        templateUrl: "app/components/template/desktop-io-box.html",
+                        templateUrl: "app/components-html/desktop-io-box.html",
                         inputs: ["drawingData"],
                         events: [
                             "exportSvgEvent",

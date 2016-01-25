@@ -44,7 +44,7 @@ System.register(["angular2/core", "../data/data-shape", "./property-shape-itemre
                 PropertyShapePanel = __decorate([
                     core_1.Component({
                         selector: "shape-property-panel",
-                        templateUrl: "app/components/template/property-shape.html",
+                        templateUrl: "app/components-html/property-shape.html",
                         inputs: ["drawingData", "shapeIdList"],
                         directives: [property_shape_itemrenderer_component_1.PropertyShapeItemRenderer]
                     }), 

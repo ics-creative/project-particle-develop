@@ -39,7 +39,7 @@ System.register(["angular2/core", "./property-color-unit.component", "./input-ra
                 PropertyColorPanel = __decorate([
                     core_1.Component({
                         selector: "color-property-panel",
-                        templateUrl: "app/components/template/property-color.html",
+                        templateUrl: "app/components-html/property-color.html",
                         inputs: ["drawingData"],
                         directives: [property_color_unit_component_1.PropertyColorUnit, input_range_component_1.InputRangeComponent, common_1.FORM_DIRECTIVES]
                     }), 

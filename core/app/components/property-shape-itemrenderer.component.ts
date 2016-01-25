@@ -9,7 +9,7 @@ import {AfterViewInit} from "angular2/core";
 
 @Component({
   selector: "shape-itemrenderer",
-  templateUrl: "app/components/template/property-shape-itemrenderer.html",
+  templateUrl: "app/components-html/property-shape-itemrenderer.html",
   inputs: ["shapeId"]
 })
 

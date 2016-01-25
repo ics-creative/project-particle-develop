@@ -36,7 +36,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 MobileIOBox = __decorate([
                     core_1.Component({
                         selector: "mobile-io-box",
-                        templateUrl: "app/components/template/mobile-io-box.html",
+                        templateUrl: "app/components-html/mobile-io-box.html",
                         inputs: ["drawingData"],
                         events: [
                             "exportPngEvent",

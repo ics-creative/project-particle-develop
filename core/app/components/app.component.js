@@ -113,7 +113,7 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
-                        templateUrl: "app/components/template/app.html",
+                        templateUrl: "app/components-html/app.html",
                         directives: [
                             stage_component_1.StageComponent,
                             property_component_1.PropertyPanel,

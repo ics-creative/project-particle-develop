@@ -8,7 +8,7 @@ import {InputRangeComponent} from "./input-range.component";
 
 @Component({
   selector: "particle-property-panel",
-  templateUrl: "app/components/template/property-particle.html",
+  templateUrl: "app/components-html/property-particle.html",
   inputs: ["drawingData", "shapeIdList"],
   directives: [InputRangeComponent]
 })

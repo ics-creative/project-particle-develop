@@ -7,7 +7,7 @@ import {ElementRef} from "angular2/core";
 
 @Component({
   selector: "mobile-io-box",
-  templateUrl: "app/components/template/mobile-io-box.html",
+  templateUrl: "app/components-html/mobile-io-box.html",
   inputs: ["drawingData"],
   events: [
     "exportPngEvent",
