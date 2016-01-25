@@ -11,7 +11,7 @@ System.register([], function(exports_1) {
                 function Ruler(_data) {
                     var _this = this;
                     this._data = _data;
-                    this.FONT_COLOR = "#888";
+                    this.FONT_COLOR = "#444";
                     this._isMouseDown = false;
                     this.container = new createjs.Container();
                     this._shapeBg = new createjs.Shape();

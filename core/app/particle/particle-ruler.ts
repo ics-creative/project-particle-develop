@@ -6,7 +6,7 @@ import {DrawingData} from "../data/data-drawing";
  */
 export class Ruler {
 
-  private FONT_COLOR = "#888";
+  private FONT_COLOR = "#444";
 
   public container:createjs.Container;
   private _shapeBg:createjs.Shape;
