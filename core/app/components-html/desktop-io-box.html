@@ -6,10 +6,11 @@
       <li><a (click)="exportSvg()">SVG</a></li>
       <li><a (click)="exportPng()">PNG</a></li>
       <li><a (click)="exportJpg()">JPEG</a></li>
+      <li><a (click)="exportWebp()">WebP (Only Chrome)</a></li>
     </ul>
   </li>
-  <li><a (click)="exportParamater()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
-  <li><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
+  <li style="display: none;"><a (click)="exportParamater()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
+  <li style="display: none;"><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
 
   <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i>
