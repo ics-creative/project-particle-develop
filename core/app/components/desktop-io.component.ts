@@ -1,8 +1,9 @@
-import {LocaleData} from "../i18n/locale-data";
-import {Component} from "angular2/core";
+import {Component, EventEmitter} from "angular2/core";
 import {DrawingData} from "../data/data-drawing";
-import {EventEmitter} from 'angular2/core';
-import {ElementRef} from "angular2/core";
+import {LocaleData} from "../i18n/locale-data";
+import {LocaleEnData} from "../i18n/locale-en";
+import {LocaleJaData} from "../i18n/locale-ja";
+import {LocaleManager} from "../i18n/locale-manager";
 
 "use strict";
 
@@ -18,14 +19,15 @@ import {ElementRef} from "angular2/core";
   ]
 })
 
-export class DesktopIOBox {
-  private exportSvgEvent = new EventEmitter();
-  private exportPngEvent = new EventEmitter();
-  private exportJpgEvent = new EventEmitter();
-  private exportParamaterEvent = new EventEmitter();
-
+export class DesktopIoBox {
+  private exportSvgEvent:EventEmitter = new EventEmitter();
+  private exportPngEvent:EventEmitter = new EventEmitter();
+  private exportJpgEvent:EventEmitter = new EventEmitter();
+  private exportParamaterEvent:EventEmitter = new EventEmitter();
   private drawingData:DrawingData;
-  private element:ElementRef;
+
+  constructor(private localeData:LocaleData) {
+  }
 
   public exportParamater():void {
     this.exportParamaterEvent.emit(null);
@@ -48,7 +50,6 @@ export class DesktopIOBox {
   }
 
   private importParameterFile(file:File):void {
-
     // ファイルの内容は FileReader で読み込みます.
     let fileReader = new FileReader();
     fileReader.onload = (event) => {
@@ -61,38 +62,14 @@ export class DesktopIOBox {
     fileReader.readAsText(file);
   }
 
-  constructor(element:ElementRef, private localeData:LocaleData) {
-    this.element = element;
-    this.setDragAndDropSettings(element);
+
+
+  private selectEn():void {
+    LocaleManager.changeLocale(this.localeData, new LocaleEnData());
   }
 
-  private setDragAndDropSettings(element:ElementRef):void {
-    /** documentにドラッグされた場合 / ドロップされた場合 */
-    document.ondragover = document.ondrop = function (e:Event) {
-      e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-      return false;
-    };
-
-    let holder = element.nativeElement;
-    /** hoverエリアにドラッグされた場合 */
-    holder.ondragover = function () {
-      return false;
-    };
-    /** hoverエリアから外れた or ドラッグが終了した */
-    holder.ondragleave = holder.ondragend = function () {
-      return false;
-    };
-    /** hoverエリアにドロップされた */
-    holder.ondrop = this.onDrop;
-  }
-
-  private onDrop(event:any) {
-    event.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-
-    let file = event.dataTransfer.files[0];
-    this.importParameterFile(file);
-
-    return false;
+  private selectJa():void {
+    LocaleManager.changeLocale(this.localeData, new LocaleJaData());
   }
 
 }

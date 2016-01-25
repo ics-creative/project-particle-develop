@@ -1,4 +1,4 @@
-System.register(["../i18n/locale-data", "angular2/core", 'angular2/core'], function(exports_1) {
+System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", "../i18n/locale-ja", "../i18n/locale-manager"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,48 +8,51 @@ System.register(["../i18n/locale-data", "angular2/core", 'angular2/core'], funct
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var locale_data_1, core_1, core_2, core_3;
-    var DesktopIOBox;
+    var core_1, locale_data_1, locale_en_1, locale_ja_1, locale_manager_1;
+    var DesktopIoBox;
     return {
         setters:[
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
             function (locale_data_1_1) {
                 locale_data_1 = locale_data_1_1;
             },
-            function (core_1_1) {
-                core_1 = core_1_1;
-                core_3 = core_1_1;
+            function (locale_en_1_1) {
+                locale_en_1 = locale_en_1_1;
             },
-            function (core_2_1) {
-                core_2 = core_2_1;
+            function (locale_ja_1_1) {
+                locale_ja_1 = locale_ja_1_1;
+            },
+            function (locale_manager_1_1) {
+                locale_manager_1 = locale_manager_1_1;
             }],
         execute: function() {
             "use strict";
-            DesktopIOBox = (function () {
-                function DesktopIOBox(element, localeData) {
+            DesktopIoBox = (function () {
+                function DesktopIoBox(localeData) {
                     this.localeData = localeData;
-                    this.exportSvgEvent = new core_2.EventEmitter();
-                    this.exportPngEvent = new core_2.EventEmitter();
-                    this.exportJpgEvent = new core_2.EventEmitter();
-                    this.exportParamaterEvent = new core_2.EventEmitter();
-                    this.element = element;
-                    this.setDragAndDropSettings(element);
+                    this.exportSvgEvent = new core_1.EventEmitter();
+                    this.exportPngEvent = new core_1.EventEmitter();
+                    this.exportJpgEvent = new core_1.EventEmitter();
+                    this.exportParamaterEvent = new core_1.EventEmitter();
                 }
-                DesktopIOBox.prototype.exportParamater = function () {
+                DesktopIoBox.prototype.exportParamater = function () {
                     this.exportParamaterEvent.emit(null);
                 };
-                DesktopIOBox.prototype.exportSvg = function () {
+                DesktopIoBox.prototype.exportSvg = function () {
                     this.exportSvgEvent.emit(null);
                 };
-                DesktopIOBox.prototype.exportPng = function () {
+                DesktopIoBox.prototype.exportPng = function () {
                     this.exportPngEvent.emit(null);
                 };
-                DesktopIOBox.prototype.exportJpg = function () {
+                DesktopIoBox.prototype.exportJpg = function () {
                     this.exportJpgEvent.emit(null);
                 };
-                DesktopIOBox.prototype.selectParameterFile = function (obj) {
+                DesktopIoBox.prototype.selectParameterFile = function (obj) {
                     this.importParameterFile(obj.target.files[0]);
                 };
-                DesktopIOBox.prototype.importParameterFile = function (file) {
+                DesktopIoBox.prototype.importParameterFile = function (file) {
                     var _this = this;
                     // ファイルの内容は FileReader で読み込みます.
                     var fileReader = new FileReader();
@@ -61,31 +64,13 @@ System.register(["../i18n/locale-data", "angular2/core", 'angular2/core'], funct
                     };
                     fileReader.readAsText(file);
                 };
-                DesktopIOBox.prototype.setDragAndDropSettings = function (element) {
-                    /** documentにドラッグされた場合 / ドロップされた場合 */
-                    document.ondragover = document.ondrop = function (e) {
-                        e.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-                        return false;
-                    };
-                    var holder = element.nativeElement;
-                    /** hoverエリアにドラッグされた場合 */
-                    holder.ondragover = function () {
-                        return false;
-                    };
-                    /** hoverエリアから外れた or ドラッグが終了した */
-                    holder.ondragleave = holder.ondragend = function () {
-                        return false;
-                    };
-                    /** hoverエリアにドロップされた */
-                    holder.ondrop = this.onDrop;
+                DesktopIoBox.prototype.selectEn = function () {
+                    locale_manager_1.LocaleManager.changeLocale(this.localeData, new locale_en_1.LocaleEnData());
                 };
-                DesktopIOBox.prototype.onDrop = function (event) {
-                    event.preventDefault(); // イベントの伝搬を止めて、アプリケーションのHTMLとファイルが差し替わらないようにする
-                    var file = event.dataTransfer.files[0];
-                    this.importParameterFile(file);
-                    return false;
+                DesktopIoBox.prototype.selectJa = function () {
+                    locale_manager_1.LocaleManager.changeLocale(this.localeData, new locale_ja_1.LocaleJaData());
                 };
-                DesktopIOBox = __decorate([
+                DesktopIoBox = __decorate([
                     core_1.Component({
                         selector: "desktop-io-box",
                         templateUrl: "app/components-html/desktop-io-box.html",
@@ -97,11 +82,11 @@ System.register(["../i18n/locale-data", "angular2/core", 'angular2/core'], funct
                             "exportParamaterEvent"
                         ]
                     }), 
-                    __metadata('design:paramtypes', [core_3.ElementRef, locale_data_1.LocaleData])
-                ], DesktopIOBox);
-                return DesktopIOBox;
+                    __metadata('design:paramtypes', [locale_data_1.LocaleData])
+                ], DesktopIoBox);
+                return DesktopIoBox;
             })();
-            exports_1("DesktopIOBox", DesktopIOBox);
+            exports_1("DesktopIoBox", DesktopIoBox);
         }
     }
 });
