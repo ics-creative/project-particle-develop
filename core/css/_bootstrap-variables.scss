@@ -10,7 +10,7 @@ $bootstrap-sass-asset-helper: false !default;
 
 $gray-base:              #000 !default;
 $gray-darker:            #272B30 !default; // #222
-$gray-dark:              #303234 !default;   // #333
+$gray-dark:              #323232 !default;   // #333
 $gray:                   #52575C !default; // #555
 $gray-light:             #404040 !default;   // #999
 $gray-lighter:           #999 !default; // #eee
@@ -103,7 +103,7 @@ $padding-xs-horizontal:     5px !default;
 $line-height-large:         1.3333333 !default; // extra decimals for Win 8.1 Chrome
 $line-height-small:         1.5 !default;
 
-$border-radius-base:        4px !default;
+$border-radius-base:        0px !default;
 $border-radius-large:       6px !default;
 $border-radius-small:       3px !default;
 
@@ -358,7 +358,7 @@ $container-lg:                 $container-large-desktop !default;
 //##
 
 // Basics of a navbar
-$navbar-height:                    50px !default;
+$navbar-height:                    24px !default;
 $navbar-margin-bottom:             $line-height-computed !default;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
@@ -703,7 +703,7 @@ $list-group-link-heading-color: #fff !default;
 //
 //##
 
-$panel-bg:                    lighten($body-bg, 3%) !default;
+$panel-bg:                    $body-bg !default;
 $panel-body-padding:          15px !default;
 $panel-heading-padding:       10px 15px !default;
 $panel-footer-padding:        $panel-heading-padding !default;
