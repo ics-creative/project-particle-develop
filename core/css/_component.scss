@@ -212,6 +212,32 @@ h1 {
         border: none;
       }
     }
+
+    .gradation-box-hue {
+      width: 80%;
+      height: 1px;
+      background-image: linear-gradient(to right, hsl(0, 100%, 50%) 0%,
+              hsl(72, 100%, 50%) 20%,
+              hsl(144, 100%, 50%) 40%,
+              hsl(216, 100%, 50%) 60%,
+              hsl(288, 100%, 50%) 80%,
+              hsl(360, 100%, 50%) 100%);
+    }
+
+    .gradation-box-saturation {
+      width: 80%;
+      height: 1px;
+      background-image: linear-gradient(to right, hsl(0, 0%, 50%) 0%,
+              hsl(0, 100%, 50%) 100%);
+    }
+
+    .gradation-box-luminance {
+      width: 80%;
+      height: 1px;
+      background-image: linear-gradient(to right, hsl(0, 0%, 0%) 0%,
+              hsl(0, 0%, 100%) 100%);
+    }
+
   }
 
   .inputRangeContainer {

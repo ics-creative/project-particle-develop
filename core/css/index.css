@@ -7972,6 +7972,21 @@ h1 {
   background: #2a2a2a;
   border: none;
 }
+#wrapper #propertyPanel .gradation-box-hue {
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, red 0%, #ccff00 20%, #00ff66 40%, #0066ff 60%, #cc00ff 80%, red 100%);
+}
+#wrapper #propertyPanel .gradation-box-saturation {
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, gray 0%, red 100%);
+}
+#wrapper #propertyPanel .gradation-box-luminance {
+  width: 80%;
+  height: 1px;
+  background-image: linear-gradient(to right, black 0%, white 100%);
+}
 #wrapper .inputRangeContainer {
   display: flex;
   -webkit-align-items: center;
