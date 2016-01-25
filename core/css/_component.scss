@@ -102,7 +102,7 @@ h1 {
 
       .panel-mybody {
         background: #323232;
-        height: calc(100% - 80px);
+        height: calc(100% - 60px);
 
         #myTabContent {
           height: 100%;
@@ -174,7 +174,8 @@ h1 {
     }
 
     hr {
-      border-bottom: 1px solid #323232;
+      border-top: none;
+      border-bottom: 1px solid #2b2b2b;
       margin-top: 12px;
       margin-bottom: 12px;
     }
@@ -196,7 +197,7 @@ h1 {
     }
     .nav-tabs > li {
       & > a {
-        color: #888;
+        color: #d6d6d6;
         font-size: 16px;
         border-radius: 0;
         border : none;

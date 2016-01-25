@@ -7881,7 +7881,7 @@ h1 {
 }
 #wrapper #propertyPanel .panel .panel-mybody {
   background: #323232;
-  height: calc(100% - 80px);
+  height: calc(100% - 60px);
 }
 #wrapper #propertyPanel .panel .panel-mybody #myTabContent {
   height: 100%;
@@ -7941,7 +7941,8 @@ h1 {
   font-size: 12px;
 }
 #wrapper #propertyPanel hr {
-  border-bottom: 1px solid #323232;
+  border-top: none;
+  border-bottom: 1px solid #2b2b2b;
   margin-top: 12px;
   margin-bottom: 12px;
 }
@@ -7958,7 +7959,7 @@ h1 {
   background: #262626;
 }
 #wrapper #propertyPanel .nav-tabs > li > a {
-  color: #888;
+  color: #d6d6d6;
   font-size: 16px;
   border-radius: 0;
   border: none;
