@@ -36,4 +36,4 @@ System.register(["./app.component"], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=mobile-app.component.js.map
+//# sourceMappingURL=app-mobile.component.js.map

@@ -129,4 +129,4 @@ System.register(["./app.component"], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=desktop-app.component.js.map
+//# sourceMappingURL=app-desktop.component.js.map
