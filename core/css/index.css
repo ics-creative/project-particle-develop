@@ -7930,7 +7930,7 @@ body {
   border: 1px solid #555;
 }
 #wrapper #propertyPanel .panel div.templateListItem:hover {
-  background: #333;
+  background: #222;
 }
 #wrapper #propertyPanel .panel div.templateListItem h4 {
   margin-top: 3px;
@@ -8057,6 +8057,9 @@ mobile-particle-template-property-modal .media-body {
   .footer .footer_right {
     right: 10px;
   }
+}
+.footer .footer_right .logo-ics {
+  margin-left: 20px;
 }
 .footer .footer_left, .footer .footer_right {
   display: flex;

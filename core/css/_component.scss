@@ -161,7 +161,7 @@ body {
         }
 
         &:hover {
-          background: #333;
+          background: #222;
         }
 
         h4 {
@@ -316,6 +316,10 @@ mobile-particle-template-property-modal {
     right: 10px;
     @media (max-width: $screen-sm) {
       right: 10px;
+    }
+
+    .logo-ics {
+      margin-left: 20px;
     }
   }
 
