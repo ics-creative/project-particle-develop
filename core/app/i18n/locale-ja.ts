@@ -2,6 +2,15 @@ import {LocaleData} from "./locale-data";
 "use strict";
 
 export class LocaleJaData extends LocaleData {
+
+  MA_head:string = "このサイトについて";
+  MA_sentence:string = `
+Particle Developは雪や炎などのパーティクル表現が作れるHTML5製のデザインツールです。
+炎や雪の表現はベクターグラフィックとなっているので、保存したSVGファイルはAdobe Illustratorで配置したり、再編集できます。
+ベクターのパーティクルデザインツールということが、他のツールにないParticle Developの特徴です。
+  `;
+
+  H_about:string = "このサイトについて";
   H_exportImage:string = "書き出し";
   H_exportParam:string = "保存";
   H_language:string = "言語選択";

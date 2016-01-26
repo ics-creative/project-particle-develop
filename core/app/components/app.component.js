@@ -75,6 +75,9 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     this.adjustUi();
                     var lang = new locale_manager_1.LocaleManager().checkLocale();
                     var langLong = lang == "ja" ? "ja_JP" : "en_EN";
+                    if (lang != "ja") {
+                        document.title = "Particle Develop - HTML5 Vector Design Tool - ICS";
+                    }
                     (function (d, s, id) {
                         var js, fjs = d.getElementsByTagName(s)[0];
                         if (d.getElementById(id))

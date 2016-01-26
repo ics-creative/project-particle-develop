@@ -1,9 +1,16 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
-    <div class="navbar-header hidden-xs">
+    <div class="navbar-header hidden-xs" style="margin-right: 10px;">
       <h1><img src="images/ui/logo.png"/></h1>
     </div>
+
     <div class="collapse navbar-collapse">
+      <!-- Left Navi -->
+      <ul class="nav navbar-nav">
+        <li><a data-toggle="modal" data-target="#modalAbout">{{localeData.H_about}}</a></li>
+      </ul>
+
+      <!-- Right Navi -->
       <desktop-io-box [drawingData]="drawingData"
                       (exportSvgEvent)="handleSvgClick()"
                       (exportPngEvent)="handlePngClick()"
@@ -15,7 +22,8 @@
     <div class="row show-xs hidden-sm hidden-md hidden-lg">
       <mobile-io-box [drawingData]="drawingData"
                      (exportPngEvent)="handlePngClick()"
-                     (importCameraEvent)="handleCamera()"></mobile-io-box>
+                     (importCameraEvent)="handleCamera()">
+      </mobile-io-box>
     </div>
   </div>
 </nav>
@@ -52,8 +60,30 @@
   <div class="footer_right">
 
     <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>&nbsp;&nbsp;&nbsp;
-    <div class="fb-like" data-href="http://ics-web.jp/projects/particle-develop/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>&nbsp;&nbsp;&nbsp;
+    <div class="fb-like" data-href="http://ics-web.jp/projects/particle-develop/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+    &nbsp;&nbsp;&nbsp;
     <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <a href="https://ics.media" target="_blank" class="logo-ics"><img src="images/ui/Copyright.png" height="24" alt="Created By ICS INC."/></a>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="background:#323232; border-radius:0;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{localeData.MA_head}}</h4>
+      </div>
+      <div class="modal-body">
+        {{localeData.MA_sentence}}
+        <hr />
+        <p><img src="images/ui/about.png" style="width:100%;" /></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
   </div>
 </div>

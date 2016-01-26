@@ -17,6 +17,9 @@ System.register(["./locale-data"], function(exports_1) {
                 __extends(LocaleEnData, _super);
                 function LocaleEnData() {
                     _super.apply(this, arguments);
+                    this.MA_head = "What is Particle Develop";
+                    this.MA_sentence = "Particle Develop is the design tool what is able to create particle graphics such as snow and fire.\n  The graphic of particles are vector, you can save as SVG file, and edit with Adobe Illustrator.\n  ";
+                    this.H_about = "About";
                     this.H_exportImage = "Export";
                     this.H_exportParam = "Save";
                     this.H_language = "Select Language";

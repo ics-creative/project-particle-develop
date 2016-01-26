@@ -73,6 +73,10 @@ export class AppComponent implements AfterViewInit {
     let lang = new LocaleManager().checkLocale();
     let langLong = lang == "ja" ? "ja_JP" : "en_EN";
 
+    if (lang != "ja") {
+      document.title = "Particle Develop - HTML5 Vector Design Tool - ICS";
+    }
+
     (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
@@ -123,6 +127,7 @@ export class AppComponent implements AfterViewInit {
     var dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
+
   protected handleWebpClick() {
     var dataUrl = this.stageComponent.toDataURL('image/webp', null);
     window.open(dataUrl);

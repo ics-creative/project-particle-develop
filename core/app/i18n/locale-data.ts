@@ -4,6 +4,10 @@ import {Injectable} from 'angular2/core';
 
 @Injectable()
 export class LocaleData {
+  MA_head:string = null;
+  MA_sentence:string = null;
+
+  H_about:string = null;
   H_exportImage:string = null;
   H_exportParam:string = null;
   H_language:string = null;

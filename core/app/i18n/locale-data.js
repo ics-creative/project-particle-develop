@@ -19,6 +19,9 @@ System.register(['angular2/core'], function(exports_1) {
             "use strict";
             LocaleData = (function () {
                 function LocaleData() {
+                    this.MA_head = null;
+                    this.MA_sentence = null;
+                    this.H_about = null;
                     this.H_exportImage = null;
                     this.H_exportParam = null;
                     this.H_language = null;

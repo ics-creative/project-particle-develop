@@ -17,6 +17,9 @@ System.register(["./locale-data"], function(exports_1) {
                 __extends(LocaleJaData, _super);
                 function LocaleJaData() {
                     _super.apply(this, arguments);
+                    this.MA_head = "このサイトについて";
+                    this.MA_sentence = "\nParticle Develop\u306F\u96EA\u3084\u708E\u306A\u3069\u306E\u30D1\u30FC\u30C6\u30A3\u30AF\u30EB\u8868\u73FE\u304C\u4F5C\u308C\u308BHTML5\u88FD\u306E\u30C7\u30B6\u30A4\u30F3\u30C4\u30FC\u30EB\u3067\u3059\u3002\n\u708E\u3084\u96EA\u306E\u8868\u73FE\u306F\u30D9\u30AF\u30BF\u30FC\u30B0\u30E9\u30D5\u30A3\u30C3\u30AF\u3068\u306A\u3063\u3066\u3044\u308B\u306E\u3067\u3001\u4FDD\u5B58\u3057\u305FSVG\u30D5\u30A1\u30A4\u30EB\u306FAdobe Illustrator\u3067\u914D\u7F6E\u3057\u305F\u308A\u3001\u518D\u7DE8\u96C6\u3067\u304D\u307E\u3059\u3002\n\u30D9\u30AF\u30BF\u30FC\u306E\u30D1\u30FC\u30C6\u30A3\u30AF\u30EB\u30C7\u30B6\u30A4\u30F3\u30C4\u30FC\u30EB\u3068\u3044\u3046\u3053\u3068\u304C\u3001\u4ED6\u306E\u30C4\u30FC\u30EB\u306B\u306A\u3044Particle Develop\u306E\u7279\u5FB4\u3067\u3059\u3002\n  ";
+                    this.H_about = "このサイトについて";
                     this.H_exportImage = "書き出し";
                     this.H_exportParam = "保存";
                     this.H_language = "言語選択";
