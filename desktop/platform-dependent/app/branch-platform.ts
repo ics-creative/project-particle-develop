@@ -1,0 +1,16 @@
+///<reference path="system.d.ts"/>
+"use strict";
+// ----------------------------------
+// プラットフォーム分岐用のコード
+// ----------------------------------
+System.config({
+  packages: {
+    app: {
+      format: 'register',
+      defaultExtension: 'js'
+    }
+  }
+});
+
+System.import('app/boot-desktop')
+    .then(null, console.error.bind(console));

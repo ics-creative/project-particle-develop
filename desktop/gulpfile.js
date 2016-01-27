@@ -16,6 +16,16 @@ gulp.task('build-ts', function() {
     .pipe(gulp.dest('.'));
 });
 
+
+/** プラットフォーム分岐後のtsファイルのビルド */
+gulp.task('build-platform', function() {
+    var tsconfig = require("./src/tsconfig.json");
+    return gulp.src("**/*.ts")
+        .pipe(ts(tsconfig.compilerOptions))
+        .pipe(gulp.dest('.'));
+});
+
+
 /** gulpソースコードの実行 */
 gulp.task('serve', function () {
  
@@ -60,7 +70,7 @@ gulp.task("copy-dependent-sources",function (){
     return gulp.src([
             "platform-dependent/**"
         ])
-        .pipe(gulp.dest("src/app"))
+        .pipe(gulp.dest("src/"))
 });
 
 
@@ -69,6 +79,7 @@ gulp.task("build-all", function () {
         "copy-core-sources",
         "copy-dependent-sources",
         "copy-core-require-modules",
+        "build-platform",
         "build-ts"
     );
 } );
