@@ -1,4 +1,4 @@
-///<reference path="system.d.ts"/>
+///<reference path="../libs-typescript/system.d.ts"/>
 "use strict";
 // ----------------------------------
 // プラットフォーム分岐用のコード

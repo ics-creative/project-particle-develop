@@ -1,4 +1,4 @@
-///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+///<reference path="../../typings/tsd.d.ts"/>
 System.register([], function(exports_1) {
     "use strict";
     var __extends = (this && this.__extends) || function (d, b) {

@@ -1,4 +1,4 @@
-///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+///<reference path="../../typings/tsd.d.ts" />
 System.register(["../data/data-color"], function(exports_1) {
     "use strict";
     var data_color_1;
