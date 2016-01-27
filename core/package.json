@@ -1,5 +1,5 @@
 {
-  "name": "angular2-clockmaker-labs",
+  "name": "particle-develop",
   "version": "1.0.0",
   "scripts": {
     "tsc": "tsc",
@@ -7,7 +7,7 @@
     "lite": "lite-server",
     "start": "npm run lite "
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.0",
     "systemjs": "0.19.6",
