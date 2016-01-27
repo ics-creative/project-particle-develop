@@ -7,9 +7,9 @@ var sass = require('gulp-sass');;
 var del = require('del');
 var runSequence = require('run-sequence');
 
-/** ブラウザープロセスのtsファイルのビルド */
-gulp.task('build-ts', function() {
-  var tsconfig = require("./tsconfig.json");
+/** デスクトップアプリ起動用のtsファイルのビルド */
+gulp.task('build-desktop', function() {
+  var tsconfig = require("./desktop-tsconfig.json");
   var filesGLob = tsconfig.files[0];
   return gulp.src(filesGLob)
     .pipe(ts(tsconfig.compilerOptions))
@@ -37,6 +37,8 @@ gulp.task('serve', function () {
 
   // electronプロセスが終わったらプロセスの停止
   electron.on('quit', function () {process.exit(0)});
+
+  gulp.watch(['platform-dependent/**/*.*'], ["copy-dependent-sources"]);
 
   // ブラウザープロセスのリスタートは特に不要にする
   //gulp.watch(['src/browser/**/*.*'], electron.restart);
