@@ -1,5 +1,4 @@
 System.register(["./app.component"], function(exports_1) {
-    "use strict";
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -13,10 +12,11 @@ System.register(["./app.component"], function(exports_1) {
                 app_component_1 = app_component_1_1;
             }],
         execute: function() {
+            "use strict";
             DesktopAppComponent = (function (_super) {
                 __extends(DesktopAppComponent, _super);
-                function DesktopAppComponent() {
-                    _super.apply(this, arguments);
+                function DesktopAppComponent(localeData) {
+                    _super.call(this, localeData);
                 }
                 DesktopAppComponent.prototype.handleSvgClick = function () {
                     var _this = this;

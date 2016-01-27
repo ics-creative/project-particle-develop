@@ -1,8 +1,13 @@
+import {LocaleData} from "../i18n/locale-data";
 "use strict";
 
 import {AppComponent} from "./app.component";
 
 export class DesktopAppComponent extends AppComponent {
+
+  constructor(localeData:LocaleData){
+    super(localeData);
+  }
 
   protected handleSvgClick() {
     this.stageComponent.exportSvg().then(() => {
