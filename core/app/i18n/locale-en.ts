@@ -5,13 +5,13 @@ export class LocaleEnData extends LocaleData {
 
   MA_head:string = "What is Particle Develop";
   MA_sentence:string = `Particle Develop is the design tool what is able to create particle graphics such as snow and fire.
-  The graphic of particles are vector, you can save as SVG file, and edit with Adobe Illustrator.
+  The graphic of particles are vector, you can save as SVG file, and edit with Adobe Illustrator. * Please turn off the popup block of browser, if you save file.
   `;
 
   H_about:string = "About";
-  H_exportImage:string = "Export";
+  H_exportImage:string = "Export as File";
   H_exportParam:string = "Save";
-  H_language:string = "Select Language";
+  H_language:string = "Select Language (言語選択)";
 
   preview_head:string = "Preview";
   settings_head:string = "Settings";
