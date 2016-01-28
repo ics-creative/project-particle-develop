@@ -37,6 +37,7 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                     this.exportJpgEvent = new core_1.EventEmitter();
                     this.exportWebpEvent = new core_1.EventEmitter();
                     this.exportParamaterEvent = new core_1.EventEmitter();
+                    this.importParameterEvent = new core_1.EventEmitter();
                 }
                 DesktopIoBox.prototype.exportParamater = function () {
                     this.exportParamaterEvent.emit(null);
@@ -54,19 +55,8 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                     this.exportWebpEvent.emit(null);
                 };
                 DesktopIoBox.prototype.selectParameterFile = function (obj) {
-                    this.importParameterFile(obj.target.files[0]);
-                };
-                DesktopIoBox.prototype.importParameterFile = function (file) {
-                    var _this = this;
-                    // ファイルの内容は FileReader で読み込みます.
-                    var fileReader = new FileReader();
-                    fileReader.onload = function (event) {
-                        // event.target.result に読み込んだファイルの内容が入っています。
-                        var json = event.target.result;
-                        var object = JSON.parse(json);
-                        _this.drawingData.into(object);
-                    };
-                    fileReader.readAsText(file);
+                    this.lastSelectFile = obj.target.files[0];
+                    this.importParameterEvent.emit(null);
                 };
                 DesktopIoBox.prototype.selectEn = function () {
                     new locale_manager_1.LocaleManager().changeLocale(this.localeData, new locale_en_1.LocaleEnData());
@@ -84,7 +74,8 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                             "exportPngEvent",
                             "exportJpgEvent",
                             "exportWebpEvent",
-                            "exportParamaterEvent"
+                            "exportParamaterEvent",
+                            "importParameterEvent"
                         ]
                     }), 
                     __metadata('design:paramtypes', [locale_data_1.LocaleData])

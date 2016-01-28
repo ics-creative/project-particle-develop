@@ -108,30 +108,6 @@ System.register(["./app.component", "../data/platform-data", "../enum/platform-t
                         });
                     });
                 };
-                DesktopAppComponent.prototype.handleExportParamaterClick = function () {
-                    var _this = this;
-                    var electron = require('electron');
-                    var dialog = electron.remote.dialog;
-                    var options = {
-                        title: 'パラメータを保存',
-                        defaultPath: 'particle.json',
-                        filters: [
-                            { name: 'Documents', extensions: ['json'] }
-                        ]
-                    };
-                    dialog.showSaveDialog(options, function (filename) {
-                        if (!filename) {
-                            return;
-                        }
-                        var fs = require('fs');
-                        var data = JSON.stringify(_this.drawingData);
-                        fs.writeFile(filename, data, function (error) {
-                            if (error != null) {
-                                alert('error : ' + error);
-                            }
-                        });
-                    });
-                };
                 return DesktopAppComponent;
             })(app_component_1.AppComponent);
             exports_1("DesktopAppComponent", DesktopAppComponent);

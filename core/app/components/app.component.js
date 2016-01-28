@@ -145,6 +145,19 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                 AppComponent.prototype.handleExportParamaterClick = function () {
                     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
                 };
+                AppComponent.prototype.handleImportParameterClick = function () {
+                    var _this = this;
+                    var file = this.desktopIOBox.lastSelectFile;
+                    // ファイルの内容は FileReader で読み込みます.
+                    var fileReader = new FileReader();
+                    fileReader.onload = function (event) {
+                        // event.target.result に読み込んだファイルの内容が入っています。
+                        var json = event.target.result;
+                        var object = JSON.parse(json);
+                        _this.drawingData.into(object);
+                    };
+                    fileReader.readAsText(file);
+                };
                 __decorate([
                     core_2.ViewChild("stageComponent"), 
                     __metadata('design:type', stage_component_1.StageComponent)
@@ -157,6 +170,10 @@ System.register(["angular2/core", "../data/data-drawing", "./property.component"
                     core_2.ViewChild("mobileIOBox"), 
                     __metadata('design:type', mobile_io_component_1.MobileIOBox)
                 ], AppComponent.prototype, "mobileIOBox", void 0);
+                __decorate([
+                    core_2.ViewChild("desktopIOBox"), 
+                    __metadata('design:type', desktop_io_component_1.DesktopIoBox)
+                ], AppComponent.prototype, "desktopIOBox", void 0);
                 __decorate([
                     core_2.ViewChild("MobilePropertyTemplateModal"), 
                     __metadata('design:type', mobile_template_component_1.MobilePropertyTemplateModal)

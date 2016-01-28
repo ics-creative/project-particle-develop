@@ -17,7 +17,8 @@ import {PlatformData} from "../data/platform-data";
     "exportPngEvent",
     "exportJpgEvent",
     "exportWebpEvent",
-    "exportParamaterEvent"
+    "exportParamaterEvent",
+    "importParameterEvent"
   ]
 })
 
@@ -27,9 +28,11 @@ export class DesktopIoBox {
   private exportJpgEvent = new EventEmitter();
   private exportWebpEvent = new EventEmitter();
   private exportParamaterEvent = new EventEmitter();
+  private importParameterEvent = new EventEmitter();
 
   private drawingData:DrawingData;
   private platformData:PlatformData;
+  public lastSelectFile:any;
 
   constructor(private localeData:LocaleData) {
   }
@@ -55,22 +58,10 @@ export class DesktopIoBox {
   }
 
   private selectParameterFile(obj:any):void {
-    this.importParameterFile(obj.target.files[0])
+    this.lastSelectFile = obj.target.files[0];
+
+    this.importParameterEvent.emit(null);
   }
-
-  private importParameterFile(file:File):void {
-    // ファイルの内容は FileReader で読み込みます.
-    let fileReader = new FileReader();
-    fileReader.onload = (event) => {
-      // event.target.result に読み込んだファイルの内容が入っています。
-      var json = (<FileReader>event.target).result;
-      let object = JSON.parse(json);
-
-      this.drawingData.into(object);
-    };
-    fileReader.readAsText(file);
-  }
-
 
   private selectEn():void {
     new LocaleManager().changeLocale(this.localeData, new LocaleEnData());
