@@ -1,15 +1,21 @@
-System.register(["./app.component"], function(exports_1) {
+System.register(["./app.component", "../data/platform-data", "../enum/platform-type"], function(exports_1) {
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
-    var app_component_1;
+    var app_component_1, platform_data_1, platform_type_1;
     var DesktopAppComponent;
     return {
         setters:[
             function (app_component_1_1) {
                 app_component_1 = app_component_1_1;
+            },
+            function (platform_data_1_1) {
+                platform_data_1 = platform_data_1_1;
+            },
+            function (platform_type_1_1) {
+                platform_type_1 = platform_type_1_1;
             }],
         execute: function() {
             "use strict";
@@ -18,6 +24,9 @@ System.register(["./app.component"], function(exports_1) {
                 function DesktopAppComponent(localeData) {
                     _super.call(this, localeData);
                 }
+                DesktopAppComponent.prototype.getPlatformData = function () {
+                    return new platform_data_1.PlatformData(platform_type_1.PlatformType.Desktop);
+                };
                 DesktopAppComponent.prototype.handleSvgClick = function () {
                     var _this = this;
                     this.stageComponent.exportSvg().then(function () {
@@ -129,4 +138,3 @@ System.register(["./app.component"], function(exports_1) {
         }
     }
 });
-//# sourceMappingURL=app-desktop.component.js.map

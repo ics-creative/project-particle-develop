@@ -82,7 +82,7 @@ gulp.task("build-all", function () {
         "copy-dependent-sources",
         "copy-core-require-modules",
         "build-platform",
-        "build-ts"
+        "build-desktop"
     );
 } );
 
