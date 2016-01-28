@@ -21,6 +21,9 @@ System.register(["./app.component"], function(exports_1) {
                 MobileAppComponent.prototype.handleSvgClick = function () {
                     alert("モバイルアプリでは使用不可能です");
                 };
+                MobileAppComponent.prototype.getPlatformData = function () {
+                    return new PlatformData(PlatformType.Mobile);
+                };
                 MobileAppComponent.prototype.handlePngClick = function () {
                     this.stageComponent.runExportSP().then();
                 };

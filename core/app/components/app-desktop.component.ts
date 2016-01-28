@@ -2,11 +2,17 @@ import {LocaleData} from "../i18n/locale-data";
 "use strict";
 
 import {AppComponent} from "./app.component";
+import {PlatformData} from "../data/platform-data";
+import {PlatformType} from "../enum/platform-type";
 
 export class DesktopAppComponent extends AppComponent {
 
-  constructor(localeData:LocaleData){
+  constructor(localeData:LocaleData) {
     super(localeData);
+  }
+
+  getPlatformData() {
+    return new PlatformData(PlatformType.Desktop);
   }
 
   protected handleSvgClick() {

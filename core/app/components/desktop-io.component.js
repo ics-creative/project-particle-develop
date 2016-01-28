@@ -78,7 +78,7 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                     core_1.Component({
                         selector: "desktop-io-box",
                         templateUrl: "app/components-html/desktop-io-box.html",
-                        inputs: ["drawingData"],
+                        inputs: ["drawingData", "platformData"],
                         events: [
                             "exportSvgEvent",
                             "exportPngEvent",

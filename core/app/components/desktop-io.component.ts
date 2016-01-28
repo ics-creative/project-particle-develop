@@ -4,13 +4,14 @@ import {LocaleData} from "../i18n/locale-data";
 import {LocaleEnData} from "../i18n/locale-en";
 import {LocaleJaData} from "../i18n/locale-ja";
 import {LocaleManager} from "../i18n/locale-manager";
+import {PlatformData} from "../data/platform-data";
 
 "use strict";
 
 @Component({
   selector: "desktop-io-box",
   templateUrl: "app/components-html/desktop-io-box.html",
-  inputs: ["drawingData"],
+  inputs: ["drawingData", "platformData"],
   events: [
     "exportSvgEvent",
     "exportPngEvent",
@@ -28,6 +29,7 @@ export class DesktopIoBox {
   private exportParamaterEvent = new EventEmitter();
 
   private drawingData:DrawingData;
+  private platformData:PlatformData;
 
   constructor(private localeData:LocaleData) {
   }
@@ -47,6 +49,7 @@ export class DesktopIoBox {
   private exportJpg():void {
     this.exportJpgEvent.emit(null);
   }
+
   private exportWebp():void {
     this.exportWebpEvent.emit(null);
   }
@@ -67,7 +70,6 @@ export class DesktopIoBox {
     };
     fileReader.readAsText(file);
   }
-
 
 
   private selectEn():void {
