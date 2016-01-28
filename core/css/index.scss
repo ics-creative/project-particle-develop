@@ -81,10 +81,9 @@ $body_color: #484848;
 }
 
 .btn-primary {
-  @include btn-shadow($btn-primary-bg);
-
+  background: #424242;
   &:hover {
-    @include btn-shadow-hover($btn-primary-bg);
+    background: #1565C0;
   }
 }
 
@@ -457,7 +456,7 @@ a.list-group-item {
 
   .panel-heading {
     border-color: #000;
-    background : #323232;
+    background: #323232;
   }
 }
 
