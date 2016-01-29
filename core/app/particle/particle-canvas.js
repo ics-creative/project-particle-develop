@@ -1,5 +1,5 @@
 System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer", "./particle-ruler"], function(exports_1) {
-    ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+    ///<reference path="../../typings/tsd.d.ts" />
     "use strict";
     var view_port_1, canvas_margin_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1, particle_ruler_1;
     var ParticleCanvas;

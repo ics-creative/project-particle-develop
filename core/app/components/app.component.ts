@@ -15,6 +15,8 @@ import {LocaleJaData} from "../i18n/locale-ja";
 import {LocaleEnData} from "../i18n/locale-en";
 import {LocaleData} from "../i18n/locale-data";
 import {LocaleManager} from "../i18n/locale-manager";
+import {PlatformData} from "../data/platform-data";
+import {PlatformType} from "../enum/platform-type";
 
 "use strict";
 
@@ -33,13 +35,20 @@ import {LocaleManager} from "../i18n/locale-manager";
 
 export class AppComponent implements AfterViewInit {
   protected drawingData:DrawingData;
+  protected platformData:PlatformData;
   @ViewChild("stageComponent") stageComponent:StageComponent;
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
   @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
+  @ViewChild("desktopIOBox") desktopIOBox:DesktopIoBox;
   @ViewChild("MobilePropertyTemplateModal") mobilePropertyTemplateModal:MobilePropertyTemplateModal;
+
+  getPlatformData() {
+    return new PlatformData(PlatformType.Browser);
+  }
 
   constructor(private localeData:LocaleData) {
     this.drawingData = new DrawingData();
+    this.platformData = this.getPlatformData();
 
     // ステージサイズに対して適当な値を適用する
 
@@ -139,5 +148,21 @@ export class AppComponent implements AfterViewInit {
 
   protected handleExportParamaterClick() {
     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
+  }
+
+  protected handleImportParameterClick() {
+
+    let file = this.desktopIOBox.lastSelectFile
+     // ファイルの内容は FileReader で読み込みます.
+    let fileReader = new FileReader();
+      fileReader.onload = (event) => {
+      // event.target.result に読み込んだファイルの内容が入っています。
+      var json = (<FileReader>event.target).result;
+      let object = JSON.parse(json);
+
+      this.drawingData.into(object);
+    };
+    fileReader.readAsText(file);
+
   }
 }

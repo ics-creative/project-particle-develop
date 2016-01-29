@@ -11,12 +11,14 @@
       </ul>
 
       <!-- Right Navi -->
-      <desktop-io-box [drawingData]="drawingData"
+      <desktop-io-box #desktopIOBox [drawingData]="drawingData"
+                      [platformData]="platformData"
                       (exportSvgEvent)="handleSvgClick()"
                       (exportPngEvent)="handlePngClick()"
                       (exportJpgEvent)="handleJpgClick()"
                       (exportWebpEvent)="handleWebpClick()"
-                      (exportParamaterEvent)="handleExportParamaterClick()">
+                      (exportParamaterEvent)="handleExportParamaterClick()"
+                      (importParameterEvent)="handleImportParameterClick()">
       </desktop-io-box>
     </div>
     <div class="row show-xs hidden-sm hidden-md hidden-lg">

@@ -1,4 +1,4 @@
-///<reference path="../libs-typescript/system.d.ts"/>
+///<reference path="system.d.ts"/>
 "use strict";
 // ----------------------------------
 // プラットフォーム分岐用のコード
@@ -12,8 +12,5 @@ System.config({
   }
 });
 
-//System.import('app/boot-mobile')
-//  .then(null, console.error.bind(console));
-
-System.import('app/boot')
+System.import('app/boot-desktop')
     .then(null, console.error.bind(console));

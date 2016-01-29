@@ -1,11 +1,8 @@
-/**
- * プラットフォーム分岐用のコード
- */
-
-if (process.env.NODE_ENV === 'production') {
-    require('electron-connect').client.create();
-}
-
+///<reference path="system.d.ts"/>
+"use strict";
+// ----------------------------------
+// プラットフォーム分岐用のコード
+// ----------------------------------
 System.config({
     packages: {
         app: {

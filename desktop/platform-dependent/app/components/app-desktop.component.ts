@@ -113,30 +113,4 @@ export class DesktopAppComponent extends AppComponent {
     });
   }
 
-  protected handleExportParamaterClick() {
-    let electron = require('electron');
-    let dialog = electron.remote.dialog;
-
-    let options = {
-      title: 'パラメータを保存',
-      defaultPath: 'particle.json',
-      filters: [
-        {name: 'Documents', extensions: ['json']}
-      ]
-    };
-
-    dialog.showSaveDialog(options, (filename:string) => {
-      if (!filename) {
-        return;
-      }
-      let fs = require('fs');
-      let data = JSON.stringify(this.drawingData);
-
-      fs.writeFile(filename, data, function (error:Error) {
-        if (error != null) {
-          alert('error : ' + error);
-        }
-      });
-    });
-  }
 }

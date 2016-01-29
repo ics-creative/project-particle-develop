@@ -5,6 +5,10 @@ export class MobileAppComponent extends AppComponent {
     alert("モバイルアプリでは使用不可能です");
   }
 
+  getPlatformData() {
+    return new PlatformData(PlatformType.Mobile);
+  }
+
   protected handlePngClick() {
     this.stageComponent.runExportSP().then();
   }

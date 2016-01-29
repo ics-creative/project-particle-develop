@@ -26,3 +26,13 @@ sudo gem install compass
 # CSS フレームワーク「Bootstrap」のインストール
 sudo gem install bootstrap-sass
 ```
+
+### TypeScript の編集のために
+
+tsd ( https://github.com/DefinitelyTyped/tsd )にて「d.ts」ファイルを管理しています。
+coreディレクトリ上で、```npm install```コマンド実行後に「typings」ディレクトリが作成されなかった場合は、必要ファイルのインストールに失敗してるので以下のコマンドを実行してください。
+
+```
+# tsd.json ファイル内に記述されたファイルをインストール
+node_modules/.bin/tsd install
+```

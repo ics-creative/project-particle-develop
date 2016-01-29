@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "removeComments": true,
-    "preserveConstEnums": true,
+    "target": "ES5",
+    "module": "system",
+    "moduleResolution": "node",
     "sourceMap": true,
-    "out" : "./index.js"
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": true
   },
-  "files": [
-    "./Index.ts"
-  ],
-  "exclude": ["node_modules","src"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -7,14 +7,24 @@ var sass = require('gulp-sass');;
 var del = require('del');
 var runSequence = require('run-sequence');
 
-/** ブラウザープロセスのtsファイルのビルド */
-gulp.task('build-ts', function() {
-  var tsconfig = require("./tsconfig.json");
+/** デスクトップアプリ起動用のtsファイルのビルド */
+gulp.task('build-desktop', function() {
+  var tsconfig = require("./desktop-tsconfig.json");
   var filesGLob = tsconfig.files[0];
   return gulp.src(filesGLob)
     .pipe(ts(tsconfig.compilerOptions))
     .pipe(gulp.dest('.'));
 });
+
+
+/** プラットフォーム分岐後のtsファイルのビルド */
+gulp.task('build-platform', function() {
+    var tsconfig = require("./src/tsconfig.json");
+    return gulp.src("**/*.ts")
+        .pipe(ts(tsconfig.compilerOptions))
+        .pipe(gulp.dest('.'));
+});
+
 
 /** gulpソースコードの実行 */
 gulp.task('serve', function () {
@@ -27,6 +37,8 @@ gulp.task('serve', function () {
 
   // electronプロセスが終わったらプロセスの停止
   electron.on('quit', function () {process.exit(0)});
+
+  gulp.watch(['platform-dependent/**/*.*'], ["copy-dependent-sources"]);
 
   // ブラウザープロセスのリスタートは特に不要にする
   //gulp.watch(['src/browser/**/*.*'], electron.restart);
@@ -60,7 +72,7 @@ gulp.task("copy-dependent-sources",function (){
     return gulp.src([
             "platform-dependent/**"
         ])
-        .pipe(gulp.dest("src/app"))
+        .pipe(gulp.dest("src/"))
 });
 
 
@@ -69,7 +81,8 @@ gulp.task("build-all", function () {
         "copy-core-sources",
         "copy-dependent-sources",
         "copy-core-require-modules",
-        "build-ts"
+        "build-platform",
+        "build-desktop"
     );
 } );
 

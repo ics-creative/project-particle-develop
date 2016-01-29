@@ -1,13 +1,14 @@
 {
-  "name": "angular2-clockmaker-labs",
+  "name": "particle-develop",
   "version": "1.0.0",
   "scripts": {
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "start": "npm run lite "
+    "start": "npm run lite ",
+    "install":"tsd install"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "angular2": "2.0.0-beta.0",
     "systemjs": "0.19.6",

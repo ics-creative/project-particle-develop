@@ -1,5 +1,5 @@
 System.register([], function(exports_1) {
-    ///<reference path="../../libs-typescript/createjs/createjs.d.ts"/>
+    ///<reference path="../../typings/tsd.d.ts" />
     "use strict";
     var ParticleExporter;
     return {

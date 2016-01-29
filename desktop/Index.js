@@ -34,4 +34,3 @@ app.on("ready", function () {
         mainWindow = null;
     });
 });
-//# sourceMappingURL=index.js.map

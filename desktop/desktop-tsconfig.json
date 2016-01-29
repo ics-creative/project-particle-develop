@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "out" : "./index.js"
+  },
+  "files": [
+    "./Index.ts"
+  ],
+  "exclude": ["node_modules","src"]
+}
