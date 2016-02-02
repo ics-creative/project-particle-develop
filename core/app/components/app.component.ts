@@ -80,11 +80,16 @@ export class AppComponent implements AfterViewInit {
 
 
     let lang = new LocaleManager().checkLocale();
-    let langLong = lang == "ja" ? "ja_JP" : "en_EN";
 
     if (lang != "ja") {
       document.title = "Particle Develop - HTML5 Vector Design Tool - ICS";
     }
+
+    this.setupWidgets(lang);
+  }
+
+  protected setupWidgets(lang:string) {
+    let langLong = lang == "ja" ? "ja_JP" : "en_EN";
 
     (function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -153,9 +158,9 @@ export class AppComponent implements AfterViewInit {
   protected handleImportParameterClick() {
 
     let file = this.desktopIOBox.lastSelectFile
-     // ファイルの内容は FileReader で読み込みます.
+    // ファイルの内容は FileReader で読み込みます.
     let fileReader = new FileReader();
-      fileReader.onload = (event) => {
+    fileReader.onload = (event) => {
       // event.target.result に読み込んだファイルの内容が入っています。
       var json = (<FileReader>event.target).result;
       let object = JSON.parse(json);
