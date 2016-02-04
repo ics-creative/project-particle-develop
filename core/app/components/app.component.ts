@@ -91,29 +91,29 @@ export class AppComponent implements AfterViewInit {
   protected setupWidgets(lang:string) {
     let langLong = lang == "ja" ? "ja_JP" : "en_EN";
 
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
+    (function (d:Document, s:string, id:string) {
+      var js:HTMLScriptElement, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
-      js = d.createElement(s);
+      js = <HTMLScriptElement>d.createElement(s);
       js.id = id;
       js.src = "https://b.st-hatena.com/js/bookmark_button.js";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'hatena'));
 
-    !function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+    !function (d:Document, s:string, id:string) {
+      var js:HTMLScriptElement, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
       if (!d.getElementById(id)) {
-        js = d.createElement(s);
+        js = <HTMLScriptElement>d.createElement(s);
         js.id = id;
         js.src = p + '://platform.twitter.com/widgets.js';
         fjs.parentNode.insertBefore(js, fjs);
       }
     }(document, 'script', 'twitter-wjs');
 
-    (function (d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
+    (function (d:Document, s:string, id:string) {
+      var js:HTMLScriptElement, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
-      js = d.createElement(s);
+      js = <HTMLScriptElement>d.createElement(s);
       js.id = id;
       js.src = `//connect.facebook.net/${langLong}/sdk.js#xfbml=1&version=v2.5&appId=566926136738876`;
       fjs.parentNode.insertBefore(js, fjs);
