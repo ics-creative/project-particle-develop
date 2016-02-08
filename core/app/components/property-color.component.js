@@ -1,4 +1,4 @@
-System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.component", "./input-range.component", "angular2/common", "../enum/alpha-curve-type"], function(exports_1) {
+System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.component", "./input-range.component", "angular2/common", "../particle-system/src/enum/alpha-curve-type"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

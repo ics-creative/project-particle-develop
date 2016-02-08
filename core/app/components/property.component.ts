@@ -2,7 +2,7 @@ import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {PropertyColorUnit} from "./property-color-unit.component";
 import {ParticleParamater} from "../assets/particle-paramater";
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {PropertyEmitterPanel} from "./property-emitter.component";
 import {PropertyParticlePanel} from "./property-particle.component";
 import {PropertyColorPanel} from "./property-color.component";

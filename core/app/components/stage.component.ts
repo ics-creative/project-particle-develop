@@ -1,7 +1,7 @@
 "use strict";
 
 import {Component, ViewChild, AfterViewInit} from "angular2/core";
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {ParticleCanvas} from "../particle/particle-canvas";
 
 @Component({

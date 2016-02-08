@@ -1,7 +1,7 @@
 "use strict";
 
 import {Component} from "angular2/core";
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {EventEmitter} from 'angular2/core';
 import {ElementRef} from "angular2/core";
 

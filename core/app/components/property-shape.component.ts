@@ -1,8 +1,8 @@
 import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
+import {ShapeData} from "../particle-system/src/data/data-shape";
 import {EventEmitter} from 'angular2/core';
-import {ShapeData} from "../data/data-shape";
 import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component";
 
 "use strict";

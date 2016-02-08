@@ -1,0 +1,6 @@
+[submodule "build-particle-system/particle-system"]
+	path = build-particle-system/particle-system
+	url = https://github.com/ics-creative/createjs-particle-system.git
+[submodule "core/app/particle-system"]
+	path = core/app/particle-system
+	url = git@github.com:ics-creative/createjs-particle-system.git

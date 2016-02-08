@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type"], function(exports_1) {
+System.register(["angular2/core", "../particle-system/src/data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);

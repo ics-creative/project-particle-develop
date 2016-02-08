@@ -1,18 +1,17 @@
-System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-emitter", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer", "./particle-ruler"], function(exports_1) {
-    ///<reference path="../../typings/tsd.d.ts" />
+System.register(["../particle-system/src/particle/particle-emitter", "../enum/view-port", "../enum/canvas-margin", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer", "./particle-ruler"], function(exports_1) {
     "use strict";
-    var view_port_1, canvas_margin_1, particle_emitter_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1, particle_ruler_1;
+    var particle_emitter_1, view_port_1, canvas_margin_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1, particle_ruler_1;
     var ParticleCanvas;
     return {
         setters:[
+            function (particle_emitter_1_1) {
+                particle_emitter_1 = particle_emitter_1_1;
+            },
             function (view_port_1_1) {
                 view_port_1 = view_port_1_1;
             },
             function (canvas_margin_1_1) {
                 canvas_margin_1 = canvas_margin_1_1;
-            },
-            function (particle_emitter_1_1) {
-                particle_emitter_1 = particle_emitter_1_1;
             },
             function (particle_exporter_1_1) {
                 particle_exporter_1 = particle_exporter_1_1;

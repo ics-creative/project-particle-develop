@@ -1,6 +1,6 @@
 import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
-import {ColorData} from "../data/data-color";
+import {ColorData} from "../particle-system/src/data/data-color";
 import {InputRangeComponent} from "./input-range.component";
 
 "use strict";

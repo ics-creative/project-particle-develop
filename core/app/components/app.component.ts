@@ -1,6 +1,6 @@
 import {Component} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {PropertyPanel} from "./property.component";
 import {DesktopIoBox} from "./desktop-io.component";
 import {MobileIOBox} from "./mobile-io.component";

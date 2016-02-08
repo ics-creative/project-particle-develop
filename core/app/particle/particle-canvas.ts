@@ -1,11 +1,9 @@
-///<reference path="../../typings/tsd.d.ts" />
 "use strict";
 
-
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
+import {ParticleEmitter} from "../particle-system/src/particle/particle-emitter";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
-import {ParticleEmitter} from "./particle-emitter";
 import {ParticleExporter} from "./particle-exporter";
 import {PartcicleImageImporter} from "./particle-image-importer";
 import {ParticleCaptureImageLayer} from "./particle-capture-image-layer";
