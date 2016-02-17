@@ -6,8 +6,8 @@ import {EventEmitter} from 'angular2/core';
 import {ElementRef} from "angular2/core";
 
 @Component({
-  selector: "mobile-io-box",
-  templateUrl: "app/components-html/mobile-io-box.html",
+  selector: "small-io-box",
+  templateUrl: "app/components-html/small-io-box.html",
   inputs: ["drawingData"],
   events: [
     "exportPngEvent",
@@ -15,7 +15,7 @@ import {ElementRef} from "angular2/core";
   ]
 })
 
-export class MobileIOBox {
+export class SmallIOBox {
   private exportPngEvent = new EventEmitter();
   private importCameraEvent = new EventEmitter();
 
@@ -23,7 +23,7 @@ export class MobileIOBox {
   private element:ElementRef;
 
   exportPng() {
-    this.exportPNGEvent.emit(null);
+    this.exportPngEvent.emit(null);
   }
 
   importCamera() {

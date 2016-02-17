@@ -9,7 +9,7 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, locale_data_1, locale_en_1, locale_ja_1, locale_manager_1;
-    var DesktopIoBox;
+    var LargeIOBox;
     return {
         setters:[
             function (core_1_1) {
@@ -29,8 +29,8 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
             }],
         execute: function() {
             "use strict";
-            DesktopIoBox = (function () {
-                function DesktopIoBox(localeData) {
+            LargeIOBox = (function () {
+                function LargeIOBox(localeData) {
                     this.localeData = localeData;
                     this.exportSvgEvent = new core_1.EventEmitter();
                     this.exportPngEvent = new core_1.EventEmitter();
@@ -39,35 +39,35 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                     this.exportParameterEvent = new core_1.EventEmitter();
                     this.importParameterEvent = new core_1.EventEmitter();
                 }
-                DesktopIoBox.prototype.exportParameter = function () {
+                LargeIOBox.prototype.exportParameter = function () {
                     this.exportParameterEvent.emit(null);
                 };
-                DesktopIoBox.prototype.exportSvg = function () {
+                LargeIOBox.prototype.exportSvg = function () {
                     this.exportSvgEvent.emit(null);
                 };
-                DesktopIoBox.prototype.exportPng = function () {
+                LargeIOBox.prototype.exportPng = function () {
                     this.exportPngEvent.emit(null);
                 };
-                DesktopIoBox.prototype.exportJpg = function () {
+                LargeIOBox.prototype.exportJpg = function () {
                     this.exportJpgEvent.emit(null);
                 };
-                DesktopIoBox.prototype.exportWebp = function () {
+                LargeIOBox.prototype.exportWebp = function () {
                     this.exportWebpEvent.emit(null);
                 };
-                DesktopIoBox.prototype.selectParameterFile = function (obj) {
+                LargeIOBox.prototype.selectParameterFile = function (obj) {
                     this.lastSelectFile = obj.target.files[0];
                     this.importParameterEvent.emit(null);
                 };
-                DesktopIoBox.prototype.selectEn = function () {
+                LargeIOBox.prototype.selectEn = function () {
                     new locale_manager_1.LocaleManager().changeLocale(this.localeData, new locale_en_1.LocaleEnData());
                 };
-                DesktopIoBox.prototype.selectJa = function () {
+                LargeIOBox.prototype.selectJa = function () {
                     new locale_manager_1.LocaleManager().changeLocale(this.localeData, new locale_ja_1.LocaleJaData());
                 };
-                DesktopIoBox = __decorate([
+                LargeIOBox = __decorate([
                     core_1.Component({
-                        selector: "desktop-io-box",
-                        templateUrl: "app/components-html/desktop-io-box.html",
+                        selector: "large-io-box",
+                        templateUrl: "app/components-html/large-io-box.html",
                         inputs: ["drawingData", "platformData"],
                         events: [
                             "exportSvgEvent",
@@ -79,11 +79,11 @@ System.register(["angular2/core", "../i18n/locale-data", "../i18n/locale-en", ".
                         ]
                     }), 
                     __metadata('design:paramtypes', [locale_data_1.LocaleData])
-                ], DesktopIoBox);
-                return DesktopIoBox;
+                ], LargeIOBox);
+                return LargeIOBox;
             })();
-            exports_1("DesktopIoBox", DesktopIoBox);
+            exports_1("LargeIOBox", LargeIOBox);
         }
     }
 });
-//# sourceMappingURL=desktop-io.component.js.map
+//# sourceMappingURL=large-io.component.js.map

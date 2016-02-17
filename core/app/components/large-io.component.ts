@@ -9,8 +9,8 @@ import {PlatformData} from "../data/platform-data";
 "use strict";
 
 @Component({
-  selector: "desktop-io-box",
-  templateUrl: "app/components-html/desktop-io-box.html",
+  selector: "large-io-box",
+  templateUrl: "app/components-html/large-io-box.html",
   inputs: ["drawingData", "platformData"],
   events: [
     "exportSvgEvent",
@@ -22,7 +22,7 @@ import {PlatformData} from "../data/platform-data";
   ]
 })
 
-export class DesktopIoBox {
+export class LargeIOBox {
   private exportSvgEvent = new EventEmitter();
   private exportPngEvent = new EventEmitter();
   private exportJpgEvent = new EventEmitter();

@@ -10,7 +10,7 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, core_2, core_3;
-    var MobileIOBox;
+    var SmallIOBox;
     return {
         setters:[
             function (core_1_1) {
@@ -21,22 +21,22 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                 core_2 = core_2_1;
             }],
         execute: function() {
-            MobileIOBox = (function () {
-                function MobileIOBox(element) {
+            SmallIOBox = (function () {
+                function SmallIOBox(element) {
                     this.exportPngEvent = new core_2.EventEmitter();
                     this.importCameraEvent = new core_2.EventEmitter();
                     this.element = element;
                 }
-                MobileIOBox.prototype.exportPng = function () {
-                    this.exportPNGEvent.emit(null);
+                SmallIOBox.prototype.exportPng = function () {
+                    this.exportPngEvent.emit(null);
                 };
-                MobileIOBox.prototype.importCamera = function () {
+                SmallIOBox.prototype.importCamera = function () {
                     this.importCameraEvent.emit(null);
                 };
-                MobileIOBox = __decorate([
+                SmallIOBox = __decorate([
                     core_1.Component({
-                        selector: "mobile-io-box",
-                        templateUrl: "app/components-html/mobile-io-box.html",
+                        selector: "small-io-box",
+                        templateUrl: "app/components-html/small-io-box.html",
                         inputs: ["drawingData"],
                         events: [
                             "exportPngEvent",
@@ -44,11 +44,11 @@ System.register(["angular2/core", 'angular2/core'], function(exports_1) {
                         ]
                     }), 
                     __metadata('design:paramtypes', [core_3.ElementRef])
-                ], MobileIOBox);
-                return MobileIOBox;
+                ], SmallIOBox);
+                return SmallIOBox;
             })();
-            exports_1("MobileIOBox", MobileIOBox);
+            exports_1("SmallIOBox", SmallIOBox);
         }
     }
 });
-//# sourceMappingURL=mobile-io.component.js.map
+//# sourceMappingURL=small-io.component.js.map

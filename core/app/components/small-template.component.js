@@ -9,7 +9,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-par
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var locale_data_1, core_1, particle_parameter_1;
-    var MobilePropertyTemplateModal;
+    var SmallPropertyTemplateModal;
     return {
         setters:[
             function (locale_data_1_1) {
@@ -23,31 +23,31 @@ System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-par
             }],
         execute: function() {
             "use strict";
-            MobilePropertyTemplateModal = (function () {
-                function MobilePropertyTemplateModal(localeData) {
+            SmallPropertyTemplateModal = (function () {
+                function SmallPropertyTemplateModal(localeData) {
                     this.localeData = localeData;
                     var template = new particle_parameter_1.ParticleParameter();
                     this.templateList = template.list;
                 }
-                MobilePropertyTemplateModal.prototype.ngOnInit = function () {
+                SmallPropertyTemplateModal.prototype.ngOnInit = function () {
                     // テンプレートを適用
                     this.drawingData.into(this.templateList[0].property);
                 };
-                MobilePropertyTemplateModal.prototype.selectTemplate = function (value) {
+                SmallPropertyTemplateModal.prototype.selectTemplate = function (value) {
                     this.drawingData.into(value);
                 };
-                MobilePropertyTemplateModal = __decorate([
+                SmallPropertyTemplateModal = __decorate([
                     core_1.Component({
-                        selector: "mobile-particle-template-property-modal",
+                        selector: "small-particle-template-property-modal",
                         templateUrl: "app/components-html/property-template.html",
                         inputs: ["drawingData", "templateList"]
                     }), 
                     __metadata('design:paramtypes', [locale_data_1.LocaleData])
-                ], MobilePropertyTemplateModal);
-                return MobilePropertyTemplateModal;
+                ], SmallPropertyTemplateModal);
+                return SmallPropertyTemplateModal;
             })();
-            exports_1("MobilePropertyTemplateModal", MobilePropertyTemplateModal);
+            exports_1("SmallPropertyTemplateModal", SmallPropertyTemplateModal);
         }
     }
 });
-//# sourceMappingURL=mobile-template.component.js.map
+//# sourceMappingURL=small-template.component.js.map

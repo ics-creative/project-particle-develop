@@ -2,10 +2,10 @@ import {Component} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {PropertyPanel} from "./property.component";
-import {DesktopIoBox} from "./desktop-io.component";
-import {MobileIOBox} from "./mobile-io.component";
+import {LargeIOBox} from "./large-io.component";
+import {SmallIOBox} from "./small-io.component";
 import {PropertyShapePanel} from "./property-shape.component";
-import {MobilePropertyTemplateModal} from "./mobile-template.component";
+import {SmallPropertyTemplateModal} from "./small-template.component";
 import {StageComponent} from "./stage.component";
 import {ViewChild} from "angular2/core";
 import {ElementRef} from "angular2/core";
@@ -26,9 +26,9 @@ import {PlatformType} from "../enum/platform-type";
   directives: [
     StageComponent,
     PropertyPanel,
-    DesktopIoBox,
-    MobileIOBox,
-    MobilePropertyTemplateModal
+    LargeIOBox,
+    SmallIOBox,
+    SmallPropertyTemplateModal
   ],
   providers: [LocaleData],
 })
@@ -38,9 +38,9 @@ export class AppComponent implements AfterViewInit {
   protected platformData:PlatformData;
   @ViewChild("stageComponent") stageComponent:StageComponent;
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
-  @ViewChild("mobileIOBox") mobileIOBox:MobileIOBox;
-  @ViewChild("desktopIOBox") desktopIOBox:DesktopIoBox;
-  @ViewChild("MobilePropertyTemplateModal") mobilePropertyTemplateModal:MobilePropertyTemplateModal;
+  @ViewChild("smallIOBox") smallIOBox:SmallIOBox;
+  @ViewChild("largeIOBox") largeIOBox:LargeIOBox;
+  @ViewChild("smallPropertyTemplateModal") smallPropertyTemplateModal:SmallPropertyTemplateModal;
 
   getPlatformData() {
     return new PlatformData(PlatformType.Browser);
@@ -157,7 +157,7 @@ export class AppComponent implements AfterViewInit {
 
   protected handleImportParameterClick() {
 
-    let file = this.desktopIOBox.lastSelectFile
+    let file = this.largeIOBox.lastSelectFile
     // ファイルの内容は FileReader で読み込みます.
     let fileReader = new FileReader();
     fileReader.onload = (event) => {

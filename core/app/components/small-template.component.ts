@@ -9,12 +9,12 @@ import {OnInit} from "angular2/core";
 "use strict";
 
 @Component({
-  selector: "mobile-particle-template-property-modal",
+  selector: "small-particle-template-property-modal",
   templateUrl: "app/components-html/property-template.html",
   inputs: ["drawingData", "templateList"]
 })
 
-export class MobilePropertyTemplateModal implements OnInit {
+export class SmallPropertyTemplateModal implements OnInit {
   private drawingData:DrawingData;
   private templateList:any[];
   private template:ParticleParameter;

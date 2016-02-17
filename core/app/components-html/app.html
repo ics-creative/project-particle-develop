@@ -11,7 +11,7 @@
       </ul>
 
       <!-- Right Navi -->
-      <desktop-io-box #desktopIOBox [drawingData]="drawingData"
+      <large-io-box #largeIOBox [drawingData]="drawingData"
                       [platformData]="platformData"
                       (exportSvgEvent)="handleSvgClick()"
                       (exportPngEvent)="handlePngClick()"
@@ -19,13 +19,13 @@
                       (exportWebpEvent)="handleWebpClick()"
                       (exportParameterEvent)="handleExportParameterClick()"
                       (importParameterEvent)="handleImportParameterClick()">
-      </desktop-io-box>
+      </large-io-box>
     </div>
     <div class="row show-xs hidden-sm hidden-md hidden-lg">
-      <mobile-io-box [drawingData]="drawingData"
+      <small-io-box [drawingData]="drawingData"
                      (exportPngEvent)="handlePngClick()"
                      (importCameraEvent)="handleCamera()">
-      </mobile-io-box>
+      </small-io-box>
     </div>
   </div>
 </nav>
@@ -47,7 +47,7 @@
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog clearfix" role="document">
-    <mobile-particle-template-property-modal [drawingData]="drawingData"></mobile-particle-template-property-modal>
+    <small-particle-template-property-modal [drawingData]="drawingData"></small-particle-template-property-modal>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

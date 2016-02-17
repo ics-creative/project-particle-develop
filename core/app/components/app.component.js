@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../particle-system/src/data/data-drawing", "./property.component", "./desktop-io.component", "./mobile-io.component", "./mobile-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type"], function(exports_1) {
+System.register(["angular2/core", "../particle-system/src/data/data-drawing", "./property.component", "./large-io.component", "./small-io.component", "./small-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, data_drawing_1, property_component_1, desktop_io_component_1, mobile_io_component_1, mobile_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1, platform_data_1, platform_type_1;
+    var core_1, data_drawing_1, property_component_1, large_io_component_1, small_io_component_1, small_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1, platform_data_1, platform_type_1;
     var AppComponent;
     return {
         setters:[
@@ -22,14 +22,14 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
             function (property_component_1_1) {
                 property_component_1 = property_component_1_1;
             },
-            function (desktop_io_component_1_1) {
-                desktop_io_component_1 = desktop_io_component_1_1;
+            function (large_io_component_1_1) {
+                large_io_component_1 = large_io_component_1_1;
             },
-            function (mobile_io_component_1_1) {
-                mobile_io_component_1 = mobile_io_component_1_1;
+            function (small_io_component_1_1) {
+                small_io_component_1 = small_io_component_1_1;
             },
-            function (mobile_template_component_1_1) {
-                mobile_template_component_1 = mobile_template_component_1_1;
+            function (small_template_component_1_1) {
+                small_template_component_1 = small_template_component_1_1;
             },
             function (stage_component_1_1) {
                 stage_component_1 = stage_component_1_1;
@@ -150,7 +150,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                 };
                 AppComponent.prototype.handleImportParameterClick = function () {
                     var _this = this;
-                    var file = this.desktopIOBox.lastSelectFile;
+                    var file = this.largeIOBox.lastSelectFile;
                     // ファイルの内容は FileReader で読み込みます.
                     var fileReader = new FileReader();
                     fileReader.onload = function (event) {
@@ -170,17 +170,17 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                     __metadata('design:type', property_component_1.PropertyPanel)
                 ], AppComponent.prototype, "propertyPanel", void 0);
                 __decorate([
-                    core_2.ViewChild("mobileIOBox"), 
-                    __metadata('design:type', mobile_io_component_1.MobileIOBox)
-                ], AppComponent.prototype, "mobileIOBox", void 0);
+                    core_2.ViewChild("smallIOBox"), 
+                    __metadata('design:type', small_io_component_1.SmallIOBox)
+                ], AppComponent.prototype, "smallIOBox", void 0);
                 __decorate([
-                    core_2.ViewChild("desktopIOBox"), 
-                    __metadata('design:type', desktop_io_component_1.DesktopIoBox)
-                ], AppComponent.prototype, "desktopIOBox", void 0);
+                    core_2.ViewChild("largeIOBox"), 
+                    __metadata('design:type', large_io_component_1.LargeIOBox)
+                ], AppComponent.prototype, "largeIOBox", void 0);
                 __decorate([
-                    core_2.ViewChild("MobilePropertyTemplateModal"), 
-                    __metadata('design:type', mobile_template_component_1.MobilePropertyTemplateModal)
-                ], AppComponent.prototype, "mobilePropertyTemplateModal", void 0);
+                    core_2.ViewChild("smallPropertyTemplateModal"), 
+                    __metadata('design:type', small_template_component_1.SmallPropertyTemplateModal)
+                ], AppComponent.prototype, "smallPropertyTemplateModal", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
@@ -188,9 +188,9 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                         directives: [
                             stage_component_1.StageComponent,
                             property_component_1.PropertyPanel,
-                            desktop_io_component_1.DesktopIoBox,
-                            mobile_io_component_1.MobileIOBox,
-                            mobile_template_component_1.MobilePropertyTemplateModal
+                            large_io_component_1.LargeIOBox,
+                            small_io_component_1.SmallIOBox,
+                            small_template_component_1.SmallPropertyTemplateModal
                         ],
                         providers: [locale_data_1.LocaleData],
                     }), 
