@@ -84,6 +84,13 @@ export class ParticleCanvas {
     window.addEventListener("resize", () => this.resizeHandler());
   }
 
+  public pause() : void{
+    this._particleEmitter.pause();
+  }
+  public resume() : void{
+    this._particleEmitter.resume();
+  }
+
   public getSvgString():string {
     return this._particleExporter.getSvgString();
   }

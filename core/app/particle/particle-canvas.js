@@ -65,6 +65,12 @@ System.register(["../particle-system/src/particle/particle-emitter", "../enum/vi
                     this.resizeHandler();
                     window.addEventListener("resize", function () { return _this.resizeHandler(); });
                 }
+                ParticleCanvas.prototype.pause = function () {
+                    this._particleEmitter.pause();
+                };
+                ParticleCanvas.prototype.resume = function () {
+                    this._particleEmitter.resume();
+                };
                 ParticleCanvas.prototype.getSvgString = function () {
                     return this._particleExporter.getSvgString();
                 };

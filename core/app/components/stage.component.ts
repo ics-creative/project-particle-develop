@@ -6,7 +6,19 @@ import {ParticleCanvas} from "../particle/particle-canvas";
 
 @Component({
   selector: "stage",
-  template: `<canvas #myCanvas id="myCanvas"></canvas>`,
+  template: `
+      <div  class="hidden-xs">
+        <ul class="nav navbar-nav">
+          <li>
+            <a (click)="onResumeClick()" role="button"><i class="fa fa-play "></i>再生</a>
+          </li>
+          <li>
+            <a (click)="onPauseClick()" role="button"><i class="fa fa-pause"></i>停止</a>
+          </li>
+        </ul>
+      </div>
+      <canvas #myCanvas id="myCanvas"></canvas>`
+,
   inputs: ["drawingData"]
 })
 
@@ -21,6 +33,12 @@ export class StageComponent implements AfterViewInit {
 
   }
 
+  private onResumeClick() {
+    this.particleCanvas.resume();
+  }
+  private onPauseClick() {
+    this.particleCanvas.pause();
+  }
   public exportSvg():Promise<any> {
     return this.particleCanvas.runExport();
   }
