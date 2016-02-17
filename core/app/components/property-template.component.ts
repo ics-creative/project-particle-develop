@@ -2,7 +2,7 @@ import {Component} from "angular2/core";
 import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {EventEmitter} from 'angular2/core';
 import {ShapeData} from "../particle-system/src/data/data-shape";
-import {ParticleParamater} from "../assets/particle-paramater";
+import {ParticleParameter} from "../assets/particle-parameter";
 import {OnInit} from "angular2/core";
 import {LocaleData} from "../i18n/locale-data";
 
@@ -17,10 +17,10 @@ import {LocaleData} from "../i18n/locale-data";
 export class PropertyTemplatePanel implements OnInit {
   private drawingData:DrawingData;
   private templateList:any[];
-  private template:ParticleParamater;
+  private template:ParticleParameter;
 
   constructor(private localeData:LocaleData) {
-    var template = new ParticleParamater();
+    var template = new ParticleParameter();
     this.templateList = template.list;
   }
 

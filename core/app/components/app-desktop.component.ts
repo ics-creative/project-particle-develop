@@ -113,7 +113,7 @@ export class DesktopAppComponent extends AppComponent {
     });
   }
 
-  protected handleExportParamaterClick() {
+  protected handleExportParameterClick() {
     let electron = require('electron');
     let dialog = electron.remote.dialog;
 

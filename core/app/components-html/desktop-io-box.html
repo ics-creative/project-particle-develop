@@ -9,7 +9,7 @@
       <li><a (click)="exportWebp()">WebP (Only Chrome)</a></li>
     </ul>
   </li>
-  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParamater()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
+  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
   <li *ngIf="platformData.enableInputParameter()"><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
 
 

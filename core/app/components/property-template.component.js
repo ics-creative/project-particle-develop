@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../assets/particle-paramater", "../i18n/locale-data"], function(exports_1) {
+System.register(["angular2/core", "../assets/particle-parameter", "../i18n/locale-data"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,15 +8,15 @@ System.register(["angular2/core", "../assets/particle-paramater", "../i18n/local
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, particle_paramater_1, locale_data_1;
+    var core_1, particle_parameter_1, locale_data_1;
     var PropertyTemplatePanel;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (particle_paramater_1_1) {
-                particle_paramater_1 = particle_paramater_1_1;
+            function (particle_parameter_1_1) {
+                particle_parameter_1 = particle_parameter_1_1;
             },
             function (locale_data_1_1) {
                 locale_data_1 = locale_data_1_1;
@@ -26,7 +26,7 @@ System.register(["angular2/core", "../assets/particle-paramater", "../i18n/local
             PropertyTemplatePanel = (function () {
                 function PropertyTemplatePanel(localeData) {
                     this.localeData = localeData;
-                    var template = new particle_paramater_1.ParticleParamater();
+                    var template = new particle_parameter_1.ParticleParameter();
                     this.templateList = template.list;
                 }
                 PropertyTemplatePanel.prototype.ngOnInit = function () {

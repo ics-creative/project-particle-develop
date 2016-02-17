@@ -1,11 +1,11 @@
 System.register([], function(exports_1) {
     "use strict";
-    var ParticleParamater;
+    var ParticleParameter;
     return {
         setters:[],
         execute: function() {
-            ParticleParamater = (function () {
-                function ParticleParamater() {
+            ParticleParameter = (function () {
+                function ParticleParameter() {
                     this.setting0 = {
                         name: "Basic",
                         description: "This is Basic Template",
@@ -130,10 +130,10 @@ System.register([], function(exports_1) {
                     this.list.push(this.setting10);
                     this.list.push(this.setting1);
                 }
-                return ParticleParamater;
+                return ParticleParameter;
             })();
-            exports_1("ParticleParamater", ParticleParamater);
+            exports_1("ParticleParameter", ParticleParameter);
         }
     }
 });
-//# sourceMappingURL=particle-paramater.js.map
+//# sourceMappingURL=particle-parameter.js.map

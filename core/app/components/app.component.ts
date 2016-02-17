@@ -151,7 +151,7 @@ export class AppComponent implements AfterViewInit {
     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
   }
 
-  protected handleExportParamaterClick() {
+  protected handleExportParameterClick() {
     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
   }
 

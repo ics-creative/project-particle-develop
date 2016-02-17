@@ -108,7 +108,7 @@ System.register(["./app.component", "../data/platform-data", "../enum/platform-t
                         });
                     });
                 };
-                DesktopAppComponent.prototype.handleExportParamaterClick = function () {
+                DesktopAppComponent.prototype.handleExportParameterClick = function () {
                     var _this = this;
                     var electron = require('electron');
                     var dialog = electron.remote.dialog;

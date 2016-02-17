@@ -21,7 +21,7 @@ export class MobileAppComponent extends AppComponent {
     this.stageComponent.runCamera().then();
   }
 
-  handleExportParamaterClick() {
+  handleExportParameterClick() {
     alert("モバイルアプリでは使用不可能です");
   }
 }

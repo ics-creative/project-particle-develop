@@ -1,4 +1,4 @@
-System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-paramater"], function(exports_1) {
+System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-parameter"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-par
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var locale_data_1, core_1, particle_paramater_1;
+    var locale_data_1, core_1, particle_parameter_1;
     var MobilePropertyTemplateModal;
     return {
         setters:[
@@ -18,15 +18,15 @@ System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-par
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (particle_paramater_1_1) {
-                particle_paramater_1 = particle_paramater_1_1;
+            function (particle_parameter_1_1) {
+                particle_parameter_1 = particle_parameter_1_1;
             }],
         execute: function() {
             "use strict";
             MobilePropertyTemplateModal = (function () {
                 function MobilePropertyTemplateModal(localeData) {
                     this.localeData = localeData;
-                    var template = new particle_paramater_1.ParticleParamater();
+                    var template = new particle_parameter_1.ParticleParameter();
                     this.templateList = template.list;
                 }
                 MobilePropertyTemplateModal.prototype.ngOnInit = function () {

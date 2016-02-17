@@ -17,7 +17,7 @@ import {PlatformData} from "../data/platform-data";
     "exportPngEvent",
     "exportJpgEvent",
     "exportWebpEvent",
-    "exportParamaterEvent",
+    "exportParameterEvent",
     "importParameterEvent"
   ]
 })
@@ -27,7 +27,7 @@ export class DesktopIoBox {
   private exportPngEvent = new EventEmitter();
   private exportJpgEvent = new EventEmitter();
   private exportWebpEvent = new EventEmitter();
-  private exportParamaterEvent = new EventEmitter();
+  private exportParameterEvent = new EventEmitter();
   private importParameterEvent = new EventEmitter();
 
   private drawingData:DrawingData;
@@ -37,8 +37,8 @@ export class DesktopIoBox {
   constructor(private localeData:LocaleData) {
   }
 
-  private exportParamater():void {
-    this.exportParamaterEvent.emit(null);
+  private exportParameter():void {
+    this.exportParameterEvent.emit(null);
   }
 
   private exportSvg():void {

@@ -145,7 +145,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                 AppComponent.prototype.openSvgExportWindow = function () {
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };
-                AppComponent.prototype.handleExportParamaterClick = function () {
+                AppComponent.prototype.handleExportParameterClick = function () {
                     window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
                 };
                 AppComponent.prototype.handleImportParameterClick = function () {

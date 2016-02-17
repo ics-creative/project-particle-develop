@@ -1,5 +1,5 @@
 "use strict";
-export class ParticleParamater {
+export class ParticleParameter {
 
   public list:Object[];
 

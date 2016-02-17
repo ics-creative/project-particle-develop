@@ -36,7 +36,7 @@ System.register(["../enum/platform-type", "../data/platform-data", "./app.compon
                 MobileAppComponent.prototype.handleCamera = function () {
                     this.stageComponent.runCamera().then();
                 };
-                MobileAppComponent.prototype.handleExportParamaterClick = function () {
+                MobileAppComponent.prototype.handleExportParameterClick = function () {
                     alert("モバイルアプリでは使用不可能です");
                 };
                 return MobileAppComponent;
