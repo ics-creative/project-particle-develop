@@ -16,7 +16,7 @@ System.register(["../enum/platform-type"], function(exports_1) {
                     return this.platformType == platform_type_1.PlatformType.Desktop;
                 };
                 PlatformData.prototype.enableOutputParameter = function () {
-                    return this.platformType == platform_type_1.PlatformType.Desktop;
+                    return true;
                 };
                 PlatformData.prototype.enableInputParameter = function () {
                     return this.platformType == platform_type_1.PlatformType.Desktop;

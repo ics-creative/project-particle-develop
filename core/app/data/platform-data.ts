@@ -14,7 +14,7 @@ export class PlatformData {
   }
 
   public enableOutputParameter():boolean {
-    return this.platformType == PlatformType.Desktop;
+    return true;
   }
 
   public enableInputParameter():boolean {
