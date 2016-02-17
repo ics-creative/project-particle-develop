@@ -30,7 +30,6 @@ export class LocaleData {
   SE_emitFrequency:string = null;
 
   SP_startScale:string = null;
-  SP_startScale:string = null;
   SP_startScaleVariance:string = null;
   SP_endScale:string = null;
   SP_endScaleVariance:string = null;

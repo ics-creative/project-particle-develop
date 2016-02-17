@@ -40,7 +40,6 @@ System.register(['angular2/core'], function(exports_1) {
                     this.SE_accelerationDirection = null;
                     this.SE_emitFrequency = null;
                     this.SP_startScale = null;
-                    this.SP_startScale = null;
                     this.SP_startScaleVariance = null;
                     this.SP_endScale = null;
                     this.SP_endScaleVariance = null;
