@@ -1,6 +1,6 @@
 "use strict";
 
-import {DrawingData} from "../data/data-drawing";
+import {DrawingData} from "../particle-system/src/data/data-drawing";
 /**
  * キャンバスに表示するルーラーの制御クラスです。
  */
