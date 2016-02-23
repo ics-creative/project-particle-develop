@@ -6,7 +6,8 @@
     "tsc:w": "tsc -w",
     "lite": "lite-server",
     "start": "npm run lite ",
-    "install":"tsd install"
+    "install":"tsd install",
+    "build-ts" : "tsc -p ."
   },
   "license": "MIT",
   "dependencies": {
