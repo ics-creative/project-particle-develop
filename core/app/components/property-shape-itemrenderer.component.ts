@@ -30,7 +30,7 @@ export class PropertyShapeItemRenderer implements AfterViewInit {
     let stage = new createjs.Stage(canvas);
 
     // Adobe Animate CCから書きだしたシェイプを使う
-    let namespaceObj = <any> window["lib"];
+    let namespaceObj = <any> window["effects"]["assets"];
     let cls = <any> namespaceObj[this.shapeId];
     let shape = new cls();
     shape.x = 32;
