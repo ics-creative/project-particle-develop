@@ -165,7 +165,7 @@ export class AppComponent implements AfterViewInit {
       var json = (<FileReader>event.target).result;
       let object = JSON.parse(json);
 
-      this.drawingData.into(object);
+      this.drawingData.importData(object);
     };
     fileReader.readAsText(file);
 

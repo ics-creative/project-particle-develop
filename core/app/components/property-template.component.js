@@ -31,10 +31,10 @@ System.register(["angular2/core", "../assets/particle-parameter", "../i18n/local
                 }
                 PropertyTemplatePanel.prototype.ngOnInit = function () {
                     // テンプレートを適用
-                    this.drawingData.into(this.templateList[0].property);
+                    this.drawingData.importData(this.templateList[0].property);
                 };
                 PropertyTemplatePanel.prototype.selectTemplate = function (value) {
-                    this.drawingData.into(value);
+                    this.drawingData.importData(value);
                 };
                 PropertyTemplatePanel = __decorate([
                     core_1.Component({

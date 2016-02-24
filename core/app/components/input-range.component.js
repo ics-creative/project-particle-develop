@@ -21,7 +21,7 @@ System.register(["angular2/core"], function(exports_1) {
                 function InputRangeComponent() {
                 }
                 InputRangeComponent.prototype.handleChange = function (event) {
-                    // なぜか string 担っている可能性がある
+                    // なぜか string になっている可能性がある
                     var value = this.drawingData[this.targetProperty];
                     // そのため、明示的な型変換を行う
                     this.drawingData[this.targetProperty] = Number(value);

@@ -157,7 +157,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                         // event.target.result に読み込んだファイルの内容が入っています。
                         var json = event.target.result;
                         var object = JSON.parse(json);
-                        _this.drawingData.into(object);
+                        _this.drawingData.importData(object);
                     };
                     fileReader.readAsText(file);
                 };

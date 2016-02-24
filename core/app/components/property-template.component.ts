@@ -26,10 +26,10 @@ export class PropertyTemplatePanel implements OnInit {
 
   ngOnInit() {
     // テンプレートを適用
-    this.drawingData.into(this.templateList[0].property);
+    this.drawingData.importData(this.templateList[0].property);
   }
 
   private selectTemplate(value:Object) {
-    this.drawingData.into(value);
+    this.drawingData.importData(value);
   }
 }

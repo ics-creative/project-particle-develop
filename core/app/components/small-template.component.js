@@ -31,10 +31,10 @@ System.register(["../i18n/locale-data", "angular2/core", "../assets/particle-par
                 }
                 SmallPropertyTemplateModal.prototype.ngOnInit = function () {
                     // テンプレートを適用
-                    this.drawingData.into(this.templateList[0].property);
+                    this.drawingData.importData(this.templateList[0].property);
                 };
                 SmallPropertyTemplateModal.prototype.selectTemplate = function (value) {
-                    this.drawingData.into(value);
+                    this.drawingData.importData(value);
                 };
                 SmallPropertyTemplateModal = __decorate([
                     core_1.Component({
