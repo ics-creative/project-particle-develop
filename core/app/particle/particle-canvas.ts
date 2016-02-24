@@ -204,7 +204,8 @@ export class ParticleCanvas {
       this.resizeHandler();
     }
 
-    this._particleEmitter.update(data);
+    this._particleEmitter.setData(data);
+    this._particleEmitter.update();
     this._ruler.update();
     this._stage.update();
   }

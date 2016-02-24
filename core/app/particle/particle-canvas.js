@@ -160,7 +160,8 @@ System.register(["../particle-system/src/particle/particle-emitter", "../enum/vi
                         this._ruler.setSize(palletW, palletH);
                         this.resizeHandler();
                     }
-                    this._particleEmitter.update(data);
+                    this._particleEmitter.setData(data);
+                    this._particleEmitter.update();
                     this._ruler.update();
                     this._stage.update();
                 };
