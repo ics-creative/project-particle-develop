@@ -117,6 +117,12 @@ System.register([], function(exports_1) {
                         imageId: "green_kirakira",
                         property: { "bgColor": "#00000", "width": 481.3333333333333, "height": 366.6666666666667, "emitFrequency": "38", "lifeSpan": "27", "lifeSpanVariance": "93", "initialDirection": "0", "initialDirectionVariance": "0", "initialSpeed": "0", "initialSpeedVariance": "0", "friction": "0", "accelerationSpeed": "0", "accelerationDirection": "0", "startScale": "0.98", "startScaleVariance": "1", "finishScale": "0.07", "finishScaleVariance": "0.23", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "0.34", "finishAlphaVariance": 0.5, "startX": 240.66666666666666, "startXVariance": "570", "startY": 183.33333333333334, "startYVariance": "98", "shapeIdList": ["blur_circle", "kirakira2", "kirakira", "star"], "startColor": { "hue": "88", "hueVariance": "99", "saturation": "76", "saturationVariance": "0", "luminance": "77", "luminanceVariance": "46" }, "blendMode": true, "alphaCurveType": "1" }
                     };
+                    this.setting11 = {
+                        name: "Light Ball",
+                        description: "鮮やかに光る玉",
+                        imageId: "light_ball",
+                        property: { "bgColor": "#00000", "width": 460, "height": 460, "emitFrequency": "100", "startX": 230, "startXVariance": 0, "startY": 231, "startYVariance": 0, "initialDirection": 0, "initialDirectionVariance": "360", "initialSpeed": 3.5, "initialSpeedVariance": 0.1, "friction": "0.063", "accelerationSpeed": 0, "accelerationDirection": "275.8", "startScale": 3, "startScaleVariance": 0, "finishScale": "2", "finishScaleVariance": "0", "lifeSpan": 29, "lifeSpanVariance": "27", "startAlpha": "1", "startAlphaVariance": "0", "finishAlpha": "0", "finishAlphaVariance": "0", "shapeIdList": ["blur_circle"], "startColor": { "hue": 37, "hueVariance": 360, "saturation": "91", "saturationVariance": 0, "luminance": "56", "luminanceVariance": "16" }, "blendMode": true, "alphaCurveType": "0" }
+                    };
                     this.list = [];
                     this.list.push(this.setting2);
                     this.list.push(this.setting0);
@@ -129,6 +135,7 @@ System.register([], function(exports_1) {
                     this.list.push(this.setting8);
                     this.list.push(this.setting10);
                     this.list.push(this.setting1);
+                    this.list.push(this.setting11);
                 }
                 return ParticleParameter;
             })();
