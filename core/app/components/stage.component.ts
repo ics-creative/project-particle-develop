@@ -7,6 +7,7 @@ import {ParticleCanvas} from "../particle/particle-canvas";
 @Component({
   selector: "stage",
   template: `
+        <!--
       <div  class="hidden-xs">
         <ul class="nav navbar-nav">
           <li>
@@ -17,6 +18,7 @@ import {ParticleCanvas} from "../particle/particle-canvas";
           </li>
         </ul>
       </div>
+        -->
       <canvas #myCanvas id="myCanvas"></canvas>`
 ,
   inputs: ["drawingData"]

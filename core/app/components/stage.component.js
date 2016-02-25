@@ -68,7 +68,7 @@ System.register(["angular2/core", "../particle/particle-canvas"], function(expor
                 StageComponent = __decorate([
                     core_1.Component({
                         selector: "stage",
-                        template: "\n      <div  class=\"hidden-xs\">\n        <ul class=\"nav navbar-nav\">\n          <li>\n            <a (click)=\"onResumeClick()\" role=\"button\"><i class=\"fa fa-play \"></i>\u518D\u751F</a>\n          </li>\n          <li>\n            <a (click)=\"onPauseClick()\" role=\"button\"><i class=\"fa fa-pause\"></i>\u505C\u6B62</a>\n          </li>\n        </ul>\n      </div>\n      <canvas #myCanvas id=\"myCanvas\"></canvas>",
+                        template: "\n        <!--\n      <div  class=\"hidden-xs\">\n        <ul class=\"nav navbar-nav\">\n          <li>\n            <a (click)=\"onResumeClick()\" role=\"button\"><i class=\"fa fa-play \"></i>\u518D\u751F</a>\n          </li>\n          <li>\n            <a (click)=\"onPauseClick()\" role=\"button\"><i class=\"fa fa-pause\"></i>\u505C\u6B62</a>\n          </li>\n        </ul>\n      </div>\n        -->\n      <canvas #myCanvas id=\"myCanvas\"></canvas>",
                         inputs: ["drawingData"]
                     }), 
                     __metadata('design:paramtypes', [])
