@@ -17,6 +17,7 @@ import {LocaleData} from "../i18n/locale-data";
 import {LocaleManager} from "../i18n/locale-manager";
 import {PlatformData} from "../data/platform-data";
 import {PlatformType} from "../enum/platform-type";
+import {PropertyIoModal} from "./property-io.component";
 
 "use strict";
 
@@ -28,7 +29,8 @@ import {PlatformType} from "../enum/platform-type";
     PropertyPanel,
     LargeIOBox,
     SmallIOBox,
-    SmallPropertyTemplateModal
+    SmallPropertyTemplateModal,
+    PropertyIoModal
   ],
   providers: [LocaleData],
 })
@@ -41,6 +43,8 @@ export class AppComponent implements AfterViewInit {
   @ViewChild("smallIOBox") smallIOBox:SmallIOBox;
   @ViewChild("largeIOBox") largeIOBox:LargeIOBox;
   @ViewChild("smallPropertyTemplateModal") smallPropertyTemplateModal:SmallPropertyTemplateModal;
+  @ViewChild("propetyModal") propetyModal:PropertyIoModal;
+
 
   getPlatformData() {
     return new PlatformData(PlatformType.Browser);
@@ -152,7 +156,11 @@ export class AppComponent implements AfterViewInit {
   }
 
   protected handleExportParameterClick() {
-    window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
+
+    this.propetyModal.setIOButtonLink(JSON.stringify(this.drawingData, null, "    "));
+    this.propetyModal.openIOModal();
+
+    //window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
   }
 
   protected handleImportParameterClick() {

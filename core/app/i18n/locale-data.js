@@ -64,6 +64,8 @@ System.register(['angular2/core'], function(exports_1) {
                     this.SF_stageW = null;
                     this.SF_stageH = null;
                     this.SF_bgColor = null;
+                    this.MC_head = null;
+                    this.MC_button = null;
                 }
                 LocaleData = __decorate([
                     core_1.Injectable(), 

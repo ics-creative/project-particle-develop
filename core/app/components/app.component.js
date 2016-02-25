@@ -1,4 +1,4 @@
-System.register(["angular2/core", "../particle-system/src/data/data-drawing", "./property.component", "./large-io.component", "./small-io.component", "./small-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type"], function(exports_1) {
+System.register(["angular2/core", "../particle-system/src/data/data-drawing", "./property.component", "./large-io.component", "./small-io.component", "./small-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type", "./property-io.component"], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, data_drawing_1, property_component_1, large_io_component_1, small_io_component_1, small_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1, platform_data_1, platform_type_1;
+    var core_1, data_drawing_1, property_component_1, large_io_component_1, small_io_component_1, small_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1, platform_data_1, platform_type_1, property_io_component_1;
     var AppComponent;
     return {
         setters:[
@@ -51,6 +51,9 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
             },
             function (platform_type_1_1) {
                 platform_type_1 = platform_type_1_1;
+            },
+            function (property_io_component_1_1) {
+                property_io_component_1 = property_io_component_1_1;
             }],
         execute: function() {
             "use strict";
@@ -146,7 +149,9 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };
                 AppComponent.prototype.handleExportParameterClick = function () {
-                    window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
+                    this.propetyModal.setIOButtonLink(JSON.stringify(this.drawingData, null, "    "));
+                    this.propetyModal.openIOModal();
+                    //window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
                 };
                 AppComponent.prototype.handleImportParameterClick = function () {
                     var _this = this;
@@ -181,6 +186,10 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                     core_2.ViewChild("smallPropertyTemplateModal"), 
                     __metadata('design:type', small_template_component_1.SmallPropertyTemplateModal)
                 ], AppComponent.prototype, "smallPropertyTemplateModal", void 0);
+                __decorate([
+                    core_2.ViewChild("propetyModal"), 
+                    __metadata('design:type', property_io_component_1.PropertyIoModal)
+                ], AppComponent.prototype, "propetyModal", void 0);
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: "my-app",
@@ -190,7 +199,8 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                             property_component_1.PropertyPanel,
                             large_io_component_1.LargeIOBox,
                             small_io_component_1.SmallIOBox,
-                            small_template_component_1.SmallPropertyTemplateModal
+                            small_template_component_1.SmallPropertyTemplateModal,
+                            property_io_component_1.PropertyIoModal
                         ],
                         providers: [locale_data_1.LocaleData],
                     }), 

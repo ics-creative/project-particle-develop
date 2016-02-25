@@ -11,8 +11,8 @@ Particle Developは雪や炎などのパーティクル表現が作れるHTML5�
   `;
 
   H_about:string = "このサイトについて";
-  H_exportImage:string = "画像ファイルとして保存";
-  H_exportParam:string = "保存";
+  H_exportImage:string = "イメージの書き出し";
+  H_exportParam:string = "パラメーター保存 (.json)";
   H_language:string = "Select Language (言語選択)";
 
   preview_head:string = "プレビュー";
@@ -63,4 +63,7 @@ Particle Developは雪や炎などのパーティクル表現が作れるHTML5�
   SF_stageW:string = "ステージの幅 (px)";
   SF_stageH:string = "ステージの高さ (px)";
   SF_bgColor:string = "背景色";
+
+  MC_head = "パラメーター保存";
+  MC_button = "パラメーター保存 (.json)";
 }

@@ -10,7 +10,7 @@ export class LocaleEnData extends LocaleData {
 
   H_about:string = "About";
   H_exportImage:string = "Export as File";
-  H_exportParam:string = "Save";
+  H_exportParam:string = "Save Config Data (.json)";
   H_language:string = "Select Language (言語選択)";
 
   preview_head:string = "Preview";
@@ -61,4 +61,8 @@ export class LocaleEnData extends LocaleData {
   SF_stageW:string = "Width (px)";
   SF_stageH:string = "Height (px)";
   SF_bgColor:string = "Background Color";
+
+
+  MC_head = "Save Config Data";
+  MC_button = "Save Config Data (.json)";
 }

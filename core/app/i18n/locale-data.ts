@@ -59,4 +59,8 @@ export class LocaleData {
   SF_stageW:string = null;
   SF_stageH:string = null;
   SF_bgColor:string = null;
+
+
+  MC_head = null;
+  MC_button = null;
 }

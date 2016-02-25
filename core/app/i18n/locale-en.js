@@ -21,7 +21,7 @@ System.register(["./locale-data"], function(exports_1) {
                     this.MA_sentence = "Particle Develop is the design tool what is able to create particle graphics such as snow and fire.\n  The graphic of particles are vector, you can save as SVG file, and edit with Adobe Illustrator. * Please turn off the popup block of browser, if you save file.\n  ";
                     this.H_about = "About";
                     this.H_exportImage = "Export as File";
-                    this.H_exportParam = "Save";
+                    this.H_exportParam = "Save Config Data (.json)";
                     this.H_language = "Select Language (言語選択)";
                     this.preview_head = "Preview";
                     this.settings_head = "Settings";
@@ -63,6 +63,8 @@ System.register(["./locale-data"], function(exports_1) {
                     this.SF_stageW = "Width (px)";
                     this.SF_stageH = "Height (px)";
                     this.SF_bgColor = "Background Color";
+                    this.MC_head = "Save Config Data";
+                    this.MC_button = "Save Config Data (.json)";
                 }
                 return LocaleEnData;
             })(locale_data_1.LocaleData);
