@@ -31,7 +31,7 @@ System.register(["angular2/core", "../i18n/locale-data"], function(exports_1, co
                 }
                 PropertyIoModal.prototype.setIOButtonLink = function (json) {
                     var link = this.outputLink.nativeElement;
-                    link.download = "paramater.json";
+                    link.download = "parameter.json";
                     var blob = new Blob([json], { type: "application/json" });
                     link.href = window.URL.createObjectURL(blob);
                     var textarea = this.jsonValue.nativeElement;

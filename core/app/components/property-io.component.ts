@@ -29,7 +29,7 @@ export class PropertyIoModal {
   public setIOButtonLink(json:string) {
     var link = (<any>this.outputLink.nativeElement);
 
-    link.download = "paramater.json";
+    link.download = "parameter.json";
     var blob = new Blob([json], {type: "application/json"});
     link.href = window.URL.createObjectURL(blob);
 
