@@ -12,8 +12,8 @@ Particle Developは雪や炎などのパーティクル表現が作れるHTML5�
 
   H_about:string = "このサイトについて";
   H_exportImage:string = "イメージの書き出し";
-  H_exportParam:string = "パラメーター保存 (.json)";
-  H_language:string = "Select Language (言語選択)";
+  H_exportParam:string = "パラメーター保存";
+  H_language:string = "Language";
 
   preview_head:string = "プレビュー";
   settings_head:string = "設定";

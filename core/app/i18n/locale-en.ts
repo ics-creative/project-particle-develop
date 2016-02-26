@@ -10,8 +10,8 @@ export class LocaleEnData extends LocaleData {
 
   H_about:string = "About";
   H_exportImage:string = "Export as File";
-  H_exportParam:string = "Save Config Data (.json)";
-  H_language:string = "Select Language (言語選択)";
+  H_exportParam:string = "Save Config Data";
+  H_language:string = "Language";
 
   preview_head:string = "Preview";
   settings_head:string = "Settings";
