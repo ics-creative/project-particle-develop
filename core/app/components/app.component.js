@@ -1,4 +1,7 @@
-System.register(["angular2/core", "../particle-system/src/data/data-drawing", "./property.component", "./large-io.component", "./small-io.component", "./small-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type", "./property-io.component"], function(exports_1) {
+/// <reference path="../../libs-typescript/effects-particle-system.d.ts" />
+System.register(["angular2/core", "./property.component", "./large-io.component", "./small-io.component", "./small-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type", "./property-io.component"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,16 +11,13 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, data_drawing_1, property_component_1, large_io_component_1, small_io_component_1, small_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1, platform_data_1, platform_type_1, property_io_component_1;
+    var core_1, property_component_1, large_io_component_1, small_io_component_1, small_template_component_1, stage_component_1, core_2, view_port_1, canvas_margin_1, locale_data_1, locale_manager_1, platform_data_1, platform_type_1, property_io_component_1;
     var AppComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
                 core_2 = core_1_1;
-            },
-            function (data_drawing_1_1) {
-                data_drawing_1 = data_drawing_1_1;
             },
             function (property_component_1_1) {
                 property_component_1 = property_component_1_1;
@@ -60,7 +60,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
             AppComponent = (function () {
                 function AppComponent(localeData) {
                     this.localeData = localeData;
-                    this.drawingData = new data_drawing_1.DrawingData();
+                    this.drawingData = new effects.DrawingData();
                     this.platformData = this.getPlatformData();
                     // ステージサイズに対して適当な値を適用する
                     var canvasWidth = innerWidth;
@@ -207,7 +207,7 @@ System.register(["angular2/core", "../particle-system/src/data/data-drawing", ".
                     __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], AppComponent);
                 return AppComponent;
-            })();
+            }());
             exports_1("AppComponent", AppComponent);
         }
     }

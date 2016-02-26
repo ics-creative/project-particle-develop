@@ -1,6 +1,7 @@
 ///<reference path="../../typings/tsd.d.ts"/>
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -45,7 +46,7 @@ System.register([], function(exports_1) {
                     }
                 };
                 return ParticleCaptureImageLayer;
-            })(createjs.Container);
+            }(createjs.Container));
             exports_1("ParticleCaptureImageLayer", ParticleCaptureImageLayer);
         }
     }

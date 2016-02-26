@@ -1,5 +1,6 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var ParticleParameter;
     return {
         setters:[],
@@ -138,7 +139,7 @@ System.register([], function(exports_1) {
                     this.list.push(this.setting11);
                 }
                 return ParticleParameter;
-            })();
+            }());
             exports_1("ParticleParameter", ParticleParameter);
         }
     }

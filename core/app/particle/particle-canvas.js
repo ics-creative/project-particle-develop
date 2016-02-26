@@ -1,12 +1,10 @@
-System.register(["../particle-system/src/particle/particle-emitter", "../enum/view-port", "../enum/canvas-margin", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer", "./particle-ruler"], function(exports_1) {
+System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-exporter", "./particle-image-importer", "./particle-capture-image-layer", "./particle-ruler"], function(exports_1, context_1) {
     "use strict";
-    var particle_emitter_1, view_port_1, canvas_margin_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1, particle_ruler_1;
+    var __moduleName = context_1 && context_1.id;
+    var view_port_1, canvas_margin_1, particle_exporter_1, particle_image_importer_1, particle_capture_image_layer_1, particle_ruler_1;
     var ParticleCanvas;
     return {
         setters:[
-            function (particle_emitter_1_1) {
-                particle_emitter_1 = particle_emitter_1_1;
-            },
             function (view_port_1_1) {
                 view_port_1 = view_port_1_1;
             },
@@ -51,7 +49,7 @@ System.register(["../particle-system/src/particle/particle-emitter", "../enum/vi
                     this._canvasContainer.addChild(this._background);
                     this._captureImageLayer = new particle_capture_image_layer_1.ParticleCaptureImageLayer();
                     this._canvasContainer.addChild(this._captureImageLayer);
-                    this._particleEmitter = new particle_emitter_1.ParticleEmitter();
+                    this._particleEmitter = new effects.ParticleEmitter();
                     this._canvasContainer.addChild(this._particleEmitter.container);
                     this._particleExporter = new particle_exporter_1.ParticleExporter(this._particleEmitter.container);
                     this._partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
@@ -166,7 +164,7 @@ System.register(["../particle-system/src/particle/particle-emitter", "../enum/vi
                     this._stage.update();
                 };
                 return ParticleCanvas;
-            })();
+            }());
             exports_1("ParticleCanvas", ParticleCanvas);
         }
     }

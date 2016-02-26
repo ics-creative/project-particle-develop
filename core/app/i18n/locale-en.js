@@ -1,4 +1,6 @@
-System.register(["./locale-data"], function(exports_1) {
+System.register(["./locale-data"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
         for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
         function __() { this.constructor = d; }
@@ -67,7 +69,7 @@ System.register(["./locale-data"], function(exports_1) {
                     this.MC_button = "Save Config Data (.json)";
                 }
                 return LocaleEnData;
-            })(locale_data_1.LocaleData);
+            }(locale_data_1.LocaleData));
             exports_1("LocaleEnData", LocaleEnData);
         }
     }

@@ -1,5 +1,6 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var PartcicleImageImporter;
     return {
         setters:[],
@@ -40,7 +41,7 @@ System.register([], function(exports_1) {
                     onReject();
                 };
                 return PartcicleImageImporter;
-            })();
+            }());
             exports_1("PartcicleImageImporter", PartcicleImageImporter);
         }
     }

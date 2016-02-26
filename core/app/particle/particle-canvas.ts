@@ -1,7 +1,5 @@
 "use strict";
 
-import {DrawingData} from "../particle-system/src/data/data-drawing";
-import {ParticleEmitter} from "../particle-system/src/particle/particle-emitter";
 import {Viewport} from "../enum/view-port";
 import {CanvasMargin} from "../enum/canvas-margin";
 import {ParticleExporter} from "./particle-exporter";
@@ -14,7 +12,7 @@ import {Ruler} from "./particle-ruler";
  */
 export class ParticleCanvas {
 
-  private _data:DrawingData;
+  private _data:effects.DrawingData;
   /** 背景の表示オブジェクトです。 */
   private _background:createjs.Shape;
   private _captureImageLayer:ParticleCaptureImageLayer;
@@ -26,7 +24,7 @@ export class ParticleCanvas {
   private _backgroundColorCommand:any;
   private _backgroundSize:any;
   /** パーティクルエミッターのインスタンスです。 */
-  private _particleEmitter:ParticleEmitter;
+  private _particleEmitter:effects.ParticleEmitter;
   /** パーティクルの設定情報生成のインスタンスです。 */
   private _particleExporter:ParticleExporter;
   /** パーティクルの画像生成のインスタンスです。 */
@@ -35,7 +33,7 @@ export class ParticleCanvas {
   /** 座布団 */
   private _outerZabuton:createjs.Shape = new createjs.Shape();
 
-  constructor(canvas:any, data:DrawingData) {
+  constructor(canvas:any, data:effects.DrawingData) {
 
     this._data = data;
     this._canvas = canvas;
@@ -64,7 +62,7 @@ export class ParticleCanvas {
     this._captureImageLayer = new ParticleCaptureImageLayer();
     this._canvasContainer.addChild(this._captureImageLayer);
 
-    this._particleEmitter = new ParticleEmitter();
+    this._particleEmitter = new effects.ParticleEmitter();
     this._canvasContainer.addChild(this._particleEmitter.container);
 
     this._particleExporter = new ParticleExporter(this._particleEmitter.container);
@@ -189,7 +187,7 @@ export class ParticleCanvas {
     (<HTMLCanvasElement>this._stage.canvas).style.height = `${canvasHeight}px`;
   }
 
-  public update(data:DrawingData):void {
+  public update(data:effects.DrawingData):void {
 
     var palletW = Number(this._data.width) >> 0;
     var palletH = Number(this._data.height) >> 0;

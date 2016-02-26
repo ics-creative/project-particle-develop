@@ -1,5 +1,4 @@
 import {Component, EventEmitter} from "angular2/core";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {LocaleData} from "../i18n/locale-data";
 import {LocaleEnData} from "../i18n/locale-en";
 import {LocaleJaData} from "../i18n/locale-ja";
@@ -30,7 +29,7 @@ export class LargeIOBox {
   private exportParameterEvent = new EventEmitter();
   private importParameterEvent = new EventEmitter();
 
-  private drawingData:DrawingData;
+  private drawingData:effects.DrawingData;
   private platformData:PlatformData;
   public lastSelectFile:any;
 

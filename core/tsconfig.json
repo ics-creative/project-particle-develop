@@ -10,10 +10,6 @@
     "noImplicitAny": true
   },
   "exclude": [
-    "node_modules",
-    "app/particle-system/src/particle-bundle.ts",
-    "app/particle-system/typings",
-    "app/particle-system/node_modules",
-    "app/particle-system/generate-examples-code/**"
+    "node_modules"
   ]
 }

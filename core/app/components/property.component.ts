@@ -2,7 +2,6 @@ import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
 import {PropertyColorUnit} from "./property-color-unit.component";
 import {ParticleParameter} from "../assets/particle-parameter";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {PropertyEmitterPanel} from "./property-emitter.component";
 import {PropertyParticlePanel} from "./property-particle.component";
 import {PropertyColorPanel} from "./property-color.component";
@@ -26,7 +25,7 @@ import {PropertyCanvasPanel} from "./property-canvas.component";
     PropertyCanvasPanel],
 })
 export class PropertyPanel {
-  private drawingData:DrawingData;
+  private drawingData:effects.DrawingData;
 
   constructor(private localeData:LocaleData) {
   }

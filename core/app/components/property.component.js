@@ -1,4 +1,6 @@
-System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.component", "./property-emitter.component", "./property-particle.component", "./property-color.component", "./property-template.component", "./property-shape.component", "./property-canvas.component"], function(exports_1) {
+System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.component", "./property-emitter.component", "./property-particle.component", "./property-color.component", "./property-template.component", "./property-shape.component", "./property-canvas.component"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,7 +64,7 @@ System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.
                     __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], PropertyPanel);
                 return PropertyPanel;
-            })();
+            }());
             exports_1("PropertyPanel", PropertyPanel);
         }
     }

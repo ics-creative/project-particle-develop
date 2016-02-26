@@ -1,7 +1,6 @@
 "use strict";
 
 import {Component, ViewChild, AfterViewInit} from "angular2/core";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {ParticleCanvas} from "../particle/particle-canvas";
 
 @Component({
@@ -28,7 +27,7 @@ export class StageComponent implements AfterViewInit {
 
   @ViewChild("myCanvas") myCanvas:any;
 
-  private drawingData:DrawingData;
+  private drawingData:effects.DrawingData;
   private particleCanvas:ParticleCanvas;
 
   constructor() {

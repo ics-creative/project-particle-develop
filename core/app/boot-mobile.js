@@ -1,5 +1,6 @@
-System.register(['angular2/platform/browser', './components/app-mobile.component.ts'], function(exports_1) {
+System.register(['angular2/platform/browser', './components/app-mobile.component.ts'], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var browser_1, app_mobile_component_ts_1;
     return {
         setters:[

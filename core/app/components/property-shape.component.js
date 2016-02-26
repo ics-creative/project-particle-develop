@@ -1,4 +1,6 @@
-System.register(["../i18n/locale-data", "angular2/core", "../particle-system/src/data/data-shape", "./property-shape-itemrenderer.component"], function(exports_1) {
+System.register(["../i18n/locale-data", "angular2/core", "./property-shape-itemrenderer.component"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +10,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../particle-system/src
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var locale_data_1, core_1, data_shape_1, property_shape_itemrenderer_component_1;
+    var locale_data_1, core_1, property_shape_itemrenderer_component_1;
     var PropertyShapePanel;
     return {
         setters:[
@@ -18,9 +20,6 @@ System.register(["../i18n/locale-data", "angular2/core", "../particle-system/src
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (data_shape_1_1) {
-                data_shape_1 = data_shape_1_1;
-            },
             function (property_shape_itemrenderer_component_1_1) {
                 property_shape_itemrenderer_component_1 = property_shape_itemrenderer_component_1_1;
             }],
@@ -29,7 +28,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../particle-system/src
             PropertyShapePanel = (function () {
                 function PropertyShapePanel(localeData) {
                     this.localeData = localeData;
-                    this.shapeIdList = new data_shape_1.ShapeData().assetList;
+                    this.shapeIdList = new effects.ShapeData().assetList;
                 }
                 PropertyShapePanel.prototype.handleClick = function (shapeId) {
                     var index = this.drawingData.shapeIdList.indexOf(shapeId);
@@ -55,7 +54,7 @@ System.register(["../i18n/locale-data", "angular2/core", "../particle-system/src
                     __metadata('design:paramtypes', [locale_data_1.LocaleData])
                 ], PropertyShapePanel);
                 return PropertyShapePanel;
-            })();
+            }());
             exports_1("PropertyShapePanel", PropertyShapePanel);
         }
     }

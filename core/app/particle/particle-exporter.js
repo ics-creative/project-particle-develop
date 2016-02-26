@@ -1,6 +1,7 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
     ///<reference path="../../typings/tsd.d.ts" />
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var ParticleExporter;
     return {
         setters:[],
@@ -39,7 +40,7 @@ System.register([], function(exports_1) {
                     return serializer.serializeToString(this._exporter.svg);
                 };
                 return ParticleExporter;
-            })();
+            }());
             exports_1("ParticleExporter", ParticleExporter);
         }
     }

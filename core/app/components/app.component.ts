@@ -1,6 +1,7 @@
+/// <reference path="../../libs-typescript/effects-particle-system.d.ts" />
+
 import {Component} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {PropertyPanel} from "./property.component";
 import {LargeIOBox} from "./large-io.component";
 import {SmallIOBox} from "./small-io.component";
@@ -36,7 +37,7 @@ import {PropertyIoModal} from "./property-io.component";
 })
 
 export class AppComponent implements AfterViewInit {
-  protected drawingData:DrawingData;
+  protected drawingData:effects.DrawingData;
   protected platformData:PlatformData;
   @ViewChild("stageComponent") stageComponent:StageComponent;
   @ViewChild("propertyPanel") propertyPanel:PropertyPanel;
@@ -51,7 +52,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   constructor(private localeData:LocaleData) {
-    this.drawingData = new DrawingData();
+    this.drawingData = new effects.DrawingData();
     this.platformData = this.getPlatformData();
 
     // ステージサイズに対して適当な値を適用する

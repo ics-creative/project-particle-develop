@@ -1,8 +1,6 @@
 "use strict";
 
 import {Component} from "angular2/core";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
-
 @Component({
   selector: "input-range",
   templateUrl: "app/components-html/input-range.html",
@@ -14,7 +12,7 @@ import {DrawingData} from "../particle-system/src/data/data-drawing";
  * @since 2016-01-20
  */
 export class InputRangeComponent {
-  private drawingData:DrawingData;
+  private drawingData:effects.DrawingData;
   /** 対象のプロパティー名を指定します。 */
   private targetProperty:string;
   /** ラベルの名称を指定します。 */

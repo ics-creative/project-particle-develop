@@ -1,5 +1,6 @@
-System.register(["../enum/platform-type"], function(exports_1) {
+System.register(["../enum/platform-type"], function(exports_1, context_1) {
     "use strict";
+    var __moduleName = context_1 && context_1.id;
     var platform_type_1;
     var PlatformData;
     return {
@@ -22,7 +23,7 @@ System.register(["../enum/platform-type"], function(exports_1) {
                     return this.platformType == platform_type_1.PlatformType.Desktop;
                 };
                 return PlatformData;
-            })();
+            }());
             exports_1("PlatformData", PlatformData);
         }
     }

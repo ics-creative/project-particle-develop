@@ -1,7 +1,5 @@
 import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
-import {ShapeData} from "../particle-system/src/data/data-shape";
 import {EventEmitter} from 'angular2/core';
 import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component";
 
@@ -18,8 +16,8 @@ import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component
  * シェイプの選択パネルの制御クラスです。
  */
 export class PropertyShapePanel {
-  private drawingData:DrawingData;
-  private shapeIdList:string[] = new ShapeData().assetList;
+  private drawingData:effects.DrawingData;
+  private shapeIdList:string[] = new effects.ShapeData().assetList;
 
   constructor(private localeData:LocaleData) {
   }

@@ -1,4 +1,6 @@
-System.register(["./locale-ja", "./locale-en"], function(exports_1) {
+System.register(["./locale-ja", "./locale-en"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var locale_ja_1, locale_en_1;
     var LocaleManager;
     return {
@@ -52,7 +54,7 @@ System.register(["./locale-ja", "./locale-en"], function(exports_1) {
                     }
                 };
                 return LocaleManager;
-            })();
+            }());
             exports_1("LocaleManager", LocaleManager);
         }
     }

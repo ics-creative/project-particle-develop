@@ -1,6 +1,5 @@
 import {LocaleData} from "../i18n/locale-data";
 import {Component} from "angular2/core";
-import {DrawingData} from "../particle-system/src/data/data-drawing";
 import {InputRangeComponent} from "./input-range.component";
 
 "use strict";
@@ -13,7 +12,7 @@ import {InputRangeComponent} from "./input-range.component";
 })
 
 export class PropertyCanvasPanel {
-  private drawingData:DrawingData;
+  private drawingData:effects.DrawingData;
 
   constructor(private localeData:LocaleData) {
   }
