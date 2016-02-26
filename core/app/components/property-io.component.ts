@@ -30,23 +30,19 @@ export class PropertyIoModal {
     var link = (<any>this.outputLink.nativeElement);
 
     link.download = "parameter.json";
-    var blob = new Blob([json], {type: "application/json"});
+
+    if ( ~navigator.userAgent.indexOf("Windows") ) {
+      json = json.replace(/\n/g, "\r\n").replace(/\r\r/g, "\r")
+    }
+    
+    var blob = new Blob([json], {type: "text/plain"});
+
     link.href = window.URL.createObjectURL(blob);
 
 
     let textarea:HTMLTextAreaElement = this.jsonValue.nativeElement;
     //  テキストエリアに値をセットする
     textarea.value = (json);
-
-    textarea.addEventListener("click" , () => {
-
-      //テキストエリアをフォーカスする
-      textarea.focus();
-
-      //テキストエリアを全選択する
-      textarea.select();
-
-    })
   }
 
   public openIOModal() {

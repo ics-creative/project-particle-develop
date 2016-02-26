@@ -32,17 +32,14 @@ System.register(["angular2/core", "../i18n/locale-data"], function(exports_1, co
                 PropertyIoModal.prototype.setIOButtonLink = function (json) {
                     var link = this.outputLink.nativeElement;
                     link.download = "parameter.json";
-                    var blob = new Blob([json], { type: "application/json" });
+                    if (~navigator.userAgent.indexOf("Windows")) {
+                        json = json.replace(/\n/g, "\r\n").replace(/\r\r/g, "\r");
+                    }
+                    var blob = new Blob([json], { type: "text/plain" });
                     link.href = window.URL.createObjectURL(blob);
                     var textarea = this.jsonValue.nativeElement;
                     //  テキストエリアに値をセットする
                     textarea.value = (json);
-                    textarea.addEventListener("click", function () {
-                        //テキストエリアをフォーカスする
-                        textarea.focus();
-                        //テキストエリアを全選択する
-                        textarea.select();
-                    });
                 };
                 PropertyIoModal.prototype.openIOModal = function () {
                     $(this.modal.nativeElement).modal('show');
