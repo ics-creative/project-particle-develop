@@ -34,7 +34,15 @@ System.register(["angular2/core", "../i18n/locale-data"], function(exports_1, co
                     link.download = "paramater.json";
                     var blob = new Blob([json], { type: "application/json" });
                     link.href = window.URL.createObjectURL(blob);
-                    this.jsonValue.nativeElement.value = (json);
+                    var textarea = this.jsonValue.nativeElement;
+                    //  テキストエリアに値をセットする
+                    textarea.value = (json);
+                    textarea.addEventListener("click", function () {
+                        //テキストエリアをフォーカスする
+                        textarea.focus();
+                        //テキストエリアを全選択する
+                        textarea.select();
+                    });
                 };
                 PropertyIoModal.prototype.openIOModal = function () {
                     $(this.modal.nativeElement).modal('show');

@@ -14,7 +14,7 @@ import {ElementRef} from "angular2/core";
   events: []
 })
 
-export class PropertyIoModal  {
+export class PropertyIoModal {
 
   @ViewChild("modal") modal:any;
   @ViewChild("outputLink") outputLink:any;
@@ -27,16 +27,29 @@ export class PropertyIoModal  {
   }
 
   public setIOButtonLink(json:string) {
-    var link =  (<HTMLLinkElement>this.outputLink.nativeElement);
+    var link = (<any>this.outputLink.nativeElement);
 
     link.download = "paramater.json";
     var blob = new Blob([json], {type: "application/json"});
-    link.href = window.URL.createObjectURL( blob );
+    link.href = window.URL.createObjectURL(blob);
 
-    this.jsonValue.nativeElement.value =  (json);
+
+    let textarea:HTMLTextAreaElement = this.jsonValue.nativeElement;
+    //  テキストエリアに値をセットする
+    textarea.value = (json);
+
+    textarea.addEventListener("click" , () => {
+
+      //テキストエリアをフォーカスする
+      textarea.focus();
+
+      //テキストエリアを全選択する
+      textarea.select();
+
+    })
   }
 
   public openIOModal() {
-   $(this.modal.nativeElement).modal('show');
+    $(this.modal.nativeElement).modal('show');
   }
 }
