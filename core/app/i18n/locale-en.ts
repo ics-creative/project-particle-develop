@@ -64,5 +64,5 @@ export class LocaleEnData extends LocaleData {
 
 
   MC_head:string = "Save Config Data";
-  MC_button:string = "Save Config Data (.json)";
+  MC_button:string = "Save as File (.json)";
 }

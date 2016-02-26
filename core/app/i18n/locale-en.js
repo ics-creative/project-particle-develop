@@ -66,7 +66,7 @@ System.register(["./locale-data"], function(exports_1, context_1) {
                     this.SF_stageH = "Height (px)";
                     this.SF_bgColor = "Background Color";
                     this.MC_head = "Save Config Data";
-                    this.MC_button = "Save Config Data (.json)";
+                    this.MC_button = "Save as File (.json)";
                 }
                 return LocaleEnData;
             }(locale_data_1.LocaleData));

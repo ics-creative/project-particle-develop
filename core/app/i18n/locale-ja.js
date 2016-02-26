@@ -66,7 +66,7 @@ System.register(["./locale-data"], function(exports_1, context_1) {
                     this.SF_stageH = "ステージの高さ (px)";
                     this.SF_bgColor = "背景色";
                     this.MC_head = "パラメーター保存";
-                    this.MC_button = "パラメーター保存 (.json)";
+                    this.MC_button = "ファイルとして保存 (.json)";
                 }
                 return LocaleJaData;
             }(locale_data_1.LocaleData));

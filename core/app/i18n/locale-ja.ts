@@ -65,5 +65,5 @@ Particle Developは雪や炎などのパーティクル表現が作れるHTML5�
   SF_bgColor:string = "背景色";
 
   MC_head:string = "パラメーター保存";
-  MC_button:string = "パラメーター保存 (.json)";
+  MC_button:string = "ファイルとして保存 (.json)";
 }
