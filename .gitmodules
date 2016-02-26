@@ -1,3 +1,0 @@
-[submodule "core/app/particle-system"]
-	path = core/app/particle-system
-	url = git@github.com:ics-creative/createjs-particle-system.git
