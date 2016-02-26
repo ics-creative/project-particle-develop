@@ -153,6 +153,6 @@ export class ParticleParameter {
     name : "Light Ball",
     description : "鮮やかに光る玉",
     imageId : "light_ball",
-    property : {"bgColor":"#00000","width":460,"height":460,"emitFrequency":"100","startX":230,"startXVariance":0,"startY":231,"startYVariance":0,"initialDirection":0,"initialDirectionVariance":"360","initialSpeed":3.5,"initialSpeedVariance":0.1,"friction":"0.063","accelerationSpeed":0,"accelerationDirection":"275.8","startScale":3,"startScaleVariance":0,"finishScale":"2","finishScaleVariance":"0","lifeSpan":29,"lifeSpanVariance":"27","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0","finishAlphaVariance":"0","shapeIdList":["blur_circle"],"startColor":{"hue":37,"hueVariance":360,"saturation":"91","saturationVariance":0,"luminance":"56","luminanceVariance":"16"},"blendMode":true,"alphaCurveType":"0"}
+    property : {"bgColor":"#00000","width":460,"height":460,"emitFrequency":"100","startX":230,"startXVariance":0,"startY":231,"startYVariance":0,"initialDirection":0,"initialDirectionVariance":"360","initialSpeed":8.5,"initialSpeedVariance":0.1,"friction":"0.063","accelerationSpeed":0,"accelerationDirection":"275.8","startScale":3,"startScaleVariance":0,"finishScale":"2","finishScaleVariance":"0","lifeSpan":29,"lifeSpanVariance":"27","startAlpha":"1","startAlphaVariance":"0","finishAlpha":"0","finishAlphaVariance":"0","shapeIdList":["blur_circle"],"startColor":{"hue":37,"hueVariance":360,"saturation":"91","saturationVariance":0,"luminance":"56","luminanceVariance":"16"},"blendMode":true,"alphaCurveType":"0"}
   };
 }
