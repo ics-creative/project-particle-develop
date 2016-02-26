@@ -63,6 +63,6 @@ export class LocaleEnData extends LocaleData {
   SF_bgColor:string = "Background Color";
 
 
-  MC_head = "Save Config Data";
-  MC_button = "Save Config Data (.json)";
+  MC_head:string = "Save Config Data";
+  MC_button:string = "Save Config Data (.json)";
 }

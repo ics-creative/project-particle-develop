@@ -61,6 +61,6 @@ export class LocaleData {
   SF_bgColor:string = null;
 
 
-  MC_head = null;
-  MC_button = null;
+  MC_head:string = null;
+  MC_button:string = null;
 }
