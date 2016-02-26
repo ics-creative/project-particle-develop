@@ -14,7 +14,7 @@ import {ElementRef} from "angular2/core";
   events: []
 })
 
-export class PropertyIoModal implements AfterViewInit {
+export class PropertyIoModal  {
 
   @ViewChild("modal") modal:any;
   @ViewChild("outputLink") outputLink:any;

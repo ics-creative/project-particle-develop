@@ -23,9 +23,10 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                 }
                 InputRangeComponent.prototype.handleChange = function (event) {
                     // なぜか string になっている可能性がある
-                    var value = this.drawingData[this.targetProperty];
+                    var tmp = this.drawingData;
+                    var value = tmp[this.targetProperty];
                     // そのため、明示的な型変換を行う
-                    this.drawingData[this.targetProperty] = Number(value);
+                    tmp[this.targetProperty] = Number(value);
                 };
                 InputRangeComponent = __decorate([
                     core_1.Component({

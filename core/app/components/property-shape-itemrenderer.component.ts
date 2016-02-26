@@ -2,7 +2,9 @@ import {Component, ViewChild} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 
 declare namespace window {
-  export var lib:Object;
+  export namespace effects {
+    export var assets:Object;
+  }
 }
 
 "use strict";

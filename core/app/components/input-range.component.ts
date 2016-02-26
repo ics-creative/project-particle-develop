@@ -29,8 +29,9 @@ export class InputRangeComponent {
 
   private handleChange(event:any):void{
     // なぜか string になっている可能性がある
-    const value:any = this.drawingData[this.targetProperty];
+    let tmp:any = <any>this.drawingData;
+    const value:any = tmp[this.targetProperty];
     // そのため、明示的な型変換を行う
-    this.drawingData[this.targetProperty] = Number(value);
+    tmp[this.targetProperty] = Number(value);
   }
 }
