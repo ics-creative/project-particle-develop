@@ -13,7 +13,7 @@ import {OnInit} from "angular2/core";
 })
 
 export class SmallPropertyTemplateModal implements OnInit {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
   private templateList:any[];
   private template:ParticleParameter;
 

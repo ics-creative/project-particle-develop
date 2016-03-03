@@ -28,7 +28,7 @@ System.register(["../i18n/locale-data", "angular2/core", "./property-shape-itemr
             PropertyShapePanel = (function () {
                 function PropertyShapePanel(localeData) {
                     this.localeData = localeData;
-                    this.shapeIdList = new effects.ShapeData().assetList;
+                    this.shapeIdList = new particlejs.ShapeData().assetList;
                 }
                 PropertyShapePanel.prototype.handleClick = function (shapeId) {
                     var index = this.drawingData.shapeIdList.indexOf(shapeId);

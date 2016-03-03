@@ -16,8 +16,8 @@ import {PropertyShapeItemRenderer} from "./property-shape-itemrenderer.component
  * シェイプの選択パネルの制御クラスです。
  */
 export class PropertyShapePanel {
-  private drawingData:effects.DrawingData;
-  private shapeIdList:string[] = new effects.ShapeData().assetList;
+  private drawingData:particlejs.DrawingData;
+  private shapeIdList:string[] = new particlejs.ShapeData().assetList;
 
   constructor(private localeData:LocaleData) {
   }

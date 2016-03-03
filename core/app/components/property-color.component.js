@@ -35,8 +35,8 @@ System.register(["../i18n/locale-data", "angular2/core", "./property-color-unit.
                 function PropertyColorPanel(localeData) {
                     this.localeData = localeData;
                     this.objArray = [
-                        { name: 'Normal', value: effects.AlphaCurveType.Normal },
-                        { name: 'Random', value: effects.AlphaCurveType.Random }
+                        { name: 'Normal', value: particlejs.AlphaCurveType.Normal },
+                        { name: 'Random', value: particlejs.AlphaCurveType.Random }
                     ];
                 }
                 PropertyColorPanel = __decorate([

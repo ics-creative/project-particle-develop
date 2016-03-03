@@ -17,7 +17,7 @@ export class Ruler {
   private _thumb:createjs.Shape;
   private _isMouseDown:boolean = false;
 
-  constructor(private _data:effects.DrawingData) {
+  constructor(private _data:particlejs.DrawingData) {
     this.container = new createjs.Container();
     this._shapeBg = new createjs.Shape();
     this.container.addChild(this._shapeBg);

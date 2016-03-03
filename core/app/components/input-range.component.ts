@@ -12,7 +12,7 @@ import {Component} from "angular2/core";
  * @since 2016-01-20
  */
 export class InputRangeComponent {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
   /** 対象のプロパティー名を指定します。 */
   private targetProperty:string;
   /** ラベルの名称を指定します。 */

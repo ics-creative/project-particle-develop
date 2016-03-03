@@ -25,7 +25,7 @@ import {PropertyCanvasPanel} from "./property-canvas.component";
     PropertyCanvasPanel],
 })
 export class PropertyPanel {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
 
   constructor(private localeData:LocaleData) {
   }

@@ -26,7 +26,7 @@ System.register(["angular2/core"], function(exports_1, context_1) {
                     var canvas = this.myCanvas.nativeElement;
                     var stage = new createjs.Stage(canvas);
                     // Adobe Animate CCから書きだしたシェイプを使う
-                    var namespaceObj = window["effects"]["assets"];
+                    var namespaceObj = window["particlejs"]["assets"];
                     var cls = namespaceObj[this.shapeId];
                     var shape = new cls();
                     shape.x = 32;

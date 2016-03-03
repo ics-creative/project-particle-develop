@@ -1,4 +1,4 @@
-/// <reference path="../../libs-typescript/effects-particle-system.d.ts" />
+/// <reference path="../../libs-typescript/particlejs.d.ts" />
 System.register(["angular2/core", "./property.component", "./large-io.component", "./small-io.component", "./small-template.component", "./stage.component", "../enum/view-port", "../enum/canvas-margin", "../i18n/locale-data", "../i18n/locale-manager", "../data/platform-data", "../enum/platform-type", "./property-io.component"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
@@ -60,7 +60,7 @@ System.register(["angular2/core", "./property.component", "./large-io.component"
             AppComponent = (function () {
                 function AppComponent(localeData) {
                     this.localeData = localeData;
-                    this.drawingData = new effects.DrawingData();
+                    this.drawingData = new particlejs.DrawingData();
                     this.platformData = this.getPlatformData();
                     // ステージサイズに対して適当な値を適用する
                     var canvasWidth = innerWidth;

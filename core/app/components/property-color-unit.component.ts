@@ -11,7 +11,7 @@ import {InputRangeComponent} from "./input-range.component";
   directives: [InputRangeComponent]
 })
 export class PropertyColorUnit {
-  private colorData:effects.ColorData;
+  private colorData:particlejs.ColorData;
 
   constructor(private localeData:LocaleData){
   }

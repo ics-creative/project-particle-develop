@@ -49,9 +49,9 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-expor
                     this._canvasContainer.addChild(this._background);
                     this._captureImageLayer = new particle_capture_image_layer_1.ParticleCaptureImageLayer();
                     this._canvasContainer.addChild(this._captureImageLayer);
-                    this._particleEmitter = new effects.ParticleEmitter();
-                    this._canvasContainer.addChild(this._particleEmitter.container);
-                    this._particleExporter = new particle_exporter_1.ParticleExporter(this._particleEmitter.container);
+                    this._particleSystem = new particlejs.ParticleSystem();
+                    this._canvasContainer.addChild(this._particleSystem.container);
+                    this._particleExporter = new particle_exporter_1.ParticleExporter(this._particleSystem.container);
                     this._partcileImageImporter = new particle_image_importer_1.PartcicleImageImporter();
                     // 座布団
                     this._stage.addChild(this._outerZabuton);
@@ -64,10 +64,10 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-expor
                     window.addEventListener("resize", function () { return _this.resizeHandler(); });
                 }
                 ParticleCanvas.prototype.pause = function () {
-                    this._particleEmitter.pause();
+                    this._particleSystem.pause();
                 };
                 ParticleCanvas.prototype.resume = function () {
-                    this._particleEmitter.resume();
+                    this._particleSystem.resume();
                 };
                 ParticleCanvas.prototype.getSvgString = function () {
                     return this._particleExporter.getSvgString();
@@ -158,8 +158,8 @@ System.register(["../enum/view-port", "../enum/canvas-margin", "./particle-expor
                         this._ruler.setSize(palletW, palletH);
                         this.resizeHandler();
                     }
-                    this._particleEmitter.setData(data);
-                    this._particleEmitter.update();
+                    this._particleSystem.setData(data);
+                    this._particleSystem.update();
                     this._ruler.update();
                     this._stage.update();
                 };

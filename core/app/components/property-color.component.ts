@@ -20,13 +20,13 @@ interface TestObject {
 })
 
 export class PropertyColorPanel {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
   private objArray:TestObject[];
 
   constructor(private localeData:LocaleData) {
     this.objArray = [
-      {name: 'Normal', value: effects.AlphaCurveType.Normal},
-      {name: 'Random', value: effects.AlphaCurveType.Random}
+      {name: 'Normal', value: particlejs.AlphaCurveType.Normal},
+      {name: 'Random', value: particlejs.AlphaCurveType.Random}
     ];
   }
 }

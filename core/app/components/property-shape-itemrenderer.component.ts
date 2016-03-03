@@ -2,7 +2,7 @@ import {Component, ViewChild} from "angular2/core";
 import {AfterViewInit} from "angular2/core";
 
 declare namespace window {
-  export namespace effects {
+  export namespace particlejs {
     export var assets:Object;
   }
 }
@@ -32,7 +32,7 @@ export class PropertyShapeItemRenderer implements AfterViewInit {
     let stage = new createjs.Stage(canvas);
 
     // Adobe Animate CCから書きだしたシェイプを使う
-    let namespaceObj = <any> window["effects"]["assets"];
+    let namespaceObj = <any> window["particlejs"]["assets"];
     let cls = <any> namespaceObj[this.shapeId];
     let shape = new cls();
     shape.x = 32;

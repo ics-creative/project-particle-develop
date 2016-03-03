@@ -13,7 +13,7 @@ import {InputRangeComponent} from "./input-range.component";
 })
 
 export class PropertyEmitterPanel {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
 
   constructor(private localeData:LocaleData) {
   }

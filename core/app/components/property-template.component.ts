@@ -13,7 +13,7 @@ import {LocaleData} from "../i18n/locale-data";
 })
 
 export class PropertyTemplatePanel implements OnInit {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
   private templateList:any[];
   private template:ParticleParameter;
 

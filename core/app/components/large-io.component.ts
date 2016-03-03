@@ -29,7 +29,7 @@ export class LargeIOBox {
   private exportParameterEvent = new EventEmitter();
   private importParameterEvent = new EventEmitter();
 
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
   private platformData:PlatformData;
   public lastSelectFile:any;
 

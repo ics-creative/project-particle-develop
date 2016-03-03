@@ -12,7 +12,7 @@ import {Ruler} from "./particle-ruler";
  */
 export class ParticleCanvas {
 
-  private _data:effects.DrawingData;
+  private _data:particlejs.DrawingData;
   /** 背景の表示オブジェクトです。 */
   private _background:createjs.Shape;
   private _captureImageLayer:ParticleCaptureImageLayer;
@@ -24,7 +24,7 @@ export class ParticleCanvas {
   private _backgroundColorCommand:any;
   private _backgroundSize:any;
   /** パーティクルエミッターのインスタンスです。 */
-  private _particleEmitter:effects.ParticleEmitter;
+  private _particleSystem:particlejs.ParticleSystem;
   /** パーティクルの設定情報生成のインスタンスです。 */
   private _particleExporter:ParticleExporter;
   /** パーティクルの画像生成のインスタンスです。 */
@@ -33,7 +33,7 @@ export class ParticleCanvas {
   /** 座布団 */
   private _outerZabuton:createjs.Shape = new createjs.Shape();
 
-  constructor(canvas:any, data:effects.DrawingData) {
+  constructor(canvas:any, data:particlejs.DrawingData) {
 
     this._data = data;
     this._canvas = canvas;
@@ -62,10 +62,10 @@ export class ParticleCanvas {
     this._captureImageLayer = new ParticleCaptureImageLayer();
     this._canvasContainer.addChild(this._captureImageLayer);
 
-    this._particleEmitter = new effects.ParticleEmitter();
-    this._canvasContainer.addChild(this._particleEmitter.container);
+    this._particleSystem = new particlejs.ParticleSystem();
+    this._canvasContainer.addChild(this._particleSystem.container);
 
-    this._particleExporter = new ParticleExporter(this._particleEmitter.container);
+    this._particleExporter = new ParticleExporter(this._particleSystem.container);
 
     this._partcileImageImporter = new PartcicleImageImporter();
 
@@ -83,10 +83,10 @@ export class ParticleCanvas {
   }
 
   public pause() : void{
-    this._particleEmitter.pause();
+    this._particleSystem.pause();
   }
   public resume() : void{
-    this._particleEmitter.resume();
+    this._particleSystem.resume();
   }
 
   public getSvgString():string {
@@ -187,7 +187,7 @@ export class ParticleCanvas {
     (<HTMLCanvasElement>this._stage.canvas).style.height = `${canvasHeight}px`;
   }
 
-  public update(data:effects.DrawingData):void {
+  public update(data:particlejs.DrawingData):void {
 
     var palletW = Number(this._data.width) >> 0;
     var palletH = Number(this._data.height) >> 0;
@@ -202,8 +202,8 @@ export class ParticleCanvas {
       this.resizeHandler();
     }
 
-    this._particleEmitter.setData(data);
-    this._particleEmitter.update();
+    this._particleSystem.setData(data);
+    this._particleSystem.update();
     this._ruler.update();
     this._stage.update();
   }

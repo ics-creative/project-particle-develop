@@ -18,7 +18,7 @@ export class SmallIOBox {
   private exportPngEvent = new EventEmitter();
   private importCameraEvent = new EventEmitter();
 
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
   private element:ElementRef;
 
   exportPng() {

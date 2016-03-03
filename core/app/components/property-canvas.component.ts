@@ -12,7 +12,7 @@ import {InputRangeComponent} from "./input-range.component";
 })
 
 export class PropertyCanvasPanel {
-  private drawingData:effects.DrawingData;
+  private drawingData:particlejs.DrawingData;
 
   constructor(private localeData:LocaleData) {
   }
