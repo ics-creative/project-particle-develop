@@ -1,32 +1,22 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header hidden-xs" style="margin-right: 10px;">
-      <h1><img src="images/ui/logo.png"/></h1>
-    </div>
+<nav class="container-fluid">
+  <div class="row">
+    <h1><img src="images/ui/logo.png"/></h1>
 
-    <div class="collapse navbar-collapse">
-      <!-- Left Navi -->
-      <ul class="nav navbar-nav">
-        <li><a data-toggle="modal" data-target="#modalAbout">{{localeData.H_about}}</a></li>
-      </ul>
+    <button class="hidden-sm-down btn btn-primary" data-toggle="modal" data-target="#modalAbout">{{localeData.H_about}}</button>
+    <large-io-box #largeIOBox [drawingData]="drawingData"
+                  [platformData]="platformData"
+                  (exportSvgEvent)="handleSvgClick()"
+                  (exportPngEvent)="handlePngClick()"
+                  (exportJpgEvent)="handleJpgClick()"
+                  (exportWebpEvent)="handleWebpClick()"
+                  (exportParameterEvent)="handleExportParameterClick()"
+                  (importParameterEvent)="handleImportParameterClick()">
+    </large-io-box>
 
-      <!-- Right Navi -->
-      <large-io-box #largeIOBox [drawingData]="drawingData"
-                      [platformData]="platformData"
-                      (exportSvgEvent)="handleSvgClick()"
-                      (exportPngEvent)="handlePngClick()"
-                      (exportJpgEvent)="handleJpgClick()"
-                      (exportWebpEvent)="handleWebpClick()"
-                      (exportParameterEvent)="handleExportParameterClick()"
-                      (importParameterEvent)="handleImportParameterClick()">
-      </large-io-box>
-    </div>
-    <div class="row show-xs hidden-sm hidden-md hidden-lg">
-      <small-io-box [drawingData]="drawingData"
-                     (exportPngEvent)="handlePngClick()"
-                     (importCameraEvent)="handleCamera()">
-      </small-io-box>
-    </div>
+    <small-io-box [drawingData]="drawingData"
+                  (exportPngEvent)="handlePngClick()"
+                  (importCameraEvent)="handleCamera()">
+    </small-io-box>
   </div>
 </nav>
 

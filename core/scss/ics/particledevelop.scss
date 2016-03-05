@@ -1,0 +1,44 @@
+@import "../utilities";
+
+my-app > nav {
+	background-color: $gray;
+	border: 1px solid $nav-tabs-border-color;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+
+	.btn {
+		line-height: 40px;
+		border-right: 1px solid rgba(0, 0, 0, 0.2);
+		border-left: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	h1 {
+		padding: 0.2rem $btn-padding-x 0;
+		margin-bottom: 0;
+		& + * {
+			margin-right: auto;
+		}
+	}
+}
+
+small-io-box ul {
+	padding-left: 0;
+	li {
+		box-sizing: border-box;
+		.btn {
+			font-size: rem-calc(16);
+			padding: 10px 15px;
+		}
+	}
+}
+
+@media (max-width: 880px) {
+	my-app > nav {
+		padding-left: $grid-gutter-width/4;
+		h1 {
+			width: 50px;
+			overflow: hidden;
+			padding-left: $btn-padding-x / 2;
+			margin-right: auto;
+		}
+	}
+}

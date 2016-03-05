@@ -127,7 +127,11 @@ ol,
 ul,
 dl {
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+
+  li {
+    list-style:none;
+  }
 }
 
 ol ol,
@@ -159,8 +163,7 @@ a {
   color: $link-color;
   text-decoration: $link-decoration;
   @include hover-focus {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+    background-color: $gray-dark;
   }
 
   &:focus {

@@ -1,6 +1,6 @@
-<ul class="nav navbar-nav navbar-right">
+<ul class="row hidden-sm-down">
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle btn-primary" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-file-image-o"></i>
+    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-file-image-o"></i>
       {{localeData.H_exportImage}}<span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
       <li><a (click)="exportSvg()">SVG (Adobe Illustrator, etc.)</a></li>
@@ -9,11 +9,10 @@
       <li><a (click)="exportWebp()">WebP (Only Chrome)</a></li>
     </ul>
   </li>
-  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
+  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()" class="btn btn-primary"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
   <li *ngIf="platformData.enableInputParameter()"><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
-
   <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i>
+    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i>
       {{localeData.H_language}}<span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu">
       <li><a (click)="selectEn()">English / 英語</a></li>

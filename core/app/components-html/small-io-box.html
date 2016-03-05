@@ -1,13 +1,11 @@
-<div class="clearfix">
-  <ul class="nav navbar-nav clearfix">
-    <li>
-      <a data-toggle="modal" data-target="#myModal" style="cursor: pointer;"><i class="fa fa-cloud"></i></a>
-    </li>
-    <li>
-      <a (click)="importCamera()"><i class="fa fa-camera"></i></a>
-    </li>
-    <li>
-      <a (click)="exportPng()"><i class="fa fa-file-image-o"></i></a>
-    </li>
-  </ul>
-</div>
+<ul class="row hidden-md-up">
+  <li>
+    <a class="btn btn-primary" data-toggle="modal" data-target="#myModal"><i class="fa fa-cloud"></i></a>
+  </li>
+  <li>
+    <a class="btn btn-primary" (click)="importCamera()"><i class="fa fa-camera"></i></a>
+  </li>
+  <li>
+    <a class="btn btn-primary" (click)="exportPng()"><i class="fa fa-file-image-o"></i></a>
+  </li>
+</ul>
