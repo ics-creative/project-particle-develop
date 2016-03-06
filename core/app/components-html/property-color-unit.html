@@ -5,7 +5,9 @@
         targetProperty="hue">
 </input-range>
 
-<div class="gradation-box-hue"></div>
+<div class="row">
+	<div class="gradation-box-hue col-xs-9"></div>
+</div>
 
 <input-range
         label="{{localeData.SC_hueVariance}}"
@@ -21,8 +23,9 @@
         [drawingData]="colorData"
         targetProperty="saturation">
 </input-range>
-
-<div class="gradation-box-saturation"></div>
+<div class="row">
+	<div class="gradation-box-saturation col-xs-9"></div>
+</div>
 
 <input-range
         label="{{localeData.SC_saturationVariance}}"
@@ -37,8 +40,10 @@
         [drawingData]="colorData"
         targetProperty="luminance">
 </input-range>
+<div class="row">
+	<div class="gradation-box-luminance col-xs-9"></div>
+</div>
 
-<div class="gradation-box-luminance"></div>
 
 <input-range
         label="{{localeData.SC_luminanceVariance}}"

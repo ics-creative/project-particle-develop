@@ -1,10 +1,13 @@
-<h3>{{localeData.ST_head}}</h3>
-
-<hr/>
-
-<div *ngFor="#template of templateList"
-     class="col-sm-6 templateListItem text-center"
-     (click)="selectTemplate(template.property)">
-  <img class="media-object" src="images/particle-template/{{template.imageId}}.png" width="128" height="128"/>
-  <p>{{template.name}}</p>
+<div class="card text-xs-center">
+	<header class="card-header">
+		<h3>{{localeData.ST_head}}</h3>
+	</header>
+	<hr>
+	<div class="card-block row">
+		<figure *ngFor="#template of templateList" class="col-sm-6"
+						(click)="selectTemplate(template.property)">
+			<img class="media-object" src="images/particle-template/{{template.imageId}}.png" width="128" height="128"/>
+			<figcaption>{{template.name}}</figcaption>
+		</figure>
+	</div>
 </div>

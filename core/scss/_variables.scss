@@ -26,13 +26,14 @@
 //
 // Grayscale and brand colors for use across Bootstrap.
 
+$black:                     #000000 !default;
 $gray-dark:                 #1e1e1e !default;
 $gray:                      #323232 !default;
-$gray-light:                #818a91 !default;
+$gray-light:                #C8C8C8 !default;
 $gray-lighter:              #eceeef !default;
 $gray-lightest:             #f7f7f9 !default;
 
-$brand-primary:             #C8C8C8 !default;
+$brand-primary:             $gray !default;
 $brand-success:             #5cb85c !default;
 $brand-info:                #5bc0de !default;
 $brand-warning:             #f0ad4e !default;
@@ -86,14 +87,14 @@ $border-width:               1px !default;
 // Settings for the `<body>` element.
 
 $body-bg:                    #484848 !default;
-$body-color:                 $gray-dark !default;
+$body-color:                 $gray-light !default;
 
 
 // Links
 //
 // Style anchor elements.
 
-$link-color:                 $brand-primary !default;
+$link-color:                 $body-color !default;
 $link-decoration:            none !default;
 $link-hover-color:           darken($link-color, 15%) !default;
 $link-hover-decoration:      underline !default;
@@ -147,6 +148,8 @@ $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:      Menlo, Monaco, Consolas, "Courier New", monospace !default;
 $font-family-base:           $font-family-sans-serif !default;
 
+$text-basic-shadow:                 -1px -1px 0 rgba(0, 0, 0, 0.3);
+
 // Pixel value used to responsively scale all typography. Applied to the `<html>` element.
 $font-size-root:             14px !default;
 
@@ -155,12 +158,12 @@ $font-size-lg:               1.25rem !default;
 $font-size-sm:               .875rem !default;
 $font-size-xs:               .75rem !default;
 
-$font-size-h1:               2.5rem !default;
-$font-size-h2:               2rem !default;
-$font-size-h3:               1.75rem !default;
-$font-size-h4:               1.5rem !default;
-$font-size-h5:               1.25rem !default;
-$font-size-h6:               1rem !default;
+$font-size-h1:               $font-size-base !default;
+$font-size-h2:               $font-size-base !default;
+$font-size-h3:               $font-size-base !default;
+$font-size-h4:               $font-size-base !default;
+$font-size-h5:               $font-size-base !default;
+$font-size-h6:               $font-size-base !default;
 
 $display1-size:               6rem !default;
 $display2-size:               5.5rem !default;
@@ -176,7 +179,7 @@ $line-height:                1.5 !default;
 
 $headings-margin-bottom:     ($spacer / 2) !default;
 $headings-font-family:       inherit !default;
-$headings-font-weight:       500 !default;
+$headings-font-weight:       400 !default;
 $headings-line-height:       1.1 !default;
 $headings-color:             inherit !default;
 
@@ -191,7 +194,7 @@ $blockquote-small-color:      $gray-light !default;
 $blockquote-font-size:        ($font-size-base * 1.25) !default;
 $blockquote-border-color:     $gray-lighter !default;
 
-$hr-border-color:             rgba(0,0,0,.1) !default;
+$hr-border-color:             #2b2b2b !default;
 $hr-border-width:             $border-width !default;
 
 $dt-font-weight:              bold !default;
@@ -387,12 +390,12 @@ $nav-link-hover-bg:                         $gray-lighter !default;
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;
 
-$nav-tabs-border-color:                     #000 !default;
+$nav-tabs-border-color:                     $black !default;
 
 $nav-tabs-link-border-width:                $border-width !default;
 $nav-tabs-link-hover-border-color:          $gray-lighter !default;
 
-$nav-tabs-active-link-hover-bg:             $body-bg !default;
+$nav-tabs-active-link-hover-bg:             $brand-primary !default;
 $nav-tabs-active-link-hover-color:          $gray !default;
 $nav-tabs-active-link-hover-border-color:   #ddd !default;
 
@@ -478,11 +481,11 @@ $state-danger-border:            darken($state-danger-bg, 5%) !default;
 $card-spacer-x:            1.25rem !default;
 $card-spacer-y:            .75rem !default;
 $card-border-width:        1px !default;
-$card-border-radius:       $border-radius !default;
-$card-border-color:        #e5e5e5 !default;
+$card-border-radius:       0 !default;
+$card-border-color:        $black !default;
 $card-border-radius-inner: $card-border-radius !default;
-$card-cap-bg:              #f5f5f5 !default;
-$card-bg:                  #fff !default;
+$card-cap-bg:              $brand-primary !default;
+$card-bg:                  $gray !default;
 
 $card-link-hover-color:    #fff !default;
 
@@ -664,3 +667,8 @@ $pre-bg:                      #f7f7f9 !default;
 $pre-color:                   $gray-dark !default;
 $pre-border-color:            #ccc !default;
 $pre-scrollable-max-height:   340px !default;
+
+
+// add
+$nav-tabs-link-hover-background-color:          #3e444c !default;
+

@@ -20,18 +20,18 @@
   </div>
 </nav>
 
-<div id="wrapper">
+<div id="wrapper" class="row">
   <div id="main">
-    <div id="canvasBox" class="panel panel-default">
-      <div class="panel-heading hidden-xs">
-        <h2 class="panel-title">{{localeData.preview_head}}</h2>
-      </div>
-      <div class="panel-body">
+    <div id="canvasBox" class="card card-primary text-xs-center">
+      <header class="card-header">
+        <h2 class="card-title">{{localeData.preview_head}}</h2>
+      </header>
+      <div class="card-block">
         <stage #stageComponent [drawingData]="drawingData"></stage>
       </div>
     </div>
   </div>
-  <div id="propertyPanel" class="hidden-xs">
+  <div id="propertyPanel" class="hidden-sm-down">
     <property-panel [drawingData]="drawingData"></property-panel>
   </div>
 </div>

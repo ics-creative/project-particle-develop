@@ -16,7 +16,8 @@
 }
 
 .card-title {
-  margin-bottom: $card-spacer-y;
+  text-align: center;
+  font-size:$font-size-sm;
 }
 
 .card-subtitle {
@@ -71,6 +72,8 @@
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
+  text-align: center;
+
 
   &:first-child {
     @include border-radius($card-border-radius-inner $card-border-radius-inner 0 0);
@@ -93,7 +96,7 @@
 //
 
 .card-primary {
-  @include card-variant($brand-primary, $brand-primary);
+  @include card-variant($brand-primary, $black);
 }
 .card-success {
   @include card-variant($brand-success, $brand-success);

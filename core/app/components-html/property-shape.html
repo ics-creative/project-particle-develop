@@ -1,13 +1,13 @@
-<h3>{{localeData.SS_head}}</h3>
-
-<hr />
-
-<div class="row">
-  <div *ngFor="#shapeId of shapeIdList">
-    <div class="col-sm-4 shapeListItem"
-         [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
-         (click)="handleClick(shapeId)">
-      <shape-itemrenderer shapeId="{{shapeId}}"></shape-itemrenderer>
-    </div>
-  </div>
+<div class="card">
+	<header class="card-header">
+		<h3>{{localeData.SS_head}}</h3>
+	</header>
+	<hr>
+	<div class="card-block row">
+		<div *ngFor="#shapeId of shapeIdList" class="col-sm-4 shapeListItem row"
+				 [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
+				 (click)="handleClick(shapeId)">
+			<shape-itemrenderer shapeId="{{shapeId}}"></shape-itemrenderer>
+		</div>
+	</div>
 </div>

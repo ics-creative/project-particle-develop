@@ -59,6 +59,11 @@ html {
 // Reset HTML, body, and more
 //
 
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
 html {
   // Sets a specific default `font-size` for user with `rem` type scales.
   font-size: $font-size-root;
@@ -75,6 +80,7 @@ body {
   color: $body-color;
   // By default, `<body>` has no `background-color` so we set one as a best practice.
   background-color: $body-bg;
+  overflow: hidden;
 }
 
 // Suppress the focus outline on elements that cannot be accessed via keyboard.
@@ -97,7 +103,8 @@ body {
 // margin for easier control within type scales as it avoids margin collapsing.
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 0;
+  text-shadow: $text-basic-shadow;
 }
 
 // Reset margins on paragraphs
@@ -333,6 +340,11 @@ input[type="search"] {
   // be added to `.form-control` as it's not specific enough. For details, see
   // https://github.com/twbs/bootstrap/issues/11586.
   -webkit-appearance: none;
+}
+
+input[type="range"] {
+  display: block;
+  width: 100%;
 }
 
 // todo: needed?
