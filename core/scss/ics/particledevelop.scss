@@ -1,11 +1,19 @@
 @import "../utilities";
 
-my-app > nav {
+my-app > header,
+my-app > footer {
 	background-color: $brand-primary;
-	border: 1px solid $nav-tabs-border-color;
+}
+
+my-app > header {
+	> .row {
+		height: 49px;
+	}
+
+	border-bottom: 1px solid $nav-tabs-border-color;
 	text-shadow: $text-basic-shadow;
 	.btn {
-		line-height: 40px;
+		line-height: 36px;
 		border-right: 1px solid rgba(0, 0, 0, 0.2);
 		border-left: 1px solid rgba(255, 255, 255, 0.1);
 	}
@@ -44,7 +52,7 @@ small-io-box ul {
 
 #wrapper {
 	margin: 2px 2px 0;
-	height: calc(100% - 92px);
+	height: calc(100% - 94px);
 }
 
 #main .card-block {
@@ -68,14 +76,14 @@ small-io-box ul {
 	overflow: hidden;
 
 	property-panel > .card {
-		height: 100%;
+		height: calc(100% - 2px);
 		> .card-block {
-			height: calc(100% - 60px);
+			height: calc(100% - 35px);
 			overflow: hidden;
 			padding: 0;
 			> .tab-content {
 				height: 100%;
-				overflow: auto;
+				overflow-y: auto;
 				padding-left: 10px;
 				padding-right: 10px;
 			}
@@ -172,8 +180,6 @@ input-range {
 shape-property-panel {
 	.shapeListItem {
 		cursor: pointer;
-		border-radius: 5px;
-		align-items: center;
 		justify-content: center;
 		box-sizing: border-box;
 		line-height: 0;
@@ -193,6 +199,38 @@ shape-property-panel {
 				background: #222;
 				border-color: #333;
 			}
+		}
+	}
+}
+
+my-app > footer {
+	border-top: 1px solid $nav-tabs-border-color;
+	filter: grayscale(100%);
+	transition: all 0.2s;
+	&:hover {
+		filter: grayscale(0%);
+	}
+	.row {
+		height: 42px;
+		align-items: center;
+		padding-left: rem-calc(10);
+		padding-right: rem-calc(10);
+
+		> a {
+			display: block;
+			@include hover-focus-active {
+				background-color: transparent;
+			}
+
+			&:last-of-type {
+				margin-left: 20px;
+
+			}
+		}
+
+		> *:nth-child(2) {
+			margin-left: rem-calc(5);
+			margin-right: auto;
 		}
 	}
 }
