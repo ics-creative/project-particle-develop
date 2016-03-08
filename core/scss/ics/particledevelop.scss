@@ -16,6 +16,7 @@ my-app > header {
 		line-height: 36px;
 		border-right: 1px solid rgba(0, 0, 0, 0.2);
 		border-left: 1px solid rgba(255, 255, 255, 0.1);
+		box-shadow: none !important;
 	}
 
 	h1 {
@@ -27,31 +28,47 @@ my-app > header {
 	}
 }
 
+#canvasBox {
+	background-color: $black;
+	margin-bottom: 0;
+}
+
+small-io-box > ul,
+large-io-box > ul {
+	margin-left: 0 !important;
+	margin-right: 0.5rem !important;
+}
+
 small-io-box ul {
 	padding-left: 0;
 	li {
 		box-sizing: border-box;
 		.btn {
 			font-size: rem-calc(16);
-			padding: 10px 15px;
+			padding: 5px 15px 6px;
 		}
 	}
 }
 
-@media (max-width: 880px) {
-	my-app > nav {
+@media (max-width: 906px) {
+	my-app > header {
 		padding-left: $grid-gutter-width/4;
 		h1 {
 			width: 50px;
 			overflow: hidden;
 			padding-left: $btn-padding-x / 2;
-			margin-right: auto;
 		}
 	}
 }
 
+@include media-breakpoint-down(sm, $grid-breakpoints) {
+	my-app > header h1 {
+		margin-right: auto;
+	}
+}
+
 #wrapper {
-	margin: 2px 2px 0;
+	margin: 2px;
 	height: calc(100% - 94px);
 }
 
@@ -76,7 +93,7 @@ small-io-box ul {
 	overflow: hidden;
 
 	property-panel > .card {
-		height: calc(100% - 2px);
+		height: 100%;
 		> .card-block {
 			height: calc(100% - 35px);
 			overflow: hidden;
@@ -224,7 +241,23 @@ my-app > footer {
 
 			&:last-of-type {
 				margin-left: 20px;
+			}
 
+			@include media-breakpoint-down(sm, $grid-breakpoints) {
+				&:first-of-type {
+					margin-right: auto;
+				}
+			}
+
+			@include media-breakpoint-down(xs, $grid-breakpoints) {
+				&:last-of-type {
+					margin-left: auto;
+				}
+			}
+			@media (max-width: 420px) {
+				&:last-of-type {
+					display: none;
+				}
 			}
 		}
 
