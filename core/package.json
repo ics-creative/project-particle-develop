@@ -5,7 +5,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "start": "npm run lite & npm run gulp",
+    "start": "npm run lite & npm run gulp scssCompile & npm run gulp",
     "gulp": "gulp",
     "install": "tsd install",
     "build-ts": "tsc -p ."
