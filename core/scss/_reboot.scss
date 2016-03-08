@@ -169,12 +169,12 @@ blockquote {
 a {
   color: $link-color;
   text-decoration: $link-decoration;
-  @include hover-focus {
+  &:hover {
     background-color: $gray-dark;
   }
 
   &:focus {
-    @include tab-focus();
+    //@include tab-focus();
   }
 }
 
@@ -287,8 +287,8 @@ label {
 //
 // Credit: https://github.com/suitcss/base/
 button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
+  //outline: 1px dotted;
+  //outline: 5px auto -webkit-focus-ring-color;
 }
 
 input,
@@ -303,6 +303,8 @@ textarea {
   line-height: inherit;
   // iOS adds rounded borders by default
   border-radius: 0;
+
+  outline:none;
 }
 
 textarea {

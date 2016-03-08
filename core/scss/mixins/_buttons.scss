@@ -18,12 +18,12 @@
         border-color: $active-border;
   }
 
-  &:focus,
-  &.focus {
-    color: $color;
-    background-color: $active-background;
-        border-color: $active-border;
-  }
+  //&:focus,
+  //&.focus {
+  //  color: $color;
+  //  background-color: $active-background;
+  //      border-color: $active-border;
+  //}
 
   &:active,
   &.active,
