@@ -1,17 +1,18 @@
 .close {
   float: right;
-  font-size: ($font-size-base * 1.5);
+  width: 26px;
+  height: 26px;
+  font-size: ($font-size-base * 1.8);
   font-weight: $close-font-weight;
   line-height: 1;
   color: $close-color;
-  text-shadow: $close-text-shadow;
-  opacity: .2;
-
+  transition : all 0.2s ease-out;
+  opacity: .8;
+  cursor: pointer;
   @include hover-focus {
     color: $close-color;
     text-decoration: none;
-    cursor: pointer;
-    opacity: .5;
+    opacity: 1;
   }
 }
 

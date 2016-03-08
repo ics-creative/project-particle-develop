@@ -45,7 +45,7 @@ $brand-danger:              #d9534f !default;
 // Quickly modify global styling by enabling or disabling optional features.
 
 $enable-flex:               true !default;
-$enable-rounded:            true !default;
+$enable-rounded:            false !default;
 $enable-shadows:            true !default;
 $enable-gradients:          false !default;
 $enable-transitions:        false !default;
@@ -175,7 +175,7 @@ $display2-weight:             300 !default;
 $display3-weight:             300 !default;
 $display4-weight:             300 !default;
 
-$line-height:                1.5 !default;
+$line-height:                1.6 !default;
 
 $headings-margin-bottom:     ($spacer / 2) !default;
 $headings-font-family:       inherit !default;
@@ -534,17 +534,17 @@ $label-font-weight:           bold !default;
 // Modals
 
 // Padding applied to the modal body
-$modal-inner-padding:         15px !default;
+$modal-inner-padding:         20px !default;
 
 $modal-title-padding:         15px !default;
 $modal-title-line-height:     $line-height !default;
 
-$modal-content-bg:                             #fff !default;
-$modal-content-border-color:                   rgba(0,0,0,.2) !default;
+$modal-content-bg:                             $brand-primary !default;
+$modal-content-border-color:                   $black !default;
 
 $modal-backdrop-bg:           #000 !default;
 $modal-backdrop-opacity:      .5 !default;
-$modal-header-border-color:   #e5e5e5 !default;
+$modal-header-border-color:   $black !default;
 $modal-footer-border-color:   $modal-header-border-color !default;
 
 $modal-lg:                    900px !default;
@@ -650,8 +650,8 @@ $carousel-caption-color:                      #fff !default;
 
 // Close
 
-$close-font-weight:           bold !default;
-$close-color:                 #000 !default;
+$close-font-weight:           none !default;
+$close-color:                 $body-color !default;
 $close-text-shadow:           0 1px 0 #fff !default;
 
 

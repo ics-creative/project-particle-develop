@@ -59,20 +59,22 @@
 <!-- Modal -->
 <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content" style="background:#323232; border-radius:0;">
-      <div class="modal-header">
+    <div class="modal-content">
+      <div class="modal-header text-xs-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">{{localeData.MA_head}}</h4>
       </div>
       <div class="modal-body">
-        {{localeData.MA_sentence}}
-        <hr />
-        <p><img src="images/ui/about.png" style="width:100%;" /></p>
+        <p>{{localeData.MA_sentence}}</p>
+        <hr>
+        <figure>
+          <img src="images/ui/about.png" style="width:100%;" />
+        </figure>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+      <!--<div class="modal-footer">-->
+        <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+      <!--</div>-->
     </div>
   </div>
 </div>
