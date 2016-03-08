@@ -149,7 +149,9 @@ System.register(["angular2/core", "./property.component", "./large-io.component"
                     window.open("data:image/svg+xml,\n" + encodeURIComponent(this.stageComponent.getParticleSvgString()));
                 };
                 AppComponent.prototype.handleExportParameterClick = function () {
-                    this.propetyModal.setIOButtonLink(JSON.stringify(this.drawingData, null, "    "));
+                    var exportData = Object.assign({}, this.drawingData);
+                    exportData.VERSION = particlejs.VERSION;
+                    this.propetyModal.setIOButtonLink(JSON.stringify(exportData, null, "    "));
                     this.propetyModal.openIOModal();
                     //window.open("data:text/plain;charset=UTF-8,\n" + encodeURIComponent(JSON.stringify(this.drawingData)));
                 };
