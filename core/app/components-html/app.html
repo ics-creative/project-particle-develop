@@ -35,8 +35,8 @@
     <property-panel [drawingData]="drawingData"></property-panel>
   </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog clearfix" role="document">
+<div class="modal fade" id="smallParticleTemplate" tabindex="-1" role="dialog" aria-labelledby="smallParticleTemplateLabel">
+  <div class="modal-dialog" role="document">
     <small-particle-template-property-modal [drawingData]="drawingData"></small-particle-template-property-modal>
   </div>
   <div class="modal-footer">
@@ -57,13 +57,13 @@
 </footer>
 
 <!-- Modal -->
-<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="modalAboutLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-xs-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{localeData.MA_head}}</h4>
+        <h4 class="modal-title">{{localeData.MA_head}}</h4>
       </div>
       <div class="modal-body">
         <p>{{localeData.MA_sentence}}</p>

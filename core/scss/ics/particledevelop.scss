@@ -268,8 +268,31 @@ my-app > footer {
 	}
 }
 
+#smallParticleTemplate {
+	.card-block.row {
+		margin-left: 0;
+		margin-right: 0;
+		justify-content: space-between;
+		figure {
+			width: 128px;
+		}
+	}
+	.modal-dialog {
+		@media (max-width: 600px) {
+			width: 466px;
+			@include center-block();
+		}
+		@media (max-width: 480px) {
+			width: 316px;
+			@include center-block();
+		}
+	}
+
+}
+
+
 .modal-body {
 	figure {
-		margin-top:1rem;
+		margin-top: 1rem;
 	}
 }

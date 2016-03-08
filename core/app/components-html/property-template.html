@@ -4,7 +4,7 @@
 	</header>
 	<hr>
 	<div class="card-block row">
-		<figure *ngFor="#template of templateList" class="col-sm-6"
+		<figure *ngFor="#template of templateList"
 						(click)="selectTemplate(template.property)">
 			<img class="media-object" src="images/particle-template/{{template.imageId}}.png" width="128" height="128"/>
 			<figcaption>{{template.name}}</figcaption>
