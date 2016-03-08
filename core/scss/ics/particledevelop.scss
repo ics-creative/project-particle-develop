@@ -190,7 +190,7 @@ shape-property-panel {
 
 		@include hover-focus {
 			shape-itemrenderer {
-				background-color: $nav-tabs-link-hover-background-color;
+				background-color: $dropdown-link-hover-bg;
 			}
 		}
 

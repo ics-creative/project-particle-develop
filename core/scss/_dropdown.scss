@@ -41,7 +41,7 @@
   left: 0;
   z-index: $zindex-dropdown;
   display: none; // none by default, but block on "open" of the menu
-  float: left;
+  //float: left;
   min-width: 160px;
   padding: 5px 0;
   margin: 2px 0 0; // override default ul
@@ -52,7 +52,6 @@
   background-color: $dropdown-bg;
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
-  @include border-radius($border-radius);
   @include box-shadow(0 6px 12px rgba(0,0,0,.175));
 }
 
@@ -70,17 +69,20 @@
   padding: 3px 20px;
   clear: both;
   font-weight: normal;
-  line-height: $line-height;
+  font-size: $font-size-sm;
+  line-height: 40px;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background: none; // For `<button>`s
   border: 0; // For `<button>`s
+  cursor: pointer;
 
   @include hover-focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
     background-color: $dropdown-link-hover-bg;
+
   }
 
   // Active state
