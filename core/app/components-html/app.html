@@ -2,7 +2,9 @@
   <div class="row">
     <h1><img src="images/ui/logo.png"/></h1>
 
-    <button class="hidden-sm-down btn btn-primary" data-toggle="modal" data-target="#modalAbout">{{localeData.H_about}}</button>
+    <button class="hidden-sm-down btn btn-primary" data-toggle="modal" data-target="#modalAbout">
+      {{localeData.H_about}}
+    </button>
     <large-io-box #largeIOBox [drawingData]="drawingData"
                   [platformData]="platformData"
                   (exportSvgEvent)="handleSvgClick()"
@@ -65,7 +67,7 @@
         <p>{{localeData.MA_sentence}}</p>
         <hr>
         <figure>
-          <img src="images/ui/about.png" style="width:100%;" />
+          <img src="images/ui/about.png" style="width:100%;"/>
         </figure>
       </div>
     </div>
