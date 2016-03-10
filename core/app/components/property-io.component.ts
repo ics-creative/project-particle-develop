@@ -46,6 +46,6 @@ export class PropertyIoModal {
   }
 
   public openIOModal() {
-    $(this.modal.nativeElement).modal('show');
+    (<any>$(this.modal.nativeElement)).modal('show');
   }
 }
