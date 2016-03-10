@@ -267,8 +267,17 @@ my-app > footer {
 		}
 	}
 }
+particle-template-property-panel {
+	button.close {
+		display: none;
+	}
+}
 
 #smallParticleTemplate {
+	button.close {
+		display: block;
+		margin-top: - rem-calc(6);
+	}
 	.card-block.row {
 		margin-left: 0;
 		margin-right: 0;
