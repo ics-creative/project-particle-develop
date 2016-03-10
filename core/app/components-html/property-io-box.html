@@ -2,21 +2,21 @@
      aria-labelledby="myLargeModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-xs-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-          aria-hidden="true">&times;</span></button>
+                aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="exampleModalLabel">{{localeData.MC_head}}</h4>
       </div>
       <div class="modal-body">
         <form>
           <div class="form-group">
-            <textarea style="height:300px" #jsonValue type="text" class="form-control" id="properties-name"></textarea>
+            <textarea #jsonValue type="text" class="form-control" id="properties-name"></textarea>
           </div>
         </form>
-        <a #outputLink type="button" class="btn btn-primary">{{localeData.MC_button}}</a>
+        <a #outputLink type="button" class="btn btn-secondary">{{localeData.MC_button}}</a>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

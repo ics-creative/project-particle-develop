@@ -1,19 +1,19 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h2 class="panel-title">{{localeData.settings_head}}</h2>
-  </div>
-  <div class="panel-mybody">
+<div class="card card-primary">
+  <header class="card-header">
+    <h2 class="card-title">{{localeData.settings_head}}</h2>
+  </header>
+  <div class="card-block">
     <!--タブ-->
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab" title="テンプレート設定"><i class="fa fa-cloud"></i></a></li>
-      <li><a href="#tab2" data-toggle="tab" title="エミッター設定"><i class="fa fa-gears"></i></a></li>
-      <li><a href="#tab3" data-toggle="tab" title="パーティクル設定"><i class="fa fa-sliders"></i></a></li>
-      <li><a href="#tab4" data-toggle="tab" title="カラー設定"><i class="fa fa-paint-brush"></i></a></li>
-      <li><a href="#tab5" data-toggle="tab" title="形状設定"><i class="fa fa-star"></i></a></li>
-      <li><a href="#tab6" data-toggle="tab" title="キャンバス設定"><i class="fa fa-gear"></i></a></li>
+      <li class="nav-item"><a class="nav-link active" href="#tab1" data-toggle="tab" title="テンプレート設定"><i class="fa fa-cloud"></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab2" data-toggle="tab" title="エミッター設定"><i class="fa fa-gears"></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab3" data-toggle="tab" title="パーティクル設定"><i class="fa fa-sliders"></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab4" data-toggle="tab" title="カラー設定"><i class="fa fa-paint-brush"></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab5" data-toggle="tab" title="形状設定"><i class="fa fa-star"></i></a></li>
+      <li class="nav-item"><a class="nav-link" href="#tab6" data-toggle="tab" title="キャンバス設定"><i class="fa fa-gear"></i></a></li>
     </ul>
     <!-- / タブ-->
-    <div id="myTabContent" class="tab-content">
+    <div class="tab-content">
       <particle-template-property-panel
               id="tab1"
               class="tab-pane active"

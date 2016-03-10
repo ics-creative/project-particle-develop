@@ -5,9 +5,10 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "lite": "lite-server",
-    "start": "npm run lite ",
-    "install":"tsd install",
-    "build-ts" : "tsc -p ."
+    "start": "npm run lite & npm run gulp scssCompile & npm run gulp",
+    "gulp": "gulp",
+    "install": "tsd install",
+    "build-ts": "tsc -p ."
   },
   "license": "MIT",
   "dependencies": {
@@ -22,6 +23,13 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "concurrently": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-load-plugins": "^1.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^1.6.0",
     "lite-server": "^1.3.1",
     "tsd": "^0.6.5",
     "typescript": "^1.7.3"

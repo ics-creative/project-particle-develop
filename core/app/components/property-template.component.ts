@@ -27,7 +27,7 @@ export class PropertyTemplatePanel implements OnInit {
     this.drawingData.importData(this.templateList[0].property);
   }
 
-  private selectTemplate(value:Object) {
+  private selectTemplate(value:particlejs.DrawingData) {
     this.drawingData.importData(value);
   }
 }

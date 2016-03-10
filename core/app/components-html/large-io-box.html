@@ -1,23 +1,22 @@
-<ul class="nav navbar-nav navbar-right">
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle btn-primary" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-file-image-o"></i>
+<ul class="row hidden-sm-down">
+  <li class="btn-group">
+    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-file-image-o"></i>
       {{localeData.H_exportImage}}<span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu">
-      <li><a (click)="exportSvg()">SVG (Adobe Illustrator, etc.)</a></li>
-      <li><a (click)="exportPng()">PNG</a></li>
-      <li><a (click)="exportJpg()">JPEG</a></li>
-      <li><a (click)="exportWebp()">WebP (Only Chrome)</a></li>
-    </ul>
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" (click)="exportSvg()">SVG (Adobe Illustrator, etc.)</a>
+      <a class="dropdown-item" (click)="exportPng()">PNG</a>
+      <a class="dropdown-item" (click)="exportJpg()">JPEG</a>
+      <a class="dropdown-item" (click)="exportWebp()">WebP (Only Chrome)</a>
+    </div>
   </li>
-  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
+  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()" class="btn btn-primary"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
   <li *ngIf="platformData.enableInputParameter()"><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
-
-  <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-language"></i>
+  <li class="btn-group">
+    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-language"></i>
       {{localeData.H_language}}<span class="caret"></span></a>
-    <ul class="dropdown-menu" role="menu">
-      <li><a (click)="selectEn()">English / 英語</a></li>
-      <li><a (click)="selectJa()">Japanese / 日本語</a></li>
+    <ul class="dropdown-menu dropdown-menu-right">
+      <li><a class="dropdown-item" (click)="selectEn()">English / 英語</a></li>
+      <li><a class="dropdown-item" (click)="selectJa()">Japanese / 日本語</a></li>
     </ul>
   </li>
 
