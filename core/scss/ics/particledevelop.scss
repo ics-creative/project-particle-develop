@@ -296,12 +296,17 @@ particle-template-property-panel {
 			@include center-block();
 		}
 	}
-
 }
-
 
 .modal-body {
 	figure {
 		margin-top: 1rem;
+	}
+}
+
+property-io-box {
+	textarea {
+		height: 300px;
+		margin-bottom: 1rem;
 	}
 }

@@ -250,9 +250,9 @@ $btn-primary-color:              $link-color !default;
 $btn-primary-bg:                 $gray !default;
 $btn-primary-border:             $btn-primary-bg !default;
 
-$btn-secondary-color:            $gray-dark !default;
-$btn-secondary-bg:               #fff !default;
-$btn-secondary-border:           #ccc !default;
+$btn-secondary-color:            $btn-primary-color !default;
+$btn-secondary-bg:               darken($btn-primary-bg, 15%) !default;
+$btn-secondary-border:           darken($btn-secondary-bg, 15%) !default;
 
 $btn-info-color:                 #fff !default;
 $btn-info-bg:                    $brand-info !default;
