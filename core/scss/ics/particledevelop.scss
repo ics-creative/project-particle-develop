@@ -79,6 +79,8 @@ small-io-box ul {
 #propertyPanel {
 	flex: 285px;
 	margin-left: 2px;
+	height: 100%;
+	overflow: hidden;
 
 	.nav-tabs {
 		a {
@@ -86,12 +88,6 @@ small-io-box ul {
 			font-size: rem-calc(16);
 		}
 	}
-}
-
-#propertyPanel {
-	height: 100%;
-	overflow: hidden;
-
 	property-panel > .card {
 		height: 100%;
 		> .card-block {
@@ -137,6 +133,14 @@ small-io-box ul {
 }
 
 particle-template-property-panel {
+	button.close {
+		display: none;
+	}
+
+	.row {
+		justify-content: center;
+	}
+
 	figure {
 		margin-bottom: rem-calc(8.5);
 		padding-left: 10px;
@@ -195,6 +199,10 @@ input-range {
 }
 
 shape-property-panel {
+	.row {
+		margin-left: 0;
+		margin-right: 0;
+	}
 	.shapeListItem {
 		cursor: pointer;
 		justify-content: center;
@@ -265,11 +273,6 @@ my-app > footer {
 			margin-left: rem-calc(5);
 			margin-right: auto;
 		}
-	}
-}
-particle-template-property-panel {
-	button.close {
-		display: none;
 	}
 }
 
