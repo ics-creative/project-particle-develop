@@ -5,7 +5,8 @@
     <button class="hidden-sm-down btn btn-primary" data-toggle="modal" data-target="#modalAbout">
       {{localeData.H_about}}
     </button>
-    <large-io-box #largeIOBox [drawingData]="drawingData"
+    <large-io-box class="large-io-box"
+                  #largeIOBox [drawingData]="drawingData"
                   [platformData]="platformData"
                   (exportSvgEvent)="handleSvgClick()"
                   (exportPngEvent)="handlePngClick()"
@@ -15,7 +16,8 @@
                   (importParameterEvent)="handleImportParameterClick()">
     </large-io-box>
 
-    <small-io-box [drawingData]="drawingData"
+    <small-io-box class="small-io-box"
+                  [drawingData]="drawingData"
                   (exportPngEvent)="handlePngClick()"
                   (importCameraEvent)="handleCamera()">
     </small-io-box>
@@ -34,12 +36,18 @@
     </div>
   </div>
   <div id="propertyPanel" class="hidden-sm-down">
-    <property-panel [drawingData]="drawingData"></property-panel>
+    <property-panel
+      class="property-panel"
+      [drawingData]="drawingData">
+    </property-panel>
   </div>
 </div>
 <div class="modal fade" id="smallParticleTemplate" tabindex="-1" role="dialog" aria-labelledby="smallParticleTemplateLabel">
   <div class="modal-dialog" role="document">
-    <small-particle-template-property-modal [drawingData]="drawingData"></small-particle-template-property-modal>
+    <small-particle-template-property-modal
+      class="small-particle-template-property-modal"
+      [drawingData]="drawingData">
+    </small-particle-template-property-modal>
   </div>
 </div>
 <footer class="container-fluid">
@@ -75,4 +83,4 @@
 </div>
 
 <!-- Modal -->
-<property-io-box #propetyModal></property-io-box>
+<property-io-box #propetyModal class="property-io-box"></property-io-box>

@@ -1,11 +1,11 @@
 @import "../utilities";
 
-my-app > header,
-my-app > footer {
+.my-app > header,
+.my-app > footer {
 	background-color: $brand-primary;
 }
 
-my-app > header {
+.my-app > header {
 	> .row {
 		height: 49px;
 	}
@@ -33,13 +33,13 @@ my-app > header {
 	margin-bottom: 0;
 }
 
-small-io-box > ul,
-large-io-box > ul {
+.small-io-box > ul,
+.large-io-box > ul {
 	margin-left: 0 !important;
 	margin-right: 0.5rem !important;
 }
 
-small-io-box ul {
+.small-io-box ul {
 	padding-left: 0;
 	li {
 		box-sizing: border-box;
@@ -51,7 +51,7 @@ small-io-box ul {
 }
 
 @media (max-width: 906px) {
-	my-app > header {
+	.my-app > header {
 		padding-left: $grid-gutter-width/4;
 		h1 {
 			width: 50px;
@@ -62,7 +62,7 @@ small-io-box ul {
 }
 
 @include media-breakpoint-down(sm, $grid-breakpoints) {
-	my-app > header h1 {
+	.my-app > header h1 {
 		margin-right: auto;
 	}
 }
@@ -88,7 +88,7 @@ small-io-box ul {
 			font-size: rem-calc(16);
 		}
 	}
-	property-panel > .card {
+	.property-panel > .card {
 		height: 100%;
 		> .card-block {
 			height: calc(100% - 35px);
@@ -132,7 +132,7 @@ small-io-box ul {
 
 }
 
-particle-template-property-panel {
+.particle-template-property-panel {
 	button.close {
 		display: none;
 	}
@@ -164,7 +164,7 @@ particle-template-property-panel {
 	}
 }
 
-input-range {
+.input-range {
 	.row {
 		padding-left: 0;
 		padding-right: 0;
@@ -198,7 +198,7 @@ input-range {
 	background-image: linear-gradient(to right, black 0%, white 100%);
 }
 
-shape-property-panel {
+.shape-property-panel {
 	.row {
 		margin-left: 0;
 		margin-right: 0;
@@ -209,18 +209,18 @@ shape-property-panel {
 		box-sizing: border-box;
 		line-height: 0;
 		margin-bottom: 20px;
-		shape-itemrenderer {
+		.shape-itemrenderer {
 			border: 1px solid rgba(0, 0, 0, 0.1);
 		}
 
 		@include hover-focus {
-			shape-itemrenderer {
+			.shape-itemrenderer {
 				background-color: $dropdown-link-hover-bg;
 			}
 		}
 
 		&.selected {
-			shape-itemrenderer {
+			.shape-itemrenderer {
 				background: #222;
 				border-color: #333;
 			}
@@ -228,7 +228,7 @@ shape-property-panel {
 	}
 }
 
-my-app > footer {
+.my-app > footer {
 	border-top: 1px solid $nav-tabs-border-color;
 	filter: grayscale(100%);
 	transition: all 0.2s;
@@ -307,7 +307,7 @@ my-app > footer {
 	}
 }
 
-property-io-box {
+.property-io-box {
 	textarea {
 		height: 300px;
 		margin-bottom: 1rem;
