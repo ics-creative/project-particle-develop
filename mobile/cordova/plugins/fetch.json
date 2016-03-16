@@ -1,0 +1,43 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-wkwebview-engine": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-wkwebview-engine"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@~2.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera@~2.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-base64-to-gallery": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Nexxa/cordova-base64-to-gallery",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
