@@ -1,0 +1,62 @@
+System.register(["../i18n/locale-data", "angular2/core", "./property-shape-itemrenderer.component"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
+    var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+        else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+    };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
+    var locale_data_1, core_1, property_shape_itemrenderer_component_1;
+    var PropertyShapePanel;
+    return {
+        setters:[
+            function (locale_data_1_1) {
+                locale_data_1 = locale_data_1_1;
+            },
+            function (core_1_1) {
+                core_1 = core_1_1;
+            },
+            function (property_shape_itemrenderer_component_1_1) {
+                property_shape_itemrenderer_component_1 = property_shape_itemrenderer_component_1_1;
+            }],
+        execute: function() {
+            "use strict";
+            PropertyShapePanel = (function () {
+                function PropertyShapePanel(localeData) {
+                    this.localeData = localeData;
+                    this.shapeIdList = new particlejs.ShapeData().assetList;
+                }
+                PropertyShapePanel.prototype.handleClick = function (shapeId) {
+                    var index = this.drawingData.shapeIdList.indexOf(shapeId);
+                    if (index == -1) {
+                        // 追加
+                        this.drawingData.shapeIdList.push(shapeId);
+                    }
+                    else {
+                        // 2個以上のときのみ
+                        if (this.drawingData.shapeIdList.length >= 2) {
+                            // 削除
+                            this.drawingData.shapeIdList.splice(index, 1);
+                        }
+                    }
+                };
+                PropertyShapePanel = __decorate([
+                    core_1.Component({
+                        selector: "shape-property-panel",
+                        template: "<div class=\"card\">\n  <header class=\"card-header\">\n    <h3>{{localeData.SS_head}}</h3>\n  </header>\n  <hr>\n  <div class=\"card-block row\">\n    <div *ngFor=\"#shapeId of shapeIdList\" class=\"col-sm-4 shapeListItem row\"\n         [class.selected]=\"drawingData.shapeIdList.indexOf(shapeId) > -1\"\n         (click)=\"handleClick(shapeId)\">\n      <shape-itemrenderer\n        class=\"shape-itemrenderer\"\n        shapeId=\"{{shapeId}}\"\n      ></shape-itemrenderer>\n    </div>\n  </div>\n</div>\n",
+                        inputs: ["drawingData", "shapeIdList"],
+                        directives: [property_shape_itemrenderer_component_1.PropertyShapeItemRenderer]
+                    }), 
+                    __metadata('design:paramtypes', [locale_data_1.LocaleData])
+                ], PropertyShapePanel);
+                return PropertyShapePanel;
+            }());
+            exports_1("PropertyShapePanel", PropertyShapePanel);
+        }
+    }
+});
+//# sourceMappingURL=property-shape.component.js.map

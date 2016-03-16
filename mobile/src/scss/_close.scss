@@ -1,0 +1,29 @@
+.close {
+  float: right;
+  width: 26px;
+  height: 26px;
+  font-size: ($font-size-base * 1.8);
+  font-weight: $close-font-weight;
+  line-height: 1;
+  color: $close-color;
+  transition : all 0.2s ease-out;
+  opacity: .8;
+  cursor: pointer;
+  @include hover-focus {
+    color: $close-color;
+    text-decoration: none;
+    opacity: 1;
+  }
+}
+
+// Additional properties for button version
+// iOS requires the button element instead of an anchor tag.
+// If you want the anchor version, it requires `href="#"`.
+// See https://developer.mozilla.org/en-US/docs/Web/Events/click#Safari_Mobile
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
