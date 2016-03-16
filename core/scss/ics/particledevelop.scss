@@ -137,6 +137,10 @@
     display: none;
   }
 
+  .modal-footer {
+    display: none;
+  }
+
   .row {
     justify-content: center;
   }
@@ -288,6 +292,9 @@
     figure {
       width: 128px;
     }
+  }
+  .modal-footer {
+    display: block;
   }
   .modal-dialog {
     @media (max-width: 600px) {

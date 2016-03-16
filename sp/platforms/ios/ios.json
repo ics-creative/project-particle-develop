@@ -19,6 +19,14 @@
                         {
                             "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"CDVWKWebViewEngine\"><param name=\"ios-package\" value=\"CDVWKWebViewEngine\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"CordovaWebViewEngine\" value=\"CDVWKWebViewEngine\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -43,6 +51,9 @@
             "PACKAGE_NAME": "jp.ics.particledevelop"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "jp.ics.particledevelop"
+        },
+        "cordova-plugin-wkwebview-engine": {
             "PACKAGE_NAME": "jp.ics.particledevelop"
         }
     },
@@ -87,11 +98,20 @@
             "clobbers": [
                 "CameraPopoverHandle"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-wkwebview-engine/src/www/ios/ios-wkwebview-exec.js",
+            "id": "cordova-plugin-wkwebview-engine.ios-wkwebview-exec",
+            "pluginId": "cordova-plugin-wkwebview-engine",
+            "clobbers": [
+                "cordova.exec"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-base64-to-gallery": "2.0.1",
         "cordova-plugin-camera": "1.2.0",
-        "cordova-plugin-whitelist": "1.2.0"
+        "cordova-plugin-whitelist": "1.2.0",
+        "cordova-plugin-wkwebview-engine": "1.0.2"
     }
 }
