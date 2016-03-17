@@ -145,6 +145,12 @@
     justify-content: center;
   }
 
+  .card-block {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+
   figure {
     margin-bottom: rem-calc(8.5);
     padding-left: 10px;
