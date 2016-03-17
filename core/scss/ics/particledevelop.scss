@@ -326,3 +326,10 @@
     margin-bottom: 1rem;
   }
 }
+
+.canvas-property-panel {
+  input[type="color"] {
+    display: block;
+    max-width:100%;
+  }
+}
