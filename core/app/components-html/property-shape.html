@@ -7,7 +7,10 @@
     <div *ngFor="#shapeId of shapeIdList" class="col-sm-4 shapeListItem row"
          [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
          (click)="handleClick(shapeId)">
-      <shape-itemrenderer shapeId="{{shapeId}}"></shape-itemrenderer>
+      <shape-itemrenderer
+        class="shape-itemrenderer"
+        shapeId="{{shapeId}}"
+      ></shape-itemrenderer>
     </div>
   </div>
 </div>
