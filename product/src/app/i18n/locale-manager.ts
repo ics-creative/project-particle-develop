@@ -1,6 +1,6 @@
-import {LocaleData} from "./locale-data";
-import {LocaleJaData} from "./locale-ja";
-import {LocaleEnData} from "./locale-en";
+import { LocaleData } from "./locale-data";
+import { LocaleJaData } from "./locale-ja";
+import { LocaleEnData } from "./locale-en";
 
 "use strict";
 
@@ -23,15 +23,16 @@ export class LocaleManager {
   }
 
   public checkLocale():string {
-    var ua = window.navigator.userAgent.toLowerCase();
+    const ua = window.navigator.userAgent.toLowerCase();
+    const navi: NavigatorTmp = <NavigatorTmp> <any> navigator;
     try {
       // chrome
-      if (ua.indexOf('chrome') != -1) {
-        return ( navigator.languages[0] || navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0, 2);
+      if (ua.indexOf('chrome') !== -1) {
+        return ( navi.languages[0] || navi.browserLanguage || navi.language || navi.userLanguage).substr(0, 2);
       }
       // それ以外
       else {
-        return ( navigator.browserLanguage || navigator.language || navigator.userLanguage).substr(0, 2);
+        return ( navi.browserLanguage || navi.language || navi.userLanguage).substr(0, 2);
       }
     }
     catch (e) {

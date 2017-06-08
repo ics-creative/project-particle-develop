@@ -31,7 +31,6 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-/src/typings
 
 # e2e
 /e2e/*.js
