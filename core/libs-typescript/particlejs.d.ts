@@ -3,7 +3,7 @@ declare module particlejs {
   /**
    * バージョンです。
    */
-  const VERSION:string;
+  VERSION:string;
 
   /**
    * 現在のバージョンと互換性があるかどうかをチェックします。
@@ -172,6 +172,8 @@ declare module particlejs {
   }
 
   export class DrawingData {
+
+    VERSION:string;
 
     /** 設定された背景の幅です。 */
     width:number;
