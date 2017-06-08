@@ -1,0 +1,16 @@
+import { LocaleData } from "../i18n/locale-data";
+import { Component, Input } from "@angular/core";
+
+"use strict";
+
+@Component({
+  selector:"property-panel",
+  templateUrl:"../components-html/property.html"
+})
+export class PropertyPanel {
+  @Input() private drawingData:particlejs.DrawingData;
+
+  constructor(private localeData:LocaleData) {
+  }
+
+}
