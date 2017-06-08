@@ -8,7 +8,7 @@
   <div class="card-block row">
     <figure *ngFor="let template of templateList"
             (click)="selectTemplate(template.property)">
-      <img class="media-object" src="images/particle-template/{{template.imageId}}.png" width="128" height="128"/>
+      <img class="media-object" src="assets/images/particle-template/{{template.imageId}}.png" width="128" height="128"/>
       <figcaption>{{template.name}}</figcaption>
     </figure>
   </div>
