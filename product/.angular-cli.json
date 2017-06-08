@@ -21,7 +21,13 @@
       "styles": [
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "./assets/js/createjs-2015.11.26.min.js",
+        "./assets/js/SVGExporter.js",
+        "./assets/js/jquery-2.1.1.min.js",
+        "./assets/js/bootstrap.min.js",
+        "./assets/js/particlejs.min.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
