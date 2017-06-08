@@ -13,15 +13,16 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 })
 
 export class LargeIOBox {
-  @Output() private exportSvgEvent = new EventEmitter();
-  @Output() private exportPngEvent = new EventEmitter();
-  @Output() private exportJpgEvent = new EventEmitter();
-  @Output() private exportWebpEvent = new EventEmitter();
+  @Output() public exportSvgEvent = new EventEmitter();
+  @Output() public exportPngEvent = new EventEmitter();
+  @Output() public exportJpgEvent = new EventEmitter();
+  @Output() public exportWebpEvent = new EventEmitter();
   @Output() private exportParameterEvent = new EventEmitter();
-  @Output() private importParameterEvent = new EventEmitter();
+  @Output() public importParameterEvent = new EventEmitter();
 
-  @Input() private drawingData:particlejs.DrawingData;
-  @Input() private platformData:PlatformData;
+  @Input() public drawingData:particlejs.DrawingData;
+  @Input() public platformData:PlatformData;
+
   public lastSelectFile:any;
 
   constructor(private localeData:LocaleData) {

@@ -4,7 +4,8 @@ import { Component, Input } from "@angular/core";
 "use strict";
 
 @Component({
-  selector:"emitter-property-panel"
+  selector:"emitter-property-panel",
+  templateUrl:"../components-html/property-emitter.html"
 })
 
 export class PropertyEmitterPanel {

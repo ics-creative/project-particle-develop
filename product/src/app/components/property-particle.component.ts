@@ -1,17 +1,17 @@
 import { LocaleData } from "../i18n/locale-data";
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { InputRangeComponent } from "./input-range.component";
 
 "use strict";
 
 @Component({
   selector:"particle-property-panel",
-  templateUrl:"app/components-html/property-particle.html",
-  inputs:["drawingData", "shapeIdList"]
+  templateUrl:"../components-html/property-particle.html"
 })
 
 export class PropertyParticlePanel {
-  private drawingData:particlejs.DrawingData;
+  @Input() private drawingData:particlejs.DrawingData;
+  @Input() private shapeIdList:any;
 
   constructor(private localeData:LocaleData) {
   }

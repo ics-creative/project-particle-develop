@@ -6,11 +6,12 @@ import { InputRangeComponent } from "./input-range.component";
 
 @Component({
   selector:"canvas-property-panel",
-  templateUrl:"app/components-html/property-canvas.html"
+  templateUrl:"../components-html/property-canvas.html"
 })
 
 export class PropertyCanvasPanel {
   @Input() private drawingData:particlejs.DrawingData;
+
 
   constructor(private localeData:LocaleData) {
   }

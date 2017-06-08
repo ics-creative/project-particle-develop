@@ -10,7 +10,7 @@ interface TestObject {
 
 @Component({
   selector:"color-property-panel",
-  templateUrl:"app/components-html/property-color.html"
+  templateUrl:"../components-html/property-color.html"
 })
 
 export class PropertyColorPanel {

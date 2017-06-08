@@ -5,7 +5,7 @@ import { LocaleData } from "../i18n/locale-data";
 
 @Component({
   selector:"property-io-box",
-  templateUrl:"app/components-html/property-io-box.html"
+  templateUrl:"../components-html/property-io-box.html"
 })
 
 export class PropertyIoModal {

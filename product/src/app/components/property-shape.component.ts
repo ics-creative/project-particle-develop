@@ -12,8 +12,8 @@ import { Component, Input } from "@angular/core";
  * シェイプの選択パネルの制御クラスです。
  */
 export class PropertyShapePanel {
-  @Input() private drawingData:particlejs.DrawingData;
-  @Input() private shapeIdList:string[] = new particlejs.ShapeData().assetList;
+  @Input() public drawingData:particlejs.DrawingData;
+  @Input() public shapeIdList:string[] = new particlejs.ShapeData().assetList;
 
   constructor(private localeData:LocaleData) {
   }
