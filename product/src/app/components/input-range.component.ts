@@ -1,5 +1,4 @@
 "use strict";
-
 import { Component, Input } from "@angular/core";
 @Component({
   selector:"input-range",
