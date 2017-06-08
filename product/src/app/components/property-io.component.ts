@@ -1,17 +1,11 @@
-import {Component, EventEmitter} from "angular2/core";
-import {LocaleData} from "../i18n/locale-data";
-import {LocaleEnData} from "../i18n/locale-en";
-import {LocaleJaData} from "../i18n/locale-ja";
-import {ViewChild} from "angular2/core";
-import {ElementRef} from "angular2/core";
+import { Component, ElementRef, Input, ViewChild } from "@angular/core";
+import { LocaleData } from "../i18n/locale-data";
 
 "use strict";
 
 @Component({
-  selector: "property-io-box",
-  templateUrl: "app/components-html/property-io-box.html",
-  inputs: ["drawingData"],
-  events: []
+  selector:"property-io-box",
+  templateUrl:"app/components-html/property-io-box.html"
 })
 
 export class PropertyIoModal {
@@ -19,6 +13,8 @@ export class PropertyIoModal {
   @ViewChild("modal") modal:any;
   @ViewChild("outputLink") outputLink:any;
   @ViewChild("jsonValue") jsonValue:any;
+
+  @Input() drawingData:particlejs.DrawingData;
 
   element:ElementRef;
 
@@ -31,21 +27,21 @@ export class PropertyIoModal {
 
     link.download = "parameter.json";
 
-    if ( ~navigator.userAgent.indexOf("Windows") ) {
+    if (~navigator.userAgent.indexOf("Windows")) {
       json = json.replace(/\n/g, "\r\n").replace(/\r\r/g, "\r")
     }
-    
-    var blob = new Blob([json], {type: "text/plain"});
+
+    var blob = new Blob([json], {type:"text/plain"});
 
     link.href = window.URL.createObjectURL(blob);
 
 
-    let textarea:HTMLTextAreaElement = this.jsonValue.nativeElement;
+    let textarea:HTMLTextAreaElement  = this.jsonValue.nativeElement;
     //  テキストエリアに値をセットする
     textarea.value = (json);
   }
 
   public openIOModal() {
-    (<any>$(this.modal.nativeElement)).modal('show');
+    (<any>(this.modal.nativeElement)).modal('show');
   }
 }

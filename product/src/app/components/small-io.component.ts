@@ -1,21 +1,14 @@
-"use strict";
+'use strict';
 
-import {Component} from "angular2/core";
-import {EventEmitter} from 'angular2/core';
-import {ElementRef} from "angular2/core";
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: "small-io-box",
-  templateUrl: "../components-html/small-io-box.html",
-  events: [
-    "exportPngEvent",
-    "importCameraEvent"
-  ]
+  selector: 'small-io-box',
+  templateUrl: '../components-html/small-io-box.html'
 })
-
 export class SmallIOBox {
-  private exportPngEvent = new EventEmitter();
-  private importCameraEvent = new EventEmitter();
+  @Output() private exportPngEvent = new EventEmitter();
+  @Output() private importCameraEvent = new EventEmitter();
 
   @Input() private drawingData:particlejs.DrawingData;
   private element:ElementRef;

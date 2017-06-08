@@ -5,28 +5,20 @@ import { LocaleEnData } from "../i18n/locale-en";
 import { LocaleJaData } from "../i18n/locale-ja";
 import { LocaleManager } from "../i18n/locale-manager";
 import { PlatformData } from "../data/platform-data";
-import { Component, EventEmitter, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 
 @Component({
   selector:"large-io-box",
-  templateUrl:"../components-html/large-io-box.html",
-  outputs:[
-    "exportSvgEvent",
-    "exportPngEvent",
-    "exportJpgEvent",
-    "exportWebpEvent",
-    "exportParameterEvent",
-    "importParameterEvent"
-  ]
+  templateUrl:"../components-html/large-io-box.html"
 })
 
 export class LargeIOBox {
-  private exportSvgEvent = new EventEmitter();
-  private exportPngEvent = new EventEmitter();
-  private exportJpgEvent = new EventEmitter();
-  private exportWebpEvent = new EventEmitter();
-  private exportParameterEvent = new EventEmitter();
-  private importParameterEvent = new EventEmitter();
+  @Output() private exportSvgEvent = new EventEmitter();
+  @Output() private exportPngEvent = new EventEmitter();
+  @Output() private exportJpgEvent = new EventEmitter();
+  @Output() private exportWebpEvent = new EventEmitter();
+  @Output() private exportParameterEvent = new EventEmitter();
+  @Output() private importParameterEvent = new EventEmitter();
 
   @Input() private drawingData:particlejs.DrawingData;
   @Input() private platformData:PlatformData;

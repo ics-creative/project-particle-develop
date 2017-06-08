@@ -1,6 +1,6 @@
 import { LocaleData } from "../i18n/locale-data";
 import { Component, Input, OnInit } from "@angular/core";
-import { ParticleParameter } from "../assets/particle-parameter";s
+import { ParticleParameter } from "../assets/particle-parameter";
 
 "use strict";
 

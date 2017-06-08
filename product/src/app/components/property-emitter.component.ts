@@ -1,7 +1,6 @@
 import { LocaleData } from "../i18n/locale-data";
-import { Component, EventEmitter } from "@angular2/core";
-import { Input } from "@angular/core";
-å
+import { Component, Input } from "@angular/core";
+
 "use strict";
 
 @Component({
