@@ -14,6 +14,9 @@ import { PropertyIoModal } from "./components/property-io.component";
 import { PropertyEmitterPanel } from "./components/property-emitter.component";
 import { PropertyColorPanel } from "./components/property-color.component";
 import { PropertyCanvasPanel } from "./components/property-canvas.component";
+import { PropertyShapeItemRenderer } from "./components/property-shape-itemrenderer.component";
+import { InputRangeComponent } from "./components/input-range.component";
+import { PropertyColorUnit } from "./components/property-color-unit.component";
 
 @NgModule({
   declarations:[
@@ -29,7 +32,10 @@ import { PropertyCanvasPanel } from "./components/property-canvas.component";
     PropertyIoModal,
     PropertyEmitterPanel,
     PropertyColorPanel,
-    PropertyCanvasPanel
+    PropertyCanvasPanel,
+    PropertyShapeItemRenderer,
+    InputRangeComponent,
+    PropertyColorUnit
   ],
   imports:[
     BrowserModule
