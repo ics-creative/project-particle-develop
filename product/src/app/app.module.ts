@@ -17,6 +17,7 @@ import { PropertyCanvasPanel } from "./components/property-canvas.component";
 import { PropertyShapeItemRenderer } from "./components/property-shape-itemrenderer.component";
 import { InputRangeComponent } from "./components/input-range.component";
 import { PropertyColorUnit } from "./components/property-color-unit.component";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations:[
@@ -38,7 +39,8 @@ import { PropertyColorUnit } from "./components/property-color-unit.component";
     PropertyColorUnit
   ],
   imports:[
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers:[],
   bootstrap:[AppComponent]
