@@ -4,7 +4,7 @@
   </header>
   <hr>
   <div class="card-block row">
-    <div *ngFor="#shapeId of shapeIdList" class="col-sm-4 shapeListItem row"
+    <div *ngFor="let shapeId of shapeIdList" class="col-sm-4 shapeListItem row"
          [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
          (click)="handleClick(shapeId)">
       <shape-itemrenderer

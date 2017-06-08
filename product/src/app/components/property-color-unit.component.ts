@@ -5,11 +5,12 @@ import { Component, Input } from "@angular/core";
 
 @Component({
   selector:"color-unit-property-panel",
-  templateUrl:"app/components-html/property-color-unit.html"
+  templateUrl:"../components-html/property-color-unit.html"
 })
 export class PropertyColorUnit {
-  @Input() private colorData:particlejs.ColorData;
+  @Input() public colorData:particlejs.ColorData;
 
   constructor(private localeData:LocaleData) {
   }
+
 }

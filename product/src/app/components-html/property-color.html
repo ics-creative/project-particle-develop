@@ -49,7 +49,7 @@
   </header>
   <div class="card-block">
     <select [(ngModel)]="drawingData.alphaCurveType" class="topcoat-select">
-      <option *ngFor="#o of objArray" [value]="o.value">{{o.name}}</option>
+      <option *ngFor="let o of objArray" [value]="o.value">{{o.name}}</option>
     </select>
   </div>
 </div>
