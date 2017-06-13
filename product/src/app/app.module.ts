@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './components/app.component';
 import {LargeIoBoxComponent} from './components/large-io.component';
-import {SmallIoBox} from './components/small-io.component';
+import {SmallIoBoxComponent} from './components/small-io.component';
 import {StageComponent} from './components/stage.component';
 import {PropertyShapePanelComponent} from './components/property-shape.component';
 import {PropertyPanelComponent} from './components/property.component';
@@ -23,7 +23,7 @@ import {FormsModule} from '@angular/forms';
   declarations: [
     AppComponent,
     LargeIoBoxComponent,
-    SmallIoBox,
+    SmallIoBoxComponent,
     StageComponent,
     PropertyPanelComponent,
     PropertyShapePanelComponent,

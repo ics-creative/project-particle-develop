@@ -5,22 +5,22 @@
     <button class="hidden-sm-down btn btn-primary" data-toggle="modal" data-target="#modalAbout">
       {{localeData.H_about}}
     </button>
-    <large-io-box class="large-io-box"
-                  #largeIOBox [drawingData]="drawingData"
-                  [platformData]="platformData"
-                  (exportSvgEvent)="handleSvgClick()"
-                  (exportPngEvent)="handlePngClick()"
-                  (exportJpgEvent)="handleJpgClick()"
-                  (exportWebpEvent)="handleWebpClick()"
-                  (exportParameterEvent)="handleExportParameterClick()"
-                  (importParameterEvent)="handleImportParameterClick()">
-    </large-io-box>
+    <app-large-io-box class="large-io-box"
+                      #largeIOBox [drawingData]="drawingData"
+                      [platformData]="platformData"
+                      (exportSvgEvent)="handleSvgClick()"
+                      (exportPngEvent)="handlePngClick()"
+                      (exportJpgEvent)="handleJpgClick()"
+                      (exportWebpEvent)="handleWebpClick()"
+                      (exportParameterEvent)="handleExportParameterClick()"
+                      (importParameterEvent)="handleImportParameterClick()">
+    </app-large-io-box>
 
-    <small-io-box class="small-io-box"
-                  [drawingData]="drawingData"
-                  (exportPngEvent)="handlePngClick()"
-                  (importCameraEvent)="handleCamera()">
-    </small-io-box>
+    <app-small-io-box class="small-io-box"
+                      [drawingData]="drawingData"
+                      (exportPngEvent)="handlePngClick()"
+                      (importCameraEvent)="handleCamera()">
+    </app-small-io-box>
   </div>
 </header>
 
@@ -31,23 +31,23 @@
         <h2 class="card-title">{{localeData.preview_head}}</h2>
       </header>
       <div class="card-block">
-        <stage #stageComponent [drawingData]="drawingData"></stage>
+        <app-stage #stageComponent [drawingData]="drawingData"></app-stage>
       </div>
     </div>
   </div>
   <div id="propertyPanel" class="hidden-sm-down">
-    <property-panel
+    <app-property-panel
       class="property-panel"
       [drawingData]="drawingData">
-    </property-panel>
+    </app-property-panel>
   </div>
 </div>
 <div class="modal fade" id="smallParticleTemplate" tabindex="-1" role="dialog" aria-labelledby="smallParticleTemplateLabel">
   <div class="modal-dialog" role="document">
-    <small-particle-template-property-modal
+    <app-small-particle-template-property-modal
       class="small-particle-template-property-modal"
       [drawingData]="drawingData">
-    </small-particle-template-property-modal>
+    </app-small-particle-template-property-modal>
   </div>
 </div>
 <footer class="container-fluid">
@@ -83,4 +83,4 @@
 </div>
 
 <!-- Modal -->
-<property-io-box #propetyModal class="property-io-box"></property-io-box>
+<app-property-io-box #propetyModal class="property-io-box"></app-property-io-box>

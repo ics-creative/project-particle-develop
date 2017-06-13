@@ -1,6 +1,6 @@
 import {PropertyPanelComponent} from './property.component';
 import {LargeIoBoxComponent} from './large-io.component';
-import {SmallIoBox} from './small-io.component';
+import {SmallIoBoxComponent} from './small-io.component';
 import {SmallPropertyTemplateModalComponent} from './small-template.component';
 import {StageComponent} from './stage.component';
 import {Viewport} from '../enum/view-port';
@@ -24,7 +24,7 @@ export class AppComponent implements AfterViewInit {
   protected platformData: PlatformData;
   @ViewChild('stageComponent') stageComponent: StageComponent;
   @ViewChild('propertyPanel') propertyPanel: PropertyPanelComponent;
-  @ViewChild('smallIOBox') smallIOBox: SmallIoBox;
+  @ViewChild('smallIOBox') smallIOBox: SmallIoBoxComponent;
   @ViewChild('largeIOBox') largeIOBox: LargeIoBoxComponent;
   @ViewChild('smallPropertyTemplateModal') smallPropertyTemplateModal: SmallPropertyTemplateModalComponent;
   @ViewChild('propetyModal') propetyModal: PropertyIoModalComponent;

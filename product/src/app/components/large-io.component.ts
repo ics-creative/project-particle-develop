@@ -6,7 +6,7 @@ import {PlatformData} from '../data/platform-data';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector   : 'large-io-box',
+  selector   : 'app-large-io-box',
   templateUrl: '../components-html/large-io-box.html'
 })
 

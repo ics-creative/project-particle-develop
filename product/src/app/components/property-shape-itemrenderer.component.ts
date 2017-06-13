@@ -7,7 +7,7 @@ declare namespace window {
 }
 
 @Component({
-  selector   : 'shape-itemrenderer',
+  selector   : 'app-shape-itemrenderer',
   templateUrl: '../components-html/property-shape-itemrenderer.html'
 })
 

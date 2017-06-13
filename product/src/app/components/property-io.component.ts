@@ -2,7 +2,7 @@ import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {LocaleData} from '../i18n/locale-data';
 
 @Component({
-  selector   : 'property-io-box',
+  selector   : 'app-property-io-box',
   templateUrl: '../components-html/property-io-box.html'
 })
 

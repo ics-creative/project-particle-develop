@@ -3,7 +3,7 @@ import {ParticleParameter} from '../assets/particle-parameter';
 import {LocaleData} from '../i18n/locale-data';
 
 @Component({
-  selector   : 'particle-template-property-panel',
+  selector   : 'app-particle-template-property-panel',
   templateUrl: '../components-html/property-template.html'
 })
 
@@ -14,7 +14,7 @@ export class PropertyTemplatePanelComponent implements OnInit {
 
   constructor(private localeData: LocaleData) {
     const template = new ParticleParameter();
-    
+
     this.templateList = template.list;
   }
 

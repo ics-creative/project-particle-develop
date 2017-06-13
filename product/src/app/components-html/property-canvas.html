@@ -3,21 +3,21 @@
     <h3>{{localeData.SF_head}}</h3>
   </header>
   <div class="card-block">
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SF_stageW}}"
             min="0" max="1024" step="1"
             [drawingData]="drawingData"
             targetProperty="width">
-    </input-range>
+    </app-input-range>
 
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SF_stageH}}"
             min="0" max="1024" step="1"
             [drawingData]="drawingData"
             targetProperty="height">
-    </input-range>
+    </app-input-range>
   </div>
 </div>
 <hr>

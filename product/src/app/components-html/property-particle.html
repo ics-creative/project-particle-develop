@@ -4,55 +4,55 @@
   </header>
   <hr>
   <div class="card-block">
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SP_startScale}}"
             min="0.0" max="1.0" step="0.01"
             [drawingData]="drawingData"
             targetProperty="startScale">
-    </input-range>
+    </app-input-range>
 
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SP_startScaleVariance}}"
             min="0.0" max="1.0" step="0.01"
             [drawingData]="drawingData"
             targetProperty="startScaleVariance">
-    </input-range>
+    </app-input-range>
 
 
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SP_endScale}}"
             min="0.0" max="1.0" step="0.01"
             [drawingData]="drawingData"
             targetProperty="finishScale">
-    </input-range>
+    </app-input-range>
 
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SP_endScaleVariance}}"
             min="0.0" max="1.0" step="0.01"
             [drawingData]="drawingData"
             targetProperty="finishScaleVariance">
-    </input-range>
+    </app-input-range>
 
     <hr/>
 
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SP_lifeSpan}}"
             min="1" max="500" step="1.0"
             [drawingData]="drawingData"
             targetProperty="lifeSpan">
-    </input-range>
+    </app-input-range>
 
-    <input-range
+    <app-input-range
             class="input-range"
             label="{{localeData.SP_lifeSpanVariance}}"
             min="0" max="500" step="1.0"
             [drawingData]="drawingData"
             targetProperty="lifeSpanVariance">
-    </input-range>
+    </app-input-range>
   </div>
 </div>

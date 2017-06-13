@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 @Component({
-  selector   : 'input-range',
+  selector   : 'app-input-range',
   templateUrl: '../components-html/input-range.html'
 })
 /**

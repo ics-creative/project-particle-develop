@@ -2,7 +2,7 @@ import {LocaleData} from '../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector   : 'emitter-property-panel',
+  selector   : 'app-emitter-property-panel',
   templateUrl: '../components-html/property-emitter.html'
 })
 

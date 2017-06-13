@@ -2,7 +2,7 @@ import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 import {ParticleCanvas} from '../particle/particle-canvas';
 
 @Component({
-  selector: 'stage',
+  selector: 'app-stage',
   template: `
     <!--
   <div  class="hidden-xs">

@@ -3,7 +3,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ParticleParameter} from '../assets/particle-parameter';
 
 @Component({
-  selector   : 'small-particle-template-property-modal',
+  selector   : 'app-small-particle-template-property-modal',
   templateUrl: '../components-html/property-template.html'
 })
 

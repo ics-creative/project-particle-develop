@@ -2,7 +2,7 @@ import {LocaleData} from '../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector   : 'shape-property-panel',
+  selector   : 'app-shape-property-panel',
   templateUrl: '../components-html/property-shape.html'
 })
 
