@@ -42,6 +42,7 @@ export class PropertyIoModal {
   }
 
   public openIOModal() {
-    (<any>(this.modal.nativeElement)).modal('show');
+    // 強引に連携
+    window["jQuery"](<any>(this.modal.nativeElement)).modal('show');
   }
 }
