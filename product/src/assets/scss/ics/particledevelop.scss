@@ -1,32 +1,36 @@
 @import "../utilities";
 
-.my-app > header,
-.my-app > footer {
-  background-color: $brand-primary;
-}
-
-.my-app > header {
-  > .row {
-    height: 49px;
+app-root {
+  & > header,
+  & > footer {
+    background-color: $brand-primary;
   }
 
-  border-bottom: 1px solid $nav-tabs-border-color;
-  text-shadow: $text-basic-shadow;
-  .btn {
-    line-height: 36px;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: none !important;
-  }
+  & > header {
+    > .row {
+      height: 49px;
+    }
 
-  h1 {
-    padding: 0.8rem $btn-padding-x 0;
-    margin-bottom: 0;
-    & + * {
-      margin-right: auto;
+    border-bottom: 1px solid $nav-tabs-border-color;
+    text-shadow: $text-basic-shadow;
+    .btn {
+      line-height: 36px;
+      border-right: 1px solid rgba(0, 0, 0, 0.2);
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: none !important;
+    }
+
+    h1 {
+      padding: 0.8rem $btn-padding-x 0;
+      margin-bottom: 0;
+      & + * {
+        margin-right: auto;
+      }
     }
   }
 }
+
+
 
 #canvasBox {
   background-color: $black;
@@ -51,7 +55,7 @@
 }
 
 @media (max-width: 906px) {
-  .my-app > header {
+  app-root > header {
     padding-left: $grid-gutter-width/4;
     h1 {
       width: 50px;
@@ -62,7 +66,7 @@
 }
 
 @include media-breakpoint-down(sm, $grid-breakpoints) {
-  .my-app > header h1 {
+  app-root > header h1 {
     margin-right: auto;
   }
 }
@@ -238,7 +242,7 @@
   }
 }
 
-.my-app > footer {
+app-root > footer {
   border-top: 1px solid $nav-tabs-border-color;
   filter: grayscale(100%);
   transition: all 0.2s;
