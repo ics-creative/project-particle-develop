@@ -1,4 +1,4 @@
-/// <reference path="../../../node_modules/@types/createjs/index.d.ts" />
+/// <reference path="../../../../node_modules/@types/createjs/index.d.ts" />
 declare module particlejs {
   export class Container{
 

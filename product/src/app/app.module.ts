@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {FormsModule} from '@angular/forms';
 
 import {AppComponent} from './components/app.component';
 import {LargeIoBoxComponent} from './components/large-io.component';
@@ -17,7 +18,7 @@ import {PropertyCanvasPanelComponent} from './components/property-canvas.compone
 import {PropertyShapeItemRendererComponent} from './components/property-shape-itemrenderer.component';
 import {InputRangeComponent} from './components/input-range.component';
 import {PropertyColorUnitComponent} from './components/property-color-unit.component';
-import {FormsModule} from '@angular/forms';
+
 
 @NgModule({
   declarations: [
