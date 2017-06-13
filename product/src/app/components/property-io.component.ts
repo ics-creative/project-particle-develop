@@ -6,7 +6,7 @@ import {LocaleData} from '../i18n/locale-data';
   templateUrl: '../components-html/property-io-box.html'
 })
 
-export class PropertyIoModal {
+export class PropertyIoModalComponent {
 
   @ViewChild('modal') modal: any;
   @ViewChild('outputLink') outputLink: any;

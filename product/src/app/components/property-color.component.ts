@@ -11,7 +11,7 @@ interface TestObject {
   templateUrl: '../components-html/property-color.html'
 })
 
-export class PropertyColorPanel {
+export class PropertyColorPanelComponent {
   @Input() private drawingData: particlejs.DrawingData;
   private objArray: TestObject[];
 

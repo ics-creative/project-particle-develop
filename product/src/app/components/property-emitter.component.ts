@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
   templateUrl: '../components-html/property-emitter.html'
 })
 
-export class PropertyEmitterPanel {
+export class PropertyEmitterPanelComponent {
   @Input() private drawingData: particlejs.DrawingData;
 
   constructor(private localeData: LocaleData) {

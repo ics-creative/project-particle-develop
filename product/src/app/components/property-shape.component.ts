@@ -9,7 +9,7 @@ import {Component, Input} from '@angular/core';
 /**
  * シェイプの選択パネルの制御クラスです。
  */
-export class PropertyShapePanel {
+export class PropertyShapePanelComponent {
   @Input() public drawingData: particlejs.DrawingData;
   @Input() public shapeIdList: string[] = new particlejs.ShapeData().assetList;
 
@@ -18,8 +18,8 @@ export class PropertyShapePanel {
 
   private handleClick(shapeId: string) {
 
-    var index = this.drawingData.shapeIdList.indexOf(shapeId);
-    if (index == -1) { // 含まれていなければ
+    const index = this.drawingData.shapeIdList.indexOf(shapeId);
+    if (index === -1) { // 含まれていなければ
       // 追加
       this.drawingData.shapeIdList.push(shapeId);
     } else { // 含まれていたら

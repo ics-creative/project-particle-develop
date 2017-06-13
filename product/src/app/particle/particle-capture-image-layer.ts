@@ -13,7 +13,9 @@ export class ParticleCaptureImageLayer extends createjs.Container {
    */
   public addImageFromImageData(imageData: string): void {
     this.removeImage();
-    let base64         = 'data:image/png;base64,' + imageData.replace('file:///', '');
+
+    const base64 = 'data:image/png;base64,' + imageData.replace('file:///', '');
+
     this._captureImage = new createjs.Bitmap(base64);
     this.addChild(this._captureImage);
   }

@@ -2,7 +2,6 @@ export class ParticleParameter {
 
   public list: Object[];
 
-
   private setting0 = {
     name       : 'Basic',
     description: 'This is Basic Template',
@@ -535,7 +534,7 @@ export class ParticleParameter {
       'alphaCurveType'          : '0'
     }
   };
-  
+
   constructor() {
     this.list = [];
 

@@ -4,7 +4,7 @@ import {Component, Input} from '@angular/core';
   selector   : 'property-panel',
   templateUrl: '../components-html/property.html'
 })
-export class PropertyPanel {
+export class PropertyPanelComponent {
   @Input() private drawingData: particlejs.DrawingData;
 
   constructor(private localeData: LocaleData) {

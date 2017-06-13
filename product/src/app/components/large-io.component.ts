@@ -10,7 +10,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   templateUrl: '../components-html/large-io-box.html'
 })
 
-export class LargeIOBox {
+export class LargeIoBoxComponent {
   @Output() public exportSvgEvent        = new EventEmitter();
   @Output() public exportPngEvent        = new EventEmitter();
   @Output() public exportJpgEvent        = new EventEmitter();

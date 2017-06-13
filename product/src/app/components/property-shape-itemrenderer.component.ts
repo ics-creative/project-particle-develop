@@ -2,7 +2,7 @@ import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
 
 declare namespace window {
   export namespace particlejs {
-    export var assets: Object;
+    export let assets: Object;
   }
 }
 
@@ -14,7 +14,7 @@ declare namespace window {
 /**
  * シェイプの選択パネル内のアイテムレンダラーです。
  */
-export class PropertyShapeItemRenderer implements AfterViewInit {
+export class PropertyShapeItemRendererComponent implements AfterViewInit {
   @Input() private shapeId: string;
 
   @ViewChild('myCanvas') myCanvas: any;

@@ -7,7 +7,7 @@ import {ParticleParameter} from '../assets/particle-parameter';
   templateUrl: '../components-html/property-template.html'
 })
 
-export class SmallPropertyTemplateModal implements OnInit {
+export class SmallPropertyTemplateModalComponent implements OnInit {
   @Input() private drawingData: particlejs.DrawingData;
   @Input() private templateList: any[];
   private template: ParticleParameter;

@@ -1,7 +1,7 @@
-import {PropertyPanel} from './property.component';
-import {LargeIOBox} from './large-io.component';
-import {SmallIOBox} from './small-io.component';
-import {SmallPropertyTemplateModal} from './small-template.component';
+import {PropertyPanelComponent} from './property.component';
+import {LargeIoBoxComponent} from './large-io.component';
+import {SmallIoBox} from './small-io.component';
+import {SmallPropertyTemplateModalComponent} from './small-template.component';
 import {StageComponent} from './stage.component';
 import {Viewport} from '../enum/view-port';
 import {CanvasMargin} from '../enum/canvas-margin';
@@ -9,7 +9,7 @@ import {LocaleData} from '../i18n/locale-data';
 import {LocaleManager} from '../i18n/locale-manager';
 import {PlatformData} from '../data/platform-data';
 import {PlatformType} from '../enum/platform-type';
-import {PropertyIoModal} from './property-io.component';
+import {PropertyIoModalComponent} from './property-io.component';
 
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 
@@ -23,11 +23,11 @@ export class AppComponent implements AfterViewInit {
   protected drawingData: particlejs.DrawingData;
   protected platformData: PlatformData;
   @ViewChild('stageComponent') stageComponent: StageComponent;
-  @ViewChild('propertyPanel') propertyPanel: PropertyPanel;
-  @ViewChild('smallIOBox') smallIOBox: SmallIOBox;
-  @ViewChild('largeIOBox') largeIOBox: LargeIOBox;
-  @ViewChild('smallPropertyTemplateModal') smallPropertyTemplateModal: SmallPropertyTemplateModal;
-  @ViewChild('propetyModal') propetyModal: PropertyIoModal;
+  @ViewChild('propertyPanel') propertyPanel: PropertyPanelComponent;
+  @ViewChild('smallIOBox') smallIOBox: SmallIoBox;
+  @ViewChild('largeIOBox') largeIOBox: LargeIoBoxComponent;
+  @ViewChild('smallPropertyTemplateModal') smallPropertyTemplateModal: SmallPropertyTemplateModalComponent;
+  @ViewChild('propetyModal') propetyModal: PropertyIoModalComponent;
 
 
   getPlatformData() {
@@ -77,11 +77,11 @@ export class AppComponent implements AfterViewInit {
   }
 
   protected setupWidgets(lang: string) {
-    let langLong = lang === 'ja' ? 'ja_JP' : 'en_EN';
+    const langLong = lang === 'ja' ? 'ja_JP' : 'en_EN';
 
     (function (d: Document, s: string, id: string) {
       let js: HTMLScriptElement;
-      let fjs = d.getElementsByTagName(s)[0];
+      const fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {
         return;
       }
@@ -91,21 +91,21 @@ export class AppComponent implements AfterViewInit {
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'hatena'));
 
-    !function (d: any, s: string, id: string) {
+    (function (d: any, s: string, id: string) {
       let js: HTMLScriptElement;
-      let fjs = d.getElementsByTagName(s)[0];
-      let p   = /^http:/.test(d.location) ? 'http' : 'https';
+      const fjs = d.getElementsByTagName(s)[0];
+      const p   = /^http:/.test(d.location) ? 'http' : 'https';
       if (!d.getElementById(id)) {
         js     = <HTMLScriptElement>d.createElement(s);
         js.id  = id;
         js.src = p + '://platform.twitter.com/widgets.js';
         fjs.parentNode.insertBefore(js, fjs);
       }
-    }(document, 'script', 'twitter-wjs');
+    }(document, 'script', 'twitter-wjs'));
 
     (function (d: Document, s: string, id: string) {
       let js: HTMLScriptElement;
-      let fjs = d.getElementsByTagName(s)[0];
+      const fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) {
         return;
       }
@@ -155,7 +155,7 @@ export class AppComponent implements AfterViewInit {
     this.propetyModal.setIOButtonLink(JSON.stringify(exportData, null, '    '));
     this.propetyModal.openIOModal();
 
-    //window.open('data:text/plain;charset=UTF-8,\n' + encodeURIComponent(JSON.stringify(this.drawingData)));
+// window.open('data:text/plain;charset=UTF-8,\n' + encodeURIComponent(JSON.stringify(this.drawingData)));
   }
 
   protected handleImportParameterClick() {
@@ -164,7 +164,7 @@ export class AppComponent implements AfterViewInit {
 
     // ファイルの内容は FileReader で読み込みます.
     const fileReader = new FileReader();
-    
+
     fileReader.onload = (event) => {
       // event.target.result に読み込んだファイルの内容が入っています。
       const json   = (<FileReader>event.target).result;

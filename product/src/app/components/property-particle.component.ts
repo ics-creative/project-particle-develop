@@ -6,7 +6,7 @@ import {Component, Input} from '@angular/core';
   templateUrl: '../components-html/property-particle.html'
 })
 
-export class PropertyParticlePanel {
+export class PropertyParticlePanelComponent {
   @Input() private drawingData: particlejs.DrawingData;
   @Input() private shapeIdList: any;
 

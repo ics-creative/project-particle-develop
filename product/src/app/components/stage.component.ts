@@ -55,7 +55,7 @@ export class StageComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    let canvas          = <HTMLCanvasElement> this.myCanvas.nativeElement;
+    const canvas        = <HTMLCanvasElement> this.myCanvas.nativeElement;
     this.particleCanvas = new ParticleCanvas(canvas, this.drawingData);
 
     createjs.Ticker.framerate  = 60;

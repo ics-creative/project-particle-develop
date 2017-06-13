@@ -4,7 +4,7 @@ import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core'
   selector   : 'small-io-box',
   templateUrl: '../components-html/small-io-box.html'
 })
-export class SmallIOBox {
+export class SmallIoBox {
   @Output() private exportPngEvent    = new EventEmitter();
   @Output() private importCameraEvent = new EventEmitter();
 

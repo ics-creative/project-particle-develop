@@ -7,13 +7,14 @@ import {LocaleData} from '../i18n/locale-data';
   templateUrl: '../components-html/property-template.html'
 })
 
-export class PropertyTemplatePanel implements OnInit {
+export class PropertyTemplatePanelComponent implements OnInit {
   @Input() private drawingData: particlejs.DrawingData;
   @Input() private templateList: any[];
   private template: ParticleParameter;
 
   constructor(private localeData: LocaleData) {
-    var template      = new ParticleParameter();
+    const template = new ParticleParameter();
+    
     this.templateList = template.list;
   }
 

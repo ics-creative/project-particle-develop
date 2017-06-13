@@ -1,6 +1,6 @@
 declare var Camera: any;
 declare namespace navigator {
-  export var camera: any;
+  export let camera: any;
 }
 
 /**
