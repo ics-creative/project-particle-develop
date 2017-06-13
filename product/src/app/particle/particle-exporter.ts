@@ -1,31 +1,29 @@
-"use strict";
-
 declare class SVGExporter {
-  constructor(stage:createjs.Container, width:number, height:number);
+  svg: Node;
 
-  svg:Node;
+  constructor(stage: createjs.Container, width: number, height: number);
 
-  run():void;
+  run(): void;
 }
 
-declare let cordova:any;
+declare let cordova: any;
 
 /**
  * SVG ファイルに出力するクラスです。
  */
 export class ParticleExporter {
 
-  private _exporter:SVGExporter;
-  private _drawLayerContainer:createjs.Container;
-  private _width:number;
-  private _height:number;
+  private _exporter: SVGExporter;
+  private _drawLayerContainer: createjs.Container;
+  private _width: number;
+  private _height: number;
 
-  constructor(drawLayerContainer:createjs.Container) {
+  constructor(drawLayerContainer: createjs.Container) {
     this._drawLayerContainer = drawLayerContainer;
   }
 
-  public runExport(width:number, height:number):Promise<any> {
-    this._width = width;
+  public runExport(width: number, height: number): Promise<any> {
+    this._width  = width;
     this._height = height;
 
     return new Promise((onResolve, onReject) => {
@@ -34,29 +32,29 @@ export class ParticleExporter {
       this._exporter.run();
 
       setTimeout(() => {
-        onResolve()
+        onResolve();
       }, 1);
     });
   }
 
-  public runExportSP(cavas:HTMLCanvasElement):Promise<any> {
+  public runExportSP(cavas: HTMLCanvasElement): Promise<any> {
     return new Promise((onResolve, onReject) => {
-      let base64 = cavas.toDataURL();
+      const base64 = cavas.toDataURL();
       cordova.base64ToGallery(
-          base64,
-          'img_',
-          function (msg:any) {
-            onResolve();
-          },
-          function (err:any) {
-            onReject();
-          }
+        base64,
+        'img_',
+        function (msg: any) {
+          onResolve();
+        },
+        function (err: any) {
+          onReject();
+        }
       );
     });
   }
 
-  public getSvgString():string {
-    var serializer = new XMLSerializer();
+  public getSvgString(): string {
+    const serializer = new XMLSerializer();
     return serializer.serializeToString(this._exporter.svg);
   }
 }

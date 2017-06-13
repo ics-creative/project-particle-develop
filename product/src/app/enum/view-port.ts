@@ -1,5 +1,3 @@
-"use strict";
-
-export enum Viewport{
+export enum Viewport {
   sm = 768
 }

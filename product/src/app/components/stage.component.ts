@@ -1,11 +1,9 @@
-"use strict";
-
-import { AfterViewInit, Component, Input, ViewChild } from "@angular/core";
-import { ParticleCanvas } from "../particle/particle-canvas";
+import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
+import {ParticleCanvas} from '../particle/particle-canvas';
 
 @Component({
-  selector:"stage",
-  template:`
+  selector: 'stage',
+  template: `
     <!--
   <div  class="hidden-xs">
     <ul class="nav navbar-nav">
@@ -23,10 +21,10 @@ import { ParticleCanvas } from "../particle/particle-canvas";
 
 export class StageComponent implements AfterViewInit {
 
-  @ViewChild("myCanvas") myCanvas:any;
+  @ViewChild('myCanvas') myCanvas: any;
 
-  @Input() private drawingData:particlejs.DrawingData;
-  private particleCanvas:ParticleCanvas;
+  @Input() private drawingData: particlejs.DrawingData;
+  private particleCanvas: ParticleCanvas;
 
   constructor() {
 
@@ -40,36 +38,36 @@ export class StageComponent implements AfterViewInit {
     this.particleCanvas.pause();
   }
 
-  public exportSvg():Promise<any> {
+  public exportSvg(): Promise<any> {
     return this.particleCanvas.runExport();
   }
 
-  public toDataURL(type:string, params:string):string {
+  public toDataURL(type: string, params: string): string {
     return this.particleCanvas.toDataURL(type, params);
   }
 
-  public runExportSP():Promise<any> {
+  public runExportSP(): Promise<any> {
     return this.particleCanvas.runExportSP();
   }
 
-  public runCamera():Promise<any> {
+  public runCamera(): Promise<any> {
     return this.particleCanvas.runCamera();
   }
 
   ngAfterViewInit() {
-    let canvas = <HTMLCanvasElement> this.myCanvas.nativeElement;
+    let canvas          = <HTMLCanvasElement> this.myCanvas.nativeElement;
     this.particleCanvas = new ParticleCanvas(canvas, this.drawingData);
 
-    createjs.Ticker.framerate = 60;
+    createjs.Ticker.framerate  = 60;
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
-    createjs.Ticker.on("tick", this.handleTick, this);
+    createjs.Ticker.on('tick', this.handleTick, this);
 
-    canvas.addEventListener("contextmenu", (event:Event) => {
-      this.handleContextMenu(event)
+    canvas.addEventListener('contextmenu', (event: Event) => {
+      this.handleContextMenu(event);
     });
   }
 
-  public getParticleSvgString():string {
+  public getParticleSvgString(): string {
     return this.particleCanvas.getSvgString();
   }
 
@@ -77,7 +75,7 @@ export class StageComponent implements AfterViewInit {
     this.particleCanvas.update(this.drawingData);
   }
 
-  private handleContextMenu(event:Event) {
+  private handleContextMenu(event: Event) {
     event.preventDefault();
   }
 }

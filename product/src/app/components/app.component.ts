@@ -1,63 +1,62 @@
-'use strict';
-import { PropertyPanel } from "./property.component";
-import { LargeIOBox } from "./large-io.component";
-import { SmallIOBox } from "./small-io.component";
-import { SmallPropertyTemplateModal } from "./small-template.component";
-import { StageComponent } from "./stage.component";
-import { Viewport } from "../enum/view-port";
-import { CanvasMargin } from "../enum/canvas-margin";
-import { LocaleData } from "../i18n/locale-data";
-import { LocaleManager } from "../i18n/locale-manager";
-import { PlatformData } from "../data/platform-data";
-import { PlatformType } from "../enum/platform-type";
-import { PropertyIoModal } from "./property-io.component";
+import {PropertyPanel} from './property.component';
+import {LargeIOBox} from './large-io.component';
+import {SmallIOBox} from './small-io.component';
+import {SmallPropertyTemplateModal} from './small-template.component';
+import {StageComponent} from './stage.component';
+import {Viewport} from '../enum/view-port';
+import {CanvasMargin} from '../enum/canvas-margin';
+import {LocaleData} from '../i18n/locale-data';
+import {LocaleManager} from '../i18n/locale-manager';
+import {PlatformData} from '../data/platform-data';
+import {PlatformType} from '../enum/platform-type';
+import {PropertyIoModal} from './property-io.component';
 
-import { AfterViewInit, Component, ViewChild } from "@angular/core";
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
 
 @Component({
-  selector:'app-root',
-  templateUrl:'../components-html/app.html',
-  providers:[LocaleData]
+  selector   : 'app-root',
+  templateUrl: '../components-html/app.html',
+  providers  : [LocaleData]
 })
 
 export class AppComponent implements AfterViewInit {
-  protected drawingData:particlejs.DrawingData;
-  protected platformData:PlatformData;
-  @ViewChild('stageComponent') stageComponent:StageComponent;
-  @ViewChild('propertyPanel') propertyPanel:PropertyPanel;
-  @ViewChild('smallIOBox') smallIOBox:SmallIOBox;
-  @ViewChild('largeIOBox') largeIOBox:LargeIOBox;
-  @ViewChild('smallPropertyTemplateModal') smallPropertyTemplateModal:SmallPropertyTemplateModal;
-  @ViewChild('propetyModal') propetyModal:PropertyIoModal;
+  protected drawingData: particlejs.DrawingData;
+  protected platformData: PlatformData;
+  @ViewChild('stageComponent') stageComponent: StageComponent;
+  @ViewChild('propertyPanel') propertyPanel: PropertyPanel;
+  @ViewChild('smallIOBox') smallIOBox: SmallIOBox;
+  @ViewChild('largeIOBox') largeIOBox: LargeIOBox;
+  @ViewChild('smallPropertyTemplateModal') smallPropertyTemplateModal: SmallPropertyTemplateModal;
+  @ViewChild('propetyModal') propetyModal: PropertyIoModal;
 
 
   getPlatformData() {
     return new PlatformData(PlatformType.Browser);
   }
 
-  constructor(private localeData:LocaleData) {
-    this.drawingData = new particlejs.DrawingData();
+  constructor(private localeData: LocaleData) {
+    this.drawingData  = new particlejs.DrawingData();
     this.platformData = this.getPlatformData();
 
     // ステージサイズに対して適当な値を適用する
 
-    let canvasWidth:number = innerWidth;
-    let canvasHeight:number = innerHeight;
+    let canvasWidth: number  = innerWidth;
+    let canvasHeight: number = innerHeight;
 
     if (innerWidth > Viewport.sm) {
       canvasHeight -= CanvasMargin.TOP_DESKTOP;
       canvasWidth -= CanvasMargin.RIGHT_DESKTOP;
-    }
-    else {
+    } else {
       canvasHeight -= CanvasMargin.TOP_MOBILE;
       canvasWidth -= CanvasMargin.RIGHT_MOBILE;
     }
 
-    let sw = Math.round(canvasWidth * 2 / 3);
-    let sh = Math.round(canvasHeight * 2 / 3);
+    const sw = Math.round(canvasWidth * 2 / 3);
+    const sh = Math.round(canvasHeight * 2 / 3);
+
     this.drawingData.startX = Math.round(sw / 2);
     this.drawingData.startY = Math.round(sh / 2);
-    this.drawingData.width = sw;
+    this.drawingData.width  = sw;
     this.drawingData.height = sh;
 
     new LocaleManager().applyClientLocale(localeData);
@@ -68,42 +67,50 @@ export class AppComponent implements AfterViewInit {
     this.adjustUi();
 
 
-    let lang = new LocaleManager().checkLocale();
+    const lang = new LocaleManager().checkLocale();
 
-    if (lang != 'ja') {
+    if (lang !== 'ja') {
       document.title = 'Particle Develop - HTML5 Vector Design Tool - ICS';
     }
 
     this.setupWidgets(lang);
   }
 
-  protected setupWidgets(lang:string) {
-    let langLong = lang == 'ja' ? 'ja_JP':'en_EN';
+  protected setupWidgets(lang: string) {
+    let langLong = lang === 'ja' ? 'ja_JP' : 'en_EN';
 
-    (function (d:Document, s:string, id:string) {
-      var js:HTMLScriptElement, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = <HTMLScriptElement>d.createElement(s);
-      js.id = id;
+    (function (d: Document, s: string, id: string) {
+      let js: HTMLScriptElement;
+      let fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js     = <HTMLScriptElement>d.createElement(s);
+      js.id  = id;
       js.src = 'https://b.st-hatena.com/js/bookmark_button.js';
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'hatena'));
 
-    !function (d:any, s:string, id:string) {
-      let js:HTMLScriptElement, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http':'https';
+    !function (d: any, s: string, id: string) {
+      let js: HTMLScriptElement;
+      let fjs = d.getElementsByTagName(s)[0];
+      let p   = /^http:/.test(d.location) ? 'http' : 'https';
       if (!d.getElementById(id)) {
-        js = <HTMLScriptElement>d.createElement(s);
-        js.id = id;
+        js     = <HTMLScriptElement>d.createElement(s);
+        js.id  = id;
         js.src = p + '://platform.twitter.com/widgets.js';
         fjs.parentNode.insertBefore(js, fjs);
       }
     }(document, 'script', 'twitter-wjs');
 
-    (function (d:Document, s:string, id:string) {
-      var js:HTMLScriptElement, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = <HTMLScriptElement>d.createElement(s);
-      js.id = id;
+    (function (d: Document, s: string, id: string) {
+      let js: HTMLScriptElement;
+      let fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {
+        return;
+      }
+      js     = <HTMLScriptElement>d.createElement(s);
+      js.id  = id;
       js.src = `//connect.facebook.net/${langLong}/sdk.js#xfbml=1&version=v2.5&appId=566926136738876`;
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
@@ -122,17 +129,17 @@ export class AppComponent implements AfterViewInit {
   }
 
   protected handleJpgClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/jpeg', '1.0');
+    const dataUrl = this.stageComponent.toDataURL('image/jpeg', '1.0');
     window.open(dataUrl);
   }
 
   protected handlePngClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/png', null);
+    const dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
 
   protected handleWebpClick() {
-    var dataUrl = this.stageComponent.toDataURL('image/webp', null);
+    const dataUrl = this.stageComponent.toDataURL('image/webp', null);
     window.open(dataUrl);
   }
 
@@ -142,7 +149,7 @@ export class AppComponent implements AfterViewInit {
 
   protected handleExportParameterClick() {
 
-    var exportData = Object.assign({}, this.drawingData);
+    const exportData   = Object.assign({}, this.drawingData);
     exportData.VERSION = particlejs.VERSION;
 
     this.propetyModal.setIOButtonLink(JSON.stringify(exportData, null, '    '));
@@ -153,13 +160,15 @@ export class AppComponent implements AfterViewInit {
 
   protected handleImportParameterClick() {
 
-    let file = this.largeIOBox.lastSelectFile
+    const file = this.largeIOBox.lastSelectFile;
+
     // ファイルの内容は FileReader で読み込みます.
-    let fileReader = new FileReader();
+    const fileReader = new FileReader();
+    
     fileReader.onload = (event) => {
       // event.target.result に読み込んだファイルの内容が入っています。
-      var json = (<FileReader>event.target).result;
-      let object = JSON.parse(json);
+      const json   = (<FileReader>event.target).result;
+      const object = JSON.parse(json);
 
       this.drawingData.importData(object);
     };

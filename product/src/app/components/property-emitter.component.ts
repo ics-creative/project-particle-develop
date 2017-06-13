@@ -1,16 +1,14 @@
-import { LocaleData } from "../i18n/locale-data";
-import { Component, Input } from "@angular/core";
-
-"use strict";
+import {LocaleData} from '../i18n/locale-data';
+import {Component, Input} from '@angular/core';
 
 @Component({
-  selector:"emitter-property-panel",
-  templateUrl:"../components-html/property-emitter.html"
+  selector   : 'emitter-property-panel',
+  templateUrl: '../components-html/property-emitter.html'
 })
 
 export class PropertyEmitterPanel {
-  @Input() private drawingData:particlejs.DrawingData;
+  @Input() private drawingData: particlejs.DrawingData;
 
-  constructor(private localeData:LocaleData) {
+  constructor(private localeData: LocaleData) {
   }
 }

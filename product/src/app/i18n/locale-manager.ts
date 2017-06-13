@@ -1,20 +1,18 @@
-import { LocaleData } from "./locale-data";
-import { LocaleJaData } from "./locale-ja";
-import { LocaleEnData } from "./locale-en";
-
-"use strict";
+import {LocaleData} from './locale-data';
+import {LocaleJaData} from './locale-ja';
+import {LocaleEnData} from './locale-en';
 
 export class LocaleManager {
 
-  public applyClientLocale(localeData:LocaleData):void {
-    let locale = this.checkLocale();
-    let lData:LocaleData;
+  public applyClientLocale(localeData: LocaleData): void {
+    const locale = this.checkLocale();
+    let lData: LocaleData;
 
     switch (locale) {
-      case "ja":
+      case 'ja':
         lData = new LocaleJaData();
         break;
-      case "en":
+      case 'en':
       default:
         lData = new LocaleEnData();
         break;
@@ -22,29 +20,27 @@ export class LocaleManager {
     this.changeLocale(localeData, lData);
   }
 
-  public checkLocale():string {
-    const ua = window.navigator.userAgent.toLowerCase();
-    const navi: NavigatorTmp = <NavigatorTmp> <any> navigator;
+  public checkLocale(): string {
+    const ua   = window.navigator.userAgent.toLowerCase();
+    const navi = <NavigatorTmp> <any> navigator;
     try {
       // chrome
       if (ua.indexOf('chrome') !== -1) {
         return ( navi.languages[0] || navi.browserLanguage || navi.language || navi.userLanguage).substr(0, 2);
-      }
-      // それ以外
-      else {
+      } else {
+        // それ以外
         return ( navi.browserLanguage || navi.language || navi.userLanguage).substr(0, 2);
       }
-    }
-    catch (e) {
+    } catch (e) {
       return undefined;
     }
   }
 
 
-  public changeLocale(master:LocaleData, selectedLocale:LocaleData):void {
-    for (let key in selectedLocale) {
-      if (Reflect.has(selectedLocale, key) == true) {
-        let val = <any> selectedLocale[key];
+  public changeLocale(master: LocaleData, selectedLocale: LocaleData): void {
+    for (const key in selectedLocale) {
+      if (Reflect.has(selectedLocale, key) === true) {
+        const val = <any> selectedLocale[key];
         Reflect.set(master, key, val);
       }
     }

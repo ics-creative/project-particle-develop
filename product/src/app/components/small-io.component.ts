@@ -1,17 +1,15 @@
-'use strict';
-
-import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector: 'small-io-box',
+  selector   : 'small-io-box',
   templateUrl: '../components-html/small-io-box.html'
 })
 export class SmallIOBox {
-  @Output() private exportPngEvent = new EventEmitter();
+  @Output() private exportPngEvent    = new EventEmitter();
   @Output() private importCameraEvent = new EventEmitter();
 
-  @Input() private drawingData:particlejs.DrawingData;
-  private element:ElementRef;
+  @Input() private drawingData: particlejs.DrawingData;
+  private element: ElementRef;
 
   exportPng() {
     this.exportPngEvent.emit(null);
@@ -21,7 +19,7 @@ export class SmallIOBox {
     this.importCameraEvent.emit(null);
   }
 
-  constructor(element:ElementRef) {
+  constructor(element: ElementRef) {
     this.element = element;
   }
 }

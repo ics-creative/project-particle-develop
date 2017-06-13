@@ -1,68 +1,67 @@
-import {LocaleData} from "./locale-data";
-"use strict";
+import {LocaleData} from './locale-data';
 
 export class LocaleEnData extends LocaleData {
 
-  MA_head:string = "What is Particle Develop";
-  MA_sentence:string = `Particle Develop is the design tool what is able to create particle graphics such as snow and fire.
+  MA_head     = 'What is Particle Develop';
+  MA_sentence = `Particle Develop is the design tool what is able to create particle graphics such as snow and fire.
   The graphic of particles are vector, you can save as SVG file, and edit with Adobe Illustrator. * Please turn off the popup block of browser, if you save file.
   `;
 
-  H_about:string = "About";
-  H_exportImage:string = "Export as File";
-  H_exportParam:string = "Save Config Data";
-  H_language:string = "Language";
+  H_about       = 'About';
+  H_exportImage = 'Export as File';
+  H_exportParam = 'Save Config Data';
+  H_language    = 'Language';
 
-  preview_head:string = "Preview";
-  settings_head:string = "Settings";
+  preview_head  = 'Preview';
+  settings_head = 'Settings';
 
-  ST_head:string = "Template Settings";
+  ST_head = 'Template Settings';
 
-  SE_head:string = "Emitter Settings";
-  SE_startXVariance:string = "Source Position Variance X (px)";
-  SE_startYVariance:string = "Source Position Variance Y (px)";
-  SE_initialSpeed:string = "Speed (px/frame)";
-  SE_initialSpeedVariance:string = "Speed Variance (px/frame)";
-  SE_initialDirection:string = "Emit Angle (degree)";
-  SE_initialDirectionVariance:string = "Emit Angle Variance (degree)";
-  SE_friction:string = "Friction";
-  SE_accelerationSpeed:string = "Gravity";
-  SE_accelerationDirection:string = "Gravity Angle (degree)";
-  SE_emitFrequency:string = "Emit Frequency (num/sec)"
+  SE_head                     = 'Emitter Settings';
+  SE_startXVariance           = 'Source Position Variance X (px)';
+  SE_startYVariance           = 'Source Position Variance Y (px)';
+  SE_initialSpeed             = 'Speed (px/frame)';
+  SE_initialSpeedVariance     = 'Speed Variance (px/frame)';
+  SE_initialDirection         = 'Emit Angle (degree)';
+  SE_initialDirectionVariance = 'Emit Angle Variance (degree)';
+  SE_friction                 = 'Friction';
+  SE_accelerationSpeed        = 'Gravity';
+  SE_accelerationDirection    = 'Gravity Angle (degree)';
+  SE_emitFrequency            = 'Emit Frequency (num/sec)';
 
-  SP_head:string = "Particle Settings";
-  SP_startScale:string = "Start Size";
-  SP_startScaleVariance:string = "Start Size Variance";
-  SP_endScale:string = "End Size";
-  SP_endScaleVariance:string = "End Size Variance";
-  SP_lifeSpan:string = "Lifespan (frame)";
-  SP_lifeSpanVariance:string = "Lifespan Variance (frame)";
+  SP_head               = 'Particle Settings';
+  SP_startScale         = 'Start Size';
+  SP_startScaleVariance = 'Start Size Variance';
+  SP_endScale           = 'End Size';
+  SP_endScaleVariance   = 'End Size Variance';
+  SP_lifeSpan           = 'Lifespan (frame)';
+  SP_lifeSpanVariance   = 'Lifespan Variance (frame)';
 
-  SC_head_start:string = "Start Color";
-  SC_hue:string = "Hue (degree)";
-  SC_hueVariance:string = "Hue Variance (degree)";
-  SC_saturation:string = "Saturation (%)";
-  SC_saturationVariance:string = "Saturation Variance (%)";
-  SC_luminance:string = "Luminance (%)";
-  SC_luminanceVariance:string = "Luminance Variance (%)";
-  SC_startAlpha:string = "Alpha";
-  SC_startAlphaVariance:string = "Alpha Variance";
+  SC_head_start         = 'Start Color';
+  SC_hue                = 'Hue (degree)';
+  SC_hueVariance        = 'Hue Variance (degree)';
+  SC_saturation         = 'Saturation (%)';
+  SC_saturationVariance = 'Saturation Variance (%)';
+  SC_luminance          = 'Luminance (%)';
+  SC_luminanceVariance  = 'Luminance Variance (%)';
+  SC_startAlpha         = 'Alpha';
+  SC_startAlphaVariance = 'Alpha Variance';
 
-  SC_head_end:string = "End Color";
-  SC_endAlpha:string = "Alpha";
-  SC_endAlphaVariance:string = "Alpha Variance";
+  SC_head_end         = 'End Color';
+  SC_endAlpha         = 'Alpha';
+  SC_endAlphaVariance = 'Alpha Variance';
 
-  SC_head_alphaCurve:string = "Alpha Motion Type";
-  SC_head_blendMode:string = "Blend Mode";
+  SC_head_alphaCurve = 'Alpha Motion Type';
+  SC_head_blendMode  = 'Blend Mode';
 
-  SS_head:string = "Shape Settings";
+  SS_head = 'Shape Settings';
 
-  SF_head:string = "Stage Settings";
-  SF_stageW:string = "Width (px)";
-  SF_stageH:string = "Height (px)";
-  SF_bgColor:string = "Background Color";
+  SF_head    = 'Stage Settings';
+  SF_stageW  = 'Width (px)';
+  SF_stageH  = 'Height (px)';
+  SF_bgColor = 'Background Color';
 
 
-  MC_head:string = "Save Config Data";
-  MC_button:string = "Save as File (.json)";
+  MC_head   = 'Save Config Data';
+  MC_button = 'Save as File (.json)';
 }

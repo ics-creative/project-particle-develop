@@ -1,24 +1,22 @@
-import { LocaleData } from "../i18n/locale-data";
-import { Component, Input } from "@angular/core";
-
-"use strict";
+import {LocaleData} from '../i18n/locale-data';
+import {Component, Input} from '@angular/core';
 
 @Component({
-  selector:"shape-property-panel",
-  templateUrl:"../components-html/property-shape.html"
+  selector   : 'shape-property-panel',
+  templateUrl: '../components-html/property-shape.html'
 })
 
 /**
  * シェイプの選択パネルの制御クラスです。
  */
 export class PropertyShapePanel {
-  @Input() public drawingData:particlejs.DrawingData;
-  @Input() public shapeIdList:string[] = new particlejs.ShapeData().assetList;
+  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public shapeIdList: string[] = new particlejs.ShapeData().assetList;
 
-  constructor(private localeData:LocaleData) {
+  constructor(private localeData: LocaleData) {
   }
 
-  private handleClick(shapeId:string) {
+  private handleClick(shapeId: string) {
 
     var index = this.drawingData.shapeIdList.indexOf(shapeId);
     if (index == -1) { // 含まれていなければ
