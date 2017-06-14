@@ -8,11 +8,11 @@ import {LocaleData} from '../i18n/locale-data';
 })
 
 export class PropertyTemplatePanelComponent implements OnInit {
-  @Input() private drawingData: particlejs.DrawingData;
-  @Input() private templateList: any[];
-  private template: ParticleParameter;
+  @Input() drawingData: particlejs.DrawingData;
+  @Input() templateList: any[];
+  public public: ParticleParameter;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
     const template = new ParticleParameter();
 
     this.templateList = template.list;

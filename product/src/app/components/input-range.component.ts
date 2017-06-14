@@ -9,27 +9,27 @@ import {Component, Input} from '@angular/core';
  * @since 2016-01-20
  */
 export class InputRangeComponent {
-  @Input() private drawingData: particlejs.DrawingData;
+  @Input() public drawingData: particlejs.DrawingData;
 
   /** 対象のプロパティー名を指定します。 */
-  @Input() private targetProperty: string;
+  @Input() public targetProperty: string;
 
   /** ラベルの名称を指定します。 */
-  @Input() private label: string;
+  @Input() public label: string;
 
   /** 最小値を指定します。 */
-  @Input() private min: number;
+  @Input() public min: number;
 
   /** 最大値を指定します。 */
-  @Input() private max: number;
+  @Input() public max: number;
 
   /** ラベル間の間隔を示す数値を指定します。 */
-  @Input() private step: number;
+  @Input() public step: number;
 
   constructor() {
   }
 
-  private handleChange(event: any): void {
+  public handleChange(event: any): void {
     // なぜか string になっている可能性がある
     const tmp: any   = <any>this.drawingData;
     const value: any = tmp[this.targetProperty];

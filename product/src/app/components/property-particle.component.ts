@@ -7,9 +7,9 @@ import {Component, Input} from '@angular/core';
 })
 
 export class PropertyParticlePanelComponent {
-  @Input() private drawingData: particlejs.DrawingData;
-  @Input() private shapeIdList: any;
+  @Input() drawingData: particlejs.DrawingData;
+  @Input() shapeIdList: any;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
   }
 }

@@ -20,8 +20,8 @@ import {AfterViewInit, Component, ViewChild} from '@angular/core';
 })
 
 export class AppComponent implements AfterViewInit {
-  protected drawingData: particlejs.DrawingData;
-  protected platformData: PlatformData;
+  drawingData: particlejs.DrawingData;
+  platformData: PlatformData;
   @ViewChild('stageComponent') stageComponent: StageComponent;
   @ViewChild('propertyPanel') propertyPanel: PropertyPanelComponent;
   @ViewChild('smallIOBox') smallIOBox: SmallIoBoxComponent;
@@ -34,7 +34,7 @@ export class AppComponent implements AfterViewInit {
     return new PlatformData(PlatformType.Browser);
   }
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
     this.drawingData  = new particlejs.DrawingData();
     this.platformData = this.getPlatformData();
 
@@ -122,32 +122,32 @@ export class AppComponent implements AfterViewInit {
   protected adjustUi() {
   }
 
-  protected handleSvgClick() {
+  public handleSvgClick() {
     this.stageComponent.exportSvg().then(() => {
       this.openSvgExportWindow();
     });
   }
 
-  protected handleJpgClick() {
+  public handleJpgClick() {
     const dataUrl = this.stageComponent.toDataURL('image/jpeg', '1.0');
     window.open(dataUrl);
   }
 
-  protected handlePngClick() {
+  public handlePngClick() {
     const dataUrl = this.stageComponent.toDataURL('image/png', null);
     window.open(dataUrl);
   }
 
-  protected handleWebpClick() {
+  public handleWebpClick() {
     const dataUrl = this.stageComponent.toDataURL('image/webp', null);
     window.open(dataUrl);
   }
 
-  protected openSvgExportWindow() {
+  public openSvgExportWindow() {
     window.open('data:image/svg+xml,\n' + encodeURIComponent(this.stageComponent.getParticleSvgString()));
   }
 
-  protected handleExportParameterClick() {
+  public handleExportParameterClick() {
 
     const exportData   = Object.assign({}, this.drawingData);
     exportData.VERSION = particlejs.VERSION;
@@ -158,7 +158,7 @@ export class AppComponent implements AfterViewInit {
 // window.open('data:text/plain;charset=UTF-8,\n' + encodeURIComponent(JSON.stringify(this.drawingData)));
   }
 
-  protected handleImportParameterClick() {
+  public handleImportParameterClick() {
 
     const file = this.largeIOBox.lastSelectFile;
 
@@ -173,6 +173,10 @@ export class AppComponent implements AfterViewInit {
       this.drawingData.importData(object);
     };
     fileReader.readAsText(file);
+
+  }
+
+  public handleCamera() {
 
   }
 }

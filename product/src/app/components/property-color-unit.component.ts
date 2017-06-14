@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 export class PropertyColorUnitComponent {
   @Input() public colorData: particlejs.ColorData;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
   }
 
 }

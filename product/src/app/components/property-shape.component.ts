@@ -13,7 +13,7 @@ export class PropertyShapePanelComponent {
   @Input() public drawingData: particlejs.DrawingData;
   @Input() public shapeIdList: string[] = new particlejs.ShapeData().assetList;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
   }
 
   private handleClick(shapeId: string) {

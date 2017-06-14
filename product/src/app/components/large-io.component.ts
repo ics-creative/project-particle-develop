@@ -15,7 +15,7 @@ export class LargeIoBoxComponent {
   @Output() public exportPngEvent        = new EventEmitter();
   @Output() public exportJpgEvent        = new EventEmitter();
   @Output() public exportWebpEvent       = new EventEmitter();
-  @Output() private exportParameterEvent = new EventEmitter();
+  @Output() public exportParameterEvent = new EventEmitter();
   @Output() public importParameterEvent  = new EventEmitter();
 
   @Input() public drawingData: particlejs.DrawingData;
@@ -23,40 +23,40 @@ export class LargeIoBoxComponent {
 
   public lastSelectFile: any;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
   }
 
-  private exportParameter(): void {
+  public exportParameter(): void {
     this.exportParameterEvent.emit(null);
   }
 
-  private exportSvg(): void {
+  public exportSvg(): void {
     this.exportSvgEvent.emit(null);
   }
 
-  private exportPng(): void {
+  public exportPng(): void {
     this.exportPngEvent.emit(null);
   }
 
-  private exportJpg(): void {
+  public exportJpg(): void {
     this.exportJpgEvent.emit(null);
   }
 
-  private exportWebp(): void {
+  public exportWebp(): void {
     this.exportWebpEvent.emit(null);
   }
 
-  private selectParameterFile(obj: any): void {
+  public selectParameterFile(obj: any): void {
     this.lastSelectFile = obj.target.files[0];
 
     this.importParameterEvent.emit(null);
   }
 
-  private selectEn(): void {
+  public selectEn(): void {
     new LocaleManager().changeLocale(this.localeData, new LocaleEnData());
   }
 
-  private selectJa(): void {
+  public selectJa(): void {
     new LocaleManager().changeLocale(this.localeData, new LocaleJaData());
   }
 

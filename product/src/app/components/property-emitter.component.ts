@@ -7,8 +7,8 @@ import {Component, Input} from '@angular/core';
 })
 
 export class PropertyEmitterPanelComponent {
-  @Input() private drawingData: particlejs.DrawingData;
+  @Input() public drawingData: particlejs.DrawingData;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
   }
 }

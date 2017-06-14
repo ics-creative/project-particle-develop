@@ -8,11 +8,11 @@ import {ParticleParameter} from '../assets/particle-parameter';
 })
 
 export class SmallPropertyTemplateModalComponent implements OnInit {
-  @Input() private drawingData: particlejs.DrawingData;
-  @Input() private templateList: any[];
+  @Input() drawingData: particlejs.DrawingData;
+  @Input() templateList: any[];
   private template: ParticleParameter;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
     const template    = new ParticleParameter();
     this.templateList = template.list;
   }

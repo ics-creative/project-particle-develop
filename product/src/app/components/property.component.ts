@@ -5,9 +5,9 @@ import {Component, Input} from '@angular/core';
   templateUrl: '../components-html/property.html'
 })
 export class PropertyPanelComponent {
-  @Input() private drawingData: particlejs.DrawingData;
+  @Input() public drawingData: particlejs.DrawingData;
 
-  constructor(private localeData: LocaleData) {
+  constructor(public localeData: LocaleData) {
   }
 
 }

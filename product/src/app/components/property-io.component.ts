@@ -16,7 +16,7 @@ export class PropertyIoModalComponent {
 
   element: ElementRef;
 
-  constructor(element: ElementRef, private localeData: LocaleData) {
+  constructor(element: ElementRef, public localeData: LocaleData) {
     this.element = element;
   }
 
