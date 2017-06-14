@@ -3,7 +3,7 @@ import {LocaleData} from './locale-data';
 export class LocaleEnData extends LocaleData {
 
   MA_head     = 'What is Particle Develop';
-  MA_sentence = `Particle Develop is the design tool what is able to create 
+  MA_sentence = `Particle Develop is the design tool what is able to create
                 particle graphics such as snow and fire.
                 The graphic of particles are vector,
                 you can save as SVG file, and edit with Adobe Illustrator.
