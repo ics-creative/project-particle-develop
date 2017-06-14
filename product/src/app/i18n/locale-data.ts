@@ -27,6 +27,7 @@ export class LocaleData {
   SE_accelerationDirection: string    = null;
   SE_emitFrequency: string            = null;
 
+  SP_head                       = null;
   SP_startScale: string         = null;
   SP_startScaleVariance: string = null;
   SP_endScale: string           = null;
