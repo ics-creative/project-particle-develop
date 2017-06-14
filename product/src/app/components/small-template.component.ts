@@ -10,7 +10,7 @@ import {ParticleParameter} from '../assets/particle-parameter';
 export class SmallPropertyTemplateModalComponent implements OnInit {
   @Input() drawingData: particlejs.DrawingData;
   @Input() templateList: any[];
-  private template: ParticleParameter;
+  public template: ParticleParameter;
 
   constructor(public localeData: LocaleData) {
     const template    = new ParticleParameter();
@@ -22,7 +22,7 @@ export class SmallPropertyTemplateModalComponent implements OnInit {
     this.drawingData.importData(this.templateList[0].property);
   }
 
-  private selectTemplate(value: particlejs.DrawingData) {
+  public selectTemplate(value: particlejs.DrawingData) {
     this.drawingData.importData(value);
   }
 }

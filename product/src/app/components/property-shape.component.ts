@@ -16,7 +16,7 @@ export class PropertyShapePanelComponent {
   constructor(public localeData: LocaleData) {
   }
 
-  private handleClick(shapeId: string) {
+  public handleClick(shapeId: string) {
 
     const index = this.drawingData.shapeIdList.indexOf(shapeId);
     if (index === -1) { // 含まれていなければ

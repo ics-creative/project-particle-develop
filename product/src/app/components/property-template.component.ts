@@ -23,7 +23,7 @@ export class PropertyTemplatePanelComponent implements OnInit {
     this.drawingData.importData(this.templateList[0].property);
   }
 
-  private selectTemplate(value: particlejs.DrawingData) {
+  public selectTemplate(value: particlejs.DrawingData) {
     this.drawingData.importData(value);
   }
 }
