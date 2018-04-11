@@ -128,23 +128,87 @@ export class AppComponent implements AfterViewInit {
     });
   }
 
+  private convertBlobFromBase64(base64: string, mimeType: string): Blob {
+    const bin = atob(base64.replace(/^.*,/, ''));
+    const buffer = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) {
+      buffer[i] = bin.charCodeAt(i);
+    }
+
+    // Blobを作成
+    const blob = new Blob([buffer.buffer], {
+      type: mimeType,
+    });
+    return blob;
+  }
+
+  private saveFile(base64: string,
+                   fileName: string,
+                   mimeType: string): void {
+    const blob = this.convertBlobFromBase64(base64, mimeType);
+
+    if (window.navigator.msSaveBlob) {
+      // for IE
+      window.navigator.msSaveBlob(blob, fileName)
+    } else if (window.URL && window.URL.createObjectURL) {
+      // for Firefox, Chrome, Safari
+      const a = document.createElement('a');
+      a.download = fileName;
+      a.href = window.URL.createObjectURL(blob);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      // for Other
+      window.open(base64, '_blank');
+    }
+  }
+
   public handleJpgClick() {
     const dataUrl = this.stageComponent.toDataURL('image/jpeg', '1.0');
-    window.open(dataUrl);
+
+    this.saveFile(dataUrl, `particle_${Math.round(Date.now() / 1000)}.jpg`, 'image/jpeg');
   }
 
   public handlePngClick() {
     const dataUrl = this.stageComponent.toDataURL('image/png', null);
-    window.open(dataUrl);
+
+    this.saveFile(dataUrl, `particle_${Math.round(Date.now() / 1000)}.png`, 'image/png');
   }
 
   public handleWebpClick() {
     const dataUrl = this.stageComponent.toDataURL('image/webp', null);
-    window.open(dataUrl);
+
+    this.saveFile(dataUrl, `particle_${Math.round(Date.now() / 1000)}.webp`, 'image/webp');
   }
 
   public openSvgExportWindow() {
-    window.open('data:image/svg+xml,\n' + encodeURIComponent(this.stageComponent.getParticleSvgString()));
+    const content = this.stageComponent.getParticleSvgString();
+
+    const dataUrl = 'data:image/svg+xml,\n' + encodeURIComponent(content);
+
+    const mimeType = 'text/plain';
+    const fileName = `particle_${Math.round(Date.now() / 1000)}.svg`;
+
+    // BOMは文字化け対策
+    const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+    const blob = new Blob([bom, content], {type: mimeType});
+
+    if (window.navigator.msSaveBlob) {
+      // for IE
+      window.navigator.msSaveBlob(blob, fileName)
+    } else if (window.URL && window.URL.createObjectURL) {
+      // for Firefox, Chrome, Safari
+      const a = document.createElement('a');
+      a.download = fileName;
+      a.href = window.URL.createObjectURL(blob);
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      // for Safari
+      window.open(dataUrl, '_blank');
+    }
   }
 
   public handleExportParameterClick() {
