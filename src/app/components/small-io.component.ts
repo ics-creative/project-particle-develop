@@ -6,17 +6,12 @@ import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core'
 })
 export class SmallIoBoxComponent {
   @Output() private exportPngEvent    = new EventEmitter();
-  @Output() private importCameraEvent = new EventEmitter();
 
   @Input() private drawingData: particlejs.DrawingData;
   private element: ElementRef;
 
   exportPng() {
     this.exportPngEvent.emit(null);
-  }
-
-  importCamera() {
-    this.importCameraEvent.emit(null);
   }
 
   constructor(element: ElementRef) {
