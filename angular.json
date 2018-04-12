@@ -39,12 +39,6 @@
                 "input": "src/assets/js/SVGExporter.js"
               },
               {
-                "input": "src/assets/js/jquery-2.1.1.min.js"
-              },
-              {
-                "input": "src/assets/js/bootstrap.min.js"
-              },
-              {
                 "input": "src/assets/js/particlejs.min.js"
               }
             ]
@@ -86,79 +80,11 @@
             "browserTarget": "Particle Develop:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              {
-                "input": "src/assets/js/createjs-2015.11.26.min.js"
-              },
-              {
-                "input": "src/assets/js/SVGExporter.js"
-              },
-              {
-                "input": "src/assets/js/jquery-2.1.1.min.js"
-              },
-              {
-                "input": "src/assets/js/bootstrap.min.js"
-              },
-              {
-                "input": "src/assets/js/particlejs.min.js"
-              }
-            ],
-            "styles": [
-              {
-                "input": "src/styles.scss"
-              }
-            ],
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "**/*",
-                "input": "src/favicon.ico",
-                "output": "/favicon.ico"
-              }
-            ]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": []
-          }
-        }
-      }
-    },
-    "Particle Develop-e2e": {
-      "root": "",
-      "projectType": "application",
-      "cli": {},
-      "schematics": {},
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "Particle Develop:serve"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "e2e/tsconfig.e2e.json"
+              "src/tsconfig.app.json"
             ],
             "exclude": []
           }
