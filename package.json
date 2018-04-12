@@ -1,11 +1,10 @@
 {
   "name": "particle-develop",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "scripts": {
     "start": "ng serve --open",
-    "build": "ng build",
-    "prod-build": "ng build --prod",
+    "build": "ng build --prod",
     "lint": "ng lint"
   },
   "private": true,
@@ -20,28 +19,16 @@
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/router": "^5.2.9",
     "core-js": "^2.4.1",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4"
+    "rxjs": "^5.5.9",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.5.0",
+    "@angular-devkit/build-angular": "^0.5.5",
     "@angular/cli": "^6.0.0-rc.2",
     "@angular/compiler-cli": "^5.2.9",
     "@angular/language-service": "^5.2.9",
     "@types/createjs": "0.0.29",
-    "@types/jasmine": "2.8.6",
-    "@types/node": "~9.6.4",
     "codelyzer": "~4.2.1",
-    "jasmine-core": "~3.1.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~2.0.0",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^1.2.1",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^1.0.0",
-    "protractor": "~5.3.1",
-    "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "^2.8.1"
   }
