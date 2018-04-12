@@ -26,6 +26,7 @@ export class ParticleCanvas {
   private _stage: createjs.Stage;
 
   private _canvasContainer: createjs.Container;
+  private _wrapperForCapure: createjs.Container;
   private _backgroundColorCommand: any;
   private _backgroundSize: any;
 
@@ -53,8 +54,11 @@ export class ParticleCanvas {
 
     this._stage = new createjs.Stage(this._canvas);
 
+    this._wrapperForCapure = new createjs.Container();
+    this._stage.addChild(this._wrapperForCapure);
+
     this._canvasContainer = new createjs.Container();
-    this._stage.addChild(this._canvasContainer);
+    this._wrapperForCapure.addChild(this._canvasContainer);
 
 
     //  キャンバスより後ろ
@@ -129,10 +133,17 @@ export class ParticleCanvas {
   }
 
   public toDataURL(type: string, params: string): string {
-    this._canvasContainer.cache(0, 0, this._data.width, this._data.height);
-    const capture = <HTMLCanvasElement> this._canvasContainer.cacheCanvas;
+
+    const dpi = window.devicePixelRatio || 1.0;
+
+    this._canvasContainer.scaleX = this._canvasContainer.scaleY = dpi;
+    this._wrapperForCapure.cache(0, 0, this._data.width * dpi, this._data.height * dpi);
+
+    const capture = <HTMLCanvasElement> this._wrapperForCapure.cacheCanvas;
     const dataURL = capture.toDataURL(type, params);
-    this._canvasContainer.uncache();
+    this._wrapperForCapure.uncache();
+
+    this._canvasContainer.scaleX = this._canvasContainer.scaleY = 1.0;
 
     return dataURL;
   }
@@ -177,8 +188,8 @@ export class ParticleCanvas {
       .drawRect(0, canvasY + palletH, canvasWidth, canvasY)
       .endFill();
 
-    this._canvasContainer.x = this._ruler.container.x = canvasPoint.x;
-    this._canvasContainer.y = this._ruler.container.y = canvasPoint.y;
+    this._wrapperForCapure.x = this._ruler.container.x = canvasPoint.x;
+    this._wrapperForCapure.y = this._ruler.container.y = canvasPoint.y;
 
     this._captureImageLayer.x = -canvasPoint.x;
     this._captureImageLayer.y = -canvasPoint.y;
