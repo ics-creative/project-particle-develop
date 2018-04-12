@@ -1,23 +1,27 @@
-<ul class="row hidden-sm-down">
-  <li class="btn-group">
-    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-file-image-o"></i>
-      {{localeData.H_exportImage}}<span class="caret"></span></a>
-    <div class="dropdown-menu dropdown-menu-right">
-      <a class="dropdown-item" (click)="exportSvg()">SVG (Adobe Illustrator, etc.)</a>
-      <a class="dropdown-item" (click)="exportPng()">PNG</a>
-      <a class="dropdown-item" (click)="exportJpg()">JPEG</a>
-      <a class="dropdown-item" (click)="exportWebp()">WebP (Only Chrome)</a>
-    </div>
-  </li>
-  <li *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()" class="btn btn-primary"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></li>
-  <li *ngIf="platformData.enableInputParameter()"><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></li>
-  <li class="btn-group">
-    <a href="#" class="dropdown-toggle btn btn-primary" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-language"></i>
-      {{localeData.H_language}}<span class="caret"></span></a>
-    <ul class="dropdown-menu dropdown-menu-right">
-      <li><a class="dropdown-item" (click)="selectEn()">English / 英語</a></li>
-      <li><a class="dropdown-item" (click)="selectJa()">Japanese / 日本語</a></li>
-    </ul>
-  </li>
+<div class="d-none d-md-block">
 
-</ul>
+  <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+
+    <div class="btn-group">
+      <a href="#" class="dropdown-toggle btn btn-primary header-btn" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-file-image-o"></i>
+        {{localeData.H_exportImage}}<span class="caret"></span></a>
+      <div class="dropdown-menu dropdown-menu-right">
+        <a class="dropdown-item" (click)="exportSvg()">SVG (Adobe Illustrator, etc.)</a>
+        <a class="dropdown-item" (click)="exportPng()">PNG</a>
+        <a class="dropdown-item" (click)="exportJpg()">JPEG</a>
+        <a class="dropdown-item" (click)="exportWebp()">WebP (Only Chrome)</a>
+      </div>
+    </div>
+    <div *ngIf="platformData.enableOutputParameter()"><a (click)="exportParameter()" class="btn btn-primary header-btn"><i class="fa fa-save"></i> {{localeData.H_exportParam}}</a></div>
+    <div *ngIf="platformData.enableInputParameter()"><input #btnSelectFile (change)="selectParameterFile($event)" type="file"></div>
+    <div class="btn-group">
+      <a href="#" class="dropdown-toggle btn btn-primary header-btn" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-language"></i>
+        {{localeData.H_language}}<span class="caret"></span></a>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li><a class="dropdown-item" (click)="selectEn()">English / 英語</a></li>
+        <li><a class="dropdown-item" (click)="selectJa()">Japanese / 日本語</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>

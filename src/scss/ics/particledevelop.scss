@@ -1,57 +1,129 @@
-@import "../utilities";
+html, body {
+  height: 100%;
+}
+
+body {
+  //overflow: hidden;
+  padding: 0;
+}
+
+.pd {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  @media (max-width: map-get($grid-breakpoints, "md")) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 40px;
+    grid-template-areas: 'header' 'canvas' 'footer';
+  }
+  @media (min-width: map-get($grid-breakpoints, "md")) {
+    grid-template-columns: 1fr 350px;
+    grid-template-rows: 50px 1fr 40px;
+    grid-template-areas: 'header header' 'canvas property' 'footer footer';
+  }
+
+  &-header {
+    grid-area: header;
+  }
+  &-canvas {
+    grid-area: canvas;
+    background-color: #222222;
+    overflow: hidden;
+  }
+  &-property {
+    grid-area: property;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      display: none;
+    }
+  }
+  &-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
 
 app-root {
   & > header,
   & > footer {
-    background-color: $brand-primary;
+
   }
 
-  & > header {
-    > .row {
-      height: 49px;
-    }
+  .pd-header {
+    background-color: theme-color("primary");
 
     border-bottom: 1px solid $nav-tabs-border-color;
-    text-shadow: $text-basic-shadow;
-    .btn {
-      line-height: 36px;
+
+    &__grid {
+      display: grid;
+      @media (max-width: map-get($grid-breakpoints, "sm")) {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 49px;
+        grid-template-areas: "logo menu";
+      }
+      @media (min-width: map-get($grid-breakpoints, "sm")) {
+        grid-template-columns: auto auto 1fr;
+        grid-template-rows: 49px;
+        grid-template-areas: "logo about menu";
+      }
+
+      &-logo {
+        grid-template: "logo";
+      }
+      &-about {
+        grid-template: "about";
+      }
+      &-menu {
+        grid-template: "menu";
+      }
+    }
+
+    li {
+      list-style: none;
+    }
+    .header-btn {
+      line-height: 49px;
+      height: 49px;
       border-right: 1px solid rgba(0, 0, 0, 0.2);
       border-left: 1px solid rgba(255, 255, 255, 0.1);
-      box-shadow: none !important;
+      border-top: none;
+      border-bottom: none;
+      padding-top: 0;
+      padding-bottom: 0;
+      background-color: inherit;
+      color: #cccccc;
     }
 
     h1 {
-      padding: 0.8rem $btn-padding-x 0;
-      margin-bottom: 0;
-      & + * {
-        margin-right: auto;
+      padding: 3px $btn-padding-x 0;
+      margin: 0;
+      line-height: 1.0;
+      font-size: 1.0rem;
+      height: 49px;
+      display: flex;
+      align-items: center;
+    }
+
+    .large-io-box {
+      margin-left: auto;
+      margin-right: 0;
+    }
+
+    .small-io-box ul {
+      padding-left: 0;
+      li {
+        box-sizing: border-box;
+        .btn {
+          font-size: rem-calc(16);
+          padding: 5px 15px 6px;
+        }
       }
     }
   }
-}
 
-
-
-#canvasBox {
-  background-color: $black;
-  margin-bottom: 0;
-}
-
-.small-io-box > ul,
-.large-io-box > ul {
-  margin-left: 0 !important;
-  margin-right: 0.5rem !important;
-}
-
-.small-io-box ul {
-  padding-left: 0;
-  li {
-    box-sizing: border-box;
-    .btn {
-      font-size: rem-calc(16);
-      padding: 5px 15px 6px;
-    }
-  }
 }
 
 @media (max-width: 906px) {
@@ -71,89 +143,74 @@ app-root {
   }
 }
 
-#wrapper {
-  margin: 2px;
-  height: calc(100% - 94px);
-}
-
 #main .card-block {
   padding: 0;
 }
 
-#propertyPanel {
+.pd-property {
   flex: 285px;
-  margin-left: 2px;
+  //margin-left: 2px;
   height: 100%;
   overflow: hidden;
+
+  &__inner {
+    height: 100%;
+    background-color: $gray-900;
+  }
 
   .nav-tabs {
     a {
       padding: rem-calc(2) rem-calc(15);
       font-size: rem-calc(16);
     }
-  }
-  .property-panel > .card {
-    height: 100%;
-    > .card-block {
-      height: calc(100% - 35px);
-      overflow: hidden;
-      padding: 0;
-      > .tab-content {
-        height: 100%;
-        overflow-y: auto;
-        padding-left: 10px;
-        padding-right: 10px;
-      }
+    .nav-item {
+      height: 35px;
     }
   }
 
   .tab-content {
-    .card {
+    height: calc(100vh - 125px);
+    overflow: auto;
+  }
+
+  .pd-section {
+    height: 100%;
+    overflow-y: auto;
+    border: none;
+
+    &__header {
+      padding-top: 10px;
+      padding-bottom: 10px;
       border: none;
 
-      .card-header {
-        padding-top: rem-calc(17);
-        padding-bottom: rem-calc(9.5);
-        //margin-right: $card-spacer-x;
-        //margin-left: $card-spacer-x;
-        border: none;
-
-        + hr {
-          margin-top: 0;
-        }
+      + hr {
+        margin-top: 0;
       }
-
-      hr {
-        margin-top: rem-calc(12);
-        margin-bottom: rem-calc(12);
+      h3 {
+        text-align: center;
       }
     }
-  }
 
-  .row {
-    align-items: center;
-  }
+    &__block {
 
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    hr {
+      margin-top: rem-calc(12);
+      margin-bottom: rem-calc(12);
+    }
+  }
 }
 
 .particle-template-property-panel {
-  button.close {
-    display: none;
-  }
-
-  .modal-footer {
-    display: none;
-  }
-
-  .row {
-    justify-content: center;
-  }
-
-  .card-block {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
 
   figure {
     margin-bottom: rem-calc(8.5);
@@ -173,7 +230,8 @@ app-root {
 
     figcaption {
       font-size: $font-size-sm;
-      color: #666;
+      color: #999;
+      text-align: center;
     }
   }
 }
@@ -200,120 +258,142 @@ app-root {
   height: 1px;
 }
 
-.gradation-box-hue {
-  background-image: linear-gradient(to right, red 0%, #ccff00 20%, #00ff66 40%, #0066ff 60%, #cc00ff 80%, red 100%);
-}
+.gradation-box {
+  width: 75%;
 
-.gradation-box-saturation {
-  background-image: linear-gradient(to right, gray 0%, red 100%);
-}
+  &-hue {
+    background-image: linear-gradient(to right, red 0%, #ccff00 20%, #00ff66 40%, #0066ff 60%, #cc00ff 80%, red 100%);
+  }
 
-.gradation-box-luminance {
-  background-image: linear-gradient(to right, black 0%, white 100%);
+  &-saturation {
+    background-image: linear-gradient(to right, gray 0%, red 100%);
+  }
+
+  &-luminance {
+    background-image: linear-gradient(to right, black 0%, white 100%);
+  }
 }
 
 .shape-property-panel {
-  .row {
-    margin-left: 0;
-    margin-right: 0;
-  }
-  .shapeListItem {
+  .shape-list-item {
     cursor: pointer;
-    justify-content: center;
+    display: block;
+    width: 64px;
+    height: 64px;
     box-sizing: border-box;
     line-height: 0;
-    margin-bottom: 20px;
-    .shape-itemrenderer {
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
+    margin-bottom: 15px;
+    margin-right: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
 
-    @include hover-focus {
-      .shape-itemrenderer {
-        background-color: $dropdown-link-hover-bg;
-      }
-    }
-
-    &.selected {
-      .shape-itemrenderer {
-        background: #222;
-        border-color: #333;
-      }
+    &:hover, &.selected {
+      background: #222;
+      border-color: #333;
     }
   }
 }
 
-app-root > footer {
+.pd-footer {
   border-top: 1px solid $nav-tabs-border-color;
   filter: grayscale(100%);
   transition: all 0.2s;
   &:hover {
     filter: grayscale(0%);
   }
-  .row {
-    height: 42px;
-    align-items: center;
-    padding-left: rem-calc(10);
-    padding-right: rem-calc(10);
 
-    > a {
-      display: block;
-      @include hover-focus-active {
-        background-color: transparent;
-      }
-
-      &:last-of-type {
-        margin-left: 20px;
-      }
-
-      @include media-breakpoint-down(sm, $grid-breakpoints) {
-        &:first-of-type {
-          margin-right: auto;
-        }
-      }
-
-      @include media-breakpoint-down(xs, $grid-breakpoints) {
-        &:last-of-type {
-          margin-left: auto;
-        }
-      }
-      @media (max-width: 420px) {
-        &:last-of-type {
-          display: none;
-        }
-      }
+  &__grid {
+    display: grid;
+    width: 100%;
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 35px;
+      grid-template-areas: "sns";
+    }
+    @media (min-width: map-get($grid-breakpoints, "md")) {
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: 35px;
+      grid-template-areas: "tools sns maker";
     }
 
-    > *:nth-child(2) {
-      margin-left: rem-calc(5);
-      margin-right: auto;
+    &-tools {
+      grid-template: "tools";
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        display: none;
+      }
+    }
+    &-sns {
+      grid-template: "sns";
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        justify-content: center;
+      }
+    }
+    &-maker {
+      grid-template: "maker";
+      display: flex;
+      align-items: center;
+      padding-right: 10px;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        display: none;
+      }
     }
   }
+
+  > a {
+    display: block;
+    @include hover-focus-active {
+      background-color: transparent;
+    }
+
+    &:last-of-type {
+      margin-left: 20px;
+    }
+
+    @include media-breakpoint-down(sm, $grid-breakpoints) {
+      &:first-of-type {
+        margin-right: auto;
+      }
+    }
+
+    @include media-breakpoint-down(xs, $grid-breakpoints) {
+      &:last-of-type {
+        margin-left: auto;
+      }
+    }
+    @media (max-width: 420px) {
+      &:last-of-type {
+        display: none;
+      }
+    }
+  }
+
+  > *:nth-child(2) {
+    margin-left: rem-calc(5);
+    margin-right: auto;
+  }
+
 }
 
 #smallParticleTemplate {
-  button.close {
-    display: block;
-    margin-top: - rem-calc(6);
-  }
-  .card-block.row {
+  .row {
+    width: 100%;
     margin-left: 0;
     margin-right: 0;
     justify-content: space-between;
     figure {
-      width: 128px;
-    }
-  }
-  .modal-footer {
-    display: block;
-  }
-  .modal-dialog {
-    @media (max-width: 600px) {
-      width: 466px;
-      @include center-block();
-    }
-    @media (max-width: 480px) {
-      width: 316px;
-      @include center-block();
+      width: 33%;
+      img {
+        max-width: 100%;
+        height: auto;
+      }
     }
   }
 }
@@ -334,6 +414,6 @@ app-root > footer {
 .canvas-property-panel {
   input[type="color"] {
     display: block;
-    max-width:100%;
+    max-width: 100%;
   }
 }

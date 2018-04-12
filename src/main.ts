@@ -9,3 +9,6 @@ if (environment.production) {
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule);
+
+// BootstrapのJavaScript側の機能を読み込む
+import 'bootstrap';

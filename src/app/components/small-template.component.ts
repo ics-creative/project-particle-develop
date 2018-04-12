@@ -4,7 +4,7 @@ import {ParticleParameter} from '../assets/particle-parameter';
 
 @Component({
   selector   : 'app-small-particle-template-property-modal',
-  templateUrl: '../components-html/property-template.html'
+  templateUrl: '../components-html/small-template.html'
 })
 
 export class SmallPropertyTemplateModalComponent implements OnInit {

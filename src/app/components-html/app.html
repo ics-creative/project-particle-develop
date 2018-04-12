@@ -1,74 +1,80 @@
-<header class="container-fluid">
-  <div class="row">
-    <h1><img src="assets/images/ui/logo.png"/></h1>
+<div class="pd">
+  <header class="pd-header">
+    <div class="pd-header__grid">
 
-    <button class="hidden-sm-down btn btn-primary" data-toggle="modal" data-target="#modalAbout">
-      {{localeData.H_about}}
-    </button>
-    <app-large-io-box class="large-io-box"
-                      #largeIOBox [drawingData]="drawingData"
-                      [platformData]="platformData"
-                      (exportSvgEvent)="handleSvgClick()"
-                      (exportPngEvent)="handlePngClick()"
-                      (exportJpgEvent)="handleJpgClick()"
-                      (exportWebpEvent)="handleWebpClick()"
-                      (exportParameterEvent)="handleExportParameterClick()"
-                      (importParameterEvent)="handleImportParameterClick()">
-    </app-large-io-box>
+      <h1 class="pd-header__grid-logo"><img src="assets/images/ui/logo.png"/></h1>
 
-    <app-small-io-box class="small-io-box"
-                      [drawingData]="drawingData"
-                      (exportPngEvent)="handlePngClick()">
-    </app-small-io-box>
-  </div>
-</header>
+      <div class="pd-header__grid-about d-none d-md-block">
+        <button class=" btn btn-primary header-btn" data-toggle="modal" data-target="#modalAbout">
+          {{localeData.H_about}}
+        </button>
+      </div>
 
-<div id="wrapper" class="row">
-  <div id="main">
+      <app-large-io-box class="pd-header__grid-menu large-io-box"
+                        #largeIOBox [drawingData]="drawingData"
+                        [platformData]="platformData"
+                        (exportSvgEvent)="handleSvgClick()"
+                        (exportPngEvent)="handlePngClick()"
+                        (exportJpgEvent)="handleJpgClick()"
+                        (exportWebpEvent)="handleWebpClick()"
+                        (exportParameterEvent)="handleExportParameterClick()"
+                        (importParameterEvent)="handleImportParameterClick()">
+      </app-large-io-box>
+
+      <app-small-io-box class="pd-header__grid-menu small-io-box"
+                        [drawingData]="drawingData"
+                        (exportPngEvent)="handlePngClick()">
+      </app-small-io-box>
+    </div>
+  </header>
+
+  <div id="main" class="pd-canvas">
     <div id="canvasBox" class="card card-primary text-xs-center">
-      <header class="card-header hidden-sm-down">
-        <h2 class="card-title">{{localeData.preview_head}}</h2>
-      </header>
       <div class="card-block">
         <app-stage #stageComponent [drawingData]="drawingData"></app-stage>
       </div>
     </div>
   </div>
-  <div id="propertyPanel" class="hidden-sm-down">
+
+  <div id="propertyPanel" class="pd-property d-none d-md-block">
     <app-property-panel
       class="property-panel"
       [drawingData]="drawingData">
     </app-property-panel>
   </div>
+
+
+  <footer class="pd-footer">
+    <div class="pd-footer__grid">
+      <div class="pd-footer__grid-tools">
+        <a href="http://createjs.com" target="_blank" rel="noopener" class="d-none d-md-inline-block"><img src="assets/images/ui/logo_createjs.svg" width="95" height="24" alt="Made with CreateJS"/></a>
+        <a href="https://angular.io/" target="_blank" rel="noopener" class="d-none d-md-inline-block"><img src="assets/images/ui/logo_angular2.png" height="24" alt="Made with Angular 5"/></a>
+      </div>
+      <div class="pd-footer__grid-sns">
+        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>&nbsp;&nbsp;&nbsp;
+        <div class="fb-like" data-href="http://ics-web.jp/projects/particle-develop/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
+        &nbsp;&nbsp;&nbsp;
+        <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <div class="pd-footer__grid-maker">
+        <a href="https://ics.media" target="_blank" rel="noopener" class="logo-ics" title="Created By ICS INC."><img src="assets/images/ui/Copyright.png" height="24" alt="Created By ICS INC."/></a>
+      </div>
+    </div>
+  </footer>
+
+
 </div>
-<div class="modal fade" id="smallParticleTemplate" tabindex="-1" role="dialog" aria-labelledby="smallParticleTemplateLabel">
-  <div class="modal-dialog" role="document">
-    <app-small-particle-template-property-modal
-      class="small-particle-template-property-modal"
-      [drawingData]="drawingData">
-    </app-small-particle-template-property-modal>
-  </div>
-</div>
-<footer class="container-fluid">
-  <div class="row">
-    <a href="http://createjs.com" target="_blank" class="hidden-xs-down"><img src="assets/images/ui/logo_createjs.svg" width="95" height="24" alt="Made with CreateJS"/></a>
-    <a href="https://angular.io/" target="_blank" class="hidden-sm-down"><img src="assets/images/ui/logo_angular2.png" height="24" alt="Made with Angular 2"/></a>
-    <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>&nbsp;&nbsp;&nbsp;
-    <div class="fb-like" data-href="http://ics-web.jp/projects/particle-develop/" data-layout="button_count" data-action="like" data-show-faces="true" data-share="false"></div>
-    &nbsp;&nbsp;&nbsp;
-    <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;"/></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="https://ics.media" target="_blank" rel="noopener" class="logo-ics" title="Created By ICS INC."><img src="assets/images/ui/Copyright.png" height="24" alt="Created By ICS INC."/></a>
-  </div>
-</footer>
+
 
 <!-- Modal -->
 <div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="modalAboutLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+
       <div class="modal-header text-xs-center">
+        <h4 class="modal-title">{{localeData.MA_head}}</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">{{localeData.MA_head}}</h4>
       </div>
       <div class="modal-body">
         <p>{{localeData.MA_sentence}}</p>
@@ -83,3 +89,10 @@
 
 <!-- Modal -->
 <app-property-io-box #propetyModal class="property-io-box"></app-property-io-box>
+
+
+<!-- Modal -->
+<app-small-particle-template-property-modal
+  class="small-particle-template-property-modal"
+  [drawingData]="drawingData">
+</app-small-particle-template-property-modal>

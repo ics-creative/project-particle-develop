@@ -1,8 +1,8 @@
-<div class="card">
-  <header class="card-header">
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SC_head_start}}</h3>
   </header>
-  <div class="card-block">
+  <div class="pd-section__block">
     <app-color-unit-property-panel [colorData]="drawingData.startColor"></app-color-unit-property-panel>
     <app-input-range
             class="input-range"
@@ -20,12 +20,12 @@
     </app-input-range>
   </div>
 </div>
-<hr>
-<div class="card">
-  <header class="card-header">
+<hr/>
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SC_head_end}}</h3>
   </header>
-  <div class="card-block">
+  <div class="pd-section__block">
     <app-input-range
             class="input-range"
             label="{{localeData.SC_endAlpha}}"
@@ -42,23 +42,23 @@
     </app-input-range>
   </div>
 </div>
-<hr>
-<div class="card">
-  <header class="card-header">
+<hr/>
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SC_head_alphaCurve}}</h3>
   </header>
-  <div class="card-block">
+  <div class="pd-section__block">
     <select [(ngModel)]="drawingData.alphaCurveType" class="topcoat-select">
       <option *ngFor="let o of objArray" [value]="o.value">{{o.name}}</option>
     </select>
   </div>
 </div>
-<hr>
-<div class="card">
-  <header class="card-header">
+<hr/>
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SC_head_blendMode}}</h3>
   </header>
-  <div class="card-block">
+  <div class="pd-section__block">
     <label class="topcoat-checkbox">
       <input type="checkbox" [(ngModel)]="drawingData.blendMode"/>
       Use lighter

@@ -1,6 +1,12 @@
 import {Component, Input} from '@angular/core';
 @Component({
   selector   : 'app-input-range',
+  styles     : [`
+      input[type=range] {
+        display: block;
+        width: 100%;
+      }
+  `],
   templateUrl: '../components-html/input-range.html'
 })
 /**

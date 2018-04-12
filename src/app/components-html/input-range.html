@@ -1,13 +1,13 @@
 <label>{{label}}</label>
-<div class="row">
-  <div class="range col-xs-9">
+<div class="row m-0">
+  <div class="range col-9">
     <input type="range"
            class="topcoat-range"
            min="{{min}}" max="{{max}}" step="{{step}}"
            [(ngModel)]="drawingData[targetProperty]"
            (change)="handleChange($event)"/>
   </div>
-  <div class="label col-xs-2">
+  <div class="label col-2">
     <input type="text"
            class="topcoat-text-input"
            [(ngModel)]="drawingData[targetProperty]"

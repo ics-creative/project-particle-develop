@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import {LocaleData} from '../i18n/locale-data';
+import * as jQuery from 'jquery';
 
 @Component({
   selector   : 'app-property-io-box',
@@ -42,6 +43,6 @@ export class PropertyIoModalComponent {
 
   public openIOModal() {
     // 強引に連携
-    window['jQuery'](<any>(this.modal.nativeElement)).modal('show');
+    jQuery(this.modal.nativeElement).modal('show');
   }
 }

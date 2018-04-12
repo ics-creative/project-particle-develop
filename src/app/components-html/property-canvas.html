@@ -1,8 +1,8 @@
-<div class="card">
-  <header class="card-header">
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SF_head}}</h3>
   </header>
-  <div class="card-block">
+  <div class="pd-section__block">
     <app-input-range
             class="input-range"
             label="{{localeData.SF_stageW}}"
@@ -21,11 +21,11 @@
   </div>
 </div>
 <hr>
-<div class="card">
-  <header class="card-header">
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SF_bgColor}}</h3>
   </header>
-  <div class="card-block">
+  <div class="pd-section__block">
     <input type="color"
            [(ngModel)]="drawingData.bgColor"
            placeholder="bgColor"

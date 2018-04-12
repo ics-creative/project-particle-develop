@@ -1,16 +1,19 @@
-<div class="card">
-  <header class="card-header">
+<div class="pd-section">
+  <header class="pd-section__header">
     <h3>{{localeData.SS_head}}</h3>
   </header>
   <hr>
-  <div class="card-block row">
-    <div *ngFor="let shapeId of shapeIdList" class="col-sm-4 shapeListItem row"
-         [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
-         (click)="handleClick(shapeId)">
-      <app-shape-itemrenderer
-        class="shape-itemrenderer"
-        shapeId="{{shapeId}}"
-      ></app-shape-itemrenderer>
+  <div class="pd-section__block">
+    <div class="pd-section__block__list">
+      <div *ngFor="let shapeId of shapeIdList"
+           class="shape-list-item"
+           [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
+           (click)="handleClick(shapeId)">
+        <app-shape-itemrenderer
+          class="shape-itemrenderer"
+          shapeId="{{shapeId}}"
+        ></app-shape-itemrenderer>
+      </div>
     </div>
   </div>
 </div>
