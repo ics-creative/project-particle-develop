@@ -33,7 +33,7 @@
             ],
             "scripts": [
               {
-                "input": "src/assets/js/createjs-2015.11.26.min.js"
+                "input": "src/assets/js/1.0.0/createjs.min.js"
               },
               {
                 "input": "src/assets/js/SVGExporter.js"
