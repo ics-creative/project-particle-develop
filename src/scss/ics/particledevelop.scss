@@ -3,7 +3,7 @@ html, body {
 }
 
 body {
-  //overflow: hidden;
+  overflow: hidden;
   padding: 0;
 }
 
@@ -11,15 +11,15 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
+
+  grid-template-columns: 1fr 350px;
+  grid-template-rows: 50px 1fr 40px;
+  grid-template-areas: 'header header' 'canvas property' 'footer footer';
+
   @media (max-width: map-get($grid-breakpoints, "md")) {
     grid-template-columns: 1fr;
     grid-template-rows: 50px 1fr 40px;
     grid-template-areas: 'header' 'canvas' 'footer';
-  }
-  @media (min-width: map-get($grid-breakpoints, "md")) {
-    grid-template-columns: 1fr 350px;
-    grid-template-rows: 50px 1fr 40px;
-    grid-template-areas: 'header header' 'canvas property' 'footer footer';
   }
 
   &-header {
@@ -46,100 +46,76 @@ body {
 
 }
 
-app-root {
-  & > header,
-  & > footer {
 
-  }
+.pd-header {
+  background-color: theme-color("primary");
 
-  .pd-header {
-    background-color: theme-color("primary");
+  border-bottom: 1px solid $nav-tabs-border-color;
 
-    border-bottom: 1px solid $nav-tabs-border-color;
+  &__grid {
+    display: grid;
 
-    &__grid {
-      display: grid;
-      @media (max-width: map-get($grid-breakpoints, "sm")) {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: 49px;
-        grid-template-areas: "logo menu";
-      }
-      @media (min-width: map-get($grid-breakpoints, "sm")) {
-        grid-template-columns: auto auto 1fr;
-        grid-template-rows: 49px;
-        grid-template-areas: "logo about menu";
-      }
+    grid-template-columns: 226px auto 1fr;
+    grid-template-rows: 49px;
+    grid-template-areas: "logo about menu";
 
-      &-logo {
-        grid-template: "logo";
-      }
-      &-about {
-        grid-template: "about";
-      }
-      &-menu {
-        grid-template: "menu";
-      }
+    @media (max-width: map-get($grid-breakpoints, "sm")) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 49px;
+      grid-template-areas: "logo menu";
     }
 
+    &-logo {
+      grid-area: logo;
+    }
+    &-about {
+      grid-area: about;
+    }
+    &-menu {
+      grid-area: menu;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+  .header-btn {
+    line-height: 49px;
+    height: 49px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: inherit;
+    color: #cccccc;
+  }
+
+  h1 {
+    padding: 3px $btn-padding-x 0;
+    margin: 0;
+    line-height: 1.0;
+    font-size: 1.0rem;
+    height: 49px;
+    display: flex;
+    align-items: center;
+  }
+
+  .large-io-box {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .small-io-box ul {
+    padding-left: 0;
     li {
-      list-style: none;
-    }
-    .header-btn {
-      line-height: 49px;
-      height: 49px;
-      border-right: 1px solid rgba(0, 0, 0, 0.2);
-      border-left: 1px solid rgba(255, 255, 255, 0.1);
-      border-top: none;
-      border-bottom: none;
-      padding-top: 0;
-      padding-bottom: 0;
-      background-color: inherit;
-      color: #cccccc;
-    }
-
-    h1 {
-      padding: 3px $btn-padding-x 0;
-      margin: 0;
-      line-height: 1.0;
-      font-size: 1.0rem;
-      height: 49px;
-      display: flex;
-      align-items: center;
-    }
-
-    .large-io-box {
-      margin-left: auto;
-      margin-right: 0;
-    }
-
-    .small-io-box ul {
-      padding-left: 0;
-      li {
-        box-sizing: border-box;
-        .btn {
-          font-size: rem-calc(16);
-          padding: 5px 15px 6px;
-        }
+      box-sizing: border-box;
+      .btn {
+        font-size: rem-calc(16);
+        padding: 5px 15px 6px;
       }
     }
-  }
-
-}
-
-@media (max-width: 906px) {
-  app-root > header {
-    padding-left: $grid-gutter-width/4;
-    h1 {
-      width: 50px;
-      overflow: hidden;
-      padding-left: $btn-padding-x / 2;
-    }
-  }
-}
-
-@include media-breakpoint-down(sm, $grid-breakpoints) {
-  app-root > header h1 {
-    margin-right: auto;
   }
 }
 
@@ -304,19 +280,19 @@ app-root {
   &__grid {
     display: grid;
     width: 100%;
+
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 35px;
+    grid-template-areas: "tools sns maker";
+
     @media (max-width: map-get($grid-breakpoints, "md")) {
       grid-template-columns: 1fr;
       grid-template-rows: 35px;
       grid-template-areas: "sns";
     }
-    @media (min-width: map-get($grid-breakpoints, "md")) {
-      grid-template-columns: auto 1fr auto;
-      grid-template-rows: 35px;
-      grid-template-areas: "tools sns maker";
-    }
 
     &-tools {
-      grid-template: "tools";
+      grid-area: tools;
       display: flex;
       align-items: center;
       padding-left: 10px;
@@ -326,7 +302,7 @@ app-root {
       }
     }
     &-sns {
-      grid-template: "sns";
+      grid-area: sns;
       display: flex;
       justify-content: flex-end;
       align-items: center;
@@ -336,7 +312,7 @@ app-root {
       }
     }
     &-maker {
-      grid-template: "maker";
+      grid-area: maker;
       display: flex;
       align-items: center;
       padding-right: 10px;
