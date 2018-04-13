@@ -29,6 +29,12 @@
             "styles": [
               {
                 "input": "src/styles.scss"
+              },
+              {
+                "input": "src/assets/css/font-awesome.min.css"
+              },
+              {
+                "input": "src/assets/topcoat/topcoat-desktop-dark.custom.css"
               }
             ],
             "scripts": [
