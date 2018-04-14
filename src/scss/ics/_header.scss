@@ -1,0 +1,71 @@
+.pd-header {
+  background-color: theme-color("primary");
+
+  border-bottom: 1px solid $nav-tabs-border-color;
+
+  &__grid {
+    display: grid;
+
+    grid-template-columns: 226px auto 1fr;
+    grid-template-rows: 49px;
+    grid-template-areas: "logo about menu";
+
+    @media (max-width: map-get($grid-breakpoints, "sm")) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 49px;
+      grid-template-areas: "logo menu";
+    }
+
+    &-logo {
+      grid-area: logo;
+    }
+    &-about {
+      grid-area: about;
+    }
+    &-menu {
+      grid-area: menu;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+  .header-btn {
+    line-height: 49px;
+    height: 49px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: none;
+    border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    background-color: inherit;
+    color: #cccccc;
+  }
+
+  h1 {
+    padding: 3px $btn-padding-x 0;
+    margin: 0;
+    line-height: 1.0;
+    font-size: 1.0rem;
+    height: 49px;
+    display: flex;
+    align-items: center;
+  }
+
+  .large-io-box {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .small-io-box ul {
+    padding-left: 0;
+    li {
+      box-sizing: border-box;
+      .btn {
+        font-size: rem-calc(16);
+        padding: 5px 15px 6px;
+      }
+    }
+  }
+}

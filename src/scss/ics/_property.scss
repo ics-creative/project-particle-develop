@@ -1,0 +1,88 @@
+
+.pd-property {
+  flex: 285px;
+  //margin-left: 2px;
+  height: 100%;
+  overflow: hidden;
+
+  &__inner {
+    height: 100%;
+    background-color: $gray-900;
+  }
+
+  .nav-tabs {
+    a {
+      padding: rem-calc(2) rem-calc(15);
+      font-size: rem-calc(16);
+    }
+    .nav-item {
+      height: 35px;
+    }
+  }
+
+  &__nav-item{
+    padding: 0 1rem;
+    line-height: 33px;
+  }
+
+  .tab-content {
+    height: calc(100vh - 125px);
+    overflow: auto;
+  }
+
+  .pd-section {
+    height: 100%;
+    overflow-y: auto;
+    border: none;
+
+    &__header {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border: none;
+
+      + hr {
+        margin-top: 0;
+      }
+      h3 {
+        text-align: center;
+      }
+    }
+
+    &__block {
+
+      padding-left: 10px;
+      padding-right: 10px;
+
+      &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    hr {
+      margin-top: rem-calc(12);
+      margin-bottom: rem-calc(12);
+    }
+  }
+}
+
+
+.shape-property-panel {
+  .shape-list-item {
+    cursor: pointer;
+    display: block;
+    width: 64px;
+    height: 64px;
+    box-sizing: border-box;
+    line-height: 0;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:hover, &.selected {
+      background: #222;
+      border-color: #333;
+    }
+  }
+}

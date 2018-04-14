@@ -1,3 +1,7 @@
+@import "header";
+@import "footer";
+@import "property";
+
 html, body {
   height: 100%;
 }
@@ -47,143 +51,10 @@ body {
 }
 
 
-.pd-header {
-  background-color: theme-color("primary");
 
-  border-bottom: 1px solid $nav-tabs-border-color;
-
-  &__grid {
-    display: grid;
-
-    grid-template-columns: 226px auto 1fr;
-    grid-template-rows: 49px;
-    grid-template-areas: "logo about menu";
-
-    @media (max-width: map-get($grid-breakpoints, "sm")) {
-      grid-template-columns: auto 1fr;
-      grid-template-rows: 49px;
-      grid-template-areas: "logo menu";
-    }
-
-    &-logo {
-      grid-area: logo;
-    }
-    &-about {
-      grid-area: about;
-    }
-    &-menu {
-      grid-area: menu;
-    }
-  }
-
-  li {
-    list-style: none;
-  }
-  .header-btn {
-    line-height: 49px;
-    height: 49px;
-    border-right: 1px solid rgba(0, 0, 0, 0.2);
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
-    border-top: none;
-    border-bottom: none;
-    padding-top: 0;
-    padding-bottom: 0;
-    background-color: inherit;
-    color: #cccccc;
-  }
-
-  h1 {
-    padding: 3px $btn-padding-x 0;
-    margin: 0;
-    line-height: 1.0;
-    font-size: 1.0rem;
-    height: 49px;
-    display: flex;
-    align-items: center;
-  }
-
-  .large-io-box {
-    margin-left: auto;
-    margin-right: 0;
-  }
-
-  .small-io-box ul {
-    padding-left: 0;
-    li {
-      box-sizing: border-box;
-      .btn {
-        font-size: rem-calc(16);
-        padding: 5px 15px 6px;
-      }
-    }
-  }
-}
 
 #main .card-block {
   padding: 0;
-}
-
-.pd-property {
-  flex: 285px;
-  //margin-left: 2px;
-  height: 100%;
-  overflow: hidden;
-
-  &__inner {
-    height: 100%;
-    background-color: $gray-900;
-  }
-
-  .nav-tabs {
-    a {
-      padding: rem-calc(2) rem-calc(15);
-      font-size: rem-calc(16);
-    }
-    .nav-item {
-      height: 35px;
-    }
-  }
-
-  .tab-content {
-    height: calc(100vh - 125px);
-    overflow: auto;
-  }
-
-  .pd-section {
-    height: 100%;
-    overflow-y: auto;
-    border: none;
-
-    &__header {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      border: none;
-
-      + hr {
-        margin-top: 0;
-      }
-      h3 {
-        text-align: center;
-      }
-    }
-
-    &__block {
-
-      padding-left: 10px;
-      padding-right: 10px;
-
-      &__list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-
-    hr {
-      margin-top: rem-calc(12);
-      margin-bottom: rem-calc(12);
-    }
-  }
 }
 
 .particle-template-property-panel {
@@ -222,10 +93,6 @@ body {
     padding-right: 0;
     padding-left: 0;
   }
-
-  .col-xs-9 {
-    flex-basis: 80%;
-  }
 }
 
 [class*="gradation"] {
@@ -250,113 +117,8 @@ body {
   }
 }
 
-.shape-property-panel {
-  .shape-list-item {
-    cursor: pointer;
-    display: block;
-    width: 64px;
-    height: 64px;
-    box-sizing: border-box;
-    line-height: 0;
-    margin-bottom: 15px;
-    margin-right: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
 
-    &:hover, &.selected {
-      background: #222;
-      border-color: #333;
-    }
-  }
-}
 
-.pd-footer {
-  border-top: 1px solid $nav-tabs-border-color;
-  filter: grayscale(100%);
-  transition: all 0.2s;
-  &:hover {
-    filter: grayscale(0%);
-  }
-
-  &__grid {
-    display: grid;
-    width: 100%;
-
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: 35px;
-    grid-template-areas: "tools sns maker";
-
-    @media (max-width: map-get($grid-breakpoints, "md")) {
-      grid-template-columns: 1fr;
-      grid-template-rows: 35px;
-      grid-template-areas: "sns";
-    }
-
-    &-tools {
-      grid-area: tools;
-      display: flex;
-      align-items: center;
-      padding-left: 10px;
-
-      @media (max-width: map-get($grid-breakpoints, "md")) {
-        display: none;
-      }
-    }
-    &-sns {
-      grid-area: sns;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-
-      @media (max-width: map-get($grid-breakpoints, "md")) {
-        justify-content: center;
-      }
-    }
-    &-maker {
-      grid-area: maker;
-      display: flex;
-      align-items: center;
-      padding-right: 10px;
-
-      @media (max-width: map-get($grid-breakpoints, "md")) {
-        display: none;
-      }
-    }
-  }
-
-  > a {
-    display: block;
-    @include hover-focus-active {
-      background-color: transparent;
-    }
-
-    &:last-of-type {
-      margin-left: 20px;
-    }
-
-    @include media-breakpoint-down(sm, $grid-breakpoints) {
-      &:first-of-type {
-        margin-right: auto;
-      }
-    }
-
-    @include media-breakpoint-down(xs, $grid-breakpoints) {
-      &:last-of-type {
-        margin-left: auto;
-      }
-    }
-    @media (max-width: 420px) {
-      &:last-of-type {
-        display: none;
-      }
-    }
-  }
-
-  > *:nth-child(2) {
-    margin-left: rem-calc(5);
-    margin-right: auto;
-  }
-
-}
 
 #smallParticleTemplate {
   .row {

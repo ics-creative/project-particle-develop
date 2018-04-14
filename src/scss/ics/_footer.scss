@@ -1,0 +1,88 @@
+.pd-footer {
+  border-top: 1px solid $nav-tabs-border-color;
+  filter: grayscale(100%);
+  transition: all 0.2s;
+  &:hover {
+    filter: grayscale(0%);
+  }
+
+  &__grid {
+    display: grid;
+    width: 100%;
+
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: 35px;
+    grid-template-areas: "tools sns maker";
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      grid-template-columns: 1fr;
+      grid-template-rows: 35px;
+      grid-template-areas: "sns";
+    }
+
+    &-tools {
+      grid-area: tools;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        display: none;
+      }
+    }
+    &-sns {
+      grid-area: sns;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        justify-content: center;
+      }
+    }
+    &-maker {
+      grid-area: maker;
+      display: flex;
+      align-items: center;
+      padding-right: 10px;
+
+      @media (max-width: map-get($grid-breakpoints, "md")) {
+        display: none;
+      }
+    }
+  }
+
+  > a {
+    display: block;
+    @include hover-focus-active {
+      background-color: transparent;
+    }
+
+    &:last-of-type {
+      margin-left: 20px;
+    }
+
+    @include media-breakpoint-down(sm, $grid-breakpoints) {
+      &:first-of-type {
+        margin-right: auto;
+      }
+    }
+
+    @include media-breakpoint-down(xs, $grid-breakpoints) {
+      &:last-of-type {
+        margin-left: auto;
+      }
+    }
+    @media (max-width: 420px) {
+      &:last-of-type {
+        display: none;
+      }
+    }
+  }
+
+  > *:nth-child(2) {
+    margin-left: rem-calc(5);
+    margin-right: auto;
+  }
+
+}
