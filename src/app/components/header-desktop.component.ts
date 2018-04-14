@@ -6,17 +6,17 @@ import {PlatformData} from '../data/platform-data';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector   : 'app-large-io-box',
-  templateUrl: '../components-html/large-io-box.html'
+  selector: 'app-header-desktop',
+  templateUrl: '../components-html/header-desktop.html'
 })
 
-export class LargeIoBoxComponent {
-  @Output() public exportSvgEvent        = new EventEmitter();
-  @Output() public exportPngEvent        = new EventEmitter();
-  @Output() public exportJpgEvent        = new EventEmitter();
-  @Output() public exportWebpEvent       = new EventEmitter();
+export class HeaderDesktopComponent {
+  @Output() public exportSvgEvent = new EventEmitter();
+  @Output() public exportPngEvent = new EventEmitter();
+  @Output() public exportJpgEvent = new EventEmitter();
+  @Output() public exportWebpEvent = new EventEmitter();
   @Output() public exportParameterEvent = new EventEmitter();
-  @Output() public importParameterEvent  = new EventEmitter();
+  @Output() public importParameterEvent = new EventEmitter();
 
   @Input() public drawingData: particlejs.DrawingData;
   @Input() public platformData: PlatformData;

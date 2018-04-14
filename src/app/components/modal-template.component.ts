@@ -3,11 +3,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {ParticleParameter} from '../assets/particle-parameter';
 
 @Component({
-  selector   : 'app-small-particle-template-property-modal',
-  templateUrl: '../components-html/small-template.html'
+  selector   : 'app-modal-template',
+  templateUrl: '../components-html/modal-template.html'
 })
 
-export class SmallPropertyTemplateModalComponent implements OnInit {
+export class ModalTemplateComponent implements OnInit {
   @Input() drawingData: particlejs.DrawingData;
   @Input() templateList: any[];
   public template: ParticleParameter;

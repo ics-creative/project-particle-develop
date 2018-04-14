@@ -1,11 +1,11 @@
 import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
-  selector   : 'app-small-io-box',
-  templateUrl: '../components-html/small-io-box.html'
+  selector: 'app-header-mobile',
+  templateUrl: '../components-html/header-mobile.html'
 })
-export class SmallIoBoxComponent {
-  @Output() private exportPngEvent    = new EventEmitter();
+export class HeaderMobileComponent {
+  @Output() private exportPngEvent = new EventEmitter();
 
   @Input() private drawingData: particlejs.DrawingData;
   private element: ElementRef;

@@ -10,15 +10,15 @@
 
 // stylelint-disable
 $white:    #fff !default;
-$gray-100: #f8f9fa !default;
-$gray-200: #e9ecef !default;
-$gray-300: #dee2e6 !default;
-$gray-400: #ced4da !default;
-$gray-500: #adb5bd !default;
-$gray-600: #6c757d !default;
-$gray-700: #495057 !default;
-$gray-800: #343a40 !default;
-$gray-900: #323232 !default;
+$gray-100: #f8f9fa !default; // ics-custom
+$gray-200: #ededed !default; // ics-custom
+$gray-300: #dee2e6 !default; // ics-custom
+$gray-400: #ced4da !default; // ics-custom
+$gray-500: #bdbdbd !default; // ics-custom
+$gray-600: #7d7d7d !default; // ics-custom
+$gray-700: #495057 !default; // ics-custom
+$gray-800: #404040 !default; // ics-custom
+$gray-900: #323232 !default; // ics-custom
 $black:    #000 !default;
 
 $grays: () !default;
@@ -205,7 +205,7 @@ $grid-gutter-width:           30px !default;
 $line-height-lg:              1.5 !default;
 $line-height-sm:              1.5 !default;
 
-$border-width:                1px !default;
+$border-width:                0px; // ics-custom
 $border-color:                $gray-300 !default;
 
 $border-radius:               .25rem !default;
@@ -600,12 +600,12 @@ $nav-link-padding-y:                .5rem !default;
 $nav-link-padding-x:                1rem !default;
 $nav-link-disabled-color:           $gray-600 !default;
 
-$nav-tabs-border-color:             $gray-600 !default;// ics-custom
+$nav-tabs-border-color:             $black;// ics-custom
 $nav-tabs-border-width:             $border-width !default;
 $nav-tabs-border-radius:            $border-radius !default;
 $nav-tabs-link-hover-border-color:  $gray-600 $gray-600 $nav-tabs-border-color !default;// ics-custom
 $nav-tabs-link-active-color:        $gray-500 !default;
-$nav-tabs-link-active-bg:           $body-bg !default;
+$nav-tabs-link-active-bg:           $gray-900; // ics-custom
 $nav-tabs-link-active-border-color: $gray-600 $gray-600 $nav-tabs-link-active-bg !default; // ics-custom
 
 $nav-pills-border-radius:           $border-radius !default;
@@ -788,7 +788,7 @@ $modal-footer-border-width:         $modal-header-border-width !default;
 $modal-header-padding:              1rem !default;
 
 $modal-lg:                          800px !default;
-$modal-md:                          500px !default;
+$modal-md:                          600px; // ics-custom
 $modal-sm:                          300px !default;
 
 $modal-transition:                  transform .3s ease-out !default;
