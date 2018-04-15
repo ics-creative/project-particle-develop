@@ -48,7 +48,7 @@
     <h3>{{localeData.SC_head_alphaCurve}}</h3>
   </header>
   <div class="pd-section__block">
-    <select [(ngModel)]="drawingData.alphaCurveType" class="topcoat-select">
+    <select [(ngModel)]="drawingData.alphaCurveType" >
       <option *ngFor="let o of objArray" [value]="o.value">{{o.name}}</option>
     </select>
   </div>
