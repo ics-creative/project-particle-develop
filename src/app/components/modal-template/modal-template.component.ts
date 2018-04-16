@@ -1,10 +1,10 @@
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../i18n/locale-data';
 import {Component, Input, OnInit} from '@angular/core';
-import {ParticleParameter} from '../assets/particle-parameter';
+import {ParticleParameter} from '../../assets/particle-parameter';
 
 @Component({
   selector   : 'app-modal-template',
-  templateUrl: '../components-html/modal-template.html'
+  templateUrl: './modal-template.component.html'
 })
 
 export class ModalTemplateComponent implements OnInit {

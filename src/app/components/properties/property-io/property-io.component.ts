@@ -1,10 +1,10 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../../i18n/locale-data';
 import * as jQuery from 'jquery';
 
 @Component({
   selector   : 'app-property-io-box',
-  templateUrl: '../components-html/property-io-box.html'
+  templateUrl: './property-io.component.html'
 })
 
 export class PropertyIoModalComponent {

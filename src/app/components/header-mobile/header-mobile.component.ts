@@ -2,7 +2,7 @@ import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core'
 
 @Component({
   selector: 'app-header-mobile',
-  templateUrl: '../components-html/header-mobile.html'
+  templateUrl: './header-mobile.component.html'
 })
 export class HeaderMobileComponent {
   @Output() private exportPngEvent = new EventEmitter();

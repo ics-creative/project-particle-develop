@@ -16,7 +16,7 @@ import {Component, Input} from '@angular/core';
         padding-left: 0;
       }
   `],
-  templateUrl: '../components-html/input-range.html'
+  templateUrl: './input-range.component.html'
 })
 /**
  * Input タグ (range type)のコンポーネントです。

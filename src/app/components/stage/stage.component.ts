@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
-import {ParticleCanvas} from '../particle/particle-canvas';
+import {ParticleCanvas} from '../../particle/particle-canvas';
 
 @Component({
   selector: 'app-stage',

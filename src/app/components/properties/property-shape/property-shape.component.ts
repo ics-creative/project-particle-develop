@@ -1,9 +1,9 @@
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 @Component({
   selector   : 'app-shape-property-panel',
-  templateUrl: '../components-html/property-shape.html'
+  templateUrl: './property-shape.component.html'
 })
 
 /**

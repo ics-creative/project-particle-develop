@@ -1,9 +1,9 @@
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 @Component({
   selector   : 'app-particle-property-panel',
-  templateUrl: '../components-html/property-particle.html'
+  templateUrl: './property-particle.component.html'
 })
 
 export class PropertyParticlePanelComponent {

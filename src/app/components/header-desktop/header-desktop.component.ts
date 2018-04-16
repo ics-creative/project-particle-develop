@@ -1,13 +1,13 @@
-import {LocaleData} from '../i18n/locale-data';
-import {LocaleEnData} from '../i18n/locale-en';
-import {LocaleJaData} from '../i18n/locale-ja';
-import {LocaleManager} from '../i18n/locale-manager';
-import {PlatformData} from '../data/platform-data';
+import {LocaleData} from '../../i18n/locale-data';
+import {LocaleEnData} from '../../i18n/locale-en';
+import {LocaleJaData} from '../../i18n/locale-ja';
+import {LocaleManager} from '../../i18n/locale-manager';
+import {PlatformData} from '../../data/platform-data';
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header-desktop',
-  templateUrl: '../components-html/header-desktop.html'
+  templateUrl: './header-desktop.component.html'
 })
 
 export class HeaderDesktopComponent {

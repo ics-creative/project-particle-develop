@@ -1,9 +1,9 @@
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 @Component({
   selector   : 'app-color-unit-property-panel',
-  templateUrl: '../components-html/property-color-unit.html'
+  templateUrl: './property-color-unit.component.html'
 })
 export class PropertyColorUnitComponent {
   @Input() public colorData: particlejs.ColorData;

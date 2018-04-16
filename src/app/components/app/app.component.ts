@@ -1,17 +1,17 @@
-import {StageComponent} from './stage.component';
-import {Viewport} from '../enum/view-port';
-import {CanvasMargin} from '../enum/canvas-margin';
-import {LocaleData} from '../i18n/locale-data';
-import {LocaleManager} from '../i18n/locale-manager';
-import {PlatformData} from '../data/platform-data';
-import {PlatformType} from '../enum/platform-type';
-import {PropertyIoModalComponent} from './property-io.component';
+import {StageComponent} from '../stage/stage.component';
+import {Viewport} from '../../enum/view-port';
+import {CanvasMargin} from '../../enum/canvas-margin';
+import {LocaleData} from '../../i18n/locale-data';
+import {LocaleManager} from '../../i18n/locale-manager';
+import {PlatformData} from '../../data/platform-data';
+import {PlatformType} from '../../enum/platform-type';
+import {PropertyIoModalComponent} from '../properties/property-io/property-io.component';
 
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: '../components-html/app.html',
+  templateUrl: './app.component.html',
   providers: [LocaleData]
 })
 

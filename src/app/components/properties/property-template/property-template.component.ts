@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ParticleParameter} from '../assets/particle-parameter';
-import {LocaleData} from '../i18n/locale-data';
+import {ParticleParameter} from '../../../assets/particle-parameter';
+import {LocaleData} from '../../../i18n/locale-data';
 
 @Component({
   selector   : 'app-particle-template-property-panel',
-  styleUrls     : ['./particle-template-property-panel.scss'],
-  templateUrl: '../components-html/property-template.html',
+  styleUrls     : ['../../modal-template/particle-template-property-panel.scss'],
+  templateUrl: './property-template.component.html',
 })
 
 

@@ -1,9 +1,9 @@
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 @Component({
   selector   : 'app-canvas-property-panel',
-  templateUrl: '../components-html/property-canvas.html'
+  templateUrl: './property-canvas.component.html'
 })
 
 export class PropertyCanvasPanelComponent {

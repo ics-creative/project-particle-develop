@@ -1,4 +1,4 @@
-import {LocaleData} from '../i18n/locale-data';
+import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
 interface TestObject {
@@ -8,7 +8,7 @@ interface TestObject {
 
 @Component({
   selector   : 'app-color-property-panel',
-  templateUrl: '../components-html/property-color.html'
+  templateUrl: './property-color.component.html'
 })
 
 export class PropertyColorPanelComponent {
