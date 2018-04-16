@@ -11,13 +11,14 @@ import {PropertyPanelComponent} from './components/properties/property.component
 import {PropertyParticlePanelComponent} from './components/properties/property-particle/property-particle.component';
 import {PropertyTemplatePanelComponent} from './components/properties/property-template/property-template.component';
 import {ModalTemplateComponent} from './components/modal-template/modal-template.component';
-import {PropertyIoModalComponent} from './components/properties/property-io/property-io.component';
+import {ModalExportJsonComponent} from './components/modal-export-json/modal-export-json.component';
 import {PropertyEmitterPanelComponent} from './components/properties/property-emitter/property-emitter.component';
 import {PropertyColorPanelComponent} from './components/properties/property-color/property-color.component';
 import {PropertyCanvasPanelComponent} from './components/properties/property-canvas/property-canvas.component';
 import {PropertyShapeItemRendererComponent} from './components/properties/property-shape/property-shape-itemrenderer.component';
 import {InputRangeComponent} from './components/input-range/input-range.component';
 import {PropertyColorUnitComponent} from './components/properties/property-color/property-color-unit.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -31,13 +32,14 @@ import {PropertyColorUnitComponent} from './components/properties/property-color
     PropertyShapePanelComponent,
     PropertyParticlePanelComponent,
     PropertyTemplatePanelComponent,
-    PropertyIoModalComponent,
+    ModalExportJsonComponent,
     PropertyEmitterPanelComponent,
     PropertyColorPanelComponent,
     PropertyCanvasPanelComponent,
     PropertyShapeItemRendererComponent,
     ModalTemplateComponent,
     PropertyColorUnitComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

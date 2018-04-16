@@ -1,0 +1,120 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+.pd {
+  width: 100%;
+  height: 100%;
+  display: grid;
+
+  grid-template-columns: 1fr 350px;
+  grid-template-rows: 50px 1fr 40px;
+  grid-template-areas: 'header header' 'canvas property' 'footer footer';
+
+  @media (max-width: map-get($grid-breakpoints, "md")) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 40px;
+    grid-template-areas: 'header' 'canvas' 'footer';
+  }
+
+  &-header {
+    grid-area: header;
+  }
+  &-canvas {
+    grid-area: canvas;
+    background-color: #222222;
+    overflow: hidden;
+  }
+  &-property {
+    grid-area: property;
+
+    @media (max-width: map-get($grid-breakpoints, "md")) {
+      display: none;
+    }
+  }
+  &-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+}
+
+
+
+.pd-header {
+  background-color: theme-color("primary");
+
+  border-bottom: 1px solid #000000;
+
+  &__grid {
+    display: grid;
+
+    grid-template-columns: 226px auto 1fr;
+    grid-template-rows: 49px;
+    grid-template-areas: "logo about menu";
+
+    @media (max-width: map-get($grid-breakpoints, "sm")) {
+      grid-template-columns: auto 1fr;
+      grid-template-rows: 49px;
+      grid-template-areas: "logo menu";
+    }
+
+    &-logo {
+      grid-area: logo;
+    }
+    &-about {
+      grid-area: about;
+    }
+    &-menu {
+      grid-area: menu;
+    }
+  }
+
+  li {
+    list-style: none;
+  }
+
+
+  h1 {
+    padding: 3px 10px 0;
+    margin: 0;
+    line-height: 1.0;
+    font-size: 1.0rem;
+    height: 49px;
+    display: flex;
+    align-items: center;
+  }
+
+  .large-io-box {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .small-io-box ul {
+    padding-left: 0;
+    li {
+      box-sizing: border-box;
+      .btn {
+        font-size: rem-calc(16);
+        padding: 5px 15px 6px;
+      }
+    }
+  }
+}
+
+/deep/ .header-btn {
+  line-height: 49px;
+  height: 49px;
+  border-top: none;
+  border-bottom: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: inherit;
+  color: #cccccc;
+}

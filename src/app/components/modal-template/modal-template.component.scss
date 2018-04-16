@@ -1,11 +1,23 @@
+.scope-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
 figure {
+  width: 33%;
+  box-sizing: border-box;
   margin-bottom: rem-calc(8.5);
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
 
   img {
+    width: 100%;
+    height: auto;
     cursor: pointer;
     border: 1px solid #555;
+
   }
 
   &:hover {

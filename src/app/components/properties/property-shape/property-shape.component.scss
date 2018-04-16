@@ -1,0 +1,17 @@
+.shape-list-item {
+  cursor: pointer;
+  display: block;
+  width: 64px;
+  height: 64px;
+  box-sizing: border-box;
+  line-height: 0;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.15s;
+
+  &:hover, &.selected {
+    background: #222;
+    border-color: #333;
+  }
+}

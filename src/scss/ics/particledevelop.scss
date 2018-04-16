@@ -1,7 +1,3 @@
-@import "header";
-@import "footer";
-@import "property";
-
 html, body {
   height: 100%;
 }
@@ -18,7 +14,7 @@ body {
   /*スクロールバーの軌道*/
   ::-webkit-scrollbar-track {
     border-radius: 0;
-    background-color: rgba(33,33,33, 0.25);
+    background-color: rgba(33, 33, 33, 0.25);
   }
 
   /*スクロールバーの動く部分*/
@@ -26,108 +22,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 0;
   }
-  ::-webkit-scrollbar-corner{
+  ::-webkit-scrollbar-corner {
     background-color: rgba(0, 0, 0, .5);
-  }
-}
-
-.pd {
-  width: 100%;
-  height: 100%;
-  display: grid;
-
-  grid-template-columns: 1fr 350px;
-  grid-template-rows: 50px 1fr 40px;
-  grid-template-areas: 'header header' 'canvas property' 'footer footer';
-
-  @media (max-width: map-get($grid-breakpoints, "md")) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 50px 1fr 40px;
-    grid-template-areas: 'header' 'canvas' 'footer';
-  }
-
-  &-header {
-    grid-area: header;
-  }
-  &-canvas {
-    grid-area: canvas;
-    background-color: #222222;
-    overflow: hidden;
-  }
-  &-property {
-    grid-area: property;
-
-    @media (max-width: map-get($grid-breakpoints, "md")) {
-      display: none;
-    }
-  }
-  &-footer {
-    grid-area: footer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-}
-
-
-[class*="gradation"] {
-  width: 100%;
-  flex-basis: 80%;
-  height: 1px;
-}
-
-.gradation-box {
-  width: 75%;
-
-  &-hue {
-    background-image: linear-gradient(to right, red 0%, #ccff00 20%, #00ff66 40%, #0066ff 60%, #cc00ff 80%, red 100%);
-  }
-
-  &-saturation {
-    background-image: linear-gradient(to right, gray 0%, red 100%);
-  }
-
-  &-luminance {
-    background-image: linear-gradient(to right, black 0%, white 100%);
-  }
-}
-
-
-
-
-#smallParticleTemplate {
-  .row {
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-    justify-content: space-between;
-    figure {
-      width: 33%;
-      img {
-        max-width: 100%;
-        height: auto;
-      }
-    }
-  }
-}
-
-.modal-body {
-  figure {
-    margin-top: 1rem;
-  }
-}
-
-.property-io-box {
-  textarea {
-    height: 300px;
-    margin-bottom: 1rem;
-  }
-}
-
-.canvas-property-panel {
-  input[type="color"] {
-    display: block;
-    max-width: 100%;
   }
 }

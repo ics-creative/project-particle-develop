@@ -1,13 +1,14 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
-import {LocaleData} from '../../../i18n/locale-data';
 import * as jQuery from 'jquery';
+import {LocaleData} from '../../i18n/locale-data';
 
 @Component({
   selector   : 'app-property-io-box',
-  templateUrl: './property-io.component.html'
+  templateUrl: './modal-export-json.component.html',
+  styleUrls  : ['./modal-export-json.component.scss'],
 })
 
-export class PropertyIoModalComponent {
+export class ModalExportJsonComponent {
 
   @ViewChild('modal') modal: any;
   @ViewChild('outputLink') outputLink: any;
@@ -33,7 +34,6 @@ export class PropertyIoModalComponent {
     const blob = new Blob([json], {type: 'text/plain'});
 
     link.href = window.URL.createObjectURL(blob);
-
 
     const textarea: HTMLTextAreaElement = this.jsonValue.nativeElement;
 

@@ -1,9 +1,10 @@
-import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
+import {LocaleData} from '../../../i18n/locale-data';
 
 @Component({
   selector   : 'app-shape-property-panel',
-  templateUrl: './property-shape.component.html'
+  templateUrl: './property-shape.component.html',
+  styleUrls  : ['property-shape.component.scss'],
 })
 
 /**
@@ -30,6 +31,5 @@ export class PropertyShapePanelComponent {
       }
     }
   }
-
 
 }

@@ -4,7 +4,7 @@ import {LocaleData} from '../../../i18n/locale-data';
 
 @Component({
   selector   : 'app-particle-template-property-panel',
-  styleUrls     : ['../../modal-template/particle-template-property-panel.scss'],
+  styleUrls     : ['./property-template.component.scss'],
   templateUrl: './property-template.component.html',
 })
 

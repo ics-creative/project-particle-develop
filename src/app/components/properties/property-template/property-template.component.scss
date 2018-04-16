@@ -1,0 +1,36 @@
+.scope-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+figure {
+  width: 33%;
+  box-sizing: border-box;
+  margin-bottom: rem-calc(8.5);
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+  user-select: none;
+
+  img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #555;
+    pointer-events: none;
+    transition: all 0.15s;
+  }
+
+  &:hover {
+    img {
+      border-color: #999;
+    }
+  }
+
+  figcaption {
+    font-size: 1.0rem;
+    color: #999;
+    text-align: center;
+  }
+}

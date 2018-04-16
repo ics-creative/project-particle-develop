@@ -1,26 +1,25 @@
-import {StageComponent} from '../stage/stage.component';
-import {Viewport} from '../../enum/view-port';
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {PlatformData} from '../../data/platform-data';
 import {CanvasMargin} from '../../enum/canvas-margin';
+import {PlatformType} from '../../enum/platform-type';
+import {Viewport} from '../../enum/view-port';
 import {LocaleData} from '../../i18n/locale-data';
 import {LocaleManager} from '../../i18n/locale-manager';
-import {PlatformData} from '../../data/platform-data';
-import {PlatformType} from '../../enum/platform-type';
-import {PropertyIoModalComponent} from '../properties/property-io/property-io.component';
-
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {ModalExportJsonComponent} from '../modal-export-json/modal-export-json.component';
+import {StageComponent} from '../stage/stage.component';
 
 @Component({
-  selector: 'app-root',
+  selector   : 'app-root',
   templateUrl: './app.component.html',
-  providers: [LocaleData]
+  styleUrls  : ['./app.component.scss'],
+  providers  : [LocaleData],
 })
 
 export class AppComponent implements AfterViewInit {
   drawingData: particlejs.DrawingData;
   platformData: PlatformData;
   @ViewChild('stageComponent') stageComponent: StageComponent;
-  @ViewChild('propetyModal') propetyModal: PropertyIoModalComponent;
-
+  @ViewChild('propetyModal') propetyModal: ModalExportJsonComponent;
 
   getPlatformData() {
     return new PlatformData(PlatformType.Browser);
@@ -131,7 +130,7 @@ export class AppComponent implements AfterViewInit {
 
     if (window.navigator.msSaveBlob) {
       // for IE
-      window.navigator.msSaveBlob(blob, fileName)
+      window.navigator.msSaveBlob(blob, fileName);
     } else if (window.URL && window.URL.createObjectURL) {
       // for Firefox, Chrome, Safari
       const a = document.createElement('a');
@@ -178,7 +177,7 @@ export class AppComponent implements AfterViewInit {
 
     if (window.navigator.msSaveBlob) {
       // for IE
-      window.navigator.msSaveBlob(blob, fileName)
+      window.navigator.msSaveBlob(blob, fileName);
     } else if (window.URL && window.URL.createObjectURL) {
       // for Firefox, Chrome, Safari
       const a = document.createElement('a');

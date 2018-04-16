@@ -1,7 +1,7 @@
+$gray-900: #323232 !default;
 
-.pd-property {
+/deep/ .pd-property {
   flex: 285px;
-  //margin-left: 2px;
   height: 100%;
   overflow: hidden;
 
@@ -67,26 +67,6 @@
     hr {
       margin-top: rem-calc(12);
       margin-bottom: rem-calc(12);
-    }
-  }
-}
-
-
-.shape-property-panel {
-  .shape-list-item {
-    cursor: pointer;
-    display: block;
-    width: 64px;
-    height: 64px;
-    box-sizing: border-box;
-    line-height: 0;
-    margin-bottom: 15px;
-    margin-right: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-
-    &:hover, &.selected {
-      background: #222;
-      border-color: #333;
     }
   }
 }

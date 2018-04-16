@@ -1,5 +1,5 @@
-import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
+import {LocaleData} from '../../../i18n/locale-data';
 
 interface TestObject {
   name: string;
@@ -8,7 +8,8 @@ interface TestObject {
 
 @Component({
   selector   : 'app-color-property-panel',
-  templateUrl: './property-color.component.html'
+  templateUrl: './property-color.component.html',
+  styleUrls  : ['./property-color.component.scss'],
 })
 
 export class PropertyColorPanelComponent {
@@ -18,7 +19,7 @@ export class PropertyColorPanelComponent {
   constructor(public localeData: LocaleData) {
     this.objArray = [
       {name: 'Normal', value: particlejs.AlphaCurveType.Normal},
-      {name: 'Random', value: particlejs.AlphaCurveType.Random}
+      {name: 'Random', value: particlejs.AlphaCurveType.Random},
     ];
   }
 }

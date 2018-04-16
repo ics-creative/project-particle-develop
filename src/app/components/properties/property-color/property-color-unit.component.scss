@@ -1,0 +1,21 @@
+[class*="gradation"] {
+  width: 100%;
+  flex-basis: 80%;
+  height: 1px;
+}
+
+.gradation-box {
+  width: 75%;
+
+  &-hue {
+    background-image: linear-gradient(to right, red 0%, #ccff00 20%, #00ff66 40%, #0066ff 60%, #cc00ff 80%, red 100%);
+  }
+
+  &-saturation {
+    background-image: linear-gradient(to right, gray 0%, red 100%);
+  }
+
+  &-luminance {
+    background-image: linear-gradient(to right, black 0%, white 100%);
+  }
+}
