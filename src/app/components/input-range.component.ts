@@ -6,6 +6,15 @@ import {Component, Input} from '@angular/core';
         display: block;
         width: 100%;
       }
+      .row {
+        padding-left: 0;
+        padding-right: 0;
+        justify-content: space-between;
+      }
+      [class*="col"] {
+        padding-right: 0;
+        padding-left: 0;
+      }
   `],
   templateUrl: '../components-html/input-range.html'
 })

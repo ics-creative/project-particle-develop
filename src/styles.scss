@@ -1,17 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-//@import "scss/variables.scss";
-
 html{
   font-size: 14px;
 }
 
 @import "../node_modules/bootstrap/scss/functions.scss";
 @import "scss/ics/variables.scss";
-
-
-
-
 
 /* Bootstrap を読み込む */
 @import "../node_modules/bootstrap/scss/bootstrap.scss";

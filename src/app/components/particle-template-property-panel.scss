@@ -1,0 +1,22 @@
+figure {
+  margin-bottom: rem-calc(8.5);
+  padding-left: 10px;
+  padding-right: 10px;
+
+  img {
+    cursor: pointer;
+    border: 1px solid #555;
+  }
+
+  &:hover {
+    img {
+      border-color: #999;
+    }
+  }
+
+  figcaption {
+    font-size: 1.0rem;
+    color: #999;
+    text-align: center;
+  }
+}

@@ -4,8 +4,10 @@ import {LocaleData} from '../i18n/locale-data';
 
 @Component({
   selector   : 'app-particle-template-property-panel',
-  templateUrl: '../components-html/property-template.html'
+  styleUrls     : ['./particle-template-property-panel.scss'],
+  templateUrl: '../components-html/property-template.html',
 })
+
 
 export class PropertyTemplatePanelComponent implements OnInit {
   @Input() drawingData: particlejs.DrawingData;
