@@ -6,7 +6,7 @@
   <div class="pd-section__block">
     <div class="pd-section__block__list">
       <div *ngFor="let shapeId of shapeIdList"
-           class="shape-list-item"
+           class="scope-list-item"
            [class.selected]="drawingData.shapeIdList.indexOf(shapeId) > -1"
            (click)="handleClick(shapeId)">
         <app-shape-itemrenderer

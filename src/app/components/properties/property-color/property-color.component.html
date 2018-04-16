@@ -5,56 +5,53 @@
   <div class="pd-section__block">
     <app-color-unit-property-panel [colorData]="drawingData.startColor"></app-color-unit-property-panel>
     <app-input-range
-            class="input-range"
-            label="{{localeData.SC_startAlpha}}"
-            min="0.0" max="1.0" step="0.01"
-            [drawingData]="drawingData"
-            targetProperty="startAlpha">
+      class="input-range"
+      label="{{localeData.SC_startAlpha}}"
+      min="0.0" max="1.0" step="0.01"
+      [drawingData]="drawingData"
+      targetProperty="startAlpha">
     </app-input-range>
     <app-input-range
-            class="input-range"
-            label="{{localeData.SC_startAlphaVariance}}"
-            min="0.0" max="1.0" step="0.01"
-            [drawingData]="drawingData"
-            targetProperty="startAlphaVariance">
+      class="input-range"
+      label="{{localeData.SC_startAlphaVariance}}"
+      min="0.0" max="1.0" step="0.01"
+      [drawingData]="drawingData"
+      targetProperty="startAlphaVariance">
     </app-input-range>
   </div>
-</div>
-<hr/>
-<div class="pd-section">
+
   <header class="pd-section__header">
     <h3>{{localeData.SC_head_end}}</h3>
   </header>
   <div class="pd-section__block">
     <app-input-range
-            class="input-range"
-            label="{{localeData.SC_endAlpha}}"
-            min="0.0" max="1.0" step="0.01"
-            [drawingData]="drawingData"
-            targetProperty="finishAlpha">
+      class="input-range"
+      label="{{localeData.SC_endAlpha}}"
+      min="0.0" max="1.0" step="0.01"
+      [drawingData]="drawingData"
+      targetProperty="finishAlpha">
     </app-input-range>
     <app-input-range
-            class="input-range"
-            label="{{localeData.SC_endAlphaVariance}}"
-            min="0.0" max="1.0" step="0.01"
-            [drawingData]="drawingData"
-            targetProperty="finishAlphaVariance">
+      class="input-range"
+      label="{{localeData.SC_endAlphaVariance}}"
+      min="0.0" max="1.0" step="0.01"
+      [drawingData]="drawingData"
+      targetProperty="finishAlphaVariance">
     </app-input-range>
+
   </div>
-</div>
-<hr/>
-<div class="pd-section">
+
+
   <header class="pd-section__header">
     <h3>{{localeData.SC_head_alphaCurve}}</h3>
   </header>
   <div class="pd-section__block">
-    <select [(ngModel)]="drawingData.alphaCurveType" >
+    <select [(ngModel)]="drawingData.alphaCurveType">
       <option *ngFor="let o of objArray" [value]="o.value">{{o.name}}</option>
     </select>
   </div>
-</div>
-<hr/>
-<div class="pd-section">
+
+
   <header class="pd-section__header">
     <h3>{{localeData.SC_head_blendMode}}</h3>
   </header>

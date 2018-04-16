@@ -91,12 +91,14 @@ $grid-breakpoints: (
     align-items: center;
   }
 
-  .large-io-box {
+  .header-desktop-menu {
     margin-left: auto;
     margin-right: 0;
+    text-align: right;
+    display: block;
   }
 
-  .small-io-box ul {
+  .header-mobile-menu ul {
     padding-left: 0;
     li {
       box-sizing: border-box;

@@ -10,7 +10,7 @@
         </button>
       </div>
 
-      <app-header-desktop class="pd-header__grid-menu large-io-box"
+      <app-header-desktop class="pd-header__grid-menu header-desktop-menu"
                           #largeIOBox [drawingData]="drawingData"
                           [platformData]="platformData"
                           (exportSvgEvent)="handleSvgClick()"
@@ -20,7 +20,7 @@
                           (exportParameterEvent)="handleExportParameterClick()">
       </app-header-desktop>
 
-      <app-header-mobile class="pd-header__grid-menu small-io-box"
+      <app-header-mobile class="pd-header__grid-menu header-mobile-menu"
                          [drawingData]="drawingData"
                          (exportPngEvent)="handlePngClick()">
       </app-header-mobile>

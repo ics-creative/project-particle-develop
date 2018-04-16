@@ -60,7 +60,6 @@ $gray-900: #323232 !default;
       &__list {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
       }
     }
 
@@ -69,4 +68,10 @@ $gray-900: #323232 !default;
       margin-bottom: rem-calc(12);
     }
   }
+
+  // IE11 & Edge のスクロールバー対策
+  .tab-pane {
+    height: 100%;
+  }
 }
+
