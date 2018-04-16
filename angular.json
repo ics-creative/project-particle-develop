@@ -31,21 +31,18 @@
                 "input": "src/styles.scss"
               },
               {
-                "input": "src/assets/css/font-awesome.min.css"
-              },
-              {
-                "input": "src/assets/topcoat/topcoat-desktop-dark.custom.css"
+                "input": "src/embeds/topcoat/topcoat-desktop-dark.custom.css"
               }
             ],
             "scripts": [
               {
-                "input": "src/assets/js/1.0.0/createjs.min.js"
+                "input": "src/embeds/js/1.0.0/createjs.min.js"
               },
               {
-                "input": "src/assets/js/SVGExporter.js"
+                "input": "src/embeds/js/SVGExporter.js"
               },
               {
-                "input": "src/assets/js/particlejs.min.js"
+                "input": "src/embeds/js/particlejs.min.js"
               }
             ]
           },
