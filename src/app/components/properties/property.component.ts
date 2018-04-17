@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {DrawingData} from 'particlejs';
 import {LocaleData} from '../../i18n/locale-data';
 
 @Component({
@@ -7,7 +8,7 @@ import {LocaleData} from '../../i18n/locale-data';
   styleUrls  : ['property.component.scss'],
 })
 export class PropertyPanelComponent {
-  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public drawingData: DrawingData;
 
   constructor(public localeData: LocaleData) {
   }

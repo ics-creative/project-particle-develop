@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {DrawingData, ShapeData} from 'particlejs';
 import {LocaleData} from '../../../i18n/locale-data';
 
 @Component({
@@ -11,8 +12,8 @@ import {LocaleData} from '../../../i18n/locale-data';
  * シェイプの選択パネルの制御クラスです。
  */
 export class PropertyShapePanelComponent {
-  @Input() public drawingData: particlejs.DrawingData;
-  @Input() public shapeIdList: string[] = new particlejs.ShapeData().assetList;
+  @Input() public drawingData: DrawingData;
+  @Input() public shapeIdList: string[] = new ShapeData().assetList;
 
   constructor(public localeData: LocaleData) {
   }

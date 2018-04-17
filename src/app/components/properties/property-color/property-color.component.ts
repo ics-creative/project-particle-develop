@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {AlphaCurveType, DrawingData} from 'particlejs';
 import {LocaleData} from '../../../i18n/locale-data';
 
 interface TestObject {
@@ -13,13 +14,13 @@ interface TestObject {
 })
 
 export class PropertyColorPanelComponent {
-  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public drawingData: DrawingData;
   public objArray: TestObject[];
 
   constructor(public localeData: LocaleData) {
     this.objArray = [
-      {name: 'Normal', value: particlejs.AlphaCurveType.Normal},
-      {name: 'Random', value: particlejs.AlphaCurveType.Random},
+      {name: 'Normal', value: AlphaCurveType.Normal},
+      {name: 'Random', value: AlphaCurveType.Random},
     ];
   }
 }

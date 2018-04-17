@@ -1,6 +1,8 @@
 /**
  * キャンバスに表示するルーラーの制御クラスです。
  */
+import {DrawingData} from 'particlejs';
+
 export class Ruler {
 
   private FONT_COLOR = '#444';
@@ -15,7 +17,7 @@ export class Ruler {
   private _thumb: createjs.Shape;
   private _isMouseDown = false;
 
-  constructor(private _data: particlejs.DrawingData) {
+  constructor(private _data: DrawingData) {
     this.container = new createjs.Container();
     this._shapeBg  = new createjs.Shape();
     this.container.addChild(this._shapeBg);

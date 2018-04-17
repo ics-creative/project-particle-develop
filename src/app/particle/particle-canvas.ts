@@ -1,5 +1,4 @@
-'use strict';
-
+import {DrawingData, ParticleSystem} from 'particlejs';
 import {Viewport} from '../enum/view-port';
 import {CanvasMargin} from '../enum/canvas-margin';
 import {ParticleExporter} from './particle-exporter';
@@ -12,7 +11,7 @@ import {Ruler} from './particle-ruler';
  */
 export class ParticleCanvas {
 
-  private _data: particlejs.DrawingData;
+  private _data: DrawingData;
 
   /** 背景の表示オブジェクトです。 */
   private _background: createjs.Shape;
@@ -31,7 +30,7 @@ export class ParticleCanvas {
   private _backgroundSize: any;
 
   /** パーティクルエミッターのインスタンスです。 */
-  private _particleSystem: particlejs.ParticleSystem;
+  private _particleSystem: ParticleSystem;
 
   /** パーティクルの設定情報生成のインスタンスです。 */
   private _particleExporter: ParticleExporter;
@@ -44,7 +43,7 @@ export class ParticleCanvas {
   /** 座布団 */
   private _outerZabuton: createjs.Shape = new createjs.Shape();
 
-  constructor(canvas: any, data: particlejs.DrawingData) {
+  constructor(canvas: any, data: DrawingData) {
 
     this._data   = data;
     this._canvas = canvas;
@@ -76,7 +75,7 @@ export class ParticleCanvas {
     this._captureImageLayer = new ParticleCaptureImageLayer();
     this._canvasContainer.addChild(this._captureImageLayer);
 
-    this._particleSystem = new particlejs.ParticleSystem();
+    this._particleSystem = new ParticleSystem();
     this._canvasContainer.addChild(this._particleSystem.container);
 
     this._particleExporter = new ParticleExporter(this._particleSystem.container);
@@ -208,7 +207,7 @@ export class ParticleCanvas {
     (<HTMLCanvasElement>this._stage.canvas).style.height = `${canvasHeight}px`;
   }
 
-  public update(data: particlejs.DrawingData): void {
+  public update(data: DrawingData): void {
 
     const palletW = Math.round(Number(this._data.width));
     const palletH = Math.round(Number(this._data.height));

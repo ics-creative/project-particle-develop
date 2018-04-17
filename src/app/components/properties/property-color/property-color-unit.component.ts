@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {ColorData} from 'particlejs';
 import {LocaleData} from '../../../i18n/locale-data';
 
 @Component({
@@ -7,7 +8,7 @@ import {LocaleData} from '../../../i18n/locale-data';
   styleUrls  : ['property-color-unit.component.scss'],
 })
 export class PropertyColorUnitComponent {
-  @Input() public colorData: particlejs.ColorData;
+  @Input() public colorData: ColorData;
 
   constructor(public localeData: LocaleData) {
   }

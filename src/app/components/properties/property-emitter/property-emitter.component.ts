@@ -1,3 +1,4 @@
+import {DrawingData} from 'particlejs';
 import {LocaleData} from '../../../i18n/locale-data';
 import {Component, Input} from '@angular/core';
 
@@ -7,7 +8,7 @@ import {Component, Input} from '@angular/core';
 })
 
 export class PropertyEmitterPanelComponent {
-  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public drawingData: DrawingData;
 
   constructor(public localeData: LocaleData) {
   }

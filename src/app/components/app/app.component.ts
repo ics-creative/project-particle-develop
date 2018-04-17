@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {DrawingData, VERSION} from 'particlejs';
 import {PlatformData} from '../../data/platform-data';
 import {CanvasMargin} from '../../enum/canvas-margin';
 import {PlatformType} from '../../enum/platform-type';
@@ -16,7 +17,7 @@ import {StageComponent} from '../stage/stage.component';
 })
 
 export class AppComponent implements AfterViewInit {
-  drawingData: particlejs.DrawingData;
+  drawingData: DrawingData;
   platformData: PlatformData;
   @ViewChild('stageComponent') stageComponent: StageComponent;
   @ViewChild('propetyModal') propetyModal: ModalExportJsonComponent;
@@ -26,7 +27,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   constructor(public localeData: LocaleData) {
-    this.drawingData = new particlejs.DrawingData();
+    this.drawingData = new DrawingData();
     this.platformData = this.getPlatformData();
 
     // ステージサイズに対して適当な値を適用する
@@ -194,7 +195,7 @@ export class AppComponent implements AfterViewInit {
 
   public handleExportParameterClick() {
     const exportData = Object.assign({}, this.drawingData);
-    exportData.VERSION = particlejs.VERSION;
+    exportData['VERSION'] = VERSION;
 
     this.propetyModal.setIOButtonLink(JSON.stringify(exportData, null, '    '));
     this.propetyModal.openIOModal();

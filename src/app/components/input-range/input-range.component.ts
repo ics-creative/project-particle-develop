@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {DrawingData} from 'particlejs';
 @Component({
   selector   : 'app-input-range',
   styles     : [`
@@ -24,7 +25,7 @@ import {Component, Input} from '@angular/core';
  * @since 2016-01-20
  */
 export class InputRangeComponent {
-  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public drawingData: DrawingData;
 
   /** 対象のプロパティー名を指定します。 */
   @Input() public targetProperty: string;

@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, ViewChild} from '@angular/core';
 import * as jQuery from 'jquery';
+import {DrawingData} from 'particlejs';
 import {LocaleData} from '../../i18n/locale-data';
 
 @Component({
@@ -14,7 +15,7 @@ export class ModalExportJsonComponent {
   @ViewChild('outputLink') outputLink: any;
   @ViewChild('jsonValue') jsonValue: any;
 
-  @Input() drawingData: particlejs.DrawingData;
+  @Input() drawingData: DrawingData;
 
   element: ElementRef;
 

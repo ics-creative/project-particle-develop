@@ -40,9 +40,6 @@
               },
               {
                 "input": "src/embeds/js/SVGExporter.js"
-              },
-              {
-                "input": "src/embeds/js/particlejs.min.js"
               }
             ]
           },

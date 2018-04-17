@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DrawingData} from 'particlejs';
 import {ParticleParameter} from '../../assets/particle-parameter';
 import {LocaleData} from '../../i18n/locale-data';
 
@@ -9,7 +10,7 @@ import {LocaleData} from '../../i18n/locale-data';
 })
 
 export class ModalTemplateComponent implements OnInit {
-  @Input() drawingData: particlejs.DrawingData;
+  @Input() drawingData: DrawingData;
   @Input() templateList: any[];
   public template: ParticleParameter;
 
@@ -23,7 +24,7 @@ export class ModalTemplateComponent implements OnInit {
     this.drawingData.importData(this.templateList[0].property);
   }
 
-  public selectTemplate(value: particlejs.DrawingData) {
+  public selectTemplate(value: DrawingData) {
     this.drawingData.importData(value);
   }
 }

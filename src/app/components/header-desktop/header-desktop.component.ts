@@ -1,3 +1,4 @@
+import {DrawingData} from 'particlejs';
 import {LocaleData} from '../../i18n/locale-data';
 import {LocaleEnData} from '../../i18n/locale-en';
 import {LocaleJaData} from '../../i18n/locale-ja';
@@ -19,7 +20,7 @@ export class HeaderDesktopComponent {
   @Output() public exportParameterEvent = new EventEmitter();
   @Output() public importParameterEvent = new EventEmitter();
 
-  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public drawingData: DrawingData;
   @Input() public platformData: PlatformData;
 
   public lastSelectFile: any;

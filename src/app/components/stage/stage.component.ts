@@ -1,4 +1,5 @@
 import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
+import {DrawingData} from 'particlejs';
 import {ParticleCanvas} from '../../particle/particle-canvas';
 
 @Component({
@@ -23,7 +24,7 @@ export class StageComponent implements AfterViewInit {
 
   @ViewChild('myCanvas') myCanvas: any;
 
-  @Input() private drawingData: particlejs.DrawingData;
+  @Input() private drawingData: DrawingData;
   private particleCanvas: ParticleCanvas;
 
   constructor() {

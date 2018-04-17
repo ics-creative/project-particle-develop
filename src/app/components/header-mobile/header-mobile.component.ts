@@ -1,4 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core';
+import {DrawingData} from 'particlejs';
 
 @Component({
   selector   : 'app-header-mobile',
@@ -8,7 +9,7 @@ import {Component, ElementRef, EventEmitter, Input, Output} from '@angular/core'
 export class HeaderMobileComponent {
   @Output() private exportPngEvent = new EventEmitter();
 
-  @Input() private drawingData: particlejs.DrawingData;
+  @Input() private drawingData: DrawingData;
   private element: ElementRef;
 
   exportPng() {

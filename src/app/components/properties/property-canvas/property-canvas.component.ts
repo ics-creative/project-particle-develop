@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {DrawingData} from 'particlejs';
 import {LocaleData} from '../../../i18n/locale-data';
 
 @Component({
@@ -8,7 +9,7 @@ import {LocaleData} from '../../../i18n/locale-data';
 })
 
 export class PropertyCanvasPanelComponent {
-  @Input() public drawingData: particlejs.DrawingData;
+  @Input() public drawingData: DrawingData;
 
   constructor(public localeData: LocaleData) {
   }
