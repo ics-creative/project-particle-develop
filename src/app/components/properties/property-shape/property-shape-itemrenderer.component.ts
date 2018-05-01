@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, Input, ViewChild} from '@angular/core';
-import {assets} from 'particlejs';
+import {Assets} from 'particlejs';
 
 @Component({
   selector   : 'app-shape-itemrenderer',
@@ -23,8 +23,7 @@ export class PropertyShapeItemRendererComponent implements AfterViewInit {
     const stage = new createjs.Stage(canvas);
 
     // Adobe Animate CCから書きだしたシェイプを使う
-    const namespaceObj = assets;
-    const cls = <any> namespaceObj[this.shapeId];
+    const cls = <any> Assets[this.shapeId];
 
     const shape = new cls();
     shape.x = 32;
