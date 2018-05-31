@@ -53,6 +53,11 @@ export class ParticleCanvas {
 
     this._stage = new createjs.Stage(this._canvas);
 
+    // ステージをモバイル対応させる
+    if (createjs.Touch.isSupported() === true) {
+      createjs.Touch.enable(this._stage);
+    }
+
     this._wrapperForCapure = new createjs.Container();
     this._stage.addChild(this._wrapperForCapure);
 

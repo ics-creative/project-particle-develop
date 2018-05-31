@@ -26,18 +26,19 @@
 
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico"/>
   <link rel="manifest" href="./manifest.json"/>
-  <link rel="apple-touch-icon" href="./assets/images/ui/logo_512x512.png"/>
+  <link rel="apple-touch-icon" href="./assets/images/ui/logo_base_apple.png"/>
 
   <style>
 
     html {
-
+      touch-action: manipulation;
       height: 100%;
     }
 
     body {
       font-size: 14px;
       height: 100%;
+      overflow: hidden;
     }
 
     .loading {
@@ -113,22 +114,17 @@
   </app-root>
   <div id="fb-root"></div>
 
-  <!-- Google Analytics -->
-  <script type="text/javascript" async>//<![CDATA[
-  // Google Analytics
-  var _gaq = _gaq || [];
-  if (location.href.indexOf('http://ics-web.jp') === 0 || location.href.indexOf('https://ics-creative.github.io') === 0) {
-    _gaq.push(['_setAccount', 'UA-34243464-1']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-      var ga = document.createElement('script');
-      ga.type = 'text/javascript';
-      ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ga, s);
-    })();
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34243464-4"></script>
+  <script>
+  if (location.href.indexOf('ics-web.jp') > -1 || location.href.indexOf('ics-creative.github.io') > -1) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-34243464-4');
   }
-  //]]></script>
-<script type="text/javascript" src="runtime.5f9d33fb31487f0fdbf1.js"></script><script type="text/javascript" src="polyfills.a78c120d570c535d3055.js"></script><script type="text/javascript" src="styles.023390c46156ab6f1614.js"></script><script type="text/javascript" src="scripts.06e5b09a4922035a9add.js"></script><script type="text/javascript" src="main.39361dc66c8ef12299fc.js"></script></body>
+  </script>
+<script type="text/javascript" src="runtime.5f9d33fb31487f0fdbf1.js"></script><script type="text/javascript" src="polyfills.a78c120d570c535d3055.js"></script><script type="text/javascript" src="styles.023390c46156ab6f1614.js"></script><script type="text/javascript" src="scripts.06e5b09a4922035a9add.js"></script><script type="text/javascript" src="main.d73d144f372b0984af9a.js"></script></body>
 </html>
