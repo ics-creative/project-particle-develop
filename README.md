@@ -1,6 +1,6 @@
 # Particle Develop
 
-![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)
+![Particle Develop](docs/assets/images/preview.png)
 
 ## Description
 
@@ -8,8 +8,15 @@ Particle DevelopはHTML5製のデザインツールです。雪や炎、キラ�
 
 ## Older Version
 
+### Particle Develop 3.2, 2018/05/31
+https://ics-creative.github.io/project-particle-develop/
+
+- apply `https` protocol
+- Move domain from `ics-web.jp` to `ics-creative.github.io`
+- Migration Angular 6.0
+
 ### Particle Develop 3.0, 2018/04/16
-http://ics-web.jp/projects/particle-develop/
+http://ics-web.jp/projects/particle-develop-3.0/
 
 - Migration Angular 4 -> 5.2
 - Using Angular-CLI 6.0.0-rc.2
