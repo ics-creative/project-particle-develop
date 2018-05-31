@@ -1,0 +1,15 @@
+{
+  "short_name": "Particle Develop",
+  "name": "Particle Develop",
+  "icons": [
+    {
+      "src": "./assets/images/ui/logo_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "index.html?homescreen=1",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}
