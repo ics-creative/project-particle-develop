@@ -22,8 +22,8 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/favicon.ico",
-                "output": "/favicon.ico"
+                "input": "src/pwa",
+                "output": "."
               }
             ],
             "styles": [
@@ -48,7 +48,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
+              "extractCss": false,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": false,
