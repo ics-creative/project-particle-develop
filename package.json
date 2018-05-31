@@ -1,11 +1,12 @@
 {
   "name": "particle-develop",
-  "version": "3.1.1",
+  "version": "3.2.0",
   "license": "MIT",
   "scripts": {
     "start": "ng serve --open",
     "build": "ng build --prod",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "format": "tslint --project tsconfig.json --fix"
   },
   "private": true,
   "dependencies": {
