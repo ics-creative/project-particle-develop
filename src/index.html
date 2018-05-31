@@ -112,23 +112,18 @@
     </div>
   </app-root>
   <div id="fb-root"></div>
-
-  <!-- Google Analytics -->
-  <script type="text/javascript" async>//<![CDATA[
-  // Google Analytics
-  var _gaq = _gaq || [];
-  if (location.href.indexOf('http://ics-web.jp') === 0 || location.href.indexOf('https://ics-creative.github.io') === 0) {
-    _gaq.push(['_setAccount', 'UA-34243464-1']);
-    _gaq.push(['_trackPageview']);
-    (function () {
-      var ga = document.createElement('script');
-      ga.type = 'text/javascript';
-      ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(ga, s);
-    })();
+  
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34243464-4"></script>
+  <script>
+  if (location.href.indexOf('ics-web.jp') > -1 || location.href.indexOf('ics-creative.github.io') > -1) {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-34243464-4');
   }
-  //]]></script>
+  </script>
 </body>
 </html>
