@@ -29,9 +29,6 @@
             "styles": [
               {
                 "input": "src/styles.scss"
-              },
-              {
-                "input": "src/embeds/topcoat/topcoat-desktop-dark.custom.css"
               }
             ],
             "scripts": [

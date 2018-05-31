@@ -24,6 +24,7 @@
 
   <base href="./"/>
 
+  <link rel="canonical" href="https://ics-creative.github.io/project-particle-develop/"/>
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico"/>
   <link rel="manifest" href="./manifest.json"/>
   <link rel="apple-touch-icon" href="./assets/images/ui/logo_base_apple.png"/>
@@ -117,14 +118,16 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-34243464-4"></script>
   <script>
-  if (location.href.indexOf('ics-web.jp') > -1 || location.href.indexOf('ics-creative.github.io') > -1) {
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
+    if (location.href.indexOf('ics-web.jp') > -1 || location.href.indexOf('ics-creative.github.io') > -1) {
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+      gtag('config', 'UA-34243464-4');
     }
-    gtag('js', new Date());
-    gtag('config', 'UA-34243464-4');
-  }
   </script>
 </body>
 </html>
