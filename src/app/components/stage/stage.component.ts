@@ -22,7 +22,7 @@ import {ParticleCanvas} from '../../particle/particle-canvas';
 
 export class StageComponent implements AfterViewInit {
 
-  @ViewChild('myCanvas') myCanvas: any;
+  @ViewChild('myCanvas', { static: true }) myCanvas: any;
 
   @Input() private drawingData: DrawingData;
   private particleCanvas: ParticleCanvas;

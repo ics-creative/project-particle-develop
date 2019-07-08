@@ -19,8 +19,8 @@ import {StageComponent} from '../stage/stage.component';
 export class AppComponent implements AfterViewInit {
   drawingData: DrawingData;
   platformData: PlatformData;
-  @ViewChild('stageComponent') stageComponent: StageComponent;
-  @ViewChild('propetyModal') propetyModal: ModalExportJsonComponent;
+  @ViewChild('stageComponent', { static: true }) stageComponent: StageComponent;
+  @ViewChild('propetyModal', { static: true }) propetyModal: ModalExportJsonComponent;
 
   getPlatformData() {
     return new PlatformData(PlatformType.Browser);

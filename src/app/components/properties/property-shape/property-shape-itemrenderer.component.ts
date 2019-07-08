@@ -12,7 +12,7 @@ import {Assets} from 'particlejs';
 export class PropertyShapeItemRendererComponent implements AfterViewInit {
   @Input() private shapeId: string;
 
-  @ViewChild('myCanvas') myCanvas: any;
+  @ViewChild('myCanvas', { static: true }) myCanvas: any;
 
   constructor() {
   }

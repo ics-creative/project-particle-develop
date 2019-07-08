@@ -11,9 +11,9 @@ import {LocaleData} from '../../i18n/locale-data';
 
 export class ModalExportJsonComponent {
 
-  @ViewChild('modal') modal: any;
-  @ViewChild('outputLink') outputLink: any;
-  @ViewChild('jsonValue') jsonValue: any;
+  @ViewChild('modal', { static: true }) modal: any;
+  @ViewChild('outputLink', { static: true }) outputLink: any;
+  @ViewChild('jsonValue', { static: true }) jsonValue: any;
 
   @Input() drawingData: DrawingData;
 
