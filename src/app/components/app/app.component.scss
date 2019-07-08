@@ -110,7 +110,7 @@ $grid-breakpoints: (
   }
 }
 
-/deep/ .header-btn {
+::ng-deep .header-btn {
   line-height: 49px;
   height: 49px;
   border-top: none;

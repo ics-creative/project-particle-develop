@@ -1,6 +1,6 @@
 $gray-900: #323232 !default;
 
-/deep/ .pd-property {
+::ng-deep .pd-property {
   flex: 285px;
   height: 100%;
   overflow: hidden;
