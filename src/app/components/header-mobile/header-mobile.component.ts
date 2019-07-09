@@ -7,9 +7,9 @@ import {DrawingData} from 'particlejs';
   styleUrls  : ['header-mobile.component.scss'],
 })
 export class HeaderMobileComponent {
-  @Output() private exportPngEvent = new EventEmitter();
+  @Output() exportPngEvent = new EventEmitter();
 
-  @Input() private drawingData: DrawingData;
+  @Input() drawingData: DrawingData;
   private element: ElementRef;
 
   exportPng() {

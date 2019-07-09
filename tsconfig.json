@@ -13,8 +13,11 @@
     "experimentalDecorators": true,
     "target": "es5",
     "lib": [
-      "es2016",
+      "es2019",
       "dom"
     ]
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
   }
 }
