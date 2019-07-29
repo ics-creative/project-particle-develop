@@ -8,6 +8,12 @@ Particle DevelopはHTML5製のデザインツールです。雪や炎、キラ�
 
 ## Older Version
 
+### Particle Develop 3.3, 2019/07/29
+https://ics-creative.github.io/project-particle-develop/
+
+- Migration Angular 6.0 -> 8.1
+- BugFix
+
 ### Particle Develop 3.2, 2018/05/31
 https://ics-creative.github.io/project-particle-develop/
 
