@@ -32,7 +32,7 @@
     "@angular-devkit/build-angular": "~0.802.2",
     "@angular/cli": "^8.1.0",
     "@angular/compiler-cli": "^8.1.0",
-    "@angular/language-service": "^8.1.0",
+    "@angular/language-service": "^9.0.4",
     "@types/createjs": "0.0.29",
     "codelyzer": "^5.0.1",
     "tslint": "~5.18.0",
