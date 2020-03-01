@@ -17,7 +17,7 @@
     "@angular/forms": "^8.1.0",
     "@angular/platform-browser": "^8.1.0",
     "@angular/platform-browser-dynamic": "^8.1.0",
-    "@angular/router": "^8.1.0",
+    "@angular/router": "^9.0.4",
     "bootstrap": "^4.1.0",
     "core-js": "^3.1.4",
     "font-awesome": "^4.7.0",
