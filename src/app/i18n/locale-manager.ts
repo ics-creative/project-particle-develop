@@ -20,7 +20,7 @@ export class LocaleManager {
     this.changeLocale(localeData, lData);
   }
 
-  public checkLocale(): string {
+  public checkLocale(): string | undefined {
     const ua   = window.navigator.userAgent.toLowerCase();
     const navi = <NavigatorTmp> <any> navigator;
     try {
@@ -40,7 +40,7 @@ export class LocaleManager {
   public changeLocale(master: LocaleData, selectedLocale: LocaleData): void {
     for (const key in selectedLocale) {
       if (Reflect.has(selectedLocale, key) === true) {
-        const val = <any> selectedLocale[key];
+        const val =  (selectedLocale as any)[key];
         Reflect.set(master, key, val);
       }
     }

@@ -20,8 +20,8 @@ export class HeaderDesktopComponent {
   @Output() public exportParameterEvent = new EventEmitter();
   @Output() public importParameterEvent = new EventEmitter();
 
-  @Input() public drawingData: DrawingData;
-  @Input() public platformData: PlatformData;
+  @Input() public drawingData!: DrawingData;
+  @Input() public platformData!: PlatformData;
 
   public lastSelectFile: any;
 

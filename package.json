@@ -1,41 +1,41 @@
 {
   "name": "particle-develop",
-  "version": "3.3.0",
-  "license": "MIT",
+  "version": "3.4.0",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "ng serve --open",
     "build": "ng build --prod",
-    "lint": "ng lint",
-    "format": "tslint --project tsconfig.json --fix"
+    "lint": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^8.1.0",
-    "@angular/common": "^8.1.0",
-    "@angular/compiler": "^8.1.0",
-    "@angular/core": "^8.1.0",
-    "@angular/forms": "^8.1.0",
-    "@angular/platform-browser": "^8.1.0",
-    "@angular/platform-browser-dynamic": "^8.1.0",
-    "@angular/router": "^8.1.0",
-    "bootstrap": "^4.1.0",
-    "core-js": "^3.1.4",
+    "@angular/animations": "~10.0.3",
+    "@angular/common": "~10.0.3",
+    "@angular/compiler": "~10.0.3",
+    "@angular/core": "~10.0.3",
+    "@angular/forms": "~10.0.3",
+    "@angular/platform-browser": "~10.0.3",
+    "@angular/platform-browser-dynamic": "~10.0.3",
+    "@angular/router": "~10.0.3",
+    "@types/jquery": "^3.5.0",
+    "bootstrap": "^4.5.0",
+    "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.1",
     "particlejs": "git://github.com/ics-creative/ParticleJS.git",
-    "popper.js": "^1.14.3",
-    "rxjs": "^6.2.0",
-    "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "popper.js": "^1.16.1",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "~0.802.2",
-    "@angular/cli": "^8.1.0",
-    "@angular/compiler-cli": "^8.1.0",
-    "@angular/language-service": "^8.1.0",
+    "@angular-devkit/build-angular": "~0.1000.2",
+    "@angular/cli": "~10.0.2",
+    "@angular/compiler-cli": "~10.0.3",
+    "@angular/language-service": "^10.0.3",
     "@types/createjs": "0.0.29",
-    "codelyzer": "^5.0.1",
-    "tslint": "~5.18.0",
-    "typescript": "3.4.5"
+    "codelyzer": "^6.0.0",
+    "tslint": "~6.1.0",
+    "typescript": "3.9.6"
   }
 }

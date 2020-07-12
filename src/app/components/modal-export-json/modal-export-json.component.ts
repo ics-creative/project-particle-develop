@@ -15,7 +15,7 @@ export class ModalExportJsonComponent {
   @ViewChild('outputLink', { static: true }) outputLink: any;
   @ViewChild('jsonValue', { static: true }) jsonValue: any;
 
-  @Input() drawingData: DrawingData;
+  @Input() drawingData!: DrawingData;
 
   element: ElementRef;
 
@@ -44,6 +44,6 @@ export class ModalExportJsonComponent {
 
   public openIOModal() {
     // 強引に連携
-    jQuery(this.modal.nativeElement).modal('show');
+    (jQuery(this.modal.nativeElement) as any).modal('show');
   }
 }

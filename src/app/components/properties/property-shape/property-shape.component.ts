@@ -12,7 +12,7 @@ import {LocaleData} from '../../../i18n/locale-data';
  * シェイプの選択パネルの制御クラスです。
  */
 export class PropertyShapePanelComponent {
-  @Input() public drawingData: DrawingData;
+  @Input() public drawingData!: DrawingData;
   @Input() public shapeIdList: string[] = new ShapeData().assetList;
 
   constructor(public localeData: LocaleData) {

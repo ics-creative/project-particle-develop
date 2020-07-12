@@ -2,13 +2,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Particle Develop": {
+    "ParticleDevelop": {
       "root": "",
       "projectType": "application",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "docs",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -42,6 +43,12 @@
           },
           "configurations": {
             "production": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -63,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Particle Develop:build"
+            "browserTarget": "ParticleDevelop:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Particle Develop:build:production"
+              "browserTarget": "ParticleDevelop:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Particle Develop:build"
+            "browserTarget": "ParticleDevelop:build"
           }
         },
         "lint": {
@@ -92,7 +99,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "app"

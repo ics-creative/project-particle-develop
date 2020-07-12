@@ -13,10 +13,10 @@ declare let cordova: any;
  */
 export class ParticleExporter {
 
-  private _exporter: SVGExporter;
+  private _exporter!: SVGExporter;
   private _drawLayerContainer: createjs.Container;
-  private _width: number;
-  private _height: number;
+  private _width!: number;
+  private _height!: number;
 
   constructor(drawLayerContainer: createjs.Container) {
     this._drawLayerContainer = drawLayerContainer;
@@ -55,6 +55,9 @@ export class ParticleExporter {
 
   public getSvgString(): string {
     const serializer = new XMLSerializer();
+    if (!this._exporter) {
+      throw new Error();
+    }
     return serializer.serializeToString(this._exporter.svg);
   }
 }

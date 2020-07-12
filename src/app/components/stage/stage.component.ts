@@ -24,8 +24,8 @@ export class StageComponent implements AfterViewInit {
 
   @ViewChild('myCanvas', { static: true }) myCanvas: any;
 
-  @Input() drawingData: DrawingData;
-  private particleCanvas: ParticleCanvas;
+  @Input() drawingData!: DrawingData;
+  private particleCanvas!: ParticleCanvas;
 
   constructor() {
 

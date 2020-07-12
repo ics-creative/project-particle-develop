@@ -12,8 +12,8 @@ export class Ruler {
   private _shapeMouse: createjs.Shape;
   private _verticalTextList: createjs.Text[];
   private _horizontalTextList: createjs.Text[];
-  private _width: number;
-  private _height: number;
+  private _width!: number;
+  private _height!: number;
   private _thumb: createjs.Shape;
   private _isMouseDown = false;
 
@@ -45,7 +45,7 @@ export class Ruler {
     this._horizontalTextList = [];
   }
 
-  private handleThumbMouseMove(event: createjs.MouseEvent): void {
+  private handleThumbMouseMove(): void {
     const stage = this.container.stage;
     const point = this.container.globalToLocal(stage.mouseX, stage.mouseY);
 

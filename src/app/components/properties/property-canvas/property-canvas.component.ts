@@ -9,7 +9,7 @@ import {LocaleData} from '../../../i18n/locale-data';
 })
 
 export class PropertyCanvasPanelComponent {
-  @Input() public drawingData: DrawingData;
+  @Input() public drawingData!: DrawingData;
 
   constructor(public localeData: LocaleData) {
   }

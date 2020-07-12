@@ -6,10 +6,15 @@
 
 Particle DevelopはHTML5製のデザインツールです。雪や炎、キラキラなどのパーティクル表現を作成でき、ベクター画像として保存することができます。Adobe Illustratorのイラスト制作にも役立ちます。
 
-## Older Version
+## Version History
+
+### Particle Develop 3.4, 2020/07/12
+
+- Migration Angular 8.1 -> 10
+- BugFix
+- License Field is changed
 
 ### Particle Develop 3.3, 2019/07/29
-https://ics-creative.github.io/project-particle-develop/
 
 - Migration Angular 6.0 -> 8.1
 - BugFix
@@ -44,3 +49,7 @@ http://ics-web.jp/projects/particle-develop-2.0/
 http://ics-web.jp/projects/particle-develop-1.0/
 
 - initial version
+
+## Copyright
+
+(C) 2016-2020 ICS INC. All Rights Resserved.

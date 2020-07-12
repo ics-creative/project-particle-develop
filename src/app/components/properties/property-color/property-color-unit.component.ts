@@ -8,7 +8,7 @@ import {LocaleData} from '../../../i18n/locale-data';
   styleUrls  : ['property-color-unit.component.scss'],
 })
 export class PropertyColorUnitComponent {
-  @Input() public colorData: ColorData;
+  @Input() public colorData!: ColorData;
 
   constructor(public localeData: LocaleData) {
   }

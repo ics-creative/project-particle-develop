@@ -2,64 +2,64 @@ import {Injectable} from '@angular/core';
 
 @Injectable()
 export class LocaleData {
-  MA_head: string     = null;
-  MA_sentence: string = null;
+  MA_head     = '';
+  MA_sentence = '';
 
-  H_about: string       = null;
-  H_exportImage: string = null;
-  H_exportParam: string = null;
-  H_language: string    = null;
+  H_about       = '';
+  H_exportImage = '';
+  H_exportParam = '';
+  H_language    = '';
 
-  preview_head: string  = null;
-  settings_head: string = null;
+  preview_head  = '';
+  settings_head = '';
 
-  ST_head: string = null;
+  ST_head = '';
 
-  SE_head: string                     = null;
-  SE_startXVariance: string           = null;
-  SE_startYVariance: string           = null;
-  SE_initialSpeed: string             = null;
-  SE_initialSpeedVariance: string     = null;
-  SE_initialDirection: string         = null;
-  SE_initialDirectionVariance: string = null;
-  SE_friction: string                 = null;
-  SE_accelerationSpeed: string        = null;
-  SE_accelerationDirection: string    = null;
-  SE_emitFrequency: string            = null;
+  SE_head                     = '';
+  SE_startXVariance           = '';
+  SE_startYVariance           = '';
+  SE_initialSpeed             = '';
+  SE_initialSpeedVariance     = '';
+  SE_initialDirection         = '';
+  SE_initialDirectionVariance = '';
+  SE_friction                 = '';
+  SE_accelerationSpeed        = '';
+  SE_accelerationDirection    = '';
+  SE_emitFrequency            = '';
 
-  SP_head                       = null;
-  SP_startScale: string         = null;
-  SP_startScaleVariance: string = null;
-  SP_endScale: string           = null;
-  SP_endScaleVariance: string   = null;
-  SP_lifeSpan: string           = null;
-  SP_lifeSpanVariance: string   = null;
+  SP_head                       = '';
+  SP_startScale         = '';
+  SP_startScaleVariance = '';
+  SP_endScale           = '';
+  SP_endScaleVariance   = '';
+  SP_lifeSpan           = '';
+  SP_lifeSpanVariance   = '';
 
-  SC_head_start: string         = null;
-  SC_hue: string                = null;
-  SC_hueVariance: string        = null;
-  SC_saturation: string         = null;
-  SC_saturationVariance: string = null;
-  SC_luminance: string          = null;
-  SC_luminanceVariance: string  = null;
-  SC_startAlpha: string         = null;
-  SC_startAlphaVariance: string = null;
+  SC_head_start         = '';
+  SC_hue                = '';
+  SC_hueVariance        = '';
+  SC_saturation         = '';
+  SC_saturationVariance = '';
+  SC_luminance          = '';
+  SC_luminanceVariance  = '';
+  SC_startAlpha         = '';
+  SC_startAlphaVariance = '';
 
-  SC_head_end: string         = null;
-  SC_endAlpha: string         = null;
-  SC_endAlphaVariance: string = null;
+  SC_head_end         = '';
+  SC_endAlpha         = '';
+  SC_endAlphaVariance = '';
 
-  SC_head_alphaCurve: string = null;
-  SC_head_blendMode: string  = null;
+  SC_head_alphaCurve = '';
+  SC_head_blendMode  = '';
 
-  SS_head: string = null;
+  SS_head = '';
 
-  SF_head: string    = null;
-  SF_stageW: string  = null;
-  SF_stageH: string  = null;
-  SF_bgColor: string = null;
+  SF_head    = '';
+  SF_stageW  = '';
+  SF_stageH  = '';
+  SF_bgColor = '';
 
 
-  MC_head: string   = null;
-  MC_button: string = null;
+  MC_head   = '';
+  MC_button = '';
 }

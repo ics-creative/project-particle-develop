@@ -8,7 +8,7 @@ import {Component, Input} from '@angular/core';
 })
 
 export class PropertyEmitterPanelComponent {
-  @Input() public drawingData: DrawingData;
+  @Input() public drawingData!: DrawingData;
 
   constructor(public localeData: LocaleData) {
   }

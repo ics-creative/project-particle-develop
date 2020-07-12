@@ -10,9 +10,9 @@ import {LocaleData} from '../../i18n/locale-data';
 })
 
 export class ModalTemplateComponent implements OnInit {
-  @Input() drawingData: DrawingData;
+  @Input() drawingData!: DrawingData;
   @Input() templateList: any[];
-  public template: ParticleParameter;
+  public template!: ParticleParameter;
 
   constructor(public localeData: LocaleData) {
     const template = new ParticleParameter();

@@ -19,8 +19,8 @@ import {StageComponent} from '../stage/stage.component';
 export class AppComponent implements AfterViewInit {
   drawingData: DrawingData;
   platformData: PlatformData;
-  @ViewChild('stageComponent', { static: true }) stageComponent: StageComponent;
-  @ViewChild('propetyModal', { static: true }) propetyModal: ModalExportJsonComponent;
+  @ViewChild('stageComponent', { static: true }) stageComponent!: StageComponent;
+  @ViewChild('propetyModal', { static: true }) propetyModal!: ModalExportJsonComponent;
 
   getPlatformData() {
     return new PlatformData(PlatformType.Browser);
@@ -61,6 +61,9 @@ export class AppComponent implements AfterViewInit {
       document.title = 'Particle Develop - HTML5 Vector Design Tool - ICS';
     }
 
+    if (!lang) {
+      return;
+    }
     this.setupWidgets(lang);
   }
 
@@ -76,7 +79,9 @@ export class AppComponent implements AfterViewInit {
       js = <HTMLScriptElement>d.createElement(s);
       js.id = id;
       js.src = 'https://b.st-hatena.com/js/bookmark_button.js';
-      fjs.parentNode.insertBefore(js, fjs);
+      if (fjs.parentNode) {
+        fjs.parentNode.insertBefore(js, fjs);
+      }
     }(document, 'script', 'hatena'));
 
     (function (d: any, s: string, id: string) {
@@ -100,7 +105,9 @@ export class AppComponent implements AfterViewInit {
       js = <HTMLScriptElement>d.createElement(s);
       js.id = id;
       js.src = `//connect.facebook.net/${langLong}/sdk.js#xfbml=1&version=v2.5&appId=566926136738876`;
-      fjs.parentNode.insertBefore(js, fjs);
+      if (fjs.parentNode) {
+        fjs.parentNode.insertBefore(js, fjs);
+      }
     }(document, 'script', 'facebook-jssdk'));
   }
 
@@ -153,13 +160,13 @@ export class AppComponent implements AfterViewInit {
   }
 
   public handlePngClick() {
-    const dataUrl = this.stageComponent.toDataURL('image/png', null);
+    const dataUrl = this.stageComponent.toDataURL('image/png', '');
 
     this.saveFile(dataUrl, `particle_${Math.round(Date.now() / 1000)}.png`, 'image/png');
   }
 
   public handleWebpClick() {
-    const dataUrl = this.stageComponent.toDataURL('image/webp', null);
+    const dataUrl = this.stageComponent.toDataURL('image/webp', '');
 
     this.saveFile(dataUrl, `particle_${Math.round(Date.now() / 1000)}.webp`, 'image/webp');
   }
@@ -195,7 +202,7 @@ export class AppComponent implements AfterViewInit {
 
   public handleExportParameterClick() {
     const exportData = Object.assign({}, this.drawingData);
-    exportData['VERSION'] = VERSION;
+    (exportData as any)['VERSION'] = VERSION;
 
     this.propetyModal.setIOButtonLink(JSON.stringify(exportData, null, '    '));
     this.propetyModal.openIOModal();

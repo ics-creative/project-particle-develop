@@ -8,7 +8,7 @@ import {LocaleData} from '../../i18n/locale-data';
   styleUrls  : ['property.component.scss'],
 })
 export class PropertyPanelComponent {
-  @Input() public drawingData: DrawingData;
+  @Input() public drawingData!: DrawingData;
 
   constructor(public localeData: LocaleData) {
   }

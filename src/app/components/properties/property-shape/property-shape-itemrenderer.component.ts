@@ -10,7 +10,7 @@ import {Assets} from 'particlejs';
  * シェイプの選択パネル内のアイテムレンダラーです。
  */
 export class PropertyShapeItemRendererComponent implements AfterViewInit {
-  @Input() private shapeId: string;
+  @Input() private shapeId!: string;
 
   @ViewChild('myCanvas', { static: true }) myCanvas: any;
 
@@ -23,7 +23,7 @@ export class PropertyShapeItemRendererComponent implements AfterViewInit {
     const stage = new createjs.Stage(canvas);
 
     // Adobe Animate CCから書きだしたシェイプを使う
-    const cls = <any> Assets[this.shapeId];
+    const cls = <any> (Assets as any)[this.shapeId];
 
     const shape = new cls();
     shape.x = 32;

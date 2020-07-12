@@ -11,9 +11,9 @@ import {LocaleData} from '../../../i18n/locale-data';
 
 
 export class PropertyTemplatePanelComponent implements OnInit {
-  @Input() drawingData: DrawingData;
+  @Input() drawingData!: DrawingData;
   @Input() templateList: any[];
-  public public: ParticleParameter;
+  public public!: ParticleParameter;
 
   constructor(public localeData: LocaleData) {
     const template = new ParticleParameter();

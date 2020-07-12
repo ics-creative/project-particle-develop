@@ -25,22 +25,22 @@ import {DrawingData} from 'particlejs';
  * @since 2016-01-20
  */
 export class InputRangeComponent {
-  @Input() public drawingData: DrawingData;
+  @Input() public drawingData!: DrawingData;
 
   /** 対象のプロパティー名を指定します。 */
-  @Input() public targetProperty: string;
+  @Input() public targetProperty!: string;
 
   /** ラベルの名称を指定します。 */
-  @Input() public label: string;
+  @Input() public label!: string;
 
   /** 最小値を指定します。 */
-  @Input() public min: number;
+  @Input() public min!: number;
 
   /** 最大値を指定します。 */
-  @Input() public max: number;
+  @Input() public max!: number;
 
   /** ラベル間の間隔を示す数値を指定します。 */
-  @Input() public step: number;
+  @Input() public step!: number;
 
   constructor() {
   }

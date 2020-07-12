@@ -14,7 +14,7 @@ interface TestObject {
 })
 
 export class PropertyColorPanelComponent {
-  @Input() public drawingData: DrawingData;
+  @Input() public drawingData!: DrawingData;
   public objArray: TestObject[];
 
   constructor(public localeData: LocaleData) {
